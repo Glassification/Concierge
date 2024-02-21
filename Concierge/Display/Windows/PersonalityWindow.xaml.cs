@@ -6,7 +6,7 @@ namespace Concierge.Display.Windows
 {
     using System.Windows;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
@@ -41,7 +41,7 @@ namespace Concierge.Display.Windows
 
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Personality = Program.CcsFile.Character.Characteristic.Personality;
+            this.Personality = Program.CcsFile.Character.Detail.Personality;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 

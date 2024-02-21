@@ -9,7 +9,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Aspects;
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common;
@@ -17,7 +17,6 @@ namespace Concierge.Display.Controls
     using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
     using Concierge.Services;
-    using Microsoft.VisualBasic.ApplicationServices;
 
     /// <summary>
     /// Interaction logic for HitDiceDisplay.xaml.
@@ -45,9 +44,15 @@ namespace Concierge.Display.Controls
                 typeof(RoutedEventHandler),
                 typeof(HitDiceControl));
 
+        private Constitution constitution;
+        private Vitality vitality;
+
         public HitDiceControl()
         {
             this.InitializeComponent();
+
+            this.constitution = new Constitution();
+            this.vitality = new Vitality();
         }
 
         public event RoutedEventHandler EditClicked
@@ -66,6 +71,12 @@ namespace Concierge.Display.Controls
         {
             get { return (ConciergePage)this.GetValue(ConciergePageProperty); }
             set { this.SetValue(ConciergePageProperty, value); }
+        }
+
+        public void SetSource(Constitution constitution, Vitality vitality)
+        {
+            this.constitution = constitution;
+            this.vitality = vitality;
         }
 
         public void DrawHitDice(HitDice hitDice)
@@ -98,24 +109,6 @@ namespace Concierge.Display.Controls
             }
         }
 
-        private Vitality GetVitality()
-        {
-            return this.ConciergePage switch
-            {
-                ConciergePage.Companion => Program.CcsFile.Character.Companion.Vitality,
-                _ => Program.CcsFile.Character.Vitality,
-            };
-        }
-
-        private Attributes GetAttributes()
-        {
-            return this.ConciergePage switch
-            {
-                ConciergePage.Companion => Program.CcsFile.Character.Companion.Characteristic.Attributes,
-                _ => Program.CcsFile.Character.Characteristic.Attributes,
-            };
-        }
-
         private bool ShouldNotHighlight(string name)
         {
             return name switch
@@ -136,15 +129,14 @@ namespace Concierge.Display.Controls
             }
 
             ConciergeSoundService.UpdateValue();
-            var vitality = this.GetVitality();
-            if (vitality.Health.IsFull)
+            if (this.vitality.Health.IsFull)
             {
                 return;
             }
 
-            var oldItem = vitality.DeepCopy();
+            var oldItem = this.vitality.DeepCopy();
 
-            var (dice, used, total) = vitality.HitDice.Increment(border.Name);
+            var (dice, used, total) = this.vitality.HitDice.Increment(border.Name);
             if (dice == Dice.None)
             {
                 return;
@@ -155,11 +147,10 @@ namespace Concierge.Display.Controls
                 Mouse.OverrideCursor = Cursors.Arrow;
             }
 
-            var attributes = this.GetAttributes();
-            var roll = vitality.RollHitDice(dice, attributes);
+            var roll = this.vitality.RollHitDice(dice, this.constitution);
 
             Program.MainWindow?.DisplayStatusText($"Rolled Hit Die: {roll}");
-            Program.UndoRedoService.AddCommand(new EditCommand<Vitality>(vitality, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Vitality>(this.vitality, oldItem, this.ConciergePage));
 
             this.RaiseEvent(new RoutedEventArgs(ValueChangedEvent));
         }

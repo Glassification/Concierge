@@ -182,7 +182,7 @@ namespace Concierge.Display.Utility
             }
 
             this.Imported = true;
-            Program.UndoRedoService.AddCommand(new EditCommand<ConciergeCharacter>(Program.CcsFile.Character, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<CharacterSheet>(Program.CcsFile.Character, oldItem, this.ConciergePage));
             if (button.Name.Contains("Close"))
             {
                 this.ReturnAndClose();

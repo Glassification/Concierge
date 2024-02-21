@@ -10,11 +10,10 @@ namespace Concierge.Display.Controls
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Character.AbilitySaves;
+    using Concierge.Character.Aspects;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common;
-    using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
@@ -54,9 +53,13 @@ namespace Concierge.Display.Controls
                 typeof(Brush),
                 typeof(OverviewPage));
 
+        private Attribute attribute;
+
         public SavingThrowControl()
         {
             this.InitializeComponent();
+
+            this.attribute = Attribute.Default;
             this.HorizontalAlignment = HorizontalAlignment.Stretch;
             this.VerticalAlignment = VerticalAlignment.Stretch;
         }
@@ -104,15 +107,17 @@ namespace Concierge.Display.Controls
 
         public string ProficiencyToolTip => $"Toggle {this.SavingThrowName} Proficiency";
 
-        public void SetStyle(SavingThrow savingThrow)
+        public void Draw(Attribute attribute)
         {
-            this.Tag = savingThrow;
+            this.attribute = attribute;
 
-            this.ProficiencyToggle.Foreground = savingThrow.Proficiency ? ConciergeBrushes.Mint : Brushes.SlateGray;
-            this.ProficiencyToggle.Kind = savingThrow.Proficiency ? PackIconKind.RhombusSplit : PackIconKind.RhombusSplitOutline;
+            this.SavingThrowBonus = attribute.GetSaveBonus(Program.CcsFile.Character.ProficiencyBonus).ToString();
+            this.ProficiencyToggle.Foreground = attribute.Proficiency ? ConciergeBrushes.Mint : Brushes.SlateGray;
+            this.ProficiencyToggle.Kind = attribute.Proficiency ? PackIconKind.RhombusSplit : PackIconKind.RhombusSplitOutline;
 
-            SetTextStyleHelper(savingThrow.StatusChecks, this.SavingThrowNameField);
-            SetTextStyleHelper(savingThrow.StatusChecks, this.SavingThrowBonusField);
+            var status = attribute.GetSaveStatus(Program.CcsFile.Character.Vitality);
+            SetTextStyleHelper(status, this.SavingThrowNameField);
+            SetTextStyleHelper(status, this.SavingThrowBonusField);
         }
 
         private static void SetTextStyleHelper(StatusChecks check, TextBlock textBlock)
@@ -145,10 +150,7 @@ namespace Concierge.Display.Controls
 
         private void SavingThrowField_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (this.Tag is SavingThrow savingThrow)
-            {
-                ConciergeWindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), savingThrow, 0);
-            }
+            ConciergeWindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), this.attribute, 0);
         }
 
         private void Toggle_MouseEnter(object sender, MouseEventArgs e)
@@ -171,9 +173,7 @@ namespace Concierge.Display.Controls
             }
 
             var packIcon = DisplayUtility.FindVisualChildren<PackIcon>(grid).First();
-            var save = Program.CcsFile.Character.SavingThrows.GetSavingThrow(this.SavingThrowName.Strip(" "));
-
-            packIcon.Foreground = save.Proficiency ? ConciergeBrushes.Mint : Brushes.SlateGray;
+            packIcon.Foreground = this.attribute.Proficiency ? ConciergeBrushes.Mint : Brushes.SlateGray;
             Mouse.OverrideCursor = Cursors.Arrow;
         }
 
@@ -181,15 +181,12 @@ namespace Concierge.Display.Controls
         {
             ConciergeSoundService.UpdateValue();
 
-            var save = Program.CcsFile.Character.SavingThrows;
-            var savelCopy = save.DeepCopy();
-
-            var saveThrow = save.GetSavingThrow(this.SavingThrowName.Strip(" "));
-            saveThrow.Proficiency = !saveThrow.Proficiency;
+            var attributeCopy = this.attribute.DeepCopy();
+            this.attribute.Proficiency = !this.attribute.Proficiency;
 
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
-            Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(save, savelCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attribute>(this.attribute, attributeCopy, ConciergePage.Overview));
         }
     }
 }

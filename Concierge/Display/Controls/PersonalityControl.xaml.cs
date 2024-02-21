@@ -8,7 +8,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
 
     /// <summary>
     /// Interaction logic for PersonalityControl.xaml.

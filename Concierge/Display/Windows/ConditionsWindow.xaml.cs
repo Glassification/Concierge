@@ -7,27 +7,28 @@ namespace Concierge.Display.Windows
     using System.Windows;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Vitals.ConditionStates;
+    using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+
+    using Condition = Concierge.Character.Vitals.Condition;
 
     /// <summary>
     /// Interaction logic for ConditionsWindow.xaml.
     /// </summary>
     public partial class ConditionsWindow : ConciergeWindow
     {
+        private Status status = new ();
+
         public ConditionsWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
             this.FatiguedComboBox.ItemsSource = ComboBoxGenerator.ExhaustionLevelComboBox();
-            this.EncumbranceComboBox.ItemsSource = ComboBoxGenerator.EncumbranceLevelComboBox();
             this.ConciergePage = ConciergePage.None;
-            this.Conditions = new Conditions();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.BlindedCheckBox);
@@ -46,24 +47,20 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.ProneCheckBox);
             this.SetMouseOverEvents(this.StunnedCheckBox);
             this.SetMouseOverEvents(this.UnconsciousCheckBox);
-            this.SetMouseOverEvents(this.EncumbranceComboBox);
-            this.SetMouseOverEvents(this.EncumbranceCheckBox);
         }
 
         public override string HeaderText => "Edit Conditions";
 
         public override string WindowName => nameof(ConditionsWindow);
 
-        private Conditions Conditions { get; set; }
-
         public override void ShowEdit<T>(T conditions)
         {
-            if (conditions is not Conditions castItem)
+            if (conditions is not Status castItem)
             {
                 return;
             }
 
-            this.Conditions = castItem;
+            this.status = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -74,58 +71,53 @@ namespace Concierge.Display.Windows
             this.CloseConciergeWindow();
         }
 
+        private static void SetStatus(ConciergeCheckBox checkBox, Condition condition)
+        {
+            condition.Status = (checkBox.IsChecked ?? false) ? ConditionStatus.Afflicted : ConditionStatus.Normal;
+        }
+
         private void FillFields()
         {
-            this.BlindedCheckBox.IsChecked = this.Conditions.Blinded.Afflicted;
-            this.CharmedCheckBox.IsChecked = this.Conditions.Charmed.Afflicted;
-            this.DeafenedCheckBox.IsChecked = this.Conditions.Deafened.Afflicted;
-            this.DeathCheckBox.IsChecked = this.Conditions.Dead.Afflicted;
-            this.FatiguedComboBox.Text = this.Conditions.Fatigued.ExhaustionLevel.ToString();
-            this.FrightenedCheckBox.IsChecked = this.Conditions.Frightened.Afflicted;
-            this.GrappledCheckBox.IsChecked = this.Conditions.Grappled.Afflicted;
-            this.IncapacitatedCheckBox.IsChecked = this.Conditions.Incapacitated.Afflicted;
-            this.InvisibleCheckBox.IsChecked = this.Conditions.Invisible.Afflicted;
-            this.ParalyzedCheckBox.IsChecked = this.Conditions.Paralyzed.Afflicted;
-            this.PetrifiedCheckBox.IsChecked = this.Conditions.Petrified.Afflicted;
-            this.PoisonedCheckBox.IsChecked = this.Conditions.Poisoned.Afflicted;
-            this.ProneCheckBox.IsChecked = this.Conditions.Prone.Afflicted;
-            this.RestrainedCheckBox.IsChecked = this.Conditions.Restrained.Afflicted;
-            this.StunnedCheckBox.IsChecked = this.Conditions.Stunned.Afflicted;
-            this.UnconsciousCheckBox.IsChecked = this.Conditions.Unconscious.Afflicted;
-            this.EncumbranceComboBox.Text = this.Conditions.Encumbered.EncumbranceLevel.ToString().FormatFromPascalCase();
-            this.EncumbranceCheckBox.IsChecked = this.Conditions.Encumbered.OverrideEncumbrance;
-
-            DisplayUtility.SetControlEnableState(this.EncumbranceComboBox, this.Conditions.Encumbered.OverrideEncumbrance);
+            this.BlindedCheckBox.IsChecked = this.status.Blinded.IsAfflicted();
+            this.CharmedCheckBox.IsChecked = this.status.Charmed.IsAfflicted();
+            this.DeafenedCheckBox.IsChecked = this.status.Deafened.IsAfflicted();
+            this.DeathCheckBox.IsChecked = this.status.Death.IsAfflicted();
+            this.FatiguedComboBox.Text = this.status.Exhaustion.Status.ToString().FormatFromPascalCase();
+            this.FrightenedCheckBox.IsChecked = this.status.Frightened.IsAfflicted();
+            this.GrappledCheckBox.IsChecked = this.status.Grappled.IsAfflicted();
+            this.IncapacitatedCheckBox.IsChecked = this.status.Incapacitated.IsAfflicted();
+            this.InvisibleCheckBox.IsChecked = this.status.Invisible.IsAfflicted();
+            this.ParalyzedCheckBox.IsChecked = this.status.Paralyzed.IsAfflicted();
+            this.PetrifiedCheckBox.IsChecked = this.status.Petrified.IsAfflicted();
+            this.PoisonedCheckBox.IsChecked = this.status.Poisoned.IsAfflicted();
+            this.ProneCheckBox.IsChecked = this.status.Prone.IsAfflicted();
+            this.RestrainedCheckBox.IsChecked = this.status.Restrained.IsAfflicted();
+            this.StunnedCheckBox.IsChecked = this.status.Stunned.IsAfflicted();
+            this.UnconsciousCheckBox.IsChecked = this.status.Unconscious.IsAfflicted();
         }
 
         private void UpdateConditions()
         {
-            var oldItem = this.Conditions.DeepCopy();
+            var oldItem = this.status.DeepCopy();
 
-            this.Conditions.Blinded.Afflicted = this.BlindedCheckBox.IsChecked ?? false;
-            this.Conditions.Charmed.Afflicted = this.CharmedCheckBox.IsChecked ?? false;
-            this.Conditions.Dead.Afflicted = this.DeathCheckBox.IsChecked ?? false;
-            this.Conditions.Deafened.Afflicted = this.DeafenedCheckBox.IsChecked ?? false;
-            this.Conditions.Fatigued.ExhaustionLevel = this.FatiguedComboBox.Text.ToEnum<ExhaustionLevel>();
-            this.Conditions.Frightened.Afflicted = this.FrightenedCheckBox.IsChecked ?? false;
-            this.Conditions.Grappled.Afflicted = this.GrappledCheckBox.IsChecked ?? false;
-            this.Conditions.Incapacitated.Afflicted = this.IncapacitatedCheckBox.IsChecked ?? false;
-            this.Conditions.Invisible.Afflicted = this.InvisibleCheckBox.IsChecked ?? false;
-            this.Conditions.Paralyzed.Afflicted = this.ParalyzedCheckBox.IsChecked ?? false;
-            this.Conditions.Petrified.Afflicted = this.PetrifiedCheckBox.IsChecked ?? false;
-            this.Conditions.Poisoned.Afflicted = this.PoisonedCheckBox.IsChecked ?? false;
-            this.Conditions.Prone.Afflicted = this.ProneCheckBox.IsChecked ?? false;
-            this.Conditions.Restrained.Afflicted = this.RestrainedCheckBox.IsChecked ?? false;
-            this.Conditions.Stunned.Afflicted = this.StunnedCheckBox.IsChecked ?? false;
-            this.Conditions.Unconscious.Afflicted = this.UnconsciousCheckBox.IsChecked ?? false;
-            this.Conditions.Encumbered.OverrideEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false;
+            SetStatus(this.BlindedCheckBox, this.status.Blinded);
+            SetStatus(this.CharmedCheckBox, this.status.Charmed);
+            SetStatus(this.DeafenedCheckBox, this.status.Deafened);
+            SetStatus(this.DeathCheckBox, this.status.Death);
+            SetStatus(this.FrightenedCheckBox, this.status.Frightened);
+            SetStatus(this.GrappledCheckBox, this.status.Grappled);
+            SetStatus(this.IncapacitatedCheckBox, this.status.Incapacitated);
+            SetStatus(this.InvisibleCheckBox, this.status.Invisible);
+            SetStatus(this.ParalyzedCheckBox, this.status.Paralyzed);
+            SetStatus(this.PetrifiedCheckBox, this.status.Petrified);
+            SetStatus(this.PoisonedCheckBox, this.status.Poisoned);
+            SetStatus(this.ProneCheckBox, this.status.Prone);
+            SetStatus(this.RestrainedCheckBox, this.status.Restrained);
+            SetStatus(this.StunnedCheckBox, this.status.Stunned);
+            SetStatus(this.UnconsciousCheckBox, this.status.Unconscious);
+            this.status.Exhaustion.Status = this.FatiguedComboBox.Text.ToEnum<ConditionStatus>();
 
-            if (this.Conditions.Encumbered.OverrideEncumbrance)
-            {
-                this.Conditions.Encumbered.EncumbranceLevelOverride = this.EncumbranceComboBox.Text.Strip(" ").ToEnum<EncumbranceLevel>();
-            }
-
-            Program.UndoRedoService.AddCommand(new EditCommand<Conditions>(this.Conditions, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Status>(this.status, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -147,16 +139,6 @@ namespace Concierge.Display.Windows
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.CloseConciergeWindow();
-        }
-
-        private void EncumbranceCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            DisplayUtility.SetControlEnableState(this.EncumbranceComboBox, true);
-        }
-
-        private void EncumbranceCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            DisplayUtility.SetControlEnableState(this.EncumbranceComboBox, false);
         }
     }
 }

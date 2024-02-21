@@ -4,18 +4,18 @@
 
 namespace Concierge.Leveling.Dtos.Leveler
 {
-    using Concierge.Character;
+    using Concierge.Character.Dispositions;
 
     public sealed class CharacterClassDto
     {
-        public CharacterClassDto(CharacterClass oldCharacterClass, CharacterClass newCharacterClass)
+        public CharacterClassDto(Class oldCharacterClass, Class newCharacterClass)
         {
             this.Old = oldCharacterClass;
             this.New = newCharacterClass;
         }
 
-        public CharacterClass Old { get; set; }
+        public Class Old { get; set; }
 
-        public CharacterClass New { get; set; }
+        public Class New { get; set; }
     }
 }

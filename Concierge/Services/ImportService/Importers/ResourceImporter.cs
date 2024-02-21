@@ -12,7 +12,7 @@ namespace Concierge.Services.ImportService.Importers
 
     public sealed class ResourceImporter : Importer
     {
-        public ResourceImporter(ConciergeCharacter character)
+        public ResourceImporter(CharacterSheet character)
             : base(character)
         {
         }
@@ -29,7 +29,7 @@ namespace Concierge.Services.ImportService.Importers
             this.Character.Vitality.ClassResources.AddRange(resources);
         }
 
-        public override IEnumerable<IUnique> Load(ConciergeCharacter character)
+        public override IEnumerable<IUnique> Load(CharacterSheet character)
         {
             return character.Vitality.ClassResources;
         }

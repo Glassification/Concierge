@@ -17,6 +17,7 @@ namespace Concierge.Display.Pages
     using Concierge.Display.Windows;
     using Concierge.Display.Windows.Utility;
     using Concierge.Services;
+    using Concierge.Tools;
 
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
@@ -191,7 +192,7 @@ namespace Concierge.Display.Pages
             }
 
             var oldItem = item.DeepCopy();
-            var result = item.Use();
+            var result = item.Use(UseItem.Empty);
 
             var windowResult = ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             if (windowResult != ConciergeResult.OK)

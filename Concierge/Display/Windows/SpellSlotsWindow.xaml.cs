@@ -6,7 +6,7 @@ namespace Concierge.Display.Windows
 {
     using System.Windows;
 
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
@@ -56,7 +56,7 @@ namespace Concierge.Display.Windows
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.SpellSlots = Program.CcsFile.Character.Magic.SpellSlots;
+            this.SpellSlots = Program.CcsFile.Character.SpellCasting.SpellSlots;
             this.CancelButton.Content = buttonText;
 
             this.FillFields();

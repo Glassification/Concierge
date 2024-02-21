@@ -6,7 +6,7 @@ namespace Concierge.Display.Windows
 {
     using System.Windows;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Aspects;
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
@@ -18,13 +18,14 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class AttributesWindow : ConciergeWindow
     {
+        private Attributes attributes = new ();
+
         public AttributesWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePage.None;
-            this.Attributes = new Attributes();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.StrengthUpDown);
@@ -39,14 +40,12 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(AttributesWindow);
 
-        private Attributes Attributes { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Attributes = Program.CcsFile.Character.Characteristic.Attributes;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
+            this.attributes = Program.CcsFile.Character.Attributes;
             this.FillFields();
             this.ShowConciergeWindow();
 
@@ -60,7 +59,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Attributes = castItem;
+            this.attributes = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -75,26 +74,26 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
-            this.StrengthUpDown.Value = this.Attributes.Strength;
-            this.DexterityUpDown.Value = this.Attributes.Dexterity;
-            this.ConstitutionUpDown.Value = this.Attributes.Constitution;
-            this.IntelligenceUpDown.Value = this.Attributes.Intelligence;
-            this.WisdomUpDown.Value = this.Attributes.Wisdom;
-            this.CharismaUpDown.Value = this.Attributes.Charisma;
+            this.StrengthUpDown.Value = this.attributes.Strength.Score;
+            this.DexterityUpDown.Value = this.attributes.Dexterity.Score;
+            this.ConstitutionUpDown.Value = this.attributes.Constitution.Score;
+            this.IntelligenceUpDown.Value = this.attributes.Intelligence.Score;
+            this.WisdomUpDown.Value = this.attributes.Wisdom.Score;
+            this.CharismaUpDown.Value = this.attributes.Charisma.Score;
         }
 
         private void UpdateAttributes()
         {
-            var oldItem = this.Attributes.DeepCopy();
+            var oldItem = this.attributes.DeepCopy();
 
-            this.Attributes.Strength = this.StrengthUpDown.Value;
-            this.Attributes.Dexterity = this.DexterityUpDown.Value;
-            this.Attributes.Constitution = this.ConstitutionUpDown.Value;
-            this.Attributes.Intelligence = this.IntelligenceUpDown.Value;
-            this.Attributes.Wisdom = this.WisdomUpDown.Value;
-            this.Attributes.Charisma = this.CharismaUpDown.Value;
+            this.attributes.Strength.Score = this.StrengthUpDown.Value;
+            this.attributes.Dexterity.Score = this.DexterityUpDown.Value;
+            this.attributes.Constitution.Score = this.ConstitutionUpDown.Value;
+            this.attributes.Intelligence.Score = this.IntelligenceUpDown.Value;
+            this.attributes.Wisdom.Score = this.WisdomUpDown.Value;
+            this.attributes.Charisma.Score = this.CharismaUpDown.Value;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.Attributes, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.attributes, oldItem, this.ConciergePage));
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

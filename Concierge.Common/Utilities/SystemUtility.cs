@@ -38,6 +38,10 @@ namespace Concierge.Common.Utilities
             }
         }
 
+        /// <summary>
+        /// Retrieves information about the current Internet status.
+        /// </summary>
+        /// <returns>An instance of <see cref="InternetInfo"/> containing information about the Internet status.</returns>
         public static InternetInfo GetInternetStatus()
         {
             return new InternetInfo(string.Empty, HasInternet ? InternetStatus.Wireless : InternetStatus.Disconnected);
@@ -46,7 +50,7 @@ namespace Concierge.Common.Utilities
         /// <summary>
         /// Retrieves the battery status information.
         /// </summary>
-        /// <returns>The battery status information.</returns>
+        /// <returns>An instance of <see cref="BatteryInfo"/> containing information about the battery status.</returns>
         public static BatteryInfo GetBatteryStatus()
         {
             try

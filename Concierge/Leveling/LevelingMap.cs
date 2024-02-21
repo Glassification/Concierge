@@ -6,8 +6,8 @@ namespace Concierge.Leveling
 {
     using System.Collections.Generic;
 
-    using Concierge.Character;
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
+    using Concierge.Character.Dispositions;
     using Concierge.Leveling.Definitions;
     using Concierge.Leveling.Dtos.Definitions;
 

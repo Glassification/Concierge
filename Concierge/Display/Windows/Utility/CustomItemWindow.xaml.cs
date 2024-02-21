@@ -7,9 +7,10 @@ namespace Concierge.Display.Windows.Utility
     using System;
     using System.Windows;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Companions;
+    using Concierge.Character.Details;
     using Concierge.Character.Equipable;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Common;
     using Concierge.Data;
@@ -61,6 +62,10 @@ namespace Concierge.Display.Windows.Utility
             {
                 type = typeof(ClassResourceWindow);
             }
+            else if (item is CompanionWeapon)
+            {
+                type = typeof(CompanionAttacksWindow);
+            }
             else if (item is CustomColor color)
             {
                 var result = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), color);
@@ -79,7 +84,7 @@ namespace Concierge.Display.Windows.Utility
                     false,
                     typeof(InventoryWindow),
                     this.Window_ApplyChanges,
-                    Enums.ConciergePage.None);
+                    ConciergePage.None);
                 this.Draw();
                 return;
             }
@@ -87,7 +92,7 @@ namespace Concierge.Display.Windows.Utility
             {
                 type = typeof(LanguagesWindow);
             }
-            else if (item is MagicClass)
+            else if (item is MagicalClass)
             {
                 type = typeof(MagicClassWindow);
             }

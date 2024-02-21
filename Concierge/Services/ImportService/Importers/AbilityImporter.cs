@@ -7,12 +7,12 @@ namespace Concierge.Services.ImportService.Importers
     using System.Collections.Generic;
 
     using Concierge.Character;
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Common;
 
     public sealed class AbilityImporter : Importer
     {
-        public AbilityImporter(ConciergeCharacter character)
+        public AbilityImporter(CharacterSheet character)
             : base(character)
         {
         }
@@ -26,12 +26,12 @@ namespace Concierge.Services.ImportService.Importers
 
             Program.Logger.Info($"Import abilities.");
             CycleGuids(abilities);
-            this.Character.Characteristic.Abilities.AddRange(abilities);
+            this.Character.Detail.Abilities.AddRange(abilities);
         }
 
-        public override IEnumerable<IUnique> Load(ConciergeCharacter character)
+        public override IEnumerable<IUnique> Load(CharacterSheet character)
         {
-            return character.Characteristic.Abilities;
+            return character.Detail.Abilities;
         }
 
         public override IEnumerable<IUnique> Load(string fileName)

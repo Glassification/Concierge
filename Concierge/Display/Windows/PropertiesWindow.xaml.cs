@@ -7,7 +7,7 @@ namespace Concierge.Display.Windows
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Character;
+    using Concierge.Character.Dispositions;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
@@ -26,6 +26,7 @@ namespace Concierge.Display.Windows
         private readonly FileAccessService fileAccessService;
 
         private bool isNormalEdit;
+        private Disposition disposition;
 
         public PropertiesWindow()
         {
@@ -41,7 +42,7 @@ namespace Concierge.Display.Windows
             this.Class1Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
             this.Class2Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
             this.Class3Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
-            this.CharacterProperties = new CharacterProperties();
+            this.disposition = new Disposition();
             this.OriginalFileName = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -67,8 +68,6 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(PropertiesWindow);
 
-        private CharacterProperties CharacterProperties { get; set; }
-
         private string OriginalFileName { get; set; }
 
         private bool IsDrawing { get; set; }
@@ -79,7 +78,7 @@ namespace Concierge.Display.Windows
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
-            this.CharacterProperties = Program.CcsFile.Character.Properties;
+            this.disposition = Program.CcsFile.Character.Disposition;
             this.isNormalEdit = false;
 
             DisplayUtility.SetControlEnableState(this.Class1Level, false);
@@ -94,12 +93,12 @@ namespace Concierge.Display.Windows
 
         public override void ShowEdit<T>(T properties)
         {
-            if (properties is not CharacterProperties castItem)
+            if (properties is not Disposition castItem)
             {
                 return;
             }
 
-            this.CharacterProperties = castItem;
+            this.disposition = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -133,20 +132,20 @@ namespace Concierge.Display.Windows
         {
             this.IsDrawing = true;
 
-            this.NameTextBox.Text = this.CharacterProperties.Name;
-            this.RaceComboBox.Text = this.CharacterProperties.Race.Name;
-            this.SubRaceComboBox.Text = this.CharacterProperties.Race.Subrace;
-            this.BackgroundComboBox.Text = this.CharacterProperties.Background;
-            this.AlignmentComboBox.Text = this.CharacterProperties.Alignment;
-            this.Class1Level.Value = this.CharacterProperties.Class1.Level;
-            this.Class2Level.Value = this.CharacterProperties.Class2.Level;
-            this.Class3Level.Value = this.CharacterProperties.Class3.Level;
-            this.Class1Class.Text = this.CharacterProperties.Class1.Name;
-            this.Class2Class.Text = this.CharacterProperties.Class2.Name;
-            this.Class3Class.Text = this.CharacterProperties.Class3.Name;
-            this.Class1Subclass.Text = this.CharacterProperties.Class1.Subclass;
-            this.Class2Subclass.Text = this.CharacterProperties.Class2.Subclass;
-            this.Class3Subclass.Text = this.CharacterProperties.Class3.Subclass;
+            this.NameTextBox.Text = this.disposition.Name;
+            this.RaceComboBox.Text = this.disposition.Race.Name;
+            this.SubRaceComboBox.Text = this.disposition.Race.Subrace;
+            this.BackgroundComboBox.Text = this.disposition.Background;
+            this.AlignmentComboBox.Text = this.disposition.Alignment;
+            this.Class1Level.Value = this.disposition.Class1.Level;
+            this.Class2Level.Value = this.disposition.Class2.Level;
+            this.Class3Level.Value = this.disposition.Class3.Level;
+            this.Class1Class.Text = this.disposition.Class1.Name;
+            this.Class2Class.Text = this.disposition.Class2.Name;
+            this.Class3Class.Text = this.disposition.Class3.Name;
+            this.Class1Subclass.Text = this.disposition.Class1.Subclass;
+            this.Class2Subclass.Text = this.disposition.Class2.Subclass;
+            this.Class3Subclass.Text = this.disposition.Class3.Subclass;
 
             this.CheckClass1State(this.Class1Class.Text);
             this.CheckClass2State(this.Class2Class.Text);
@@ -163,24 +162,24 @@ namespace Concierge.Display.Windows
 
         private void UpdateProperties()
         {
-            var oldItem = this.CharacterProperties.DeepCopy();
+            var oldItem = this.disposition.DeepCopy();
 
-            this.CharacterProperties.Name = this.NameTextBox.Text;
-            this.CharacterProperties.Race.Name = this.RaceComboBox.Text;
-            this.CharacterProperties.Race.Subrace = this.SubRaceComboBox.Text;
-            this.CharacterProperties.Background = this.BackgroundComboBox.Text;
-            this.CharacterProperties.Alignment = this.AlignmentComboBox.Text;
-            this.CharacterProperties.Class1.Level = this.Class1Level.Value;
-            this.CharacterProperties.Class2.Level = this.Class2Level.Value;
-            this.CharacterProperties.Class3.Level = this.Class3Level.Value;
-            this.CharacterProperties.Class1.Name = this.Class1Class.Text;
-            this.CharacterProperties.Class2.Name = this.Class2Class.Text;
-            this.CharacterProperties.Class3.Name = this.Class3Class.Text;
-            this.CharacterProperties.Class1.Subclass = this.Class1Subclass.Text;
-            this.CharacterProperties.Class2.Subclass = this.Class2Subclass.Text;
-            this.CharacterProperties.Class3.Subclass = this.Class3Subclass.Text;
+            this.disposition.Name = this.NameTextBox.Text;
+            this.disposition.Race.Name = this.RaceComboBox.Text;
+            this.disposition.Race.Subrace = this.SubRaceComboBox.Text;
+            this.disposition.Background = this.BackgroundComboBox.Text;
+            this.disposition.Alignment = this.AlignmentComboBox.Text;
+            this.disposition.Class1.Level = this.Class1Level.Value;
+            this.disposition.Class2.Level = this.Class2Level.Value;
+            this.disposition.Class3.Level = this.Class3Level.Value;
+            this.disposition.Class1.Name = this.Class1Class.Text;
+            this.disposition.Class2.Name = this.Class2Class.Text;
+            this.disposition.Class3.Name = this.Class3Class.Text;
+            this.disposition.Class1.Subclass = this.Class1Subclass.Text;
+            this.disposition.Class2.Subclass = this.Class2Subclass.Text;
+            this.disposition.Class3.Subclass = this.Class3Subclass.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<CharacterProperties>(this.CharacterProperties, oldItem, ConciergePage.None));
+            Program.UndoRedoService.AddCommand(new EditCommand<Disposition>(this.disposition, oldItem, ConciergePage.None));
         }
 
         private void CheckClass1State(string name)

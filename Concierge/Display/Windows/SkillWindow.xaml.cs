@@ -6,7 +6,7 @@ namespace Concierge.Display.Windows
 {
     using System.Windows;
 
-    using Concierge.Character.AbilitySkills;
+    using Concierge.Character.Aspects;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
@@ -18,6 +18,8 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class SkillWindow : ConciergeWindow
     {
+        private Attributes attributes = new ();
+
         public SkillWindow()
         {
             this.InitializeComponent();
@@ -43,7 +45,6 @@ namespace Concierge.Display.Windows
             this.PersuasionComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
 
             this.ConciergePage = ConciergePage.None;
-            this.Skill = new Skills();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.AthleticsComboBox);
@@ -70,16 +71,14 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(SkillWindow);
 
-        private Skills Skill { get; set; }
-
         public override void ShowEdit<T>(T skill)
         {
-            if (skill is not Skills castItem)
+            if (skill is not Attributes castItem)
             {
                 return;
             }
 
-            this.Skill = castItem;
+            this.attributes = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -92,50 +91,50 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
-            this.AthleticsComboBox.Text = this.Skill.Athletics.CheckOverride.ToString();
-            this.AcrobaticsComboBox.Text = this.Skill.Acrobatics.CheckOverride.ToString();
-            this.SleightOfHandComboBox.Text = this.Skill.SleightOfHand.CheckOverride.ToString();
-            this.StealthComboBox.Text = this.Skill.Stealth.CheckOverride.ToString();
-            this.ArcanaComboBox.Text = this.Skill.Arcana.CheckOverride.ToString();
-            this.HistoryComboBox.Text = this.Skill.History.CheckOverride.ToString();
-            this.InvestigationComboBox.Text = this.Skill.Investigation.CheckOverride.ToString();
-            this.NatureComboBox.Text = this.Skill.Nature.CheckOverride.ToString();
-            this.ReligionComboBox.Text = this.Skill.Religion.CheckOverride.ToString();
-            this.AnimalHandlingComboBox.Text = this.Skill.AnimalHandling.CheckOverride.ToString();
-            this.InsightComboBox.Text = this.Skill.Insight.CheckOverride.ToString();
-            this.MedicineComboBox.Text = this.Skill.Medicine.CheckOverride.ToString();
-            this.PerceptionComboBox.Text = this.Skill.Perception.CheckOverride.ToString();
-            this.SurvivalComboBox.Text = this.Skill.Survival.CheckOverride.ToString();
-            this.DeceptionComboBox.Text = this.Skill.Deception.CheckOverride.ToString();
-            this.IntimidationComboBox.Text = this.Skill.Intimidation.CheckOverride.ToString();
-            this.PerformanceComboBox.Text = this.Skill.Performance.CheckOverride.ToString();
-            this.PersuasionComboBox.Text = this.Skill.Persuasion.CheckOverride.ToString();
+            this.AthleticsComboBox.Text = this.attributes.Athletics.SkillOverride.ToString();
+            this.AcrobaticsComboBox.Text = this.attributes.Acrobatics.SkillOverride.ToString();
+            this.SleightOfHandComboBox.Text = this.attributes.SleightOfHand.SkillOverride.ToString();
+            this.StealthComboBox.Text = this.attributes.Stealth.SkillOverride.ToString();
+            this.ArcanaComboBox.Text = this.attributes.Arcana.SkillOverride.ToString();
+            this.HistoryComboBox.Text = this.attributes.History.SkillOverride.ToString();
+            this.InvestigationComboBox.Text = this.attributes.Investigation.SkillOverride.ToString();
+            this.NatureComboBox.Text = this.attributes.Nature.SkillOverride.ToString();
+            this.ReligionComboBox.Text = this.attributes.Religion.SkillOverride.ToString();
+            this.AnimalHandlingComboBox.Text = this.attributes.AnimalHandling.SkillOverride.ToString();
+            this.InsightComboBox.Text = this.attributes.Insight.SkillOverride.ToString();
+            this.MedicineComboBox.Text = this.attributes.Medicine.SkillOverride.ToString();
+            this.PerceptionComboBox.Text = this.attributes.Perception.SkillOverride.ToString();
+            this.SurvivalComboBox.Text = this.attributes.Survival.SkillOverride.ToString();
+            this.DeceptionComboBox.Text = this.attributes.Deception.SkillOverride.ToString();
+            this.IntimidationComboBox.Text = this.attributes.Intimidation.SkillOverride.ToString();
+            this.PerformanceComboBox.Text = this.attributes.Performance.SkillOverride.ToString();
+            this.PersuasionComboBox.Text = this.attributes.Persuasion.SkillOverride.ToString();
         }
 
         private void UpdateSkills()
         {
-            var oldSkill = this.Skill.DeepCopy();
+            var oldSkill = this.attributes.DeepCopy();
 
-            this.Skill.Athletics.CheckOverride = this.AthleticsComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Acrobatics.CheckOverride = this.AcrobaticsComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.SleightOfHand.CheckOverride = this.SleightOfHandComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Stealth.CheckOverride = this.StealthComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Arcana.CheckOverride = this.ArcanaComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.History.CheckOverride = this.HistoryComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Investigation.CheckOverride = this.InvestigationComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Nature.CheckOverride = this.NatureComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Religion.CheckOverride = this.ReligionComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.AnimalHandling.CheckOverride = this.AnimalHandlingComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Insight.CheckOverride = this.InsightComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Medicine.CheckOverride = this.MedicineComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Perception.CheckOverride = this.PerceptionComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Survival.CheckOverride = this.SurvivalComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Deception.CheckOverride = this.DeceptionComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Intimidation.CheckOverride = this.IntimidationComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Performance.CheckOverride = this.PerformanceComboBox.Text.ToEnum<StatusChecks>();
-            this.Skill.Persuasion.CheckOverride = this.PersuasionComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Athletics.SkillOverride = this.AthleticsComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Acrobatics.SkillOverride = this.AcrobaticsComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.SleightOfHand.SkillOverride = this.SleightOfHandComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Stealth.SkillOverride = this.StealthComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Arcana.SkillOverride = this.ArcanaComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.History.SkillOverride = this.HistoryComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Investigation.SkillOverride = this.InvestigationComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Nature.SkillOverride = this.NatureComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Religion.SkillOverride = this.ReligionComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.AnimalHandling.SkillOverride = this.AnimalHandlingComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Insight.SkillOverride = this.InsightComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Medicine.SkillOverride = this.MedicineComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Perception.SkillOverride = this.PerceptionComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Survival.SkillOverride = this.SurvivalComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Deception.SkillOverride = this.DeceptionComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Intimidation.SkillOverride = this.IntimidationComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Performance.SkillOverride = this.PerformanceComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Persuasion.SkillOverride = this.PersuasionComboBox.Text.ToEnum<StatusChecks>();
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skills>(this.Skill, oldSkill, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.attributes, oldSkill, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

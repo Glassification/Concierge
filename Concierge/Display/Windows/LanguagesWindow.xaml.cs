@@ -8,7 +8,7 @@ namespace Concierge.Display.Windows
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
     using Concierge.Display.Components;
@@ -54,7 +54,7 @@ namespace Concierge.Display.Windows
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Languages = Program.CcsFile.Character.Characteristic.Languages;
+            this.Languages = Program.CcsFile.Character.Detail.Languages;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 

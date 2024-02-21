@@ -4,18 +4,18 @@
 
 namespace Concierge.Leveling.Dtos.Leveler
 {
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
 
     public sealed class MagicClassDto
     {
-        public MagicClassDto(MagicClass? oldMagicClass, MagicClass? newMagicClass)
+        public MagicClassDto(MagicalClass? oldMagicClass, MagicalClass? newMagicClass)
         {
             this.Old = oldMagicClass;
             this.New = newMagicClass;
         }
 
-        public MagicClass? Old { get; set; }
+        public MagicalClass? Old { get; set; }
 
-        public MagicClass? New { get; set; }
+        public MagicalClass? New { get; set; }
     }
 }

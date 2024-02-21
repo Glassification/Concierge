@@ -11,7 +11,7 @@ namespace Concierge.Display.Components
     using System.Windows.Interop;
 
     using Concierge.Animations;
-    using Concierge.Character;
+    using Concierge.Character.Aspects;
     using Concierge.Character.Enums;
     using Concierge.Common;
     using Concierge.Common.Exceptions;
@@ -21,6 +21,8 @@ namespace Concierge.Display.Components
     using Concierge.Display.Windows.Helpers;
     using Concierge.Services;
     using Concierge.Tools;
+
+    using Attribute = Concierge.Character.Aspects.Attribute;
 
     public abstract partial class ConciergeWindow : Window
     {
@@ -75,12 +77,6 @@ namespace Concierge.Display.Components
             return false;
         }
 
-        public virtual bool ShowAdd<T>(T item, ICreature creature)
-        {
-            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowAdd), item));
-            return false;
-        }
-
         public virtual void ShowEdit<T>(T item)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowEdit), item));
@@ -126,7 +122,13 @@ namespace Concierge.Display.Components
             return ConciergeResult.NoResult;
         }
 
-        public virtual AbilitySave ShowAbilityCheckWindow(IAbility ability, int value)
+        public virtual AbilitySave ShowAbilityCheckWindow(Attribute attribute, int value)
+        {
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowAbilityCheckWindow)));
+            return AbilitySave.None;
+        }
+
+        public virtual AbilitySave ShowAbilityCheckWindow(Skill skill, int value)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowAbilityCheckWindow)));
             return AbilitySave.None;

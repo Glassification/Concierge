@@ -66,6 +66,12 @@
     <Compile Update="Display\Pages\ToolsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Windows\CompanionAttacksWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\CompanionAttributesWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Windows\Utility\AbilityCheckWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -225,6 +231,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\AttributesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Windows\CompanionAttacksWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Windows\CompanionAttributesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\HealthWindow.xaml">

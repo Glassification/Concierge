@@ -11,13 +11,14 @@ namespace Concierge.Display.Pages
 
     using Concierge.Character.Enums;
     using Concierge.Character.Equipable;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Display.Windows.Utility;
+    using Concierge.Persistence;
     using Concierge.Services;
     using Concierge.Tools;
 
@@ -26,6 +27,8 @@ namespace Concierge.Display.Pages
     /// </summary>
     public partial class EquipmentPage : Page, IConciergePage
     {
+        private readonly ImageEncoding encodingService = new (Program.ErrorService);
+
         public EquipmentPage()
         {
             this.InitializeComponent();
@@ -65,8 +68,9 @@ namespace Concierge.Display.Pages
 
         public void DrawImage()
         {
-            this.CharacterImage.Source = Program.CcsFile.Character.CharacterImage.ToImage();
-            this.CharacterImage.Stretch = Program.CcsFile.Character.CharacterImage.Stretch;
+            var portrait = Program.CcsFile.Character.Detail.Portrait;
+            this.CharacterImage.Source = portrait.UseCustomImage ? this.encodingService.Decode(portrait.Encoded) : null;
+            this.CharacterImage.Stretch = portrait.Stretch;
 
             this.DefaultCharacterImage.Visibility = this.CharacterImage.Source == null ? Visibility.Visible : Visibility.Hidden;
         }
@@ -74,7 +78,7 @@ namespace Concierge.Display.Pages
         public void DrawPreparedSpells()
         {
             this.PreparedSpellsDataGrid.Items.Clear();
-            Program.CcsFile.Character.Magic.PreparedSpells.ForEach(spell => this.PreparedSpellsDataGrid.Items.Add(spell));
+            Program.CcsFile.Character.SpellCasting.PreparedSpells.ForEach(spell => this.PreparedSpellsDataGrid.Items.Add(spell));
         }
 
         public void Edit(object itemToEdit)
@@ -306,7 +310,7 @@ namespace Concierge.Display.Pages
             ConciergeSoundService.TapNavigation();
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character.CharacterImage,
+                Program.CcsFile.Character.Detail.Portrait,
                 typeof(ImageWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Equipment);
@@ -328,7 +332,7 @@ namespace Concierge.Display.Pages
         {
             if (this.SelectedItem is IUsable usable)
             {
-                var result = usable.Use();
+                var result = usable.Use(UseItem.Empty);
                 ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             }
         }

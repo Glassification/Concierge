@@ -524,15 +524,6 @@
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="AttackUseButton"
-                                Width="60"
-                                Foreground="#B9487B"
-                                Click="AttackUseButton_Click"
-                                ToolTip="Use Attack">
-                                <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
-                            </components:ConciergeDesignButton>
-                            <components:ConciergeDesignButton 
-                                Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="AttacksDeleteButton"
                                 Width="60"
                                 Foreground="IndianRed"
@@ -605,8 +596,22 @@
                             <DataGridTextColumn
                                 Header="Description"
                                 Binding="{Binding Note}"
-                                Width="0.28*"
+                                Width="0.29*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTemplateColumn Width="0.01*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon
+                                            Margin="0,0,3,0"
+                                            Kind="{Binding ProficiencyIconKind}"
+                                            Foreground="{Binding ProficiencyIconColor}"
+                                            Height="auto"
+                                            Width="auto"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </components:ConciergeDataGrid>
                 </Grid>

@@ -6,7 +6,6 @@ namespace Concierge.Common.Utilities
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     using Concierge.Common.Extensions;
 
@@ -48,28 +47,6 @@ namespace Concierge.Common.Utilities
             }
 
             return [.. stringArray];
-        }
-
-        /// <summary>
-        /// Formats a name by inserting spaces before each uppercase letter.
-        /// </summary>
-        /// <param name="name">The name to be formatted.</param>
-        /// <returns>The formatted name with spaces inserted.</returns>
-        public static string FormatName(string name)
-        {
-            var ch = name.ToArray();
-            int offset = 0;
-
-            for (int i = 1; i < ch.Length; i++)
-            {
-                if (char.IsUpper(ch[i]))
-                {
-                    name = name.Insert(i + offset, " ");
-                    offset++;
-                }
-            }
-
-            return name;
         }
     }
 }

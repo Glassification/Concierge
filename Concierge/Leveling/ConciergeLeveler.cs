@@ -8,18 +8,18 @@ namespace Concierge.Leveling
     using System.Linq;
 
     using Concierge.Character;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Dispositions;
+    using Concierge.Character.Magic;
     using Concierge.Commands;
-    using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Leveling.Dtos.Leveler;
     using Concierge.Tools.DiceRoller;
 
     public sealed class ConciergeLeveler
     {
-        private readonly ConciergeCharacter character;
+        private readonly CharacterSheet character;
 
-        public ConciergeLeveler(ConciergeCharacter character)
+        public ConciergeLeveler(CharacterSheet character)
         {
             this.character = character;
         }
@@ -43,7 +43,7 @@ namespace Concierge.Leveling
 
         private CharacterClassDto LevelUpCharacterClass(int classNumber)
         {
-            var levelClass = this.character.Properties.GetClassByNumber(classNumber);
+            var levelClass = this.character.Disposition.GetClass(classNumber);
             var oldClass = levelClass.DeepCopy();
 
             levelClass.Level++;
@@ -51,17 +51,24 @@ namespace Concierge.Leveling
             return new CharacterClassDto(oldClass, levelClass.DeepCopy());
         }
 
-        private MagicClassDto LevelUpMagicClass(CharacterClass newClass)
+        private MagicClassDto LevelUpMagicClass(Class newClass)
         {
-            var magicClass = this.character.Magic.MagicClasses.Where(x => x.Name.Equals(newClass.Name)).FirstOrDefault();
+            var magicClass = this.character.SpellCasting.MagicalClasses.Where(x => x.Name.Equals(newClass.Name)).FirstOrDefault();
             var oldMagicClass = magicClass?.DeepCopy();
+            if (magicClass is not null)
+            {
+                var spellSlotDto = LevelingMap.GetSpellSlotIncrease(newClass.Name, newClass.Subclass, newClass.Level);
 
-            magicClass?.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, newClass.Subclass, newClass.Level));
+                magicClass.Level++;
+                magicClass.KnownSpells += spellSlotDto.Known;
+                magicClass.KnownCantrips += spellSlotDto.Cantrip;
+                magicClass.SpellSlots += spellSlotDto.Slots;
+            }
 
             return new MagicClassDto(oldMagicClass, magicClass?.DeepCopy());
         }
 
-        private ClassResourcesDto LevelUpClassResource(CharacterClass newClass)
+        private ClassResourcesDto LevelUpClassResource(Class newClass)
         {
             var resourceIncrease = LevelingMap.GetResourceIncrease(newClass.Name, newClass.Subclass, newClass.Level);
             var resource = this.character.Vitality.ClassResources.Where(x => x.Type.Equals(resourceIncrease.Name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
@@ -75,24 +82,55 @@ namespace Concierge.Leveling
             return new ClassResourcesDto(oldResource, resource?.DeepCopy());
         }
 
-        private SpellSlotsDto LevelUpSpellSlots(MagicClass? newClass)
+        private SpellSlotsDto LevelUpSpellSlots(MagicalClass? newClass)
         {
-            var oldSpellSlots = this.character.Magic.SpellSlots.DeepCopy();
+            var spellSlots = this.character.SpellCasting.SpellSlots;
+            var oldSpellSlots = spellSlots.DeepCopy();
 
             if (newClass is not null)
             {
-                this.character.Magic.SpellSlots.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level));
+                var spellSlotDto = LevelingMap.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level);
+
+                spellSlots.PactTotal += spellSlotDto.Pact;
+                spellSlots.FirstTotal += spellSlotDto.First;
+                spellSlots.SecondTotal += spellSlotDto.Second;
+                spellSlots.ThirdTotal += spellSlotDto.Third;
+                spellSlots.FourthTotal += spellSlotDto.Fourth;
+                spellSlots.FifthTotal += spellSlotDto.Fifth;
+                spellSlots.SixthTotal += spellSlotDto.Sixth;
+                spellSlots.SeventhTotal += spellSlotDto.Seventh;
+                spellSlots.EighthTotal += spellSlotDto.Eighth;
+                spellSlots.NinethTotal += spellSlotDto.Nineth;
+
+                spellSlots.Reset();
             }
 
-            return new SpellSlotsDto(oldSpellSlots, this.character.Magic.SpellSlots.DeepCopy());
+            return new SpellSlotsDto(oldSpellSlots, this.character.SpellCasting.SpellSlots.DeepCopy());
         }
 
         private VitalityDto LevelUpVitality(Dice hitDie, int bonusHp)
         {
-            var newHp = DiceRoll.RollHitDie(hitDie) + Constants.Bonus(this.character.Characteristic.Attributes.Constitution) + bonusHp;
+            var newHp = DiceRoll.RollHitDie(hitDie) + this.character.Attributes.Constitution.Bonus + bonusHp;
             var oldVitality = this.character.Vitality.DeepCopy();
 
-            this.character.Vitality.LevelUp(hitDie, newHp);
+            this.character.Vitality.Health.MaxHealth += newHp;
+            this.character.Vitality.Health.ResetHealth();
+            this.character.Vitality.HitDice.RegainHitDice();
+            switch (hitDie)
+            {
+                case Dice.D6:
+                    this.character.Vitality.HitDice.TotalD6++;
+                    break;
+                case Dice.D8:
+                    this.character.Vitality.HitDice.TotalD8++;
+                    break;
+                case Dice.D10:
+                    this.character.Vitality.HitDice.TotalD10++;
+                    break;
+                case Dice.D12:
+                    this.character.Vitality.HitDice.TotalD12++;
+                    break;
+            }
 
             return new VitalityDto(oldVitality, this.character.Vitality.DeepCopy());
         }

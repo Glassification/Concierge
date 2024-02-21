@@ -334,6 +334,48 @@
   <data name="ColorPickerBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Images\ColorPickerBackground.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="CompanionAttacksWindow_AbilityComboBox" xml:space="preserve">
+    <value>Most weapons use strength, but some attacks allow a companion to use their dexterity score. Special weapons or statuses might allow other abilities to be used instead.</value>
+  </data>
+  <data name="CompanionAttacksWindow_AttackComboBox" xml:space="preserve">
+    <value>Your companion's race, class, and feats can grant you proficiency with certain weapons or categories of weapons.</value>
+  </data>
+  <data name="CompanionAttacksWindow_DamageTextBox" xml:space="preserve">
+    <value>List the damage rolls and proficiency bonus to attacking with this attack.</value>
+  </data>
+  <data name="CompanionAttacksWindow_DamageTypeComboBox" xml:space="preserve">
+    <value>Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage.</value>
+  </data>
+  <data name="CompanionAttacksWindow_MiscDamageTextBox" xml:space="preserve">
+    <value>Here, you can use my plus 1 mace.</value>
+  </data>
+  <data name="CompanionAttacksWindow_NotesTextBox" xml:space="preserve">
+    <value>Many weapons have special properties related to their use, as shown in the Weapons table.</value>
+  </data>
+  <data name="CompanionAttacksWindow_ProficencyOverrideCheckBox" xml:space="preserve">
+    <value>Add your character's proficiency bonus to this attack.</value>
+  </data>
+  <data name="CompanionAttacksWindow_RangeTextBox" xml:space="preserve">
+    <value>How far you can strike enemies with this weapon. Ranged weapons have minimum and maximum effective ranges.</value>
+  </data>
+  <data name="CompanionAttributesWindow_CharismaUpDown" xml:space="preserve">
+    <value>Measures: Confidence, eloquence, leadership. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="CompanionAttributesWindow_ConstitutionUpDown" xml:space="preserve">
+    <value>Measures: Health, stamina, vital force. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="CompanionAttributesWindow_DexterityUpDown" xml:space="preserve">
+    <value>Measures: Physical agility, reflexes, balance, poise. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="CompanionAttributesWindow_IntelligenceUpDown" xml:space="preserve">
+    <value>Measures: Mental acuity, information recall, analytical skill. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="CompanionAttributesWindow_StrengthUpDown" xml:space="preserve">
+    <value>Measures: Natural athleticism, bodily power. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="CompanionAttributesWindow_WisdomUpDown" xml:space="preserve">
+    <value>Measures: Awareness, intuition, insight. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
   <data name="CompanionWindow_AcUpDown" xml:space="preserve">
     <value>Total Armor Class of the companion.</value>
   </data>
@@ -573,9 +615,6 @@
   </data>
   <data name="PersonalityWindow_Trait2TextBox" xml:space="preserve">
     <value>They should be self-descriptions that are specific about what makes a character stand out.</value>
-  </data>
-  <data name="ProficiencyLevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Constants\ProficiencyLevel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="ProficiencyWindow_ProficiencyComboBox" xml:space="preserve">
     <value>A character can be proficient in armors, weapons, or tools.</value>

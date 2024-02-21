@@ -4,7 +4,7 @@
 
 namespace Concierge.Leveling.Dtos.Leveler
 {
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
 
     public sealed class SpellSlotsDto
     {

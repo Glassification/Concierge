@@ -10,7 +10,7 @@ namespace Concierge.Display.Windows
     using System.Windows.Controls;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
@@ -31,7 +31,7 @@ namespace Concierge.Display.Windows
             this.ClassNameComboBox.ItemsSource = DefaultItems;
             this.AbilityComboBox.ItemsSource = ComboBoxGenerator.AbilitiesComboBox();
             this.ConciergePage = ConciergePage.None;
-            this.SelectedClass = new MagicClass();
+            this.SelectedClass = new MagicalClass();
             this.MagicClasses = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -45,28 +45,28 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.PreparedSpellsTextBox, this.PreparedSpellsTextBackground);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spellcasting Class";
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Magical Class";
 
         public override string WindowName => nameof(MagicClassWindow);
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.MagicClasses, Program.CustomItemService.GetCustomItems<MagicClass>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.MagicClasses, Program.CustomItemService.GetCustomItems<MagicalClass>());
 
         private bool Editing { get; set; }
 
         private bool SettingValues { get; set; }
 
-        private MagicClass SelectedClass { get; set; }
+        private MagicalClass SelectedClass { get; set; }
 
-        private List<MagicClass> MagicClasses { get; set; }
+        private List<MagicalClass> MagicClasses { get; set; }
 
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.MagicClasses = Program.CcsFile.Character.Magic.MagicClasses;
+            this.MagicClasses = Program.CcsFile.Character.SpellCasting.MagicalClasses;
             this.CancelButton.Content = buttonText;
 
             this.ClearFields();
@@ -77,7 +77,7 @@ namespace Concierge.Display.Windows
 
         public override bool ShowAdd<T>(T magicClasses)
         {
-            if (magicClasses is not List<MagicClass> castItem)
+            if (magicClasses is not List<MagicalClass> castItem)
             {
                 return false;
             }
@@ -95,7 +95,7 @@ namespace Concierge.Display.Windows
 
         public override void ShowEdit<T>(T magicClass)
         {
-            if (magicClass is not MagicClass castItem)
+            if (magicClass is not MagicalClass castItem)
             {
                 return;
             }
@@ -125,7 +125,7 @@ namespace Concierge.Display.Windows
             this.CloseConciergeWindow();
         }
 
-        private void FillFields(MagicClass magicClass)
+        private void FillFields(MagicalClass magicClass)
         {
             this.SettingValues = true;
             this.ClassNameComboBox.Text = magicClass.Name;
@@ -153,7 +153,7 @@ namespace Concierge.Display.Windows
             this.SettingValues = false;
         }
 
-        private void UpdateMagicClass(MagicClass magicClass)
+        private void UpdateMagicClass(MagicalClass magicClass)
         {
             var oldItem = magicClass.DeepCopy();
 
@@ -165,13 +165,13 @@ namespace Concierge.Display.Windows
 
             if (!magicClass.IsCustom)
             {
-                Program.UndoRedoService.AddCommand(new EditCommand<MagicClass>(magicClass, oldItem, this.ConciergePage));
+                Program.UndoRedoService.AddCommand(new EditCommand<MagicalClass>(magicClass, oldItem, this.ConciergePage));
             }
         }
 
-        private MagicClass Create()
+        private MagicalClass Create()
         {
-            return new MagicClass()
+            return new MagicalClass(Program.CcsFile.CharacterService)
             {
                 Name = this.ClassNameComboBox.Text,
                 Ability = this.AbilityComboBox.Text.ToEnum<Abilities>(),
@@ -181,12 +181,12 @@ namespace Concierge.Display.Windows
             };
         }
 
-        private MagicClass ToMagicClass()
+        private MagicalClass ToMagicClass()
         {
             this.ItemsAdded = true;
             var magicClass = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<MagicClass>(this.MagicClasses, magicClass, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<MagicalClass>(this.MagicClasses, magicClass, this.ConciergePage));
 
             return magicClass;
         }
@@ -194,9 +194,9 @@ namespace Concierge.Display.Windows
         private void RefreshFields()
         {
             string ability = this.AbilityComboBox.SelectedItem.ToString() ?? Abilities.NONE.ToString();
-            this.AttackBonusTextBox.Text = Program.CcsFile.Character.CalculateBonusFromAbility(ability.ToEnum<Abilities>()).ToString();
-            this.SpellSaveTextBox.Text = (Program.CcsFile.Character.CalculateBonusFromAbility(ability.ToEnum<Abilities>()) + Constants.BaseDC).ToString();
-            this.PreparedSpellsTextBox.Text = Program.CcsFile.Character.Magic.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared)?.ToList()?.Count.ToString() ?? "0";
+            this.AttackBonusTextBox.Text = Program.CcsFile.CharacterService.CalculateBonusWithProficiency(ability.ToEnum<Abilities>()).ToString();
+            this.SpellSaveTextBox.Text = (Program.CcsFile.CharacterService.CalculateBonusWithProficiency(ability.ToEnum<Abilities>()) + Constants.BaseDC).ToString();
+            this.PreparedSpellsTextBox.Text = Program.CcsFile.Character.SpellCasting.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared)?.ToList()?.Count.ToString() ?? "0";
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -233,7 +233,7 @@ namespace Concierge.Display.Windows
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ClassNameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is MagicClass magicClass)
+            if (this.ClassNameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is MagicalClass magicClass)
             {
                 this.FillFields(magicClass);
             }

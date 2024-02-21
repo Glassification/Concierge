@@ -171,7 +171,7 @@ namespace Concierge.Data
 
         [JsonIgnore]
         [SearchIgnore]
-        public string CustomType => nameof(CustomColor);
+        public string CustomType => nameof(CustomColor).FormatFromPascalCase();
 
         [JsonIgnore]
         [SearchIgnore]

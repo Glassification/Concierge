@@ -14,6 +14,7 @@ namespace Concierge.Display
     using Concierge.Character.Equipable;
     using Concierge.Common;
     using Concierge.Common.Enums;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Controls;
     using Concierge.Search.Enums;
     using MaterialDesignThemes.Wpf;
@@ -22,6 +23,25 @@ namespace Concierge.Display
     {
         private static readonly double[] fontSizes = [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72];
         private static readonly FontFamily[] fontFamilies = [.. Fonts.SystemFontFamilies.OrderBy(f => f.Source)];
+
+        /// <summary>
+        /// Generates a list of DetailedComboBoxItemControl using only custom items, sorted by their name.
+        /// </summary>
+        /// <typeparam name="T">The type of items that implement the IUnique interface.</typeparam>
+        /// <param name="customItems">A list of custom items to be combined with default items.</param>
+        /// <returns>A list of DetailedComboBoxItemControl with content, foreground color, and tag set based on the provided items.</returns>
+        public static List<DetailedComboBoxItemControl> DetailedSelectorComboBox<T>(List<T> customItems)
+            where T : IUnique
+        {
+            var combinedItems = new List<T>();
+            combinedItems.AddRange(customItems);
+            combinedItems.Sort(new UniqueComparer<T>());
+
+            var comboBoxItems = new List<DetailedComboBoxItemControl>();
+            combinedItems.ForEach(x => comboBoxItems.Add(new DetailedComboBoxItemControl(x)));
+
+            return comboBoxItems;
+        }
 
         /// <summary>
         /// Generates a list of DetailedComboBoxItemControl using default items and custom items, sorted by their name.
@@ -256,23 +276,13 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Numeric0BoxMultiple, ConciergeBrushes.Mint, ExhaustionLevel.Normal.ToString()),
-                new (PackIconKind.Numeric1BoxMultiple, Brushes.LightBlue, ExhaustionLevel.One.ToString()),
-                new (PackIconKind.Numeric2BoxMultiple, Brushes.Yellow, ExhaustionLevel.Two.ToString()),
-                new (PackIconKind.Numeric3BoxMultiple, Brushes.Goldenrod, ExhaustionLevel.Three.ToString()),
-                new (PackIconKind.Numeric4BoxMultiple, Brushes.Orange, ExhaustionLevel.Four.ToString()),
-                new (PackIconKind.Numeric5BoxMultiple, Brushes.OrangeRed, ExhaustionLevel.Five.ToString()),
-                new (PackIconKind.Numeric6BoxMultiple, Brushes.IndianRed, ExhaustionLevel.Six.ToString()),
-            ];
-        }
-
-        public static List<ComboBoxItemControl> EncumbranceLevelComboBox()
-        {
-            return
-            [
-                new (PackIconKind.Weight, ConciergeBrushes.Mint, EncumbranceLevel.Normal.ToString()),
-                new (PackIconKind.WeightGram, Brushes.Orange, EncumbranceLevel.Encumbered.ToString()),
-                new (PackIconKind.WeightKg, Brushes.IndianRed, EncumbranceLevel.HeavilyEncumbered.ToString()),
+                new (PackIconKind.Numeric0BoxMultiple, ConciergeBrushes.Mint, ConditionStatus.Normal.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric1BoxMultiple, Brushes.LightBlue, ConditionStatus.Exhaustion1.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric2BoxMultiple, Brushes.Yellow, ConditionStatus.Exhaustion2.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric3BoxMultiple, Brushes.Goldenrod, ConditionStatus.Exhaustion3.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric4BoxMultiple, Brushes.Orange, ConditionStatus.Exhaustion4.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric5BoxMultiple, Brushes.OrangeRed, ConditionStatus.Exhaustion5.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric6BoxMultiple, Brushes.IndianRed, ConditionStatus.Exhaustion6.ToString().FormatFromPascalCase()),
             ];
         }
 

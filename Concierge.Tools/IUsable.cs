@@ -6,6 +6,6 @@ namespace Concierge.Tools
 {
     public interface IUsable
     {
-        UsedItem Use(IUsable? usableItem = null);
+        UsedItem Use(UseItem useItem);
     }
 }

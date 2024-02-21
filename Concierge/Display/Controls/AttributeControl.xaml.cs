@@ -9,6 +9,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
+    using Concierge.Character.Aspects;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -117,6 +118,12 @@ namespace Concierge.Display.Controls
         {
             get { return (DisplaySize)this.GetValue(DisplaySizeProperty); }
             set { this.SetValue(DisplaySizeProperty, value); }
+        }
+
+        public void Draw(Attribute attribute)
+        {
+            this.Bonus = attribute.Bonus;
+            this.Score = attribute.Score;
         }
 
         public void InitializeFontSize()

@@ -13,7 +13,7 @@ namespace Concierge.Services.ImportService.Importers
 
     public abstract class Importer
     {
-        public Importer(ConciergeCharacter character)
+        public Importer(CharacterSheet character)
         {
             this.ReadWriter = new DefaultListReadWriter(Program.ErrorService, Program.Logger);
             this.Character = character;
@@ -21,11 +21,11 @@ namespace Concierge.Services.ImportService.Importers
 
         protected IReadWriters ReadWriter { get; private set; }
 
-        protected ConciergeCharacter Character { get; set; }
+        protected CharacterSheet Character { get; set; }
 
         public abstract void Import(IEnumerable<IUnique> list);
 
-        public abstract IEnumerable<IUnique> Load(ConciergeCharacter character);
+        public abstract IEnumerable<IUnique> Load(CharacterSheet character);
 
         public abstract IEnumerable<IUnique> Load(string fileName);
 

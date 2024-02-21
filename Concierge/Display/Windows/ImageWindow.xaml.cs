@@ -22,17 +22,17 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class ImageWindow : ConciergeWindow
     {
-        private readonly FileAccessService fileAccessService;
+        private readonly FileAccessService fileAccessService = new ();
+        private readonly ImageEncoding imageEncoding = new (Program.ErrorService);
 
         public ImageWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.fileAccessService = new FileAccessService();
             this.FillTypeComboBox.ItemsSource = ComboBoxGenerator.StretchLevelComboBox();
             this.ConciergePage = ConciergePage.None;
-            this.CharacterImage = new CharacterImage();
+            this.CharacterImage = new Portrait();
             this.OriginalFileName = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -49,12 +49,12 @@ namespace Concierge.Display.Windows
 
         private bool IsDrawing { get; set; }
 
-        private CharacterImage CharacterImage { get; set; }
+        private Portrait CharacterImage { get; set; }
 
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.CharacterImage = Program.CcsFile.Character.CharacterImage;
+            this.CharacterImage = Program.CcsFile.Character.Detail.Portrait;
             this.CancelButton.Content = buttonText;
 
             this.FillFields();
@@ -65,7 +65,7 @@ namespace Concierge.Display.Windows
 
         public override void ShowEdit<T>(T characterImage)
         {
-            if (characterImage is not CharacterImage castItem)
+            if (characterImage is not Portrait castItem)
             {
                 return;
             }
@@ -101,13 +101,13 @@ namespace Concierge.Display.Windows
 
             if (!this.OriginalFileName.Equals(this.ImageSourceTextBox.Text))
             {
-                this.CharacterImage.EncodeImage(this.ImageSourceTextBox.Text);
+                this.CharacterImage.Encoded = this.imageEncoding.Encode(this.ImageSourceTextBox.Text);
             }
 
             this.CharacterImage.Stretch = this.FillTypeComboBox.Text.Strip(" ").ToEnum<Stretch>();
             this.CharacterImage.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<CharacterImage>(this.CharacterImage, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Portrait>(this.CharacterImage, oldItem, this.ConciergePage));
         }
 
         private void SetEnabledState(bool isEnabled)

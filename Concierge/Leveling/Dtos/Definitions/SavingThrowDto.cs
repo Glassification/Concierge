@@ -4,8 +4,6 @@
 
 namespace Concierge.Leveling.Dtos.Definitions
 {
-    using Concierge.Character.AbilitySaves;
-
     public sealed class SavingThrowDto
     {
         public SavingThrowDto(
@@ -16,24 +14,24 @@ namespace Concierge.Leveling.Dtos.Definitions
             bool wisdom = false,
             bool charisma = false)
         {
-            this.Strength = new Strength(strength);
-            this.Dexterity = new Dexterity(dexterity);
-            this.Constitution = new Constitution(constitution);
-            this.Intelligence = new Intelligence(intelligence);
-            this.Wisdom = new Wisdom(wisdom);
-            this.Charisma = new Charisma(charisma);
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Constitution = constitution;
+            this.Intelligence = intelligence;
+            this.Wisdom = wisdom;
+            this.Charisma = charisma;
         }
 
-        public Strength Strength { get; set; }
+        public bool Strength { get; set; }
 
-        public Dexterity Dexterity { get; set; }
+        public bool Dexterity { get; set; }
 
-        public Constitution Constitution { get; set; }
+        public bool Constitution { get; set; }
 
-        public Intelligence Intelligence { get; set; }
+        public bool Intelligence { get; set; }
 
-        public Wisdom Wisdom { get; set; }
+        public bool Wisdom { get; set; }
 
-        public Charisma Charisma { get; set; }
+        public bool Charisma { get; set; }
     }
 }

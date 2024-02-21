@@ -6,7 +6,7 @@
     <RootNamespace>Concierge</RootNamespace>
 	<Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <Version>5.6.5</Version>
+    <Version>5.7.1</Version>
     <ApplicationIcon>AppIconImage.ico</ApplicationIcon>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,6 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Concierge.Character\Concierge.Character.csproj" />
     <ProjectReference Include="..\Concierge.Common\Concierge.Common.csproj" />
     <ProjectReference Include="..\Concierge.Configuration\Concierge.Configuration.csproj" />
     <ProjectReference Include="..\Concierge.Data\Concierge.Data.csproj" />

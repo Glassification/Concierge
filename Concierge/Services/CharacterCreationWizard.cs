@@ -52,29 +52,36 @@ namespace Concierge.Services
         private static void RunDefinitions()
         {
             var character = Program.CcsFile.Character;
-            character.Characteristic.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class1.Name, false));
-            character.SavingThrows.SetProficiency(LevelingMap.GetSavingThrows(character.Properties.Class1.Name));
+            character.Detail.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Disposition.Class1.Name, false));
 
-            if (character.Properties.Class2.Level > 0)
+            var saves = LevelingMap.GetSavingThrows(character.Disposition.Class1.Name);
+            character.Attributes.Strength.Proficiency = saves.Strength;
+            character.Attributes.Dexterity.Proficiency = saves.Dexterity;
+            character.Attributes.Constitution.Proficiency = saves.Constitution;
+            character.Attributes.Intelligence.Proficiency = saves.Intelligence;
+            character.Attributes.Wisdom.Proficiency = saves.Wisdom;
+            character.Attributes.Charisma.Proficiency = saves.Charisma;
+
+            if (character.Disposition.Class2.Level > 0)
             {
-                character.Characteristic.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class2.Name, true));
+                character.Detail.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Disposition.Class2.Name, true));
             }
 
-            if (character.Properties.Class3.Level > 0)
+            if (character.Disposition.Class3.Level > 0)
             {
-                character.Characteristic.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class3.Name, true));
+                character.Detail.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Disposition.Class3.Name, true));
             }
 
-            var senses = LevelingMap.GetRaceSenses(character.Properties.Race);
-            character.Characteristic.Senses.BaseMovement = senses.Movement;
-            character.Characteristic.Senses.Vision = senses.VisionType;
+            var senses = LevelingMap.GetRaceSenses(character.Disposition.Race);
+            character.Detail.Senses.BaseMovement = senses.Movement;
+            character.Detail.Senses.Vision = senses.VisionType;
         }
 
         private static void RemoveDuplicates()
         {
             var character = Program.CcsFile.Character;
 
-            character.Characteristic.Proficiencies = character.Characteristic.Proficiencies.Distinct().ToList();
+            character.Detail.Proficiencies = character.Detail.Proficiencies.Distinct().ToList();
         }
 
         private void RunSetupSteps()

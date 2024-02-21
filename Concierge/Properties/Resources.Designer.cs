@@ -780,6 +780,132 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Most weapons use strength, but some attacks allow a companion to use their dexterity score. Special weapons or statuses might allow other abilities to be used instead..
+        /// </summary>
+        internal static string CompanionAttacksWindow_AbilityComboBox {
+            get {
+                return ResourceManager.GetString("CompanionAttacksWindow_AbilityComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your companion&apos;s race, class, and feats can grant you proficiency with certain weapons or categories of weapons..
+        /// </summary>
+        internal static string CompanionAttacksWindow_AttackComboBox {
+            get {
+                return ResourceManager.GetString("CompanionAttacksWindow_AttackComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List the damage rolls and proficiency bonus to attacking with this attack..
+        /// </summary>
+        internal static string CompanionAttacksWindow_DamageTextBox {
+            get {
+                return ResourceManager.GetString("CompanionAttacksWindow_DamageTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage..
+        /// </summary>
+        internal static string CompanionAttacksWindow_DamageTypeComboBox {
+            get {
+                return ResourceManager.GetString("CompanionAttacksWindow_DamageTypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here, you can use my plus 1 mace..
+        /// </summary>
+        internal static string CompanionAttacksWindow_MiscDamageTextBox {
+            get {
+                return ResourceManager.GetString("CompanionAttacksWindow_MiscDamageTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Many weapons have special properties related to their use, as shown in the Weapons table..
+        /// </summary>
+        internal static string CompanionAttacksWindow_NotesTextBox {
+            get {
+                return ResourceManager.GetString("CompanionAttacksWindow_NotesTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add your character&apos;s proficiency bonus to this attack..
+        /// </summary>
+        internal static string CompanionAttacksWindow_ProficencyOverrideCheckBox {
+            get {
+                return ResourceManager.GetString("CompanionAttacksWindow_ProficencyOverrideCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How far you can strike enemies with this weapon. Ranged weapons have minimum and maximum effective ranges..
+        /// </summary>
+        internal static string CompanionAttacksWindow_RangeTextBox {
+            get {
+                return ResourceManager.GetString("CompanionAttacksWindow_RangeTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Confidence, eloquence, leadership. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string CompanionAttributesWindow_CharismaUpDown {
+            get {
+                return ResourceManager.GetString("CompanionAttributesWindow_CharismaUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Health, stamina, vital force. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string CompanionAttributesWindow_ConstitutionUpDown {
+            get {
+                return ResourceManager.GetString("CompanionAttributesWindow_ConstitutionUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Physical agility, reflexes, balance, poise. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string CompanionAttributesWindow_DexterityUpDown {
+            get {
+                return ResourceManager.GetString("CompanionAttributesWindow_DexterityUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Mental acuity, information recall, analytical skill. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string CompanionAttributesWindow_IntelligenceUpDown {
+            get {
+                return ResourceManager.GetString("CompanionAttributesWindow_IntelligenceUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Natural athleticism, bodily power. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string CompanionAttributesWindow_StrengthUpDown {
+            get {
+                return ResourceManager.GetString("CompanionAttributesWindow_StrengthUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Awareness, intuition, insight. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string CompanionAttributesWindow_WisdomUpDown {
+            get {
+                return ResourceManager.GetString("CompanionAttributesWindow_WisdomUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Armor Class of the companion..
         /// </summary>
         internal static string CompanionWindow_AcUpDown {
@@ -1533,34 +1659,6 @@ namespace Concierge.Properties {
         internal static string PersonalityWindow_Trait2TextBox {
             get {
                 return ResourceManager.GetString("PersonalityWindow_Trait2TextBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2
-        ///2
-        ///2
-        ///2
-        ///3
-        ///3
-        ///3
-        ///3
-        ///4
-        ///4
-        ///4
-        ///4
-        ///5
-        ///5
-        ///5
-        ///5
-        ///6
-        ///6
-        ///6
-        ///6.
-        /// </summary>
-        internal static string ProficiencyLevel {
-            get {
-                return ResourceManager.GetString("ProficiencyLevel", resourceCulture);
             }
         }
         

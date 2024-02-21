@@ -9,7 +9,7 @@ namespace Concierge.Display.Windows
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
@@ -61,7 +61,7 @@ namespace Concierge.Display.Windows
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Abilities = Program.CcsFile.Character.Characteristic.Abilities;
+            this.Abilities = Program.CcsFile.Character.Detail.Abilities;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -115,7 +115,7 @@ namespace Concierge.Display.Windows
             }
             else
             {
-                Program.CcsFile.Character.Characteristic.Abilities.Add(this.ToAbility());
+                Program.CcsFile.Character.Detail.Abilities.Add(this.ToAbility());
             }
 
             this.CloseConciergeWindow();

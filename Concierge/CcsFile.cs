@@ -19,26 +19,24 @@ namespace Concierge
 
     public sealed class CcsFile
     {
+        private bool isInitialized;
+
         public CcsFile()
         {
-            this.Character = new ConciergeCharacter();
+            this.Character = new CharacterSheet();
+            this.CharacterService = new CharacterService(this.Character);
             this.OriginalCreationDate = ConciergeDateTime.OriginalCreationNow;
             this.Version = new ConciergeVersion();
             this.AbsolutePath = string.Empty;
             this.Hash = string.Empty;
-            this.IsInitialized = false;
-        }
-
-        public CcsFile(bool empty)
-            : this()
-        {
-            this.IsEmpty = empty;
         }
 
         [JsonIgnore]
         public string AbsolutePath { get; set; }
 
-        public ConciergeCharacter Character { get; set; }
+        public CharacterSheet Character { get; set; }
+
+        public CharacterService CharacterService { get; private set; }
 
         [JsonIgnore]
         public string FileName => Path.GetFileName(this.AbsolutePath) ?? string.Empty;
@@ -55,8 +53,6 @@ namespace Concierge
         public ConciergeVersion Version { get; set; }
 
         public bool IsEmpty { get; }
-
-        private bool IsInitialized { get; set; }
 
         public bool IsFileSaved(bool? autosaveChecked)
         {
@@ -116,22 +112,28 @@ namespace Concierge
 
         public void Initialize()
         {
-            if (this.IsInitialized)
+            if (this.isInitialized)
             {
                 return;
             }
 
+            this.CharacterService = new CharacterService(this.Character);
             foreach (var weapon in this.Character.Equipment.Weapons)
             {
-                weapon.Initialize(this.Character);
+                weapon.Initialize(this.CharacterService);
             }
 
-            foreach (var weapon in this.Character.Companion.Equipment.Weapons)
+            foreach (var weapon in this.Character.Companion.Weapons)
             {
-                weapon.Initialize(this.Character.Companion);
+                weapon.Initialize(this.CharacterService);
             }
 
-            var concentratedSpells = this.Character.Magic.Spells.Where(x => x.CurrentConcentration).ToList();
+            foreach (var magicalClass in this.Character.SpellCasting.MagicalClasses)
+            {
+                magicalClass.Initialize(this.CharacterService);
+            }
+
+            var concentratedSpells = this.Character.SpellCasting.Spells.Where(x => x.CurrentConcentration).ToList();
             if (concentratedSpells.Count > 1)
             {
                 foreach (var spell in concentratedSpells)
@@ -140,7 +142,7 @@ namespace Concierge
                 }
             }
 
-            this.IsInitialized = true;
+            this.isInitialized = true;
         }
 
         private bool CompareMajorMinorVersion()

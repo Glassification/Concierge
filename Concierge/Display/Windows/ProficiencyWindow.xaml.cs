@@ -11,7 +11,7 @@ namespace Concierge.Display.Windows
     using System.Windows.Data;
     using System.Windows.Media;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common;
@@ -61,11 +61,11 @@ namespace Concierge.Display.Windows
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.SelectedProficiencies = Program.CcsFile.Character.Characteristic.Proficiencies;
+            this.SelectedProficiencies = Program.CcsFile.Character.Detail.Proficiencies;
             this.CancelButton.Content = buttonText;
 
             this.SetEnabledState(true);
-            this.ClearFields();
+            this.ClearFields(true);
             this.ShowConciergeWindow();
 
             return this.Result;
@@ -84,7 +84,7 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = false;
 
             this.SetEnabledState(true);
-            this.ClearFields();
+            this.ClearFields(true);
             this.ShowConciergeWindow();
 
             return this.ItemsAdded;
@@ -110,12 +110,17 @@ namespace Concierge.Display.Windows
         protected override void ReturnAndClose()
         {
             this.Result = ConciergeResult.OK;
+            if (this.ProficiencyTextComboBox.Text.IsNullOrWhiteSpace())
+            {
+                this.CloseConciergeWindow();
+                return;
+            }
 
             if (this.Editing)
             {
                 this.UpdateProficiency(this.SelectedProficiency);
             }
-            else if (!this.ProficiencyComboBox.Text.IsNullOrWhiteSpace())
+            else
             {
                 this.SelectedProficiencies.Add(this.ToProficiency());
             }
@@ -215,10 +220,13 @@ namespace Concierge.Display.Windows
             }
         }
 
-        private void ClearFields()
+        private void ClearFields(bool resetType)
         {
             this.ProficiencyTextComboBox.Text = string.Empty;
-            this.ProficiencyComboBox.Text = ProficiencyTypes.Weapon.ToString();
+            if (resetType)
+            {
+                this.ProficiencyComboBox.Text = ProficiencyTypes.Weapon.ToString();
+            }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -234,13 +242,13 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.ProficiencyComboBox.Text.IsNullOrWhiteSpace())
+            if (this.ProficiencyTextComboBox.Text.IsNullOrWhiteSpace())
             {
                 return;
             }
 
             this.SelectedProficiencies.Add(this.ToProficiency());
-            this.ClearFields();
+            this.ClearFields(false);
             this.InvokeApplyChanges();
         }
 
@@ -252,7 +260,7 @@ namespace Concierge.Display.Windows
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.ProficiencyComboBox.Text.IsNullOrWhiteSpace())
+            if (this.ProficiencyTextComboBox.Text.IsNullOrWhiteSpace())
             {
                 ConciergeMessageBox.Show(
                     "Could not save the Proficiency.\nA name is required before saving a custom item.",
@@ -263,7 +271,7 @@ namespace Concierge.Display.Windows
             }
 
             Program.CustomItemService.AddCustomItem(this.Create());
-            this.ClearFields();
+            this.ClearFields(false);
             this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems(ProficiencyTypes.Weapon);
         }
 

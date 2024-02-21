@@ -24,7 +24,7 @@
         <!--Header-->
         <Grid Grid.Row="0" Background="#0E121E">
             <TextBlock
-                Text="Add Magic Class"
+                Text="Add Magical Class"
                 x:Name="HeaderTextBlock"
                 Foreground="#A9C7FF"
                 FontSize="35"

@@ -52,7 +52,7 @@
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Left">
                                 <components:ConciergeTextBlock
-                                    Text="Magic Classes"
+                                    Text="Magical Classes"
                                     Foreground="White"
                                     FontSize="25"
                                     VerticalAlignment="Center"
@@ -72,28 +72,28 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="MagicClassUpButton"
+                                    x:Name="MagicalClassUpButton"
                                     Width="60"
                                     Foreground="SteelBlue"
-                                    Click="MagicClassUpButton_Click"
+                                    Click="MagicalClassUpButton_Click"
                                     ToolTip="Move Selected Class Up">
                                     <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="MagicClassDownButton"
+                                    x:Name="MagicalClassDownButton"
                                     Width="60"
                                     Foreground="SteelBlue"
-                                    Click="MagicClassDownButton_Click"
+                                    Click="MagicalClassDownButton_Click"
                                     ToolTip="Move Selected Class Down">
                                     <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="MagicClassClearButton"
+                                    x:Name="MagicalClassClearButton"
                                     Width="60"
                                     Foreground="Silver"
-                                    Click="MagicClassClearButton_Click"
+                                    Click="MagicalClassClearButton_Click"
                                     ToolTip="Clear Selected Class">
                                     <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
@@ -105,28 +105,28 @@
                                     Background="Transparent"/>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="MagicClassAddButton"
+                                    x:Name="MagicalClassAddButton"
                                     Width="60"
                                     Foreground="#48B987"
-                                    Click="MagicClassAddButton_Click"
+                                    Click="MagicalClassAddButton_Click"
                                     ToolTip="Add New Class">
                                     <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="MagicClassEditButton"
+                                    x:Name="MagicalClassEditButton"
                                     Width="60"
                                     Foreground="#B98748"
-                                    Click="MagicClassEditButton_Click"
+                                    Click="MagicalClassEditButton_Click"
                                     ToolTip="Edit Selected Class">
                                     <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="MagicClassDeleteButton"
+                                    x:Name="MagicalClassDeleteButton"
                                     Width="60"
                                     Foreground="IndianRed"
-                                    Click="MagicClassDeleteButton_Click"
+                                    Click="MagicalClassDeleteButton_Click"
                                     ToolTip="Delete Selected Class">
                                     <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
@@ -136,10 +136,10 @@
                     
                     <components:ConciergeDataGrid 
                         Grid.Row="1"
-                        x:Name="MagicClassDataGrid"
+                        x:Name="MagicalClassDataGrid"
                         Style="{DynamicResource MagicClassDataGridStyle}"
-                        SelectionChanged="MagicClassDataGrid_SelectionChanged"
-                        Sorted="MagicClassDataGrid_Sorted"
+                        SelectionChanged="MagicalClassDataGrid_SelectionChanged"
+                        Sorted="MagicalClassDataGrid_Sorted"
                         Margin="5,0,5,0">
                         <DataGrid.Columns>
                             <DataGridTextColumn

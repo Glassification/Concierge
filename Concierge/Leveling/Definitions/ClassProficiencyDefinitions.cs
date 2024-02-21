@@ -6,7 +6,7 @@ namespace Concierge.Leveling.Definitions
 {
     using System.Collections.Generic;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Enums;
 
     public static class ClassProficiencyDefinitions
