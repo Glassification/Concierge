@@ -9,14 +9,14 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="Mondify Conditions"
-    Height="725"
+    Height="655"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="550"/>
+            <RowDefinition Height="480"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -61,8 +61,6 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="10"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
@@ -253,39 +251,6 @@
                             x:Name="IncapacitatedCheckBox"/>
                     </Grid>
                 </Grid>
-
-                <Line  
-                    Grid.Column="1"
-                    Grid.Row="8"
-                    Stretch="Uniform"
-                    X1="0" X2="1" Y1="0" Y2="0"
-                    Stroke="#A9C7FF"
-                    StrokeThickness="1"
-                    VerticalAlignment="Center"
-                    Margin="5,0,0,0"/>
-                
-                <!--Encumbrance-->
-                <Grid Grid.Row="9">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Encumbrance:"
-                            FontSize="15"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="EncumbranceComboBox"
-                            IsEditable="False"/>
-                    </Grid>
-                </Grid>
             </Grid>
 
             <!--Right-->
@@ -298,8 +263,6 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="10"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
@@ -485,40 +448,6 @@
                             Margin="20,15,0,0"
                             x:Name="UnconsciousCheckBox"/>
                     </Grid>
-                </Grid>
-
-                <Line  
-                    Grid.Column="1"
-                    Grid.Row="8"
-                    Stretch="Uniform"
-                    X1="0" X2="1" Y1="0" Y2="0"
-                    Stroke="#A9C7FF"
-                    StrokeThickness="1"
-                    VerticalAlignment="Center"
-                    Margin="-1,0,5,0"/>
-
-                <!--Encumbrance-->
-                <Grid Grid.Row="9">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Override:"
-                            FontSize="17"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <components:ConciergeCheckBox
-                        Style="{StaticResource CheckBoxStyle}"
-                        Grid.Column="2"
-                        Margin="20,15,0,0"
-                        Checked="EncumbranceCheckBox_Checked"
-                        Unchecked="EncumbranceCheckBox_Unchecked"
-                        x:Name="EncumbranceCheckBox"/>
                 </Grid>
             </Grid>
         </Grid>

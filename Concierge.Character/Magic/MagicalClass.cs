@@ -11,6 +11,7 @@ namespace Concierge.Character.Magic
     using Concierge.Common;
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
+    using Concierge.Common.Extensions;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
@@ -35,11 +36,11 @@ namespace Concierge.Character.Magic
         public Abilities Ability { get; set; }
 
         [JsonIgnore]
-        public int Attack => this.characterService.CalculateBonus(this.Ability);
+        public int Attack => this.characterService.CalculateBonusWithProficiency(this.Ability);
 
         [JsonIgnore]
         [SearchIgnore]
-        public string CustomType => nameof(MagicalClass);
+        public string CustomType => nameof(MagicalClass).FormatFromPascalCase();
 
         [JsonIgnore]
         [SearchIgnore]
@@ -65,7 +66,7 @@ namespace Concierge.Character.Magic
         public int PreparedSpells => this.characterService.ListPreparedSpells(this.Name).Count;
 
         [JsonIgnore]
-        public int Save => this.characterService.CalculateBonus(this.Ability) + Constants.BaseDC;
+        public int Save => this.characterService.CalculateBonusWithProficiency(this.Ability) + Constants.BaseDC;
 
         public int SpellSlots { get; set; }
 

@@ -86,7 +86,7 @@ namespace Concierge.Character.Equipable
                 _ => 0,
             };
 
-            return armorClass + (this.ArmorStatus == ArmorStatus.Donned ? armorAC : baseAC);
+            return armorClass + (this.ArmorStatus == ArmorStatus.Donned ? armorAC + this.Armor.Ac : baseAC);
         }
     }
 }

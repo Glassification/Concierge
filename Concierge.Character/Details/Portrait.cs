@@ -1,4 +1,4 @@
-﻿// <Portrait file="CharacterImage.cs" company="Thomas Beckett">
+﻿// <copyright file="Portrait.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 

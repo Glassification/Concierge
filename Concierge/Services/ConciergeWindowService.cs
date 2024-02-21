@@ -144,7 +144,7 @@ namespace Concierge.Services
                 return AbilitySave.None;
             }
 
-            return conciergeWindow.ShowAbilityCheckWindow( skill, value);
+            return conciergeWindow.ShowAbilityCheckWindow(skill, value);
         }
 
         public static object? ShowWindow(Type typeOfWindow)

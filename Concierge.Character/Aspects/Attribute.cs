@@ -51,11 +51,11 @@ namespace Concierge.Character.Aspects
             return bonus;
         }
 
+        public abstract Attribute DeepCopy();
+
         protected static int Truncate(int value)
         {
             return Math.Min(Constants.MaxScore, Math.Max(Constants.MinScore, value));
         }
-
-        public abstract Attribute DeepCopy();
     }
 }

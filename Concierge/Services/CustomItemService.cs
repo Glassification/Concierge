@@ -8,6 +8,7 @@ namespace Concierge.Services
     using System.IO;
     using System.Linq;
 
+    using Concierge.Character.Companions;
     using Concierge.Character.Details;
     using Concierge.Character.Equipable;
     using Concierge.Character.Magic;
@@ -96,6 +97,10 @@ namespace Concierge.Services
                 else if (customBlob.Name.Equals(nameof(ClassResource)))
                 {
                     item = JsonConvert.DeserializeObject<ClassResource>(customBlob.Blob);
+                }
+                else if (customBlob.Name.Equals(nameof(CompanionWeapon)))
+                {
+                    item = JsonConvert.DeserializeObject<CompanionWeapon>(customBlob.Blob);
                 }
                 else if (customBlob.Name.Equals(nameof(Inventory)))
                 {

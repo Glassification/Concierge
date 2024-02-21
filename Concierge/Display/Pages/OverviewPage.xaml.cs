@@ -249,7 +249,7 @@ namespace Concierge.Display.Pages
             ConciergeSoundService.TapNavigation();
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character,
+                Program.CcsFile.Character.Attributes,
                 typeof(SavingThrowWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
@@ -261,7 +261,7 @@ namespace Concierge.Display.Pages
             ConciergeSoundService.TapNavigation();
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character,
+                Program.CcsFile.Character.Attributes,
                 typeof(SkillWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
@@ -285,7 +285,7 @@ namespace Concierge.Display.Pages
             ConciergeSoundService.TapNavigation();
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character,
+                Program.CcsFile.Character.Attributes,
                 typeof(AttributesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
@@ -377,7 +377,7 @@ namespace Concierge.Display.Pages
             character.Attributes.Intelligence.Proficiency = state;
             character.Attributes.Wisdom.Proficiency = state;
             character.Attributes.Charisma.Proficiency = state;
-            this.DrawSkills();
+            this.DrawSavingThrows();
 
             Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(character.Attributes, attributeCopy, this.ConciergePage));
         }

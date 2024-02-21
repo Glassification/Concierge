@@ -66,7 +66,7 @@ namespace Concierge.Display.Controls
             return this.ItemName.Text;
         }
 
-        private void Grid_MouseEnter(object sender,MouseEventArgs e)
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
             this.MainGrid.Background = ConciergeBrushes.Highlight;
             this.MainBorder.BorderBrush = ConciergeBrushes.BorderHighlight;

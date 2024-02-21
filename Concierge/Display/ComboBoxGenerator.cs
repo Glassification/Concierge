@@ -25,6 +25,25 @@ namespace Concierge.Display
         private static readonly FontFamily[] fontFamilies = [.. Fonts.SystemFontFamilies.OrderBy(f => f.Source)];
 
         /// <summary>
+        /// Generates a list of DetailedComboBoxItemControl using only custom items, sorted by their name.
+        /// </summary>
+        /// <typeparam name="T">The type of items that implement the IUnique interface.</typeparam>
+        /// <param name="customItems">A list of custom items to be combined with default items.</param>
+        /// <returns>A list of DetailedComboBoxItemControl with content, foreground color, and tag set based on the provided items.</returns>
+        public static List<DetailedComboBoxItemControl> DetailedSelectorComboBox<T>(List<T> customItems)
+            where T : IUnique
+        {
+            var combinedItems = new List<T>();
+            combinedItems.AddRange(customItems);
+            combinedItems.Sort(new UniqueComparer<T>());
+
+            var comboBoxItems = new List<DetailedComboBoxItemControl>();
+            combinedItems.ForEach(x => comboBoxItems.Add(new DetailedComboBoxItemControl(x)));
+
+            return comboBoxItems;
+        }
+
+        /// <summary>
         /// Generates a list of DetailedComboBoxItemControl using default items and custom items, sorted by their name.
         /// </summary>
         /// <typeparam name="T">The type of items that implement the IUnique interface.</typeparam>

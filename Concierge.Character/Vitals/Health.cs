@@ -20,6 +20,8 @@ namespace Concierge.Character.Vitals
             this.TemporaryHealth = 0;
         }
 
+        public int MaxHealth { get; set; }
+
         public int BaseHealth
         {
             get => this.baseHealthField;
@@ -29,8 +31,6 @@ namespace Concierge.Character.Vitals
                 this.baseHealthField = Math.Max(boundHp, -this.MaxHealth);
             }
         }
-
-        public int MaxHealth { get; set; }
 
         public int TemporaryHealth { get; set; }
 
@@ -42,6 +42,11 @@ namespace Concierge.Character.Vitals
 
         [JsonIgnore]
         public bool IsZero => this.BaseHealth + this.TemporaryHealth == 0;
+
+        public void ResetHealth()
+        {
+            this.BaseHealth = this.MaxHealth;
+        }
 
         public Health DeepCopy()
         {

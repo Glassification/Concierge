@@ -45,7 +45,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.PreparedSpellsTextBox, this.PreparedSpellsTextBackground);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spellcasting Class";
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Magical Class";
 
         public override string WindowName => nameof(MagicClassWindow);
 
@@ -171,7 +171,7 @@ namespace Concierge.Display.Windows
 
         private MagicalClass Create()
         {
-            return new MagicalClass()
+            return new MagicalClass(Program.CcsFile.CharacterService)
             {
                 Name = this.ClassNameComboBox.Text,
                 Ability = this.AbilityComboBox.Text.ToEnum<Abilities>(),
@@ -194,8 +194,8 @@ namespace Concierge.Display.Windows
         private void RefreshFields()
         {
             string ability = this.AbilityComboBox.SelectedItem.ToString() ?? Abilities.NONE.ToString();
-            this.AttackBonusTextBox.Text = Program.CcsFile.CharacterService.CalculateBonus(ability.ToEnum<Abilities>()).ToString();
-            this.SpellSaveTextBox.Text = (Program.CcsFile.CharacterService.CalculateBonus(ability.ToEnum<Abilities>()) + Constants.BaseDC).ToString();
+            this.AttackBonusTextBox.Text = Program.CcsFile.CharacterService.CalculateBonusWithProficiency(ability.ToEnum<Abilities>()).ToString();
+            this.SpellSaveTextBox.Text = (Program.CcsFile.CharacterService.CalculateBonusWithProficiency(ability.ToEnum<Abilities>()) + Constants.BaseDC).ToString();
             this.PreparedSpellsTextBox.Text = Program.CcsFile.Character.SpellCasting.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared)?.ToList()?.Count.ToString() ?? "0";
         }
 

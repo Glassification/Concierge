@@ -52,7 +52,7 @@
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Left">
                                 <components:ConciergeTextBlock
-                                    Text="Magic Classes"
+                                    Text="Magical Classes"
                                     Foreground="White"
                                     FontSize="25"
                                     VerticalAlignment="Center"

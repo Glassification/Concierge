@@ -9,7 +9,6 @@ namespace Concierge.Leveling
 
     using Concierge.Character;
     using Concierge.Character.Dispositions;
-    using Concierge.Character.Enums;
     using Concierge.Character.Magic;
     using Concierge.Commands;
     using Concierge.Common.Enums;
@@ -56,9 +55,15 @@ namespace Concierge.Leveling
         {
             var magicClass = this.character.SpellCasting.MagicalClasses.Where(x => x.Name.Equals(newClass.Name)).FirstOrDefault();
             var oldMagicClass = magicClass?.DeepCopy();
+            if (magicClass is not null)
+            {
+                var spellSlotDto = LevelingMap.GetSpellSlotIncrease(newClass.Name, newClass.Subclass, newClass.Level);
 
-            //TODO
-            //magicClass?.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, newClass.Subclass, newClass.Level));
+                magicClass.Level++;
+                magicClass.KnownSpells += spellSlotDto.Known;
+                magicClass.KnownCantrips += spellSlotDto.Cantrip;
+                magicClass.SpellSlots += spellSlotDto.Slots;
+            }
 
             return new MagicClassDto(oldMagicClass, magicClass?.DeepCopy());
         }
@@ -79,12 +84,25 @@ namespace Concierge.Leveling
 
         private SpellSlotsDto LevelUpSpellSlots(MagicalClass? newClass)
         {
-            var oldSpellSlots = this.character.SpellCasting.SpellSlots.DeepCopy();
+            var spellSlots = this.character.SpellCasting.SpellSlots;
+            var oldSpellSlots = spellSlots.DeepCopy();
 
             if (newClass is not null)
             {
-                //TODO
-                //this.character.SpellCasting.SpellSlots.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level));
+                var spellSlotDto = LevelingMap.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level);
+
+                spellSlots.PactTotal += spellSlotDto.Pact;
+                spellSlots.FirstTotal += spellSlotDto.First;
+                spellSlots.SecondTotal += spellSlotDto.Second;
+                spellSlots.ThirdTotal += spellSlotDto.Third;
+                spellSlots.FourthTotal += spellSlotDto.Fourth;
+                spellSlots.FifthTotal += spellSlotDto.Fifth;
+                spellSlots.SixthTotal += spellSlotDto.Sixth;
+                spellSlots.SeventhTotal += spellSlotDto.Seventh;
+                spellSlots.EighthTotal += spellSlotDto.Eighth;
+                spellSlots.NinethTotal += spellSlotDto.Nineth;
+
+                spellSlots.Reset();
             }
 
             return new SpellSlotsDto(oldSpellSlots, this.character.SpellCasting.SpellSlots.DeepCopy());
@@ -95,8 +113,24 @@ namespace Concierge.Leveling
             var newHp = DiceRoll.RollHitDie(hitDie) + this.character.Attributes.Constitution.Bonus + bonusHp;
             var oldVitality = this.character.Vitality.DeepCopy();
 
-            //TODO
-            //this.character.Vitality.LevelUp(hitDie, newHp);
+            this.character.Vitality.Health.MaxHealth += newHp;
+            this.character.Vitality.Health.ResetHealth();
+            this.character.Vitality.HitDice.RegainHitDice();
+            switch (hitDie)
+            {
+                case Dice.D6:
+                    this.character.Vitality.HitDice.TotalD6++;
+                    break;
+                case Dice.D8:
+                    this.character.Vitality.HitDice.TotalD8++;
+                    break;
+                case Dice.D10:
+                    this.character.Vitality.HitDice.TotalD10++;
+                    break;
+                case Dice.D12:
+                    this.character.Vitality.HitDice.TotalD12++;
+                    break;
+            }
 
             return new VitalityDto(oldVitality, this.character.Vitality.DeepCopy());
         }

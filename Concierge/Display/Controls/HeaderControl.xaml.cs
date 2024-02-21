@@ -10,7 +10,6 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Media;
 
-    using Concierge.Character;
     using Concierge.Character.Dispositions;
     using Concierge.Common;
     using Concierge.Common.Extensions;

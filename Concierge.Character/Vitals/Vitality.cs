@@ -60,19 +60,6 @@ namespace Concierge.Character.Vitals
             }
         }
 
-        public void ResetHealth()
-        {
-            this.Health.BaseHealth = this.Health.MaxHealth;
-        }
-
-        public void RegainHitDice()
-        {
-            this.HitDice.SpentD6 = Constants.Regain(this.HitDice.SpentD6);
-            this.HitDice.SpentD8 = Constants.Regain(this.HitDice.SpentD8);
-            this.HitDice.SpentD10 = Constants.Regain(this.HitDice.SpentD10);
-            this.HitDice.SpentD12 = Constants.Regain(this.HitDice.SpentD12);
-        }
-
         public void ResetDeathSaves()
         {
             this.DeathSavingThrows.ResetDeathSaves();

@@ -12,6 +12,7 @@ namespace Concierge.Character
     using Concierge.Character.Enums;
     using Concierge.Character.Equipable;
     using Concierge.Character.Magic;
+    using Concierge.Common;
     using Concierge.Common.Extensions;
 
     public sealed class CharacterService
@@ -27,20 +28,40 @@ namespace Concierge.Character
         {
             return ability switch
             {
-                Abilities.STR => this.characterSheet.Attributes.Strength.Bonus + this.characterSheet.ProficiencyBonus,
-                Abilities.DEX => this.characterSheet.Attributes.Dexterity.Bonus + this.characterSheet.ProficiencyBonus,
-                Abilities.CON => this.characterSheet.Attributes.Constitution.Bonus + this.characterSheet.ProficiencyBonus,
-                Abilities.INT => this.characterSheet.Attributes.Intelligence.Bonus + this.characterSheet.ProficiencyBonus,
-                Abilities.WIS => this.characterSheet.Attributes.Wisdom.Bonus + this.characterSheet.ProficiencyBonus,
-                Abilities.CHA => this.characterSheet.Attributes.Charisma.Bonus + this.characterSheet.ProficiencyBonus,
-                Abilities.NONE => this.characterSheet.ProficiencyBonus,
-                _ => this.characterSheet.ProficiencyBonus,
+                Abilities.STR => this.characterSheet.Attributes.Strength.Bonus,
+                Abilities.DEX => this.characterSheet.Attributes.Dexterity.Bonus,
+                Abilities.CON => this.characterSheet.Attributes.Constitution.Bonus,
+                Abilities.INT => this.characterSheet.Attributes.Intelligence.Bonus,
+                Abilities.WIS => this.characterSheet.Attributes.Wisdom.Bonus,
+                Abilities.CHA => this.characterSheet.Attributes.Charisma.Bonus,
+                Abilities.NONE => 0,
+                _ => 0,
+            };
+        }
+
+        public int CalculateBonusWithProficiency(Abilities ability)
+        {
+            return this.CalculateBonus(ability) + this.characterSheet.ProficiencyBonus;
+        }
+
+        public int CalculateCompanionBonus(Abilities ability)
+        {
+            return ability switch
+            {
+                Abilities.STR => Constants.Bonus(this.characterSheet.Companion.Attributes.Strength),
+                Abilities.DEX => Constants.Bonus(this.characterSheet.Companion.Attributes.Dexterity),
+                Abilities.CON => Constants.Bonus(this.characterSheet.Companion.Attributes.Constitution),
+                Abilities.INT => Constants.Bonus(this.characterSheet.Companion.Attributes.Intelligence),
+                Abilities.WIS => Constants.Bonus(this.characterSheet.Companion.Attributes.Wisdom),
+                Abilities.CHA => Constants.Bonus(this.characterSheet.Companion.Attributes.Charisma),
+                Abilities.NONE => 0,
+                _ => 0,
             };
         }
 
         public List<Spell> ListPreparedSpells(string @class)
         {
-            return this.characterSheet.SpellCasting.Spells.Where(x => x.Class.Equals(@class) && x.Level > 0 && x.Prepared).ToList();
+            return this.characterSheet.SpellCasting.Spells.Where(x => x.Class?.Equals(@class) ?? false && x.Level > 0 && x.Prepared).ToList();
         }
 
         public int GetProficiencyBonus(CompanionWeapon weapon)

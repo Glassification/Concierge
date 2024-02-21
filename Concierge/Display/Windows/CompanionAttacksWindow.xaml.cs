@@ -1,4 +1,4 @@
-﻿// <copyright file="AttacksWindow.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="CompanionAttacksWindow.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -8,94 +8,63 @@ namespace Concierge.Display.Windows
     using System.Windows;
     using System.Windows.Controls;
 
+    using Concierge.Character.Companions;
     using Concierge.Character.Enums;
-    using Concierge.Character.Equipable;
     using Concierge.Commands;
-    using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
-    using Concierge.Configuration;
-    using Concierge.Data;
-    using Concierge.Data.Units;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
-    /// Interaction logic for AttacksWindow.xaml.
+    /// Interaction logic for CompanionAttacksWindow.xaml.
     /// </summary>
-    public partial class AttacksWindow : ConciergeWindow
+    public partial class CompanionAttacksWindow : ConciergeWindow
     {
-        public AttacksWindow()
+        private bool editing;
+        private CompanionWeapon selectedAttack;
+        private List<CompanionWeapon> weapons;
+
+        public CompanionAttacksWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
             this.AttackComboBox.ItemsSource = DefaultItems;
-            this.TypeComboBox.ItemsSource = ComboBoxGenerator.WeaponTypesComboBox();
             this.AbilityComboBox.ItemsSource = ComboBoxGenerator.AbilitiesComboBox();
             this.DamageTypeComboBox.ItemsSource = ComboBoxGenerator.DamageTypesComboBox();
-            this.CoinTypeComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox();
             this.ConciergePage = ConciergePage.None;
-            this.Weapons = [];
-            this.SelectedAttack = new Weapon();
+            this.weapons = [];
+            this.selectedAttack = new CompanionWeapon();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.AttackComboBox);
-            this.SetMouseOverEvents(this.TypeComboBox);
             this.SetMouseOverEvents(this.AbilityComboBox);
             this.SetMouseOverEvents(this.DamageTextBox, this.DamageTextBackground);
             this.SetMouseOverEvents(this.MiscDamageTextBox, this.MiscDamageTextBackground);
             this.SetMouseOverEvents(this.DamageTypeComboBox);
             this.SetMouseOverEvents(this.RangeTextBox, this.RangeTextBackground);
-            this.SetMouseOverEvents(this.WeightUpDown);
-            this.SetMouseOverEvents(this.IgnoreWeightCheckBox);
-            this.SetMouseOverEvents(this.ValueUpDown);
-            this.SetMouseOverEvents(this.CoinTypeComboBox);
             this.SetMouseOverEvents(this.ProficencyOverrideCheckBox);
             this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
-            this.SetMouseOverEvents(this.AttunedCheckBox);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Attack";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Attack";
 
-        public override string WindowName => nameof(AttacksWindow);
+        public override string WindowName => nameof(CompanionAttacksWindow);
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Weapons, Program.CustomItemService.GetCustomItems<Weapon>());
-
-        private bool Editing { get; set; }
-
-        private bool EquippedItem { get; set; }
-
-        private Weapon SelectedAttack { get; set; }
-
-        private List<Weapon> Weapons { get; set; }
-
-        public override ConciergeResult ShowWizardSetup(string buttonText)
-        {
-            this.Weapons = Program.CcsFile.Character.Equipment.Weapons;
-            this.OkButton.Visibility = Visibility.Collapsed;
-            this.Editing = false;
-            this.HeaderTextBlock.Text = this.HeaderText;
-            this.CancelButton.Content = buttonText;
-
-            this.ClearFields();
-            this.ShowConciergeWindow();
-
-            return this.Result;
-        }
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Program.CustomItemService.GetCustomItems<CompanionWeapon>());
 
         public override bool ShowAdd<T>(T weapons)
         {
-            if (weapons is not List<Weapon> castItem)
+            if (weapons is not List<CompanionWeapon> castItem)
             {
                 return false;
             }
 
-            this.Weapons = castItem;
-            this.Editing = false;
+            this.weapons = castItem;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ItemsAdded = false;
 
@@ -105,33 +74,16 @@ namespace Concierge.Display.Windows
             return this.ItemsAdded;
         }
 
-        public override void ShowEdit<T>(T weapon, bool equippedItem)
-        {
-            if (weapon is not Weapon castItem)
-            {
-                return;
-            }
-
-            this.Editing = true;
-            this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedAttack = castItem;
-            this.EquippedItem = equippedItem;
-            this.ApplyButton.Visibility = Visibility.Collapsed;
-
-            this.FillFields(castItem);
-            this.ShowConciergeWindow();
-        }
-
         public override void ShowEdit<T>(T weapon)
         {
-            if (weapon is not Weapon castItem)
+            if (weapon is not CompanionWeapon castItem)
             {
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedAttack = castItem;
+            this.selectedAttack = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields(castItem);
@@ -142,127 +94,90 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeResult.OK;
 
-            if (this.Editing)
+            if (this.editing)
             {
-                this.UpdateWeapon(this.SelectedAttack);
+                this.UpdateWeapon(this.selectedAttack);
             }
             else
             {
-                this.Weapons.Add(this.ToWeapon());
+                this.weapons.Add(this.ToWeapon());
             }
 
             this.CloseConciergeWindow();
         }
 
-        private void FillFields(Weapon weapon)
+        private void FillFields(CompanionWeapon weapon)
         {
-            this.AttunedCheckBox.UpdatingValue();
-            this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = weapon.Name;
-            this.TypeComboBox.Text = weapon.Type.ToString().FormatFromPascalCase();
             this.AbilityComboBox.Text = weapon.Ability.ToString();
             this.DamageTextBox.Text = weapon.Damage;
             this.MiscDamageTextBox.Text = weapon.Misc;
             this.DamageTypeComboBox.Text = weapon.DamageType.ToString();
             this.RangeTextBox.Text = weapon.Range;
-            this.WeightUpDown.Value = weapon.Weight.Value;
             this.ProficencyOverrideCheckBox.IsChecked = weapon.ProficiencyOverride;
-            this.IgnoreWeightCheckBox.IsChecked = weapon.IgnoreWeight;
             this.NotesTextBox.Text = weapon.Note;
-            this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
-            this.ValueUpDown.Value = weapon.Value;
-            this.CoinTypeComboBox.Text = weapon.CoinType.ToString();
-            this.AttunedCheckBox.IsChecked = weapon.Attuned;
 
-            DisplayUtility.SetControlEnableState(this.AttunedText, this.EquippedItem);
-            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.EquippedItem);
-
-            this.AttunedCheckBox.UpdatedValue();
-            this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
         }
 
         private void ClearFields(string name = "")
         {
-            this.AttunedCheckBox.UpdatingValue();
-            this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = name;
-            this.AttunedCheckBox.IsChecked = false;
-            this.TypeComboBox.Text = WeaponTypes.None.ToString();
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
             this.DamageTextBox.Text = string.Empty;
             this.MiscDamageTextBox.Text = string.Empty;
             this.DamageTypeComboBox.Text = DamageTypes.None.ToString();
             this.RangeTextBox.Text = string.Empty;
-            this.WeightUpDown.Value = 0.0;
             this.ProficencyOverrideCheckBox.IsChecked = false;
-            this.IgnoreWeightCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
-            this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
-            this.ValueUpDown.Value = 0;
-            this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
 
-            this.AttunedCheckBox.UpdatedValue();
-            this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
         }
 
-        private void UpdateWeapon(Weapon weapon)
+        private void UpdateWeapon(CompanionWeapon weapon)
         {
             var oldItem = weapon.DeepCopy();
 
             weapon.Name = this.AttackComboBox.Text;
-            weapon.Type = this.TypeComboBox.Text.Strip(" ").ToEnum<WeaponTypes>();
             weapon.Ability = this.AbilityComboBox.Text.ToEnum<Abilities>();
             weapon.Damage = this.DamageTextBox.Text;
             weapon.Misc = this.MiscDamageTextBox.Text;
             weapon.DamageType = this.DamageTypeComboBox.Text.ToEnum<DamageTypes>();
             weapon.Range = this.RangeTextBox.Text;
-            weapon.Weight.Value = this.WeightUpDown.Value;
             weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
-            weapon.IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false;
-            weapon.Attuned = this.AttunedCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
-            weapon.Value = this.ValueUpDown.Value;
-            weapon.CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>();
 
             if (!weapon.IsCustom)
             {
-                Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePage));
+                Program.UndoRedoService.AddCommand(new EditCommand<CompanionWeapon>(weapon, oldItem, this.ConciergePage));
             }
         }
 
-        private Weapon Create()
+        private CompanionWeapon Create()
         {
-            return new Weapon(Program.CcsFile.CharacterService)
+            return new CompanionWeapon(Program.CcsFile.CharacterService)
             {
                 Name = this.AttackComboBox.Text,
-                Type = this.TypeComboBox.Text.Strip(" ").ToEnum<WeaponTypes>(),
                 Ability = this.AbilityComboBox.Text.ToEnum<Abilities>(),
                 Damage = this.DamageTextBox.Text,
                 Misc = this.MiscDamageTextBox.Text,
                 DamageType = this.DamageTypeComboBox.Text.ToEnum<DamageTypes>(),
                 Range = this.RangeTextBox.Text,
-                Weight = new UnitDouble(this.WeightUpDown.Value, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
                 ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false,
-                IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
-                Value = this.ValueUpDown.Value,
-                Attuned = this.AttunedCheckBox.IsChecked ?? false,
-                CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>(),
             };
         }
 
-        private Weapon ToWeapon()
+        private CompanionWeapon ToWeapon()
         {
             this.ItemsAdded = true;
             var weapon = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<CompanionWeapon>(this.weapons, weapon, this.ConciergePage));
 
             return weapon;
         }
@@ -281,7 +196,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Weapons.Add(this.ToWeapon());
+            this.weapons.Add(this.ToWeapon());
             this.ClearFields();
             this.InvokeApplyChanges();
         }
@@ -293,7 +208,7 @@ namespace Concierge.Display.Windows
 
         private void AttackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.AttackComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Weapon weapon)
+            if (this.AttackComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is CompanionWeapon weapon)
             {
                 this.FillFields(weapon);
             }

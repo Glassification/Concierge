@@ -145,9 +145,9 @@ namespace Concierge.Common.Extensions
             var charArray = str.ToCharArray();
             var offset = 0;
 
-            for (int i = 1; i < charArray.Length; i++)
+            for (int i = 1; i < charArray.Length - 1; i++)
             {
-                if (char.IsUpper(charArray[i]) || char.IsDigit(charArray[i]))
+                if ((char.IsUpper(charArray[i]) || char.IsDigit(charArray[i])) && !char.IsUpper(charArray[i + 1]) && !char.IsDigit(charArray[i + 1]))
                 {
                     str = str.Insert(i + offset, " ");
                     offset++;

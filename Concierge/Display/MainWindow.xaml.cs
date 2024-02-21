@@ -12,6 +12,8 @@ namespace Concierge.Display
     using System.Windows.Interop;
     using System.Windows.Navigation;
 
+    using Concierge.Character.Vitals;
+    using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
@@ -319,8 +321,35 @@ namespace Concierge.Display
         public int LongRest()
         {
             Program.Logger.Info($"Long rest.");
-            //TODO
-            //Program.CcsFile.Character.LongRest();
+
+            var character = Program.CcsFile.Character;
+
+            var oldVitality = character.Vitality.DeepCopy();
+            var oldSpellSlots = character.SpellCasting.SpellSlots.DeepCopy();
+            var oldCompanionHealth = character.Companion.Health.DeepCopy();
+            var oldCompanionHitDice = character.Companion.HitDice.DeepCopy();
+            var oldConcentratedSpell = character.SpellCasting.ConcentratedSpell;
+
+            character.Vitality.Health.ResetHealth();
+            character.Vitality.HitDice.RegainHitDice();
+            character.Vitality.ResetDeathSaves();
+            character.SpellCasting.SpellSlots.Reset();
+            character.SpellCasting.ClearConcentration();
+
+            character.Companion.Health.ResetHealth();
+            character.Companion.HitDice.RegainHitDice();
+
+            Program.UndoRedoService.AddCommand(
+                new RestCommand(
+                    oldVitality,
+                    oldCompanionHealth,
+                    oldCompanionHitDice,
+                    oldSpellSlots,
+                    oldConcentratedSpell,
+                    character.Vitality.DeepCopy(),
+                    character.Companion.Health.DeepCopy(),
+                    character.Companion.HitDice.DeepCopy(),
+                    character.SpellCasting.SpellSlots.DeepCopy()));
 
             this.DisplayStatusText("Long Rest Complete!   HP and Spell Slots Replenished.");
             this.DrawAll();
@@ -331,8 +360,44 @@ namespace Concierge.Display
         public int ShortRest()
         {
             Program.Logger.Info($"Short rest.");
-            //TODO
-            //Program.CcsFile.Character.ShortRest();
+
+            var character = Program.CcsFile.Character;
+
+            var oldVitality = character.Vitality.DeepCopy();
+            var oldSpellSlots = character.SpellCasting.SpellSlots.DeepCopy();
+            var oldCompanionHealth = character.Companion.Health.DeepCopy();
+            var oldCompanionHitDice = character.Companion.HitDice.DeepCopy();
+            var oldConcentratedSpell = character.SpellCasting.ConcentratedSpell;
+
+            character.SpellCasting.SpellSlots.PactUsed = 0;
+            character.Companion.RollShortRestHitDice(character.Companion.HitDice.GetFirstAvailable(), character.Companion.Attributes.Constitution);
+
+            if (character.Disposition.Class1.IsValid)
+            {
+                character.Vitality.RollShortRestHitDice(HitDice.GetHitDice(character.Disposition.Class1.Name), character.Attributes.Constitution);
+            }
+
+            if (character.Disposition.Class2.IsValid)
+            {
+                character.Vitality.RollShortRestHitDice(HitDice.GetHitDice(character.Disposition.Class2.Name), character.Attributes.Constitution);
+            }
+
+            if (character.Disposition.Class3.IsValid)
+            {
+                character.Vitality.RollShortRestHitDice(HitDice.GetHitDice(character.Disposition.Class3.Name), character.Attributes.Constitution);
+            }
+
+            Program.UndoRedoService.AddCommand(
+                new RestCommand(
+                    oldVitality,
+                    oldCompanionHealth,
+                    oldCompanionHitDice,
+                    oldSpellSlots,
+                    oldConcentratedSpell,
+                    character.Vitality.DeepCopy(),
+                    character.Companion.Health.DeepCopy(),
+                    character.Companion.HitDice.DeepCopy(),
+                    character.SpellCasting.SpellSlots.DeepCopy()));
 
             this.DisplayStatusText("Short Rest Complete!   Hit Dice Used and Pact Slots Replenished.");
             this.DrawAll();
@@ -343,8 +408,8 @@ namespace Concierge.Display
         public void LevelUp()
         {
             Program.Logger.Info($"Level up.");
-            //TODO
-            //ConciergeWindowService.ShowWindow(typeof(LevelUpWindow), this.Window_ApplyChanges);
+            ConciergeWindowService.ShowWindow(typeof(LevelUpWindow), this.Window_ApplyChanges);
+
             this.DrawAll();
         }
 

@@ -101,7 +101,7 @@ namespace Concierge.Display.Windows
 
             if (!this.OriginalFileName.Equals(this.ImageSourceTextBox.Text))
             {
-                this.imageEncoding.Encode(this.ImageSourceTextBox.Text);
+                this.CharacterImage.Encoded = this.imageEncoding.Encode(this.ImageSourceTextBox.Text);
             }
 
             this.CharacterImage.Stretch = this.FillTypeComboBox.Text.Strip(" ").ToEnum<Stretch>();

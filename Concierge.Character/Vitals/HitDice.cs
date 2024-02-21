@@ -119,6 +119,14 @@ namespace Concierge.Character.Vitals
             return (Dice.None, 0, 0);
         }
 
+        public void RegainHitDice()
+        {
+            this.SpentD6 = Constants.Regain(this.SpentD6);
+            this.SpentD8 = Constants.Regain(this.SpentD8);
+            this.SpentD10 = Constants.Regain(this.SpentD10);
+            this.SpentD12 = Constants.Regain(this.SpentD12);
+        }
+
         public HitDice DeepCopy()
         {
             return new HitDice()

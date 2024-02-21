@@ -11,16 +11,13 @@ namespace Concierge.Display.Pages
     using System.Windows.Controls;
 
     using Concierge.Character.Companions;
-    using Concierge.Character.Equipable;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
-    using Concierge.Display.Windows.Utility;
     using Concierge.Persistence;
     using Concierge.Services;
-    using Concierge.Tools;
 
     /// <summary>
     /// Interaction logic for CompanionPage.xaml.
@@ -53,7 +50,7 @@ namespace Concierge.Display.Pages
 
         public void Edit(object itemToEdit)
         {
-            if (itemToEdit is not Weapon weapon)
+            if (itemToEdit is not CompanionWeapon weapon)
             {
                 return;
             }
@@ -61,7 +58,7 @@ namespace Concierge.Display.Pages
             var index = this.WeaponDataGrid.SelectedIndex;
             ConciergeWindowService.ShowEdit(
                 weapon,
-                typeof(AttacksWindow),
+                typeof(CompanionAttacksWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Companion);
             this.DrawAttacks();
@@ -171,7 +168,7 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Companion.Weapons,
-                typeof(AttacksWindow),
+                typeof(CompanionAttacksWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Companion);
             this.DrawAttacks();
@@ -206,7 +203,6 @@ namespace Concierge.Display.Pages
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
             ConciergeWindowService.ShowDamage(
                 Program.CcsFile.Character.Companion.Health,
                 typeof(HpWindow),
@@ -217,7 +213,6 @@ namespace Concierge.Display.Pages
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
             ConciergeWindowService.ShowHeal(
                 Program.CcsFile.Character.Companion.Health,
                 typeof(HpWindow),
@@ -269,14 +264,13 @@ namespace Concierge.Display.Pages
         {
             ConciergeSoundService.TapNavigation();
 
-            //TODO
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Attributes,
-                typeof(AttributesWindow),
+                typeof(CompanionAttributesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Companion);
             this.DrawAttributes();
-            this.DrawDetails();
+            this.DrawAttacks();
         }
 
         private void CompanionDetails_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -307,8 +301,9 @@ namespace Concierge.Display.Pages
         {
             switch (sender?.GetType()?.Name)
             {
-                case nameof(AttributesWindow):
+                case nameof(CompanionAttributesWindow):
                     this.DrawAttributes();
+                    this.DrawAttacks();
                     break;
                 case nameof(HealthWindow):
                     this.DrawHealth();
@@ -316,7 +311,7 @@ namespace Concierge.Display.Pages
                 case nameof(HitDiceWindow):
                     this.DrawHitDice();
                     break;
-                case nameof(AttacksWindow):
+                case nameof(CompanionAttacksWindow):
                     this.DrawAttacks();
                     break;
                 case nameof(CompanionWindow):

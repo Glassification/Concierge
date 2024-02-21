@@ -57,7 +57,7 @@ namespace Concierge.Character.Vitals
 
         [JsonIgnore]
         [SearchIgnore]
-        public string CustomType => nameof(ClassResource);
+        public string CustomType => nameof(ClassResource).FormatFromPascalCase();
 
         [JsonIgnore]
         [SearchIgnore]

@@ -128,6 +128,11 @@ namespace Concierge
                 weapon.Initialize(this.CharacterService);
             }
 
+            foreach (var magicalClass in this.Character.SpellCasting.MagicalClasses)
+            {
+                magicalClass.Initialize(this.CharacterService);
+            }
+
             var concentratedSpells = this.Character.SpellCasting.Spells.Where(x => x.CurrentConcentration).ToList();
             if (concentratedSpells.Count > 1)
             {

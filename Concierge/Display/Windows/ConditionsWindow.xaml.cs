@@ -10,7 +10,6 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -48,8 +47,6 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.ProneCheckBox);
             this.SetMouseOverEvents(this.StunnedCheckBox);
             this.SetMouseOverEvents(this.UnconsciousCheckBox);
-            this.SetMouseOverEvents(this.EncumbranceComboBox);
-            this.SetMouseOverEvents(this.EncumbranceCheckBox);
         }
 
         public override string HeaderText => "Edit Conditions";
@@ -142,16 +139,6 @@ namespace Concierge.Display.Windows
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.CloseConciergeWindow();
-        }
-
-        private void EncumbranceCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            DisplayUtility.SetControlEnableState(this.EncumbranceComboBox, true);
-        }
-
-        private void EncumbranceCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            DisplayUtility.SetControlEnableState(this.EncumbranceComboBox, false);
         }
     }
 }

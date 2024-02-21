@@ -6,7 +6,6 @@ namespace Concierge.Common.Utilities
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     using Concierge.Common.Extensions;
 

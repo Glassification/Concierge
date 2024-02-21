@@ -109,7 +109,6 @@ namespace Concierge.Character.Equipable
         [SearchIgnore]
         public PackIconKind CustomTypeIcon => PackIconKind.Sword;
 
-
         [JsonIgnore]
         [SearchIgnore]
         public Brush IconColor => this.GetCategory().Brush;
