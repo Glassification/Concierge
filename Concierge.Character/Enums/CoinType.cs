@@ -6,6 +6,9 @@ namespace Concierge.Character.Enums
 {
     using System.ComponentModel;
 
+    /// <summary>
+    /// Enum representing different types of coins.
+    /// </summary>
     public enum CoinType
     {
         [Description("cp")]

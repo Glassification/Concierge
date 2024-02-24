@@ -18,8 +18,14 @@ namespace Concierge.Character.Equipable
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents an item in the inventory, which can be equipped and used.
+    /// </summary>
     public sealed class Inventory : ICopyable<Inventory>, IUnique, IEquipable, IUsable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Inventory"/> class with default values.
+        /// </summary>
         public Inventory()
         {
             this.Name = string.Empty;
@@ -32,22 +38,46 @@ namespace Concierge.Character.Equipable
             this.EquipmentSlot = EquipmentSlot.None;
         }
 
+        /// <summary>
+        /// Gets or sets the amount of the item.
+        /// </summary>
         public int Amount { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the item is attuned to.
+        /// </summary>
         public bool Attuned { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of coin used for the item.
+        /// </summary>
         public CoinType CoinType { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the item is consumable.
+        /// </summary>
         public bool Consumable { get; set; }
 
+        /// <summary>
+        /// Gets or sets the creation date of the item.
+        /// </summary>
         public DateTime CreationDate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the description of the item.
+        /// </summary>
         public string Description { get; set; }
 
         public EquipmentSlot EquipmentSlot { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the weight of the item is ignored.
+        /// </summary>
         public bool IgnoreWeight { get; set; }
 
+        /// <summary>
+        /// Gets or sets the index of the item.
+        /// </summary>
         public int Index { get; set; }
 
         public bool IsCustom { get; set; }
@@ -58,10 +88,19 @@ namespace Concierge.Character.Equipable
 
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the notes about the item.
+        /// </summary>
         public string Notes { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the item.
+        /// </summary>
         public int Value { get; set; }
 
+        /// <summary>
+        /// Gets or sets the weight of the item.
+        /// </summary>
         public UnitDouble Weight { get; set; }
 
         [JsonIgnore]
@@ -106,12 +145,25 @@ namespace Concierge.Character.Equipable
         [SearchIgnore]
         public string Information => $"{this.ItemCategory} - {this.Value}{this.CoinType.GetDescription()}";
 
+        /// <summary>
+        /// Gets the displayable notes about the item.
+        /// </summary>
         [JsonIgnore]
         public string NotesDisplay => this.GetNotesDisplay();
 
+        /// <summary>
+        /// Gets the text representation of the value of the item.
+        /// </summary>
         [JsonIgnore]
         public string ValueText => $"{this.Value} {this.CoinType.GetDescription()}";
 
+        /// <summary>
+        /// Determines whether the specified object is equal to the current inventory item.
+        /// </summary>
+        /// <param name="obj">The object to compare with the current inventory item.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified object is equal to the current inventory item; otherwise, <c>false</c>.
+        /// </returns>
         public override bool Equals(object? obj)
         {
             if (obj is not Inventory item)
@@ -128,16 +180,28 @@ namespace Concierge.Character.Equipable
                 item.Description.Equals(this.Description);
         }
 
+        /// <summary>
+        /// Serves as the default hash function.
+        /// </summary>
+        /// <returns>A hash code for the current inventory item.</returns>
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
 
+        /// <summary>
+        /// Returns a string that represents the current inventory item.
+        /// </summary>
+        /// <returns>The name of the current inventory item.</returns>
         public override string ToString()
         {
             return this.Name;
         }
 
+        /// <summary>
+        /// Copies the inventory item.
+        /// </summary>
+        /// <returns>A deep copy of the <see cref="Inventory"/> item.</returns>
         public Inventory DeepCopy()
         {
             return new Inventory()
@@ -163,6 +227,10 @@ namespace Concierge.Character.Equipable
             };
         }
 
+        /// <summary>
+        /// Gets the category of the item.
+        /// </summary>
+        /// <returns>The category information of the item.</returns>
         public CategoryDto GetCategory()
         {
             return this.ItemCategory switch
@@ -191,6 +259,11 @@ namespace Concierge.Character.Equipable
             };
         }
 
+        /// <summary>
+        /// Uses the item.
+        /// </summary>
+        /// <param name="useItem">The item to use.</param>
+        /// <returns>The used item.</returns>
         public UsedItem Use(UseItem useItem)
         {
             var dice = DiceParser.Find(this.Description);

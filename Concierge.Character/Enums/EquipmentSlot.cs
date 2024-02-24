@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different equipment slots.
+    /// </summary>
     public enum EquipmentSlot
     {
         Head,

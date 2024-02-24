@@ -12,196 +12,207 @@
     d:DesignHeight="600"
     d:DesignWidth="1020"
     Title="InventoryPage"
-    Background="#1E2636"
+    Background="#0F1220"
     Style="{StaticResource PageFontStyle}">
 
     <Grid
-        Background="#1E2636"
-        Margin="5">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="07*"/>
-            <RowDefinition Height="93*"/>
-        </Grid.RowDefinitions>
-
+        Background="#0F1220">
         <Border
-            BorderBrush="#262E42"
+            Grid.Column="0"
+            BorderBrush="#1E2636"
             BorderThickness="5"
-            CornerRadius="10">
+            CornerRadius="10"
+            Margin="5">
             <Grid
-                Grid.Row="0"
-                Background="#262E42"
-                Margin="-1">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <components:ConciergeTextBlock 
-                        Text="Inventory"
-                        FontSize="25"
-                        HorizontalAlignment="Left"
-                        Margin="150, 0, 0, 0"/>
-                    <components:ConciergeTextBlock 
-                        x:Name="ItemTotalField"
-                        Text="(69 Items)"
-                        FontSize="18"
-                        HorizontalAlignment="Left"
-                        Margin="25, 0, 0, 0"/>
-                    <controls:SearchFilterControl
-                        x:Name="SearchFilter"
-                        HorizontalAlignment="Center"
-                        Width="300"
-                        Margin="150,10,0,10"
-                        FilterChanged="InventoryDataGrid_Filtered"/>
-                </StackPanel>
+                Grid.Row="1"
+                Margin="-1"
+                Background="#1E2636">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="05.5*"/>
+                    <RowDefinition Height="94.5*"/>
+                </Grid.RowDefinitions>
+
+                <Border
+                    BorderBrush="#262E42"
+                    BorderThickness="5"
+                    CornerRadius="10">
+                    <Grid
+                        Grid.Row="0"
+                        Background="#262E42"
+                        Margin="-1">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <components:ConciergeTextBlock 
+                                Text="Inventory"
+                                FontSize="25"
+                                HorizontalAlignment="Left"
+                                Margin="150, 0, 0, 0"/>
+                            <components:ConciergeTextBlock 
+                                x:Name="ItemTotalField"
+                                Text="(69 Items)"
+                                FontSize="18"
+                                HorizontalAlignment="Left"
+                                Margin="25, 0, 0, 0"/>
+                            <controls:SearchFilterControl
+                                x:Name="SearchFilter"
+                                HorizontalAlignment="Center"
+                                Width="300"
+                                Margin="150,5,0,5"
+                                FilterChanged="InventoryDataGrid_Filtered"/>
+                        </StackPanel>
 
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="UpButton"
-                        Click="UpButton_Click"
-                        Width="60"
-                        Foreground="SteelBlue"
-                        ToolTip="Move Selected Item Up">
-                        <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="DownButton"
-                        Click="DownButton_Click"
-                        Width="60"
-                        Foreground="SteelBlue"
-                        ToolTip="Move Selected Item Down">
-                        <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="ClearButton"
-                        Click="ClearButton_Click"
-                        Width="60"
-                        Foreground="Silver"
-                        ToolTip="Clear Selected Item">
-                        <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <Label
-                        Height="50"
-                        Width="60"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Background="Transparent"/>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="AddButton"
-                        Click="AddButton_Click"
-                        Width="60"
-                        Foreground="#48B987"
-                        ToolTip="Add New Item">
-                        <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="EditButton"
-                        Click="EditButton_Click"
-                        Width="60"
-                        Foreground="#B98748"
-                        ToolTip="Edit Selected Item">
-                        <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="ItemUseButton"
-                        Width="60"
-                        Foreground="#B9487B"
-                        Click="ItemUseButton_Click"
-                        ToolTip="Use Item">
-                        <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="DeleteButton"
-                        Click="DeleteButton_Click"
-                        Width="60"
-                        Foreground="IndianRed"
-                        ToolTip="Delete Selected Item">
-                        <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="UpButton"
+                                Click="UpButton_Click"
+                                Width="60"
+                                Foreground="SteelBlue"
+                                ToolTip="Move Selected Item Up">
+                                <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="DownButton"
+                                Click="DownButton_Click"
+                                Width="60"
+                                Foreground="SteelBlue"
+                                ToolTip="Move Selected Item Down">
+                                <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ClearButton"
+                                Click="ClearButton_Click"
+                                Width="60"
+                                Foreground="Silver"
+                                ToolTip="Clear Selected Item">
+                                <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <Label
+                                Height="50"
+                                Width="60"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="Transparent"/>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="AddButton"
+                                Click="AddButton_Click"
+                                Width="60"
+                                Foreground="#48B987"
+                                ToolTip="Add New Item">
+                                <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="EditButton"
+                                Click="EditButton_Click"
+                                Width="60"
+                                Foreground="#B98748"
+                                ToolTip="Edit Selected Item">
+                                <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ItemUseButton"
+                                Width="60"
+                                Foreground="#B9487B"
+                                Click="ItemUseButton_Click"
+                                ToolTip="Use Item">
+                                <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="DeleteButton"
+                                Click="DeleteButton_Click"
+                                Width="60"
+                                Foreground="IndianRed"
+                                ToolTip="Delete Selected Item">
+                                <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="1" Margin="3">
+                    <components:ConciergeDataGrid 
+                        x:Name="InventoryDataGrid"
+                        Style="{DynamicResource StandardDataGridStyle}"
+                        Sorted="InventoryDataGrid_Sorted"
+                        SelectionChanged="InventoryDataGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn  Width="0.02*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon
+                                            Kind="{Binding IconKind}"
+                                            Foreground="{Binding IconColor}"
+                                            Height="auto"
+                                            Width="auto"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn
+                                Header="Name"
+                                Binding="{Binding Name}"
+                                Width="0.17*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Category"
+                                Binding="{Binding ItemCategory}"
+                                Width="0.10*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Amount"
+                                Binding="{Binding Amount}"
+                                Width="0.07*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Value"
+                                Binding="{Binding ValueText}"
+                                Width="0.07*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTemplateColumn 
+                                Width="0.07*"
+                                Header="Weight">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon
+                                                Kind="{Binding IgnoreWeightIcon}"
+                                                Foreground="#A9C7FF"
+                                                Margin="0,12,0,0"
+                                                Height="18"
+                                                Width="18"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Top"/>
+                                            <TextBlock
+                                                Text="{Binding Weight}"
+                                                FontSize="15"
+                                                Margin="10,10,0,0"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Top"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn
+                                Header="Notes"
+                                Binding="{Binding NotesDisplay}"
+                                Width="0.09*"
+                                ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Description"
+                                Binding="{Binding Description}"
+                                Width="0.40*"
+                                ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
+                        </DataGrid.Columns>
+                    </components:ConciergeDataGrid>
+                </Grid>
             </Grid>
         </Border>
-
-        <Grid Grid.Row="1" Margin="3">
-            <components:ConciergeDataGrid 
-                x:Name="InventoryDataGrid"
-                Style="{DynamicResource StandardDataGridStyle}"
-                Sorted="InventoryDataGrid_Sorted"
-                SelectionChanged="InventoryDataGrid_SelectionChanged">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn  Width="0.02*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <materialDesign:PackIcon
-                                    Kind="{Binding IconKind}"
-                                    Foreground="{Binding IconColor}"
-                                    Height="auto"
-                                    Width="auto"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn
-                        Header="Name"
-                        Binding="{Binding Name}"
-                        Width="0.17*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                    <DataGridTextColumn
-                        Header="Category"
-                        Binding="{Binding ItemCategory}"
-                        Width="0.10*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                    <DataGridTextColumn
-                        Header="Amount"
-                        Binding="{Binding Amount}"
-                        Width="0.07*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                    <DataGridTextColumn
-                        Header="Value"
-                        Binding="{Binding ValueText}"
-                        Width="0.07*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                    <DataGridTemplateColumn 
-                        Width="0.07*"
-                        Header="Weight">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon
-                                        Kind="{Binding IgnoreWeightIcon}"
-                                        Foreground="#A9C7FF"
-                                        Margin="0,12,0,0"
-                                        Height="18"
-                                        Width="18"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Top"/>
-                                    <TextBlock
-                                        Text="{Binding Weight}"
-                                        FontSize="15"
-                                        Margin="10,10,0,0"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn
-                        Header="Notes"
-                        Binding="{Binding NotesDisplay}"
-                        Width="0.09*"
-                        ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
-                    <DataGridTextColumn
-                        Header="Description"
-                        Binding="{Binding Description}"
-                        Width="0.40*"
-                        ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
-                </DataGrid.Columns>
-            </components:ConciergeDataGrid>
-        </Grid>
     </Grid>
 </Page>

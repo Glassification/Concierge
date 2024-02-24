@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different attribute types.
+    /// </summary>
     public enum AttributeType
     {
         Strength,

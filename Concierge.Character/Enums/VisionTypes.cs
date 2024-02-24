@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different types of vision.
+    /// </summary>
     public enum VisionTypes
     {
         Normal,

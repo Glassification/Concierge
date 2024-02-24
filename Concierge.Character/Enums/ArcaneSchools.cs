@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different arcane schools of magic.
+    /// </summary>
     public enum ArcaneSchools
     {
         Abjuration,

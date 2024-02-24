@@ -184,6 +184,9 @@
   <data name="AppearanceWindow_DistinguishingMarksTextBox" xml:space="preserve">
     <value>Give the character an unusual or memorable physical characteristic. Such as a scar, limp, or tattoo.</value>
   </data>
+  <data name="AppearanceWindow_EyeColorPreview" xml:space="preserve">
+    <value>Select a distinctive eye colour.</value>
+  </data>
   <data name="AppearanceWindow_EyeColourTextBox" xml:space="preserve">
     <value>Select a distinctive eye colour.</value>
   </data>
@@ -193,11 +196,17 @@
   <data name="AppearanceWindow_GenderComboBox" xml:space="preserve">
     <value>Male, female, or even 'other' characters don't gain any special benefits or hindrances.</value>
   </data>
+  <data name="AppearanceWindow_HairColorPreview" xml:space="preserve">
+    <value>Choose an interesting hair colour.</value>
+  </data>
   <data name="AppearanceWindow_HairColourTextBox" xml:space="preserve">
     <value>Choose an interesting hair colour.</value>
   </data>
   <data name="AppearanceWindow_InchesUpDown" xml:space="preserve">
     <value>A strong and tough character might be tall or just heavy.</value>
+  </data>
+  <data name="AppearanceWindow_SkinColorPreview" xml:space="preserve">
+    <value>Select a reasonable skin colour. Or don't. I'm just text, I can't stop you.</value>
   </data>
   <data name="AppearanceWindow_SkinColourTextBox" xml:space="preserve">
     <value>Select a reasonable skin colour. Or don't. I'm just text, I can't stop you.</value>

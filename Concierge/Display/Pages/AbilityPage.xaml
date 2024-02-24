@@ -12,173 +12,184 @@
     d:DesignHeight="600"
     d:DesignWidth="1020"
     Title="AbilityPage"
-    Background="#1E2636"
+    Background="#0F1220"
     Style="{StaticResource PageFontStyle}">
 
     <Grid
-        Background="#1E2636"
-        Margin="5">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="07*"/>
-            <RowDefinition Height="93*"/>
-        </Grid.RowDefinitions>
-
+        Background="#0F1220">
         <Border
-            BorderBrush="#262E42"
+            Grid.Column="0"
+            BorderBrush="#1E2636"
             BorderThickness="5"
-            CornerRadius="10">
+            CornerRadius="10"
+            Margin="5">
             <Grid
-                Grid.Row="0"
-                Background="#262E42"
-                Margin="-1">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <components:ConciergeTextBlock 
-                        Text="Abilities"
-                        FontSize="25"
-                        HorizontalAlignment="Left"
-                        Margin="150, 0, 0, 0"/>
-                    <controls:SearchFilterControl
-                        x:Name="SearchFilter"
-                        HorizontalAlignment="Center"
-                        Width="300"
-                        Margin="150,10,0,10"
-                        FilterChanged="AbilityDataGrid_Filtered"/>
-                </StackPanel>
+                Grid.Row="1"
+                Margin="-1"
+                Background="#1E2636">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="05.5*"/>
+                    <RowDefinition Height="94.5*"/>
+                </Grid.RowDefinitions>
+
+                <Border
+                    BorderBrush="#262E42"
+                    BorderThickness="5"
+                    CornerRadius="10">
+                    <Grid
+                        Grid.Row="0"
+                        Background="#262E42"
+                        Margin="-1">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <components:ConciergeTextBlock 
+                                Text="Abilities"
+                                FontSize="25"
+                                HorizontalAlignment="Left"
+                                Margin="150, 0, 0, 0"/>
+                            <controls:SearchFilterControl
+                                x:Name="SearchFilter"
+                                HorizontalAlignment="Center"
+                                Width="300"
+                                Margin="150,5,0,5"
+                                FilterChanged="AbilityDataGrid_Filtered"/>
+                        </StackPanel>
 
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="UpButton"
-                        Click="UpButton_Click"
-                        Width="60"
-                        Foreground="SteelBlue"
-                        ToolTip="Move Selected Ability Up">
-                        <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="DownButton"
-                        Click="DownButton_Click"
-                        Width="60"
-                        Foreground="SteelBlue"
-                        ToolTip="Move Selected Ability Down">
-                        <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="ClearButton"
-                        Click="ClearButton_Click"
-                        Width="60"
-                        Foreground="Silver"
-                        ToolTip="Clear Selected Ability">
-                        <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <Label
-                        Height="50"
-                        Width="60"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Background="Transparent"/>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="AddButton"
-                        Click="AddButton_Click"
-                        Width="60"
-                        Foreground="#48B987"
-                        ToolTip="Add New Ability">
-                        <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="EditButton"
-                        Click="EditButton_Click"
-                        Width="60"
-                        Foreground="#B98748"
-                        ToolTip="Edit Selected Ability">
-                        <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="AbilityUseButton"
-                        Width="60"
-                        Foreground="#B9487B"
-                        Click="AbilityUseButton_Click"
-                        ToolTip="Use Ability">
-                        <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="DeleteButton"
-                        Click="DeleteButton_Click"
-                        Width="60"
-                        Foreground="IndianRed"
-                        ToolTip="Delete Selected Ability">
-                        <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="UpButton"
+                                Click="UpButton_Click"
+                                Width="60"
+                                Foreground="SteelBlue"
+                                ToolTip="Move Selected Ability Up">
+                                <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="DownButton"
+                                Click="DownButton_Click"
+                                Width="60"
+                                Foreground="SteelBlue"
+                                ToolTip="Move Selected Ability Down">
+                                <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ClearButton"
+                                Click="ClearButton_Click"
+                                Width="60"
+                                Foreground="Silver"
+                                ToolTip="Clear Selected Ability">
+                                <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <Label
+                                Height="50"
+                                Width="60"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="Transparent"/>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="AddButton"
+                                Click="AddButton_Click"
+                                Width="60"
+                                Foreground="#48B987"
+                                ToolTip="Add New Ability">
+                                <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="EditButton"
+                                Click="EditButton_Click"
+                                Width="60"
+                                Foreground="#B98748"
+                                ToolTip="Edit Selected Ability">
+                                <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="AbilityUseButton"
+                                Width="60"
+                                Foreground="#B9487B"
+                                Click="AbilityUseButton_Click"
+                                ToolTip="Use Ability">
+                                <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="DeleteButton"
+                                Click="DeleteButton_Click"
+                                Width="60"
+                                Foreground="IndianRed"
+                                ToolTip="Delete Selected Ability">
+                                <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="1" Margin="3">
+                    <components:ConciergeDataGrid 
+                        x:Name="AbilitiesDataGrid"
+                        MaxHeight="{Binding Path=AbilitiesHeight}"
+                        Style="{DynamicResource StandardDataGridStyle}"
+                        Sorted="AbilitiesDataGrid_Sorted"
+                        SelectionChanged="AbilitiesDataGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn
+                                Width="0.02*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon
+                                            Kind="{Binding IconKind}"
+                                            Foreground="{Binding IconColor}"
+                                            Height="auto"
+                                            Width="auto"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn
+                                Header="Name"
+                                Binding="{Binding Name}"
+                                Width="0.15*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Level"
+                                Binding="{Binding Level}"
+                                Width="0.05*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Type"
+                                Binding="{Binding TypeDisplay}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Uses"
+                                Binding="{Binding Uses}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Recovery"
+                                Binding="{Binding Recovery}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Action Type"
+                                Binding="{Binding Action}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Description"
+                                Binding="{Binding Description}"
+                                Width="0.38*"
+                                ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
+                        </DataGrid.Columns>
+                    </components:ConciergeDataGrid>
+                </Grid>
             </Grid>
         </Border>
-
-        <Grid Grid.Row="1" Margin="3">
-            <components:ConciergeDataGrid 
-                x:Name="AbilitiesDataGrid"
-                MaxHeight="{Binding Path=AbilitiesHeight}"
-                Style="{DynamicResource StandardDataGridStyle}"
-                Sorted="AbilitiesDataGrid_Sorted"
-                SelectionChanged="AbilitiesDataGrid_SelectionChanged">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn
-                        Width="0.02*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <materialDesign:PackIcon
-                                    Kind="{Binding IconKind}"
-                                    Foreground="{Binding IconColor}"
-                                    Height="auto"
-                                    Width="auto"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn
-                        Header="Name"
-                        Binding="{Binding Name}"
-                        Width="0.15*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                    <DataGridTextColumn
-                        Header="Level"
-                        Binding="{Binding Level}"
-                        Width="0.05*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                    <DataGridTextColumn
-                        Header="Type"
-                        Binding="{Binding TypeDisplay}"
-                        Width="0.1*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                    <DataGridTextColumn
-                        Header="Uses"
-                        Binding="{Binding Uses}"
-                        Width="0.1*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                    <DataGridTextColumn
-                        Header="Recovery"
-                        Binding="{Binding Recovery}"
-                        Width="0.1*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                    <DataGridTextColumn
-                        Header="Action Type"
-                        Binding="{Binding Action}"
-                        Width="0.1*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                    <DataGridTextColumn
-                        Header="Description"
-                        Binding="{Binding Description}"
-                        Width="0.38*"
-                        ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
-                </DataGrid.Columns>
-            </components:ConciergeDataGrid>
-        </Grid>
     </Grid>
 </Page>

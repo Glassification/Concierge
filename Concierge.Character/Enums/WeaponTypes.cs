@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different categories of weapons.
+    /// </summary>
     public enum WeaponTypes
     {
         None,

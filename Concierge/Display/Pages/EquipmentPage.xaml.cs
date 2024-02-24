@@ -8,6 +8,7 @@ namespace Concierge.Display.Pages
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Equipable;
@@ -48,11 +49,24 @@ namespace Concierge.Display.Pages
 
         public void Draw(bool isNewCharacterSheet = false)
         {
-            this.UsedAttunement.Text = $"{Program.CcsFile.Character.Equipment.EquippedItems.Attuned}/{Constants.MaxAttunedItems}";
-
+            this.DrawAttunement();
             this.DrawEquippedItems();
             this.DrawImage();
             this.DrawPreparedSpells();
+        }
+
+        public void DrawAttunement()
+        {
+            var attunedItems = Program.CcsFile.Character.Equipment.EquippedItems.Attuned;
+            var third = Math.Ceiling(Constants.MaxAttunedItems / 3.0);
+            var brush = attunedItems <= third ?
+                ConciergeBrushes.Mint :
+                attunedItems == Constants.MaxAttunedItems ?
+                    Brushes.IndianRed :
+                    ConciergeBrushes.Deer;
+
+            this.UsedAttunement.Text = $"{attunedItems}/{Constants.MaxAttunedItems}";
+            this.UsedAttunement.Foreground = brush;
         }
 
         public void DrawEquippedItems()

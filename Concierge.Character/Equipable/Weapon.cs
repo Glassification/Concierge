@@ -19,15 +19,25 @@ namespace Concierge.Character.Equipable
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a weapon that can be equipped, used, and copied.
+    /// </summary>
     public sealed class Weapon : ICopyable<Weapon>, IUnique, IEquipable, IUsable
     {
         private CharacterService characterService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Weapon"/> class.
+        /// </summary>
         public Weapon()
             : this(new CharacterService(CharacterSheet.Empty))
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Weapon"/> class with the specified <paramref name="characterService"/>.
+        /// </summary>
+        /// <param name="characterService">The character service associated with the weapon.</param>
         public Weapon(CharacterService characterService)
         {
             this.Name = string.Empty;
@@ -43,40 +53,76 @@ namespace Concierge.Character.Equipable
             this.characterService = characterService;
         }
 
+        /// <summary>
+        /// Gets or sets the ability associated with the weapon.
+        /// </summary>
         public Abilities Ability { get; set; }
 
         public int Amount { get; set; }
 
         public bool Attuned { get; set; }
 
+        /// <summary>
+        /// Gets or sets the coin type associated with the weapon.
+        /// </summary>
         public CoinType CoinType { get; set; }
 
+        /// <summary>
+        /// Gets or sets the damage inflicted by the weapon.
+        /// </summary>
         public string Damage { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of damage inflicted by the weapon.
+        /// </summary>
         public DamageTypes DamageType { get; set; }
 
         public EquipmentSlot EquipmentSlot { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether weight is ignored for the weapon.
+        /// </summary>
         public bool IgnoreWeight { get; set; }
 
         public bool IsCustom { get; set; }
 
         public bool IsEquipped { get; set; }
 
+        /// <summary>
+        /// Gets or sets additional information about the weapon.
+        /// </summary>
         public string Misc { get; set; }
 
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets additional notes about the weapon.
+        /// </summary>
         public string Note { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the weapon's proficiency is overridden.
+        /// </summary>
         public bool ProficiencyOverride { get; set; }
 
+        /// <summary>
+        /// Gets or sets the range of the weapon.
+        /// </summary>
         public string Range { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of the weapon.
+        /// </summary>
         public WeaponTypes Type { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the weapon.
+        /// </summary>
         public int Value { get; set; }
 
+        /// <summary>
+        /// Gets or sets the weight of the weapon.
+        /// </summary>
         public UnitDouble Weight { get; set; }
 
         [JsonIgnore]
@@ -87,6 +133,9 @@ namespace Concierge.Character.Equipable
         [SearchIgnore]
         public PackIconKind AttunedIconKind => this.GetAttunedValue().IconKind;
 
+        /// <summary>
+        /// Gets the attack bonus of the weapon based on the associated character's proficiency and ability scores.
+        /// </summary>
         [JsonIgnore]
         public int Attack
         {
@@ -132,6 +181,10 @@ namespace Concierge.Character.Equipable
         [SearchIgnore]
         public PackIconKind ProficiencyIconKind => this.GetProficientValue().IconKind;
 
+        /// <summary>
+        /// Creates a deep copy of the weapon.
+        /// </summary>
+        /// <returns>A new instance of the <see cref="Weapon"/> class that is a deep copy of this instance.</returns>
         public Weapon DeepCopy()
         {
             return new Weapon(this.characterService)
@@ -158,16 +211,29 @@ namespace Concierge.Character.Equipable
             };
         }
 
+        /// <summary>
+        /// Initializes the weapon with the specified character service.
+        /// </summary>
+        /// <param name="characterService">The character service to initialize the weapon with.</param>
         public void Initialize(CharacterService characterService)
         {
             this.characterService = characterService;
         }
 
+        /// <summary>
+        /// Returns a string that represents the current weapon.
+        /// </summary>
+        /// <returns>A string that represents the current weapon.</returns>
         public override string ToString()
         {
             return this.Name;
         }
 
+        /// <summary>
+        /// Uses the weapon to perform an action.
+        /// </summary>
+        /// <param name="useItem">The use item action to perform with the weapon.</param>
+        /// <returns>A <see cref="UsedItem"/> representing the result of using the weapon.</returns>
         public UsedItem Use(UseItem useItem)
         {
             var ammunition = useItem.Item as Ammunition;
@@ -186,6 +252,10 @@ namespace Concierge.Character.Equipable
             return new UsedItem(attack, damage, this.Name, damageType, $"[Damage: {damage.Min} - {damage.Max}] {this.Note}");
         }
 
+        /// <summary>
+        /// Gets the category of the weapon based on its type.
+        /// </summary>
+        /// <returns>A <see cref="CategoryDto"/> containing information about the weapon's category.</returns>
         public CategoryDto GetCategory()
         {
             return this.Type switch

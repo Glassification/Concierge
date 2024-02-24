@@ -17,8 +17,14 @@ namespace Concierge.Character.Details
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents an ability possessed by a character, such as a class feature, racial trait, or feat.
+    /// </summary>
     public sealed class Ability : ICopyable<Ability>, IUnique, IUsable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ability"/> class with default values.
+        /// </summary>
         public Ability()
         {
             this.Type = AbilityTypes.None;
@@ -31,23 +37,50 @@ namespace Concierge.Character.Details
             this.Id = Guid.NewGuid();
         }
 
+        /// <summary>
+        /// Gets or sets the type of the ability.
+        /// </summary>
         public AbilityTypes Type { get; set; }
 
+        /// <summary>
+        /// Gets a display-friendly representation of the ability type.
+        /// </summary>
         [JsonIgnore]
         public string TypeDisplay => this.Type.ToString().FormatFromPascalCase();
 
+        /// <summary>
+        /// Gets or sets the name of the ability.
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the level of the ability.
+        /// </summary>
         public int Level { get; set; }
 
+        /// <summary>
+        /// Gets or sets the usage details of the ability.
+        /// </summary>
         public string Uses { get; set; }
 
+        /// <summary>
+        /// Gets or sets the recovery details of the ability.
+        /// </summary>
         public string Recovery { get; set; }
 
+        /// <summary>
+        /// Gets or sets the requirements for using the ability.
+        /// </summary>
         public string Requirements { get; set; }
 
+        /// <summary>
+        /// Gets or sets the action required to use the ability.
+        /// </summary>
         public string Action { get; set; }
 
+        /// <summary>
+        /// Gets or sets the description of the ability.
+        /// </summary>
         public string Description { get; set; }
 
         [JsonIgnore]
@@ -78,6 +111,10 @@ namespace Concierge.Character.Details
         [SearchIgnore]
         public string Information => $"";
 
+        /// <summary>
+        /// Creates a deep copy of the ability.
+        /// </summary>
+        /// <returns>A deep copy of the <see cref="Ability"/>.</returns>
         public Ability DeepCopy()
         {
             return new Ability()
@@ -95,11 +132,19 @@ namespace Concierge.Character.Details
             };
         }
 
+        /// <summary>
+        /// Returns the name of the ability.
+        /// </summary>
+        /// <returns>The name of the ability.</returns>
         public override string ToString()
         {
             return this.Name;
         }
 
+        /// <summary>
+        /// Gets the category of the ability based on its type.
+        /// </summary>
+        /// <returns>The category of the ability.</returns>
         public CategoryDto GetCategory()
         {
             return this.Type switch
@@ -113,6 +158,11 @@ namespace Concierge.Character.Details
             };
         }
 
+        /// <summary>
+        /// Uses the ability and returns the result as a used item.
+        /// </summary>
+        /// <param name="useItem">The use item associated with the ability use.</param>
+        /// <returns>The result of using the ability as a used item.</returns>
         public UsedItem Use(UseItem useItem)
         {
             var cleanedInput = DiceParser.Clean(this.Action, Enum.GetNames(typeof(DamageTypes)));

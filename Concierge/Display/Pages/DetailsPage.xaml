@@ -68,11 +68,11 @@
 
                         <Border
                             Grid.Row="0"
-                            BorderBrush="#242A38"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10">
                             <Grid
-                                Background="#242A38"
+                                Background="#262E42"
                                 Margin="-1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="15*"/>

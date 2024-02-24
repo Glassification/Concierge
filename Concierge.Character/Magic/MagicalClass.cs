@@ -17,15 +17,25 @@ namespace Concierge.Character.Magic
 
     using Constants = Concierge.Common.Constants;
 
+    /// <summary>
+    /// Represents a magical class in a Dungeons &amp; Dragons character.
+    /// </summary>
     public sealed class MagicalClass : ICopyable<MagicalClass>, IUnique
     {
         private CharacterService characterService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MagicalClass"/> class with default values.
+        /// </summary>
         public MagicalClass()
             : this(new CharacterService(CharacterSheet.Empty))
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MagicalClass"/> class with the specified <see cref="CharacterService"/>.
+        /// </summary>
+        /// <param name="characterService">The character service associated with the magical class.</param>
         public MagicalClass(CharacterService characterService)
         {
             this.characterService = characterService;
@@ -74,16 +84,28 @@ namespace Concierge.Character.Magic
         [SearchIgnore]
         public string Information => $"{(this.Ability == Abilities.NONE ? "No Default" : $"{this.Ability} Based")}. Attack: {this.Attack}, Save: {this.Save}";
 
+        /// <summary>
+        /// Returns the name of the magical class.
+        /// </summary>
+        /// <returns>The name of the magical class.</returns>
         public override string ToString()
         {
             return this.Name;
         }
 
+        /// <summary>
+        /// Initializes the magical class with the specified <see cref="CharacterService"/>.
+        /// </summary>
+        /// <param name="characterService">The character service to initialize with.</param>
         public void Initialize(CharacterService characterService)
         {
             this.characterService = characterService;
         }
 
+        /// <summary>
+        /// Creates a deep copy of the magical class.
+        /// </summary>
+        /// <returns>A deep copy of the <see cref="MagicalClass"/>.</returns>
         public MagicalClass DeepCopy()
         {
             return new MagicalClass(this.characterService)
@@ -99,6 +121,10 @@ namespace Concierge.Character.Magic
             };
         }
 
+        /// <summary>
+        /// Retrieves the category information for the magical class based on its name.
+        /// </summary>
+        /// <returns>The category information for the magical class.</returns>
         public CategoryDto GetCategory()
         {
             return this.Name switch

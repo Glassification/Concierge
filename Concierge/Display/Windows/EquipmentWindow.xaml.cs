@@ -109,7 +109,7 @@ namespace Concierge.Display.Windows
         private bool EquipItem()
         {
             var item = this.ItemComboBox.SelectedItem;
-            if (item is not ComboBoxItemControl itemControl)
+            if (item is not DetailedComboBoxItemControl itemControl)
             {
                 return false;
             }

@@ -7,8 +7,14 @@ namespace Concierge.Character.Aspects
     using Concierge.Character.Enums;
     using Concierge.Common;
 
+    /// <summary>
+    /// Represents a set of character attributes and associated skills in Dungeons &amp; Dragons.
+    /// </summary>
     public sealed class Attributes : ICopyable<Attributes>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Attributes"/> class with default values.
+        /// </summary>
         public Attributes()
         {
             this.Strength = new Strength();
@@ -86,6 +92,10 @@ namespace Concierge.Character.Aspects
 
         public Skill Persuasion { get; set; }
 
+        /// <summary>
+        /// Creates a deep copy of the attributes.
+        /// </summary>
+        /// <returns>A deep copy of <see cref="Attributes"/>.</returns>
         public Attributes DeepCopy()
         {
             return new Attributes()
@@ -117,6 +127,10 @@ namespace Concierge.Character.Aspects
             };
         }
 
+        /// <summary>
+        /// Determines whether any saving throws are currently in an proficient state.
+        /// </summary>
+        /// <returns>True if any saving throws are currently in an expertise state; otherwise, false.</returns>
         public bool GetState()
         {
             var trueCount = 0;
@@ -130,26 +144,48 @@ namespace Concierge.Character.Aspects
             return trueCount < Attribute.Count;
         }
 
+        /// <summary>
+        /// Determines whether any skills are currently in a proficient state.
+        /// </summary>
+        /// <returns>True if any skills are currently proficient; otherwise, false.</returns>
         public bool GetProficiencyState()
         {
             return this.GetState(false);
         }
 
+        /// <summary>
+        /// Determines whether any skills are currently in an expertise state.
+        /// </summary>
+        /// <returns>True if any skills are currently in an expertise state; otherwise, false.</returns>
         public bool GetExpertiseState()
         {
             return this.GetState(true);
         }
 
+        /// <summary>
+        /// Sets the proficiency state of all skills.
+        /// </summary>
+        /// <param name="state">The state to set (true for proficiency, false otherwise).</param>
         public void SetProficiencyState(bool state)
         {
             this.SetState(false, state);
         }
 
+        /// <summary>
+        /// Sets the expertise state of all skills.
+        /// </summary>
+        /// <param name="state">The state to set (true for expertise, false otherwise).</param>
         public void SetExpertiseState(bool state)
         {
             this.SetState(true, state);
         }
 
+        /// <summary>
+        /// Gets the total skill bonus for a given skill and associated bonus.
+        /// </summary>
+        /// <param name="skill">The skill for which to calculate the bonus.</param>
+        /// <param name="bonus">The associated bonus (e.g., proficiency bonus).</param>
+        /// <returns>The total skill bonus.</returns>
         public int GetSkillBonus(Skill skill, int bonus)
         {
             return skill.GetBonus(this.GetScore(skill.Type), bonus);

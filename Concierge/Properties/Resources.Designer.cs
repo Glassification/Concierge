@@ -272,6 +272,15 @@ namespace Concierge.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Select a distinctive eye colour..
         /// </summary>
+        internal static string AppearanceWindow_EyeColorPreview {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_EyeColorPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a distinctive eye colour..
+        /// </summary>
         internal static string AppearanceWindow_EyeColourTextBox {
             get {
                 return ResourceManager.GetString("AppearanceWindow_EyeColourTextBox", resourceCulture);
@@ -299,6 +308,15 @@ namespace Concierge.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Choose an interesting hair colour..
         /// </summary>
+        internal static string AppearanceWindow_HairColorPreview {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_HairColorPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose an interesting hair colour..
+        /// </summary>
         internal static string AppearanceWindow_HairColourTextBox {
             get {
                 return ResourceManager.GetString("AppearanceWindow_HairColourTextBox", resourceCulture);
@@ -311,6 +329,15 @@ namespace Concierge.Properties {
         internal static string AppearanceWindow_InchesUpDown {
             get {
                 return ResourceManager.GetString("AppearanceWindow_InchesUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a reasonable skin colour. Or don&apos;t. I&apos;m just text, I can&apos;t stop you..
+        /// </summary>
+        internal static string AppearanceWindow_SkinColorPreview {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_SkinColorPreview", resourceCulture);
             }
         }
         

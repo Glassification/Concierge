@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different status conditions.
+    /// </summary>
     public enum ConditionStatus
     {
         Normal,

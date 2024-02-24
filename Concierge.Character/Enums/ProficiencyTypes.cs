@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different proficiency types.
+    /// </summary>
     public enum ProficiencyTypes
     {
         Armor,

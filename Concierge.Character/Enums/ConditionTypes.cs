@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different types of conditions.
+    /// </summary>
     public enum ConditionTypes
     {
         None,

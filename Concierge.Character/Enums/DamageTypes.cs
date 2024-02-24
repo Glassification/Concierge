@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different types of damage.
+    /// </summary>
     public enum DamageTypes
     {
         None,

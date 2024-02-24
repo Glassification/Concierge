@@ -17,8 +17,14 @@ namespace Concierge.Character.Equipable
 
     using Constants = Concierge.Common.Constants;
 
+    /// <summary>
+    /// Represents the defense attributes of a character, including armor, shield, and total armor class calculation.
+    /// </summary>
     public sealed class Defense : ICopyable<Defense>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Defense"/> class with default values.
+        /// </summary>
         public Defense()
         {
             this.Armor = new Armor();
@@ -27,6 +33,10 @@ namespace Concierge.Character.Equipable
             this.ShieldWeight = UnitDouble.Empty;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Defense"/> class with the specified armor.
+        /// </summary>
+        /// <param name="armor">The armor to use for defense.</param>
         public Defense(Armor armor)
         {
             this.Armor = armor;
@@ -35,18 +45,39 @@ namespace Concierge.Character.Equipable
             this.ShieldWeight = UnitDouble.Empty;
         }
 
+        /// <summary>
+        /// Gets or sets the armor used for defense.
+        /// </summary>
         public Armor Armor { get; set; }
 
+        /// <summary>
+        /// Gets or sets the status of the armor (donned or doffed).
+        /// </summary>
         public ArmorStatus ArmorStatus { get; set; }
 
+        /// <summary>
+        /// Gets or sets the magical armor class bonus.
+        /// </summary>
         public int MagicAc { get; set; }
 
+        /// <summary>
+        /// Gets or sets the miscellaneous armor class bonus.
+        /// </summary>
         public int MiscAc { get; set; }
 
+        /// <summary>
+        /// Gets or sets the shield used for defense.
+        /// </summary>
         public string Shield { get; set; }
 
+        /// <summary>
+        /// Gets or sets the armor class bonus provided by the shield.
+        /// </summary>
         public int ShieldAc { get; set; }
 
+        /// <summary>
+        /// Gets or sets the weight of the shield.
+        /// </summary>
         public UnitDouble ShieldWeight { get; set; }
 
         [SearchIgnore]
@@ -60,6 +91,10 @@ namespace Concierge.Character.Equipable
         [JsonIgnore]
         public double TotalWeight => this.Armor.Weight.Value + this.ShieldWeight.Value;
 
+        /// <summary>
+        /// Creates a deep copy of the <see cref="Defense"/> object.
+        /// </summary>
+        /// <returns>A new instance of <see cref="Defense"/> with the same property values as this instance.</returns>
         public Defense DeepCopy()
         {
             return new Defense()
@@ -74,6 +109,11 @@ namespace Concierge.Character.Equipable
             };
         }
 
+        /// <summary>
+        /// Calculates the total armor class based on the defense attributes and dexterity bonus.
+        /// </summary>
+        /// <param name="dexterity">The dexterity attribute.</param>
+        /// <returns>The total armor class value.</returns>
         public int GetTotalArmorClass(Dexterity dexterity)
         {
             var armorClass = this.MagicAc + this.MiscAc + this.ShieldAc;

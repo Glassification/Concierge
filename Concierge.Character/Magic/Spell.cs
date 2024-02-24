@@ -18,8 +18,14 @@ namespace Concierge.Character.Magic
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a spell in Dungeons &amp; Dragons.
+    /// </summary>
     public sealed class Spell : ICopyable<Spell>, IUnique, IUsable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Spell"/> class with default values.
+        /// </summary>
         public Spell()
         {
             this.Area = string.Empty;
@@ -110,11 +116,19 @@ namespace Concierge.Character.Magic
         [SearchIgnore]
         public PackIconKind RitualIcon => GetCheckBox(this.Ritual);
 
+        /// <summary>
+        /// Returns the name of the spell.
+        /// </summary>
+        /// <returns>The name of the spell.</returns>
         public override string ToString()
         {
             return this.Name;
         }
 
+        /// <summary>
+        /// Creates a deep copy of the spell.
+        /// </summary>
+        /// <returns>A deep copy of the <see cref="Spell"/>.</returns>
         public Spell DeepCopy()
         {
             return new Spell()
@@ -140,6 +154,11 @@ namespace Concierge.Character.Magic
             };
         }
 
+        /// <summary>
+        /// Uses the spell to perform an action.
+        /// </summary>
+        /// <param name="useItem">The item to use.</param>
+        /// <returns>An object representing the result of using the spell.</returns>
         public UsedItem Use(UseItem useItem)
         {
             var cleanedInput = DiceParser.Clean(this.Damage, Enum.GetNames(typeof(DamageTypes)));
@@ -154,6 +173,10 @@ namespace Concierge.Character.Magic
             return new UsedItem(attack, damage, this.Name, string.Empty, $"[Damage: {damage.Min} - {damage.Max}] {this.Description}");
         }
 
+        /// <summary>
+        /// Retrieves the category of the spell based on its school of magic.
+        /// </summary>
+        /// <returns>The category of the spell.</returns>
         public CategoryDto GetCategory()
         {
             return this.School switch

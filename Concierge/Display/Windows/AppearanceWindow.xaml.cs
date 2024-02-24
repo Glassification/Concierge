@@ -43,6 +43,9 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.FeetUpDown);
             this.SetMouseOverEvents(this.InchesUpDown);
             this.SetMouseOverEvents(this.WeightUpDown);
+            this.SetMouseOverEvents(this.SkinColorPreview);
+            this.SetMouseOverEvents(this.EyeColorPreview);
+            this.SetMouseOverEvents(this.HairColorPreview);
             this.SetMouseOverEvents(this.SkinColourTextBox, this.SkinColourTextBackground);
             this.SetMouseOverEvents(this.EyeColourTextBox, this.EyeColourTextBackground);
             this.SetMouseOverEvents(this.HairColourTextBox, this.HairColourTextBackground);

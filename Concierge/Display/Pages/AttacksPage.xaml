@@ -37,17 +37,17 @@
                     Margin="-1"
                     Background="#1E2636">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="18*"/>
-                        <RowDefinition Height="82*"/>
+                        <RowDefinition Height="16*"/>
+                        <RowDefinition Height="84*"/>
                     </Grid.RowDefinitions>
 
                     <Border
                         Grid.Row="0"
-                        BorderBrush="#242A38"
+                        BorderBrush="#262E42"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid
-                            Background="#242A38"
+                            Background="#262E42"
                             Margin="-1">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <components:ConciergeTextBlock 
@@ -212,17 +212,17 @@
                     Margin="-1"
                     Background="#1E2636">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="18*"/>
-                        <RowDefinition Height="82*"/>
+                        <RowDefinition Height="16*"/>
+                        <RowDefinition Height="84*"/>
                     </Grid.RowDefinitions>
 
                     <Border
                         Grid.Row="0"
-                        BorderBrush="#242A38"
+                        BorderBrush="#262E42"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid
-                            Background="#242A38"
+                            Background="#262E42"
                             Margin="-1">
                             <components:ConciergeTextBlock
                                 Text="Effects"
@@ -332,12 +332,12 @@
 
                 <Border
                     Grid.Row="0"
-                    BorderBrush="#242A38"
+                    BorderBrush="#262E42"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
                         Margin="-1"
-                        Background="#242A38">
+                        Background="#262E42">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                             <components:ConciergeTextBlock 
                                 Text="Attacks"

@@ -13,8 +13,14 @@ namespace Concierge.Character.Magic
     using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents spellcasting abilities and characteristics of a character.
+    /// </summary>
     public sealed class SpellCasting : ICopyable<SpellCasting>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpellCasting"/> class with default values.
+        /// </summary>
         public SpellCasting()
         {
             this.MagicalClasses = [];
@@ -51,12 +57,19 @@ namespace Concierge.Character.Magic
         [SearchIgnore]
         public List<Spell> PreparedSpells => this.Spells.Where(x => x.Prepared).ToList();
 
+        /// <summary>
+        /// Sets concentration on the specified spell, clearing concentration from any other spell.
+        /// </summary>
+        /// <param name="spell">The spell to set concentration on.</param>
         public void SetConcentration(Spell spell)
         {
             this.ClearConcentration();
             spell.CurrentConcentration = true;
         }
 
+        /// <summary>
+        /// Clears concentration from any spell currently under concentration.
+        /// </summary>
         public void ClearConcentration()
         {
             var concentration = this.Spells.SingleOrDefault(x => x.CurrentConcentration);
@@ -66,11 +79,20 @@ namespace Concierge.Character.Magic
             }
         }
 
+        /// <summary>
+        /// Gets the spell attack bonus for a specified magical class.
+        /// </summary>
+        /// <param name="className">The name of the magical class.</param>
+        /// <returns>The spell attack bonus for the specified magical class.</returns>
         public int GetSpellAttack(string className)
         {
             return this.MagicalClasses.Where(x => x.Name.Equals(className, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault()?.Attack ?? 0;
         }
 
+        /// <summary>
+        /// Creates a deep copy of the spellcasting instance.
+        /// </summary>
+        /// <returns>A deep copy of the <see cref="SpellCasting"/> instance.</returns>
         public SpellCasting DeepCopy()
         {
             return new SpellCasting()

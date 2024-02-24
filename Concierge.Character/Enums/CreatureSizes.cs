@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different sizes of creatures.
+    /// </summary>
     public enum CreatureSizes
     {
         Fine,

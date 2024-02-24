@@ -6,6 +6,9 @@ namespace Concierge.Character.Enums
 {
     using System.ComponentModel;
 
+    /// <summary>
+    /// Enum representing different classes of armor.
+    /// </summary>
     public enum ArmorType
     {
         [Description("None")]

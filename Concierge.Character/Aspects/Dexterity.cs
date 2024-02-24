@@ -7,6 +7,9 @@ namespace Concierge.Character.Aspects
     using Concierge.Character.Enums;
     using Concierge.Character.Vitals;
 
+    /// <summary>
+    /// Represents the Dexterity attribute in Dungeons &amp; Dragons 5th Edition.
+    /// </summary>
     public sealed class Dexterity : Attribute
     {
         public Dexterity()

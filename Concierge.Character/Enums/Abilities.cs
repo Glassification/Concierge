@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different abilities.
+    /// </summary>
     public enum Abilities
     {
         NONE,

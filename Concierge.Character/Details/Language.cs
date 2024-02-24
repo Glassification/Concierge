@@ -14,8 +14,14 @@ namespace Concierge.Character.Details
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a language spoken by characters or entities.
+    /// </summary>
     public sealed class Language : ICopyable<Language>, IUnique
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Language"/> class.
+        /// </summary>
         public Language()
         {
             this.Name = string.Empty;
@@ -24,10 +30,19 @@ namespace Concierge.Character.Details
             this.Id = Guid.NewGuid();
         }
 
+        /// <summary>
+        /// Gets or sets the name of the language.
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the script the language is written in.
+        /// </summary>
         public string Script { get; set; }
 
+        /// <summary>
+        /// Gets or sets the types of speakers of the language.
+        /// </summary>
         public string Speakers { get; set; }
 
         public bool IsCustom { get; set; }
@@ -53,6 +68,10 @@ namespace Concierge.Character.Details
         [SearchIgnore]
         public string Information => $"";
 
+        /// <summary>
+        /// Creates a deep copy of the <see cref="Language"/> object.
+        /// </summary>
+        /// <returns>A deep copy of the <see cref="Language"/> object.</returns>
         public Language DeepCopy()
         {
             return new Language()
@@ -65,11 +84,19 @@ namespace Concierge.Character.Details
             };
         }
 
+        /// <summary>
+        /// Returns a string representation of the language.
+        /// </summary>
+        /// <returns>The name of the language.</returns>
         public override string ToString()
         {
             return this.Name;
         }
 
+        /// <summary>
+        /// Gets the category information of the language.
+        /// </summary>
+        /// <returns>The category information of the language.</returns>
         public CategoryDto GetCategory()
         {
             return new CategoryDto(PackIconKind.Translate, Brushes.LightBlue, this.Name);

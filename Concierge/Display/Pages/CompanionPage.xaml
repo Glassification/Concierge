@@ -449,12 +449,12 @@
 
                 <Border
                     Grid.Row="0"
-                    BorderBrush="#242A38"
+                    BorderBrush="#262E42"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
                         Margin="-1"
-                        Background="#242A38">
+                        Background="#262E42">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                             <components:ConciergeTextBlock 
                                 Text="Attacks"

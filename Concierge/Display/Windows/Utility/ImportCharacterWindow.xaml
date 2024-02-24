@@ -109,7 +109,7 @@
                 <components:ConciergeLabel
                     Grid.Column="0"
                     Grid.Row="1"
-                    Text="Import From Single List:"
+                    Text="Import From JSON:"
                     FontSize="18"
                     HorizontalAlignment="Right"
                     Margin="0,0,20,0"/>

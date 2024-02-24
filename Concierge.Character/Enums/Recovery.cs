@@ -6,6 +6,9 @@ namespace Concierge.Character.Enums
 {
     using System.ComponentModel;
 
+    /// <summary>
+    /// Enum representing different recovery methods.
+    /// </summary>
     public enum Recovery
     {
         [Description("N/A")]

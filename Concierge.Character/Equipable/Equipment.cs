@@ -10,8 +10,14 @@ namespace Concierge.Character.Equipable
     using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a collection of equipment including ammunition, defense, inventory, and weapons.
+    /// </summary>
     public sealed class Equipment : ICopyable<Equipment>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Equipment"/> class.
+        /// </summary>
         public Equipment()
         {
             this.Ammunition = [];
@@ -21,10 +27,19 @@ namespace Concierge.Character.Equipable
             this.EquippedItems = new EquippedItems(this.Inventory, this.Weapons);
         }
 
+        /// <summary>
+        /// Gets or sets the list of ammunition.
+        /// </summary>
         public List<Ammunition> Ammunition { get; set; }
 
+        /// <summary>
+        /// Gets or sets the defense.
+        /// </summary>
         public Defense Defense { get; set; }
 
+        /// <summary>
+        /// Gets the total value of the equipment.
+        /// </summary>
         [JsonIgnore]
         public double EquipmentValue
         {
@@ -50,13 +65,26 @@ namespace Concierge.Character.Equipable
             }
         }
 
+        /// <summary>
+        /// Gets or sets the equipped items.
+        /// </summary>
         [JsonIgnore]
         public EquippedItems EquippedItems { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list of inventory items.
+        /// </summary>
         public List<Inventory> Inventory { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list of weapons.
+        /// </summary>
         public List<Weapon> Weapons { get; set; }
 
+        /// <summary>
+        /// Creates a deep copy of the equipment.
+        /// </summary>
+        /// <returns>A deep copy of the <see cref="Equipment"/>.</returns>
         public Equipment DeepCopy()
         {
             return new Equipment()

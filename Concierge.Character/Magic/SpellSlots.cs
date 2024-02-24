@@ -6,8 +6,14 @@ namespace Concierge.Character.Magic
 {
     using Concierge.Common;
 
+    /// <summary>
+    /// Represents the spell slots available for casting spells.
+    /// </summary>
     public sealed class SpellSlots : ICopyable<SpellSlots>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpellSlots"/> class with default values.
+        /// </summary>
         public SpellSlots()
         {
             this.PactTotal = 0;
@@ -64,6 +70,10 @@ namespace Concierge.Character.Magic
 
         public int NinethUsed { get; set; }
 
+        /// <summary>
+        /// Creates a deep copy of the spell slots.
+        /// </summary>
+        /// <returns>A deep copy of the <see cref="SpellSlots"/>.</returns>
         public SpellSlots DeepCopy()
         {
             return new SpellSlots()
@@ -91,6 +101,9 @@ namespace Concierge.Character.Magic
             };
         }
 
+        /// <summary>
+        /// Resets all used spell slots to zero.
+        /// </summary>
         public void Reset()
         {
             this.PactUsed = 0;
@@ -105,6 +118,11 @@ namespace Concierge.Character.Magic
             this.NinethUsed = 0;
         }
 
+        /// <summary>
+        /// Increments the used spell slots based on the spell slot name.
+        /// </summary>
+        /// <param name="name">The name of the spell slot.</param>
+        /// <returns>A tuple containing the updated used and total spell slots.</returns>
         public (int used, int total) Increment(string name)
         {
             if (name.Contains("pact", System.StringComparison.InvariantCultureIgnoreCase) && this.PactUsed < this.PactTotal)

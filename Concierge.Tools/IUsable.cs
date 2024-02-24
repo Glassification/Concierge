@@ -4,6 +4,9 @@
 
 namespace Concierge.Tools
 {
+    /// <summary>
+    /// Represents an interface for items that can be used.
+    /// </summary>
     public interface IUsable
     {
         UsedItem Use(UseItem useItem);

@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Enums
 {
+    /// <summary>
+    /// Enum representing different outcomes of ability saving throws.
+    /// </summary>
     public enum AbilitySave
     {
         None,

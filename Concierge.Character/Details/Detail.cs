@@ -9,8 +9,14 @@ namespace Concierge.Character.Details
     using Concierge.Common;
     using Concierge.Common.Extensions;
 
+    /// <summary>
+    /// Represents detailed information about a character or entity, including abilities, appearance, languages, personality, portrait, proficiencies, and senses.
+    /// </summary>
     public sealed class Detail : ICopyable<Detail>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Detail"/> class.
+        /// </summary>
         public Detail()
         {
             this.Abilities = [];
@@ -22,20 +28,45 @@ namespace Concierge.Character.Details
             this.Senses = new Senses();
         }
 
+        /// <summary>
+        /// Gets or sets the abilities of the character or entity.
+        /// </summary>
         public List<Ability> Abilities { get; set; }
 
+        /// <summary>
+        /// Gets or sets the appearance details of the character or entity.
+        /// </summary>
         public Appearance Appearance { get; set; }
 
+        // <summary>
+        /// Gets or sets the languages spoken by the character or entity.
+        /// </summary>
         public List<Language> Languages { get; set; }
 
+        /// <summary>
+        /// Gets or sets the personality traits of the character or entity.
+        /// </summary>
         public Personality Personality { get; set; }
 
+        /// <summary>
+        /// Gets or sets the portrait of the character or entity.
+        /// </summary>
         public Portrait Portrait { get; set; }
 
+        /// <summary>
+        /// Gets or sets the proficiencies of the character or entity.
+        /// </summary>
         public List<Proficiency> Proficiencies { get; set; }
 
+        /// <summary>
+        /// Gets or sets the senses of the character or entity.
+        /// </summary>
         public Senses Senses { get; set; }
 
+        /// <summary>
+        /// Creates a deep copy of the <see cref="Detail"/> object.
+        /// </summary>
+        /// <returns>A deep copy of the <see cref="Detail"/> object.</returns>
         public Detail DeepCopy()
         {
             return new Detail()
