@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Vitals
 {
+    /// <summary>
+    /// Provides descriptions for different conditions.
+    /// </summary>
     public static class ConditionDescriptions
     {
         public const string Blinded = "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.";

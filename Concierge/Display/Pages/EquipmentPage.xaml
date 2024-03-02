@@ -111,7 +111,7 @@
                 </Grid.RowDefinitions>
 
                 <Border
-                    Margin="5,95,5,95"
+                    Margin="5,100,5,100"
                     Grid.Row="0"
                     BorderBrush="#1E2636"
                     BorderThickness="5"

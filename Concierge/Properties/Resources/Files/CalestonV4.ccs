@@ -703,7 +703,7 @@
           "Amount": 2,
           "Attuned": false,
           "CoinType": 3,
-          "Consumable": false,
+          "Consumable": true,
           "CreationDate": "2023-02-12T13:29:58.443614-06:00",
           "Description": "The potion will keep you clean for 24 hours. They brush your hair, teeth, and leave you smelling great. Has a small chance of bubbles coming out your mouth.",
           "EquipmentSlot": 5,
@@ -1327,7 +1327,7 @@
           "Amount": 1,
           "Attuned": false,
           "CoinType": 3,
-          "Consumable": false,
+          "Consumable": true,
           "CreationDate": "2023-12-09T22:47:23.0337983-06:00",
           "Description": "A character who drinks the magical red fluid in this vial regains 10d4 + 20 hit points. Drinking or administering a potion takes an action for automatic 60 hp, bonus action will roll for hp.",
           "EquipmentSlot": 5,
@@ -1337,7 +1337,7 @@
           "IsEquipped": false,
           "ItemCategory": "Potion",
           "Name": "Potion of Healing, Supreme",
-          "Notes": "Combat, Consumable, Healing",
+          "Notes": "Combat, Healing",
           "Value": 5000,
           "Weight": {
             "Value": 0.5,
@@ -2891,13 +2891,13 @@
     }
   },
   "CharacterService": {},
-  "Hash": "A4EDD777B7EE23C1A417862C6B9D5C5C7CC68FB42A723A222E66AB40ABE670CA",
+  "Hash": "6E414C6934C06880DF77FC2D95527D07CCB19C44E765B69383E0BCF51ACE515D",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-02-21T13:31:38.9166324-06:00",
+  "LastSaveDate": "2024-03-02T08:33:26.653863-06:00",
   "Version": {
     "Major": 5,
     "Minor": 7,
-    "Patch": 1
+    "Patch": 2
   },
   "IsEmpty": false
 }

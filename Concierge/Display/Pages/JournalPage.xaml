@@ -16,8 +16,8 @@
 
     <Grid Background="#0F1220">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>
 
         <Border
@@ -50,7 +50,7 @@
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="UpButton"
-                                Width="60"
+                                Width="50"
                                 Foreground="SteelBlue"
                                 Click="UpButton_Click"
                                 ToolTip="Move Selected Entry Up">
@@ -59,7 +59,7 @@
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="DownButton"
-                                Width="60"
+                                Width="50"
                                 Foreground="SteelBlue"
                                 Click="DownButton_Click"
                                 ToolTip="Move Selected Entry Down">
@@ -68,7 +68,7 @@
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ClearButton"
-                                Width="60"
+                                Width="50"
                                 Foreground="Silver"
                                 Click="ClearButton_Click"
                                 ToolTip="Clear Selected Entry">
@@ -77,7 +77,7 @@
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="EditButton"
-                                Width="60"
+                                Width="50"
                                 Foreground="#B98748"
                                 Click="EditButton_Click"
                                 ToolTip="Edit Selected Entry">
@@ -86,7 +86,7 @@
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="DeleteButton"
-                                Width="60"
+                                Width="50"
                                 Foreground="IndianRed"
                                 Click="DeleteButton_Click"
                                 ToolTip="Delete Selected Entry">

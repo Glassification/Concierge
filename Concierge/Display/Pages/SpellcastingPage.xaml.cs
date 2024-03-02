@@ -14,6 +14,7 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Magic;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
@@ -121,6 +122,7 @@ namespace Concierge.Display.Pages
 
         private void SetSpellListDataGridDataGridControlState()
         {
+            DisplayUtility.SetControlEnableState(this.SpellInformationButton, this.SpellListDataGrid.Items.Count > 0);
             this.SpellListDataGrid.SetButtonControlsEnableState(
                 this.SpellUpButton,
                 this.SpellDownButton,
@@ -364,6 +366,11 @@ namespace Concierge.Display.Pages
             Program.CcsFile.Character.SpellCasting.ClearConcentration();
             this.DrawSpellList();
             this.SpellListDataGrid.SetSelectedIndex(index);
+        }
+
+        private void SpellInformationButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowWindow(typeof(SpellDetailsWindow));
         }
     }
 }

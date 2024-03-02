@@ -16,10 +16,16 @@ namespace Concierge.Character.Vitals
     using Concierge.Tools.DiceRoller;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents the vital statistics and conditions of a character.
+    /// </summary>
     public sealed class Vitality : ICopyable<Vitality>
     {
         private const double HealingRatio = 0.1;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vitality"/> class with default values.
+        /// </summary>
         public Vitality()
         {
             this.ClassResources = [];
@@ -29,16 +35,34 @@ namespace Concierge.Character.Vitals
             this.Status = new Status();
         }
 
+        /// <summary>
+        /// Gets or sets the class resources of the character.
+        /// </summary>
         public List<ClassResource> ClassResources { get; set; }
 
+        /// <summary>
+        /// Gets or sets the death saving throws of the character.
+        /// </summary>
         public DeathSavingThrows DeathSavingThrows { get; set; }
 
+        /// <summary>
+        /// Gets or sets the health of the character.
+        /// </summary>
         public Health Health { get; set; }
 
+        /// <summary>
+        /// Gets or sets the hit dice of the character.
+        /// </summary>
         public HitDice HitDice { get; set; }
 
+        /// <summary>
+        /// Gets or sets the status conditions of the character.
+        /// </summary>
         public Status Status { get; set; }
 
+        /// <summary>
+        /// Gets the current health of the character, considering temporary health and exhaustion levels.
+        /// </summary>
         [JsonIgnore]
         public int CurrentHealth
         {
@@ -60,11 +84,18 @@ namespace Concierge.Character.Vitals
             }
         }
 
+        /// <summary>
+        /// Resets the death saving throws of the character.
+        /// </summary>
         public void ResetDeathSaves()
         {
             this.DeathSavingThrows.ResetDeathSaves();
         }
 
+        /// <summary>
+        /// Inflicts damage on the character.
+        /// </summary>
+        /// <param name="damage">The amount of damage to inflict.</param>
         public void Damage(int damage)
         {
             int oldTempHealth = this.Health.TemporaryHealth;
@@ -79,11 +110,19 @@ namespace Concierge.Character.Vitals
             }
         }
 
+        /// <summary>
+        /// Heals the character by a specified amount.
+        /// </summary>
+        /// <param name="heal">The amount of healing.</param>
         public void Heal(int heal)
         {
             this.Health.BaseHealth += heal;
         }
 
+        /// <summary>
+        /// Creates a deep copy of the <see cref="Vitality"/> object.
+        /// </summary>
+        /// <returns>A new instance of the <see cref="Vitality"/> class with the same property values as the original.</returns>
         public Vitality DeepCopy()
         {
             return new Vitality()
@@ -96,6 +135,12 @@ namespace Concierge.Character.Vitals
             };
         }
 
+        /// <summary>
+        /// Rolls hit dice for the character during a short rest.
+        /// </summary>
+        /// <param name="hitDie">The type of hit die to roll.</param>
+        /// <param name="constitution">The character's Constitution modifier.</param>
+        /// <returns>The result of the hit dice roll.</returns>
         public DiceRoll RollHitDice(Dice hitDie, Constitution constitution)
         {
             var roll = DiceRoll.RollDice(1, (int)hitDie);
@@ -106,6 +151,11 @@ namespace Concierge.Character.Vitals
             return new DiceRoll((int)hitDie, roll, modifier);
         }
 
+        /// <summary>
+        /// Rolls hit dice for the character during a short rest, healing up to a certain threshold.
+        /// </summary>
+        /// <param name="hitDie">The type of hit die to roll.</param>
+        /// <param name="constitution">The character's Constitution modifier.</param>
         public void RollShortRestHitDice(Dice hitDie, Constitution constitution)
         {
             var threshold = this.Health.MaxHealth - (int)Math.Ceiling(this.Health.MaxHealth * HealingRatio);

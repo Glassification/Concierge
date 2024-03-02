@@ -16,6 +16,8 @@ namespace Concierge.Display.Components
 
     public sealed class ChapterTreeViewItem : TreeViewItem
     {
+        private const int ElementSize = 23;
+
         public ChapterTreeViewItem(Chapter chapter)
         {
             var resourceDictionary = new ResourceDictionary
@@ -52,15 +54,15 @@ namespace Concierge.Display.Components
                 Text = $" {this.Chapter.Name}",
                 FontWeight = FontWeights.Bold,
                 TextWrapping = TextWrapping.Wrap,
-                FontSize = 25,
+                FontSize = ElementSize,
             };
 
             var packIcon = new PackIcon()
             {
                 Kind = PackIconKind.BookOpenVariant,
                 Foreground = Brushes.SteelBlue,
-                Width = 25,
-                Height = 25,
+                Width = ElementSize,
+                Height = ElementSize,
             };
 
             grid.Children.Add(packIcon);

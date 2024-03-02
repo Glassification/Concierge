@@ -7,8 +7,14 @@ namespace Concierge.Character.Vitals
     using Concierge.Common;
     using Concierge.Common.Enums;
 
+    /// <summary>
+    /// Represents the hit dice of a character, including the total and spent hit dice for each type.
+    /// </summary>
     public sealed class HitDice : ICopyable<HitDice>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HitDice"/> class with default values.
+        /// </summary>
         public HitDice()
         {
             this.TotalD6 = 0;
@@ -21,22 +27,51 @@ namespace Concierge.Character.Vitals
             this.SpentD12 = 0;
         }
 
+        /// <summary>
+        /// Gets or sets the total number of d6 hit dice.
+        /// </summary>
         public int TotalD6 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the total number of d8 hit dice.
+        /// </summary>
         public int TotalD8 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the total number of d10 hit dice.
+        /// </summary>
         public int TotalD10 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the total number of d12 hit dice.
+        /// </summary>
         public int TotalD12 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of spent d6 hit dice.
+        /// </summary>
         public int SpentD6 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of spent d8 hit dice.
+        /// </summary>
         public int SpentD8 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of spent d10 hit dice.
+        /// </summary>
         public int SpentD10 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of spent d12 hit dice.
+        /// </summary>
         public int SpentD12 { get; set; }
 
+        /// <summary>
+        /// Gets the type of hit dice associated with a given class.
+        /// </summary>
+        /// <param name="className">The name of the class.</param>
+        /// <returns>The type of hit dice associated with the class.</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0066:Convert switch statement to expression", Justification = "Improve Readability.")]
         public static Dice GetHitDice(string className)
         {
@@ -65,6 +100,10 @@ namespace Concierge.Character.Vitals
             }
         }
 
+        /// <summary>
+        /// Gets the first available hit dice type based on the current state.
+        /// </summary>
+        /// <returns>The first available hit dice type.</returns>
         public Dice GetFirstAvailable()
         {
             if (this.TotalD6 > 0)
@@ -90,6 +129,11 @@ namespace Concierge.Character.Vitals
             return Dice.None;
         }
 
+        /// <summary>
+        /// Increments the number of spent hit dice of a certain type.
+        /// </summary>
+        /// <param name="name">The name of the hit dice type.</param>
+        /// <returns>A tuple containing the dice type, the number of used hit dice, and the total number of hit dice.</returns>
         public (Dice dice, int used, int total) Increment(string name)
         {
             if (name.Contains("d6", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD6 < this.TotalD6)
@@ -119,6 +163,9 @@ namespace Concierge.Character.Vitals
             return (Dice.None, 0, 0);
         }
 
+        /// <summary>
+        /// Resets the spent hit dice back to their maximum values.
+        /// </summary>
         public void RegainHitDice()
         {
             this.SpentD6 = Constants.Regain(this.SpentD6);
@@ -127,6 +174,10 @@ namespace Concierge.Character.Vitals
             this.SpentD12 = Constants.Regain(this.SpentD12);
         }
 
+        /// <summary>
+        /// Creates a deep copy of the hit dice object.
+        /// </summary>
+        /// <returns>A new instance of the <see cref="HitDice"/> class with the same property values as the original.</returns>
         public HitDice DeepCopy()
         {
             return new HitDice()

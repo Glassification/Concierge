@@ -15,10 +15,16 @@ namespace Concierge.Character.Vitals
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a class-specific resource that can be expended and potentially recovered.
+    /// </summary>
     public sealed class ClassResource : ICopyable<ClassResource>, IUnique
     {
         private int spent;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClassResource"/> class.
+        /// </summary>
         public ClassResource()
         {
             this.Id = Guid.NewGuid();
@@ -31,10 +37,19 @@ namespace Concierge.Character.Vitals
 
         public Guid Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets additional notes about the resource.
+        /// </summary>
         public string Note { get; set; }
 
+        /// <summary>
+        /// Gets or sets the recovery type of the resource.
+        /// </summary>
         public Recovery Recovery { get; set; }
 
+        /// <summary>
+        /// Gets or sets the amount spent of the resource.
+        /// </summary>
         public int Spent
         {
             get
@@ -51,8 +66,14 @@ namespace Concierge.Character.Vitals
             }
         }
 
+        /// <summary>
+        /// Gets or sets the type of the resource.
+        /// </summary>
         public string Type { get; set; }
 
+        /// <summary>
+        /// Gets or sets the total amount of the resource.
+        /// </summary>
         public int Total { get; set; }
 
         [JsonIgnore]
@@ -86,6 +107,10 @@ namespace Concierge.Character.Vitals
             return this.Type;
         }
 
+        /// <summary>
+        /// Creates a deep copy of the resource.
+        /// </summary>
+        /// <returns>A new instance of the <see cref="ClassResource"/> class with the same property values.</returns>
         public ClassResource DeepCopy()
         {
             return new ClassResource()
@@ -100,6 +125,10 @@ namespace Concierge.Character.Vitals
             };
         }
 
+        /// <summary>
+        /// Gets the category of the resource.
+        /// </summary>
+        /// <returns>The category of the resource based on its name.</returns>
         public CategoryDto GetCategory()
         {
             return this.Name switch

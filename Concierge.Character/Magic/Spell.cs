@@ -23,6 +23,8 @@ namespace Concierge.Character.Magic
     /// </summary>
     public sealed class Spell : ICopyable<Spell>, IUnique, IUsable
     {
+        public const int Levels = 10;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Spell"/> class with default values.
         /// </summary>

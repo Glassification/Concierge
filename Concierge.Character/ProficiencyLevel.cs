@@ -6,6 +6,9 @@ namespace Concierge.Character
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Provides methods to retrieve the proficiency bonus based on character level.
+    /// </summary>
     public static class ProficiencyLevel
     {
         private static readonly Dictionary<int, int> levels = new ()
@@ -32,6 +35,11 @@ namespace Concierge.Character
             { 20, 6 },
         };
 
+        /// <summary>
+        /// Retrieves the proficiency bonus based on the character level.
+        /// </summary>
+        /// <param name="level">The character's level.</param>
+        /// <returns>The proficiency bonus corresponding to the character's level.</returns>
         public static int Get(int level)
         {
             if (levels.TryGetValue(level, out int value))

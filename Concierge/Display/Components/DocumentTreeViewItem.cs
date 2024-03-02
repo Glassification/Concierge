@@ -17,6 +17,8 @@ namespace Concierge.Display.Components
 
     public sealed class DocumentTreeViewItem : TreeViewItem
     {
+        private const int ElementSize = 19;
+
         public DocumentTreeViewItem(Document document)
         {
             var resourceDictionary = new ResourceDictionary
@@ -53,15 +55,15 @@ namespace Concierge.Display.Components
                 Text = $" {this.Document.Name}",
                 FontWeight = FontWeights.Bold,
                 TextWrapping = TextWrapping.Wrap,
-                FontSize = 20,
+                FontSize = ElementSize,
             };
 
             var packIcon = new PackIcon()
             {
                 Kind = PackIconKind.PaperOutline,
                 Foreground = Brushes.SteelBlue,
-                Width = 20,
-                Height = 20,
+                Width = ElementSize,
+                Height = ElementSize,
             };
 
             grid.Children.Add(packIcon);

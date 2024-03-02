@@ -78,9 +78,10 @@ namespace Concierge.Display.Windows
 
         private static CompositeCollection GetEquipableItems()
         {
+            var equipment = Program.CcsFile.Character.Equipment;
             var collection = new CompositeCollection();
-            var unequippedItems = Program.CcsFile.Character.Equipment.Inventory.Where(x => x.EquipmentSlot == EquipmentSlot.None).ToList();
-            var unequippedWeapons = Program.CcsFile.Character.Equipment.Weapons.Where(x => x.EquipmentSlot == EquipmentSlot.None).ToList();
+            var unequippedItems = equipment.Inventory.Where(x => x.EquipmentSlot == EquipmentSlot.None && !x.Consumable).ToList();
+            var unequippedWeapons = equipment.Weapons.Where(x => x.EquipmentSlot == EquipmentSlot.None).ToList();
 
             if (!unequippedItems.IsEmpty())
             {

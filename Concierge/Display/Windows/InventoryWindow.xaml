@@ -260,7 +260,9 @@
                         Grid.Column="1"
                         Margin="20,0,0,0"
                         VerticalAlignment="Center"
-                        Style="{StaticResource CheckBoxStyle}"/>
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ConsumableCheckBox_Checked"
+                        Unchecked="ConsumableCheckBox_Unchecked"/>
                 </Grid>
 
                 <!--Notes-->

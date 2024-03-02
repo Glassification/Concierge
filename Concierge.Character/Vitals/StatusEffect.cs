@@ -15,8 +15,14 @@ namespace Concierge.Character.Vitals
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a status effect applied to a character.
+    /// </summary>
     public sealed class StatusEffect : ICopyable<StatusEffect>, IUnique
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StatusEffect"/> class with default values.
+        /// </summary>
         public StatusEffect()
         {
             this.Description = string.Empty;
@@ -24,6 +30,9 @@ namespace Concierge.Character.Vitals
             this.Name = string.Empty;
         }
 
+        /// <summary>
+        /// Gets or sets the description of the status effect.
+        /// </summary>
         public string Description { get; set; }
 
         public Guid Id { get; set; }
@@ -32,6 +41,9 @@ namespace Concierge.Character.Vitals
 
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of the status effect.
+        /// </summary>
         public StatusEffectTypes Type { get; set; }
 
         [JsonIgnore]
@@ -61,6 +73,10 @@ namespace Concierge.Character.Vitals
         [SearchIgnore]
         public string Information => $"";
 
+        /// <summary>
+        /// Creates a deep copy of the status effect object.
+        /// </summary>
+        /// <returns>A new instance of the <see cref="StatusEffect"/> class with the same property values as the original.</returns>
         public StatusEffect DeepCopy()
         {
             return new StatusEffect()
@@ -73,6 +89,10 @@ namespace Concierge.Character.Vitals
             };
         }
 
+        /// <summary>
+        /// Retrieves the category of the status effect.
+        /// </summary>
+        /// <returns>The category of the status effect based on the name.</returns>
         public CategoryDto GetCategory()
         {
             return this.Name.ToLower().Strip(" ") switch

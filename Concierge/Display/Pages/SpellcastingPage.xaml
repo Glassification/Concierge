@@ -261,6 +261,15 @@
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="SpellInformationButton"
+                                Width="60"
+                                Foreground="#8748B9"
+                                Click="SpellInformationButton_Click"
+                                ToolTip="Spellcasting Details">
+                                <materialDesign:PackIcon Kind="InformationSlabBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="SpellClearConcentrationButton"
                                 Width="60"
                                 Foreground="#B9487B"

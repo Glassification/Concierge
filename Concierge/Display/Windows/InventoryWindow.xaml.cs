@@ -143,6 +143,7 @@ namespace Concierge.Display.Windows
         {
             this.AttunedCheckBox.UpdatingValue();
             this.IgnoreWeightCheckBox.UpdatingValue();
+            this.ConsumableCheckBox.UpdatingValue();
 
             this.NameComboBox.Text = inventory.Name;
             this.AmountUpDown.Value = inventory.Amount;
@@ -159,11 +160,12 @@ namespace Concierge.Display.Windows
 
             DisplayUtility.SetControlEnableState(this.AttunedText, this.EquippedItem);
             DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.EquippedItem);
-            DisplayUtility.SetControlEnableState(this.AmountTextBlock, !this.EquippedItem);
-            DisplayUtility.SetControlEnableState(this.AmountUpDown, !this.EquippedItem);
+            DisplayUtility.SetControlEnableState(this.AmountTextBlock, !this.EquippedItem && inventory.Consumable);
+            DisplayUtility.SetControlEnableState(this.AmountUpDown, !this.EquippedItem && inventory.Consumable);
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
+            this.ConsumableCheckBox.UpdatedValue();
         }
 
         private void ClearFields(string name = "")
@@ -308,6 +310,20 @@ namespace Concierge.Display.Windows
             Program.CustomItemService.AddCustomItem(this.Create());
             this.ClearFields();
             this.NameComboBox.ItemsSource = DefaultItems;
+        }
+
+        private void ConsumableCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            DisplayUtility.SetControlEnableState(this.AmountUpDown, true);
+            DisplayUtility.SetControlEnableState(this.AmountTextBlock, true);
+        }
+
+        private void ConsumableCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.AmountUpDown.Value = 1;
+
+            DisplayUtility.SetControlEnableState(this.AmountUpDown, false);
+            DisplayUtility.SetControlEnableState(this.AmountTextBlock, false);
         }
     }
 }

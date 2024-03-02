@@ -87,6 +87,9 @@
     <Compile Update="Display\Windows\Utility\MessageHistoryWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Windows\Utility\SpellDetailsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Windows\Utility\UseItemWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -366,6 +369,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Windows\Utility\SpellDetailsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\SplashScreenWindow.xaml">

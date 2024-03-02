@@ -11,21 +11,36 @@ namespace Concierge.Character.Vitals
     using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents the death saving throws of a character.
+    /// </summary>
     public sealed class DeathSavingThrows : ICopyable<DeathSavingThrows>
     {
         private const int MaxDeathSaves = 5;
         private const int SavesInARow = 3;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeathSavingThrows"/> class.
+        /// </summary>
         public DeathSavingThrows()
         {
             this.DeathSaves = [];
             this.CurrentDeathSave = 0;
         }
 
+        /// <summary>
+        /// Gets or sets the number of death saves made.
+        /// </summary>
         public int CurrentDeathSave { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list of death saving throw results.
+        /// </summary>
         public List<AbilitySave> DeathSaves { get; set; }
 
+        /// <summary>
+        /// Gets the current status of death saving throws.
+        /// </summary>
         [JsonIgnore]
         public AbilitySave DeathSaveStatus
         {
@@ -45,6 +60,9 @@ namespace Concierge.Character.Vitals
             }
         }
 
+        /// <summary>
+        /// Ensures that the death saving throws list is initialized.
+        /// </summary>
         public void LazyInitialize()
         {
             if (this.DeathSaves.IsEmpty())
@@ -53,6 +71,10 @@ namespace Concierge.Character.Vitals
             }
         }
 
+        /// <summary>
+        /// Records a death saving throw.
+        /// </summary>
+        /// <param name="deathSave">The result of the death saving throw.</param>
         public void MakeDeathSave(AbilitySave deathSave)
         {
             this.LazyInitialize();
@@ -64,6 +86,9 @@ namespace Concierge.Character.Vitals
             }
         }
 
+        /// <summary>
+        /// Resets the death saving throws to their default state.
+        /// </summary>
         public void ResetDeathSaves()
         {
             this.DeathSaves.Clear();
@@ -75,6 +100,10 @@ namespace Concierge.Character.Vitals
             }
         }
 
+        /// <summary>
+        /// Creates a deep copy of the DeathSavingThrows instance.
+        /// </summary>
+        /// <returns>A deep copy of the DeathSavingThrows instance.</returns>
         public DeathSavingThrows DeepCopy()
         {
             return new DeathSavingThrows()
