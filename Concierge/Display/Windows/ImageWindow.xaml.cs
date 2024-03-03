@@ -97,6 +97,11 @@ namespace Concierge.Display.Windows
 
         private void UpdateCharacterImage()
         {
+            if (this.ImageSourceTextBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
             var oldItem = this.CharacterImage.DeepCopy();
 
             if (!this.OriginalFileName.Equals(this.ImageSourceTextBox.Text))

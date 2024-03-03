@@ -235,7 +235,7 @@ namespace Concierge.Character.Equipable
         {
             return this.ItemCategory switch
             {
-                "Adventuring Gear" => new CategoryDto(PackIconKind.MapLegend, Brushes.LightBlue, this.ItemCategory),
+                "Adventuring Gear" => new CategoryDto(PackIconKind.CompassRose, Brushes.LightBlue, this.ItemCategory),
                 "Arcane Focus" => new CategoryDto(PackIconKind.MagicWand, Brushes.Magenta, this.ItemCategory),
                 "Clothing" => new CategoryDto(PackIconKind.TshirtV, Brushes.Coral, this.ItemCategory),
                 "Druidic Focus" => new CategoryDto(PackIconKind.MagicStaff, Brushes.Magenta, this.ItemCategory),

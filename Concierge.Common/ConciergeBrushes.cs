@@ -55,6 +55,9 @@ namespace Concierge.Common
             Deer = new SolidColorBrush(ConciergeColors.Deer);
             Deer.Freeze();
 
+            DarkPink = new SolidColorBrush(ConciergeColors.DarkPink);
+            DarkPink.Freeze();
+
             Copper = new SolidColorBrush(ConciergeColors.Copper);
             Copper.Freeze();
 
@@ -146,6 +149,11 @@ namespace Concierge.Common
         /// Gets the Concierge-defined brush that has an ARGB value of #FFB98748.
         /// </summary>
         public static SolidColorBrush Deer { get; }
+
+        /// <summary>
+        /// Gets the Concierge-defined brush that has an ARGB value of #FFB9487B.
+        /// </summary>
+        public static SolidColorBrush DarkPink { get; }
 
         /// <summary>
         /// Gets the Concierge-defined brush that has an ARGB value of #FFB87333.

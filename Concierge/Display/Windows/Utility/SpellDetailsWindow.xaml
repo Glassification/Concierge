@@ -9,13 +9,13 @@
     xmlns:local="clr-namespace:Concierge.Display.Windows.Utility"
     mc:Ignorable="d"
     Title="Spell Details"
-    Height="530"
+    Height="430"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="485"/>
+            <RowDefinition Height="385"/>
         </Grid.RowDefinitions>
 
         <Grid
@@ -50,12 +50,12 @@
             HeadersVisibility="None"
             Style="{DynamicResource ReadonlyWindowDataGridStyle}">
             <DataGrid.Columns>
-                <DataGridTemplateColumn  Width="0.02*">
+                <DataGridTemplateColumn  Width="0.05*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <materialDesign:PackIcon
-                                Kind="AutoFix"
-                                Foreground="Plum"
+                                Kind="{Binding Icon}"
+                                Foreground="{Binding IconColor}"
                                 Height="auto"
                                 Width="auto"
                                 HorizontalAlignment="Center"
@@ -65,11 +65,11 @@
                 </DataGridTemplateColumn>
                 <DataGridTextColumn
                     Binding="{Binding Header}"
-                    Width="0.70*"
+                    Width="0.68*"
                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                 <DataGridTextColumn
                     Binding="{Binding Value}"
-                    Width="0.28*"
+                    Width="0.27*"
                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
             </DataGrid.Columns>
         </components:ConciergeDataGrid>

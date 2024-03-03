@@ -108,70 +108,29 @@ namespace Concierge.Character.Magic
         /// Retrieves details about spells based on the provided magical classes.
         /// </summary>
         /// <param name="magicalClasses">The list of magical classes.</param>
-        /// <returns>A list of <see cref="SpellDetails"/> containing spell-related information.</returns>
-        public List<SpellDetails> GetSpellDetails(List<MagicalClass> magicalClasses)
+        /// <returns>A list of <see cref="SpellDetail"/> containing spell-related information.</returns>
+        public List<SpellDetail> GetSpellDetails(List<MagicalClass> magicalClasses)
         {
-            var list = new List<SpellDetails>();
+            var spellDetails = new SpellDetails(this);
+            var list = new List<SpellDetail>();
             var classes = magicalClasses.Select(x => x.Name).ToList();
             classes.Add(string.Empty);
 
-            list.Add(new SpellDetails("Spellcasting Level", this.CasterLevel.ToString()));
-            list.Add(new SpellDetails("Total Spells", this.Spells.Count.ToString()));
-            list.Add(new SpellDetails("Prepared Spells", this.PreparedSpells.Count.ToString()));
-            list.Add(this.MostFrequentSchool());
+            spellDetails.AddHeaderDetails(list);
+            spellDetails.AddConcentrationDetails(list);
+            spellDetails.AddMostFrequentSchool(list);
 
             for (int i = 0; i < Spell.Levels; i++)
             {
-                AddIfNotNull(list, this.SpellLevelDetails(i));
+                spellDetails.AddSpellLevelDetails(list, i);
             }
 
             foreach (var magicalClass in classes)
             {
-                AddIfNotNull(list, this.SpellClassDetails(magicalClass));
+                spellDetails.AddSpellClassDetails(list, magicalClass);
             }
 
             return list;
-        }
-
-        private static void AddIfNotNull(List<SpellDetails> list, SpellDetails? fancyString)
-        {
-            if (fancyString is not null)
-            {
-                list.Add(fancyString);
-            }
-        }
-
-        private SpellDetails? SpellLevelDetails(int level)
-        {
-            var spells = this.Spells.Where(x => x.Level == level).ToList();
-            if (spells.Count == 0)
-            {
-                return null;
-            }
-
-            return new SpellDetails($"{(level == 0 ? "Cantips" : $"Level {level} Spells")}", spells.Count.ToString());
-        }
-
-        private SpellDetails? SpellClassDetails(string name)
-        {
-            var spells = this.Spells.Where(x => x.Class?.Equals(name) ?? false).ToList();
-            if (spells.Count == 0)
-            {
-                return null;
-            }
-
-            return new SpellDetails($"{(name.Equals(string.Empty) ? "Unclassed" : name)} Spells", spells.Count.ToString());
-        }
-
-        private SpellDetails MostFrequentSchool()
-        {
-            var school = this.Spells
-                .GroupBy(x => x.School)
-                .OrderByDescending(y => y.Count())
-                .Take(1)
-                .Select(z => z.Key).First();
-
-            return new SpellDetails("Most Common School", school.ToString());
         }
     }
 }

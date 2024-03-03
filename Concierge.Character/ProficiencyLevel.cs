@@ -11,6 +11,11 @@ namespace Concierge.Character
     /// </summary>
     public static class ProficiencyLevel
     {
+        /// <summary>
+        /// The starting proficiency bonus.
+        /// </summary>
+        public const int BaseProficiency = 2;
+
         private static readonly Dictionary<int, int> levels = new ()
         {
             { 1, 2 },
@@ -47,7 +52,7 @@ namespace Concierge.Character
                 return value;
             }
 
-            return 2;
+            return BaseProficiency;
         }
     }
 }

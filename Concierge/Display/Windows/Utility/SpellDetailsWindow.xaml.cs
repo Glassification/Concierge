@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows.Utility
 {
-    using System.Linq;
     using System.Windows;
 
     using Concierge.Display.Components;
@@ -34,7 +33,7 @@ namespace Concierge.Display.Windows.Utility
 
         public void Draw()
         {
-            this.SpellDetailsDataGrid.ItemsSource = Program.CcsFile.Character.SpellCasting.GetSpellDetails(Defaults.MagicClasses.ToList());
+            this.SpellDetailsDataGrid.ItemsSource = Program.CcsFile.Character.SpellCasting.GetSpellDetails([.. Defaults.MagicClasses]);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
