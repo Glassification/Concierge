@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Display/Dictionaries/RadioButtonDictionary.xaml"/>
                 <ResourceDictionary Source="Display/Dictionaries/ScrollbarDictionary.xaml"/>
                 <ResourceDictionary Source="Display/Dictionaries/ToolTipDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/SliderDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

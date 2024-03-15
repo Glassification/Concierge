@@ -14,7 +14,7 @@ namespace Concierge.Display.Components
             : base()
         {
             this.Minimum = 0;
-            this.Margin = new Thickness(5, 0, 5, 0);
+            this.Margin = new Thickness(10, 0, 10, 0);
             this.IsMoveToPointEnabled = true;
             this.VerticalAlignment = VerticalAlignment.Center;
             this.HorizontalAlignment = HorizontalAlignment.Stretch;

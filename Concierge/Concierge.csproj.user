@@ -194,6 +194,9 @@
     <Page Update="Display\Dictionaries\ScrollbarDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Display\Dictionaries\SliderDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Display\Dictionaries\ToolTipDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>

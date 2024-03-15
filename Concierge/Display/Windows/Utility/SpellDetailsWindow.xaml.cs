@@ -6,6 +6,7 @@ namespace Concierge.Display.Windows.Utility
 {
     using System.Windows;
 
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
 
     /// <summary>
@@ -33,7 +34,13 @@ namespace Concierge.Display.Windows.Utility
 
         public void Draw()
         {
-            this.SpellDetailsDataGrid.ItemsSource = Program.CcsFile.Character.SpellCasting.GetSpellDetails([.. Defaults.MagicClasses]);
+            var spellcasting = Program.CcsFile.Character.SpellCasting;
+            if (spellcasting.Spells.IsEmpty())
+            {
+                return;
+            }
+
+            this.SpellDetailsDataGrid.ItemsSource = spellcasting.GetSpellDetails([.. Defaults.MagicClasses]);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

@@ -160,13 +160,13 @@
                             x:Name="ShortRestMenuItem"
                             Label="Short Rest"
                             Shortcut="Ctrl+R"
-                            IconKind="EyeClosed"
+                            IconKind="ClockFast"
                             IconColor="#06d6a0"/>
                         <local:PopupButton
                             x:Name="LongRestMenuItem"
                             Label="Long Rest"
                             Shortcut="Ctrl+Shift+R"
-                            IconKind="PowerSleep"
+                            IconKind="BedClock"
                             IconColor="#06d6a0"/>
                         <Grid>
                             <local:PopupToggleButton

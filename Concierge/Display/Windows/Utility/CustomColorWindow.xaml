@@ -198,19 +198,22 @@
                     Grid.Row="0"
                     Grid.Column="1"
                     ValueChanged="Slider_ValueChanged"
-                    Maximum="255"/>
+                    Maximum="255"
+                    Style="{StaticResource Horizontal_Slider}"/>
                 <components:ConciergeSlider
                     x:Name="GreenSlider"
                     Grid.Row="1"
                     Grid.Column="1"
                     ValueChanged="Slider_ValueChanged"
-                    Maximum="255"/>
+                    Maximum="255"
+                    Style="{StaticResource Horizontal_Slider}"/>
                 <components:ConciergeSlider
                     x:Name="BlueSlider"
                     Grid.Row="2"
                     Grid.Column="1"
                     ValueChanged="Slider_ValueChanged"
-                    Maximum="255"/>
+                    Maximum="255"
+                    Style="{StaticResource Horizontal_Slider}"/>
 
                 <controls:IntegerUpDownControl
                     x:Name="RedUpDown"

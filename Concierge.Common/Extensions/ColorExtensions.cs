@@ -113,12 +113,12 @@ namespace Concierge.Common.Extensions
         /// <returns>A new desaturated Color object.</returns>
         public static Color Desaturate(this Color color, double percent)
         {
-            var greayscale = (0.3 * color.R) + (0.6 * color.G) + (0.1 * color.B);
+            var greyscale = (0.3 * color.R) + (0.6 * color.G) + (0.1 * color.B);
             percent = Math.Max(0, Math.Min(1, percent));
 
-            var r = (byte)(color.R + (percent * (greayscale - color.R)));
-            var g = (byte)(color.G + (percent * (greayscale - color.G)));
-            var b = (byte)(color.B + (percent * (greayscale - color.B)));
+            var r = (byte)(color.R + (percent * (greyscale - color.R)));
+            var g = (byte)(color.G + (percent * (greyscale - color.G)));
+            var b = (byte)(color.B + (percent * (greyscale - color.B)));
 
             return Color.FromRgb(r, g, b);
         }
