@@ -6,6 +6,8 @@ namespace Concierge.Services.EasterEggs
 {
     using System.Windows.Input;
 
+    using Concierge.Configuration;
+
     public sealed class EasterEggService
     {
         private readonly IEasterEgg[] easterEggs = [new KonamiCode()];
@@ -16,6 +18,11 @@ namespace Concierge.Services.EasterEggs
 
         public void Evaluate(Key key)
         {
+            if (!AppSettingsManager.StartUp.WildWasteland)
+            {
+                return;
+            }
+
             foreach (var egg in this.easterEggs)
             {
                 egg.CheckCode(key);

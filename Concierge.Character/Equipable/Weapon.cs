@@ -236,9 +236,9 @@ namespace Concierge.Character.Equipable
         /// <returns>A <see cref="UsedItem"/> representing the result of using the weapon.</returns>
         public UsedItem Use(UseItem useItem)
         {
-            var ammunition = useItem.Item as Ammunition;
+            var augment = useItem.Item as Augment;
 
-            var damageInput = $"{this.Damage} {this.Misc} {(ammunition is not null ? ammunition.Bonus : string.Empty)}";
+            var damageInput = $"{this.Damage} {this.Misc} {(augment is not null ? augment.Damage : string.Empty)}";
             var cleanedInput = DiceParser.Clean(damageInput, Enum.GetNames(typeof(DamageTypes)));
             if (!DiceParser.IsValidInput(cleanedInput))
             {
@@ -247,7 +247,7 @@ namespace Concierge.Character.Equipable
 
             var attack = new DiceRoll(Dice.D20, 1, this.Attack);
             var damage = new CustomDiceRoll(cleanedInput);
-            var damageType = $"{this.DamageType} {ammunition?.DamageType}";
+            var damageType = $"{this.DamageType} {augment?.DamageType}";
 
             return new UsedItem(attack, damage, this.Name, damageType, $"[Damage: {damage.Min} - {damage.Max}] {this.Note}");
         }
@@ -298,7 +298,7 @@ namespace Concierge.Character.Equipable
                 WeaponTypes.Warhammer => new CategoryDto(PackIconKind.Hammer, Brushes.Cyan, this.Type.ToString()),
                 WeaponTypes.WarPick => new CategoryDto(PackIconKind.Pickaxe, Brushes.MediumPurple, this.Type.ToString()),
                 WeaponTypes.Whip => new CategoryDto(PackIconKind.JumpRope, Brushes.MediumPurple, this.Type.ToString()),
-                _ => new CategoryDto(),
+                _ => CategoryDto.Empty,
             };
         }
 

@@ -51,47 +51,47 @@
                             Margin="-1">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <components:ConciergeTextBlock 
-                                    Text="Ammunition"
+                                    Text="Augments"
                                     HorizontalAlignment="Left"
                                     FontSize="30"
-                                    Margin="90, 0, 0, 0"/>
+                                    Margin="90, -5, 0, 0"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="AmmoUpButton"
+                                    x:Name="AugmentUpButton"
                                     Width="60"
                                     Foreground="SteelBlue"
-                                    Click="AmmoUpButton_Click"
-                                    ToolTip="Move Selected Ammunition Up">
+                                    Click="AugmentUpButton_Click"
+                                    ToolTip="Move Selected Augment Up">
                                     <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="AmmonDownButton"
+                                    x:Name="AugmentDownButton"
                                     Width="60"
                                     Foreground="SteelBlue"
-                                    Click="AmmonDownButton_Click"
-                                    ToolTip="Move Selected Ammunition Down">
+                                    Click="AugmentDownButton_Click"
+                                    ToolTip="Move Selected Augment Down">
                                     <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="AmmoRecoverButton"
+                                    x:Name="AugmentRecoverButton"
                                     Width="60"
                                     Foreground="#B9487B"
-                                    Click="AmmoRecoverButton_Click"
-                                    ToolTip="Recover Ammunition">
+                                    Click="AugmentRecoverButton_Click"
+                                    ToolTip="Recover Augment">
                                     <materialDesign:PackIcon Kind="Recycle" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="AmmoClearButton"
+                                    x:Name="AugmentClearButton"
                                     Width="60"
                                     Foreground="Silver"
-                                    Click="AmmoClearButton_Click"
-                                    ToolTip="Clear Selected Ammunition">
+                                    Click="AugmentClearButton_Click"
+                                    ToolTip="Clear Selected Augment">
                                     <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <Label
@@ -102,38 +102,29 @@
                                     Background="Transparent"/>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}"
-                                    x:Name="AmmoAddButton"
+                                    x:Name="AugmentAddButton"
                                     Width="60"
                                     Foreground="#48B987"
-                                    Click="AmmoAddButton_Click"
-                                    ToolTip="Add New Ammunition">
+                                    Click="AugmentAddButton_Click"
+                                    ToolTip="Add New Augment">
                                     <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="AmmoEditButton"
+                                    x:Name="AugmentEditButton"
                                     Width="60"
                                     Foreground="#B98748"
-                                    Click="AmmoEditButton_Click"
-                                    ToolTip="Edit Selected Ammunition">
+                                    Click="AugmentEditButton_Click"
+                                    ToolTip="Edit Selected Augment">
                                     <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="AmmoUseButton"
-                                    Width="60"
-                                    Foreground="#B9487B"
-                                    Click="AmmoUseButton_Click"
-                                    ToolTip="Use Ammunition">
-                                    <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
-                                </components:ConciergeDesignButton>
-                                <components:ConciergeDesignButton 
-                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="AmmoDeleteButton"
+                                    x:Name="AugmentDeleteButton"
                                     Width="60"
                                     Foreground="IndianRed"
-                                    Click="AmmoDeleteButton_Click"
-                                    ToolTip="Delete Selected Ammunition">
+                                    Click="AugmentDeleteButton_Click"
+                                    ToolTip="Delete Selected Augment">
                                     <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                             </StackPanel>
@@ -143,13 +134,13 @@
                     <!--Ammo-->
                     <Grid
                         Grid.Row="1"
-                        x:Name="AmmoGrid"
+                        x:Name="AugmentGrid"
                         Margin="5,0,5,0">
                         <components:ConciergeDataGrid 
-                            x:Name="AmmoDataGrid"
+                            x:Name="AugmentDataGrid"
                             Style="{DynamicResource StandardDataGridStyle}"
-                            SelectionChanged="AmmoDataGrid_SelectionChanged"
-                            Sorted="AmmoDataGrid_Sorted">
+                            SelectionChanged="AugmentDataGrid_SelectionChanged"
+                            Sorted="AugmentDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn
                                 Width="0.02*">
@@ -166,34 +157,34 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn
-                                    Header="Ammo"
+                                    Header="Augment"
                                     Binding="{Binding Name}"
                                     Width="0.20*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
-                                    Header="Total"
-                                    Binding="{Binding Quantity}"
+                                    Header="Type"
+                                    Binding="{Binding Type}"
+                                    Width="0.12*"
+                                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                                <DataGridTextColumn
+                                    Header="Quantity"
+                                    Binding="{Binding DisplayQuantity}"
                                     Width="0.08*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
-                                    Header="Used"
-                                    Binding="{Binding Used}"
-                                    Width="0.08*"
-                                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                                <DataGridTextColumn
-                                    Header="Damage Bonus"
-                                    Binding="{Binding Bonus}"
-                                    Width="0.17*"
+                                    Header="Damage"
+                                    Binding="{Binding Damage}"
+                                    Width="0.12*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Damage Type"
                                     Binding="{Binding DamageType}"
-                                    Width="0.17*"
+                                    Width="0.15*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Description"
                                     Binding="{Binding Description}"
-                                    Width="0.30*"
+                                    Width="0.33*"
                                     ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>

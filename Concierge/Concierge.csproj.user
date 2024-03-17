@@ -257,7 +257,7 @@
     <Page Update="Display\Windows\AbilitiesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Display\Windows\AmmunitionWindow.xaml">
+    <Page Update="Display\Windows\AugmentationWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\AppearanceWindow.xaml">

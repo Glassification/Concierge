@@ -65,7 +65,7 @@ namespace Concierge.Console.Services
             {
                 "inventory" => new ListScript<Inventory>([.. Defaults.Inventory], character.Equipment.Inventory).Evaluate(command),
                 "weapons" => new ListScript<Weapon>([.. Defaults.Weapons], character.Equipment.Weapons).Evaluate(command),
-                "ammunition" => new ListScript<Ammunition>([.. Defaults.Ammunition], character.Equipment.Ammunition).Evaluate(command),
+                "augmentation" => new ListScript<Augment>([.. Defaults.Augmentation], character.Equipment.Augmentation).Evaluate(command),
                 "spells" => new ListScript<Spell>([.. Defaults.Spells], character.SpellCasting.Spells).Evaluate(command),
                 "magicclasses" => new ListScript<MagicalClass>([], character.SpellCasting.MagicalClasses).Evaluate(command),
                 "ability" => new ListScript<Ability>([.. Defaults.Abilities], character.Detail.Abilities).Evaluate(command),

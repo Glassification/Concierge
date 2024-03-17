@@ -23,7 +23,7 @@ namespace Concierge
         static Defaults()
         {
             Weapons = ReadJson<Weapon>(Properties.Resources.Weapon, nameof(Properties.Resources.Weapon));
-            Ammunition = ReadJson<Ammunition>(Properties.Resources.Ammunition, nameof(Properties.Resources.Ammunition));
+            Augmentation = ReadJson<Augment>(Properties.Resources.Augmentation, nameof(Properties.Resources.Augmentation));
             Spells = ReadJson<Spell>(Properties.Resources.Spell, nameof(Properties.Resources.Spell));
             Inventory = ReadJson<Inventory>(Properties.Resources.Inventory, nameof(Properties.Resources.Inventory));
             Languages = ReadJson<Language>(Properties.Resources.Language, nameof(Properties.Resources.Language));
@@ -53,7 +53,7 @@ namespace Concierge
 
         public static ReadOnlyCollection<Weapon> Weapons { get; }
 
-        public static ReadOnlyCollection<Ammunition> Ammunition { get; }
+        public static ReadOnlyCollection<Augment> Augmentation { get; }
 
         public static ReadOnlyCollection<Spell> Spells { get; }
 

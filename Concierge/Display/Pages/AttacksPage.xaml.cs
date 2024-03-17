@@ -14,6 +14,7 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
@@ -42,22 +43,22 @@ namespace Concierge.Display.Pages
         public void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawWeaponList();
-            this.DrawAmmoList();
+            this.DrawAugmentList();
             this.DrawStatusEffects();
         }
 
         public void Edit(object itemToEdit)
         {
-            if (itemToEdit is Ammunition ammunition)
+            if (itemToEdit is Augment ammunition)
             {
-                var index = this.AmmoDataGrid.SelectedIndex;
+                var index = this.AugmentDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit(
                     ammunition,
-                    typeof(AmmunitionWindow),
+                    typeof(AugmentationWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.Attacks);
-                this.DrawAmmoList();
-                this.AmmoDataGrid.SetSelectedIndex(index);
+                this.DrawAugmentList();
+                this.AugmentDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is Weapon weapon)
             {
@@ -122,22 +123,26 @@ namespace Concierge.Display.Pages
             this.SetStatusDataGridControlState();
         }
 
-        private void DrawAmmoList()
+        private void DrawAugmentList()
         {
-            this.AmmoDataGrid.Items.Clear();
-            Program.CcsFile.Character.Equipment.Ammunition.ForEach(ammo => this.AmmoDataGrid.Items.Add(ammo));
-            this.SetAmmoDataGridControlState();
+            this.AugmentDataGrid.Items.Clear();
+            Program.CcsFile.Character.Equipment.Augmentation.ForEach(augment => this.AugmentDataGrid.Items.Add(augment));
+            this.SetAugmentDataGridControlState();
         }
 
-        private void SetAmmoDataGridControlState()
+        private void SetAugmentDataGridControlState()
         {
-            this.AmmoDataGrid.SetButtonControlsEnableState(
-                this.AmmoUpButton,
-                this.AmmonDownButton,
-                this.AmmoRecoverButton,
-                this.AmmoEditButton,
-                this.AmmoUseButton,
-                this.AmmoDeleteButton);
+            this.AugmentDataGrid.SetButtonControlsEnableState(
+                this.AugmentUpButton,
+                this.AugmentDownButton,
+                this.AugmentRecoverButton,
+                this.AugmentEditButton,
+                this.AugmentDeleteButton);
+
+            if (this.AugmentDataGrid.SelectedItem is Augment augment)
+            {
+                DisplayUtility.SetControlEnableState(this.AugmentRecoverButton, augment.Recoverable && augment.Total < augment.Quantity);
+            }
         }
 
         private void SetStatusDataGridControlState()
@@ -155,14 +160,14 @@ namespace Concierge.Display.Pages
                 this.AttacksDeleteButton);
         }
 
-        private void AmmoUpButton_Click(object sender, RoutedEventArgs e)
+        private void AugmentUpButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NextItem(this.AmmoDataGrid, this.DrawAmmoList, Program.CcsFile.Character.Equipment.Ammunition, 0, -1);
+            this.NextItem(this.AugmentDataGrid, this.DrawAugmentList, Program.CcsFile.Character.Equipment.Augmentation, 0, -1);
         }
 
-        private void AmmonDownButton_Click(object sender, RoutedEventArgs e)
+        private void AugmentDownButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NextItem(this.AmmoDataGrid, this.DrawAmmoList, Program.CcsFile.Character.Equipment.Ammunition, Program.CcsFile.Character.Equipment.Ammunition.Count - 1, 1);
+            this.NextItem(this.AugmentDataGrid, this.DrawAugmentList, Program.CcsFile.Character.Equipment.Augmentation, Program.CcsFile.Character.Equipment.Augmentation.Count - 1, 1);
         }
 
         private void AttacksUpButton_Click(object sender, RoutedEventArgs e)
@@ -175,9 +180,9 @@ namespace Concierge.Display.Pages
             this.NextItem(this.WeaponDataGrid, this.DrawWeaponList, Program.CcsFile.Character.Equipment.Weapons, Program.CcsFile.Character.Equipment.Weapons.Count - 1, 1);
         }
 
-        private void AmmoClearButton_Click(object sender, RoutedEventArgs e)
+        private void AugmentClearButton_Click(object sender, RoutedEventArgs e)
         {
-            this.AmmoDataGrid.UnselectAll();
+            this.AugmentDataGrid.UnselectAll();
         }
 
         private void AttacksClearButton_Click(object sender, RoutedEventArgs e)
@@ -185,18 +190,18 @@ namespace Concierge.Display.Pages
             this.WeaponDataGrid.UnselectAll();
         }
 
-        private void AmmoAddButton_Click(object sender, RoutedEventArgs e)
+        private void AugmentAddButton_Click(object sender, RoutedEventArgs e)
         {
             var added = ConciergeWindowService.ShowAdd(
-                Program.CcsFile.Character.Equipment.Ammunition,
-                typeof(AmmunitionWindow),
+                Program.CcsFile.Character.Equipment.Augmentation,
+                typeof(AugmentationWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Attacks);
 
-            this.DrawAmmoList();
+            this.DrawAugmentList();
             if (added)
             {
-                this.AmmoDataGrid.SetSelectedIndex(this.AmmoDataGrid.LastIndex);
+                this.AugmentDataGrid.SetSelectedIndex(this.AugmentDataGrid.LastIndex);
             }
         }
 
@@ -215,11 +220,11 @@ namespace Concierge.Display.Pages
             }
         }
 
-        private void AmmoEditButton_Click(object sender, RoutedEventArgs e)
+        private void AugmentEditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.AmmoDataGrid.SelectedItem != null)
+            if (this.AugmentDataGrid.SelectedItem != null)
             {
-                this.Edit(this.AmmoDataGrid.SelectedItem);
+                this.Edit(this.AugmentDataGrid.SelectedItem);
             }
         }
 
@@ -231,36 +236,20 @@ namespace Concierge.Display.Pages
             }
         }
 
-        private void AmmoUseButton_Click(object sender, RoutedEventArgs e)
+        private void AugmentDeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.AmmoDataGrid.SelectedItem is not Ammunition ammunition)
+            if (this.AugmentDataGrid.SelectedItem is null)
             {
                 return;
             }
 
-            var oldItem = ammunition.DeepCopy();
-            var index = this.AmmoDataGrid.SelectedIndex;
+            var augment = (Augment)this.AugmentDataGrid.SelectedItem;
+            var index = this.AugmentDataGrid.SelectedIndex;
 
-            ammunition.Use(UseItem.Empty);
-            this.DrawAmmoList();
-            this.AmmoDataGrid.SetSelectedIndex(index);
-            Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
-        }
-
-        private void AmmoDeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.AmmoDataGrid.SelectedItem is null)
-            {
-                return;
-            }
-
-            var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
-            var index = this.AmmoDataGrid.SelectedIndex;
-
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Ammunition>(Program.CcsFile.Character.Equipment.Ammunition, ammo, index, this.ConciergePage));
-            Program.CcsFile.Character.Equipment.Ammunition.Remove(ammo);
-            this.DrawAmmoList();
-            this.AmmoDataGrid.SetSelectedIndex(index);
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Augment>(Program.CcsFile.Character.Equipment.Augmentation, augment, index, this.ConciergePage));
+            Program.CcsFile.Character.Equipment.Augmentation.Remove(augment);
+            this.DrawAugmentList();
+            this.AugmentDataGrid.SetSelectedIndex(index);
         }
 
         private void AttacksDeleteButton_Click(object sender, RoutedEventArgs e)
@@ -284,9 +273,9 @@ namespace Concierge.Display.Pages
             this.WeaponDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Equipment.Weapons, this.ConciergePage);
         }
 
-        private void AmmoDataGrid_Sorted(object sender, RoutedEventArgs e)
+        private void AugmentDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.AmmoDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Equipment.Ammunition, this.ConciergePage);
+            this.AugmentDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Equipment.Augmentation, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -297,9 +286,9 @@ namespace Concierge.Display.Pages
                     this.DrawStatusEffects();
                     ScrollDataGrid(this.StatusEffectsDataGrid);
                     break;
-                case nameof(AmmunitionWindow):
-                    this.DrawAmmoList();
-                    ScrollDataGrid(this.AmmoDataGrid);
+                case nameof(AugmentationWindow):
+                    this.DrawAugmentList();
+                    ScrollDataGrid(this.AugmentDataGrid);
                     break;
                 case nameof(AttacksWindow):
                     this.DrawWeaponList();
@@ -374,7 +363,7 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            var ammunition = this.AmmoDataGrid.SelectedItem as Ammunition;
+            var ammunition = this.AugmentDataGrid.SelectedItem as Augment;
             var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
             var result = weapon.Use(new UseItem(ammunition, 0));
 
@@ -382,38 +371,38 @@ namespace Concierge.Display.Pages
 
             if (ammunition is not null && windowResult == ConciergeResult.OK)
             {
-                var index = this.AmmoDataGrid.SelectedIndex;
+                var index = this.AugmentDataGrid.SelectedIndex;
                 var oldItem = ammunition.DeepCopy();
 
                 ammunition.Use(UseItem.Empty);
-                this.DrawAmmoList();
-                this.AmmoDataGrid.SetSelectedIndex(index);
+                this.DrawAugmentList();
+                this.AugmentDataGrid.SetSelectedIndex(index);
 
-                Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
+                Program.UndoRedoService.AddCommand(new EditCommand<Augment>(ammunition, oldItem, this.ConciergePage));
             }
         }
 
-        private void AmmoRecoverButton_Click(object sender, RoutedEventArgs e)
+        private void AugmentRecoverButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.AmmoDataGrid.SelectedItem is null)
+            if (this.AugmentDataGrid.SelectedItem is null)
             {
                 return;
             }
 
-            var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
-            var index = this.AmmoDataGrid.SelectedIndex;
-            var oldItem = ammo.DeepCopy();
+            var augment = (Augment)this.AugmentDataGrid.SelectedItem;
+            var index = this.AugmentDataGrid.SelectedIndex;
+            var oldItem = augment.DeepCopy();
 
-            ammo.Recover();
-            this.DrawAmmoList();
-            this.AmmoDataGrid.SetSelectedIndex(index);
+            augment.Recover();
+            this.DrawAugmentList();
+            this.AugmentDataGrid.SetSelectedIndex(index);
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammo, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Augment>(augment, oldItem, this.ConciergePage));
         }
 
-        private void AmmoDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void AugmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.SetAmmoDataGridControlState();
+            this.SetAugmentDataGridControlState();
         }
 
         private void StatusEffectsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

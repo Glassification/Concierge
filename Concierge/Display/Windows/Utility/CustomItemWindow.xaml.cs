@@ -50,9 +50,9 @@ namespace Concierge.Display.Windows.Utility
             {
                 type = typeof(AbilitiesWindow);
             }
-            else if (item is Ammunition)
+            else if (item is Augment)
             {
-                type = typeof(AmmunitionWindow);
+                type = typeof(AugmentationWindow);
             }
             else if (item is Armor)
             {

@@ -138,7 +138,6 @@ namespace Concierge.Character.Vitals
                 "Infusions" => new CategoryDto(PackIconKind.Needle, Brushes.Goldenrod, this.Name),
                 "Ki Points" => new CategoryDto(PackIconKind.Kabaddi, Brushes.LightGreen, this.Name),
                 "Rages" => new CategoryDto(PackIconKind.EmojiAngry, Brushes.IndianRed, this.Name),
-                "Sneak Attack Dice" => new CategoryDto(PackIconKind.DiceD6, Brushes.SteelBlue, this.Name),
                 "Sorcery Points" => new CategoryDto(PackIconKind.Creation, Brushes.OrangeRed, this.Name),
                 "Superiority Dice" => new CategoryDto(PackIconKind.DiceD12, Brushes.SteelBlue, this.Name),
                 _ => new CategoryDto(PackIconKind.ListStatus, Brushes.MediumPurple, this.Name),

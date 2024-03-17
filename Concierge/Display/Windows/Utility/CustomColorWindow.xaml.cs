@@ -61,7 +61,7 @@ namespace Concierge.Display.Utility
         public override CustomColor ShowColorWindow(CustomColor startingColor)
         {
             this.NameTextBox.Text = startingColor.IsValid ? startingColor.Name : string.Empty;
-            this.UpdateRgbValues(startingColor.Color);
+            this.UpdateRgbSpinner(startingColor.Color);
             this.UpdateRgbSlider(startingColor.Color);
             this.ShowConciergeWindow();
 
@@ -79,8 +79,8 @@ namespace Concierge.Display.Utility
         {
             try
             {
-                var color = (Color)ColorConverter.ConvertFromString(ColorUtility.FormatHexString(this.HexTextBox.Text));
-                this.UpdateRgbValues(color);
+                var color = (Color)ColorConverter.ConvertFromString(ColorUtility.FormatHex(this.HexTextBox.Text));
+                this.UpdateRgbSpinner(color);
                 this.UpdateRgbSlider(color);
             }
             catch (Exception)
@@ -111,7 +111,7 @@ namespace Concierge.Display.Utility
             }
         }
 
-        private void UpdateRgbValues(Color color)
+        private void UpdateRgbSpinner(Color color)
         {
             this.RgbValueLock = true;
             this.RedUpDown.Value = color.R;
@@ -151,7 +151,7 @@ namespace Concierge.Display.Utility
             this.ColorPickerCanvas.InvalidateVisual();
 
             var color = Color.FromArgb(Constants.ColorSpace, pixels[2], pixels[1], pixels[0]);
-            this.UpdateRgbValues(color);
+            this.UpdateRgbSpinner(color);
             this.UpdateRgbSlider(color);
         }
 
@@ -241,7 +241,7 @@ namespace Concierge.Display.Utility
                 (byte)this.GreenSlider.Value,
                 (byte)this.BlueSlider.Value);
             this.HexTextBox.Text = this.SelectedColor.ToHexWithoutAlpha();
-            this.UpdateRgbValues(this.SelectedColor);
+            this.UpdateRgbSpinner(this.SelectedColor);
         }
     }
 }

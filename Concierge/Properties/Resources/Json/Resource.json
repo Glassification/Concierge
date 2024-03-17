@@ -40,14 +40,6 @@
     "Id": "00000000-0000-0000-0000-000000000000"
   },
   {
-    "Type": "Sneak Attack Dice",
-    "Total": 1,
-    "Spent": 0,
-    "Note": "Uses d6.",
-    "Recovery": 0,
-    "Id": "00000000-0000-0000-0000-000000000000"
-  },
-  {
     "Type": "Sorcery Points",
     "Total": 0,
     "Spent": 0,

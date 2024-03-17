@@ -10,6 +10,7 @@ namespace Concierge.Character.Magic
     using System.Windows.Media;
 
     using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Data;
     using MaterialDesignThemes.Wpf;
 
@@ -48,7 +49,7 @@ namespace Concierge.Character.Magic
         public void AddSpellLevelDetails(List<SpellDetail> list, int level)
         {
             var spells = this.spellCasting.Spells.Where(x => x.Level == level).ToList();
-            if (spells.Count == 0)
+            if (spells.IsEmpty())
             {
                 return;
             }
@@ -64,7 +65,7 @@ namespace Concierge.Character.Magic
         public void AddSpellClassDetails(List<SpellDetail> list, string name)
         {
             var spells = this.spellCasting.Spells.Where(x => x.Class?.Equals(name) ?? false).ToList();
-            if (spells.Count == 0)
+            if (spells.IsEmpty())
             {
                 return;
             }

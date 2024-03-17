@@ -10,17 +10,19 @@ namespace Concierge.Common.Dtos
 
     public sealed class CategoryDto
     {
-        public CategoryDto()
-            : this(PackIconKind.Error, Brushes.Red, string.Empty)
-        {
-        }
-
         public CategoryDto(PackIconKind iconKind, Brush brush, string name)
         {
             this.Brush = brush;
             this.IconKind = iconKind;
             this.Name = name;
         }
+
+        private CategoryDto()
+            : this(PackIconKind.Error, Brushes.Red, string.Empty)
+        {
+        }
+
+        public static CategoryDto Empty => new ();
 
         public Brush Brush { get; set; }
 

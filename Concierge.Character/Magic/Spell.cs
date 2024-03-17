@@ -192,7 +192,7 @@ namespace Concierge.Character.Magic
                 ArcaneSchools.Necromancy => new CategoryDto(PackIconKind.Coffin, Brushes.LightGreen, this.School.ToString()),
                 ArcaneSchools.Transmutation => new CategoryDto(PackIconKind.CircleOpacity, Brushes.Orange, this.School.ToString()),
                 ArcaneSchools.Universal => new CategoryDto(PackIconKind.Earth, Brushes.White, this.School.ToString()),
-                _ => new CategoryDto(),
+                _ => CategoryDto.Empty,
             };
         }
 

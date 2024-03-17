@@ -14,14 +14,6 @@ namespace Concierge.Tools
     public sealed class UsedItem
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UsedItem"/> class with default values.
-        /// </summary>
-        public UsedItem()
-            : this(DiceRoll.Empty, DiceRoll.Empty, string.Empty, string.Empty, string.Empty)
-        {
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="UsedItem"/> class with the specified attack, damage, name, and description.
         /// </summary>
         /// <param name="attack">The attack roll associated with the used item.</param>
@@ -37,6 +29,16 @@ namespace Concierge.Tools
             this.DamageType = damageType;
             this.Description = description;
         }
+
+        private UsedItem()
+            : this(DiceRoll.Empty, DiceRoll.Empty, string.Empty, string.Empty, string.Empty)
+        {
+        }
+
+        /// <summary>
+        /// Gets an empty instance of the <see cref="UsedItem"/> class.
+        /// </summary>
+        public static UsedItem Empty => new ();
 
         /// <summary>
         /// Gets or sets the attack roll associated with the used item.

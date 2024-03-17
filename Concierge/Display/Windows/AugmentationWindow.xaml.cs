@@ -1,4 +1,4 @@
-﻿// <copyright file="AmmunitionWindow.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="AugmentationWindow.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -12,57 +12,60 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Equipable;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
-    /// Interaction logic for AmmunitionWindow.xaml.
+    /// Interaction logic for AugmentationWindow.xaml.
     /// </summary>
-    public partial class AmmunitionWindow : ConciergeWindow
+    public partial class AugmentationWindow : ConciergeWindow
     {
-        public AmmunitionWindow()
+        private int oldQuantity;
+        private int oldTotal;
+
+        public AugmentationWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
             this.NameComboBox.ItemsSource = DefaultItems;
             this.DamageTypeComboBox.ItemsSource = ComboBoxGenerator.DamageTypesComboBox();
-            this.CoinTypeComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox();
+            this.TypeComboBox.ItemsSource = ComboBoxGenerator.AugmentTypeComboBox();
             this.ConciergePage = ConciergePage.None;
-            this.Ammunition = [];
-            this.SelectedAmmo = new Ammunition();
+            this.Augmentation = [];
+            this.SelectedAugment = new Augment();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameComboBox);
             this.SetMouseOverEvents(this.QuantityUpDown);
             this.SetMouseOverEvents(this.UsedUpDown);
-            this.SetMouseOverEvents(this.ValueUpDown);
-            this.SetMouseOverEvents(this.CoinTypeComboBox);
+            this.SetMouseOverEvents(this.TypeComboBox);
             this.SetMouseOverEvents(this.RecoverableCheckBox);
             this.SetMouseOverEvents(this.BonusTextBox, this.BonusTextBackground);
             this.SetMouseOverEvents(this.DescriptionTextBox, this.DescriptionTextBackground);
             this.SetMouseOverEvents(this.DamageTypeComboBox);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ammunition";
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Augmentation";
 
-        public override string WindowName => nameof(AmmunitionWindow);
+        public override string WindowName => nameof(AugmentationWindow);
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Ammunition, Program.CustomItemService.GetCustomItems<Ammunition>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Augmentation, Program.CustomItemService.GetCustomItems<Augment>());
 
         private bool Editing { get; set; }
 
-        private Ammunition SelectedAmmo { get; set; }
+        private Augment SelectedAugment { get; set; }
 
-        private List<Ammunition> Ammunition { get; set; }
+        private List<Augment> Augmentation { get; set; }
 
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Ammunition = Program.CcsFile.Character.Equipment.Ammunition;
+            this.Augmentation = Program.CcsFile.Character.Equipment.Augmentation;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -72,34 +75,35 @@ namespace Concierge.Display.Windows
             return this.Result;
         }
 
-        public override bool ShowAdd<T>(T ammunitions)
+        public override bool ShowAdd<T>(T augmentation)
         {
-            if (ammunitions is not List<Ammunition> castItem)
+            if (augmentation is not List<Augment> castItem)
             {
                 return false;
             }
 
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Ammunition = castItem;
+            this.Augmentation = castItem;
             this.ItemsAdded = false;
 
+            this.SetQuantityState(false);
             this.ClearFields();
             this.ShowConciergeWindow();
 
             return this.ItemsAdded;
         }
 
-        public override void ShowEdit<T>(T ammunition)
+        public override void ShowEdit<T>(T augment)
         {
-            if (ammunition is not Ammunition castItem)
+            if (augment is not Augment castItem)
             {
                 return;
             }
 
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedAmmo = castItem;
+            this.SelectedAugment = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields(castItem);
@@ -112,29 +116,32 @@ namespace Concierge.Display.Windows
 
             if (this.Editing)
             {
-                this.UpdateAmmunition(this.SelectedAmmo);
+                this.UpdateAmmunition(this.SelectedAugment);
             }
             else
             {
-                this.Ammunition.Add(this.ToAmmunition());
+                this.Augmentation.Add(this.ToAugment());
             }
 
             this.CloseConciergeWindow();
         }
 
-        private void FillFields(Ammunition ammunition)
+        private void FillFields(Augment augment)
         {
-            this.NameComboBox.Text = ammunition.Name;
-            this.QuantityUpDown.Value = ammunition.Quantity;
-            this.BonusTextBox.Text = ammunition.Bonus;
-            this.DamageTypeComboBox.Text = ammunition.DamageType.ToString();
-            this.UsedUpDown.Value = ammunition.Used;
-            this.ValueUpDown.Value = ammunition.Value;
-            this.CoinTypeComboBox.Text = ammunition.CoinType.ToString();
-            this.RecoverableCheckBox.IsChecked = ammunition.Recoverable;
-            this.DescriptionTextBox.Text = ammunition.Description;
+            this.SetQuantityState(augment.Recoverable);
+            this.RecoverableCheckBox.UpdatingValue();
+
+            this.NameComboBox.Text = augment.Name;
+            this.QuantityUpDown.Value = this.oldQuantity = augment.Quantity;
+            this.BonusTextBox.Text = augment.Damage;
+            this.DamageTypeComboBox.Text = augment.DamageType.ToString();
+            this.TypeComboBox.Text = augment.Type.ToString();
+            this.UsedUpDown.Value = this.oldTotal = augment.Total;
+            this.RecoverableCheckBox.IsChecked = augment.Recoverable;
+            this.DescriptionTextBox.Text = augment.Description;
 
             this.UsedUpDown.Maximum = this.QuantityUpDown.Value;
+            this.RecoverableCheckBox.UpdatedValue();
         }
 
         private void ClearFields(string name = "")
@@ -143,57 +150,61 @@ namespace Concierge.Display.Windows
             this.QuantityUpDown.Value = 0;
             this.BonusTextBox.Text = string.Empty;
             this.DamageTypeComboBox.Text = DamageTypes.None.ToString();
+            this.TypeComboBox.Text = AugmentType.None.ToString();
             this.UsedUpDown.Value = 0;
-            this.ValueUpDown.Value = 0;
-            this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
             this.RecoverableCheckBox.IsChecked = false;
             this.DescriptionTextBox.Text = string.Empty;
         }
 
-        private void UpdateAmmunition(Ammunition ammunition)
+        private void UpdateAmmunition(Augment augment)
         {
-            var oldItem = ammunition.DeepCopy();
+            var oldItem = augment.DeepCopy();
 
-            ammunition.Name = this.NameComboBox.Text;
-            ammunition.Quantity = this.QuantityUpDown.Value;
-            ammunition.Bonus = this.BonusTextBox.Text;
-            ammunition.DamageType = this.DamageTypeComboBox.Text.ToEnum<DamageTypes>();
-            ammunition.Used = this.UsedUpDown.Value;
-            ammunition.Value = this.ValueUpDown.Value;
-            ammunition.CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>();
-            ammunition.Recoverable = this.RecoverableCheckBox.IsChecked ?? false;
-            ammunition.Description = this.DescriptionTextBox.Text;
+            augment.Name = this.NameComboBox.Text;
+            augment.Quantity = this.QuantityUpDown.Value;
+            augment.Damage = this.BonusTextBox.Text;
+            augment.DamageType = this.DamageTypeComboBox.Text.ToEnum<DamageTypes>();
+            augment.Type = this.TypeComboBox.Text.ToEnum<AugmentType>();
+            augment.Total = this.UsedUpDown.Value;
+            augment.Recoverable = this.RecoverableCheckBox.IsChecked ?? false;
+            augment.Description = this.DescriptionTextBox.Text;
 
-            if (!ammunition.IsCustom)
+            if (!augment.IsCustom)
             {
-                Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
+                Program.UndoRedoService.AddCommand(new EditCommand<Augment>(augment, oldItem, this.ConciergePage));
             }
         }
 
-        private Ammunition Create()
+        private void SetQuantityState(bool state)
         {
-            return new Ammunition()
+            DisplayUtility.SetControlEnableState(this.UsedUpDown, state);
+            DisplayUtility.SetControlEnableState(this.QuantityUpDown, state);
+            DisplayUtility.SetControlEnableState(this.SlashLabel, state);
+        }
+
+        private Augment Create()
+        {
+            return new Augment()
             {
                 Name = this.NameComboBox.Text,
                 Quantity = this.QuantityUpDown.Value,
-                Bonus = this.BonusTextBox.Text,
+                Damage = this.BonusTextBox.Text,
                 DamageType = this.DamageTypeComboBox.Text.ToEnum<DamageTypes>(),
-                Used = this.UsedUpDown.Value,
-                Value = this.ValueUpDown.Value,
-                CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>(),
+                Type = this.TypeComboBox.Text.ToEnum<AugmentType>(),
+                Total = this.UsedUpDown.Value,
                 Recoverable = this.RecoverableCheckBox.IsChecked ?? false,
                 Description = this.DescriptionTextBox.Text,
             };
         }
 
-        private Ammunition ToAmmunition()
+        private Augment ToAugment()
         {
             this.ItemsAdded = true;
-            var ammo = this.Create();
+            var augment = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunition, ammo, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Augment>(this.Augmentation, augment, this.ConciergePage));
 
-            return ammo;
+            return augment;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -209,7 +220,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Ammunition.Add(this.ToAmmunition());
+            this.Augmentation.Add(this.ToAugment());
             this.ClearFields();
 
             this.InvokeApplyChanges();
@@ -223,7 +234,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Ammunition ammunition)
+            if (this.NameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Augment ammunition)
             {
                 this.FillFields(ammunition);
             }
@@ -236,6 +247,10 @@ namespace Concierge.Display.Windows
         private void QuantityUsedUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
             this.UsedUpDown.Maximum = this.QuantityUpDown.Value;
+            if (this.QuantityUpDown.Delta > 0 && this.QuantityUpDown.Value - 1 == this.UsedUpDown.Value)
+            {
+                this.UsedUpDown.Value = this.QuantityUpDown.Value;
+            }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -243,7 +258,7 @@ namespace Concierge.Display.Windows
             if (this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
                 ConciergeMessageBox.Show(
-                    "Could not save the Ammunition.\nA name is required before saving a custom item.",
+                    "Could not save the Augmentation.\nA name is required before saving a custom item.",
                     "Warning",
                     ConciergeButtons.Ok,
                     ConciergeIcons.Alert);
@@ -253,6 +268,34 @@ namespace Concierge.Display.Windows
             Program.CustomItemService.AddCustomItem(this.Create());
             this.ClearFields();
             this.NameComboBox.ItemsSource = DefaultItems;
+        }
+
+        private void RecoverableCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            this.QuantityUpDown.Value = this.oldQuantity;
+            this.UsedUpDown.Value = this.oldTotal;
+
+            this.SetQuantityState(true);
+        }
+
+        private void RecoverableCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.oldQuantity = this.QuantityUpDown.Value;
+            this.oldTotal = this.UsedUpDown.Value;
+            this.UsedUpDown.Value = 0;
+            this.QuantityUpDown.Value = 0;
+
+            this.SetQuantityState(false);
+        }
+
+        private void DamageTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is not ConciergeComboBox comboBox || comboBox.SelectedItem is not ComboBoxItemControl control)
+            {
+                return;
+            }
+
+            this.DamageLabel.Text = control.ToString().Equals("Healing") ? "Healing:" : "Damage:";
         }
     }
 }

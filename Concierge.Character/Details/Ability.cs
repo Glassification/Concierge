@@ -154,7 +154,7 @@ namespace Concierge.Character.Details
                 AbilityTypes.ClassFeature => new CategoryDto(PackIconKind.BookVariant, Brushes.Orange, this.Type.ToString()),
                 AbilityTypes.RaceFeature => new CategoryDto(PackIconKind.BookVariant, Brushes.IndianRed, this.Type.ToString()),
                 AbilityTypes.None => new CategoryDto(PackIconKind.BorderNone, Brushes.SlateGray, this.Type.ToString()),
-                _ => new CategoryDto(),
+                _ => CategoryDto.Empty,
             };
         }
 

@@ -25,7 +25,7 @@ namespace Concierge.DevTools.Generators
                 IsCustom = true,
             };
 
-            var ammunition = new Ammunition()
+            var ammunition = new Augment()
             {
                 Name = "9mm",
                 IsCustom = true,

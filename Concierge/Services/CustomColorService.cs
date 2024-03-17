@@ -9,6 +9,7 @@ namespace Concierge.Services
     using System.Linq;
 
     using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Data;
     using Concierge.Persistence.ReadWriters;
@@ -39,7 +40,7 @@ namespace Concierge.Services
 
         public void AddRecentColor(CustomColor color)
         {
-            if (this.RecentColors.Count == 0)
+            if (this.RecentColors.IsEmpty())
             {
                 Program.Logger.Warning($"{nameof(this.RecentColors)} is empty.");
                 return;
@@ -69,7 +70,7 @@ namespace Concierge.Services
 
         public void UpdateRecentColors(int index)
         {
-            if (this.RecentColors.Count == 0)
+            if (this.RecentColors.IsEmpty())
             {
                 Program.Logger.Warning($"{nameof(this.RecentColors)} is empty.");
                 return;

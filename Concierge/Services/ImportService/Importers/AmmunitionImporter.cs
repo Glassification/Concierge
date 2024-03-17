@@ -19,24 +19,24 @@ namespace Concierge.Services.ImportService.Importers
 
         public override void Import(IEnumerable<IUnique> list)
         {
-            if (list is not List<Ammunition> ammo)
+            if (list is not List<Augment> ammo)
             {
                 return;
             }
 
             Program.Logger.Info($"Import ammunition.");
             CycleGuids(ammo);
-            this.Character.Equipment.Ammunition.AddRange(ammo);
+            this.Character.Equipment.Augmentation.AddRange(ammo);
         }
 
         public override IEnumerable<IUnique> Load(CharacterSheet character)
         {
-            return character.Equipment.Ammunition;
+            return character.Equipment.Augmentation;
         }
 
         public override IEnumerable<IUnique> Load(string fileName)
         {
-            return this.ReadWriter.ReadJson<List<Ammunition>>(fileName);
+            return this.ReadWriter.ReadJson<List<Augment>>(fileName);
         }
     }
 }

@@ -255,7 +255,7 @@ namespace Concierge.Character.Equipable
                 "Tool" => new CategoryDto(PackIconKind.RulerSquareCompass, Brushes.LightYellow, this.ItemCategory),
                 "Vehicle (Land)" => new CategoryDto(PackIconKind.Caravan, Brushes.SaddleBrown, this.ItemCategory),
                 "Vehicle (Water)" => new CategoryDto(PackIconKind.SailBoat, Brushes.LightSkyBlue, this.ItemCategory),
-                _ => new CategoryDto(),
+                _ => CategoryDto.Empty,
             };
         }
 

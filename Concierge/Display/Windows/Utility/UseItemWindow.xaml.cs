@@ -20,7 +20,7 @@ namespace Concierge.Display.Windows.Utility
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.UsedItem = new UsedItem();
+            this.UsedItem = UsedItem.Empty;
         }
 
         public override string HeaderText => "Use Item";

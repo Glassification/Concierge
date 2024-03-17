@@ -129,7 +129,7 @@ namespace Concierge.Search
             foreach (var chapter in chapters)
             {
                 var documents = chapter.Documents;
-                if (documents.Count == 0)
+                if (documents.IsEmpty())
                 {
                     continue;
                 }

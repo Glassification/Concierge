@@ -11,7 +11,7 @@ namespace Concierge.Character.Equipable
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Represents a collection of equipment including ammunition, defense, inventory, and weapons.
+    /// Represents a collection of equipment including augments, defense, inventory, and weapons.
     /// </summary>
     public sealed class Equipment : ICopyable<Equipment>
     {
@@ -20,7 +20,7 @@ namespace Concierge.Character.Equipable
         /// </summary>
         public Equipment()
         {
-            this.Ammunition = [];
+            this.Augmentation = [];
             this.Defense = new Defense();
             this.Inventory = [];
             this.Weapons = [];
@@ -28,9 +28,9 @@ namespace Concierge.Character.Equipable
         }
 
         /// <summary>
-        /// Gets or sets the list of ammunition.
+        /// Gets or sets the list of augments.
         /// </summary>
-        public List<Ammunition> Ammunition { get; set; }
+        public List<Augment> Augmentation { get; set; }
 
         /// <summary>
         /// Gets or sets the defense.
@@ -54,11 +54,6 @@ namespace Concierge.Character.Equipable
                 foreach (var weapon in this.Weapons)
                 {
                     itemValue += Wealth.GetGoldValue(weapon.Value, weapon.CoinType);
-                }
-
-                foreach (var ammunition in this.Ammunition)
-                {
-                    itemValue += Wealth.GetGoldValue(ammunition.Value, ammunition.CoinType) * (ammunition.Quantity - ammunition.Used);
                 }
 
                 return itemValue;
@@ -89,7 +84,7 @@ namespace Concierge.Character.Equipable
         {
             return new Equipment()
             {
-                Ammunition = [.. this.Ammunition.DeepCopy()],
+                Augmentation = [.. this.Augmentation.DeepCopy()],
                 Defense = this.Defense.DeepCopy(),
                 Inventory = [.. this.Inventory.DeepCopy()],
                 Weapons = [.. this.Weapons.DeepCopy()],

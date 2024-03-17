@@ -27,11 +27,6 @@ namespace Concierge.Configuration.Objects
         public bool CompressCharacterSheet { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether to enable the console.
-        /// </summary>
-        public bool EnableConsole { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether to enable network access.
         /// </summary>
         public bool EnableNetworkAccess { get; set; }
@@ -45,5 +40,10 @@ namespace Concierge.Configuration.Objects
         /// Gets or sets a value indicating whether to enable advanced features.
         /// </summary>
         public bool ExpertMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to enable wacky features.
+        /// </summary>
+        public bool WildWasteland { get; set; }
     }
 }

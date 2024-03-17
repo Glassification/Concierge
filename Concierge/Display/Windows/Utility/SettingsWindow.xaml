@@ -283,7 +283,7 @@
 
             <components:ConciergeTextBoxBackground
                 Grid.Column="2"
-                x:Name="OpenTextBoxBackground">
+                x:Name="OpenTextBackground">
                 <components:ConciergeTextBox
                     x:Name="OpenTextBox"
                     TextChanged="OpenTextBox_TextChanged"/>
@@ -336,7 +336,7 @@
 
             <components:ConciergeTextBoxBackground
                 Grid.Column="2"
-                x:Name="SaveTextBoxBackground">
+                x:Name="SaveTextBackground">
                 <components:ConciergeTextBox
                     x:Name="SaveTextBox"
                     TextChanged="SaveTextBox_TextChanged"/>

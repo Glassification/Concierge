@@ -96,6 +96,12 @@ namespace Concierge.Display.Pages
             this.SpellSlotsDisplay.FillSpellSlots(Program.CcsFile.Character.SpellCasting.SpellSlots);
         }
 
+        private static UseItem GetUseItem(Spell spell, SpellCasting magic)
+        {
+            var attack = magic.GetSpellAttack(spell.Class);
+            return attack == 0 ? UseItem.Empty : new UseItem(attack);
+        }
+
         private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
         {
             var index = dataGrid.NextItem(list, limit, increment, this.ConciergePage);
@@ -338,7 +344,7 @@ namespace Concierge.Display.Pages
                 commands.Add(new EditCommand<SpellSlots>(magic.SpellSlots, spellSlots, this.ConciergePage));
             }
 
-            var result = spell.Use(UseItem.Empty);
+            var result = spell.Use(GetUseItem(spell, magic));
             if (spell.Concentration)
             {
                 magic.SetConcentration(spell);

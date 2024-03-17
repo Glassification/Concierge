@@ -535,45 +535,42 @@
       }
     },
     "Equipment": {
-      "Ammunition": [
+      "Augmentation": [
         {
-          "Bonus": "",
-          "CoinType": 0,
+          "Damage": "",
           "DamageType": 8,
           "Description": "A fin-stabilized projectile launched by a bow.",
-          "Id": "f4477f52-d3b5-4fa1-bc78-b387f0cbb886",
+          "Id": "445e7a78-cecc-4bc3-8c19-aab50dc976ba",
           "IsCustom": false,
           "Name": "Arrows",
           "Quantity": 18,
-          "Recoverable": false,
-          "Used": 0,
-          "Value": 5
+          "Recoverable": true,
+          "Total": 18,
+          "Type": 1
         },
         {
-          "Bonus": "",
-          "CoinType": 3,
-          "DamageType": 8,
-          "Description": "Some enemies will resist mundane weapon damage unless the weapon has been silvered.",
-          "Id": "27321353-2dc8-4673-99af-62f7cdcf6fd4",
-          "IsCustom": false,
-          "Name": "Silvered Arrows",
-          "Quantity": 7,
-          "Recoverable": false,
-          "Used": 0,
-          "Value": 1
-        },
-        {
-          "Bonus": "2d4+8",
-          "CoinType": 3,
+          "Damage": "2d4+8",
           "DamageType": 14,
-          "Description": "",
-          "Id": "165a3275-d9b1-4b62-a78a-8610dfdccf27",
+          "Description": "Heal target on it instead of damaging them.",
+          "Id": "5fd39538-e488-4232-83a1-dfc54de8ba88",
           "IsCustom": false,
           "Name": "Healing Arrows",
           "Quantity": 5,
+          "Recoverable": true,
+          "Total": 5,
+          "Type": 1
+        },
+        {
+          "Damage": "5d6",
+          "DamageType": 15,
+          "Description": "Apply bonus damage to an attack, when the attacker has advantage.",
+          "Id": "d031c3c5-e950-4498-98d3-fa89db302ef0",
+          "IsCustom": false,
+          "Name": "Sneak Attack",
+          "Quantity": 0,
           "Recoverable": false,
-          "Used": 1,
-          "Value": 5
+          "Total": 0,
+          "Type": 2
         }
       ],
       "Defense": {
@@ -2891,13 +2888,13 @@
     }
   },
   "CharacterService": {},
-  "Hash": "6E414C6934C06880DF77FC2D95527D07CCB19C44E765B69383E0BCF51ACE515D",
+  "Hash": "0B3D9BB96CF7F8DE12190C0B8B9ED3125F616C144322AB7EB9CCAD4A7201AA72",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-03-02T08:33:26.653863-06:00",
+  "LastSaveDate": "2024-03-17T12:46:48.3841672-05:00",
   "Version": {
     "Major": 5,
-    "Minor": 7,
-    "Patch": 2
+    "Minor": 8,
+    "Patch": 0
   },
   "IsEmpty": false
 }

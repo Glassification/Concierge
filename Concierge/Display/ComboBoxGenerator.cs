@@ -15,6 +15,7 @@ namespace Concierge.Display
     using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
+    using Concierge.Configuration;
     using Concierge.Display.Controls;
     using Concierge.Search.Enums;
     using MaterialDesignThemes.Wpf;
@@ -134,12 +135,19 @@ namespace Concierge.Display
 
         public static List<ComboBoxItemControl> GenderComboBox()
         {
-            return
+            List<ComboBoxItemControl> list =
             [
                 new (PackIconKind.GenderFemale, Brushes.Pink, Gender.Female.ToString()),
                 new (PackIconKind.GenderMale, Brushes.SteelBlue, Gender.Male.ToString()),
                 new (PackIconKind.GenderNonBinary, Brushes.MediumPurple, Gender.Other.ToString()),
             ];
+
+            if (AppSettingsManager.StartUp.WildWasteland)
+            {
+                list.Add(new (PackIconKind.Helicopter, Brushes.MediumPurple, Gender.AttackHelicopter.ToString().FormatFromPascalCase()));
+            }
+
+            return list;
         }
 
         public static List<ComboBoxItemControl> ArmorTypeComboBox()
@@ -523,6 +531,17 @@ namespace Concierge.Display
                 new (PackIconKind.FormatAlignCenter, ConciergeBrushes.Deer, HorizontalAlignment.Center.ToString()),
                 new (PackIconKind.FormatAlignRight, Brushes.IndianRed, HorizontalAlignment.Right.ToString()),
                 new (PackIconKind.StretchToPage, Brushes.Goldenrod, HorizontalAlignment.Stretch.ToString()),
+            ];
+        }
+
+        public static List<ComboBoxItemControl> AugmentTypeComboBox()
+        {
+            return
+            [
+                new (PackIconKind.ArrowProjectileMultiple, Brushes.IndianRed, AugmentType.Ammunition.ToString()),
+                new (PackIconKind.StarCircleOutline, Brushes.MediumPurple, AugmentType.Feature.ToString()),
+                new (PackIconKind.Magic, Brushes.Plum, AugmentType.Spell.ToString()),
+                new (PackIconKind.ListStatus, Brushes.Silver, AugmentType.None.ToString()),
             ];
         }
 

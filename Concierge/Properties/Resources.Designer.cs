@@ -161,97 +161,6 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Ammunition {
-            get {
-                object obj = ResourceManager.GetObject("Ammunition", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Add any extra damage, status effects, or behaviors here..
-        /// </summary>
-        internal static string AmmunitionWindow_BonusTextBox {
-            get {
-                return ResourceManager.GetString("AmmunitionWindow_BonusTextBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Specify the denomination so you don&apos;t have to worry about math..
-        /// </summary>
-        internal static string AmmunitionWindow_CoinTypeComboBox {
-            get {
-                return ResourceManager.GetString("AmmunitionWindow_CoinTypeComboBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set the type of wound this projectile will cause..
-        /// </summary>
-        internal static string AmmunitionWindow_DamageTypeComboBox {
-            get {
-                return ResourceManager.GetString("AmmunitionWindow_DamageTypeComboBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Many ammunition types have special properties related to their use, as shown in the ammunition table..
-        /// </summary>
-        internal static string AmmunitionWindow_DescriptionTextBox {
-            get {
-                return ResourceManager.GetString("AmmunitionWindow_DescriptionTextBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Drawing the ammunition from a quiver, case, or other container is part of the attack..
-        /// </summary>
-        internal static string AmmunitionWindow_NameComboBox {
-            get {
-                return ResourceManager.GetString("AmmunitionWindow_NameComboBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Carried amount of ammunition before starting an engagement..
-        /// </summary>
-        internal static string AmmunitionWindow_QuantityUpDown {
-            get {
-                return ResourceManager.GetString("AmmunitionWindow_QuantityUpDown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield..
-        /// </summary>
-        internal static string AmmunitionWindow_RecoverableCheckBox {
-            get {
-                return ResourceManager.GetString("AmmunitionWindow_RecoverableCheckBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Each time you attack with the weapon, you expend one piece of ammunition..
-        /// </summary>
-        internal static string AmmunitionWindow_UsedUpDown {
-            get {
-                return ResourceManager.GetString("AmmunitionWindow_UsedUpDown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The worth of 1 piece of this ammunition type..
-        /// </summary>
-        internal static string AmmunitionWindow_ValueUpDown {
-            get {
-                return ResourceManager.GetString("AmmunitionWindow_ValueUpDown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A character should be older than 0, and probably at least the age of majority for their race..
         /// </summary>
         internal static string AppearanceWindow_AgeUpDown {
@@ -654,6 +563,79 @@ namespace Concierge.Properties {
         internal static string AttributesWindow_WisdomUpDown {
             get {
                 return ResourceManager.GetString("AttributesWindow_WisdomUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Augmentation {
+            get {
+                object obj = ResourceManager.GetObject("Augmentation", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add any extra damage, status effects, or behaviors here..
+        /// </summary>
+        internal static string AugmentationWindow_BonusTextBox {
+            get {
+                return ResourceManager.GetString("AugmentationWindow_BonusTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the type of wound this projectile will cause..
+        /// </summary>
+        internal static string AugmentationWindow_DamageTypeComboBox {
+            get {
+                return ResourceManager.GetString("AugmentationWindow_DamageTypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Many ammunition types have special properties related to their use, as shown in the ammunition table..
+        /// </summary>
+        internal static string AugmentationWindow_DescriptionTextBox {
+            get {
+                return ResourceManager.GetString("AugmentationWindow_DescriptionTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Drawing the ammunition from a quiver, case, or other container is part of the attack..
+        /// </summary>
+        internal static string AugmentationWindow_NameComboBox {
+            get {
+                return ResourceManager.GetString("AugmentationWindow_NameComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Carried amount of ammunition before starting an engagement..
+        /// </summary>
+        internal static string AugmentationWindow_QuantityUpDown {
+            get {
+                return ResourceManager.GetString("AugmentationWindow_QuantityUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield..
+        /// </summary>
+        internal static string AugmentationWindow_RecoverableCheckBox {
+            get {
+                return ResourceManager.GetString("AugmentationWindow_RecoverableCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each time you attack with the weapon, you expend one piece of ammunition..
+        /// </summary>
+        internal static string AugmentationWindow_UsedUpDown {
+            get {
+                return ResourceManager.GetString("AugmentationWindow_UsedUpDown", resourceCulture);
             }
         }
         

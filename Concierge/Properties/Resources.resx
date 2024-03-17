@@ -148,36 +148,6 @@
   <data name="Alignment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Alignment.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Ammunition" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Json\Ammunition.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="AmmunitionWindow_BonusTextBox" xml:space="preserve">
-    <value>Add any extra damage, status effects, or behaviors here.</value>
-  </data>
-  <data name="AmmunitionWindow_CoinTypeComboBox" xml:space="preserve">
-    <value>Specify the denomination so you don't have to worry about math.</value>
-  </data>
-  <data name="AmmunitionWindow_DamageTypeComboBox" xml:space="preserve">
-    <value>Set the type of wound this projectile will cause.</value>
-  </data>
-  <data name="AmmunitionWindow_DescriptionTextBox" xml:space="preserve">
-    <value>Many ammunition types have special properties related to their use, as shown in the ammunition table.</value>
-  </data>
-  <data name="AmmunitionWindow_NameComboBox" xml:space="preserve">
-    <value>You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Drawing the ammunition from a quiver, case, or other container is part of the attack.</value>
-  </data>
-  <data name="AmmunitionWindow_QuantityUpDown" xml:space="preserve">
-    <value>Carried amount of ammunition before starting an engagement.</value>
-  </data>
-  <data name="AmmunitionWindow_RecoverableCheckBox" xml:space="preserve">
-    <value>At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.</value>
-  </data>
-  <data name="AmmunitionWindow_UsedUpDown" xml:space="preserve">
-    <value>Each time you attack with the weapon, you expend one piece of ammunition.</value>
-  </data>
-  <data name="AmmunitionWindow_ValueUpDown" xml:space="preserve">
-    <value>The worth of 1 piece of this ammunition type.</value>
-  </data>
   <data name="AppearanceWindow_AgeUpDown" xml:space="preserve">
     <value>A character should be older than 0, and probably at least the age of majority for their race.</value>
   </data>
@@ -312,6 +282,30 @@
   </data>
   <data name="AttributesWindow_WisdomUpDown" xml:space="preserve">
     <value>Measures: Awareness, intuition, insight. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="Augmentation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Json\Augmentation.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AugmentationWindow_BonusTextBox" xml:space="preserve">
+    <value>Add any extra damage, status effects, or behaviors here.</value>
+  </data>
+  <data name="AugmentationWindow_DamageTypeComboBox" xml:space="preserve">
+    <value>Set the type of wound this projectile will cause.</value>
+  </data>
+  <data name="AugmentationWindow_DescriptionTextBox" xml:space="preserve">
+    <value>Many ammunition types have special properties related to their use, as shown in the ammunition table.</value>
+  </data>
+  <data name="AugmentationWindow_NameComboBox" xml:space="preserve">
+    <value>You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Drawing the ammunition from a quiver, case, or other container is part of the attack.</value>
+  </data>
+  <data name="AugmentationWindow_QuantityUpDown" xml:space="preserve">
+    <value>Carried amount of ammunition before starting an engagement.</value>
+  </data>
+  <data name="AugmentationWindow_RecoverableCheckBox" xml:space="preserve">
+    <value>At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.</value>
+  </data>
+  <data name="AugmentationWindow_UsedUpDown" xml:space="preserve">
+    <value>Each time you attack with the weapon, you expend one piece of ammunition.</value>
   </data>
   <data name="AutosaveInterval" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\AutosaveInterval.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

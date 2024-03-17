@@ -102,7 +102,7 @@ namespace Concierge.Services
             this.NextSetupStep(typeof(AbilitiesWindow), "Continue");
             this.NextSetupStep(typeof(InventoryWindow), "Continue");
             this.NextSetupStep(typeof(AttacksWindow), "Continue");
-            this.NextSetupStep(typeof(AmmunitionWindow), "Continue");
+            this.NextSetupStep(typeof(AugmentationWindow), "Continue");
             this.NextSetupStep(typeof(StatusEffectsWindow), "Continue");
             this.NextSetupStep(typeof(ImageWindow), "Skip Section");
             this.NextSetupStep(typeof(SpellSlotsWindow), "Skip Section");

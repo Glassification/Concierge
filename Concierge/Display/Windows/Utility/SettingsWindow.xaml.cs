@@ -47,8 +47,8 @@ namespace Concierge.Display.Utility
             this.SetMouseOverEvents(this.HeaderAlignmentComboBox);
             this.SetMouseOverEvents(this.DefaultSaveCheckBox);
             this.SetMouseOverEvents(this.DefaultOpenCheckBox);
-            this.SetMouseOverEvents(this.OpenTextBox, this.OpenTextBoxBackground);
-            this.SetMouseOverEvents(this.SaveTextBox, this.SaveTextBoxBackground);
+            this.SetMouseOverEvents(this.OpenTextBox, this.OpenTextBackground);
+            this.SetMouseOverEvents(this.SaveTextBox, this.SaveTextBackground);
         }
 
         public override string HeaderText => "Settings";
@@ -105,9 +105,9 @@ namespace Concierge.Display.Utility
             DisplayUtility.SetControlEnableState(this.AutosaveInterval, AppSettingsManager.UserSettings.Autosaving.Enabled);
             DisplayUtility.SetControlEnableState(this.IntervalTextBox, AppSettingsManager.UserSettings.Autosaving.Enabled);
             DisplayUtility.SetControlEnableState(this.SaveFolderButton, AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder);
-            DisplayUtility.SetControlEnableState(this.SaveTextBoxBackground, AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder);
+            DisplayUtility.SetControlEnableState(this.SaveTextBackground, AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder);
             DisplayUtility.SetControlEnableState(this.OpenFolderButton, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
-            DisplayUtility.SetControlEnableState(this.OpenTextBoxBackground, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
+            DisplayUtility.SetControlEnableState(this.OpenTextBackground, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
 
             this.OpenWarningVisibility();
             this.SaveWarningVisibility();
@@ -242,28 +242,28 @@ namespace Concierge.Display.Utility
         private void DefaultSaveCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SetControlEnableState(this.SaveFolderButton, true);
-            DisplayUtility.SetControlEnableState(this.SaveTextBoxBackground, true);
+            DisplayUtility.SetControlEnableState(this.SaveTextBackground, true);
             this.SaveWarningVisibility();
         }
 
         private void DefaultSaveCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SetControlEnableState(this.SaveFolderButton, false);
-            DisplayUtility.SetControlEnableState(this.SaveTextBoxBackground, false);
+            DisplayUtility.SetControlEnableState(this.SaveTextBackground, false);
             this.SaveFolderWarning.Visibility = Visibility.Collapsed;
         }
 
         private void DefaultOpenCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SetControlEnableState(this.OpenFolderButton, true);
-            DisplayUtility.SetControlEnableState(this.OpenTextBoxBackground, true);
+            DisplayUtility.SetControlEnableState(this.OpenTextBackground, true);
             this.OpenWarningVisibility();
         }
 
         private void DefaultOpenCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SetControlEnableState(this.OpenFolderButton, false);
-            DisplayUtility.SetControlEnableState(this.OpenTextBoxBackground, false);
+            DisplayUtility.SetControlEnableState(this.OpenTextBackground, false);
             this.OpenFolderWarning.Visibility = Visibility.Collapsed;
         }
 

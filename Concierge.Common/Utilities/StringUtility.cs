@@ -4,11 +4,6 @@
 
 namespace Concierge.Common.Utilities
 {
-    using System;
-    using System.Collections.Generic;
-
-    using Concierge.Common.Extensions;
-
     /// <summary>
     /// Provides utility methods for string-related operations.
     /// </summary>
@@ -30,23 +25,6 @@ namespace Concierge.Common.Utilities
             }
 
             return characters;
-        }
-
-        /// <summary>
-        /// Formats the names of enum values for display by converting underscores to spaces and adjusting letter casing.
-        /// </summary>
-        /// <param name="enumType">The type of the enum.</param>
-        /// <returns>A list of formatted enum names.</returns>
-        public static List<string> FormatEnumForDisplay(Type enumType)
-        {
-            var stringArray = Enum.GetNames(enumType);
-
-            for (int i = 0; i < stringArray.Length; i++)
-            {
-                stringArray[i] = stringArray[i].FormatFromPascalCase();
-            }
-
-            return [.. stringArray];
         }
     }
 }

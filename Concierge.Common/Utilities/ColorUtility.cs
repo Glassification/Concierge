@@ -60,7 +60,7 @@ namespace Concierge.Common.Utilities
         /// </summary>
         /// <param name="hex">The hexadecimal color string to format.</param>
         /// <returns>The formatted hexadecimal color string.</returns>
-        public static string FormatHexString(string hex)
+        public static string FormatHex(string hex)
         {
             if (hex.Length < 1)
             {

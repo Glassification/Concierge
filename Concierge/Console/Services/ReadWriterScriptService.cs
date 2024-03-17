@@ -71,7 +71,7 @@ namespace Concierge.Console.Services
             return command.Name.ToLower() switch
             {
                 "ability" => new ReadWriterScript<ReadOnlyCollection<Ability>>(Defaults.Abilities).Evaluate(command),
-                "ammunition" => new ReadWriterScript<ReadOnlyCollection<Ammunition>>(Defaults.Ammunition).Evaluate(command),
+                "augmentation" => new ReadWriterScript<ReadOnlyCollection<Augment>>(Defaults.Augmentation).Evaluate(command),
                 "inventory" => new ReadWriterScript<ReadOnlyCollection<Inventory>>(Defaults.Inventory).Evaluate(command),
                 "language" => new ReadWriterScript<ReadOnlyCollection<Language>>(Defaults.Languages).Evaluate(command),
                 "names" => new ReadWriterScript<ReadOnlyCollection<Name>>(Defaults.Names).Evaluate(command),

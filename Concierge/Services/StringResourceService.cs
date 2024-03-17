@@ -7,6 +7,8 @@ namespace Concierge.Services
     using System.Globalization;
     using System.Resources;
 
+    using Concierge.Configuration;
+
     public sealed class StringResourceService
     {
         private readonly CultureInfo cultureInfo;
@@ -30,7 +32,15 @@ namespace Concierge.Services
 
         public string GetPropertyDescription(string window, string controlName, string defaultDescription = "")
         {
-            return this.resourceManager.GetString($"{window}_{controlName}", this.cultureInfo) ?? defaultDescription;
+            var wildWasteland = AppSettingsManager.StartUp.WildWasteland ? "_WildWasteland" : string.Empty;
+            var result = this.resourceManager.GetString($"{window}_{controlName}{wildWasteland}", this.cultureInfo) ?? defaultDescription;
+
+            if (AppSettingsManager.StartUp.WildWasteland && result.Equals(defaultDescription))
+            {
+                result = this.resourceManager.GetString($"{window}_{controlName}", this.cultureInfo) ?? defaultDescription;
+            }
+
+            return result;
         }
     }
 }

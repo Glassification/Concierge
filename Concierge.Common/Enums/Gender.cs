@@ -12,5 +12,6 @@ namespace Concierge.Common.Enums
         Female,
         Male,
         Other,
+        AttackHelicopter,
     }
 }

@@ -289,10 +289,7 @@ namespace Concierge.Display
 
         public void OpenConsole()
         {
-            if (AppSettingsManager.StartUp.EnableConsole)
-            {
-                ConciergeWindowService.ShowWindow(typeof(ConciergeConsoleWindow), this.Window_ApplyChanges);
-            }
+            ConciergeWindowService.ShowWindow(typeof(ConciergeConsoleWindow), this.Window_ApplyChanges);
         }
 
         public void DrawAll(bool isNewCharacterSheet = false)
