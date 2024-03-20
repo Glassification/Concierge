@@ -36,7 +36,7 @@ namespace Concierge.Display.Windows.Utility
 
         public override AbilitySave ShowAbilityCheckWindow(Attribute attribute, int value)
         {
-            this.difficultyClass = Constants.Concentration(value);
+            this.difficultyClass = ConciergeMath.Concentration(value);
             this.attribute = attribute;
 
             this.ConstitutionBonusUpDown.Value = 0;

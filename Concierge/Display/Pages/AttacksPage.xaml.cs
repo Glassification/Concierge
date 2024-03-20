@@ -9,6 +9,7 @@ namespace Concierge.Display.Pages
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
 
     using Concierge.Character.Equipable;
     using Concierge.Character.Vitals;
@@ -27,9 +28,19 @@ namespace Concierge.Display.Pages
     /// </summary>
     public partial class AttacksPage : Page, IConciergePage
     {
+        private MultiSelectService multiSelectService;
+
         public AttacksPage()
         {
             this.InitializeComponent();
+            this.multiSelectService = new MultiSelectService(
+                this.AugmentUpButton,
+                this.AugmentDownButton,
+                this.AugmentRecoverButton,
+                this.AugmentEditButton,
+                this.AugmentDeleteButton,
+                this.MultiSelectButton,
+                this.AugmentDataGrid);
         }
 
         private delegate void DrawList();
@@ -127,22 +138,7 @@ namespace Concierge.Display.Pages
         {
             this.AugmentDataGrid.Items.Clear();
             Program.CcsFile.Character.Equipment.Augmentation.ForEach(augment => this.AugmentDataGrid.Items.Add(augment));
-            this.SetAugmentDataGridControlState();
-        }
-
-        private void SetAugmentDataGridControlState()
-        {
-            this.AugmentDataGrid.SetButtonControlsEnableState(
-                this.AugmentUpButton,
-                this.AugmentDownButton,
-                this.AugmentRecoverButton,
-                this.AugmentEditButton,
-                this.AugmentDeleteButton);
-
-            if (this.AugmentDataGrid.SelectedItem is Augment augment)
-            {
-                DisplayUtility.SetControlEnableState(this.AugmentRecoverButton, augment.Recoverable && augment.Total < augment.Quantity);
-            }
+            this.multiSelectService.SetControlState();
         }
 
         private void SetStatusDataGridControlState()
@@ -158,6 +154,30 @@ namespace Concierge.Display.Pages
                 this.AttacksEditButton,
                 this.AttackUseButton,
                 this.AttacksDeleteButton);
+        }
+
+        private List<Augment> GetActiveAugments()
+        {
+            var items = new List<Augment>();
+            if (!this.MultiSelectButton.IsChecked ?? false)
+            {
+                if (this.AugmentDataGrid.SelectedItem is Augment augment)
+                {
+                    items.Add(augment);
+                }
+            }
+            else
+            {
+                foreach (var item in this.AugmentDataGrid.SelectedItems)
+                {
+                    if (item is Augment augment)
+                    {
+                        items.Add(augment);
+                    }
+                }
+            }
+
+            return items;
         }
 
         private void AugmentUpButton_Click(object sender, RoutedEventArgs e)
@@ -363,22 +383,28 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            var ammunition = this.AugmentDataGrid.SelectedItem as Augment;
+            var augmentation = this.GetActiveAugments();
             var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-            var result = weapon.Use(new UseItem(ammunition, 0));
+            var result = weapon.Use(new UseItem(0, augmentation.ToArray()));
 
             var windowResult = ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
 
-            if (ammunition is not null && windowResult == ConciergeResult.OK)
+            if (!augmentation.IsEmpty() && windowResult == ConciergeResult.OK)
             {
-                var index = this.AugmentDataGrid.SelectedIndex;
-                var oldItem = ammunition.DeepCopy();
+                var commands = new List<Command>();
+                foreach (var augment in augmentation)
+                {
+                    if (augment.Recoverable)
+                    {
+                        var oldItem = augment.DeepCopy();
+                        augment.Use(UseItem.Empty);
+                        commands.Add(new EditCommand<Augment>(augment, oldItem, this.ConciergePage));
+                    }
+                }
 
-                ammunition.Use(UseItem.Empty);
                 this.DrawAugmentList();
-                this.AugmentDataGrid.SetSelectedIndex(index);
 
-                Program.UndoRedoService.AddCommand(new EditCommand<Augment>(ammunition, oldItem, this.ConciergePage));
+                Program.UndoRedoService.AddCommand(new CompositeCommand(this.ConciergePage, [.. commands]));
             }
         }
 
@@ -402,7 +428,12 @@ namespace Concierge.Display.Pages
 
         private void AugmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.SetAugmentDataGridControlState();
+            if (this.MultiSelectButton.IsChecked ?? false)
+            {
+                e.Handled = true;
+            }
+
+            this.multiSelectService.SetControlState();
         }
 
         private void StatusEffectsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -413,6 +444,39 @@ namespace Concierge.Display.Pages
         private void WeaponDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.SetWeaponDataGridControlState();
+        }
+
+        private void MultiSelectButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.multiSelectService.Check();
+        }
+
+        private void MultiSelectButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.multiSelectService.Uncheck();
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (this.Visibility == Visibility.Collapsed)
+            {
+                this.MultiSelectButton.UnCheck();
+            }
+        }
+
+        private void AugmentDataGrid_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.OriginalSource is not UIElement element)
+            {
+                return;
+            }
+
+            var row = DisplayUtility.FindVisualParent<DataGridRow>(element);
+            if (e.LeftButton == MouseButtonState.Pressed && row is not null)
+            {
+                row.IsSelected = !row.IsSelected;
+                e.Handled = true;
+            }
         }
     }
 }

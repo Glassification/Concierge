@@ -12,6 +12,7 @@
     d:DesignHeight="600"
     d:DesignWidth="1020"
     Title="AttacksPage"
+    IsVisibleChanged="Page_IsVisibleChanged"
     Style="{StaticResource PageFontStyle}">
 
     <Grid Background="#0F1220">
@@ -76,15 +77,16 @@
                                     ToolTip="Move Selected Augment Down">
                                     <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
-                                <components:ConciergeDesignButton 
-                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="AugmentRecoverButton"
+                                <components:ConciergeDesignToggleButton 
+                                    Style="{StaticResource ConciergeToggleButtonStyle}" 
+                                    x:Name="MultiSelectButton"
                                     Width="60"
                                     Foreground="#B9487B"
-                                    Click="AugmentRecoverButton_Click"
-                                    ToolTip="Recover Augment">
-                                    <materialDesign:PackIcon Kind="Recycle" Width="25" Height="25"/>
-                                </components:ConciergeDesignButton>
+                                    Checked="MultiSelectButton_Checked"
+                                    Unchecked="MultiSelectButton_Unchecked"
+                                    ToolTip="Select Multiple Augment">
+                                    <materialDesign:PackIcon Kind="ListBox" Width="25" Height="25"/>
+                                </components:ConciergeDesignToggleButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
                                     x:Name="AugmentClearButton"
@@ -120,6 +122,15 @@
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="AugmentRecoverButton"
+                                    Width="60"
+                                    Foreground="#B9487B"
+                                    Click="AugmentRecoverButton_Click"
+                                    ToolTip="Recover Augment">
+                                    <materialDesign:PackIcon Kind="Recycle" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
                                     x:Name="AugmentDeleteButton"
                                     Width="60"
                                     Foreground="IndianRed"
@@ -140,6 +151,7 @@
                             x:Name="AugmentDataGrid"
                             Style="{DynamicResource StandardDataGridStyle}"
                             SelectionChanged="AugmentDataGrid_SelectionChanged"
+                            PreviewMouseDown="AugmentDataGrid_PreviewMouseDown"
                             Sorted="AugmentDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn

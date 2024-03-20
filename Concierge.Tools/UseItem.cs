@@ -4,6 +4,9 @@
 
 namespace Concierge.Tools
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Represents an item that can be used, with an optional bonus.
     /// </summary>
@@ -14,7 +17,7 @@ namespace Concierge.Tools
         /// </summary>
         /// <param name="bonus">The bonus associated with the item.</param>
         public UseItem(int bonus)
-            : this(null, bonus)
+            : this(bonus, [])
         {
         }
 
@@ -23,9 +26,9 @@ namespace Concierge.Tools
         /// </summary>
         /// <param name="item">The item to be used.</param>
         /// <param name="bonus">The bonus associated with the item.</param>
-        public UseItem(IUsable? item, int bonus)
+        public UseItem(int bonus, params IUsable[] items)
         {
-            this.Item = item;
+            this.Items = items.ToList();
             this.Bonus = bonus;
         }
 
@@ -35,9 +38,14 @@ namespace Concierge.Tools
         public static UseItem Empty => new (0);
 
         /// <summary>
-        /// Gets or sets the item to be used.
+        /// Gets the item to be used.
         /// </summary>
-        public IUsable? Item { get; set; }
+        public IUsable? Item => this.Items.FirstOrDefault();
+
+        /// <summary>
+        /// Gets or sets the items to be used.
+        /// </summary>
+        public List<IUsable> Items { get; set; }
 
         /// <summary>
         /// Gets or sets the bonus associated with the item.

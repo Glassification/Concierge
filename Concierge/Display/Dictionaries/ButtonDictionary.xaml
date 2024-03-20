@@ -116,6 +116,10 @@
                 <Setter Property="Background" Value="#1C3947"/>
                 <Setter Property="BorderBrush" Value="#227EA9"/>
             </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="#1C3947"/>
+                <Setter Property="BorderBrush" Value="#227EA9"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 

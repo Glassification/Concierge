@@ -37,7 +37,7 @@ namespace Concierge.Character.Aspects
         /// Gets the bonus associated with the attribute score.
         /// </summary>
         [JsonIgnore]
-        public int Bonus => Constants.Bonus(this.Score);
+        public int Bonus => ConciergeMath.Bonus(this.Score);
 
         /// <summary>
         /// Gets or sets a value indicating whether the character is proficient in this attribute.
@@ -84,7 +84,7 @@ namespace Concierge.Character.Aspects
                 bonus += proficiency;
             }
 
-            bonus += Constants.Bonus(this.Score);
+            bonus += ConciergeMath.Bonus(this.Score);
 
             return bonus;
         }

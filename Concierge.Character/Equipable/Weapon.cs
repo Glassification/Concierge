@@ -5,6 +5,7 @@
 namespace Concierge.Character.Equipable
 {
     using System;
+    using System.Text;
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
@@ -236,9 +237,22 @@ namespace Concierge.Character.Equipable
         /// <returns>A <see cref="UsedItem"/> representing the result of using the weapon.</returns>
         public UsedItem Use(UseItem useItem)
         {
-            var augment = useItem.Item as Augment;
+            var augmentDamage = new StringBuilder();
+            var augmentDamageType = new StringBuilder();
+            var augmentDescription = new StringBuilder();
+            foreach (var item in useItem.Items)
+            {
+                if (item is not Augment augment)
+                {
+                    continue;
+                }
 
-            var damageInput = $"{this.Damage} {this.Misc} {(augment is not null ? augment.Damage : string.Empty)}";
+                augmentDamage.Append(augment.Damage).Append(' ');
+                augmentDamageType.Append(augment.DamageType.ToString()).Append(", ");
+                augmentDescription.Append(augment.Description).Append(' ');
+            }
+
+            var damageInput = $"{this.Damage} {this.Misc} {augmentDamage}";
             var cleanedInput = DiceParser.Clean(damageInput, Enum.GetNames(typeof(DamageTypes)));
             if (!DiceParser.IsValidInput(cleanedInput))
             {
@@ -247,9 +261,9 @@ namespace Concierge.Character.Equipable
 
             var attack = new DiceRoll(Dice.D20, 1, this.Attack);
             var damage = new CustomDiceRoll(cleanedInput);
-            var damageType = $"{this.DamageType} {augment?.DamageType}";
+            var damageType = $"{this.DamageType}, {augmentDamageType.ToString().Strip("Damage").Trim(' ', ',')}";
 
-            return new UsedItem(attack, damage, this.Name, damageType, $"[Damage: {damage.Min} - {damage.Max}] {this.Note}");
+            return new UsedItem(attack, damage, this.Name, damageType, $"[Damage: {damageType}] {this.Note} {augmentDescription}".Trim());
         }
 
         /// <summary>

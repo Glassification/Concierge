@@ -72,11 +72,6 @@ namespace Concierge.Common
         public const int MaxAttunedItems = 3;
 
         /// <summary>
-        /// The number of significant digits used for rounding.
-        /// </summary>
-        public const int SignificantDigits = 2;
-
-        /// <summary>
         /// The number of different currencies used (Platinum, Gold, Electrum, Silver, Copper).
         /// </summary>
         public const int Currencies = 5;
@@ -125,49 +120,5 @@ namespace Concierge.Common
         /// The prompt text for the console.
         /// </summary>
         public const string ConsolePrompt = "CS> ";
-
-        /// <summary>
-        /// Calculates the bonus value based on a given score.
-        /// Subtract 10 from the ability score and then divides the total by 2 (rounded down).
-        /// </summary>
-        /// <param name="score">The score to calculate the bonus for.</param>
-        /// <returns>The calculated bonus value.</returns>
-        public static int Bonus(int score)
-        {
-            return (int)Math.Floor((score - 10) / 2.0);
-        }
-
-        /// <summary>
-        /// Calculates the concentration threshold based on the damage received.
-        /// Divides the damage by 2 (rounded down), and takes the greater of the result or 10.
-        /// </summary>
-        /// <param name="damage">The amount of damage received.</param>
-        /// <returns>The concentration threshold.</returns>
-        public static int Concentration(int damage)
-        {
-            return Math.Max((int)Math.Floor(damage / 2.0), 10);
-        }
-
-        /// <summary>
-        /// Calculates the amount of an item that is recoverable.
-        /// Divides the amount by 2 (rounded down).
-        /// </summary>
-        /// <param name="amount">The amount to calculate the recovery for.</param>
-        /// <returns>The recovered amount.</returns>
-        public static int Recover(int amount)
-        {
-            return (int)Math.Floor(amount / 2.0);
-        }
-
-        /// <summary>
-        /// Calculates the amount of spent resources to regain.
-        /// Divides the amount by 2 (rounded down) and takes the greater of the result or 1.
-        /// </summary>
-        /// <param name="spent">The amount to calculate the regain for.</param>
-        /// <returns>The recovered amount.</returns>
-        public static int Regain(int spent)
-        {
-            return Math.Max(spent -= Math.Max(spent / 2, 1), 0);
-        }
     }
 }

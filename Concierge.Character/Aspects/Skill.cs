@@ -104,7 +104,7 @@ namespace Concierge.Character.Aspects
                 bonus += proficiency;
             }
 
-            bonus += Constants.Bonus(attribute);
+            bonus += ConciergeMath.Bonus(attribute);
 
             return bonus;
         }

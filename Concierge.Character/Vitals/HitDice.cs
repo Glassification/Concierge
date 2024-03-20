@@ -168,10 +168,10 @@ namespace Concierge.Character.Vitals
         /// </summary>
         public void RegainHitDice()
         {
-            this.SpentD6 = Constants.Regain(this.SpentD6);
-            this.SpentD8 = Constants.Regain(this.SpentD8);
-            this.SpentD10 = Constants.Regain(this.SpentD10);
-            this.SpentD12 = Constants.Regain(this.SpentD12);
+            this.SpentD6 = ConciergeMath.Regain(this.SpentD6);
+            this.SpentD8 = ConciergeMath.Regain(this.SpentD8);
+            this.SpentD10 = ConciergeMath.Regain(this.SpentD10);
+            this.SpentD12 = ConciergeMath.Regain(this.SpentD12);
         }
 
         /// <summary>

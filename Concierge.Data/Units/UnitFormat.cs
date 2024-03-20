@@ -52,7 +52,7 @@ namespace Concierge.Data.Units
             return unitType switch
             {
                 UnitTypes.Imperial => $"{(feetAndInches.Feet > 0 ? $"{feetAndInches.Feet}'" : string.Empty)} {(feetAndInches.Inches > 0 ? $"{(int)feetAndInches.Inches}\"" : string.Empty)}",
-                UnitTypes.Metric => $"{Math.Round(value, Constants.SignificantDigits)} cm",
+                UnitTypes.Metric => $"{Math.Round(value, ConciergeMath.SignificantDigits)} cm",
                 _ => value.ToString()
             };
         }
@@ -66,13 +66,13 @@ namespace Concierge.Data.Units
         /// <returns>The formatted weight string.</returns>
         public static string FormatWeight(UnitTypes unitType, double value, bool reduceDigits = false)
         {
-            var significantDigits = reduceDigits ? GetSignificantDigits(value) : Constants.SignificantDigits;
+            var significantDigits = reduceDigits ? GetSignificantDigits(value) : ConciergeMath.SignificantDigits;
 
             return unitType switch
             {
-                UnitTypes.Imperial => $"{Math.Round(value, Constants.SignificantDigits)} lbs",
+                UnitTypes.Imperial => $"{Math.Round(value, ConciergeMath.SignificantDigits)} lbs",
                 UnitTypes.Metric => $"{Math.Round(value, significantDigits)} kg",
-                _ => Math.Round(value, Constants.SignificantDigits).ToString(),
+                _ => Math.Round(value, ConciergeMath.SignificantDigits).ToString(),
             };
         }
 
@@ -103,7 +103,7 @@ namespace Concierge.Data.Units
         private static int GetSignificantDigits(double value)
         {
             var digits = ((int)value).ToString().Length;
-            return digits > Constants.SignificantDigits ? Constants.SignificantDigits - 1 : Constants.SignificantDigits;
+            return digits > ConciergeMath.SignificantDigits ? ConciergeMath.SignificantDigits - 1 : ConciergeMath.SignificantDigits;
         }
     }
 }

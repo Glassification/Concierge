@@ -70,12 +70,12 @@ namespace Concierge.Character
         {
             return ability switch
             {
-                Abilities.STR => Constants.Bonus(this.characterSheet.Companion.Attributes.Strength),
-                Abilities.DEX => Constants.Bonus(this.characterSheet.Companion.Attributes.Dexterity),
-                Abilities.CON => Constants.Bonus(this.characterSheet.Companion.Attributes.Constitution),
-                Abilities.INT => Constants.Bonus(this.characterSheet.Companion.Attributes.Intelligence),
-                Abilities.WIS => Constants.Bonus(this.characterSheet.Companion.Attributes.Wisdom),
-                Abilities.CHA => Constants.Bonus(this.characterSheet.Companion.Attributes.Charisma),
+                Abilities.STR => ConciergeMath.Bonus(this.characterSheet.Companion.Attributes.Strength),
+                Abilities.DEX => ConciergeMath.Bonus(this.characterSheet.Companion.Attributes.Dexterity),
+                Abilities.CON => ConciergeMath.Bonus(this.characterSheet.Companion.Attributes.Constitution),
+                Abilities.INT => ConciergeMath.Bonus(this.characterSheet.Companion.Attributes.Intelligence),
+                Abilities.WIS => ConciergeMath.Bonus(this.characterSheet.Companion.Attributes.Wisdom),
+                Abilities.CHA => ConciergeMath.Bonus(this.characterSheet.Companion.Attributes.Charisma),
                 Abilities.NONE => 0,
                 _ => 0,
             };

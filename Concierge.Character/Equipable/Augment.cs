@@ -174,7 +174,7 @@ namespace Concierge.Character.Equipable
         /// </summary>
         public void Recover()
         {
-            this.Quantity = this.Recoverable ? this.Total + Constants.Recover(this.Quantity - this.Total) : this.Total;
+            this.Quantity = this.Recoverable ? this.Total + ConciergeMath.Recover(this.Quantity - this.Total) : this.Total;
             this.Total = this.Quantity;
         }
 
