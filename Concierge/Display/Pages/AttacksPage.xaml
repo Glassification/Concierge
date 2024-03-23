@@ -84,7 +84,7 @@
                                     Foreground="#B9487B"
                                     Checked="MultiSelectButton_Checked"
                                     Unchecked="MultiSelectButton_Unchecked"
-                                    ToolTip="Select Multiple Augment">
+                                    ToolTip="Select Multiple Augments">
                                     <materialDesign:PackIcon Kind="ListBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignToggleButton>
                                 <components:ConciergeDesignButton 

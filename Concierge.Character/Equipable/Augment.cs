@@ -5,6 +5,7 @@
 namespace Concierge.Character.Equipable
 {
     using System;
+    using System.Text;
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
@@ -123,6 +124,31 @@ namespace Concierge.Character.Equipable
         [JsonIgnore]
         [SearchIgnore]
         public string Information => $"{this.Damage} {this.DamageType} {this.Type}".Strip("None").Trim();
+
+        /// <summary>
+        /// Builds a tuple containing augment details for a given <paramref name="useItem"/>.
+        /// </summary>
+        /// <param name="useItem">The item to build augment details from.</param>
+        /// <returns>A tuple containing the damage, damage type, and description of the augment.</returns>
+        public static (string damage, string damageType, string description) Build(UseItem useItem)
+        {
+            var augmentDamage = new StringBuilder();
+            var augmentDamageType = new StringBuilder();
+            var augmentDescription = new StringBuilder();
+            foreach (var item in useItem.Items)
+            {
+                if (item is not Augment augment)
+                {
+                    continue;
+                }
+
+                augmentDamage.Append(augment.Damage).Append(' ');
+                augmentDamageType.Append(augment.DamageType.ToString()).Append(", ");
+                augmentDescription.Append(augment.Description).Append(' ');
+            }
+
+            return (augmentDamage.ToString(), augmentDamageType.ToString(), augmentDescription.ToString());
+        }
 
         /// <summary>
         /// Creates a deep copy of the augment.

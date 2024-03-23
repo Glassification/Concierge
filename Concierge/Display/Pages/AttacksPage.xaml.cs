@@ -14,6 +14,7 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Equipable;
     using Concierge.Character.Vitals;
     using Concierge.Commands;
+    using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Display.Components;
@@ -33,6 +34,7 @@ namespace Concierge.Display.Pages
         public AttacksPage()
         {
             this.InitializeComponent();
+            this.MultiSelectButton.Initialize(ConciergeBrushes.DarkPink);
             this.multiSelectService = new MultiSelectService(
                 this.AugmentUpButton,
                 this.AugmentDownButton,

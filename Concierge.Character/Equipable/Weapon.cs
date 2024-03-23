@@ -237,22 +237,9 @@ namespace Concierge.Character.Equipable
         /// <returns>A <see cref="UsedItem"/> representing the result of using the weapon.</returns>
         public UsedItem Use(UseItem useItem)
         {
-            var augmentDamage = new StringBuilder();
-            var augmentDamageType = new StringBuilder();
-            var augmentDescription = new StringBuilder();
-            foreach (var item in useItem.Items)
-            {
-                if (item is not Augment augment)
-                {
-                    continue;
-                }
+            var augment = Augment.Build(useItem);
 
-                augmentDamage.Append(augment.Damage).Append(' ');
-                augmentDamageType.Append(augment.DamageType.ToString()).Append(", ");
-                augmentDescription.Append(augment.Description).Append(' ');
-            }
-
-            var damageInput = $"{this.Damage} {this.Misc} {augmentDamage}";
+            var damageInput = $"{this.Damage} {this.Misc} {augment.damage}";
             var cleanedInput = DiceParser.Clean(damageInput, Enum.GetNames(typeof(DamageTypes)));
             if (!DiceParser.IsValidInput(cleanedInput))
             {
@@ -261,9 +248,9 @@ namespace Concierge.Character.Equipable
 
             var attack = new DiceRoll(Dice.D20, 1, this.Attack);
             var damage = new CustomDiceRoll(cleanedInput);
-            var damageType = $"{this.DamageType}, {augmentDamageType.ToString().Strip("Damage").Trim(' ', ',')}";
+            var damageType = $"{this.DamageType}, {augment.damageType}".Strip("Damage").Trim(' ', ',');
 
-            return new UsedItem(attack, damage, this.Name, damageType, $"[Damage: {damageType}] {this.Note} {augmentDescription}".Trim());
+            return new UsedItem(attack, damage, this.Name, damageType, $"[Damage: {damageType}] {this.Note} {augment.description}".Trim());
         }
 
         /// <summary>

@@ -196,7 +196,7 @@
                                 ToolTip="Redo">
                                 <materialDesign:PackIcon Kind="Redo" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
-                            <components:ConciergeToggleButton 
+                            <components:ConciergeDesignToggleButton 
                                 x:Name="BoldButton"
                                 Style="{StaticResource ConciergeToggleButtonStyle}"
                                 Width="50"
@@ -204,8 +204,8 @@
                                 Click="BoldButton_Click"
                                 ToolTip="Bold">
                                 <materialDesign:PackIcon Kind="FormatBold" Width="25" Height="25"/>
-                            </components:ConciergeToggleButton>
-                            <components:ConciergeToggleButton 
+                            </components:ConciergeDesignToggleButton>
+                            <components:ConciergeDesignToggleButton 
                                 x:Name="ItalicButton"
                                 Style="{StaticResource ConciergeToggleButtonStyle}"
                                 Width="50"
@@ -213,8 +213,8 @@
                                 Click="ItalicButton_Click"
                                 ToolTip="Italic">
                                 <materialDesign:PackIcon Kind="FormatItalic" Width="25" Height="25"/>
-                            </components:ConciergeToggleButton>
-                            <components:ConciergeToggleButton 
+                            </components:ConciergeDesignToggleButton>
+                            <components:ConciergeDesignToggleButton 
                                 x:Name="UnderlineButton"
                                 Style="{StaticResource ConciergeToggleButtonStyle}"
                                 Width="50"
@@ -222,7 +222,7 @@
                                 Click="UnderlineButton_Click"
                                 ToolTip="Underline">
                                 <materialDesign:PackIcon Kind="FormatUnderline" Width="25" Height="25"/>
-                            </components:ConciergeToggleButton>
+                            </components:ConciergeDesignToggleButton>
                             <components:ConciergeComboBox 
                                 x:Name="FontFamilyList"
                                 Width="200"

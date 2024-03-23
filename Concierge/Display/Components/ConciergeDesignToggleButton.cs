@@ -19,7 +19,7 @@ namespace Concierge.Display.Components
         public ConciergeDesignToggleButton()
             : base()
         {
-            this.originalForeground = ConciergeBrushes.DarkPink;
+            this.originalForeground = Brushes.White;
             this.HorizontalAlignment = HorizontalAlignment.Center;
             this.VerticalAlignment = VerticalAlignment.Stretch;
 
@@ -29,6 +29,12 @@ namespace Concierge.Display.Components
             this.Click += this.Button_Click;
             this.MouseEnter += this.Button_MouseEnter;
             this.MouseLeave += this.Button_MouseLeave;
+            this.Unchecked += this.Button_Unchecked;
+        }
+
+        public void Initialize(SolidColorBrush brush)
+        {
+            this.originalForeground = brush;
         }
 
         public void ResetScaling()
@@ -39,7 +45,6 @@ namespace Concierge.Display.Components
         public void UnCheck()
         {
             this.IsChecked = false;
-            this.Foreground = this.originalForeground;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -67,6 +72,11 @@ namespace Concierge.Display.Components
             }
 
             Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void Button_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.Foreground = this.originalForeground;
         }
     }
 }

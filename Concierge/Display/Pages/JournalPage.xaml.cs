@@ -47,6 +47,10 @@ namespace Concierge.Display.Pages
             this.FontSizeList.ItemsSource = ComboBoxGenerator.FontSizeComboBox();
             this.NotesTextBox.UndoLimit = MaxUndoQueue;
 
+            this.BoldButton.Initialize(ConciergeBrushes.Deer);
+            this.ItalicButton.Initialize(ConciergeBrushes.Deer);
+            this.UnderlineButton.Initialize(ConciergeBrushes.Deer);
+
             this.SetDefaultFontStyle();
             this.ClearTextBox();
         }
