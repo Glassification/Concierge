@@ -44,6 +44,11 @@ namespace Concierge.Configuration.Dtos
         public HorizontalAlignment HeaderAlignment { get; set; }
 
         /// <summary>
+        /// Gets or sets the hp to heal to during a short rest.
+        /// </summary>
+        public int HealingThreshold { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether to mute sounds in the application.
         /// </summary>
         public bool MuteSounds { get; set; }
@@ -74,6 +79,8 @@ namespace Concierge.Configuration.Dtos
                 settings.Autosaving.Equals(this.Autosaving) &&
                 settings.DefaultFolder.Equals(this.DefaultFolder) &&
                 settings.CheckVersion == this.CheckVersion &&
+                settings.HeaderAlignment == this.HeaderAlignment &&
+                settings.HealingThreshold == this.HealingThreshold &&
                 settings.MuteSounds == this.MuteSounds &&
                 settings.UseCoinWeight == this.UseCoinWeight &&
                 settings.UseEncumbrance == this.UseEncumbrance &&

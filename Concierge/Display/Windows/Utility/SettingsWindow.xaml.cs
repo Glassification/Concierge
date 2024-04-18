@@ -45,6 +45,7 @@ namespace Concierge.Display.Utility
             this.SetMouseOverEvents(this.CheckVersionCheckBox);
             this.SetMouseOverEvents(this.UnitOfMeasurementComboBox);
             this.SetMouseOverEvents(this.HeaderAlignmentComboBox);
+            this.SetMouseOverEvents(this.HealingThreshold);
             this.SetMouseOverEvents(this.DefaultSaveCheckBox);
             this.SetMouseOverEvents(this.DefaultOpenCheckBox);
             this.SetMouseOverEvents(this.OpenTextBox, this.OpenTextBackground);
@@ -63,6 +64,8 @@ namespace Concierge.Display.Utility
                 return $"Autosave Interval:  {interval} {"minute".Pluralize("s", interval)}";
             }
         }
+
+        private string FormattedThreshold => $"Short Rest Healing: {this.HealingThreshold.Value}%";
 
         public override void ShowEdit<T>(T item)
         {
@@ -93,6 +96,8 @@ namespace Concierge.Display.Utility
             this.CoinWeightCheckBox.IsChecked = AppSettingsManager.UserSettings.UseCoinWeight;
             this.EncumbranceCheckBox.IsChecked = AppSettingsManager.UserSettings.UseEncumbrance;
             this.IntervalTextBox.Text = this.FormattedInterval;
+            this.HealingThreshold.Value = AppSettingsManager.UserSettings.HealingThreshold;
+            this.HealingThresholdLabel.Text = this.FormattedThreshold;
             this.MuteCheckBox.IsChecked = AppSettingsManager.UserSettings.MuteSounds;
             this.CheckVersionCheckBox.IsChecked = AppSettingsManager.UserSettings.CheckVersion;
             this.UnitOfMeasurementComboBox.Text = AppSettingsManager.UserSettings.UnitOfMeasurement.ToString();
@@ -151,6 +156,7 @@ namespace Concierge.Display.Utility
                     UseOpenFolder = this.DefaultOpenCheckBox.IsChecked ?? false,
                 },
                 HeaderAlignment = this.HeaderAlignmentComboBox.Text.TryToEnum<HorizontalAlignment>(),
+                HealingThreshold = (int)this.HealingThreshold.Value,
                 MuteSounds = this.MuteCheckBox.IsChecked ?? false,
                 UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false,
                 UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false,
@@ -275,6 +281,11 @@ namespace Concierge.Display.Utility
         private void OpenTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.OpenWarningVisibility();
+        }
+
+        private void HealingThreshold_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            this.HealingThresholdLabel.Text = this.FormattedThreshold;
         }
     }
 }

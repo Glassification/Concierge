@@ -4,8 +4,6 @@
 
 namespace Concierge.Common
 {
-    using System;
-
     /// <summary>
     /// Provides utility methods and constants for the Concierge application.
     /// </summary>

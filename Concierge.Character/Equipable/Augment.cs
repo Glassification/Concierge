@@ -17,8 +17,6 @@ namespace Concierge.Character.Equipable
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
-    using Constants = Concierge.Common.Constants;
-
     /// <summary>
     /// Represents an augment that can be used by various attacks.
     /// </summary>

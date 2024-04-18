@@ -45,7 +45,7 @@
                                 Text="Inventory"
                                 FontSize="25"
                                 HorizontalAlignment="Left"
-                                Margin="150, 0, 0, 0"/>
+                                Margin="125, 0, 0, 0"/>
                             <components:ConciergeTextBlock 
                                 x:Name="ItemTotalField"
                                 Text="(69 Items)"
@@ -56,7 +56,7 @@
                                 x:Name="SearchFilter"
                                 HorizontalAlignment="Center"
                                 Width="300"
-                                Margin="150,5,0,5"
+                                Margin="125,5,0,5"
                                 FilterChanged="InventoryDataGrid_Filtered"/>
                         </StackPanel>
 

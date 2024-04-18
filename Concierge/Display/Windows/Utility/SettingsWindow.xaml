@@ -9,14 +9,14 @@
     mc:Ignorable="d"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     Title="Concierge Settings"
-    Height="475"
+    Height="525"
     Width="800"
     Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="250"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="60"/>
@@ -56,6 +56,7 @@
             <!--Left-->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
@@ -154,11 +155,39 @@
                             IsEditable="False"/>
                     </Grid>
                 </Grid>
+
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <components:ConciergeLabel
+                        Grid.Column="0"
+                        x:Name="HealingThresholdLabel"
+                        Text="Short Rest Healing (10%):"
+                        FontSize="18"/>
+
+                    <components:ConciergeSlider
+                        Grid.Column="1"
+                        x:Name="HealingThreshold"
+                        Margin="0,0,20,0"
+                        Minimum="0"
+                        Maximum="100"
+                        Interval="10"
+                        TickPlacement="BottomRight"
+                        TickFrequency="10"
+                        SmallChange="10"
+                        IsSnapToTickEnabled="True"
+                        ValueChanged="HealingThreshold_ValueChanged"
+                        Style="{StaticResource Horizontal_Slider}"/>
+                </Grid>
             </Grid>
 
             <!--Right-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>

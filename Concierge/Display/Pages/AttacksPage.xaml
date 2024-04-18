@@ -171,7 +171,7 @@
                                 <DataGridTextColumn
                                     Header="Augment"
                                     Binding="{Binding Name}"
-                                    Width="0.20*"
+                                    Width="0.19*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Type"
@@ -179,9 +179,9 @@
                                     Width="0.12*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
-                                    Header="Quantity"
+                                    Header="Amount"
                                     Binding="{Binding DisplayQuantity}"
-                                    Width="0.08*"
+                                    Width="0.09*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Damage"

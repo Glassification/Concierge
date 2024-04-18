@@ -74,6 +74,7 @@ namespace Concierge.Configuration
 
             UserSettings.CheckVersion = userSettingsDto.CheckVersion;
             UserSettings.HeaderAlignment = userSettingsDto.HeaderAlignment;
+            UserSettings.HealingThreshold = userSettingsDto.HealingThreshold;
             UserSettings.MuteSounds = userSettingsDto.MuteSounds;
             UserSettings.UseCoinWeight = userSettingsDto.UseCoinWeight;
             UserSettings.UseEncumbrance = userSettingsDto.UseEncumbrance;
@@ -118,6 +119,7 @@ namespace Concierge.Configuration
                     UseSaveFolder = UserSettings.DefaultFolder.UseSaveFolder,
                 },
                 HeaderAlignment = UserSettings.HeaderAlignment,
+                HealingThreshold = UserSettings.HealingThreshold,
                 MuteSounds = UserSettings.MuteSounds,
                 UseCoinWeight = UserSettings.UseCoinWeight,
                 UseEncumbrance = UserSettings.UseEncumbrance,

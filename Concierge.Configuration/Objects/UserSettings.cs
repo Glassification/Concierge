@@ -4,15 +4,19 @@
 
 namespace Concierge.Configuration.Objects
 {
+    using System;
     using System.Windows;
 
     using Concierge.Common.Enums;
+    using Concierge.Common.Extensions;
 
     /// <summary>
     /// Represents the user settings for an application.
     /// </summary>
     public sealed class UserSettings
     {
+        private int healingThreshold;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="UserSettings"/> class with default settings.
         /// </summary>
@@ -41,6 +45,22 @@ namespace Concierge.Configuration.Objects
         /// Gets or sets the horizontal alignment of the header in the user interface.
         /// </summary>
         public HorizontalAlignment HeaderAlignment { get; set; }
+
+        /// <summary>
+        /// Gets or sets the hp to heal to during a short rest.
+        /// </summary>
+        public int HealingThreshold
+        {
+            get
+            {
+                return this.healingThreshold;
+            }
+
+            set
+            {
+                this.healingThreshold = Math.Max(Math.Min(value, 100), 0).NearestMultipleOfTen();
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether to mute sounds in the application.

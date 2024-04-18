@@ -50,5 +50,16 @@ namespace Concierge.Common.Extensions
                 _ => string.Empty,
             };
         }
+
+        /// <summary>
+        /// Rounds the given integer value to the nearest multiple of ten.
+        /// </summary>
+        /// <param name="value">The integer value to be rounded.</param>
+        /// <returns>The nearest multiple of ten to the given value.</returns>
+        public static int NearestMultipleOfTen(this int value)
+        {
+            var rem = value % 10;
+            return rem >= 5 ? (value - rem + 10) : (value - rem);
+        }
     }
 }

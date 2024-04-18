@@ -13,6 +13,7 @@ namespace Concierge.Character.Vitals
     using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
+    using Concierge.Configuration;
     using Concierge.Tools.DiceRoller;
     using Newtonsoft.Json;
 
@@ -21,8 +22,6 @@ namespace Concierge.Character.Vitals
     /// </summary>
     public sealed class Vitality : ICopyable<Vitality>
     {
-        private const double HealingRatio = 0.1;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Vitality"/> class with default values.
         /// </summary>
@@ -158,7 +157,8 @@ namespace Concierge.Character.Vitals
         /// <param name="constitution">The character's Constitution modifier.</param>
         public void RollShortRestHitDice(Dice hitDie, Constitution constitution)
         {
-            var threshold = this.Health.MaxHealth - (int)Math.Ceiling(this.Health.MaxHealth * HealingRatio);
+            var ratio = Math.Abs(AppSettingsManager.UserSettings.HealingThreshold - 100) / 100.0;
+            var threshold = this.Health.MaxHealth - (int)Math.Ceiling(this.Health.MaxHealth * ratio);
             while (this.Health.BaseHealth < threshold && this.HitDice.Increment(hitDie.ToString()).dice != Dice.None)
             {
                 this.RollHitDice(hitDie, constitution);

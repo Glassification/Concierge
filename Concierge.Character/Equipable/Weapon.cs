@@ -5,7 +5,6 @@
 namespace Concierge.Character.Equipable
 {
     using System;
-    using System.Text;
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
@@ -261,46 +260,51 @@ namespace Concierge.Character.Equipable
         {
             return this.Type switch
             {
-                WeaponTypes.Battleaxe => new CategoryDto(PackIconKind.AxeBattle, Brushes.IndianRed, this.Type.ToString()),
-                WeaponTypes.Blowgun => new CategoryDto(PackIconKind.SignPole, Brushes.Magenta, this.Type.ToString()),
-                WeaponTypes.Club => new CategoryDto(PackIconKind.Oar, Brushes.Cyan, this.Type.ToString()),
-                WeaponTypes.Dagger => new CategoryDto(PackIconKind.KnifeMilitary, Brushes.LightGreen, this.Type.ToString()),
-                WeaponTypes.Dart => new CategoryDto(PackIconKind.SignPole, Brushes.Magenta, this.Type.ToString()),
-                WeaponTypes.Flail => new CategoryDto(PackIconKind.Mace, Brushes.LightPink, this.Type.ToString()),
-                WeaponTypes.Glaive => new CategoryDto(PackIconKind.AxeBattle, Brushes.IndianRed, this.Type.ToString()),
-                WeaponTypes.Greataxe => new CategoryDto(PackIconKind.AxeBattle, Brushes.IndianRed, this.Type.ToString()),
-                WeaponTypes.Greatclub => new CategoryDto(PackIconKind.Oar, Brushes.Cyan, this.Type.ToString()),
-                WeaponTypes.Greatsword => new CategoryDto(PackIconKind.Sword, Brushes.LightGreen, this.Type.ToString()),
-                WeaponTypes.Halberd => new CategoryDto(PackIconKind.AxeBattle, Brushes.IndianRed, this.Type.ToString()),
-                WeaponTypes.Handaxe => new CategoryDto(PackIconKind.Axe, Brushes.IndianRed, this.Type.ToString()),
-                WeaponTypes.HandCrossbow => new CategoryDto(PackIconKind.BowArrow, Brushes.Orange, this.Type.ToString()),
-                WeaponTypes.HeavyCrossbow => new CategoryDto(PackIconKind.BowArrow, Brushes.Orange, this.Type.ToString()),
-                WeaponTypes.Javelin => new CategoryDto(PackIconKind.Spear, Brushes.LightBlue, this.Type.ToString()),
-                WeaponTypes.Lance => new CategoryDto(PackIconKind.Spear, Brushes.LightBlue, this.Type.ToString()),
-                WeaponTypes.LightCrossbow => new CategoryDto(PackIconKind.BowArrow, Brushes.Orange, this.Type.ToString()),
-                WeaponTypes.LightHammer => new CategoryDto(PackIconKind.Hammer, Brushes.Cyan, this.Type.ToString()),
-                WeaponTypes.Longbow => new CategoryDto(PackIconKind.BowArrow, Brushes.Orange, this.Type.ToString()),
-                WeaponTypes.Longsword => new CategoryDto(PackIconKind.Sword, Brushes.LightGreen, this.Type.ToString()),
-                WeaponTypes.Mace => new CategoryDto(PackIconKind.Mace, Brushes.LightPink, this.Type.ToString()),
-                WeaponTypes.Maul => new CategoryDto(PackIconKind.Mace, Brushes.LightPink, this.Type.ToString()),
-                WeaponTypes.Morningstar => new CategoryDto(PackIconKind.Mace, Brushes.LightPink, this.Type.ToString()),
-                WeaponTypes.Net => new CategoryDto(PackIconKind.SpiderWeb, Brushes.MediumPurple, this.Type.ToString()),
-                WeaponTypes.Pike => new CategoryDto(PackIconKind.Spear, Brushes.LightBlue, this.Type.ToString()),
-                WeaponTypes.Quarterstaff => new CategoryDto(PackIconKind.MagicStaff, Brushes.Cyan, this.Type.ToString()),
-                WeaponTypes.Rapier => new CategoryDto(PackIconKind.Fencing, Brushes.LightGreen, this.Type.ToString()),
-                WeaponTypes.Scimitar => new CategoryDto(PackIconKind.Sword, Brushes.LightGreen, this.Type.ToString()),
-                WeaponTypes.Shortbow => new CategoryDto(PackIconKind.BowArrow, Brushes.Orange, this.Type.ToString()),
-                WeaponTypes.Shortsword => new CategoryDto(PackIconKind.Sword, Brushes.LightGreen, this.Type.ToString()),
-                WeaponTypes.Sickle => new CategoryDto(PackIconKind.Sickle, Brushes.MediumPurple, this.Type.ToString()),
-                WeaponTypes.Sling => new CategoryDto(PackIconKind.Gesture, Brushes.MediumPurple, this.Type.ToString()),
-                WeaponTypes.Spear => new CategoryDto(PackIconKind.Spear, Brushes.LightBlue, this.Type.ToString()),
-                WeaponTypes.Trident => new CategoryDto(PackIconKind.SilverwareFork, Brushes.MediumPurple, this.Type.ToString()),
-                WeaponTypes.Unarmed => new CategoryDto(PackIconKind.HandFrontLeft, Brushes.Cyan, this.Type.ToString()),
-                WeaponTypes.Warhammer => new CategoryDto(PackIconKind.Hammer, Brushes.Cyan, this.Type.ToString()),
-                WeaponTypes.WarPick => new CategoryDto(PackIconKind.Pickaxe, Brushes.MediumPurple, this.Type.ToString()),
-                WeaponTypes.Whip => new CategoryDto(PackIconKind.JumpRope, Brushes.MediumPurple, this.Type.ToString()),
+                WeaponTypes.Battleaxe => NewDto(PackIconKind.AxeBattle, Brushes.IndianRed, this.Type),
+                WeaponTypes.Blowgun => NewDto(PackIconKind.SignPole, Brushes.Magenta, this.Type),
+                WeaponTypes.Club => NewDto(PackIconKind.Oar, Brushes.Cyan, this.Type),
+                WeaponTypes.Dagger => NewDto(PackIconKind.KnifeMilitary, Brushes.LightGreen, this.Type),
+                WeaponTypes.Dart => NewDto(PackIconKind.SignPole, Brushes.Magenta, this.Type),
+                WeaponTypes.Flail => NewDto(PackIconKind.Mace, Brushes.LightPink, this.Type),
+                WeaponTypes.Glaive => NewDto(PackIconKind.AxeBattle, Brushes.IndianRed, this.Type),
+                WeaponTypes.Greataxe => NewDto(PackIconKind.AxeBattle, Brushes.IndianRed, this.Type),
+                WeaponTypes.Greatclub => NewDto(PackIconKind.Oar, Brushes.Cyan, this.Type),
+                WeaponTypes.Greatsword => NewDto(PackIconKind.Sword, Brushes.LightGreen, this.Type),
+                WeaponTypes.Halberd => NewDto(PackIconKind.AxeBattle, Brushes.IndianRed, this.Type),
+                WeaponTypes.Handaxe => NewDto(PackIconKind.Axe, Brushes.IndianRed, this.Type),
+                WeaponTypes.HandCrossbow => NewDto(PackIconKind.BowArrow, Brushes.Orange, this.Type),
+                WeaponTypes.HeavyCrossbow => NewDto(PackIconKind.BowArrow, Brushes.Orange, this.Type),
+                WeaponTypes.Javelin => NewDto(PackIconKind.Spear, Brushes.LightBlue, this.Type),
+                WeaponTypes.Lance => NewDto(PackIconKind.Spear, Brushes.LightBlue, this.Type),
+                WeaponTypes.LightCrossbow => NewDto(PackIconKind.BowArrow, Brushes.Orange, this.Type),
+                WeaponTypes.LightHammer => NewDto(PackIconKind.Hammer, Brushes.Cyan, this.Type),
+                WeaponTypes.Longbow => NewDto(PackIconKind.BowArrow, Brushes.Orange, this.Type),
+                WeaponTypes.Longsword => NewDto(PackIconKind.Sword, Brushes.LightGreen, this.Type),
+                WeaponTypes.Mace => NewDto(PackIconKind.Mace, Brushes.LightPink, this.Type),
+                WeaponTypes.Maul => NewDto(PackIconKind.Mace, Brushes.LightPink, this.Type),
+                WeaponTypes.Morningstar => NewDto(PackIconKind.Mace, Brushes.LightPink, this.Type),
+                WeaponTypes.Net => NewDto(PackIconKind.SpiderWeb, Brushes.MediumPurple, this.Type),
+                WeaponTypes.Pike => NewDto(PackIconKind.Spear, Brushes.LightBlue, this.Type),
+                WeaponTypes.Quarterstaff => NewDto(PackIconKind.MagicStaff, Brushes.Cyan, this.Type),
+                WeaponTypes.Rapier => NewDto(PackIconKind.Fencing, Brushes.LightGreen, this.Type),
+                WeaponTypes.Scimitar => NewDto(PackIconKind.Sword, Brushes.LightGreen, this.Type),
+                WeaponTypes.Shortbow => NewDto(PackIconKind.BowArrow, Brushes.Orange, this.Type),
+                WeaponTypes.Shortsword => NewDto(PackIconKind.Sword, Brushes.LightGreen, this.Type),
+                WeaponTypes.Sickle => NewDto(PackIconKind.Sickle, Brushes.MediumPurple, this.Type),
+                WeaponTypes.Sling => NewDto(PackIconKind.Gesture, Brushes.MediumPurple, this.Type),
+                WeaponTypes.Spear => NewDto(PackIconKind.Spear, Brushes.LightBlue, this.Type),
+                WeaponTypes.Trident => NewDto(PackIconKind.SilverwareFork, Brushes.MediumPurple, this.Type),
+                WeaponTypes.Unarmed => NewDto(PackIconKind.HandFrontLeft, Brushes.Cyan, this.Type),
+                WeaponTypes.Warhammer => NewDto(PackIconKind.Hammer, Brushes.Cyan, this.Type),
+                WeaponTypes.WarPick => NewDto(PackIconKind.Pickaxe, Brushes.MediumPurple, this.Type),
+                WeaponTypes.Whip => NewDto(PackIconKind.JumpRope, Brushes.MediumPurple, this.Type),
                 _ => CategoryDto.Empty,
             };
+        }
+
+        private static CategoryDto NewDto(PackIconKind iconKind, Brush brush, WeaponTypes weaponType)
+        {
+            return new CategoryDto(iconKind, brush, weaponType.ToString());
         }
 
         private (PackIconKind IconKind, Brush Brush) GetAttunedValue()
