@@ -12,6 +12,7 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Magic;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
@@ -37,8 +38,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.SpellNameComboBox);
             this.SetMouseOverEvents(this.PreparedCheckBox);
             this.SetMouseOverEvents(this.LevelUpDown);
-            this.SetMouseOverEvents(this.PageUpDown);
-            this.SetMouseOverEvents(this.LevelUpDown);
+            this.SetMouseOverEvents(this.RequireSpellSlotCheckBox);
             this.SetMouseOverEvents(this.SchoolComboBox);
             this.SetMouseOverEvents(this.RitualCheckBox);
             this.SetMouseOverEvents(this.ComponentsTextBox, this.ComponentsTextBackground);
@@ -130,16 +130,26 @@ namespace Concierge.Display.Windows
             this.CloseConciergeWindow();
         }
 
+        private void SetRequireSpellSlotState(bool state)
+        {
+            DisplayUtility.SetControlEnableState(this.RequireSpellSlotLabel, state);
+            DisplayUtility.SetControlEnableState(this.RequireSpellSlotCheckBox, state);
+            if (!state)
+            {
+                this.RequireSpellSlotCheckBox.IsChecked = false;
+            }
+        }
+
         private void FillFields(Spell spell)
         {
             this.PreparedCheckBox.UpdatingValue();
             this.RitualCheckBox.UpdatingValue();
             this.ConcentrationCheckBox.UpdatingValue();
+            this.RequireSpellSlotCheckBox.UpdatingValue();
 
             this.SpellNameComboBox.Text = spell.Name;
             this.PreparedCheckBox.IsChecked = spell.Prepared;
             this.LevelUpDown.Value = spell.Level;
-            this.PageUpDown.Value = spell.Page;
             this.SchoolComboBox.Text = spell.School.ToString();
             this.RitualCheckBox.IsChecked = spell.Ritual;
             this.ComponentsTextBox.Text = spell.Components;
@@ -151,10 +161,14 @@ namespace Concierge.Display.Windows
             this.DamageTextBox.Text = spell.Damage;
             this.NotesTextBox.Text = spell.Description;
             this.ClassComboBox.Text = spell.Class;
+            this.RequireSpellSlotCheckBox.IsChecked = spell.ExpendSpellSlot;
+
+            this.SetRequireSpellSlotState(this.LevelUpDown.Value > 0);
 
             this.PreparedCheckBox.UpdatedValue();
             this.RitualCheckBox.UpdatedValue();
             this.ConcentrationCheckBox.UpdatedValue();
+            this.RequireSpellSlotCheckBox.UpdatedValue();
         }
 
         private void ClearFields(string name = "")
@@ -162,11 +176,11 @@ namespace Concierge.Display.Windows
             this.PreparedCheckBox.UpdatingValue();
             this.RitualCheckBox.UpdatingValue();
             this.ConcentrationCheckBox.UpdatingValue();
+            this.RequireSpellSlotCheckBox.UpdatingValue();
 
             this.SpellNameComboBox.Text = name;
             this.PreparedCheckBox.IsChecked = false;
             this.LevelUpDown.Value = 0;
-            this.PageUpDown.Value = 0;
             this.SchoolComboBox.Text = ArcaneSchools.Universal.ToString();
             this.RitualCheckBox.IsChecked = false;
             this.ComponentsTextBox.Text = string.Empty;
@@ -178,10 +192,12 @@ namespace Concierge.Display.Windows
             this.ClassComboBox.Text = string.Empty;
             this.DamageTextBox.Text = string.Empty;
             this.NotesTextBox.Text = string.Empty;
+            this.RequireSpellSlotCheckBox.IsChecked = false;
 
             this.PreparedCheckBox.UpdatedValue();
             this.RitualCheckBox.UpdatedValue();
             this.ConcentrationCheckBox.UpdatedValue();
+            this.RequireSpellSlotCheckBox.UpdatedValue();
         }
 
         private void UpdateSpell(Spell spell)
@@ -191,7 +207,6 @@ namespace Concierge.Display.Windows
             spell.Name = this.SpellNameComboBox.Text;
             spell.Prepared = this.PreparedCheckBox.IsChecked ?? false;
             spell.Level = this.LevelUpDown.Value;
-            spell.Page = this.PageUpDown.Value;
             spell.School = this.SchoolComboBox.Text.ToEnum<ArcaneSchools>();
             spell.Ritual = this.RitualCheckBox.IsChecked ?? false;
             spell.Components = this.ComponentsTextBox.Text;
@@ -203,6 +218,7 @@ namespace Concierge.Display.Windows
             spell.Damage = this.DamageTextBox.Text;
             spell.Description = this.NotesTextBox.Text;
             spell.Class = this.ClassComboBox.Text;
+            spell.ExpendSpellSlot = this.RequireSpellSlotCheckBox.IsChecked ?? false;
 
             if (!spell.IsCustom)
             {
@@ -217,7 +233,6 @@ namespace Concierge.Display.Windows
                 Name = this.SpellNameComboBox.Text,
                 Prepared = this.PreparedCheckBox.IsChecked ?? false,
                 Level = this.LevelUpDown.Value,
-                Page = this.PageUpDown.Value,
                 School = this.SchoolComboBox.Text.ToEnum<ArcaneSchools>(),
                 Ritual = this.RitualCheckBox.IsChecked ?? false,
                 Components = this.ComponentsTextBox.Text,
@@ -229,6 +244,7 @@ namespace Concierge.Display.Windows
                 Damage = this.DamageTextBox.Text,
                 Description = this.NotesTextBox.Text,
                 Class = this.ClassComboBox.Text,
+                ExpendSpellSlot = this.RequireSpellSlotCheckBox.IsChecked ?? false,
             };
         }
 
@@ -293,6 +309,11 @@ namespace Concierge.Display.Windows
             Program.CustomItemService.AddCustomItem(this.Create());
             this.ClearFields();
             this.SpellNameComboBox.ItemsSource = DefaultItems;
+        }
+
+        private void LevelUpDown_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            this.SetRequireSpellSlotState(this.LevelUpDown.Value > 0);
         }
     }
 }

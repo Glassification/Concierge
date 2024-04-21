@@ -58,6 +58,8 @@ namespace Concierge.Character.Magic
 
         public string Duration { get; set; }
 
+        public bool ExpendSpellSlot { get; set; }
+
         public Guid Id { get; set; }
 
         public bool IsCustom { get; set; }
@@ -65,8 +67,6 @@ namespace Concierge.Character.Magic
         public int Level { get; set; }
 
         public string Name { get; set; }
-
-        public int Page { get; set; }
 
         public bool Prepared { get; set; }
 
@@ -137,7 +137,6 @@ namespace Concierge.Character.Magic
             {
                 Prepared = this.Prepared,
                 Level = this.Level,
-                Page = this.Page,
                 School = this.School,
                 Ritual = this.Ritual,
                 Components = this.Components,
@@ -153,6 +152,7 @@ namespace Concierge.Character.Magic
                 Name = this.Name,
                 IsCustom = this.IsCustom,
                 CurrentConcentration = this.CurrentConcentration,
+                ExpendSpellSlot = this.ExpendSpellSlot,
             };
         }
 

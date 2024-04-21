@@ -86,7 +86,7 @@
                                 <components:ConciergeTextBlock 
                                     x:Name="TraitField1"
                                     Foreground="White"
-                                    FontSize="16"
+                                    FontSize="15"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
                                     Margin="10, 0, 0, 0"
@@ -98,7 +98,7 @@
                                 <components:ConciergeTextBlock 
                                     x:Name="TraitField2"
                                     Foreground="White"
-                                    FontSize="16"
+                                    FontSize="15"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
                                     Margin="10, 0, 0, 0"
@@ -147,7 +147,7 @@
                             <components:ConciergeTextBlock 
                                 x:Name="IdealField"
                                 Foreground="White"
-                                FontSize="16"
+                                FontSize="15"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Margin="10, 0, 0, 0"
@@ -195,7 +195,7 @@
                             <components:ConciergeTextBlock 
                                 x:Name="BondField"
                                 Foreground="White"
-                                FontSize="16"
+                                FontSize="15"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Margin="10, 0, 0, 0"
@@ -243,7 +243,7 @@
                             <components:ConciergeTextBlock 
                                 x:Name="FlawField"
                                 Foreground="White"
-                                FontSize="16"
+                                FontSize="15"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Margin="10, 0, 0, 0"

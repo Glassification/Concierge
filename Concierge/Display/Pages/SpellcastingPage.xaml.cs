@@ -326,7 +326,7 @@ namespace Concierge.Display.Pages
                 }
             }
 
-            if (!spell.Class.IsNullOrWhiteSpace() && spell.Level > 0)
+            if (spell.ExpendSpellSlot)
             {
                 var spellSlots = magic.SpellSlots.DeepCopy();
                 var name = spell.Class.Equals("Warlock", StringComparison.InvariantCultureIgnoreCase) ? "pact" : spell.Level.ToSpellSlot();

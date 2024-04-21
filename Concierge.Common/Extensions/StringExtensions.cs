@@ -102,30 +102,6 @@ namespace Concierge.Common.Extensions
         }
 
         /// <summary>
-        /// Counts the occurrences of a specified character in the string.
-        /// </summary>
-        /// <param name="str">The string to count characters in.</param>
-        /// <param name="character">The character to count.</param>
-        /// <returns>The number of occurrences of the character in the string.</returns>
-        public static int CountCharacter(this string str, char character)
-        {
-            var count = 0;
-
-            str = CountCharacterRegex().Replace(str, m => m.Value.Replace(',', '@'));
-            var array = str.ToCharArray();
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] == character)
-                {
-                    count++;
-                }
-            }
-
-            return count;
-        }
-
-        /// <summary>
         /// Formats the string by inserting spaces before each uppercase letter or digit, except for the first character.
         /// </summary>
         /// <param name="str">The string to format.</param>
@@ -240,33 +216,6 @@ namespace Concierge.Common.Extensions
             }
 
             return true;
-        }
-
-        /// <summary>
-        /// Converts a string representation of a color to a Color object.
-        /// If the input string is null, empty, or consists only of white space, the method returns Colors.Transparent.
-        /// If the conversion fails, the method also returns Colors.Transparent.
-        /// </summary>
-        /// <param name="colorName">The string representation of the color to convert.</param>
-        /// <returns>A Color object representing the converted color, or Colors.Transparent if the conversion fails.</returns>
-        public static Color ToColor(this string? colorName)
-        {
-            if (colorName?.IsNullOrWhiteSpace() ?? true)
-            {
-                return Colors.Transparent;
-            }
-
-            try
-            {
-                colorName = colorName.Strip(" ", "-", ".", "'");
-                var cc = TypeDescriptor.GetConverter(typeof(Color));
-
-                return (Color?)cc?.ConvertFromString(colorName) ?? Colors.Transparent;
-            }
-            catch (Exception)
-            {
-                return Colors.Transparent;
-            }
         }
 
         /// <summary>
@@ -583,8 +532,5 @@ namespace Concierge.Common.Extensions
 
         [GeneratedRegex(@"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline, "en-CA")]
         private static partial Regex RtfRegex();
-
-        [GeneratedRegex("\".*?\"")]
-        private static partial Regex CountCharacterRegex();
     }
 }

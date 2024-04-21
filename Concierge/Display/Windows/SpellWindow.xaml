@@ -137,31 +137,13 @@
                     <Grid Grid.Column="1">
                         <controls:IntegerUpDownControl 
                             x:Name="LevelUpDown"
-                            Maximum="9"/>
-                    </Grid>
-                </Grid>
-
-                <!--Page-->
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Page:"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDownControl x:Name="PageUpDown"/>
+                            Maximum="9"
+                            ValueChanged="LevelUpDown_ValueChanged"/>
                     </Grid>
                 </Grid>
 
                 <!--School-->
-                <Grid Grid.Row="4">
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -183,28 +165,41 @@
                 </Grid>
 
                 <!--Ritual-->
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Ritual:"/>
-                    </Grid>
+                    <components:ConciergeLabel
+                        Grid.Column="0"
+                        Text="Ritual:"/>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Margin="20,0,0,0">
+                    <Grid Grid.Column="1" Margin="0,0,0,0">
                         <components:ConciergeCheckBox  
                             x:Name="RitualCheckBox"
                             Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
+
+                    <!--Title-->
+                    <components:ConciergeLabel
+                        Grid.Column="2"
+                        Text="Concentration:"
+                        FontSize="17"/>
+
+                    <!--Value-->
+                    <components:ConciergeCheckBox
+                        Grid.Column="3"
+                        x:Name="ConcentrationCheckBox"
+                        Style="{StaticResource CheckBoxStyle}"/>
                 </Grid>
 
                 <!--Components-->
-                <Grid Grid.Row="6">
+                <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -225,7 +220,28 @@
                     </components:ConciergeTextBoxBackground>
                 </Grid>
 
-                <!--Concentration-->
+                <!--Save-->
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Save:"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <components:ConciergeTextBoxBackground
+                        x:Name="SaveTextBackground"
+                        Grid.Column="1">
+                        <components:ConciergeTextBox x:Name="SaveTextBox"/>
+                    </components:ConciergeTextBoxBackground>
+                </Grid>
+
+                <!--Damage-->
                 <Grid Grid.Row="7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
@@ -235,16 +251,15 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Concentration:"
-                            FontSize="17"/>
+                            Text="Damage:"/>
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Margin="20,0,0,0">
-                        <components:ConciergeCheckBox  
-                            x:Name="ConcentrationCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"/>
-                    </Grid>
+                    <components:ConciergeTextBoxBackground
+                        x:Name="DamageTextBackground"
+                        Grid.Column="1">
+                        <components:ConciergeTextBox x:Name="DamageTextBox"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
             </Grid>
 
@@ -256,8 +271,7 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="180"/>
                 </Grid.RowDefinitions>
 
                 <!--Range-->
@@ -323,7 +337,6 @@
                     </components:ConciergeTextBoxBackground>
                 </Grid>
 
-                <!--Save-->
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
@@ -331,42 +344,22 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Save:"/>
-                    </Grid>
+                    <components:ConciergeLabel
+                        Grid.Column="0"
+                        x:Name="RequireSpellSlotLabel"
+                        Text="Requires Spell Sot:"
+                        FontSize="17"/>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground
-                        x:Name="SaveTextBackground"
-                        Grid.Column="1">
-                        <components:ConciergeTextBox x:Name="SaveTextBox"/>
-                    </components:ConciergeTextBoxBackground>
-                </Grid>
-
-                <!--Damage-->
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Damage:"/>
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
+                        <components:ConciergeCheckBox 
+                            x:Name="RequireSpellSlotCheckBox"
+                            Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
-
-                    <!--Value-->
-                    <components:ConciergeTextBoxBackground
-                        x:Name="DamageTextBackground"
-                        Grid.Column="1">
-                        <components:ConciergeTextBox x:Name="DamageTextBox"/>
-                    </components:ConciergeTextBoxBackground>
                 </Grid>
 
                 <!--Class-->
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -387,7 +380,7 @@
                 </Grid>
 
                 <!--Notes-->
-                <Grid Grid.Row="6">
+                <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>

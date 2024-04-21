@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="Display/Dictionaries/ScrollbarDictionary.xaml"/>
                 <ResourceDictionary Source="Display/Dictionaries/ToolTipDictionary.xaml"/>
                 <ResourceDictionary Source="Display/Dictionaries/SliderDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/GroupBoxDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

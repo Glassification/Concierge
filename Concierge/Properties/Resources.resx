@@ -736,6 +736,9 @@
   <data name="SettingsWindow_HeaderAlignmentComboBox" xml:space="preserve">
     <value>Set how the text in the header bar is alighned. Everyone has different preferences.</value>
   </data>
+  <data name="SettingsWindow_HealingThreshold" xml:space="preserve">
+    <value>Limits healing from rolling hit dice during a short rest. Will only regain hp until reaching the threshold. 100% will heal fully, 0% will disable auto healing.</value>
+  </data>
   <data name="SettingsWindow_MuteCheckBox" xml:space="preserve">
     <value>Toggle if button clicks and warning messages will play sound.</value>
   </data>
@@ -889,14 +892,14 @@
   <data name="SpellWindow_NotesTextBox" xml:space="preserve">
     <value>Spells can be versatile tools, weapons, or protective wards. They can deal damage or undo it, impose or remove conditions, drain life energy away, and restore life to the dead.</value>
   </data>
-  <data name="SpellWindow_PageUpDown" xml:space="preserve">
-    <value>Refences that page the spell is found in the Player's Handbook.</value>
-  </data>
   <data name="SpellWindow_PreparedCheckBox" xml:space="preserve">
     <value>Before a spellcaster can use a spell, he or she must have the spell firmly fixed in mind, or must have access to the spell in a magic item.</value>
   </data>
   <data name="SpellWindow_RangeTextBox" xml:space="preserve">
     <value>The target of a spell must be within the spell's range. For a spell like magic missile, the target is a creature. For a spell like fireball, the target is the point in space where the ball of fire erupts.</value>
+  </data>
+  <data name="SpellWindow_RequireSpellSlotCheckBox" xml:space="preserve">
+    <value>Some spells might be class or race abilitites, and not require expending spell slots in order to cast.</value>
   </data>
   <data name="SpellWindow_RitualCheckBox" xml:space="preserve">
     <value>The ritual version of a spell takes 10 minutes longer to cast than normal. It also doesn't expend a spell slot, which means the ritual version of a spell can't be cast at a higher level.</value>

@@ -62,7 +62,7 @@ namespace Concierge.Character.Details
         public Guid Id { get; set; }
 
         [JsonIgnore]
-        public string Description => $"{this.Name}{(IsValid(this.Script) ? $" ({this.Script})" : string.Empty)}, Spoken by: {this.Speakers}";
+        public string Description => $"{this.Name}{(IsValid(this.Script) ? $" ({this.Script})" : string.Empty)} - Spoken by: {this.Speakers}";
 
         [JsonIgnore]
         [SearchIgnore]

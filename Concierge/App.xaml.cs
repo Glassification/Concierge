@@ -31,20 +31,16 @@ namespace Concierge
 
         private static bool VerifyResourceManager()
         {
-            bool isValid;
-
             try
             {
                 var testResult = Concierge.Properties.Resources.ResourceValidation;
-                isValid = testResult.Equals("Success");
+                return testResult.Equals("Success");
             }
             catch (Exception ex)
             {
                 Program.ErrorService.LogError(new ResourceManagerException(ex));
-                isValid = false;
+                return false;
             }
-
-            return isValid;
         }
 
         private static void LoadAllPages(MainWindow mainWindow)

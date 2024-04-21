@@ -2025,6 +2025,15 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Limits healing from rolling hit dice during a short rest. Will only regain hp until reaching the threshold. 100% will heal fully, 0% will disable auto healing..
+        /// </summary>
+        internal static string SettingsWindow_HealingThreshold {
+            get {
+                return ResourceManager.GetString("SettingsWindow_HealingThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toggle if button clicks and warning messages will play sound..
         /// </summary>
         internal static string SettingsWindow_MuteCheckBox {
@@ -2485,15 +2494,6 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Refences that page the spell is found in the Player&apos;s Handbook..
-        /// </summary>
-        internal static string SpellWindow_PageUpDown {
-            get {
-                return ResourceManager.GetString("SpellWindow_PageUpDown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Before a spellcaster can use a spell, he or she must have the spell firmly fixed in mind, or must have access to the spell in a magic item..
         /// </summary>
         internal static string SpellWindow_PreparedCheckBox {
@@ -2508,6 +2508,15 @@ namespace Concierge.Properties {
         internal static string SpellWindow_RangeTextBox {
             get {
                 return ResourceManager.GetString("SpellWindow_RangeTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some spells might be class or race abilitites, and not require expending spell slots in order to cast..
+        /// </summary>
+        internal static string SpellWindow_RequireSpellSlotCheckBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_RequireSpellSlotCheckBox", resourceCulture);
             }
         }
         

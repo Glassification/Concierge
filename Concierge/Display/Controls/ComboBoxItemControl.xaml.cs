@@ -4,6 +4,7 @@
 
 namespace Concierge.Display.Controls
 {
+    using System;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
@@ -36,23 +37,44 @@ namespace Concierge.Display.Controls
             this.Item = item;
         }
 
-        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, bool isEnum = true)
+        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name)
             : this()
         {
             this.ItemIcon.Kind = icon;
             this.ItemIcon.Foreground = iconColor;
 
-            this.ItemName.Text = isEnum ? name.Strip(" ").FormatFromPascalCase() : name;
+            this.ItemName.Text = name;
             this.ItemName.Foreground = Brushes.White;
         }
 
-        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, object tag, bool isEnum = true)
+        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, Enum name)
             : this()
         {
             this.ItemIcon.Kind = icon;
             this.ItemIcon.Foreground = iconColor;
 
-            this.ItemName.Text = isEnum ? name.Strip(" ").FormatFromPascalCase() : name;
+            this.ItemName.Text = name.ToString().Strip(" ").FormatFromPascalCase();
+            this.ItemName.Foreground = Brushes.White;
+        }
+
+        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, Enum name, object tag)
+            : this()
+        {
+            this.ItemIcon.Kind = icon;
+            this.ItemIcon.Foreground = iconColor;
+
+            this.ItemName.Text = name.ToString().Strip(" ").FormatFromPascalCase();
+            this.ItemName.Foreground = Brushes.White;
+            this.Tag = tag;
+        }
+
+        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, object tag)
+            : this()
+        {
+            this.ItemIcon.Kind = icon;
+            this.ItemIcon.Foreground = iconColor;
+
+            this.ItemName.Text = name;
             this.ItemName.Foreground = Brushes.White;
             this.Tag = tag;
         }

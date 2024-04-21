@@ -14,7 +14,6 @@ namespace Concierge.Display
     using Concierge.Character.Equipable;
     using Concierge.Common;
     using Concierge.Common.Enums;
-    using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Display.Controls;
     using Concierge.Search.Enums;
@@ -90,11 +89,11 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.BorderNone, Brushes.SlateGray, AbilityTypes.None.ToString()),
-                new (PackIconKind.ArrangeSendBackward, Brushes.LightBlue, AbilityTypes.Background.ToString()),
-                new (PackIconKind.StarCircleOutline, Brushes.MediumPurple, AbilityTypes.Feat.ToString()),
-                new (PackIconKind.BookVariant, Brushes.Orange, AbilityTypes.ClassFeature.ToString()),
-                new (PackIconKind.BookVariant, Brushes.IndianRed, AbilityTypes.RaceFeature.ToString()),
+                new (PackIconKind.BorderNone, Brushes.SlateGray, AbilityTypes.None),
+                new (PackIconKind.ArrangeSendBackward, Brushes.LightBlue, AbilityTypes.Background),
+                new (PackIconKind.StarCircleOutline, Brushes.MediumPurple, AbilityTypes.Feat),
+                new (PackIconKind.BookVariant, Brushes.Orange, AbilityTypes.ClassFeature),
+                new (PackIconKind.BookVariant, Brushes.IndianRed, AbilityTypes.RaceFeature),
             ];
         }
 
@@ -102,22 +101,22 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.ListStatus, Brushes.MediumPurple,  DamageTypes.None.ToString()),
-                new (PackIconKind.Flask, Brushes.LightGreen,  DamageTypes.Acid.ToString()),
-                new (PackIconKind.AxeBattle, Brushes.IndianRed,  DamageTypes.Bludgeoning.ToString()),
-                new (PackIconKind.Snowflake, Brushes.Silver,  DamageTypes.Cold.ToString()),
-                new (PackIconKind.Fire, Brushes.OrangeRed,  DamageTypes.Fire.ToString()),
-                new (PackIconKind.Triforce, Brushes.IndianRed,  DamageTypes.Force.ToString()),
-                new (PackIconKind.LightningBolt, Brushes.Goldenrod,  DamageTypes.Lightning.ToString()),
-                new (PackIconKind.Coffin, Brushes.YellowGreen,  DamageTypes.Necrotic.ToString()),
-                new (PackIconKind.ArrowProjectile, Brushes.IndianRed,  DamageTypes.Piercing.ToString()),
-                new (PackIconKind.Poison, Brushes.LightGreen,  DamageTypes.Poison.ToString()),
-                new (PackIconKind.CrystalBall, Brushes.Cyan,  DamageTypes.Psychic.ToString()),
-                new (PackIconKind.WeatherSunny, Brushes.Goldenrod,  DamageTypes.Radiant.ToString()),
-                new (PackIconKind.Sword, Brushes.IndianRed,  DamageTypes.Slashing.ToString()),
-                new (PackIconKind.WeatherLightning, Brushes.Goldenrod,  DamageTypes.Thunder.ToString()),
-                new (PackIconKind.HeartPlus, ConciergeBrushes.Mint, DamageTypes.Healing.ToString()),
-                new (PackIconKind.HeartMinus, Brushes.IndianRed, DamageTypes.Damage.ToString()),
+                new (PackIconKind.ListStatus, Brushes.MediumPurple,  DamageTypes.None),
+                new (PackIconKind.Flask, Brushes.LightGreen,  DamageTypes.Acid),
+                new (PackIconKind.AxeBattle, Brushes.IndianRed,  DamageTypes.Bludgeoning),
+                new (PackIconKind.Snowflake, Brushes.Silver,  DamageTypes.Cold),
+                new (PackIconKind.Fire, Brushes.OrangeRed,  DamageTypes.Fire),
+                new (PackIconKind.Triforce, Brushes.IndianRed,  DamageTypes.Force),
+                new (PackIconKind.LightningBolt, Brushes.Goldenrod,  DamageTypes.Lightning),
+                new (PackIconKind.Coffin, Brushes.YellowGreen,  DamageTypes.Necrotic),
+                new (PackIconKind.ArrowProjectile, Brushes.IndianRed,  DamageTypes.Piercing),
+                new (PackIconKind.Poison, Brushes.LightGreen,  DamageTypes.Poison),
+                new (PackIconKind.CrystalBall, Brushes.Cyan,  DamageTypes.Psychic),
+                new (PackIconKind.WeatherSunny, Brushes.Goldenrod,  DamageTypes.Radiant),
+                new (PackIconKind.Sword, Brushes.IndianRed,  DamageTypes.Slashing),
+                new (PackIconKind.WeatherLightning, Brushes.Goldenrod,  DamageTypes.Thunder),
+                new (PackIconKind.HeartPlus, ConciergeBrushes.Mint, DamageTypes.Healing),
+                new (PackIconKind.HeartMinus, Brushes.IndianRed, DamageTypes.Damage),
             ];
         }
 
@@ -125,11 +124,11 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.CircleMultiple, ConciergeBrushes.Copper, CoinType.Copper.ToString()),
-                new (PackIconKind.CircleMultiple, ConciergeBrushes.Silver, CoinType.Silver.ToString()),
-                new (PackIconKind.CircleMultiple, ConciergeBrushes.Electrum, CoinType.Electrum.ToString()),
-                new (PackIconKind.CircleMultiple, ConciergeBrushes.Gold, CoinType.Gold.ToString()),
-                new (PackIconKind.CircleMultiple, ConciergeBrushes.Platinum, CoinType.Platinum.ToString()),
+                new (PackIconKind.CircleMultiple, ConciergeBrushes.Copper, CoinType.Copper),
+                new (PackIconKind.CircleMultiple, ConciergeBrushes.Silver, CoinType.Silver),
+                new (PackIconKind.CircleMultiple, ConciergeBrushes.Electrum, CoinType.Electrum),
+                new (PackIconKind.CircleMultiple, ConciergeBrushes.Gold, CoinType.Gold),
+                new (PackIconKind.CircleMultiple, ConciergeBrushes.Platinum, CoinType.Platinum),
             ];
         }
 
@@ -137,14 +136,14 @@ namespace Concierge.Display
         {
             List<ComboBoxItemControl> list =
             [
-                new (PackIconKind.GenderFemale, Brushes.Pink, Gender.Female.ToString()),
-                new (PackIconKind.GenderMale, Brushes.SteelBlue, Gender.Male.ToString()),
-                new (PackIconKind.GenderNonBinary, Brushes.MediumPurple, Gender.Other.ToString()),
+                new (PackIconKind.GenderFemale, Brushes.Pink, Gender.Female),
+                new (PackIconKind.GenderMale, Brushes.SteelBlue, Gender.Male),
+                new (PackIconKind.GenderNonBinary, Brushes.MediumPurple, Gender.Other),
             ];
 
             if (AppSettingsManager.StartUp.WildWasteland)
             {
-                list.Add(new (PackIconKind.Helicopter, Brushes.MediumPurple, Gender.AttackHelicopter.ToString().FormatFromPascalCase()));
+                list.Add(new (PackIconKind.Helicopter, Brushes.MediumPurple, Gender.AttackHelicopter));
             }
 
             return list;
@@ -154,11 +153,11 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Wall, ConciergeBrushes.Silver, ArmorType.None.ToString()),
-                new (PackIconKind.Wall, ConciergeBrushes.LightCarryCapacity, ArmorType.Light.ToString()),
-                new (PackIconKind.Wall, ConciergeBrushes.MediumCarryCapacity, ArmorType.Medium.ToString()),
-                new (PackIconKind.Wall, ConciergeBrushes.HeavyCarryCapacity, ArmorType.Heavy.ToString()),
-                new (PackIconKind.Wall, ConciergeBrushes.Verdigris, ArmorType.Massive.ToString()),
+                new (PackIconKind.Wall, ConciergeBrushes.Silver, ArmorType.None),
+                new (PackIconKind.Wall, ConciergeBrushes.LightCarryCapacity, ArmorType.Light),
+                new (PackIconKind.Wall, ConciergeBrushes.MediumCarryCapacity, ArmorType.Medium),
+                new (PackIconKind.Wall, ConciergeBrushes.HeavyCarryCapacity, ArmorType.Heavy),
+                new (PackIconKind.Wall, ConciergeBrushes.Verdigris, ArmorType.Massive),
             ];
         }
 
@@ -166,8 +165,8 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Eye, ConciergeBrushes.Mint, ArmorStealth.Normal.ToString()),
-                new (PackIconKind.EyeOff, Brushes.IndianRed, ArmorStealth.Disadvantage.ToString()),
+                new (PackIconKind.Eye, ConciergeBrushes.Mint, ArmorStealth.Normal),
+                new (PackIconKind.EyeOff, Brushes.IndianRed, ArmorStealth.Disadvantage),
             ];
         }
 
@@ -175,8 +174,8 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.ToggleSwitch, ConciergeBrushes.Mint, ArmorStatus.Donned.ToString()),
-                new (PackIconKind.ToggleSwitchOff, Brushes.IndianRed, ArmorStatus.Doffed.ToString()),
+                new (PackIconKind.Eye, ConciergeBrushes.Mint, ArmorStatus.Donned),
+                new (PackIconKind.EyeOff, Brushes.IndianRed, ArmorStatus.Doffed),
             ];
         }
 
@@ -184,13 +183,13 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Human, Brushes.Silver, Abilities.NONE.ToString()),
-                new (PackIconKind.WeightLifter, Brushes.IndianRed, Abilities.STR.ToString()),
-                new (PackIconKind.Karate, Brushes.Orange, Abilities.DEX.ToString()),
-                new (PackIconKind.Run, Brushes.Yellow, Abilities.CON.ToString()),
-                new (PackIconKind.HumanMale, Brushes.LightGreen, Abilities.INT.ToString()),
-                new (PackIconKind.Meditation, Brushes.Cyan, Abilities.WIS.ToString()),
-                new (PackIconKind.HumanGreeting, Brushes.MediumPurple, Abilities.CHA.ToString()),
+                new (PackIconKind.Human, Brushes.Silver, Abilities.NONE),
+                new (PackIconKind.WeightLifter, Brushes.IndianRed, Abilities.STR),
+                new (PackIconKind.Karate, Brushes.Orange, Abilities.DEX),
+                new (PackIconKind.Run, Brushes.Yellow, Abilities.CON),
+                new (PackIconKind.HumanMale, Brushes.LightGreen, Abilities.INT),
+                new (PackIconKind.Meditation, Brushes.Cyan, Abilities.WIS),
+                new (PackIconKind.HumanGreeting, Brushes.MediumPurple, Abilities.CHA),
             ];
         }
 
@@ -198,45 +197,45 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.BorderNone, Brushes.SlateGray, WeaponTypes.None.ToString()),
-                new (PackIconKind.AxeBattle, Brushes.IndianRed, WeaponTypes.Battleaxe.ToString()),
-                new (PackIconKind.SignPole, Brushes.Magenta, WeaponTypes.Blowgun.ToString()),
-                new (PackIconKind.Oar, Brushes.Cyan, WeaponTypes.Club.ToString()),
-                new (PackIconKind.KnifeMilitary, Brushes.LightGreen, WeaponTypes.Dagger.ToString()),
-                new (PackIconKind.SignPole, Brushes.Magenta, WeaponTypes.Dart.ToString()),
-                new (PackIconKind.Mace, Brushes.LightPink, WeaponTypes.Flail.ToString()),
-                new (PackIconKind.AxeBattle, Brushes.IndianRed, WeaponTypes.Glaive.ToString()),
-                new (PackIconKind.AxeBattle, Brushes.IndianRed, WeaponTypes.Greataxe.ToString()),
-                new (PackIconKind.Oar, Brushes.Cyan, WeaponTypes.Greatclub.ToString()),
-                new (PackIconKind.Sword, Brushes.LightGreen, WeaponTypes.Greatsword.ToString()),
-                new (PackIconKind.AxeBattle, Brushes.IndianRed, WeaponTypes.Halberd.ToString()),
-                new (PackIconKind.Axe, Brushes.IndianRed, WeaponTypes.Handaxe.ToString()),
-                new (PackIconKind.BowArrow, Brushes.Orange, WeaponTypes.HandCrossbow.ToString()),
-                new (PackIconKind.BowArrow, Brushes.Orange, WeaponTypes.HeavyCrossbow.ToString()),
-                new (PackIconKind.Spear, Brushes.LightBlue, WeaponTypes.Javelin.ToString()),
-                new (PackIconKind.Spear, Brushes.LightBlue, WeaponTypes.Lance.ToString()),
-                new (PackIconKind.BowArrow, Brushes.Orange, WeaponTypes.LightCrossbow.ToString()),
-                new (PackIconKind.Hammer, Brushes.Cyan, WeaponTypes.LightHammer.ToString()),
-                new (PackIconKind.BowArrow, Brushes.Orange, WeaponTypes.Longbow.ToString()),
-                new (PackIconKind.Sword, Brushes.LightGreen, WeaponTypes.Longsword.ToString()),
-                new (PackIconKind.Mace, Brushes.LightPink, WeaponTypes.Mace.ToString()),
-                new (PackIconKind.Mace, Brushes.LightPink, WeaponTypes.Maul.ToString()),
-                new (PackIconKind.Mace, Brushes.LightPink, WeaponTypes.Morningstar.ToString()),
-                new (PackIconKind.SpiderWeb, Brushes.MediumPurple, WeaponTypes.Net.ToString()),
-                new (PackIconKind.Spear, Brushes.LightBlue, WeaponTypes.Pike.ToString()),
-                new (PackIconKind.MagicStaff, Brushes.Cyan, WeaponTypes.Quarterstaff.ToString()),
-                new (PackIconKind.Fencing, Brushes.LightGreen, WeaponTypes.Rapier.ToString()),
-                new (PackIconKind.Sword, Brushes.LightGreen, WeaponTypes.Scimitar.ToString()),
-                new (PackIconKind.BowArrow, Brushes.Orange, WeaponTypes.Shortbow.ToString()),
-                new (PackIconKind.Sword, Brushes.LightGreen, WeaponTypes.Shortsword.ToString()),
-                new (PackIconKind.Sickle, Brushes.MediumPurple, WeaponTypes.Sickle.ToString()),
-                new (PackIconKind.Gesture, Brushes.MediumPurple, WeaponTypes.Sling.ToString()),
-                new (PackIconKind.Spear, Brushes.LightBlue, WeaponTypes.Spear.ToString()),
-                new (PackIconKind.SilverwareFork, Brushes.MediumPurple, WeaponTypes.Trident.ToString()),
-                new (PackIconKind.HandFrontLeft, Brushes.Cyan, WeaponTypes.Unarmed.ToString()),
-                new (PackIconKind.Hammer, Brushes.Cyan, WeaponTypes.Warhammer.ToString()),
-                new (PackIconKind.Pickaxe, Brushes.MediumPurple, WeaponTypes.WarPick.ToString()),
-                new (PackIconKind.JumpRope, Brushes.MediumPurple, WeaponTypes.Whip.ToString()),
+                new (PackIconKind.BorderNone, Brushes.SlateGray, WeaponTypes.None),
+                new (PackIconKind.AxeBattle, Brushes.IndianRed, WeaponTypes.Battleaxe),
+                new (PackIconKind.SignPole, Brushes.Magenta, WeaponTypes.Blowgun),
+                new (PackIconKind.Oar, Brushes.Cyan, WeaponTypes.Club),
+                new (PackIconKind.KnifeMilitary, Brushes.LightGreen, WeaponTypes.Dagger),
+                new (PackIconKind.SignPole, Brushes.Magenta, WeaponTypes.Dart),
+                new (PackIconKind.Mace, Brushes.LightPink, WeaponTypes.Flail),
+                new (PackIconKind.AxeBattle, Brushes.IndianRed, WeaponTypes.Glaive),
+                new (PackIconKind.AxeBattle, Brushes.IndianRed, WeaponTypes.Greataxe),
+                new (PackIconKind.Oar, Brushes.Cyan, WeaponTypes.Greatclub),
+                new (PackIconKind.Sword, Brushes.LightGreen, WeaponTypes.Greatsword),
+                new (PackIconKind.AxeBattle, Brushes.IndianRed, WeaponTypes.Halberd),
+                new (PackIconKind.Axe, Brushes.IndianRed, WeaponTypes.Handaxe),
+                new (PackIconKind.BowArrow, Brushes.Orange, WeaponTypes.HandCrossbow),
+                new (PackIconKind.BowArrow, Brushes.Orange, WeaponTypes.HeavyCrossbow),
+                new (PackIconKind.Spear, Brushes.LightBlue, WeaponTypes.Javelin),
+                new (PackIconKind.Spear, Brushes.LightBlue, WeaponTypes.Lance),
+                new (PackIconKind.BowArrow, Brushes.Orange, WeaponTypes.LightCrossbow),
+                new (PackIconKind.Hammer, Brushes.Cyan, WeaponTypes.LightHammer),
+                new (PackIconKind.BowArrow, Brushes.Orange, WeaponTypes.Longbow),
+                new (PackIconKind.Sword, Brushes.LightGreen, WeaponTypes.Longsword),
+                new (PackIconKind.Mace, Brushes.LightPink, WeaponTypes.Mace),
+                new (PackIconKind.Mace, Brushes.LightPink, WeaponTypes.Maul),
+                new (PackIconKind.Mace, Brushes.LightPink, WeaponTypes.Morningstar),
+                new (PackIconKind.SpiderWeb, Brushes.MediumPurple, WeaponTypes.Net),
+                new (PackIconKind.Spear, Brushes.LightBlue, WeaponTypes.Pike),
+                new (PackIconKind.MagicStaff, Brushes.Cyan, WeaponTypes.Quarterstaff),
+                new (PackIconKind.Fencing, Brushes.LightGreen, WeaponTypes.Rapier),
+                new (PackIconKind.Sword, Brushes.LightGreen, WeaponTypes.Scimitar),
+                new (PackIconKind.BowArrow, Brushes.Orange, WeaponTypes.Shortbow),
+                new (PackIconKind.Sword, Brushes.LightGreen, WeaponTypes.Shortsword),
+                new (PackIconKind.Sickle, Brushes.MediumPurple, WeaponTypes.Sickle),
+                new (PackIconKind.Gesture, Brushes.MediumPurple, WeaponTypes.Sling),
+                new (PackIconKind.Spear, Brushes.LightBlue, WeaponTypes.Spear),
+                new (PackIconKind.SilverwareFork, Brushes.MediumPurple, WeaponTypes.Trident),
+                new (PackIconKind.HandFrontLeft, Brushes.Cyan, WeaponTypes.Unarmed),
+                new (PackIconKind.Hammer, Brushes.Cyan, WeaponTypes.Warhammer),
+                new (PackIconKind.Pickaxe, Brushes.MediumPurple, WeaponTypes.WarPick),
+                new (PackIconKind.JumpRope, Brushes.MediumPurple, WeaponTypes.Whip),
             ];
         }
 
@@ -244,10 +243,10 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Run, ConciergeBrushes.Mint, Recovery.None.ToString()),
-                new (PackIconKind.Sleep, ConciergeBrushes.HeavyCarryCapacity, Recovery.LongRest.ToString()),
-                new (PackIconKind.Bed, ConciergeBrushes.LightCarryCapacity, Recovery.ShortRest.ToString()),
-                new (PackIconKind.BedClock, ConciergeBrushes.MediumCarryCapacity, Recovery.ShortOrLongRest.ToString()),
+                new (PackIconKind.Run, ConciergeBrushes.Mint, Recovery.None),
+                new (PackIconKind.Sleep, ConciergeBrushes.HeavyCarryCapacity, Recovery.LongRest),
+                new (PackIconKind.Bed, ConciergeBrushes.LightCarryCapacity, Recovery.ShortRest),
+                new (PackIconKind.BedClock, ConciergeBrushes.MediumCarryCapacity, Recovery.ShortOrLongRest),
             ];
         }
 
@@ -255,12 +254,12 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Eye, ConciergeBrushes.Mint, VisionTypes.Normal.ToString()),
-                new (PackIconKind.EyeClosed, Brushes.Silver, VisionTypes.Blindsight.ToString()),
-                new (PackIconKind.EyeOutline, Brushes.MediumPurple, VisionTypes.Darkvision.ToString()),
-                new (PackIconKind.EyePlusOutline, Brushes.MediumPurple, VisionTypes.SuperiorDarkvision.ToString()),
-                new (PackIconKind.Leak, Brushes.SaddleBrown, VisionTypes.Tremrsense.ToString()),
-                new (PackIconKind.EyeSettings, Brushes.Goldenrod, VisionTypes.Truesight.ToString()),
+                new (PackIconKind.Eye, ConciergeBrushes.Mint, VisionTypes.Normal),
+                new (PackIconKind.EyeClosed, Brushes.Silver, VisionTypes.Blindsight),
+                new (PackIconKind.EyeOutline, Brushes.MediumPurple, VisionTypes.Darkvision),
+                new (PackIconKind.EyePlusOutline, Brushes.MediumPurple, VisionTypes.SuperiorDarkvision),
+                new (PackIconKind.Leak, Brushes.SaddleBrown, VisionTypes.Tremrsense),
+                new (PackIconKind.EyeSettings, Brushes.Goldenrod, VisionTypes.Truesight),
             ];
         }
 
@@ -268,15 +267,15 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.SizeXxs, Brushes.SlateBlue, CreatureSizes.Fine.ToString()),
-                new (PackIconKind.SizeXs, Brushes.LightBlue, CreatureSizes.Diminutive.ToString()),
-                new (PackIconKind.SizeS, Brushes.Cyan, CreatureSizes.Tiny.ToString()),
-                new (PackIconKind.SizeS, Brushes.Cyan, CreatureSizes.Small.ToString()),
-                new (PackIconKind.SizeM, Brushes.Yellow, CreatureSizes.Medium.ToString()),
-                new (PackIconKind.SizeL, Brushes.Goldenrod, CreatureSizes.Large.ToString()),
-                new (PackIconKind.SizeXl, Brushes.Orange, CreatureSizes.Huge.ToString()),
-                new (PackIconKind.SizeXxl, Brushes.OrangeRed, CreatureSizes.Gargantuan.ToString()),
-                new (PackIconKind.SizeXxxl, Brushes.IndianRed, CreatureSizes.Colossal.ToString()),
+                new (PackIconKind.SizeXxs, Brushes.SlateBlue, CreatureSizes.Fine),
+                new (PackIconKind.SizeXs, Brushes.LightBlue, CreatureSizes.Diminutive),
+                new (PackIconKind.SizeS, Brushes.Cyan, CreatureSizes.Tiny),
+                new (PackIconKind.SizeS, Brushes.Cyan, CreatureSizes.Small),
+                new (PackIconKind.SizeM, Brushes.Yellow, CreatureSizes.Medium),
+                new (PackIconKind.SizeL, Brushes.Goldenrod, CreatureSizes.Large),
+                new (PackIconKind.SizeXl, Brushes.Orange, CreatureSizes.Huge),
+                new (PackIconKind.SizeXxl, Brushes.OrangeRed, CreatureSizes.Gargantuan),
+                new (PackIconKind.SizeXxxl, Brushes.IndianRed, CreatureSizes.Colossal),
             ];
         }
 
@@ -284,13 +283,13 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Numeric0BoxMultiple, ConciergeBrushes.Mint, ConditionStatus.Normal.ToString().FormatFromPascalCase()),
-                new (PackIconKind.Numeric1BoxMultiple, Brushes.LightBlue, ConditionStatus.Exhaustion1.ToString().FormatFromPascalCase()),
-                new (PackIconKind.Numeric2BoxMultiple, Brushes.Yellow, ConditionStatus.Exhaustion2.ToString().FormatFromPascalCase()),
-                new (PackIconKind.Numeric3BoxMultiple, Brushes.Goldenrod, ConditionStatus.Exhaustion3.ToString().FormatFromPascalCase()),
-                new (PackIconKind.Numeric4BoxMultiple, Brushes.Orange, ConditionStatus.Exhaustion4.ToString().FormatFromPascalCase()),
-                new (PackIconKind.Numeric5BoxMultiple, Brushes.OrangeRed, ConditionStatus.Exhaustion5.ToString().FormatFromPascalCase()),
-                new (PackIconKind.Numeric6BoxMultiple, Brushes.IndianRed, ConditionStatus.Exhaustion6.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric0BoxMultiple, ConciergeBrushes.Mint, ConditionStatus.Normal),
+                new (PackIconKind.Numeric1BoxMultiple, Brushes.LightBlue, ConditionStatus.Exhaustion1),
+                new (PackIconKind.Numeric2BoxMultiple, Brushes.Yellow, ConditionStatus.Exhaustion2),
+                new (PackIconKind.Numeric3BoxMultiple, Brushes.Goldenrod, ConditionStatus.Exhaustion3),
+                new (PackIconKind.Numeric4BoxMultiple, Brushes.Orange, ConditionStatus.Exhaustion4),
+                new (PackIconKind.Numeric5BoxMultiple, Brushes.OrangeRed, ConditionStatus.Exhaustion5),
+                new (PackIconKind.Numeric6BoxMultiple, Brushes.IndianRed, ConditionStatus.Exhaustion6),
             ];
         }
 
@@ -298,11 +297,11 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Head, ConciergeBrushes.Mint, EquipmentSlot.Head.ToString()),
-                new (PackIconKind.TshirtCrew, Brushes.LightBlue, EquipmentSlot.Torso.ToString()),
-                new (PackIconKind.HandBackLeft, Brushes.Goldenrod, EquipmentSlot.Hands.ToString()),
-                new (PackIconKind.HumanHandsdown, Brushes.OrangeRed, EquipmentSlot.Legs.ToString()),
-                new (PackIconKind.ShoeFormal, Brushes.IndianRed, EquipmentSlot.Feet.ToString()),
+                new (PackIconKind.Head, ConciergeBrushes.Mint, EquipmentSlot.Head),
+                new (PackIconKind.TshirtCrew, Brushes.LightBlue, EquipmentSlot.Torso),
+                new (PackIconKind.HandBackLeft, Brushes.Goldenrod, EquipmentSlot.Hands),
+                new (PackIconKind.HumanHandsdown, Brushes.OrangeRed, EquipmentSlot.Legs),
+                new (PackIconKind.ShoeFormal, Brushes.IndianRed, EquipmentSlot.Feet),
             ];
         }
 
@@ -310,10 +309,10 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.RelativeScale, Brushes.LightBlue, Stretch.None.ToString()),
-                new (PackIconKind.RelativeScale, Brushes.Goldenrod, Stretch.Fill.ToString()),
-                new (PackIconKind.RelativeScale, Brushes.OrangeRed, Stretch.Uniform.ToString()),
-                new (PackIconKind.RelativeScale, Brushes.IndianRed, Stretch.UniformToFill.ToString()),
+                new (PackIconKind.RelativeScale, Brushes.LightBlue, Stretch.None),
+                new (PackIconKind.RelativeScale, Brushes.Goldenrod, Stretch.Fill),
+                new (PackIconKind.RelativeScale, Brushes.OrangeRed, Stretch.Uniform),
+                new (PackIconKind.RelativeScale, Brushes.IndianRed, Stretch.UniformToFill),
             ];
         }
 
@@ -321,9 +320,9 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Wall, Brushes.LightBlue, ProficiencyTypes.Armor.ToString(), ProficiencyTypes.Armor),
-                new (PackIconKind.Tools, Brushes.Goldenrod, ProficiencyTypes.Tool.ToString(), ProficiencyTypes.Tool),
-                new (PackIconKind.SwordCross, Brushes.OrangeRed, ProficiencyTypes.Weapon.ToString(), ProficiencyTypes.Weapon),
+                new (PackIconKind.Wall, Brushes.LightBlue, ProficiencyTypes.Armor, ProficiencyTypes.Armor),
+                new (PackIconKind.Tools, Brushes.Goldenrod, ProficiencyTypes.Tool, ProficiencyTypes.Tool),
+                new (PackIconKind.SwordCross, Brushes.OrangeRed, ProficiencyTypes.Weapon, ProficiencyTypes.Weapon),
             ];
         }
 
@@ -385,7 +384,7 @@ namespace Concierge.Display
                 {
                     if (subRace.Name.Equals(race.Name))
                     {
-                        items.Add(new ComboBoxItemControl(PackIconKind.FaceWomanProfile, race.IconColor, subRace.Category, false));
+                        items.Add(new ComboBoxItemControl(PackIconKind.FaceWomanProfile, race.IconColor, subRace.Category));
                     }
                 }
             }
@@ -429,7 +428,7 @@ namespace Concierge.Display
                 {
                     if (subClass.Name.Equals(classes.Name))
                     {
-                        items.Add(new ComboBoxItemControl(PackIconKind.Notebook, classes.IconColor, subClass.Category, false));
+                        items.Add(new ComboBoxItemControl(PackIconKind.Notebook, classes.IconColor, subClass.Category));
                     }
                 }
             }
@@ -455,11 +454,11 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.CheckboxMarkedCircleOutline, Brushes.LightBlue, StatusChecks.Normal.ToString()),
-                new (PackIconKind.CheckboxMarkedCirclePlusOutline, Brushes.LightGreen, StatusChecks.Advantage.ToString()),
-                new (PackIconKind.CheckboxMarkedCircleMinusOutline, Brushes.IndianRed, StatusChecks.Disadvantage.ToString()),
-                new (PackIconKind.CircleOffOutline, Brushes.Silver, StatusChecks.Fail.ToString()),
-                new (PackIconKind.CheckboxMarkedCircleAutoOutline, Brushes.Goldenrod, StatusChecks.Auto.ToString()),
+                new (PackIconKind.CheckboxMarkedCircleOutline, Brushes.LightBlue, StatusChecks.Normal),
+                new (PackIconKind.CheckboxMarkedCirclePlusOutline, Brushes.LightGreen, StatusChecks.Advantage),
+                new (PackIconKind.CheckboxMarkedCircleMinusOutline, Brushes.IndianRed, StatusChecks.Disadvantage),
+                new (PackIconKind.CircleOffOutline, Brushes.Silver, StatusChecks.Fail),
+                new (PackIconKind.CheckboxMarkedCircleAutoOutline, Brushes.Goldenrod, StatusChecks.Auto),
             ];
         }
 
@@ -467,15 +466,15 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.ShieldSun, Brushes.LightBlue, ArcaneSchools.Abjuration.ToString()),
-                new (PackIconKind.Flare, Brushes.LightYellow, ArcaneSchools.Conjuration.ToString()),
-                new (PackIconKind.EyeCircle, Brushes.SlateGray, ArcaneSchools.Divination.ToString()),
-                new (PackIconKind.HeadCog, Brushes.LightPink, ArcaneSchools.Enchantment.ToString()),
-                new (PackIconKind.Flash, Brushes.IndianRed, ArcaneSchools.Evocation.ToString()),
-                new (PackIconKind.AppleIcloud, Brushes.MediumPurple, ArcaneSchools.Illusion.ToString()),
-                new (PackIconKind.Coffin, Brushes.LightGreen, ArcaneSchools.Necromancy.ToString()),
-                new (PackIconKind.CircleOpacity, Brushes.Orange, ArcaneSchools.Transmutation.ToString()),
-                new (PackIconKind.Earth, Brushes.White, ArcaneSchools.Universal.ToString()),
+                new (PackIconKind.ShieldSun, Brushes.LightBlue, ArcaneSchools.Abjuration),
+                new (PackIconKind.Flare, Brushes.LightYellow, ArcaneSchools.Conjuration),
+                new (PackIconKind.EyeCircle, Brushes.SlateGray, ArcaneSchools.Divination),
+                new (PackIconKind.HeadCog, Brushes.LightPink, ArcaneSchools.Enchantment),
+                new (PackIconKind.Flash, Brushes.IndianRed, ArcaneSchools.Evocation),
+                new (PackIconKind.AppleIcloud, Brushes.MediumPurple, ArcaneSchools.Illusion),
+                new (PackIconKind.Coffin, Brushes.LightGreen, ArcaneSchools.Necromancy),
+                new (PackIconKind.CircleOpacity, Brushes.Orange, ArcaneSchools.Transmutation),
+                new (PackIconKind.Earth, Brushes.White, ArcaneSchools.Universal),
             ];
         }
 
@@ -483,10 +482,10 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.ShieldOff, Brushes.Silver, StatusEffectTypes.None.ToString()),
-                new (PackIconKind.ShieldStar, Brushes.IndianRed, StatusEffectTypes.Immunity.ToString()),
-                new (PackIconKind.ShieldPlus, Brushes.Orange, StatusEffectTypes.Resistance.ToString()),
-                new (PackIconKind.ShieldRemove, Brushes.LightGreen, StatusEffectTypes.Vulnerability.ToString()),
+                new (PackIconKind.ShieldOff, Brushes.Silver, StatusEffectTypes.None),
+                new (PackIconKind.ShieldStar, Brushes.IndianRed, StatusEffectTypes.Immunity),
+                new (PackIconKind.ShieldPlus, Brushes.Orange, StatusEffectTypes.Resistance),
+                new (PackIconKind.ShieldRemove, Brushes.LightGreen, StatusEffectTypes.Vulnerability),
             ];
         }
 
@@ -494,14 +493,14 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.SquareRounded, Brushes.Silver, Dice.None.ToString()),
-                new (PackIconKind.DiceD4, Brushes.LightBlue, Dice.D4.ToString()),
-                new (PackIconKind.DiceD6, Brushes.LightPink, Dice.D6.ToString()),
-                new (PackIconKind.DiceD8, Brushes.IndianRed, Dice.D8.ToString()),
-                new (PackIconKind.DiceD10, Brushes.LightGreen, Dice.D10.ToString()),
-                new (PackIconKind.DiceD12, Brushes.Orange, Dice.D12.ToString()),
-                new (PackIconKind.DiceD20, Brushes.MediumPurple, Dice.D20.ToString()),
-                new (PackIconKind.DiceMultiple, Brushes.LightYellow, Dice.D100.ToString()),
+                new (PackIconKind.SquareRounded, Brushes.Silver, Dice.None),
+                new (PackIconKind.DiceD4, Brushes.LightBlue, Dice.D4),
+                new (PackIconKind.DiceD6, Brushes.LightPink, Dice.D6),
+                new (PackIconKind.DiceD8, Brushes.IndianRed, Dice.D8),
+                new (PackIconKind.DiceD10, Brushes.LightGreen, Dice.D10),
+                new (PackIconKind.DiceD12, Brushes.Orange, Dice.D12),
+                new (PackIconKind.DiceD20, Brushes.MediumPurple, Dice.D20),
+                new (PackIconKind.DiceMultiple, Brushes.LightYellow, Dice.D100),
             ];
         }
 
@@ -509,8 +508,8 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.File, ConciergeBrushes.Deer, SearchDomain.CurrentPage.ToString()),
-                new (PackIconKind.BookOpenVariant, ConciergeBrushes.Mint, SearchDomain.EntireSheet.ToString()),
+                new (PackIconKind.File, ConciergeBrushes.Deer, SearchDomain.CurrentPage),
+                new (PackIconKind.BookOpenVariant, ConciergeBrushes.Mint, SearchDomain.EntireSheet),
             ];
         }
 
@@ -518,8 +517,8 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.TapeMeasure, ConciergeBrushes.Deer, UnitTypes.Imperial.ToString()),
-                new (PackIconKind.TapeMeasure, ConciergeBrushes.Mint, UnitTypes.Metric.ToString()),
+                new (PackIconKind.TapeMeasure, ConciergeBrushes.Deer, UnitTypes.Imperial),
+                new (PackIconKind.TapeMeasure, ConciergeBrushes.Mint, UnitTypes.Metric),
             ];
         }
 
@@ -527,10 +526,10 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.FormatAlignLeft, ConciergeBrushes.Mint, HorizontalAlignment.Left.ToString()),
-                new (PackIconKind.FormatAlignCenter, ConciergeBrushes.Deer, HorizontalAlignment.Center.ToString()),
-                new (PackIconKind.FormatAlignRight, Brushes.IndianRed, HorizontalAlignment.Right.ToString()),
-                new (PackIconKind.StretchToPage, Brushes.Goldenrod, HorizontalAlignment.Stretch.ToString()),
+                new (PackIconKind.FormatAlignLeft, ConciergeBrushes.Mint, HorizontalAlignment.Left),
+                new (PackIconKind.FormatAlignCenter, ConciergeBrushes.Deer, HorizontalAlignment.Center),
+                new (PackIconKind.FormatAlignRight, Brushes.IndianRed, HorizontalAlignment.Right),
+                new (PackIconKind.StretchToPage, Brushes.Goldenrod, HorizontalAlignment.Stretch),
             ];
         }
 
@@ -538,10 +537,10 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.ArrowProjectileMultiple, Brushes.IndianRed, AugmentType.Ammunition.ToString()),
-                new (PackIconKind.StarCircleOutline, Brushes.MediumPurple, AugmentType.Feature.ToString()),
-                new (PackIconKind.Magic, Brushes.Plum, AugmentType.Spell.ToString()),
-                new (PackIconKind.ListStatus, Brushes.Silver, AugmentType.None.ToString()),
+                new (PackIconKind.ArrowProjectileMultiple, Brushes.IndianRed, AugmentType.Ammunition),
+                new (PackIconKind.StarCircleOutline, Brushes.MediumPurple, AugmentType.Feature),
+                new (PackIconKind.Magic, Brushes.Plum, AugmentType.Spell),
+                new (PackIconKind.ListStatus, Brushes.Silver, AugmentType.None),
             ];
         }
 
