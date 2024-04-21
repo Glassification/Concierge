@@ -87,5 +87,10 @@ namespace Concierge
             mainWindow.DrawAll();
             Program.Unmodify();
         }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            SoundService.CloseAll();
+        }
     }
 }

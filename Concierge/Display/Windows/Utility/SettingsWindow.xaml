@@ -64,7 +64,7 @@
                 <GroupBox
                     Grid.Row="0"
                     Grid.Column="0"
-                    Margin="5,5,2.5,2.5"
+                    Margin="5"
                     Header="File"
                     Style="{StaticResource GroupBoxStyle}">
                     <Grid>
@@ -131,7 +131,7 @@
                 <GroupBox
                     Grid.Row="0"
                     Grid.Column="1"
-                    Margin="2.5,5,5,2.5"
+                    Margin="5"
                     Header="Behavior"
                     Style="{StaticResource GroupBoxStyle}">
                     <Grid>
@@ -197,7 +197,7 @@
                 <GroupBox
                     Grid.Row="1"
                     Grid.Column="0"
-                    Margin="5,2.5,2.5,2.5"
+                    Margin="5"
                     Header="Display"
                     Style="{StaticResource GroupBoxStyle}">
                     <Grid>
@@ -239,7 +239,7 @@
                 <GroupBox
                     Grid.Row="1"
                     Grid.Column="1"
-                    Margin="2.5,2.5,5,2.5"
+                    Margin="5"
                     Header="Sound"
                     Style="{StaticResource GroupBoxStyle}">
                     <Grid>
@@ -262,15 +262,38 @@
                             Margin="20,-5,0,0">
                             <components:ConciergeCheckBox 
                                 x:Name="MuteCheckBox"
+                                Checked="MuteCheckBox_Checked"
+                                Unchecked="MuteCheckBox_Unchecked"
                                 Style="{StaticResource CheckBoxStyle}"/>
                         </Grid>
+
+                        <components:ConciergeLabel
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            x:Name="VolumeLabel"
+                            Text="Volume (10%):"
+                            FontSize="17"/>
+                        <components:ConciergeSlider
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            x:Name="VolumeSlider"
+                            Margin="0,0,20,0"
+                            Minimum="10"
+                            Maximum="100"
+                            Interval="10"
+                            TickPlacement="BottomRight"
+                            TickFrequency="10"
+                            SmallChange="10"
+                            IsSnapToTickEnabled="True"
+                            ValueChanged="VolumeSlider_ValueChanged"
+                            Style="{StaticResource Horizontal_Slider}"/>
                     </Grid>
                 </GroupBox>
             </Grid>
 
             <GroupBox
                 Grid.Row="1"
-                Margin="5,2.5,5,5"
+                Margin="5"
                 Header="Defaults"
                 Style="{StaticResource GroupBoxStyle}">
                 <Grid>

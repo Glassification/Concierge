@@ -96,7 +96,7 @@ namespace Concierge.Common.Extensions
         /// <returns>A new saturated Color object.</returns>
         public static Color Saturate(this Color color, double percent)
         {
-            percent = Math.Max(0, Math.Min(1, percent));
+            percent = Math.Clamp(percent, 0, 1);
 
             var r = (byte)(color.R - (percent / 100.0 * color.R));
             var g = (byte)(color.G - (percent / 100.0 * color.G));
@@ -114,7 +114,7 @@ namespace Concierge.Common.Extensions
         public static Color Desaturate(this Color color, double percent)
         {
             var greyscale = (0.3 * color.R) + (0.6 * color.G) + (0.1 * color.B);
-            percent = Math.Max(0, Math.Min(1, percent));
+            percent = Math.Clamp(percent, 0, 1);
 
             var r = (byte)(color.R + (percent * (greyscale - color.R)));
             var g = (byte)(color.G + (percent * (greyscale - color.G)));

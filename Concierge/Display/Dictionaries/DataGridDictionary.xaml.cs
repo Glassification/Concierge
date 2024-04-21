@@ -17,7 +17,7 @@ namespace Concierge.Display.Dictionaries
             var page = dataGridRow.Tag as IConciergePage;
             if (page?.HasEditableDataGrid ?? false)
             {
-                ConciergeSoundService.UpdateValue();
+                SoundService.PlayUpdateValue();
             }
 
             page?.Edit(dataGridRow.DataContext);
@@ -28,7 +28,7 @@ namespace Concierge.Display.Dictionaries
             var window = dataGridRow.Tag as ConciergeWindow;
             if (window is not null)
             {
-                ConciergeSoundService.UpdateValue();
+                SoundService.PlayUpdateValue();
                 window.ShowEdit(dataGridRow.DataContext);
             }
         }

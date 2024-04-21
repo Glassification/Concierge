@@ -187,7 +187,7 @@ namespace Concierge.Display.Controls
 
         private void ProficiencyToggle_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ConciergeSoundService.UpdateValue();
+            SoundService.PlayUpdateValue();
 
             var skillCopy = this.skill.DeepCopy();
             this.skill.Proficiency = !this.skill.Proficiency;
@@ -198,7 +198,7 @@ namespace Concierge.Display.Controls
 
         private void ExpertiseToggle_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ConciergeSoundService.UpdateValue();
+            SoundService.PlayUpdateValue();
 
             var skillCopy = this.skill.DeepCopy();
             this.skill.Expertise = !this.skill.Expertise;

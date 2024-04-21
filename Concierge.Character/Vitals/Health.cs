@@ -37,11 +37,7 @@ namespace Concierge.Character.Vitals
         public int BaseHealth
         {
             get => this.baseHealthField;
-            set
-            {
-                var boundHp = Math.Min(value, this.MaxHealth);
-                this.baseHealthField = Math.Max(boundHp, -this.MaxHealth);
-            }
+            set => this.baseHealthField = Math.Clamp(value, -this.MaxHealth, this.MaxHealth);
         }
 
         /// <summary>

@@ -44,7 +44,7 @@ namespace Concierge.Character.Companions
         public int Strength
         {
             get => this.strength;
-            set => this.strength = Truncate(value);
+            set => this.strength = Math.Clamp(value, Constants.MinScore, Constants.MaxScore);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Concierge.Character.Companions
         public int Dexterity
         {
             get => this.dexterity;
-            set => this.dexterity = Truncate(value);
+            set => this.dexterity = Math.Clamp(value, Constants.MinScore, Constants.MaxScore);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Concierge.Character.Companions
         public int Constitution
         {
             get => this.constitution;
-            set => this.constitution = Truncate(value);
+            set => this.constitution = Math.Clamp(value, Constants.MinScore, Constants.MaxScore);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Concierge.Character.Companions
         public int Intelligence
         {
             get => this.intelligence;
-            set => this.intelligence = Truncate(value);
+            set => this.intelligence = Math.Clamp(value, Constants.MinScore, Constants.MaxScore);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Concierge.Character.Companions
         public int Wisdom
         {
             get => this.wisdom;
-            set => this.wisdom = Truncate(value);
+            set => this.wisdom = Math.Clamp(value, Constants.MinScore, Constants.MaxScore);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Concierge.Character.Companions
         public int Charisma
         {
             get => this.charisma;
-            set => this.charisma = Truncate(value);
+            set => this.charisma = Math.Clamp(value, Constants.MinScore, Constants.MaxScore);
         }
 
         /// <summary>
@@ -107,11 +107,6 @@ namespace Concierge.Character.Companions
                 Wisdom = this.Wisdom,
                 Charisma = this.Charisma,
             };
-        }
-
-        private static int Truncate(int value)
-        {
-            return Math.Min(Constants.MaxScore, Math.Max(Constants.MinScore, value));
         }
     }
 }

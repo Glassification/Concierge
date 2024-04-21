@@ -68,6 +68,11 @@ namespace Concierge.Configuration.Dtos
         /// </summary>
         public UnitTypes UnitOfMeasurement { get; set; }
 
+        /// <summary>
+        /// Gets or sets the volume.
+        /// </summary>
+        public int Volume { get; set; }
+
         public override bool Equals(object? obj)
         {
             if (obj is not UserSettingsDto settings)
@@ -84,7 +89,8 @@ namespace Concierge.Configuration.Dtos
                 settings.MuteSounds == this.MuteSounds &&
                 settings.UseCoinWeight == this.UseCoinWeight &&
                 settings.UseEncumbrance == this.UseEncumbrance &&
-                settings.UnitOfMeasurement == this.UnitOfMeasurement;
+                settings.UnitOfMeasurement == this.UnitOfMeasurement &&
+                settings.Volume == this.Volume;
         }
 
         public override int GetHashCode()

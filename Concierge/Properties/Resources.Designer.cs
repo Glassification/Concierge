@@ -1170,24 +1170,6 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream GenericTapSoundLoud {
-            get {
-                return ResourceManager.GetStream("GenericTapSoundLoud", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream GenericWarning {
-            get {
-                return ResourceManager.GetStream("GenericWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Glossary {
@@ -1231,15 +1213,6 @@ namespace Concierge.Properties {
             get {
                 object obj = ResourceManager.GetObject("hey-whats-going-on", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream HighPitchTapSoundLoud {
-            get {
-                return ResourceManager.GetStream("HighPitchTapSoundLoud", resourceCulture);
             }
         }
         
@@ -2066,6 +2039,15 @@ namespace Concierge.Properties {
         internal static string SettingsWindow_UnitOfMeasurementComboBox {
             get {
                 return ResourceManager.GetString("SettingsWindow_UnitOfMeasurementComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the application colume level when not muted..
+        /// </summary>
+        internal static string SettingsWindow_VolumeSlider {
+            get {
+                return ResourceManager.GetString("SettingsWindow_VolumeSlider", resourceCulture);
             }
         }
         

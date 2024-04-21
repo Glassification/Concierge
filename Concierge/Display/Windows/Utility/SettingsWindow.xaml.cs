@@ -46,6 +46,7 @@ namespace Concierge.Display.Utility
             this.SetMouseOverEvents(this.UnitOfMeasurementComboBox);
             this.SetMouseOverEvents(this.HeaderAlignmentComboBox);
             this.SetMouseOverEvents(this.HealingThreshold);
+            this.SetMouseOverEvents(this.VolumeSlider);
             this.SetMouseOverEvents(this.DefaultSaveCheckBox);
             this.SetMouseOverEvents(this.DefaultOpenCheckBox);
             this.SetMouseOverEvents(this.OpenTextBox, this.OpenTextBackground);
@@ -66,6 +67,8 @@ namespace Concierge.Display.Utility
         }
 
         private string FormattedThreshold => $"Short Rest Healing: {this.HealingThreshold.Value}%";
+
+        private string FormattedVolume => $"Volume: {this.VolumeSlider.Value}%";
 
         public override void ShowEdit<T>(T item)
         {
@@ -102,6 +105,8 @@ namespace Concierge.Display.Utility
             this.CheckVersionCheckBox.IsChecked = AppSettingsManager.UserSettings.CheckVersion;
             this.UnitOfMeasurementComboBox.Text = AppSettingsManager.UserSettings.UnitOfMeasurement.ToString();
             this.HeaderAlignmentComboBox.Text = AppSettingsManager.UserSettings.HeaderAlignment.ToString();
+            this.VolumeSlider.Value = AppSettingsManager.UserSettings.Volume;
+            this.VolumeLabel.Text = this.FormattedVolume;
             this.DefaultSaveCheckBox.IsChecked = AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder;
             this.DefaultOpenCheckBox.IsChecked = AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder;
             this.OpenTextBox.Text = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
@@ -113,6 +118,8 @@ namespace Concierge.Display.Utility
             DisplayUtility.SetControlEnableState(this.SaveTextBackground, AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder);
             DisplayUtility.SetControlEnableState(this.OpenFolderButton, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
             DisplayUtility.SetControlEnableState(this.OpenTextBackground, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
+            DisplayUtility.SetControlEnableState(this.VolumeLabel, !AppSettingsManager.UserSettings.MuteSounds);
+            DisplayUtility.SetControlEnableState(this.VolumeSlider, !AppSettingsManager.UserSettings.MuteSounds);
 
             this.OpenWarningVisibility();
             this.SaveWarningVisibility();
@@ -161,6 +168,7 @@ namespace Concierge.Display.Utility
                 UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false,
                 UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false,
                 UnitOfMeasurement = this.UnitOfMeasurementComboBox.Text.TryToEnum<UnitTypes>(),
+                Volume = (int)this.VolumeSlider.Value,
             };
 
             Program.UndoRedoService.AddCommand(new UpdateSettingsCommand(oldSettings, conciergeSettings));
@@ -203,11 +211,15 @@ namespace Concierge.Display.Utility
         {
             this.UpdateSettings();
             this.InvokeApplyChanges();
+
+            SoundService.SetVolume();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.ReturnAndClose();
+
+            SoundService.SetVolume();
         }
 
         private void AutosaveInterval_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -286,6 +298,23 @@ namespace Concierge.Display.Utility
         private void HealingThreshold_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             this.HealingThresholdLabel.Text = this.FormattedThreshold;
+        }
+
+        private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            this.VolumeLabel.Text = this.FormattedVolume;
+        }
+
+        private void MuteCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            DisplayUtility.SetControlEnableState(this.VolumeLabel, false);
+            DisplayUtility.SetControlEnableState(this.VolumeSlider, false);
+        }
+
+        private void MuteCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            DisplayUtility.SetControlEnableState(this.VolumeLabel, true);
+            DisplayUtility.SetControlEnableState(this.VolumeSlider, true);
         }
     }
 }

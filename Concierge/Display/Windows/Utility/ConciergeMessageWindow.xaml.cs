@@ -44,7 +44,7 @@ namespace Concierge.Display.Utility
             this.SetMessageIcon(messageWindowIcons);
             this.SetMessageButtons(messageWindowButtons);
 
-            ConciergeSoundService.Warning();
+            SoundService.PlayWarning();
 
             this.ShowConciergeWindow();
 

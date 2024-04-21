@@ -272,7 +272,7 @@ namespace Concierge.Display.Pages
 
         private void SpellSlotsDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
 
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.SpellCasting.SpellSlots,

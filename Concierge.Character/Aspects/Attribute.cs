@@ -55,7 +55,7 @@ namespace Concierge.Character.Aspects
         public int Score
         {
             get => this.score;
-            set => this.score = Truncate(value);
+            set => this.score = Math.Clamp(value, Constants.MinScore, Constants.MaxScore);
         }
 
         /// <summary>
@@ -94,15 +94,5 @@ namespace Concierge.Character.Aspects
         /// </summary>
         /// <returns>A deep copy of the attribute.</returns>
         public abstract Attribute DeepCopy();
-
-        /// <summary>
-        /// Truncates the attribute value to ensure it falls within acceptable limits.
-        /// </summary>
-        /// <param name="value">The attribute value to truncate.</param>
-        /// <returns>The truncated attribute value.</returns>
-        protected static int Truncate(int value)
-        {
-            return Math.Min(Constants.MaxScore, Math.Max(Constants.MinScore, value));
-        }
     }
 }

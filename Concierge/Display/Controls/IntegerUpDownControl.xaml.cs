@@ -161,8 +161,7 @@ namespace Concierge.Display.Controls
 
             set
             {
-                value = Math.Min(value, this.Maximum);
-                value = Math.Max(value, this.Minimum);
+                value = Math.Clamp(value, this.Minimum, this.Maximum);
                 this.TextBoxValue.Text = value.ToString();
 
                 this.LastValue = (int)this.GetValue(ValueProperty);
@@ -215,7 +214,7 @@ namespace Concierge.Display.Controls
             {
                 this.Value += this.Increment;
                 this.RaiseEvent(new RoutedEventArgs(IncreaseClickedEvent));
-                ConciergeSoundService.UpdateValue();
+                SoundService.PlayUpdateValue();
             }
         }
 
@@ -225,7 +224,7 @@ namespace Concierge.Display.Controls
             {
                 this.Value -= this.Increment;
                 this.RaiseEvent(new RoutedEventArgs(DecreaseClickedEvent));
-                ConciergeSoundService.UpdateValue();
+                SoundService.PlayUpdateValue();
             }
         }
 
@@ -272,7 +271,7 @@ namespace Concierge.Display.Controls
         {
             this.Value += (e.Delta > 0 ? 1 : -1) * this.Increment;
             this.TextBoxValue.Select(this.TextBoxValue.Text.Length, 0);
-            ConciergeSoundService.UpdateValue();
+            SoundService.PlayUpdateValue();
         }
 
         private void TextBoxValue_GotFocus(object sender, RoutedEventArgs e)

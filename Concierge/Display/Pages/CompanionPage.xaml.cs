@@ -237,7 +237,7 @@ namespace Concierge.Display.Pages
 
         private void HealthDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
 
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Health,
@@ -249,7 +249,7 @@ namespace Concierge.Display.Pages
 
         private void HitDiceDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
 
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.HitDice,
@@ -262,7 +262,7 @@ namespace Concierge.Display.Pages
 
         private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
 
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Attributes,
@@ -275,7 +275,7 @@ namespace Concierge.Display.Pages
 
         private void CompanionDetails_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
 
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Properties,
@@ -287,7 +287,7 @@ namespace Concierge.Display.Pages
 
         private void CompanionImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
 
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.CompanionImage,

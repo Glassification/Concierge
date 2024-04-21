@@ -43,7 +43,7 @@ namespace Concierge.Display.Components
 
         private void ComboBox_DropDownOpened(object? sender, EventArgs e)
         {
-            ConciergeSoundService.UpdateValue();
+            SoundService.PlayUpdateValue();
         }
 
         private void ComboBox_MouseEnter(object sender, MouseEventArgs e)

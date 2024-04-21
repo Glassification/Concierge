@@ -112,7 +112,7 @@ namespace Concierge.Display.Windows.Utility
             }
             else
             {
-                ConciergeSoundService.TapNavigation();
+                SoundService.PlayNavigation();
                 this.MarkdownViewer.Markdown = markdown;
             }
         }

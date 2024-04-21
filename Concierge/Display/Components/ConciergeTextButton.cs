@@ -32,7 +32,7 @@ namespace Concierge.Display.Components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             Program.Logger.Info($"{this.Name} clicked.");
         }
 

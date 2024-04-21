@@ -128,7 +128,7 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            ConciergeSoundService.UpdateValue();
+            SoundService.PlayUpdateValue();
             if (this.vitality.Health.IsFull)
             {
                 return;

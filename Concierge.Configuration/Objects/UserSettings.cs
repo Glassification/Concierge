@@ -16,6 +16,7 @@ namespace Concierge.Configuration.Objects
     public sealed class UserSettings
     {
         private int healingThreshold;
+        private int volume;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserSettings"/> class with default settings.
@@ -58,7 +59,7 @@ namespace Concierge.Configuration.Objects
 
             set
             {
-                this.healingThreshold = Math.Max(Math.Min(value, 100), 0).NearestMultipleOfTen();
+                this.healingThreshold = Math.Clamp(value, 0, 100).NearestMultipleOfTen();
             }
         }
 
@@ -81,5 +82,21 @@ namespace Concierge.Configuration.Objects
         /// Gets or sets the unit of measurement preferred by the user, such as Metric or Imperial.
         /// </summary>
         public UnitTypes UnitOfMeasurement { get; set; }
+
+        /// <summary>
+        /// Gets or sets the application volume.
+        /// </summary>
+        public int Volume
+        {
+            get
+            {
+                return this.volume;
+            }
+
+            set
+            {
+                this.volume = Math.Clamp(value, 10, 100).NearestMultipleOfTen();
+            }
+        }
     }
 }

@@ -11,13 +11,13 @@
     Style="{StaticResource WindowFontStyle}"
     mc:Ignorable="d"
     Title="Custom Color Picker"
-    Height="685"
+    Height="695"
     Width="450">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="270"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="310"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -86,6 +86,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
 
@@ -168,7 +169,7 @@
                 </components:ConciergeTextBoxBackground>
             </Grid>
 
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="4">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>

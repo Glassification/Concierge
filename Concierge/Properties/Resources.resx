@@ -463,12 +463,6 @@
   <data name="Game" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Game.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="GenericTapSoundLoud" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Sounds\GenericTapSoundLoud.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GenericWarning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Sounds\GenericWarning.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Glossary" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Glossary.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -483,9 +477,6 @@
   </data>
   <data name="hey-whats-going-on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Videos\hey-whats-going-on.wmv;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="HighPitchTapSoundLoud" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Sounds\HighPitchTapSoundLoud.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="HitDiceWindow_TotalD10UpDown" xml:space="preserve">
     <value>Maximum d10 hit dice available to be spent.</value>
@@ -750,6 +741,9 @@
   </data>
   <data name="SettingsWindow_UnitOfMeasurementComboBox" xml:space="preserve">
     <value>D&amp;D is unfortunatly designed for feet and pounds, but metric is always an option.</value>
+  </data>
+  <data name="SettingsWindow_VolumeSlider" xml:space="preserve">
+    <value>Set the application colume level when not muted.</value>
   </data>
   <data name="SkillWindow_AcrobaticsComboBox" xml:space="preserve">
     <value>Set if an acrobatics check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>

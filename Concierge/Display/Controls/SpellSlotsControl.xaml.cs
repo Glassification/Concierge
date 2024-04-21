@@ -119,7 +119,7 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            ConciergeSoundService.UpdateValue();
+            SoundService.PlayUpdateValue();
             var spellSlots = Program.CcsFile.Character.SpellCasting.SpellSlots;
             var oldItem = spellSlots.DeepCopy();
 

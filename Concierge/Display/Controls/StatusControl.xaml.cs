@@ -77,7 +77,7 @@ namespace Concierge.Display.Controls
             var isMuted = AppSettingsManager.UserSettings.MuteSounds;
 
             this.VolumeIcon.Kind = isMuted ? PackIconKind.VolumeMute : PackIconKind.VolumeHigh;
-            this.VolumeIcon.ToolTip = isMuted ? "Sound Off" : "Sound On";
+            this.VolumeIcon.ToolTip = isMuted ? "Sound Off" : $"Sound On ({AppSettingsManager.UserSettings.Volume}%)";
         }
 
         private static TextBlock SetTextSize(TextBlock textBlock, double fontSize, double columnWidth)

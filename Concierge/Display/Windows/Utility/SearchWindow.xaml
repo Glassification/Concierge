@@ -9,7 +9,7 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="Concierge Search"
-    Height="435"
+    Height="395"
     Width="650"
     MouseMove="Window_MouseMove"
     KeyDown="Window_KeyDown"
@@ -17,7 +17,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="320"/>
+            <RowDefinition Height="280"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -47,15 +47,16 @@
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="1" Margin="30,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>
@@ -75,7 +76,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="2" Margin="30,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>
@@ -96,7 +97,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="3" Margin="30,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>
@@ -105,7 +106,7 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel 
-                        Text="Use Regex:"/>
+                        Text="Use Regular Expression:"/>
                 </Grid>
 
                 <!--Value-->
@@ -118,7 +119,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>
@@ -139,7 +140,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>

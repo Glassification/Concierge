@@ -179,7 +179,7 @@ namespace Concierge.Display.Controls
 
         private void ProficiencyToggle_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ConciergeSoundService.UpdateValue();
+            SoundService.PlayUpdateValue();
 
             var attributeCopy = this.attribute.DeepCopy();
             this.attribute.Proficiency = !this.attribute.Proficiency;

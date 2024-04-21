@@ -825,55 +825,55 @@ namespace Concierge.Display
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.CloseWindow();
         }
 
         private void NewCharacterButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.NewCharacterSheet();
         }
 
         private void OpenCharacterButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.OpenCharacterSheet();
         }
 
         private void ImportCharacterButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.ImportCharacter();
         }
 
         private void SaveCharacterButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.SaveCharacterSheet();
         }
 
         private void SaveCharacterAsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.SaveCharacterSheetAs();
         }
 
         private void LongRestButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.LongRest();
         }
 
         private void ShortRestButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.ShortRest();
         }
 
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.PageSelection((sender as ListViewItem)?.Tag as IConciergePage);
         }
 
@@ -892,25 +892,25 @@ namespace Concierge.Display
 
         private void PropertiesButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.OpenCharacterProperties();
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.OpenSettings();
         }
 
         private void MessageHistoryButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             ConciergeWindowService.ShowWindow(typeof(MessageHistoryWindow));
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             Program.Logger.Info($"Open About.");
 
             ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
@@ -918,31 +918,31 @@ namespace Concierge.Display
 
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.WindowState = WindowState.Minimized;
         }
 
         private void CharacterCreationButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.CreateCharacterWizard();
         }
 
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.ChangeWindowState();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.Search();
         }
 
         private void ExportAppDataButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
 
             if (new AppDataExporter(Program.Logger).Export())
             {
@@ -980,13 +980,13 @@ namespace Concierge.Display
 
         private void RedoButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.Redo();
         }
 
         private void UndoButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.Undo();
         }
 
@@ -1030,7 +1030,7 @@ namespace Concierge.Display
 
         private void LevelUpButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.LevelUp();
         }
 
@@ -1046,25 +1046,25 @@ namespace Concierge.Display
 
         private void GlossaryButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.OpenGlossary();
         }
 
         private void CustomItemsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.OpenCustomItems();
         }
 
         private void ConsoleButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             this.OpenConsole();
         }
 
         private void OnScreenKeyboardButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
             SystemUtility.OpenOnScreenKeyboard();
         }
     }

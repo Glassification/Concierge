@@ -5,11 +5,10 @@
 namespace Concierge.Display.Utility
 {
     using System;
-    using System.IO;
-    using System.Reflection;
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Common;
     using Concierge.Display.Components;
 
     /// <summary>
@@ -22,7 +21,7 @@ namespace Concierge.Display.Utility
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.VideoControl.Source = new Uri(@$"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\Properties\Resources\Videos\hey-whats-going-on.wmv");
+            this.VideoControl.Source = new Uri(@$"{ConciergeFiles.ExecutingDirectory}\Properties\Resources\Videos\hey-whats-going-on.wmv");
         }
 
         public override string HeaderText => "Hey What's Goin' On";

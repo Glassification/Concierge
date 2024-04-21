@@ -19,6 +19,8 @@ namespace Concierge
 
     public static class Program
     {
+        private const int Windows11 = 22000;
+
         private static int buildNumber = -1;
         private static ConciergeVersion version = new ();
 
@@ -41,11 +43,14 @@ namespace Concierge
             MainWindow = null;
             BaseState = new CharacterSheet();
 
+            SoundService.SetVolume();
+
             var colorReadWriter = new CustomColorReadWriter(ErrorService);
             var consolReadWrite = new ConsoleReadWriter(ErrorService);
 
             CustomItemService = new CustomItemService();
             CustomColorService = colorReadWriter.ReadJson<CustomColorService>(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName));
+
             consolReadWrite.Clear(Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput));
         }
 
@@ -93,7 +98,7 @@ namespace Concierge
             {
                 if (buildNumber >= 0)
                 {
-                    return buildNumber >= 22000;
+                    return buildNumber >= Windows11;
                 }
 
                 var reg = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
@@ -103,7 +108,7 @@ namespace Concierge
                 {
                     Logger.Info($"Found current Windows version: {currentBuild}.");
                     buildNumber = currentBuild;
-                    return currentBuild >= 22000;
+                    return currentBuild >= Windows11;
                 }
 
                 return false;

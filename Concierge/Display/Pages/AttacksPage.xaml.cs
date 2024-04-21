@@ -468,7 +468,7 @@ namespace Concierge.Display.Pages
 
         private void AugmentDataGrid_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.OriginalSource is not UIElement element)
+            if (e.OriginalSource is not UIElement element || (!this.MultiSelectButton.IsChecked ?? true))
             {
                 return;
             }

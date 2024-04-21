@@ -79,6 +79,7 @@ namespace Concierge.Configuration
             UserSettings.UseCoinWeight = userSettingsDto.UseCoinWeight;
             UserSettings.UseEncumbrance = userSettingsDto.UseEncumbrance;
             UserSettings.UnitOfMeasurement = userSettingsDto.UnitOfMeasurement;
+            UserSettings.Volume = userSettingsDto.Volume;
 
             if (isDebug)
             {
@@ -124,6 +125,7 @@ namespace Concierge.Configuration
                 UseCoinWeight = UserSettings.UseCoinWeight,
                 UseEncumbrance = UserSettings.UseEncumbrance,
                 UnitOfMeasurement = UserSettings.UnitOfMeasurement,
+                Volume = UserSettings.Volume,
             };
         }
 

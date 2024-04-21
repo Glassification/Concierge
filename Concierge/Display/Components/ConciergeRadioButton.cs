@@ -36,7 +36,7 @@ namespace Concierge.Display.Components
         {
             if (!this.IsUpdating)
             {
-                ConciergeSoundService.UpdateValue();
+                SoundService.PlayUpdateValue();
             }
 
             this.IsUpdating = false;

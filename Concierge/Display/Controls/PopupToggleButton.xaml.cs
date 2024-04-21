@@ -103,7 +103,7 @@ namespace Concierge.Display.Controls
 
         private void RealButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSoundService.TapNavigation();
+            SoundService.PlayNavigation();
         }
     }
 }
