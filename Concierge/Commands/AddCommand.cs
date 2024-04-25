@@ -8,11 +8,21 @@ namespace Concierge.Commands
 
     using Concierge.Display.Enums;
 
+    /// <summary>
+    /// Represents a command that adds an item to a list.
+    /// </summary>
+    /// <typeparam name="T">The type of elements in the list.</typeparam>
     public sealed class AddCommand<T> : Command
     {
         private readonly List<T> list;
         private readonly T item;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddCommand{T}"/> class.
+        /// </summary>
+        /// <param name="list">The list to which the item will be added.</param>
+        /// <param name="item">The item to add to the list.</param>
+        /// <param name="conciergePage">The ConciergePage associated with this command.</param>
         public AddCommand(List<T> list, T item, ConciergePage conciergePage)
         {
             this.ConciergePage = conciergePage;

@@ -10,6 +10,9 @@ namespace Concierge.Services
     using Concierge.Common;
     using Concierge.Configuration;
 
+    /// <summary>
+    /// Provides functionality for managing sounds in the application.
+    /// </summary>
     public static class SoundService
     {
         private static readonly MediaPlayer updateValueSound = new ();
@@ -32,6 +35,9 @@ namespace Concierge.Services
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether to skip the sound when clicked.
+        /// </summary>
         public static bool SkipClick
         {
             get
@@ -46,11 +52,17 @@ namespace Concierge.Services
             }
         }
 
+        /// <summary>
+        /// Resets the skip click counter.
+        /// </summary>
         public static void ResetSkipClick()
         {
             skipClickCount = 0;
         }
 
+        /// <summary>
+        /// Plays the navigation sound.
+        /// </summary>
         public static void PlayNavigation()
         {
             if (AppSettingsManager.UserSettings.MuteSounds || SkipClick || navigationSound is null)
@@ -63,6 +75,9 @@ namespace Concierge.Services
             navigationSound.Play();
         }
 
+        /// <summary>
+        /// Plays the update value sound.
+        /// </summary>
         public static void PlayUpdateValue()
         {
             if (AppSettingsManager.UserSettings.MuteSounds || updateValueSound is null)
@@ -75,6 +90,9 @@ namespace Concierge.Services
             updateValueSound.Play();
         }
 
+        /// <summary>
+        /// Plays the warning sound.
+        /// </summary>
         public static void PlayWarning()
         {
             if (AppSettingsManager.UserSettings.MuteSounds || warningSound is null)
@@ -87,6 +105,9 @@ namespace Concierge.Services
             warningSound.Play();
         }
 
+        /// <summary>
+        /// Stops and closes all sound players.
+        /// </summary>
         public static void CloseAll()
         {
             updateValueSound.Stop();
@@ -98,6 +119,9 @@ namespace Concierge.Services
             warningSound.Close();
         }
 
+        /// <summary>
+        /// Sets the volume of all sound players.
+        /// </summary>
         public static void SetVolume()
         {
             var volume = AppSettingsManager.UserSettings.Volume;

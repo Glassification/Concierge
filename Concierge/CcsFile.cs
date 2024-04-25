@@ -17,10 +17,16 @@ namespace Concierge
     using Concierge.Persistence;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a Concierge character file, managing character data, file paths, and version information.
+    /// </summary>
     public sealed class CcsFile
     {
         private bool isInitialized;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CcsFile"/> class.
+        /// </summary>
         public CcsFile()
         {
             this.Character = new CharacterSheet();
@@ -31,34 +37,73 @@ namespace Concierge
             this.Hash = string.Empty;
         }
 
+        /// <summary>
+        /// Gets or sets the absolute path of the character file.
+        /// </summary>
         [JsonIgnore]
         public string AbsolutePath { get; set; }
 
+        /// <summary>
+        /// Gets or sets the character sheet associated with the file.
+        /// </summary>
         public CharacterSheet Character { get; set; }
 
+        /// <summary>
+        /// Gets the character service instance associated with the file.
+        /// </summary>
         public CharacterService CharacterService { get; private set; }
 
+        /// <summary>
+        /// Gets the file name extracted from the absolute path.
+        /// </summary>
         [JsonIgnore]
         public string FileName => Path.GetFileName(this.AbsolutePath) ?? string.Empty;
 
+        /// <summary>
+        /// Gets the directory path extracted from the absolute path.
+        /// </summary>
         [JsonIgnore]
         public string FilePath => Path.GetDirectoryName(this.AbsolutePath) ?? string.Empty;
 
+        /// <summary>
+        /// Gets or sets the hash value of the character data.
+        /// </summary>
         public string Hash { get; set; }
 
+        /// <summary>
+        /// Gets the original creation date of the character file.
+        /// </summary>
         public string OriginalCreationDate { get; init; }
 
+        /// <summary>
+        /// Gets or sets the date and time when the file was last saved.
+        /// </summary>
         public DateTime LastSaveDate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the version information of the character file.
+        /// </summary>
         public ConciergeVersion Version { get; set; }
 
+        /// <summary>
+        /// Gets a value indicating whether the character file is empty.
+        /// </summary>
         public bool IsEmpty { get; }
 
+        /// <summary>
+        /// Checks if the character file is saved.
+        /// </summary>
+        /// <param name="autosaveChecked">A nullable boolean indicating if autosave is checked.</param>
+        /// <returns><c>true</c> if the character file is saved; otherwise, <c>false</c>.</returns>
         public bool IsFileSaved(bool? autosaveChecked)
         {
             return this.AbsolutePath.IsNullOrWhiteSpace() && (autosaveChecked ?? false);
         }
 
+        /// <summary>
+        /// Checks if the version of the character file is compatible with the current program version.
+        /// </summary>
+        /// <returns><c>true</c> if the version is compatible; otherwise, <c>false</c>.</returns>
         public bool CheckVersion()
         {
             if (this.Version.IsEmpty || this.CompareMajorMinorVersion())
@@ -86,6 +131,10 @@ namespace Concierge
             return true;
         }
 
+        /// <summary>
+        /// Checks the integrity of the character file's data using its hash value.
+        /// </summary>
+        /// <returns><c>true</c> if the file integrity is verified; otherwise, <c>false</c>.</returns>
         public bool CheckHash()
         {
             if (ConciergeHashing.CheckHash(this.Character, this.Hash))
@@ -110,6 +159,9 @@ namespace Concierge
             };
         }
 
+        /// <summary>
+        /// Initializes the character file, ensuring that all necessary components are set up.
+        /// </summary>
         public void Initialize()
         {
             if (this.isInitialized)

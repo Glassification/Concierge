@@ -14,15 +14,26 @@ namespace Concierge.Services
     using Concierge.Display.Enums;
     using Concierge.Logging;
 
+    /// <summary>
+    /// Provides error logging and handling functionality for the application.
+    /// </summary>
     public sealed class ErrorService : IErrorService
     {
+        private Logger logger;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ErrorService"/> class with the specified logger.
+        /// </summary>
+        /// <param name="logger">The logger used for error logging.</param>
         public ErrorService(Logger logger)
         {
-            this.Logger = logger;
+            this.logger = logger;
         }
 
-        private Logger Logger { get; set; }
-
+        /// <summary>
+        /// Logs an error and handles it according to its severity.
+        /// </summary>
+        /// <param name="ex">The exception to log and handle.</param>
         public void LogError(Exception ex)
         {
             var conciergeException = GetConciergeException(ex);
@@ -40,7 +51,7 @@ namespace Concierge.Services
                     break;
             }
 
-            this.Logger.Error(conciergeException);
+            this.logger.Error(conciergeException);
             IsFatalException(conciergeException);
         }
 

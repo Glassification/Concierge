@@ -11,6 +11,9 @@ namespace Concierge.Commands
     using Concierge.Display.Enums;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a command that handles resting actions for a character, including restoring vitality, spell slots, companion health, and companion hit dice.
+    /// </summary>
     public sealed class RestCommand : Command
     {
         private readonly Vitality oldVitality;
@@ -25,6 +28,18 @@ namespace Concierge.Commands
 
         private readonly CharacterSheet character;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RestCommand"/> class.
+        /// </summary>
+        /// <param name="oldVitality">The character's vitality before resting.</param>
+        /// <param name="oldCompanionHealth">The companion's health before resting.</param>
+        /// <param name="oldCompanionHitDice">The companion's hit dice before resting.</param>
+        /// <param name="oldSpellSlots">The character's spell slots before resting.</param>
+        /// <param name="oldConcentratedSpell">The concentrated spell before resting (optional).</param>
+        /// <param name="newVitality">The character's vitality after resting.</param>
+        /// <param name="newCompanionHealth">The companion's health after resting.</param>
+        /// <param name="newCompanionHitDice">The companion's hit dice after resting.</param>
+        /// <param name="newSpellSlots">The character's spell slots after resting.</param>
         public RestCommand(
             Vitality oldVitality,
             Health oldCompanionHealth,

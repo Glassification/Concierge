@@ -174,8 +174,8 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Eye, ConciergeBrushes.Mint, ArmorStatus.Donned),
-                new (PackIconKind.EyeOff, Brushes.IndianRed, ArmorStatus.Doffed),
+                new (PackIconKind.Shield, ConciergeBrushes.Mint, ArmorStatus.Donned),
+                new (PackIconKind.ShieldOff, Brushes.IndianRed, ArmorStatus.Doffed),
             ];
         }
 

@@ -9,14 +9,14 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="Mondify Conditions"
-    Height="655"
+    Height="575"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="480"/>
+            <RowDefinition Height="400"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -54,14 +54,14 @@
             <!--Left-->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
                 <!--Blinded-->
@@ -82,7 +82,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="BlindedCheckBox"/>
                     </Grid>
                 </Grid>
@@ -105,7 +105,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="CharmedCheckBox"/>
                     </Grid>
                 </Grid>
@@ -128,7 +128,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="DeathCheckBox"/>
                     </Grid>
                 </Grid>
@@ -151,7 +151,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="DeafenedCheckBox"/>
                     </Grid>
                 </Grid>
@@ -201,7 +201,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="FrightenedCheckBox"/>
                     </Grid>
                 </Grid>
@@ -224,7 +224,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="GrappledCheckBox"/>
                     </Grid>
                 </Grid>
@@ -247,7 +247,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="IncapacitatedCheckBox"/>
                     </Grid>
                 </Grid>
@@ -256,14 +256,14 @@
             <!--Right-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
                 <!--Invisible-->
@@ -284,7 +284,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="InvisibleCheckBox"/>
                     </Grid>
                 </Grid>
@@ -307,7 +307,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="ParalyzedCheckBox"/>
                     </Grid>
                 </Grid>
@@ -330,7 +330,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="PetrifiedCheckBox"/>
                     </Grid>
                 </Grid>
@@ -353,7 +353,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="PoisonedCheckBox"/>
                     </Grid>
                 </Grid>
@@ -376,7 +376,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="ProneCheckBox"/>
                     </Grid>
                 </Grid>
@@ -399,7 +399,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="RestrainedCheckBox"/>
                     </Grid>
                 </Grid>
@@ -422,7 +422,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="StunnedCheckBox"/>
                     </Grid>
                 </Grid>
@@ -445,7 +445,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             Style="{StaticResource CheckBoxStyle}"
-                            Margin="20,15,0,0"
+                            Margin="20,10,0,0"
                             x:Name="UnconsciousCheckBox"/>
                     </Grid>
                 </Grid>

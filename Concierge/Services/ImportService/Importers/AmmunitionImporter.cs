@@ -10,8 +10,15 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Equipable;
     using Concierge.Common;
 
+    /// <summary>
+    /// Represents an importer for ammunition data.
+    /// </summary>
     public sealed class AmmunitionImporter : Importer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AmmunitionImporter"/> class with the specified character.
+        /// </summary>
+        /// <param name="character">The character sheet to import ammunition data into.</param>
         public AmmunitionImporter(CharacterSheet character)
             : base(character)
         {

@@ -17,41 +17,54 @@ namespace Concierge.Search
     using Concierge.Display.Components;
     using Concierge.Search.Enums;
 
+    /// <summary>
+    /// Represents a utility class for conducting searches within the Concierge application.
+    /// </summary>
     public sealed class ConciergeSearch
     {
+        private readonly MainWindow mainWindow;
+        private readonly List<SearchResult> results;
+
+        private Regex regex;
+        private int depth;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConciergeSearch"/> class with the specified main window.
+        /// </summary>
+        /// <param name="mainWindow">The main window of the Concierge application.</param>
         public ConciergeSearch(MainWindow mainWindow)
         {
-            this.MainWindow = mainWindow;
-            this.Results = [];
+            this.mainWindow = mainWindow;
+            this.results = [];
             this.SearchSettings = new SearchSettings();
-            this.Regex = new Regex(string.Empty);
+            this.regex = new Regex(string.Empty);
         }
 
+        /// <summary>
+        /// Gets the search settings used for the search operation.
+        /// </summary>
         public SearchSettings SearchSettings { get; private set; }
 
-        private MainWindow MainWindow { get; set; }
-
-        private List<SearchResult> Results { get; set; }
-
-        private Regex Regex { get; set; }
-
-        private int Depth { get; set; }
-
+        /// <summary>
+        /// Searches for the specified search settings and returns the list of search results.
+        /// </summary>
+        /// <param name="searchSettings">The search settings to use for the search operation.</param>
+        /// <returns>The list of search results.</returns>
         public List<SearchResult> Search(SearchSettings searchSettings)
         {
-            this.Results.Clear();
+            this.results.Clear();
             this.SearchSettings = searchSettings;
-            this.Depth = 0;
+            this.depth = 0;
 
             if (searchSettings?.TextToSearch.IsNullOrWhiteSpace() ?? true)
             {
-                return this.Results;
+                return this.results;
             }
 
             this.CreateRegex();
             this.SearchWithSettings();
 
-            return this.Results;
+            return this.results;
         }
 
         private void CreateRegex()
@@ -69,7 +82,7 @@ namespace Concierge.Search
                         : Regex.Escape(this.SearchSettings.TextToSearch);
             }
 
-            this.Regex = this.SearchSettings.MatchCase
+            this.regex = this.SearchSettings.MatchCase
                 ? new Regex(pattern)
                 : new Regex(pattern, RegexOptions.IgnoreCase);
         }
@@ -79,9 +92,9 @@ namespace Concierge.Search
             switch (this.SearchSettings.SearchDomain)
             {
                 case SearchDomain.CurrentPage:
-                    if (this.MainWindow.CurrentPage is not null)
+                    if (this.mainWindow.CurrentPage is not null)
                     {
-                        this.SearchPage(this.MainWindow.CurrentPage);
+                        this.SearchPage(this.mainWindow.CurrentPage);
                     }
 
                     break;
@@ -93,16 +106,16 @@ namespace Concierge.Search
 
         private void SearchPages()
         {
-            this.SearchPage(this.MainWindow.OverviewPage);
-            this.SearchPage(this.MainWindow.DetailsPage);
-            this.SearchPage(this.MainWindow.AttacksPage);
-            this.SearchPage(this.MainWindow.AbilityPage);
-            this.SearchPage(this.MainWindow.EquipmentPage);
-            this.SearchPage(this.MainWindow.InventoryPage);
-            this.SearchPage(this.MainWindow.SpellcastingPage);
-            this.SearchPage(this.MainWindow.CompanionPage);
-            this.SearchPage(this.MainWindow.ToolsPage);
-            this.SearchPage(this.MainWindow.JournalPage);
+            this.SearchPage(this.mainWindow.OverviewPage);
+            this.SearchPage(this.mainWindow.DetailsPage);
+            this.SearchPage(this.mainWindow.AttacksPage);
+            this.SearchPage(this.mainWindow.AbilityPage);
+            this.SearchPage(this.mainWindow.EquipmentPage);
+            this.SearchPage(this.mainWindow.InventoryPage);
+            this.SearchPage(this.mainWindow.SpellcastingPage);
+            this.SearchPage(this.mainWindow.CompanionPage);
+            this.SearchPage(this.mainWindow.ToolsPage);
+            this.SearchPage(this.mainWindow.JournalPage);
         }
 
         private void SearchPage(IConciergePage conciergePage)
@@ -136,9 +149,9 @@ namespace Concierge.Search
 
                 foreach (var document in documents)
                 {
-                    if (this.Regex.IsMatch(document.Rtf.StripRichTextFormat() ?? string.Empty))
+                    if (this.regex.IsMatch(document.Rtf.StripRichTextFormat() ?? string.Empty))
                     {
-                        this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, document, this.Regex, conciergePage));
+                        this.results.Add(new SearchResult(this.SearchSettings.TextToSearch, document, this.regex, conciergePage));
                     }
                 }
             }
@@ -172,9 +185,9 @@ namespace Concierge.Search
                     }
 
                     var textBlock = DisplayUtility.FindVisualChildren<TextBlock>(grid).FirstOrDefault();
-                    if (this.Regex.IsMatch(textBlock?.Text ?? string.Empty))
+                    if (this.regex.IsMatch(textBlock?.Text ?? string.Empty))
                     {
-                        this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, treeViewItem, this.Regex, conciergePage));
+                        this.results.Add(new SearchResult(this.SearchSettings.TextToSearch, treeViewItem, this.regex, conciergePage));
                     }
 
                     if (treeViewItem.Items.Count == 0)
@@ -190,9 +203,9 @@ namespace Concierge.Search
                         }
 
                         var textBlock2 = DisplayUtility.FindVisualChildren<TextBlock>(grid2).FirstOrDefault();
-                        if (this.Regex.IsMatch(textBlock2?.Text ?? string.Empty))
+                        if (this.regex.IsMatch(textBlock2?.Text ?? string.Empty))
                         {
-                            this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, treeViewItem2, this.Regex, conciergePage));
+                            this.results.Add(new SearchResult(this.SearchSettings.TextToSearch, treeViewItem2, this.regex, conciergePage));
                         }
                     }
                 }
@@ -214,9 +227,9 @@ namespace Concierge.Search
 
             foreach (var textBlock in textBlocks)
             {
-                if (this.Regex.IsMatch(textBlock.Text))
+                if (this.regex.IsMatch(textBlock.Text))
                 {
-                    this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, textBlock, this.Regex, conciergePage));
+                    this.results.Add(new SearchResult(this.SearchSettings.TextToSearch, textBlock, this.regex, conciergePage));
                 }
             }
         }
@@ -251,14 +264,14 @@ namespace Concierge.Search
 
                 if (this.SearchListObject(item, conciergePage))
                 {
-                    this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, item, this.Regex, conciergePage));
+                    this.results.Add(new SearchResult(this.SearchSettings.TextToSearch, item, this.regex, conciergePage));
                 }
             }
         }
 
         private bool SearchListObject(object item, IConciergePage conciergePage)
         {
-            this.Depth++;
+            this.depth++;
 
             try
             {
@@ -272,13 +285,13 @@ namespace Concierge.Search
                         continue;
                     }
 
-                    if (propertyValue.IsList() && this.Depth < Constants.MaxDepth)
+                    if (propertyValue.IsList() && this.depth < Constants.MaxDepth)
                     {
                         dynamic list = propertyValue;
                         this.SearchList(list, conciergePage);
                     }
 
-                    if (this.Regex.IsMatch(propertyValue.ToString() ?? string.Empty))
+                    if (this.regex.IsMatch(propertyValue.ToString() ?? string.Empty))
                     {
                         return true;
                     }
@@ -289,7 +302,7 @@ namespace Concierge.Search
                 Program.ErrorService.LogError(ex);
             }
 
-            this.Depth--;
+            this.depth--;
 
             return false;
         }

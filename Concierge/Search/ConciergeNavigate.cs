@@ -11,18 +11,28 @@ namespace Concierge.Search
     using Concierge.Display.Components;
     using Concierge.Display.Pages;
 
+    /// <summary>
+    /// Represents a utility class for navigating to search results within the Concierge application.
+    /// </summary>
     public sealed class ConciergeNavigate
     {
+        private SearchResult searchResult;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConciergeNavigate"/> class.
+        /// </summary>
         public ConciergeNavigate()
         {
-            this.SearchResult = new SearchResult();
+            this.searchResult = new SearchResult();
         }
 
-        private SearchResult SearchResult { get; set; }
-
+        /// <summary>
+        /// Navigates to the specified search result.
+        /// </summary>
+        /// <param name="searchResult">The search result to navigate to.</param>
         public void Navigate(SearchResult searchResult)
         {
-            this.SearchResult = searchResult;
+            this.searchResult = searchResult;
 
             if (this.NavigateToDataGrid())
             {
@@ -47,7 +57,7 @@ namespace Concierge.Search
 
         private bool NavigateToDocument()
         {
-            if (this.SearchResult.ConciergePage is not Page conciergePage || this.SearchResult.Item is not Document document)
+            if (this.searchResult.ConciergePage is not Page conciergePage || this.searchResult.Item is not Document document)
             {
                 return false;
             }
@@ -72,7 +82,7 @@ namespace Concierge.Search
                         parentItem.IsExpanded = true;
                     }
 
-                    (this.SearchResult.ConciergePage as JournalPage)?.HighlightSearchResults(this.SearchResult);
+                    (this.searchResult.ConciergePage as JournalPage)?.HighlightSearchResults(this.searchResult);
                 }
 
                 return true;
@@ -83,7 +93,7 @@ namespace Concierge.Search
 
         private bool NavigateToDataGrid()
         {
-            if (this.SearchResult.ConciergePage is not Page conciergePage)
+            if (this.searchResult.ConciergePage is not Page conciergePage)
             {
                 return false;
             }
@@ -91,7 +101,7 @@ namespace Concierge.Search
             var dataGrids = DisplayUtility.FindVisualChildren<ConciergeDataGrid>(conciergePage);
             foreach (var dataGrid in dataGrids)
             {
-                var index = dataGrid.Items.IndexOf(this.SearchResult.Item);
+                var index = dataGrid.Items.IndexOf(this.searchResult.Item);
                 if (index >= 0)
                 {
                     dataGrid.SetSelectedIndex(index);
@@ -105,7 +115,7 @@ namespace Concierge.Search
 
         private bool NavigateToTextBlock()
         {
-            if (this.SearchResult.Item is not ConciergeTextBlock textBlock)
+            if (this.searchResult.Item is not ConciergeTextBlock textBlock)
             {
                 return false;
             }
@@ -117,7 +127,7 @@ namespace Concierge.Search
 
         private bool NavigateToTreeView()
         {
-            if (this.SearchResult.ConciergePage is not Page conciergePage)
+            if (this.searchResult.ConciergePage is not Page conciergePage)
             {
                 return false;
             }
@@ -125,7 +135,7 @@ namespace Concierge.Search
             var treeViews = DisplayUtility.FindVisualChildren<ConciergeTreeView>(conciergePage);
             foreach (var treeView in treeViews)
             {
-                var item = treeView.GetTreeViewItem(this.SearchResult.Item);
+                var item = treeView.GetTreeViewItem(this.searchResult.Item);
 
                 if (item is null)
                 {

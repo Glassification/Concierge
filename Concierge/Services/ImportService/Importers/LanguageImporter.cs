@@ -10,8 +10,15 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Details;
     using Concierge.Common;
 
+    /// <summary>
+    /// Represents an importer for language data.
+    /// </summary>
     public sealed class LanguageImporter : Importer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LanguageImporter"/> class with the specified character.
+        /// </summary>
+        /// <param name="character">The character sheet to import language data into.</param>
         public LanguageImporter(CharacterSheet character)
             : base(character)
         {

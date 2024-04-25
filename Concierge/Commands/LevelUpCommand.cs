@@ -15,6 +15,9 @@ namespace Concierge.Commands
     using Concierge.Display.Enums;
     using Concierge.Leveling.Dtos.Leveler;
 
+    /// <summary>
+    /// Represents a command that handles leveling up a character, including changes to vitality, classes, magic classes, spell slots, and class resources.
+    /// </summary>
     public sealed class LevelUpCommand : Command
     {
         private readonly Vitality oldVitality;
@@ -30,6 +33,14 @@ namespace Concierge.Commands
 
         private readonly CharacterSheet character;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LevelUpCommand"/> class.
+        /// </summary>
+        /// <param name="characterClass">The character class data including old and new class information.</param>
+        /// <param name="classResource">The class resource data including old and new resource information.</param>
+        /// <param name="magicClass">The magic class data including old and new magic class information.</param>
+        /// <param name="spellSlots">The spell slots data including old and new spell slot information.</param>
+        /// <param name="vitality">The vitality data including old and new vitality information.</param>
         public LevelUpCommand(
             CharacterClassDto characterClass,
             ClassResourcesDto classResource,

@@ -10,11 +10,22 @@ namespace Concierge.Commands
     using Concierge.Display.Enums;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a command that edits an item in a list, allowing undoing the edit operation.
+    /// </summary>
+    /// <typeparam name="T">The type of item being edited.</typeparam>
     public sealed class EditCommand<T> : Command
     {
         private readonly T oldItem;
         private readonly T newItem;
+        private readonly T originalItem;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EditCommand{T}"/> class.
+        /// </summary>
+        /// <param name="originalItem">The original item before the edit operation.</param>
+        /// <param name="oldItem">The item's previous state before the edit operation.</param>
+        /// <param name="conciergePage">The ConciergePage associated with this command.</param>
         public EditCommand(T originalItem, T oldItem, ConciergePage conciergePage)
         {
             if (originalItem is not ICopyable<T> newItem || oldItem is null)
@@ -23,18 +34,16 @@ namespace Concierge.Commands
             }
 
             this.ConciergePage = conciergePage;
-            this.OriginalItem = originalItem;
+            this.originalItem = originalItem;
             this.oldItem = oldItem;
             this.newItem = newItem.DeepCopy();
         }
-
-        private T OriginalItem { get; set; }
 
         public override void Redo()
         {
             if (this.newItem is not null)
             {
-                this.OriginalItem?.SetProperties<T>(this.newItem);
+                this.originalItem?.SetProperties<T>(this.newItem);
             }
         }
 
@@ -42,7 +51,7 @@ namespace Concierge.Commands
         {
             if (this.oldItem is not null)
             {
-                this.OriginalItem?.SetProperties<T>(this.oldItem);
+                this.originalItem?.SetProperties<T>(this.oldItem);
             }
         }
 

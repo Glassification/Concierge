@@ -10,6 +10,9 @@ namespace Concierge.Commands
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
 
+    /// <summary>
+    /// Represents a command that applies damage to a character's health and handles concentration for spells.
+    /// </summary>
     public sealed class DamageCommand : Command
     {
         private readonly Vitality vitality;
@@ -19,6 +22,14 @@ namespace Concierge.Commands
 
         private readonly CharacterSheet character;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DamageCommand"/> class.
+        /// </summary>
+        /// <param name="vitality">The vitality of the character receiving damage.</param>
+        /// <param name="oldHealth">The previous health state of the character.</param>
+        /// <param name="newHealth">The new health state of the character after taking damage.</param>
+        /// <param name="concentratedSpell">The concentrated spell associated with the character (optional).</param>
+        /// <param name="conciergePage">The ConciergePage associated with this command.</param>
         public DamageCommand(Vitality vitality, Health oldHealth, Health newHealth, Spell? concentratedSpell, ConciergePage conciergePage)
         {
             this.vitality = vitality;

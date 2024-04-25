@@ -60,7 +60,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Inventory, Program.CustomItemService.GetCustomItems<Inventory>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Inventory, Program.CustomItemService.GetItems<Inventory>());
 
         private bool EquippedItem { get; set; }
 
@@ -307,7 +307,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            Program.CustomItemService.AddCustomItem(this.Create());
+            Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.NameComboBox.ItemsSource = DefaultItems;
         }

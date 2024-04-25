@@ -128,7 +128,7 @@ namespace Concierge.Display.Windows.Utility
 
         public void Draw()
         {
-            var customItems = Program.CustomItemService.GetCustomItems();
+            var customItems = Program.CustomItemService.GetItems();
             var customColors = Program.CustomColorService.CustomColors;
             var count = customItems.Count + customColors.Count;
 
@@ -174,7 +174,7 @@ namespace Concierge.Display.Windows.Utility
             if (this.CustomItemsDataGrid.SelectedItem is IUnique unique)
             {
                 this.ShowEdit(unique);
-                Program.CustomItemService.UpdateCustomItem();
+                Program.CustomItemService.UpdateItem();
                 this.Draw();
             }
         }
@@ -202,7 +202,7 @@ namespace Concierge.Display.Windows.Utility
             }
             else if (this.CustomItemsDataGrid.SelectedItem is IUnique unique)
             {
-                Program.CustomItemService.RemoveCustomItem(unique);
+                Program.CustomItemService.RemoveItem(unique);
                 this.Draw();
             }
         }

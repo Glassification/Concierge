@@ -15,15 +15,28 @@ namespace Concierge.Leveling
     using Concierge.Leveling.Dtos.Leveler;
     using Concierge.Tools.DiceRoller;
 
+    /// <summary>
+    /// Provides functionality for leveling up a character.
+    /// </summary>
     public sealed class ConciergeLeveler
     {
         private readonly CharacterSheet character;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConciergeLeveler"/> class with the specified character.
+        /// </summary>
+        /// <param name="character">The character sheet to level up.</param>
         public ConciergeLeveler(CharacterSheet character)
         {
             this.character = character;
         }
 
+        /// <summary>
+        /// Levels up the character with the specified hit die, class number, and bonus HP.
+        /// </summary>
+        /// <param name="hitDie">The hit die to use for leveling up.</param>
+        /// <param name="classNumber">The number representing the character's class.</param>
+        /// <param name="bonusHp">The bonus hit points gained at each level.</param>
         public void LevelUp(Dice hitDie, int classNumber, int bonusHp)
         {
             var vitalityDto = this.LevelUpVitality(hitDie, bonusHp);

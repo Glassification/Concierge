@@ -55,7 +55,7 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(ArmorWindow);
 
-        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Armor, Program.CustomItemService.GetCustomItems<Armor>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Armor, Program.CustomItemService.GetItems<Armor>());
 
         private Defense SelectedDefense { get; set; }
 
@@ -208,7 +208,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            Program.CustomItemService.AddCustomItem(this.Create());
+            Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.ArmorNameComboBox.ItemsSource = DefaultItems;
         }

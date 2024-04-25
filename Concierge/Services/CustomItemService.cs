@@ -19,52 +19,77 @@ namespace Concierge.Services
     using Concierge.Persistence.ReadWriters;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Provides methods for managing custom items, such as adding, updating, and removing them.
+    /// </summary>
     public sealed class CustomItemService
     {
         private readonly CustomItemReadWriter readwriter;
         private readonly string filePath = Path.Combine(ConciergeFiles.GetCorrectCustomItemsPath(), ConciergeFiles.CustomItemsName);
+        private readonly List<IUnique> customItems;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomItemService"/> class.
+        /// </summary>
         public CustomItemService()
         {
             this.readwriter = new CustomItemReadWriter(Program.ErrorService);
-            this.CustomItems = [];
+            this.customItems = [];
 
             this.Initialize();
         }
 
-        private List<IUnique> CustomItems { get; set; }
-
-        public void AddCustomItem(IUnique item)
+        /// <summary>
+        /// Adds a custom item to the list of custom items.
+        /// </summary>
+        /// <param name="item">The custom item to add.</param>
+        public void AddItem(IUnique item)
         {
             item.IsCustom = true;
             var blob = new CustomBlob(item);
 
-            this.CustomItems.Add(item);
+            this.customItems.Add(item);
             this.readwriter.Append(this.filePath, blob);
 
             Program.MainWindow?.DisplayStatusText($"Added custom {item.GetType().Name.FormatFromPascalCase()} {item.Name}");
         }
 
-        public void UpdateCustomItem()
+        /// <summary>
+        /// Updates the custom items in the file.
+        /// </summary>
+        public void UpdateItem()
         {
-            this.readwriter.WriteList(this.filePath, this.CustomItems.Select(x => new CustomBlob(x)).ToList());
+            this.readwriter.WriteList(this.filePath, this.customItems.Select(x => new CustomBlob(x)).ToList());
         }
 
-        public void RemoveCustomItem(IUnique item)
+        /// <summary>
+        /// Removes a custom item from the list of custom items.
+        /// </summary>
+        /// <param name="item">The custom item to remove.</param>
+        public void RemoveItem(IUnique item)
         {
-            this.CustomItems.Remove(item);
-            this.readwriter.WriteList(this.filePath, this.CustomItems.Select(x => new CustomBlob(x)).ToList());
+            this.customItems.Remove(item);
+            this.readwriter.WriteList(this.filePath, this.customItems.Select(x => new CustomBlob(x)).ToList());
         }
 
-        public List<IUnique> GetCustomItems()
+        /// <summary>
+        /// Gets all custom items.
+        /// </summary>
+        /// <returns>The list of custom items.</returns>
+        public List<IUnique> GetItems()
         {
-            return this.CustomItems;
+            return this.customItems;
         }
 
-        public List<T> GetCustomItems<T>()
+        /// <summary>
+        /// Gets custom items of a specific type.
+        /// </summary>
+        /// <typeparam name="T">The type of custom items to retrieve.</typeparam>
+        /// <returns>The list of custom items of the specified type.</returns>
+        public List<T> GetItems<T>()
         {
             var filteredList = new List<T>();
-            foreach (var item in this.CustomItems)
+            foreach (var item in this.customItems)
             {
                 if (item is T t)
                 {
@@ -133,7 +158,7 @@ namespace Concierge.Services
 
                 if (item is not null)
                 {
-                    this.CustomItems.Add(item);
+                    this.customItems.Add(item);
                 }
             }
         }

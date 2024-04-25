@@ -8,10 +8,18 @@ namespace Concierge.Commands
 
     using Concierge.Display.Enums;
 
+    /// <summary>
+    /// Represents a command that combines multiple commands into a single composite command.
+    /// </summary>
     public sealed class CompositeCommand : Command
     {
         private readonly List<Command> commands = [];
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompositeCommand"/> class.
+        /// </summary>
+        /// <param name="conciergePage">The ConciergePage associated with this composite command.</param>
+        /// <param name="commands">The commands to be combined into the composite command.</param>
         public CompositeCommand(ConciergePage conciergePage, params Command[] commands)
         {
             this.commands.AddRange(commands);

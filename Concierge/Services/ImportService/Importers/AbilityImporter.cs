@@ -10,8 +10,15 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Details;
     using Concierge.Common;
 
+    /// <summary>
+    /// Represents an importer for ability data.
+    /// </summary>
     public sealed class AbilityImporter : Importer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AbilityImporter"/> class with the specified character.
+        /// </summary>
+        /// <param name="character">The character sheet to import ability data into.</param>
         public AbilityImporter(CharacterSheet character)
             : base(character)
         {

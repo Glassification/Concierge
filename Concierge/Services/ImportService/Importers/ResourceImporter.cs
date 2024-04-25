@@ -10,8 +10,15 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Vitals;
     using Concierge.Common;
 
+    /// <summary>
+    /// Represents an importer for class resource data.
+    /// </summary>
     public sealed class ResourceImporter : Importer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResourceImporter"/> class with the specified character.
+        /// </summary>
+        /// <param name="character">The character sheet to import class resource data into.</param>
         public ResourceImporter(CharacterSheet character)
             : base(character)
         {

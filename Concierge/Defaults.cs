@@ -16,6 +16,9 @@ namespace Concierge
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools.Generators.Names;
 
+    /// <summary>
+    /// Provides default data for various aspects of the application, such as weapons, spells, classes, and races.
+    /// </summary>
     public static class Defaults
     {
         private static readonly DefaultListReadWriter defaultListReadWriter = new (Program.ErrorService, Program.Logger);
@@ -49,54 +52,129 @@ namespace Concierge
             ItemCategories = ReadList<string>(Properties.Resources.Category, nameof(Properties.Resources.Category));
         }
 
+        /// <summary>
+        /// Gets the collection of default autosave intervals.
+        /// </summary>
         public static ReadOnlyCollection<int> AutosaveIntervals { get; }
 
+        /// <summary>
+        /// Gets the collection of default weapons.
+        /// </summary>
         public static ReadOnlyCollection<Weapon> Weapons { get; }
 
+        /// <summary>
+        /// Gets the collection of default augmentations.
+        /// </summary>
         public static ReadOnlyCollection<Augment> Augmentation { get; }
 
+        /// <summary>
+        /// Gets the collection of default spells.
+        /// </summary>
         public static ReadOnlyCollection<Spell> Spells { get; }
 
+        /// <summary>
+        /// Gets the collection of default inventory items.
+        /// </summary>
         public static ReadOnlyCollection<Inventory> Inventory { get; }
 
+        /// <summary>
+        /// Gets the collection of default languages.
+        /// </summary>
         public static ReadOnlyCollection<Language> Languages { get; }
 
+        /// <summary>
+        /// Gets the collection of default alignment values.
+        /// </summary>
         public static ReadOnlyCollection<string> Alignment { get; }
 
+        /// <summary>
+        /// Gets the collection of default backgrounds.
+        /// </summary>
         public static ReadOnlyCollection<string> Backgrounds { get; }
 
+        /// <summary>
+        /// Gets the collection of default races.
+        /// </summary>
         public static ReadOnlyCollection<DetailedItem> Races { get; }
 
+        /// <summary>
+        /// Gets the collection of default levels or experience values.
+        /// </summary>
         public static ReadOnlyCollection<int> Levels { get; }
 
+        /// <summary>
+        /// Gets the collection of default classes.
+        /// </summary>
         public static ReadOnlyCollection<DetailedItem> Classes { get; }
 
+        /// <summary>
+        /// Gets the collection of default magical classes.
+        /// </summary>
         public static ReadOnlyCollection<MagicalClass> MagicClasses { get; }
 
+        /// <summary>
+        /// Gets the collection of default abilities.
+        /// </summary>
         public static ReadOnlyCollection<Ability> Abilities { get; }
 
+        /// <summary>
+        /// Gets the collection of default status effects.
+        /// </summary>
         public static ReadOnlyCollection<StatusEffect> StatusEffects { get; }
 
+        /// <summary>
+        /// Gets the collection of default class resources.
+        /// </summary>
         public static ReadOnlyCollection<ClassResource> Resources { get; }
 
+        /// <summary>
+        /// Gets the collection of default tools.
+        /// </summary>
         public static ReadOnlyCollection<string> Tools { get; }
 
+        /// <summary>
+        /// Gets the collection of default games.
+        /// </summary>
         public static ReadOnlyCollection<string> Games { get; }
 
+        /// <summary>
+        /// Gets the collection of default musical instruments.
+        /// </summary>
         public static ReadOnlyCollection<string> Instruments { get; }
 
+        /// <summary>
+        /// Gets the collection of default item categories.
+        /// </summary>
         public static ReadOnlyCollection<string> ItemCategories { get; }
 
+        /// <summary>
+        /// Gets the collection of default subraces.
+        /// </summary>
         public static ReadOnlyCollection<CategoryItem> Subrace { get; }
 
+        /// <summary>
+        /// Gets the collection of default subclasses.
+        /// </summary>
         public static ReadOnlyCollection<CategoryItem> Subclass { get; }
 
+        /// <summary>
+        /// Gets the collection of default names.
+        /// </summary>
         public static ReadOnlyCollection<Name> Names { get; }
 
+        /// <summary>
+        /// Gets the collection of default glossary entries.
+        /// </summary>
         public static ReadOnlyCollection<GlossaryEntry> Glossary { get; }
 
+        /// <summary>
+        /// Gets the collection of default armor items.
+        /// </summary>
         public static ReadOnlyCollection<Armor> Armor { get; }
 
+        /// <summary>
+        /// Gets the current autosave interval based on user settings.
+        /// </summary>
         public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.Autosaving.Interval];
 
         private static ReadOnlyCollection<T> ReadJson<T>(byte[] json, string name)

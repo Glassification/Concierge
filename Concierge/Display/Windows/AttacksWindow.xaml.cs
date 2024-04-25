@@ -63,7 +63,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Weapons, Program.CustomItemService.GetCustomItems<Weapon>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Weapons, Program.CustomItemService.GetItems<Weapon>());
 
         private bool Editing { get; set; }
 
@@ -315,7 +315,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            Program.CustomItemService.AddCustomItem(this.Create());
+            Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.AttackComboBox.ItemsSource = DefaultItems;
         }

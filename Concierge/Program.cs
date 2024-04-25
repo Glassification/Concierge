@@ -17,6 +17,9 @@ namespace Concierge
     using Concierge.Services;
     using Microsoft.Win32;
 
+    /// <summary>
+    /// Represents the main program logic and settings for the application.
+    /// </summary>
     public static class Program
     {
         private const int Windows11 = 22000;
@@ -54,30 +57,69 @@ namespace Concierge
             consolReadWrite.Clear(Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput));
         }
 
+        /// <summary>
+        /// Handler for event that occurs when the modification status changes.
+        /// </summary>
         public delegate void ModifiedChangedEventHandler(object sender, EventArgs e);
 
+        /// <summary>
+        /// Event that occurs when the modification status changes.
+        /// </summary>
         public static event ModifiedChangedEventHandler? ModifiedChanged;
 
+        /// <summary>
+        /// Gets a value indicating whether the application is in debug mode.
+        /// </summary>
         public static bool IsDebug { get; }
 
+        /// <summary>
+        /// Gets a value indicating whether the user is typing.
+        /// </summary>
         public static bool IsTyping { get; private set; }
 
+        /// <summary>
+        /// Gets a value indicating whether the current character sheet is modified.
+        /// </summary>
         public static bool IsModified => !BaseState.Equals(CcsFile.Character);
 
+        /// <summary>
+        /// Gets or sets the current character sheet file.
+        /// </summary>
         public static CcsFile CcsFile { get; set; }
 
+        /// <summary>
+        /// Gets the logger instance for logging application messages.
+        /// </summary>
         public static Logger Logger { get; private set; }
 
+        /// <summary>
+        /// Gets the error service instance for handling errors.
+        /// </summary>
         public static ErrorService ErrorService { get; private set; }
 
+        /// <summary>
+        /// Gets the undo/redo service instance.
+        /// </summary>
         public static UndoRedoService UndoRedoService { get; private set; }
 
+        /// <summary>
+        /// Gets the custom color service instance for managing custom colors.
+        /// </summary>
         public static CustomColorService CustomColorService { get; private set; }
 
+        /// <summary>
+        /// Gets the custom item service instance for managing custom items.
+        /// </summary>
         public static CustomItemService CustomItemService { get; private set; }
 
+        /// <summary>
+        /// Gets the message service instance for displaying messages.
+        /// </summary>
         public static MessageService MessageService { get; private set; }
 
+        /// <summary>
+        /// Gets the version of the currently executing assembly.
+        /// </summary>
         public static ConciergeVersion AssemblyVersion
         {
             get
@@ -92,6 +134,9 @@ namespace Concierge
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the operating system is Windows 11 or later.
+        /// </summary>
         public static bool IsWindows11
         {
             get
@@ -115,10 +160,17 @@ namespace Concierge
             }
         }
 
+        /// <summary>
+        /// Gets the main application window.
+        /// </summary>
         public static MainWindow? MainWindow { get; private set; }
 
         private static CharacterSheet BaseState { get; set; }
 
+        /// <summary>
+        /// Initializes the main application window.
+        /// </summary>
+        /// <param name="mainWindow">The main window instance to initialize.</param>
         public static void InitializeMainWindow(MainWindow mainWindow)
         {
             if (MainWindow is null)
@@ -132,11 +184,17 @@ namespace Concierge
             }
         }
 
+        /// <summary>
+        /// Triggers the ModifiedChanged event.
+        /// </summary>
         public static void Modify()
         {
             ModifiedChanged?.Invoke(IsModified, new EventArgs());
         }
 
+        /// <summary>
+        /// Sets the base state of the character sheet to the current state, triggering the ModifiedChanged event.
+        /// </summary>
         public static void Unmodify()
         {
             BaseState = CcsFile.Character.DeepCopy();
@@ -144,11 +202,17 @@ namespace Concierge
             Logger.Info($"Updated Base State.");
         }
 
+        /// <summary>
+        /// Sets the IsTyping flag to true, indicating that the user is typing.
+        /// </summary>
         public static void Typing()
         {
             IsTyping = true;
         }
 
+        /// <summary>
+        /// Sets the IsTyping flag to false, indicating that the user is not typing.
+        /// </summary>
         public static void NotTyping()
         {
             IsTyping = false;

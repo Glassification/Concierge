@@ -10,8 +10,15 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Journals;
     using Concierge.Common;
 
+    /// <summary>
+    /// Represents an importer for journal data.
+    /// </summary>
     public sealed class JournalImporter : Importer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JournalImporter"/> class with the specified character.
+        /// </summary>
+        /// <param name="character">The character sheet to import journal data into.</param>
         public JournalImporter(CharacterSheet character)
             : base(character)
         {

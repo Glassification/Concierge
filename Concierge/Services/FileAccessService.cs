@@ -14,6 +14,9 @@ namespace Concierge.Services
     using Concierge.Persistence.ReadWriters;
     using Microsoft.Win32;
 
+    /// <summary>
+    /// Provides methods for handling file access operations, such as opening, saving, and browsing files and folders.
+    /// </summary>
     public sealed class FileAccessService
     {
         private readonly CharacterReadWriter readwriter;
@@ -22,6 +25,9 @@ namespace Concierge.Services
         private readonly SaveFileDialog saveFileDialog;
         private readonly OpenFolderDialog openFolderDialog;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileAccessService"/> class.
+        /// </summary>
         public FileAccessService()
         {
             this.readwriter = new CharacterReadWriter(Program.ErrorService, Program.Logger);
@@ -31,6 +37,11 @@ namespace Concierge.Services
             this.openFolderDialog = new OpenFolderDialog();
         }
 
+        /// <summary>
+        /// Opens a Concierge Character Sheet (CCS) file and returns its content.
+        /// </summary>
+        /// <param name="file">The path of the CCS file to open.</param>
+        /// <returns>The <see cref="CcsFile"/> object representing the opened CCS file, or null if the operation fails.</returns>
         public CcsFile? OpenCcs(string file)
         {
             if (!file.IsNullOrWhiteSpace())
@@ -63,6 +74,13 @@ namespace Concierge.Services
             return !ccsFile.CheckHash() || (AppSettingsManager.UserSettings.CheckVersion && !ccsFile.CheckVersion()) ? new CcsFile() : ccsFile;
         }
 
+        /// <summary>
+        /// Opens a file dialog window for selecting a file to open.
+        /// </summary>
+        /// <param name="filterIndex">The index of the file dialog filter.</param>
+        /// <param name="filter">The file dialog filter string.</param>
+        /// <param name="defaultExtension">The default extension for the file dialog.</param>
+        /// <returns>The path of the selected file, or an empty string if no file is selected.</returns>
         public string OpenFile(int filterIndex, string filter, string defaultExtension)
         {
             if (ShouldUseDefaultOpen())
@@ -77,6 +95,11 @@ namespace Concierge.Services
             return this.openFileDialog.ShowDialog() ?? false ? this.openFileDialog.FileName : string.Empty;
         }
 
+        /// <summary>
+        /// Opens a folder dialog window for selecting a folder.
+        /// </summary>
+        /// <param name="defaultPath">The default path for the folder dialog.</param>
+        /// <returns>The path of the selected folder, or an empty string if no folder is selected.</returns>
         public string OpenFolder(string defaultPath = "")
         {
             if (!defaultPath.IsNullOrWhiteSpace())
@@ -87,6 +110,10 @@ namespace Concierge.Services
             return this.openFolderDialog.ShowDialog() ?? false ? this.openFolderDialog.FolderName : string.Empty;
         }
 
+        /// <summary>
+        /// Saves a Concierge Character Sheet (CCS) file.
+        /// </summary>
+        /// <param name="ccsFile">The CCS file to save.</param>
         public void Save(CcsFile ccsFile)
         {
             ccsFile.Version = Program.AssemblyVersion;
@@ -104,6 +131,11 @@ namespace Concierge.Services
             }
         }
 
+        /// <summary>
+        /// Saves a Concierge Character Sheet (CCS) file with the specified path.
+        /// </summary>
+        /// <param name="ccsFile">The CCS file to save.</param>
+        /// <param name="path">The path where the file will be saved.</param>
         public void Save(CcsFile ccsFile, string path)
         {
             ccsFile.Version = Program.AssemblyVersion;
@@ -113,6 +145,11 @@ namespace Concierge.Services
             this.readwriter.WriteJson(path, ccsFile);
         }
 
+        /// <summary>
+        /// Saves a Concierge Character Sheet (CCS) file with a new file name or path.
+        /// </summary>
+        /// <param name="ccsFile">The CCS file to save.</param>
+        /// <returns>True if the file is saved successfully; otherwise, false.</returns>
         public bool SaveAs(CcsFile ccsFile)
         {
             if (ShouldUseDefaultSave())

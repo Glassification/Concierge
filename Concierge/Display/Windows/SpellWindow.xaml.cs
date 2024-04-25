@@ -58,7 +58,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Spells, Program.CustomItemService.GetCustomItems<Spell>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Spells, Program.CustomItemService.GetItems<Spell>());
 
         private bool Editing { get; set; }
 
@@ -306,7 +306,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            Program.CustomItemService.AddCustomItem(this.Create());
+            Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.SpellNameComboBox.ItemsSource = DefaultItems;
         }

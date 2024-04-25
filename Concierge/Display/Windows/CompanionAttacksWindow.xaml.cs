@@ -54,7 +54,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Program.CustomItemService.GetCustomItems<CompanionWeapon>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Program.CustomItemService.GetItems<CompanionWeapon>());
 
         public override bool ShowAdd<T>(T weapons)
         {
@@ -230,7 +230,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            Program.CustomItemService.AddCustomItem(this.Create());
+            Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.AttackComboBox.ItemsSource = DefaultItems;
         }

@@ -44,7 +44,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.StatusEffects, Program.CustomItemService.GetCustomItems<StatusEffect>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.StatusEffects, Program.CustomItemService.GetItems<StatusEffect>());
 
         private bool Editing { get; set; }
 
@@ -200,7 +200,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            Program.CustomItemService.AddCustomItem(this.Create());
+            Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.NameComboBox.ItemsSource = DefaultItems;
         }

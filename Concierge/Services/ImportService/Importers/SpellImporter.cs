@@ -10,8 +10,15 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Magic;
     using Concierge.Common;
 
+    /// <summary>
+    /// Represents an importer for spell data.
+    /// </summary>
     public sealed class SpellImporter : Importer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpellImporter"/> class with the specified character.
+        /// </summary>
+        /// <param name="character">The character sheet to import spell data into.</param>
         public SpellImporter(CharacterSheet character)
             : base(character)
         {

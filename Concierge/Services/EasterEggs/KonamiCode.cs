@@ -8,6 +8,9 @@ namespace Concierge.Services.EasterEggs
 
     using Concierge.Display.Utility;
 
+    /// <summary>
+    /// Represents the Konami code Easter egg.
+    /// </summary>
     public sealed class KonamiCode : IEasterEgg
     {
         private static readonly Key[] sequence =

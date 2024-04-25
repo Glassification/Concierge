@@ -8,11 +8,19 @@ namespace Concierge.Commands
     using Concierge.Configuration.Dtos;
     using Concierge.Display.Enums;
 
+    /// <summary>
+    /// Represents a command that updates user settings and allows undoing the changes.
+    /// </summary>
     public sealed class UpdateSettingsCommand : Command
     {
         private readonly UserSettingsDto oldSettingsDto;
         private readonly UserSettingsDto newSettingsDto;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateSettingsCommand"/> class.
+        /// </summary>
+        /// <param name="oldSettingsDto">The user settings before the update.</param>
+        /// <param name="newSettingsDto">The user settings after the update.</param>
         public UpdateSettingsCommand(UserSettingsDto oldSettingsDto, UserSettingsDto newSettingsDto)
         {
             this.ConciergePage = ConciergePage.None;

@@ -49,7 +49,7 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(AbilitiesWindow);
 
-        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Abilities, Program.CustomItemService.GetCustomItems<Ability>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Abilities, Program.CustomItemService.GetItems<Ability>());
 
         private bool Editing { get; set; }
 
@@ -238,7 +238,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            Program.CustomItemService.AddCustomItem(this.Create());
+            Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.NameComboBox.ItemsSource = DefaultItems;
         }

@@ -13,14 +13,25 @@ namespace Concierge.Services
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
 
+    /// <summary>
+    /// Provides functionality for creating automatic backups of character files.
+    /// </summary>
     public sealed partial class BackupService
     {
+        /// <summary>
+        /// The interval in minutes at which backups are created.
+        /// </summary>
         public const int Interval = 10;
 
         private readonly string backupFolder;
         private readonly FileAccessService fileAccessService;
         private readonly DispatcherTimer dispatcherTimer;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BackupService"/> class.
+        /// </summary>
+        /// <param name="fileAccessService">The file access service used for saving files.</param>
+        /// <param name="backupFolder">The folder where backups will be stored.</param>
         public BackupService(FileAccessService fileAccessService, string backupFolder)
         {
             this.backupFolder = backupFolder;
@@ -31,6 +42,9 @@ namespace Concierge.Services
             Program.Logger.Info($"Initialized {nameof(BackupService)}.");
         }
 
+        /// <summary>
+        /// Starts the automatic backup process.
+        /// </summary>
         public void Start()
         {
             Program.Logger.Info($"Start backup timer.");
@@ -39,6 +53,9 @@ namespace Concierge.Services
             this.dispatcherTimer.Start();
         }
 
+        /// <summary>
+        /// Stops the automatic backup process.
+        /// </summary>
         public void Stop()
         {
             Program.Logger.Info($"Stop backup timer.");

@@ -9,13 +9,26 @@ namespace Concierge.Search
     using Concierge.Display;
     using Concierge.Display.Pages;
 
+    /// <summary>
+    /// Represents a search result containing information about the matched item, search text, regular expression, and associated Concierge page.
+    /// </summary>
     public sealed class SearchResult
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchResult"/> class with default values.
+        /// </summary>
         public SearchResult()
             : this(string.Empty, new object(), new Regex(string.Empty), new OverviewPage())
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchResult"/> class with the specified search parameters.
+        /// </summary>
+        /// <param name="searchText">The text used for searching.</param>
+        /// <param name="item">The matched item.</param>
+        /// <param name="searchRegex">The regular expression used for searching.</param>
+        /// <param name="conciergePage">The Concierge page associated with the search result.</param>
         public SearchResult(string searchText, object item, Regex searchRegex, IConciergePage conciergePage)
         {
             this.SearchText = searchText;
@@ -24,12 +37,24 @@ namespace Concierge.Search
             this.SearchRegex = searchRegex;
         }
 
+        /// <summary>
+        /// Gets or sets the matched item.
+        /// </summary>
         public object Item { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Concierge page associated with the search result.
+        /// </summary>
         public IConciergePage ConciergePage { get; set; }
 
+        /// <summary>
+        /// Gets or sets the text used for searching.
+        /// </summary>
         public string SearchText { get; set; }
 
+        /// <summary>
+        /// Gets or sets the regular expression used for searching.
+        /// </summary>
         public Regex SearchRegex { get; set; }
 
         public override bool Equals(object? obj)

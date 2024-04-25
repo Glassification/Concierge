@@ -14,15 +14,25 @@ namespace Concierge.Services
     using Concierge.Display.Windows;
     using Concierge.Leveling;
 
+    /// <summary>
+    /// Represents the Character Creation Wizard, guiding users through the process of creating a character.
+    /// </summary>
     public sealed class CharacterCreationWizard
     {
         private bool isStopped;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CharacterCreationWizard"/> class.
+        /// </summary>
         public CharacterCreationWizard()
         {
             this.isStopped = false;
         }
 
+        /// <summary>
+        /// Prompts the user with an initial message introducing the Character Creation Wizard.
+        /// </summary>
+        /// <returns>The result of the prompt.</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "The way she goes.")]
         public ConciergeResult Prompt()
         {
@@ -33,6 +43,10 @@ namespace Concierge.Services
                 ConciergeIcons.Information);
         }
 
+        /// <summary>
+        /// Starts the character creation process.
+        /// </summary>
+        /// <returns><c>true</c> if the process is started successfully; otherwise, <c>false</c>.</returns>
         public bool Start()
         {
             this.isStopped = false;
@@ -44,6 +58,9 @@ namespace Concierge.Services
             return !this.isStopped;
         }
 
+        /// <summary>
+        /// Stops the character creation process.
+        /// </summary>
         public void Stop()
         {
             this.isStopped = true;

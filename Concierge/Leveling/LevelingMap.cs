@@ -11,8 +11,18 @@ namespace Concierge.Leveling
     using Concierge.Leveling.Definitions;
     using Concierge.Leveling.Dtos.Definitions;
 
+    /// <summary>
+    /// Provides mappings and utility methods related to character leveling.
+    /// </summary>
     public static class LevelingMap
     {
+        /// <summary>
+        /// Gets the spell slot increase for a given class, subclass, and level.
+        /// </summary>
+        /// <param name="className">The name of the character's class.</param>
+        /// <param name="subclassName">The name of the character's subclass.</param>
+        /// <param name="level">The level at which the spell slot increase occurs.</param>
+        /// <returns>A <see cref="SpellSlotDto"/> representing the spell slot increase.</returns>
         public static SpellSlotDto GetSpellSlotIncrease(string className, string subclassName, int level)
         {
             var spellSlots = className switch
@@ -50,6 +60,12 @@ namespace Concierge.Leveling
             return spellSlots;
         }
 
+        /// <summary>
+        /// Gets the proficiencies for a given class and multiclassing status.
+        /// </summary>
+        /// <param name="className">The name of the character's class.</param>
+        /// <param name="multiClass">A boolean indicating if the character is multiclassing.</param>
+        /// <returns>A list of <see cref="Proficiency"/> objects representing the character's proficiencies.</returns>
         public static List<Proficiency> GetProficiencies(string className, bool multiClass)
         {
             return className switch
@@ -72,6 +88,11 @@ namespace Concierge.Leveling
             };
         }
 
+        /// <summary>
+        /// Gets the saving throws for a given class.
+        /// </summary>
+        /// <param name="className">The name of the character's class.</param>
+        /// <returns>A <see cref="SavingThrowDto"/> representing the character's saving throws.</returns>
         public static SavingThrowDto GetSavingThrows(string className)
         {
             return className switch
@@ -94,6 +115,13 @@ namespace Concierge.Leveling
             };
         }
 
+        /// <summary>
+        /// Gets the class resource increase for a given class and subclass at a specified level.
+        /// </summary>
+        /// <param name="className">The name of the character's class.</param>
+        /// <param name="subclass">The subclass of the character's class.</param>
+        /// <param name="level">The level at which to calculate the resource increase.</param>
+        /// <returns>A <see cref="ClassResourceDto"/> representing the class resource increase.</returns>
         public static ClassResourceDto GetResourceIncrease(string className, string subclass, int level)
         {
             return className switch
@@ -109,6 +137,11 @@ namespace Concierge.Leveling
             };
         }
 
+        /// <summary>
+        /// Gets the senses for a given race.
+        /// </summary>
+        /// <param name="race">The race of the character.</param>
+        /// <returns>A <see cref="SensesDto"/> representing the race's senses.</returns>
         public static SensesDto GetRaceSenses(Race race)
         {
             return race.Name switch

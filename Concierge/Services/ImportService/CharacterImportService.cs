@@ -11,10 +11,16 @@ namespace Concierge.Services.ImportService
     using Concierge.Services.Enums;
     using Concierge.Services.ImportService.Importers;
 
+    /// <summary>
+    /// Service for importing characters and other data.
+    /// </summary>
     public sealed class CharacterImportService
     {
-        private readonly IReadWriters readwriter;
+        private readonly CharacterReadWriter readwriter;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CharacterImportService"/> class.
+        /// </summary>
         public CharacterImportService()
         {
             this.readwriter = new CharacterReadWriter(Program.ErrorService, Program.Logger);
@@ -23,6 +29,12 @@ namespace Concierge.Services.ImportService
 
         private List<Importer> Importers { get; set; }
 
+        /// <summary>
+        /// Imports data based on the specified import type and filename.
+        /// </summary>
+        /// <param name="importType">The type of import.</param>
+        /// <param name="filename">The filename or path of the file to import.</param>
+        /// <returns>True if the import was successful; otherwise, false.</returns>
         public bool Import(ImportTypes importType, string filename)
         {
             return importType switch
@@ -33,11 +45,18 @@ namespace Concierge.Services.ImportService
             };
         }
 
+        /// <summary>
+        /// Adds an importer to the list of importers.
+        /// </summary>
+        /// <param name="importer">The importer to add.</param>
         public void AddImporter(Importer importer)
         {
             this.Importers.Add(importer);
         }
 
+        /// <summary>
+        /// Clears all importers from the list.
+        /// </summary>
         public void ClearImporters()
         {
             this.Importers.Clear();

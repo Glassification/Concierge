@@ -9,13 +9,13 @@
     xmlns:controls="clr-namespace:Concierge.Display.Controls"
     mc:Ignorable="d"
     Title="Modify Personality"
-    Height="655"
-    Width="650"
+    Height="475"
+    Width="800"
     Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="480"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -46,26 +46,29 @@
         <!--Fields-->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
 
             <!--Trait 1-->
-            <Grid Grid.Row="0">
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
                         Text="Trait 1:"
-                        FontSize="25"/>
+                        FontSize="22"/>
                 </Grid>
 
                 <!--Value-->
@@ -83,17 +86,19 @@
             </Grid>
 
             <!--Trait 2-->
-            <Grid Grid.Row="1">
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
                         Text="Trait 2:"
-                        FontSize="25"/>
+                        FontSize="22"/>
                 </Grid>
 
                 <!--Value-->
@@ -111,17 +116,19 @@
             </Grid>
 
             <!--Ideal-->
-            <Grid Grid.Row="2">
+            <Grid
+                Grid.Row="2"
+                Grid.Column="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
                         Text="Ideal:"
-                        FontSize="25"/>
+                        FontSize="22"/>
                 </Grid>
 
                 <!--Value-->
@@ -139,17 +146,18 @@
             </Grid>
 
             <!--Bond-->
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="0"
+                Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
                         Text="Bond:"
-                        FontSize="25"/>
+                        FontSize="22"/>
                 </Grid>
 
                 <!--Value-->
@@ -167,17 +175,18 @@
             </Grid>
 
             <!--Flaw-->
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="1"
+                Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
                         Text="Flaw:"
-                        FontSize="25"/>
+                        FontSize="22"/>
                 </Grid>
 
                 <!--Value-->
@@ -195,17 +204,19 @@
             </Grid>
 
             <!--Notes-->
-            <Grid Grid.Row="5">
+            <Grid
+                Grid.Row="2"
+                Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
                         Text="Notes:"
-                        FontSize="25"/>
+                        FontSize="22"/>
                 </Grid>
 
                 <!--Value-->

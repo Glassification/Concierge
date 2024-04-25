@@ -10,8 +10,15 @@ namespace Concierge.Console
     using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a console command with a name, action, and optional argument.
+    /// </summary>
     public sealed partial class ConsoleCommand
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsoleCommand"/> class with the specified command string.
+        /// </summary>
+        /// <param name="command">The command string to parse.</param>
         public ConsoleCommand(string command)
         {
             this.Name = string.Empty;
@@ -22,14 +29,29 @@ namespace Concierge.Console
             this.Parse(command);
         }
 
+        /// <summary>
+        /// Gets or sets the action associated with the command.
+        /// </summary>
         public string Action { get; set; }
 
+        /// <summary>
+        /// Gets or sets the argument associated with the command.
+        /// </summary>
         public string Argument { get; set; }
 
+        /// <summary>
+        /// Gets the original command string.
+        /// </summary>
         public string Command { get; private set; }
 
+        /// <summary>
+        /// Gets a value indicating whether the command is valid.
+        /// </summary>
         public bool IsValid { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the name of the command.
+        /// </summary>
         public string Name { get; set; }
 
         public override string ToString()

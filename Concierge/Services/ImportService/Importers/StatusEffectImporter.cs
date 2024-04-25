@@ -10,8 +10,15 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Vitals;
     using Concierge.Common;
 
+    /// <summary>
+    /// Represents an importer for status effect data.
+    /// </summary>
     public sealed class StatusEffectImporter : Importer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StatusEffectImporter"/> class with the specified character.
+        /// </summary>
+        /// <param name="character">The character sheet to import status effect data into.</param>
         public StatusEffectImporter(CharacterSheet character)
             : base(character)
         {

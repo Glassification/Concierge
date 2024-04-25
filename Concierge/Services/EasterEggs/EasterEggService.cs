@@ -8,14 +8,24 @@ namespace Concierge.Services.EasterEggs
 
     using Concierge.Configuration;
 
+    /// <summary>
+    /// Service responsible for evaluating and handling Easter eggs.
+    /// </summary>
     public sealed class EasterEggService
     {
         private readonly IEasterEgg[] easterEggs = [new KonamiCode()];
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EasterEggService"/> class.
+        /// </summary>
         public EasterEggService()
         {
         }
 
+        /// <summary>
+        /// Evaluates the input key against registered Easter eggs.
+        /// </summary>
+        /// <param name="key">The input key.</param>
         public void Evaluate(Key key)
         {
             if (!AppSettingsManager.StartUp.WildWasteland)

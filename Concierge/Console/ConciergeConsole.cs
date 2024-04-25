@@ -17,6 +17,9 @@ namespace Concierge.Console
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
 
+    /// <summary>
+    /// Represents a console for executing commands in the Concierge application.
+    /// </summary>
     public sealed class ConciergeConsole : INotifyPropertyChanged
     {
         private readonly ConsoleReadWriter consoleReadWriter;
@@ -27,7 +30,11 @@ namespace Concierge.Console
 
         private string consoleInput = Constants.ConsolePrompt;
         private ObservableCollection<ConsoleResult> consoleOutput = [];
+        private bool writeOutput;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConciergeConsole"/> class.
+        /// </summary>
         public ConciergeConsole()
         {
             this.consoleReadWriter = new ConsoleReadWriter(Program.ErrorService);
@@ -37,24 +44,37 @@ namespace Concierge.Console
             this.LoadConsoleOutput();
 
             this.History = new History(this.historyReadWriter.ReadList<string>(this.consoleHistoryFile), Constants.ConsolePrompt);
-            this.WriteOutput = true;
+            this.writeOutput = true;
         }
 
+        /// <summary>
+        /// Represents the method that will handle the event raised when the console exits.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An <see cref="EventArgs"/> that contains no event data.</param>
         public delegate void ExitedEventHandler(object sender, EventArgs e);
 
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        /// <summary>
+        /// Occurs when the console exits.
+        /// </summary>
         public event ExitedEventHandler? Exited;
 
+        /// <summary>
+        /// Gets the command history associated with the console.
+        /// </summary>
         public History History { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the input entered into the console.
+        /// </summary>
         public string ConsoleInput
         {
-            get
-            {
-                return this.consoleInput;
-            }
-
+            get => this.consoleInput;
             set
             {
                 this.consoleInput = value;
@@ -62,13 +82,12 @@ namespace Concierge.Console
             }
         }
 
+        /// <summary>
+        /// Gets or sets the output displayed in the console.
+        /// </summary>
         public ObservableCollection<ConsoleResult> ConsoleOutput
         {
-            get
-            {
-                return this.consoleOutput;
-            }
-
+            get => this.consoleOutput;
             set
             {
                 this.consoleOutput = value;
@@ -76,8 +95,10 @@ namespace Concierge.Console
             }
         }
 
-        private bool WriteOutput { get; set; }
-
+        /// <summary>
+        /// Executes the command entered into the console.
+        /// </summary>
+        /// <returns>The result type of the executed command.</returns>
         public ResultType Execute()
         {
             if (IsEmpty(this.ConsoleInput))
@@ -87,7 +108,7 @@ namespace Concierge.Console
             }
 
             this.AddConsoleOutput(new ConsoleResult(this.ConsoleInput, ResultType.Information));
-            this.WriteOutput = true;
+            this.writeOutput = true;
 
             var command = new ConsoleCommand(this.ConsoleInput);
             Program.Logger.Info($"Executing command: {command}");
@@ -174,7 +195,7 @@ namespace Concierge.Console
 
             if (command.Name.Equals("Exit", StringComparison.InvariantCultureIgnoreCase))
             {
-                this.WriteOutput = false;
+                this.writeOutput = false;
                 this.Exited?.Invoke(command, new EventArgs());
             }
 
@@ -199,7 +220,7 @@ namespace Concierge.Console
             this.History.Add(this.ConsoleInput);
             this.ConsoleInput = Constants.ConsolePrompt;
 
-            if (this.WriteOutput)
+            if (this.writeOutput)
             {
                 this.AddConsoleOutput(result);
             }
@@ -236,7 +257,7 @@ namespace Concierge.Console
 
             this.ConsoleOutput.Clear();
             this.GenerateHeader();
-            this.WriteOutput = false;
+            this.writeOutput = false;
         }
     }
 }

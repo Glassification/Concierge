@@ -10,8 +10,15 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Equipable;
     using Concierge.Common;
 
+    /// <summary>
+    /// Represents an importer for inventory data.
+    /// </summary>
     public sealed class InventoryImporter : Importer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InventoryImporter"/> class with the specified character.
+        /// </summary>
+        /// <param name="character">The character sheet to import inventory data into.</param>
         public InventoryImporter(CharacterSheet character)
             : base(character)
         {

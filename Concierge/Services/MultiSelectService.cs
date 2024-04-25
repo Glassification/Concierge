@@ -10,6 +10,9 @@ namespace Concierge.Services
     using Concierge.Common.Utilities;
     using Concierge.Display.Components;
 
+    /// <summary>
+    /// Provides functionality for handling multi-selection in a DataGrid along with associated buttons.
+    /// </summary>
     public sealed class MultiSelectService
     {
         private readonly ConciergeDesignButton upButton;
@@ -22,6 +25,16 @@ namespace Concierge.Services
 
         private readonly ConciergeDataGrid dataGrid;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiSelectService"/> class with the specified controls.
+        /// </summary>
+        /// <param name="upButton">The button to move the selected item up.</param>
+        /// <param name="downButton">The button to move the selected item down.</param>
+        /// <param name="recoverButton">The button to recover the selected item.</param>
+        /// <param name="editButton">The button to edit the selected item.</param>
+        /// <param name="deleteButton">The button to delete the selected item.</param>
+        /// <param name="multiSelectButton">The toggle button to enable/disable multi-selection.</param>
+        /// <param name="dataGrid">The DataGrid control.</param>
         public MultiSelectService(
             ConciergeDesignButton upButton,
             ConciergeDesignButton downButton,
@@ -40,6 +53,9 @@ namespace Concierge.Services
             this.dataGrid = dataGrid;
         }
 
+        /// <summary>
+        /// Sets the control states based on the current selection and multi-select mode.
+        /// </summary>
         public void SetControlState()
         {
             var selectedItem = this.dataGrid.SelectedItem as Augment;
@@ -52,6 +68,10 @@ namespace Concierge.Services
             }
         }
 
+        /// <summary>
+        /// Sets the enabled state of all associated buttons.
+        /// </summary>
+        /// <param name="state">The state to set.</param>
         public void SetAllButtonsState(bool state)
         {
             DisplayUtility.SetControlEnableState(this.upButton, state);
@@ -61,12 +81,18 @@ namespace Concierge.Services
             DisplayUtility.SetControlEnableState(this.deleteButton, state);
         }
 
+        /// <summary>
+        /// Enables multi-selection mode in the DataGrid.
+        /// </summary>
         public void Check()
         {
             this.SetAllButtonsState(false);
             this.dataGrid.SelectionMode = DataGridSelectionMode.Extended;
         }
 
+        /// <summary>
+        /// Disables multi-selection mode in the DataGrid.
+        /// </summary>
         public void Uncheck()
         {
             this.dataGrid.UnselectAll();

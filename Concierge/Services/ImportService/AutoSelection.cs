@@ -9,6 +9,9 @@ namespace Concierge.Services.ImportService
     using Concierge.Common.Extensions;
     using Concierge.Services.Enums;
 
+    /// <summary>
+    /// Provides methods for performing fuzzy search based on selection type.
+    /// </summary>
     public static class AutoSelection
     {
         private static readonly string[] AbilityMatch = ["ability", "abilities", "abilitys"];
@@ -22,6 +25,12 @@ namespace Concierge.Services.ImportService
         private static readonly string[] StatusEffectMatch = ["statuseffect", "statuseffects", "statusaffect", "statusaffects"];
         private static readonly string[] WeaponMatch = ["weapon", "weapons", "attack", "attacks"];
 
+        /// <summary>
+        /// Determines if the provided text matches any fuzzy search criteria for the specified selection type.
+        /// </summary>
+        /// <param name="text">The text to search.</param>
+        /// <param name="selectionType">The selection type to match against.</param>
+        /// <returns><see langword="true"/> if a fuzzy match is found; otherwise, <see langword="false"/>.</returns>
         public static bool FuzzySearch(string text, SelectionType selectionType)
         {
             if (text.IsNullOrWhiteSpace())

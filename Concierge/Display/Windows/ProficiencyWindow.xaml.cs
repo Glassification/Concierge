@@ -155,7 +155,7 @@ namespace Concierge.Display.Windows
                     break;
             }
 
-            var customItems = Program.CustomItemService.GetCustomItems<Proficiency>();
+            var customItems = Program.CustomItemService.GetItems<Proficiency>();
             if (!customItems.IsEmpty())
             {
                 items.Insert(0, new ConciergeSeparator());
@@ -270,7 +270,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            Program.CustomItemService.AddCustomItem(this.Create());
+            Program.CustomItemService.AddItem(this.Create());
             this.ClearFields(false);
             this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems(ProficiencyTypes.Weapon);
         }
