@@ -5,6 +5,20 @@
     "Damage": "",
     "DamageType": 8,
     "Description": "A fin-stabilized projectile launched by a bow.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 205,
+        "G": 92,
+        "B": 92,
+        "Hex": "#CD5C5C",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Indian Red",
+        "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+      },
+      "Kind": 557
+    },
     "Total": 20,
     "Recoverable": true,
     "Type": 1,
@@ -16,6 +30,20 @@
     "Damage": "",
     "DamageType": 2,
     "Description": "Arrows with a small clay head with an opening inside, containing a reactive chemical. On hit, the chemical releases a bright flash, blinding the target until the start of your next turn.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 205,
+        "G": 92,
+        "B": 92,
+        "Hex": "#CD5C5C",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Indian Red",
+        "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+      },
+      "Kind": 557
+    },
     "Total": 5,
     "Recoverable": true,
     "Type": 1,
@@ -27,6 +55,20 @@
     "Damage": "",
     "DamageType": 12,
     "Description": "These arrows do 1 die less damage (e.g. 1d6 instead of 1d8), but on a critical hit these arrows apply a bleeding effect.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 205,
+        "G": 92,
+        "B": 92,
+        "Hex": "#CD5C5C",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Indian Red",
+        "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+      },
+      "Kind": 557
+    },
     "Total": 20,
     "Recoverable": true,
     "Type": 1,
@@ -38,6 +80,20 @@
     "Damage": "",
     "DamageType": 8,
     "Description": "Dart-like light projectiles.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 144,
+        "G": 238,
+        "B": 144,
+        "Hex": "#90EE90",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Light Green",
+        "Id": "3e350e8e-551c-4b22-991f-8feacf792d62"
+      },
+      "Kind": 6083
+    },
     "Total": 50,
     "Recoverable": false,
     "Type": 1,
@@ -49,6 +105,20 @@
     "Damage": "",
     "DamageType": 8,
     "Description": "More effectively travels through water. As long as the arrow was fired from outside the water, ignores the ranged weapon attack underwater combat rules.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 205,
+        "G": 92,
+        "B": 92,
+        "Hex": "#CD5C5C",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Indian Red",
+        "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+      },
+      "Kind": 557
+    },
     "Total": 20,
     "Recoverable": true,
     "Type": 1,
@@ -60,6 +130,20 @@
     "Damage": "",
     "DamageType": 8,
     "Description": "A bolt or quarrel is a dart-like projectile used by crossbows.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 173,
+        "G": 216,
+        "B": 230,
+        "Hex": "#ADD8E6",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Light Blue",
+        "Id": "da92a618-ac2d-4b62-800b-02092252ce1e"
+      },
+      "Kind": 5572
+    },
     "Total": 20,
     "Recoverable": true,
     "Type": 1,
@@ -71,6 +155,20 @@
     "Damage": "2d8",
     "DamageType": 11,
     "Description": "On successful hit, expend one spell slot to deal radiant damage to a target. Damage increases by 1d8 if the target is an undead or a fiend.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 218,
+        "G": 165,
+        "B": 32,
+        "Hex": "#DAA520",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Goldenrod",
+        "Id": "81de1920-ed6c-4cd0-98b1-13dc050d0a1c"
+      },
+      "Kind": 6026
+    },
     "Total": 0,
     "Recoverable": false,
     "Type": 3,
@@ -82,6 +180,20 @@
     "Damage": "1d4 Fire",
     "DamageType": 8,
     "Description": "Open 'cage' with flammable material included. Must be ignited before fired to take effect. Ignites non-worn, non-carried flammable materials.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 205,
+        "G": 92,
+        "B": 92,
+        "Hex": "#CD5C5C",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Indian Red",
+        "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+      },
+      "Kind": 557
+    },
     "Total": 10,
     "Recoverable": true,
     "Type": 1,
@@ -93,6 +205,20 @@
     "Damage": "",
     "DamageType": 2,
     "Description": "These blunted arrows do 1 die less damage (e.g. 1d6 instead of 1d8), but on a critical hit these arrows apply the stunned effect to the target until the start of your next turn.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 205,
+        "G": 92,
+        "B": 92,
+        "Hex": "#CD5C5C",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Indian Red",
+        "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+      },
+      "Kind": 557
+    },
     "Total": 20,
     "Recoverable": true,
     "Type": 1,
@@ -104,6 +230,20 @@
     "Damage": "",
     "DamageType": 8,
     "Description": "A 25ft rope is attached to the end of this strengthened arrow.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 205,
+        "G": 92,
+        "B": 92,
+        "Hex": "#CD5C5C",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Indian Red",
+        "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+      },
+      "Kind": 557
+    },
     "Total": 5,
     "Recoverable": true,
     "Type": 1,
@@ -115,6 +255,20 @@
     "Damage": "",
     "DamageType": 8,
     "Description": "Small, hand-held circular plates of metal with a bladed edge.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 255,
+        "G": 182,
+        "B": 193,
+        "Hex": "#FFB6C1",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Light Pink",
+        "Id": "9fd1d70b-3600-4659-b919-844c48dd4657"
+      },
+      "Kind": 6054
+    },
     "Total": 10,
     "Recoverable": true,
     "Type": 1,
@@ -126,6 +280,20 @@
     "Damage": "",
     "DamageType": 8,
     "Description": "Some enemies will resist mundane weapon damage unless the weapon has been silvered.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 205,
+        "G": 92,
+        "B": 92,
+        "Hex": "#CD5C5C",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Indian Red",
+        "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+      },
+      "Kind": 557
+    },
     "Total": 20,
     "Recoverable": true,
     "Type": 1,
@@ -139,6 +307,20 @@
     "Total": 20,
     "Recoverable": false,
     "Description": "A blunt projectile such as a stone, clay, or lead.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 147,
+        "G": 112,
+        "B": 219,
+        "Hex": "#9370DB",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Medium Purple",
+        "Id": "ce7498bb-017c-4d0a-a935-0f7023445ecc"
+      },
+      "Kind": 6310
+    },
     "Type": 1,
     "Id": "00000000-0000-0000-0000-000000000000"
   },
@@ -148,6 +330,20 @@
     "Damage": "",
     "DamageType": 2,
     "Description": "Arrows with a small clay head with an opening inside, containing a reactive chemical. On hit, the chemical releases smoke in a 10ft sphere, heavily obscuring vision in that area. The smoke lasts for 10 rounds, unless removed by a strong wind.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 205,
+        "G": 92,
+        "B": 92,
+        "Hex": "#CD5C5C",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Indian Red",
+        "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+      },
+      "Kind": 557
+    },
     "Total": 5,
     "Recoverable": true,
     "Type": 1,
@@ -159,6 +355,20 @@
     "Damage": "3d6",
     "DamageType": 15,
     "Description": "Apply bonus damage to an attack, when the attacker has advantage.",
+    "Icon": {
+      "Color": {
+        "A": 255,
+        "R": 70,
+        "G": 130,
+        "B": 180,
+        "Hex": "#4682B4",
+        "IsValid": true,
+        "IsCustom": false,
+        "Name": "Steel Blue",
+        "Id": "a5c8f700-1cfc-4dec-a055-8d7be15cd5da"
+      },
+      "Kind": 2427
+    },
     "Total": 0,
     "Recoverable": false,
     "Type": 2,

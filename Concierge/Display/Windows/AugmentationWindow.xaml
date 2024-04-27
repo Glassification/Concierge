@@ -9,14 +9,14 @@
     xmlns:controls="clr-namespace:Concierge.Display.Controls"
     mc:Ignorable="d"
     Title="Modify Augment"
-    Height="415"
+    Height="475"
     Width="800"
     Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="240"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -70,6 +70,7 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Name-->
@@ -94,8 +95,58 @@
                     </Grid>
                 </Grid>
 
-                <!--Quantity-->
                 <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <components:ConciergeLabel
+                        Grid.Column="0"
+                        Text="Icon:"/>
+
+                    <Grid Grid.Column="1" Margin="0,0,10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="15*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <materialDesign:PackIcon
+                            Grid.Column="0"
+                            x:Name="IconSymbol"
+                            Kind="ShieldSunOutline"
+                            Foreground="Goldenrod"
+                            Width="25"
+                            Height="25"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="0,0,5,0"/>
+                        <components:ConciergeTextBoxBackground
+                            Grid.Column="1"
+                            x:Name="IconTextBackground"
+                            IsEnabled="False"
+                            Margin="5,10,5,10">
+                            <components:ConciergeTextBox
+                                x:Name="IconTextBox"
+                                FontSize="13"/>
+                        </components:ConciergeTextBoxBackground>
+                        <components:ConciergeDesignButton
+                            Grid.Column="2"
+                            Style="{StaticResource ConciergeTextButtonStyle}"
+                            x:Name="EditIconButton"
+                            Content="..."
+                            HorizontalAlignment="Stretch"
+                            Foreground="White"
+                            Margin="0,9,10,9"
+                            ToolTip="Edit Icon"
+                            Click="EditIconButton_Click"/>
+                    </Grid>
+                </Grid>
+
+                <!--Quantity-->
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="30*"/>
@@ -129,7 +180,7 @@
                 </Grid>
 
                 <!--Used-->
-                <Grid Grid.Row="2">
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -151,7 +202,7 @@
 
                 </Grid>
 
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -178,7 +229,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="180"/>
                 </Grid.RowDefinitions>
 
                 <!--Bonus-->

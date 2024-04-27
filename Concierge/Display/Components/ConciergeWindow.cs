@@ -14,14 +14,16 @@ namespace Concierge.Display.Components
     using Concierge.Character.Aspects;
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Enums;
     using Concierge.Common.Exceptions;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Data;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows.Helpers;
     using Concierge.Services;
     using Concierge.Tools;
-
+    using MaterialDesignThemes.Wpf;
     using Attribute = Concierge.Character.Aspects.Attribute;
 
     public abstract partial class ConciergeWindow : Window
@@ -116,6 +118,12 @@ namespace Concierge.Display.Components
             return CustomColor.Invalid;
         }
 
+        public virtual CustomIcon ShowIconWindow(CustomIcon iconKind)
+        {
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowIconWindow), iconKind));
+            return iconKind;
+        }
+
         public virtual ConciergeResult ShowUseItemWindow(UsedItem usedItem)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowUseItemWindow)));
@@ -192,7 +200,7 @@ namespace Concierge.Display.Components
 
         protected void UseRoundedCorners()
         {
-            if (Program.IsWindows11)
+            if (SystemUtility.GetWindowsVersion() == OSVersion.Windows11)
             {
                 IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
                 var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;

@@ -17,8 +17,15 @@ namespace Concierge.Common.Utilities
     /// </summary>
     public static class SystemUtility
     {
+        private const int Windows7 = 7601;
+        private const int Windows8 = 9200;
+        private const int Windows10 = 10240;
+        private const int Windows11 = 22000;
+
         private const int Timeout = 1000;
         private const string Host = "google.com";
+
+        private static OSVersion osVersion = OSVersion.Unknown;
 
         /// <summary>
         /// Gets a value indicating whether the system has an active Internet connection.
@@ -111,6 +118,38 @@ namespace Concierge.Common.Utilities
             {
                 UseShellExecute = true,
             });
+        }
+
+        /// <summary>
+        /// Retrieves the Windows version based on the current build number.
+        /// </summary>
+        /// <returns>The Windows version.</returns>
+        public static OSVersion GetWindowsVersion()
+        {
+            if (osVersion != OSVersion.Unknown)
+            {
+                return osVersion;
+            }
+
+            var buildNumber = Environment.OSVersion.Version.Build;
+            if (ConciergeMath.Between(buildNumber, Windows7, Windows8))
+            {
+                osVersion = OSVersion.Windows7;
+            }
+            else if (ConciergeMath.Between(buildNumber, Windows8, Windows10))
+            {
+                osVersion = OSVersion.Windows8;
+            }
+            else if (ConciergeMath.Between(buildNumber, Windows10, Windows11))
+            {
+                osVersion = OSVersion.Windows10;
+            }
+            else if (buildNumber >= Windows11)
+            {
+                osVersion = OSVersion.Windows11;
+            }
+
+            return osVersion;
         }
     }
 }

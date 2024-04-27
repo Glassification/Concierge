@@ -59,5 +59,17 @@ namespace Concierge.Common
         {
             return Math.Max(spent -= Math.Max(spent / 2, 1), 0);
         }
+
+        /// <summary>
+        /// Determines whether a specified value is between a start (inclusive) and an end (exclusive) value.
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <param name="start">The start of the range (inclusive).</param>
+        /// <param name="end">The end of the range (exclusive).</param>
+        /// <returns>True if the value is between the start and end values; otherwise, false.</returns>
+        public static bool Between(int value, int start, int end)
+        {
+            return value >= start && value < end;
+        }
     }
 }

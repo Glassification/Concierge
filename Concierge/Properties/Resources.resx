@@ -295,6 +295,9 @@
   <data name="AugmentationWindow_DescriptionTextBox" xml:space="preserve">
     <value>Many ammunition types have special properties related to their use, as shown in the ammunition table.</value>
   </data>
+  <data name="AugmentationWindow_EditIconButton" xml:space="preserve">
+    <value>Set the icon that will be displayed in character sheet.</value>
+  </data>
   <data name="AugmentationWindow_NameComboBox" xml:space="preserve">
     <value>You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Drawing the ammunition from a quiver, case, or other container is part of the attack.</value>
   </data>
@@ -303,6 +306,9 @@
   </data>
   <data name="AugmentationWindow_RecoverableCheckBox" xml:space="preserve">
     <value>At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.</value>
+  </data>
+  <data name="AugmentationWindow_TypeComboBox" xml:space="preserve">
+    <value>Augment source that granted the ability.</value>
   </data>
   <data name="AugmentationWindow_UsedUpDown" xml:space="preserve">
     <value>Each time you attack with the weapon, you expend one piece of ammunition.</value>

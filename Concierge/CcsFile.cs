@@ -51,6 +51,7 @@ namespace Concierge
         /// <summary>
         /// Gets the character service instance associated with the file.
         /// </summary>
+        [JsonIgnore]
         public CharacterService CharacterService { get; private set; }
 
         /// <summary>

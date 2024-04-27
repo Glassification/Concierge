@@ -72,7 +72,7 @@ namespace Concierge.Data
         /// <param name="r">The red component of the color.</param>
         /// <param name="g">The green component of the color.</param>
         /// <param name="b">The blue component of the color.</param>
-        /// <param name="a">The alpha component of the color. (Optional)</param>
+        /// <param name="a">The alpha component of the color. (Optional).</param>
         public CustomColor(string name, byte r, byte g, byte b, byte a = MaxColor)
         {
             this.Name = name;

@@ -13,9 +13,12 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
+    using Concierge.Data;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
+    using Concierge.Display.Windows.Utility;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for AugmentationWindow.xaml.
@@ -24,6 +27,7 @@ namespace Concierge.Display.Windows
     {
         private int oldQuantity;
         private int oldTotal;
+        private CustomIcon customIcon = CustomIcon.Empty;
 
         public AugmentationWindow()
         {
@@ -45,6 +49,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.BonusTextBox, this.BonusTextBackground);
             this.SetMouseOverEvents(this.DescriptionTextBox, this.DescriptionTextBackground);
             this.SetMouseOverEvents(this.DamageTypeComboBox);
+            this.SetMouseOverEvents(this.EditIconButton);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Augmentation";
@@ -139,6 +144,7 @@ namespace Concierge.Display.Windows
             this.UsedUpDown.Value = this.oldTotal = augment.Total;
             this.RecoverableCheckBox.IsChecked = augment.Recoverable;
             this.DescriptionTextBox.Text = augment.Description;
+            this.SetIconFields(augment.Icon);
 
             this.UsedUpDown.Maximum = this.QuantityUpDown.Value;
             this.RecoverableCheckBox.UpdatedValue();
@@ -154,6 +160,15 @@ namespace Concierge.Display.Windows
             this.UsedUpDown.Value = 0;
             this.RecoverableCheckBox.IsChecked = false;
             this.DescriptionTextBox.Text = string.Empty;
+            this.SetIconFields(CustomIcon.Empty);
+        }
+
+        private void SetIconFields(CustomIcon icon)
+        {
+            this.IconSymbol.Kind = icon.Kind;
+            this.IconSymbol.Foreground = icon.Color.Brush;
+            this.IconTextBox.Text = icon.Name;
+            this.customIcon = icon;
         }
 
         private void UpdateAmmunition(Augment augment)
@@ -168,6 +183,8 @@ namespace Concierge.Display.Windows
             augment.Total = this.UsedUpDown.Value;
             augment.Recoverable = this.RecoverableCheckBox.IsChecked ?? false;
             augment.Description = this.DescriptionTextBox.Text;
+            augment.Icon.Kind = this.IconSymbol.Kind;
+            augment.Icon.Color = this.customIcon.Color;
 
             if (!augment.IsCustom)
             {
@@ -194,6 +211,7 @@ namespace Concierge.Display.Windows
                 Total = this.UsedUpDown.Value,
                 Recoverable = this.RecoverableCheckBox.IsChecked ?? false,
                 Description = this.DescriptionTextBox.Text,
+                Icon = new CustomIcon(this.customIcon.Color, this.IconSymbol.Kind),
             };
         }
 
@@ -296,6 +314,15 @@ namespace Concierge.Display.Windows
             }
 
             this.DamageLabel.Text = control.ToString().Equals("Healing") ? "Healing:" : "Damage:";
+        }
+
+        private void EditIconButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.customIcon = ConciergeWindowService.ShowIconWindow(typeof(IconPickerWindow), this.customIcon);
+
+            this.IconSymbol.Kind = this.customIcon.Kind;
+            this.IconSymbol.Foreground = this.customIcon.Color.Brush;
+            this.IconTextBox.Text = this.customIcon.Name;
         }
     }
 }

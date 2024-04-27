@@ -604,6 +604,15 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set the icon that will be displayed in character sheet..
+        /// </summary>
+        internal static string AugmentationWindow_EditIconButton {
+            get {
+                return ResourceManager.GetString("AugmentationWindow_EditIconButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Drawing the ammunition from a quiver, case, or other container is part of the attack..
         /// </summary>
         internal static string AugmentationWindow_NameComboBox {
@@ -627,6 +636,15 @@ namespace Concierge.Properties {
         internal static string AugmentationWindow_RecoverableCheckBox {
             get {
                 return ResourceManager.GetString("AugmentationWindow_RecoverableCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Augment source that granted the ability..
+        /// </summary>
+        internal static string AugmentationWindow_TypeComboBox {
+            get {
+                return ResourceManager.GetString("AugmentationWindow_TypeComboBox", resourceCulture);
             }
         }
         

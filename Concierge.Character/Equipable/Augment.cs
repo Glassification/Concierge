@@ -13,6 +13,7 @@ namespace Concierge.Character.Equipable
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
     using Concierge.Common.Extensions;
+    using Concierge.Data;
     using Concierge.Tools;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
@@ -30,6 +31,7 @@ namespace Concierge.Character.Equipable
         public Augment()
         {
             this.Name = string.Empty;
+            this.Icon = CustomIcon.Empty;
             this.Damage = string.Empty;
             this.Description = string.Empty;
             this.Id = Guid.NewGuid();
@@ -49,6 +51,11 @@ namespace Concierge.Character.Equipable
         /// Gets or sets the description of the augment.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the icon of the augment.
+        /// </summary>
+        public CustomIcon Icon { get; set; }
 
         public Guid Id { get; set; }
 
@@ -166,6 +173,7 @@ namespace Concierge.Character.Equipable
                 IsCustom = this.IsCustom,
                 Recoverable = this.Recoverable,
                 Description = this.Description,
+                Icon = this.Icon.DeepCopy(),
             };
         }
 
@@ -180,17 +188,7 @@ namespace Concierge.Character.Equipable
         /// <returns>The category of the augment.</returns>
         public CategoryDto GetCategory()
         {
-            return this.Name.ToLower() switch
-            {
-                string a when a.Contains("arrow") => new CategoryDto(PackIconKind.ArrowProjectile, Brushes.IndianRed, this.Name),
-                string b when b.Contains("needle") => new CategoryDto(PackIconKind.SignPole, Brushes.LightGreen, this.Name),
-                string c when c.Contains("bolt") => new CategoryDto(PackIconKind.RayStartArrow, Brushes.LightBlue, this.Name),
-                string d when d.Contains("shuriken") => new CategoryDto(PackIconKind.Shuriken, Brushes.LightPink, this.Name),
-                string e when e.Contains("bullet") => new CategoryDto(PackIconKind.SquareSmall, Brushes.MediumPurple, this.Name),
-                "sneak attack" => new CategoryDto(PackIconKind.DiceD6, Brushes.SteelBlue, this.Name),
-                "divine smite" => new CategoryDto(PackIconKind.ShieldSunOutline, Brushes.Goldenrod, this.Name),
-                _ => new CategoryDto(PackIconKind.Waveform, Brushes.Silver, this.Name),
-            };
+            return new CategoryDto(this.Icon.Kind, this.Icon.Color.Brush, this.Name);
         }
 
         /// <summary>

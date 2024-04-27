@@ -540,6 +540,20 @@
           "Damage": "",
           "DamageType": 8,
           "Description": "A fin-stabilized projectile launched by a bow.",
+          "Icon": {
+            "Color": {
+              "A": 255,
+              "R": 205,
+              "G": 92,
+              "B": 92,
+              "Hex": "#CD5C5C",
+              "IsValid": true,
+              "IsCustom": false,
+              "Name": "Indian Red",
+              "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+            },
+            "Kind": 557
+          },
           "Id": "445e7a78-cecc-4bc3-8c19-aab50dc976ba",
           "IsCustom": false,
           "Name": "Arrows",
@@ -552,6 +566,20 @@
           "Damage": "2d4+8",
           "DamageType": 14,
           "Description": "Heal target on it instead of damaging them.",
+          "Icon": {
+            "Color": {
+              "A": 255,
+              "R": 205,
+              "G": 92,
+              "B": 92,
+              "Hex": "#CD5C5C",
+              "IsValid": true,
+              "IsCustom": false,
+              "Name": "Indian Red",
+              "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
+            },
+            "Kind": 557
+          },
           "Id": "5fd39538-e488-4232-83a1-dfc54de8ba88",
           "IsCustom": false,
           "Name": "Healing Arrows",
@@ -564,6 +592,20 @@
           "Damage": "5d6",
           "DamageType": 15,
           "Description": "Apply bonus damage to an attack, when the attacker has advantage.",
+          "Icon": {
+            "Color": {
+              "A": 255,
+              "R": 70,
+              "G": 130,
+              "B": 180,
+              "Hex": "#4682B4",
+              "IsValid": true,
+              "IsCustom": false,
+              "Name": "Steel Blue",
+              "Id": "a5c8f700-1cfc-4dec-a055-8d7be15cd5da"
+            },
+            "Kind": 2427
+          },
           "Id": "d031c3c5-e950-4498-98d3-fa89db302ef0",
           "IsCustom": false,
           "Name": "Sneak Attack",
@@ -2887,14 +2929,13 @@
       "Platinum": 500
     }
   },
-  "CharacterService": {},
-  "Hash": "C82F7483D44366AF36139C9302AAC4E9649F8CFDF5458BEB344458801E525F80",
+  "Hash": "7A75BD8AF051D49D86C23732B1477E617641F16732BC61B12676F3E5C53326F3",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-04-19T14:29:09.4632275-05:00",
+  "LastSaveDate": "2024-04-27T15:06:24.0448263-05:00",
   "Version": {
     "Major": 5,
     "Minor": 8,
-    "Patch": 1
+    "Patch": 4
   },
   "IsEmpty": false
 }

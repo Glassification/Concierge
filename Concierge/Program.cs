@@ -15,16 +15,12 @@ namespace Concierge
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
-    using Microsoft.Win32;
 
     /// <summary>
     /// Represents the main program logic and settings for the application.
     /// </summary>
     public static class Program
     {
-        private const int Windows11 = 22000;
-
-        private static int buildNumber = -1;
         private static ConciergeVersion version = new ();
 
         static Program()
@@ -131,32 +127,6 @@ namespace Concierge
 
                 version = new ConciergeVersion(Assembly.GetExecutingAssembly().GetName().Version ?? new Version());
                 return version;
-            }
-        }
-
-        /// <summary>
-        /// Gets a value indicating whether the operating system is Windows 11 or later.
-        /// </summary>
-        public static bool IsWindows11
-        {
-            get
-            {
-                if (buildNumber >= 0)
-                {
-                    return buildNumber >= Windows11;
-                }
-
-                var reg = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
-
-                var currentBuildStr = reg?.GetValue("CurrentBuild") as string;
-                if (int.TryParse(currentBuildStr, out int currentBuild))
-                {
-                    Logger.Info($"Found current Windows version: {currentBuild}.");
-                    buildNumber = currentBuild;
-                    return currentBuild >= Windows11;
-                }
-
-                return false;
             }
         }
 

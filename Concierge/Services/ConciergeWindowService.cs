@@ -12,6 +12,7 @@ namespace Concierge.Services
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Tools;
+    using MaterialDesignThemes.Wpf;
 
     using static Concierge.Display.Components.ConciergeWindow;
 
@@ -174,6 +175,23 @@ namespace Concierge.Services
             }
 
             return conciergeWindow.ShowColorWindow(color);
+        }
+
+        /// <summary>
+        /// Shows the "Icon" window.
+        /// </summary>
+        /// <param name="typeOfWindow">The type of the window.</param>
+        /// <param name="iconKind">The initial icon to default to.</param>
+        /// <returns>The custom color chosen in the window.</returns>
+        public static CustomIcon ShowIconWindow(Type typeOfWindow, CustomIcon iconKind)
+        {
+            var conciergeWindow = Create(typeOfWindow);
+            if (conciergeWindow is null)
+            {
+                return iconKind;
+            }
+
+            return conciergeWindow.ShowIconWindow(iconKind);
         }
 
         /// <summary>
