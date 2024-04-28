@@ -17,7 +17,7 @@ namespace Concierge.Data
         /// Initializes a new instance of the <see cref="DetailedItem"/> class with default values.
         /// </summary>
         public DetailedItem()
-            : this(string.Empty, string.Empty, PackIconKind.ListStatus, Brushes.SlateGray)
+            : this(string.Empty, string.Empty, PackIconKind.TextureBox, Brushes.SlateGray)
         {
         }
 

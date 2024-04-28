@@ -54,6 +54,10 @@
                 Grid.Row="2"
                 Orientation="Horizontal"
                 HorizontalAlignment="Left">
+                <controls:ColorPickerControl
+                    x:Name="ColorPicker"
+                    ColorChanged="ColorPicker_ColorChanged"
+                    Margin="20,0,0,0"/>
                 <materialDesign:PackIcon
                     x:Name="SelectedIcon"
                     Kind="Waveform"
@@ -61,10 +65,6 @@
                     Width="60"
                     Height="60"
                     Margin="20,0,10,0"/>
-                <controls:ColorPickerControl
-                    x:Name="ColorPicker"
-                    ColorChanged="ColorPicker_ColorChanged"
-                    Margin="0,5,0,0"/>
                 <components:ConciergeLabel
                     x:Name="IconLabel"
                     Text="Waveform"
@@ -73,14 +73,15 @@
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
 
                 <components:ConciergeTextBoxBackground
                     x:Name="FilterBackground"
                     Grid.Column="0"
-                    Margin="20,10,100,10">
+                    Margin="20,10,20,10">
                     <components:ConciergeTextBox
                         x:Name="FilterTextBox"
                         KeyDown="FilterTextBox_KeyDown"
@@ -97,8 +98,14 @@
                     </components:ConciergeTextBox>
                 </components:ConciergeTextBoxBackground>
 
-                <components:ConciergeDesignButton
+                <components:ConciergeLabel
                     Grid.Column="1"
+                    x:Name="AmountLabel"
+                    Text="0/100"
+                    Margin="0"/>
+
+                <components:ConciergeDesignButton
+                    Grid.Column="2"
                     Style="{StaticResource ConciergeTextButtonStyle}"
                     x:Name="LoadButton"
                     Content="Load"

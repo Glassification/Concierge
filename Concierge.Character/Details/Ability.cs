@@ -46,7 +46,7 @@ namespace Concierge.Character.Details
         /// Gets a display-friendly representation of the ability type.
         /// </summary>
         [JsonIgnore]
-        public string TypeDisplay => this.Type.ToString().FormatFromPascalCase();
+        public string TypeDisplay => this.Type.PascalCase();
 
         /// <summary>
         /// Gets or sets the name of the ability.

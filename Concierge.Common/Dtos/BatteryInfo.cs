@@ -111,7 +111,7 @@ namespace Concierge.Common.Dtos
         public override string ToString()
         {
             return this.HasBattery ?
-                $"Battery Status: {this.Status.ToString().FormatFromPascalCase()}, {this.Percentage}%" :
+                $"Battery Status: {this.Status.PascalCase()}, {this.Percentage}%" :
                 "Plugged In";
         }
     }

@@ -87,7 +87,7 @@ namespace Concierge.Display.Windows
             this.IsDrawing = true;
 
             this.ImageSourceTextBox.Text = this.OriginalFileName = this.CharacterImage.Path;
-            this.FillTypeComboBox.Text = this.CharacterImage.Stretch.ToString().FormatFromPascalCase();
+            this.FillTypeComboBox.Text = this.CharacterImage.Stretch.PascalCase();
             this.UseCustomImageCheckBox.IsChecked = this.CharacterImage.UseCustomImage;
 
             this.SetEnabledState(this.CharacterImage.UseCustomImage);

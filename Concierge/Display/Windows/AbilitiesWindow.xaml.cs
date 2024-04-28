@@ -129,7 +129,7 @@ namespace Concierge.Display.Windows
         private void FillFields(Ability ability)
         {
             this.NameComboBox.Text = ability.Name;
-            this.TypeComboBox.Text = ability.Type.ToString().FormatFromPascalCase();
+            this.TypeComboBox.Text = ability.Type.PascalCase();
             this.LevelUpDown.Value = ability.Level;
             this.UsesTextBox.Text = ability.Uses;
             this.RecoveryTextBox.Text = ability.Recovery;

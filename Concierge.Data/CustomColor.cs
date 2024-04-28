@@ -41,7 +41,7 @@ namespace Concierge.Data
             this.R = color.R;
             this.G = color.G;
             this.B = color.B;
-            this.Name = isHex ? this.Color.GetName() : name.FormatColorName();
+            this.Name = isHex ? this.Color.GetName() : name.PascalCase();
             this.Id = Guid.NewGuid();
         }
 
@@ -171,7 +171,7 @@ namespace Concierge.Data
 
         [JsonIgnore]
         [SearchIgnore]
-        public string CustomType => nameof(CustomColor).FormatFromPascalCase();
+        public string CustomType => nameof(CustomColor).PascalCase();
 
         [JsonIgnore]
         [SearchIgnore]

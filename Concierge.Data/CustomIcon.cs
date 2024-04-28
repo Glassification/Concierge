@@ -47,7 +47,7 @@ namespace Concierge.Data
         /// For example, if the kind of the icon is "SomeIcon", the name returned will be "Some Icon".
         /// </remarks>
         [JsonIgnore]
-        public string Name => this.Kind.ToString().FormatFromPascalCase();
+        public string Name => this.Kind.PascalCase();
 
         public static bool operator ==(CustomIcon left, CustomIcon right)
         {

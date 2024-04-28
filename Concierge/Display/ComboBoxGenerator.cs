@@ -1,4 +1,5 @@
 ﻿// <copyright file="ComboBoxGenerator.cs" company="Thomas Beckett">
+// <copyright file="ComboBoxGenerator.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -101,7 +102,7 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.ListStatus, Brushes.MediumPurple,  DamageTypes.None),
+                new (PackIconKind.TextureBox, Brushes.MediumPurple,  DamageTypes.None),
                 new (PackIconKind.Flask, Brushes.LightGreen,  DamageTypes.Acid),
                 new (PackIconKind.AxeBattle, Brushes.IndianRed,  DamageTypes.Bludgeoning),
                 new (PackIconKind.Snowflake, Brushes.Silver,  DamageTypes.Cold),
@@ -124,11 +125,11 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.CircleMultiple, ConciergeBrushes.Copper, CoinType.Copper),
-                new (PackIconKind.CircleMultiple, ConciergeBrushes.Silver, CoinType.Silver),
-                new (PackIconKind.CircleMultiple, ConciergeBrushes.Electrum, CoinType.Electrum),
-                new (PackIconKind.CircleMultiple, ConciergeBrushes.Gold, CoinType.Gold),
-                new (PackIconKind.CircleMultiple, ConciergeBrushes.Platinum, CoinType.Platinum),
+                new (PackIconKind.Gold, ConciergeBrushes.Copper, CoinType.Copper),
+                new (PackIconKind.Gold, ConciergeBrushes.Silver, CoinType.Silver),
+                new (PackIconKind.Gold, ConciergeBrushes.Electrum, CoinType.Electrum),
+                new (PackIconKind.Gold, ConciergeBrushes.Gold, CoinType.Gold),
+                new (PackIconKind.Gold, ConciergeBrushes.Platinum, CoinType.Platinum),
             ];
         }
 
@@ -540,7 +541,7 @@ namespace Concierge.Display
                 new (PackIconKind.ArrowProjectileMultiple, Brushes.IndianRed, AugmentType.Ammunition),
                 new (PackIconKind.StarCircleOutline, Brushes.MediumPurple, AugmentType.Feature),
                 new (PackIconKind.Magic, Brushes.Plum, AugmentType.Spell),
-                new (PackIconKind.ListStatus, Brushes.Silver, AugmentType.None),
+                new (PackIconKind.TextureBox, Brushes.Silver, AugmentType.None),
             ];
         }
 

@@ -82,7 +82,7 @@ namespace Concierge.Display.Windows
             this.CharmedCheckBox.IsChecked = this.status.Charmed.IsAfflicted();
             this.DeafenedCheckBox.IsChecked = this.status.Deafened.IsAfflicted();
             this.DeathCheckBox.IsChecked = this.status.Death.IsAfflicted();
-            this.FatiguedComboBox.Text = this.status.Exhaustion.Status.ToString().FormatFromPascalCase();
+            this.FatiguedComboBox.Text = this.status.Exhaustion.Status.PascalCase();
             this.FrightenedCheckBox.IsChecked = this.status.Frightened.IsAfflicted();
             this.GrappledCheckBox.IsChecked = this.status.Grappled.IsAfflicted();
             this.IncapacitatedCheckBox.IsChecked = this.status.Incapacitated.IsAfflicted();

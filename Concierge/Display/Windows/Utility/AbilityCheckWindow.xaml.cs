@@ -87,7 +87,7 @@ namespace Concierge.Display.Windows.Utility
 
         private string GetName()
         {
-            return (this.skill is null ? this.attribute?.Type.ToString().FormatFromPascalCase() : this.skill?.Type.ToString().FormatFromPascalCase()) ?? string.Empty;
+            return (this.skill is null ? this.attribute?.Type.PascalCase() : this.skill?.Type.PascalCase()) ?? string.Empty;
         }
 
         private StatusChecks GetStatus()

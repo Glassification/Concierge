@@ -51,7 +51,7 @@ namespace Concierge.Services
             this.customItems.Add(item);
             this.readwriter.Append(this.filePath, blob);
 
-            Program.MainWindow?.DisplayStatusText($"Added custom {item.GetType().Name.FormatFromPascalCase()} {item.Name}");
+            Program.MainWindow?.DisplayStatusText($"Added custom {item.GetType().Name.PascalCase()} {item.Name}");
         }
 
         /// <summary>

@@ -78,7 +78,7 @@ namespace Concierge.Character.Vitals
 
         [JsonIgnore]
         [SearchIgnore]
-        public string CustomType => nameof(ClassResource).FormatFromPascalCase();
+        public string CustomType => nameof(ClassResource).PascalCase();
 
         [JsonIgnore]
         [SearchIgnore]
@@ -140,7 +140,7 @@ namespace Concierge.Character.Vitals
                 "Rages" => new CategoryDto(PackIconKind.EmojiAngry, Brushes.IndianRed, this.Name),
                 "Sorcery Points" => new CategoryDto(PackIconKind.Creation, Brushes.OrangeRed, this.Name),
                 "Superiority Dice" => new CategoryDto(PackIconKind.DiceD12, Brushes.SteelBlue, this.Name),
-                _ => new CategoryDto(PackIconKind.ListStatus, Brushes.MediumPurple, this.Name),
+                _ => new CategoryDto(PackIconKind.TextureBox, Brushes.MediumPurple, this.Name),
             };
         }
     }

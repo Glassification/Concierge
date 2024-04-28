@@ -53,7 +53,7 @@ namespace Concierge.Display.Controls
             this.ItemIcon.Kind = icon;
             this.ItemIcon.Foreground = iconColor;
 
-            this.ItemName.Text = name.ToString().Strip(" ").FormatFromPascalCase();
+            this.ItemName.Text = name.ToString().Strip(" ").PascalCase();
             this.ItemName.Foreground = Brushes.White;
         }
 
@@ -63,7 +63,7 @@ namespace Concierge.Display.Controls
             this.ItemIcon.Kind = icon;
             this.ItemIcon.Foreground = iconColor;
 
-            this.ItemName.Text = name.ToString().Strip(" ").FormatFromPascalCase();
+            this.ItemName.Text = name.ToString().Strip(" ").PascalCase();
             this.ItemName.Foreground = Brushes.White;
             this.Tag = tag;
         }

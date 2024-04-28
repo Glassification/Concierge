@@ -102,18 +102,22 @@ namespace Concierge.Common.Extensions
         }
 
         /// <summary>
-        /// Formats the string by inserting spaces before each uppercase letter or digit, except for the first character.
+        /// Converts the input string to PascalCase format.
         /// </summary>
-        /// <param name="str">The string to format.</param>
-        /// <returns>The formatted string.</returns>
-        public static string FormatFromPascalCase(this string str)
+        /// <remarks>
+        /// PascalCase is a naming convention where the first letter of each word (except the first word)
+        /// is capitalized, and there are no spaces between words.
+        /// </remarks>
+        /// <param name="str">The input string to convert.</param>
+        /// <returns>A string in PascalCase format.</returns>
+        public static string PascalCase(this string str)
         {
             if (str.IsNullOrWhiteSpace())
             {
                 return string.Empty;
             }
 
-            if (str.IsAllUpper())
+            if (str.IsAllUpper() || str.Length == 1)
             {
                 return str;
             }
@@ -121,9 +125,11 @@ namespace Concierge.Common.Extensions
             var charArray = str.ToCharArray();
             var offset = 0;
 
-            for (int i = 1; i < charArray.Length - 1; i++)
+            for (int i = 1; i < charArray.Length; i++)
             {
-                if ((char.IsUpper(charArray[i]) || char.IsDigit(charArray[i])) && !char.IsUpper(charArray[i + 1]) && !char.IsDigit(charArray[i + 1]))
+                if (
+                    char.IsUpper(charArray[i]) ||
+                    (char.IsDigit(charArray[i]) && !char.IsDigit(charArray[i - 1]) && !char.IsUpper(charArray[i - 1])))
                 {
                     str = str.Insert(i + offset, " ");
                     offset++;
@@ -216,28 +222,6 @@ namespace Concierge.Common.Extensions
             }
 
             return true;
-        }
-
-        /// <summary>
-        /// Formats the given string by inserting a space before each uppercase letter (excluding the first letter).
-        /// </summary>
-        /// <param name="name">The string to format.</param>
-        /// <returns>The formatted string.</returns>
-        public static string FormatColorName(this string name)
-        {
-            var charArray = name.ToArray();
-            var offset = 0;
-
-            for (int i = 1; i < charArray.Length; i++)
-            {
-                if (char.IsUpper(charArray[i]))
-                {
-                    name = name.Insert(i + offset, " ");
-                    offset++;
-                }
-            }
-
-            return name;
         }
 
         /// <summary>

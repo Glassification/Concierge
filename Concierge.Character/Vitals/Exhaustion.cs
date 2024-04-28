@@ -76,7 +76,7 @@ namespace Concierge.Character.Vitals
                     _ => string.Empty,
                 };
 
-                return $"{this.Status.ToString().FormatFromPascalCase()} - {this.Description} {description}.";
+                return $"{this.Status.PascalCase()} - {this.Description} {description}.";
             }
         }
 

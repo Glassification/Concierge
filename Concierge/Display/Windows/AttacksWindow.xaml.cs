@@ -161,7 +161,7 @@ namespace Concierge.Display.Windows
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = weapon.Name;
-            this.TypeComboBox.Text = weapon.Type.ToString().FormatFromPascalCase();
+            this.TypeComboBox.Text = weapon.Type.PascalCase();
             this.AbilityComboBox.Text = weapon.Ability.ToString();
             this.DamageTextBox.Text = weapon.Damage;
             this.MiscDamageTextBox.Text = weapon.Misc;

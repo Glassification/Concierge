@@ -106,7 +106,7 @@ namespace Concierge.Character.Companions
 
         [JsonIgnore]
         [SearchIgnore]
-        public string CustomType => nameof(CompanionWeapon).FormatFromPascalCase();
+        public string CustomType => nameof(CompanionWeapon).PascalCase();
 
         [JsonIgnore]
         [SearchIgnore]

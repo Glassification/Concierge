@@ -24,6 +24,7 @@ namespace Concierge.Display.Windows.Utility
     public partial class IconPickerWindow : ConciergeWindow
     {
         private readonly List<ConciergeDesignButton> iconList = [];
+        private readonly int maxIcons;
 
         private CustomColor customColor = CustomColor.Invalid;
 
@@ -31,6 +32,11 @@ namespace Concierge.Display.Windows.Utility
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
+
+            this.maxIcons = Enum.GetValues(typeof(PackIconKind))
+                .Cast<PackIconKind>()
+                .DistinctBy(x => x.ToString())
+                .Count();
         }
 
         public override string HeaderText => "Icon Picker";
@@ -43,10 +49,19 @@ namespace Concierge.Display.Windows.Utility
             this.SelectedIcon.Foreground = icon.Color.Brush;
             this.IconLabel.Text = icon.Name;
             this.ColorPicker.SelectedColor = icon.Color;
+            this.AmountLabel.Text = $"0 / {this.maxIcons}";
 
             this.ShowConciergeWindow();
 
             return this.Result == ConciergeResult.OK ? new CustomIcon(this.customColor, this.SelectedIcon.Kind) : icon;
+        }
+
+        private void FillFields()
+        {
+            var iconWrapPanel = this.BuildIconList(this.FilterTextBox.Text);
+            this.IconScrollViewer.Content = iconWrapPanel;
+            this.LoadButton.Content = "Refresh";
+            this.AmountLabel.Text = $"{iconWrapPanel.Children.Count} / {this.maxIcons}";
         }
 
         private WrapPanel BuildIconList(string filter)
@@ -92,7 +107,7 @@ namespace Concierge.Display.Windows.Utility
             if (sender is ConciergeDesignButton button && button.Tag is PackIconKind iconKind)
             {
                 this.SelectedIcon.Kind = iconKind;
-                this.IconLabel.Text = iconKind.ToString().FormatFromPascalCase();
+                this.IconLabel.Text = iconKind.PascalCase();
             }
         }
 
@@ -109,8 +124,7 @@ namespace Concierge.Display.Windows.Utility
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            this.IconScrollViewer.Content = this.BuildIconList(this.FilterTextBox.Text);
-            this.LoadButton.Content = "Refresh";
+            this.FillFields();
         }
 
         private void ColorPicker_ColorChanged(object sender, RoutedEventArgs e)
@@ -119,12 +133,11 @@ namespace Concierge.Display.Windows.Utility
             this.SelectedIcon.Foreground = this.ColorPicker.SelectedColor.Brush;
         }
 
-        private void FilterTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void FilterTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                this.IconScrollViewer.Content = this.BuildIconList(this.FilterTextBox.Text);
-                this.LoadButton.Content = "Refresh";
+                this.FillFields();
             }
         }
     }

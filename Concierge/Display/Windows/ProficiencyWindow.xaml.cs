@@ -159,7 +159,7 @@ namespace Concierge.Display.Windows
             if (!customItems.IsEmpty())
             {
                 items.Insert(0, new ConciergeSeparator());
-                customItems.ForEach(x => items.Insert(0, new ComboBoxItemControl(PackIconKind.ListStatus, Brushes.PowderBlue, x.Name)));
+                customItems.ForEach(x => items.Insert(0, new ComboBoxItemControl(PackIconKind.TextureBox, Brushes.PowderBlue, x.Name)));
             }
 
             return items;

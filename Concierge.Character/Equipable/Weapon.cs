@@ -171,7 +171,7 @@ namespace Concierge.Character.Equipable
 
         [JsonIgnore]
         [SearchIgnore]
-        public string Information => $"{this.DamageType} {this.Type.ToString().FormatFromPascalCase()} - {this.Value}{this.CoinType.GetDescription()}";
+        public string Information => $"{this.DamageType} {this.Type.PascalCase()} - {this.Value}{this.CoinType.GetDescription()}";
 
         [JsonIgnore]
         [SearchIgnore]

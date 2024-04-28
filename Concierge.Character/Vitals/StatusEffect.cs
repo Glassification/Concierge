@@ -48,7 +48,7 @@ namespace Concierge.Character.Vitals
 
         [JsonIgnore]
         [SearchIgnore]
-        public string CustomType => nameof(StatusEffect).FormatFromPascalCase();
+        public string CustomType => nameof(StatusEffect).PascalCase();
 
         [JsonIgnore]
         [SearchIgnore]
@@ -56,7 +56,7 @@ namespace Concierge.Character.Vitals
 
         [JsonIgnore]
         [SearchIgnore]
-        public PackIconKind CustomTypeIcon => PackIconKind.ListStatus;
+        public PackIconKind CustomTypeIcon => PackIconKind.TextureBox;
 
         [JsonIgnore]
         public string Display => $"{this.Name}{(this.Type == StatusEffectTypes.None ? string.Empty : $" {this.Type}")}{(this.Description.IsNullOrWhiteSpace() ? string.Empty : " - ")}{this.Description}";
@@ -115,7 +115,7 @@ namespace Concierge.Character.Vitals
                 "thunder" => new CategoryDto(PackIconKind.WeatherLightning, Brushes.Goldenrod, this.Name),
                 "healing" => new CategoryDto(PackIconKind.HeartPlus, ConciergeBrushes.Mint, this.Name),
                 "damage" => new CategoryDto(PackIconKind.HeartMinus, Brushes.IndianRed, this.Name),
-                _ => new CategoryDto(PackIconKind.ListStatus, Brushes.MediumPurple, this.Name),
+                _ => new CategoryDto(PackIconKind.TextureBox, Brushes.MediumPurple, this.Name),
             };
         }
 

@@ -76,7 +76,7 @@ namespace Concierge.Display.Windows
             this.InitiativeBonusUpDown.Value = character.Detail.Senses.InitiativeBonus;
             this.PerceptionTextBox.Text = character.PassivePerception.ToString();
             this.PerceptionBonusUpDown.Value = character.Detail.Senses.PerceptionBonus;
-            this.VisionComboBox.Text = character.Detail.Senses.Vision.ToString().FormatFromPascalCase();
+            this.VisionComboBox.Text = character.Detail.Senses.Vision.PascalCase();
             this.MovementTextBox.Text = character.GetMovement().ToString();
             this.BaseMovementUpDown.Value = character.Detail.Senses.BaseMovement;
             this.MovementBonusUpDown.Value = character.Detail.Senses.MovementBonus;

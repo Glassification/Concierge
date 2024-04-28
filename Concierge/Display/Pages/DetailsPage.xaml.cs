@@ -150,7 +150,7 @@ namespace Concierge.Display.Pages
 
             if (character.Encumbrance != ConditionStatus.Normal)
             {
-                this.ConditionsDataGrid.Items.Add($"{character.Encumbrance.ToString().FormatFromPascalCase()} - {ConditionDescriptions.Encumbered}");
+                this.ConditionsDataGrid.Items.Add($"{character.Encumbrance.PascalCase()} - {ConditionDescriptions.Encumbered}");
             }
         }
 

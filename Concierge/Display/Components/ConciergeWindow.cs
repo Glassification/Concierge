@@ -23,7 +23,7 @@ namespace Concierge.Display.Components
     using Concierge.Display.Windows.Helpers;
     using Concierge.Services;
     using Concierge.Tools;
-    using MaterialDesignThemes.Wpf;
+
     using Attribute = Concierge.Character.Aspects.Attribute;
 
     public abstract partial class ConciergeWindow : Window

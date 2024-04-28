@@ -78,5 +78,25 @@ namespace Concierge.Common.Extensions
 
             return en.HasFlag(eFlag) ? Visibility.Visible : Visibility.Collapsed;
         }
+
+        /// <summary>
+        /// Converts the input enum to PascalCase format.
+        /// </summary>
+        /// <remarks>
+        /// PascalCase is a naming convention where the first letter of each word (except the first word)
+        /// is capitalized, and there are no spaces between words.
+        /// </remarks>
+        /// <param name="e">The input enum to convert.</param>
+        /// <returns>A string in PascalCase format.</returns>
+        public static string PascalCase<T>(this T e)
+            where T : IConvertible
+        {
+            if (e is not Enum en)
+            {
+                throw new ArgumentException("e must be an enumerated type");
+            }
+
+            return en.ToString().PascalCase();
+        }
     }
 }

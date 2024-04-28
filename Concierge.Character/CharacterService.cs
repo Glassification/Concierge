@@ -116,7 +116,7 @@ namespace Concierge.Character
         public int GetProficiencyBonus(Weapon weapon)
         {
             var bonus = this.characterSheet.ProficiencyBonus;
-            var weaponName = weapon.Type.ToString().FormatFromPascalCase();
+            var weaponName = weapon.Type.PascalCase();
             if (weapon.ProficiencyOverride)
             {
                 return bonus;

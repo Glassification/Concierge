@@ -28,8 +28,8 @@ namespace Concierge.Display.Windows
             this.SelectedWealth = new Wealth();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetMouseOverEvents(this.AddRadioButton);
-            this.SetMouseOverEvents(this.SubtractRadioButton);
+            //this.SetMouseOverEvents(this.AddRadioButton);
+            //this.SetMouseOverEvents(this.SubtractRadioButton);
             this.SetMouseOverEvents(this.AmountUpDown);
             this.SetMouseOverEvents(this.CpRadioButton);
             this.SetMouseOverEvents(this.SpRadioButton);
@@ -107,7 +107,7 @@ namespace Concierge.Display.Windows
 
         private void ClearFields(CoinType coinType = CoinType.Gold)
         {
-            this.AddRadioButton.IsChecked = true;
+            //this.AddRadioButton.IsChecked = true;
             this.SelectCoinTypeRadioButton(coinType);
             this.AmountUpDown.Value = 0;
 
@@ -153,9 +153,10 @@ namespace Concierge.Display.Windows
 
         private int GetAmount()
         {
-            return this.AddRadioButton.IsChecked ?? false
+            /*return this.AddRadioButton.IsChecked ?? false
                 ? this.AmountUpDown.Value
-                : this.SubtractRadioButton.IsChecked ?? false ? this.AmountUpDown.Value * -1 : 0;
+                : this.SubtractRadioButton.IsChecked ?? false ? this.AmountUpDown.Value * -1 : 0;*/
+            return 0;
         }
 
         private void AddSelectedAmount()
@@ -207,12 +208,12 @@ namespace Concierge.Display.Windows
 
         private void AddRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            this.AddButton.Content = "Add";
+            //this.AddButton.Content = "Add";
         }
 
         private void SubtractRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            this.AddButton.Content = "Subtract";
+            //this.AddButton.Content = "Subtract";
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)

@@ -115,7 +115,7 @@ namespace Concierge.Display.Windows
             this.ResourceNameComboBox.Text = resource.Type;
             this.PoolUpDown.Value = resource.Total;
             this.SpentUpDown.Value = resource.Spent;
-            this.RecoveryComboBox.Text = resource.Recovery.ToString().FormatFromPascalCase();
+            this.RecoveryComboBox.Text = resource.Recovery.PascalCase();
             this.NotesTextBox.Text = resource.Note;
 
             this.SpentUpDown.Maximum = this.PoolUpDown.Value;
