@@ -10,6 +10,7 @@ namespace Concierge.Display.Windows
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
@@ -28,9 +29,13 @@ namespace Concierge.Display.Windows
             this.SelectedWealth = new Wealth();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            //this.SetMouseOverEvents(this.AddRadioButton);
-            //this.SetMouseOverEvents(this.SubtractRadioButton);
             this.SetMouseOverEvents(this.AmountUpDown);
+            this.SetMouseOverEvents(this.Add1Button);
+            this.SetMouseOverEvents(this.Add10Button);
+            this.SetMouseOverEvents(this.Add100Button);
+            this.SetMouseOverEvents(this.Add1000Button);
+            this.SetMouseOverEvents(this.PlusButton);
+            this.SetMouseOverEvents(this.MinusButton);
             this.SetMouseOverEvents(this.CpRadioButton);
             this.SetMouseOverEvents(this.SpRadioButton);
             this.SetMouseOverEvents(this.EpRadioButton);
@@ -107,7 +112,6 @@ namespace Concierge.Display.Windows
 
         private void ClearFields(CoinType coinType = CoinType.Gold)
         {
-            //this.AddRadioButton.IsChecked = true;
             this.SelectCoinTypeRadioButton(coinType);
             this.AmountUpDown.Value = 0;
 
@@ -151,35 +155,27 @@ namespace Concierge.Display.Windows
             }
         }
 
-        private int GetAmount()
-        {
-            /*return this.AddRadioButton.IsChecked ?? false
-                ? this.AmountUpDown.Value
-                : this.SubtractRadioButton.IsChecked ?? false ? this.AmountUpDown.Value * -1 : 0;*/
-            return 0;
-        }
-
-        private void AddSelectedAmount()
+        private void AddSelectedAmount(int amount)
         {
             if (this.CpRadioButton.IsChecked ?? false)
             {
-                this.CP = Math.Max(0, this.CP + this.GetAmount());
+                this.CP = Math.Max(0, this.CP + amount);
             }
             else if (this.SpRadioButton.IsChecked ?? false)
             {
-                this.SP = Math.Max(0, this.SP + this.GetAmount());
+                this.SP = Math.Max(0, this.SP + amount);
             }
             else if (this.EpRadioButton.IsChecked ?? false)
             {
-                this.EP = Math.Max(0, this.EP + this.GetAmount());
+                this.EP = Math.Max(0, this.EP + amount);
             }
             else if (this.GpRadioButton.IsChecked ?? false)
             {
-                this.GP = Math.Max(0, this.GP + this.GetAmount());
+                this.GP = Math.Max(0, this.GP + amount);
             }
             else if (this.PpRadioButton.IsChecked ?? false)
             {
-                this.PP = Math.Max(0, this.PP + this.GetAmount());
+                this.PP = Math.Max(0, this.PP + amount);
             }
         }
 
@@ -194,32 +190,36 @@ namespace Concierge.Display.Windows
             this.ReturnAndClose();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.AddSelectedAmount();
-            this.FillFields();
-        }
-
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeResult.Cancel;
             this.CloseConciergeWindow();
         }
 
-        private void AddRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            //this.AddButton.Content = "Add";
-        }
-
-        private void SubtractRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            //this.AddButton.Content = "Subtract";
-        }
-
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             this.UpdateWealth();
             this.InvokeApplyChanges();
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is ConciergeDesignButton button && button.Tag is int amount)
+            {
+                this.AmountUpDown.Value += amount;
+            }
+        }
+
+        private void PlusButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.AddSelectedAmount(this.AmountUpDown.Value);
+            this.FillFields();
+        }
+
+        private void MinusButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.AddSelectedAmount(-this.AmountUpDown.Value);
+            this.FillFields();
         }
     }
 }

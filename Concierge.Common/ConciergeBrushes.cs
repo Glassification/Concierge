@@ -46,6 +46,9 @@ namespace Concierge.Common
             ControlBackBlue = new SolidColorBrush(ConciergeColors.ControlBackBlue);
             ControlBackBlue.Freeze();
 
+            ControlForeDarkBlue = new SolidColorBrush(ConciergeColors.ControlForeDarkBlue);
+            ControlForeDarkBlue.Freeze();
+
             Verdigris = new SolidColorBrush(ConciergeColors.Verdigris);
             Verdigris.Freeze();
 
@@ -134,6 +137,11 @@ namespace Concierge.Common
         /// Gets the Concierge-defined brush that has an ARGB value of #FF262E42.
         /// </summary>
         public static SolidColorBrush ControlForeBlue { get; }
+
+        /// <summary>
+        /// Gets the Concierge-defined brush that has an ARGB value of #FF1F2535.
+        /// </summary>
+        public static SolidColorBrush ControlForeDarkBlue { get; }
 
         /// <summary>
         /// Gets the Concierge-defined brush that has an ARGB value of #FF171B24.

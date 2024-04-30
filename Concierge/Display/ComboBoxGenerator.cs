@@ -1,5 +1,4 @@
 ﻿// <copyright file="ComboBoxGenerator.cs" company="Thomas Beckett">
-// <copyright file="ComboBoxGenerator.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -123,13 +122,18 @@ namespace Concierge.Display
 
         public static List<ComboBoxItemControl> CoinTypesComboBox()
         {
+            return CoinTypesComboBox(ConciergeBrushes.ControlForeBlue);
+        }
+
+        public static List<ComboBoxItemControl> CoinTypesComboBox(Brush background)
+        {
             return
             [
-                new (PackIconKind.Gold, ConciergeBrushes.Copper, CoinType.Copper),
-                new (PackIconKind.Gold, ConciergeBrushes.Silver, CoinType.Silver),
-                new (PackIconKind.Gold, ConciergeBrushes.Electrum, CoinType.Electrum),
-                new (PackIconKind.Gold, ConciergeBrushes.Gold, CoinType.Gold),
-                new (PackIconKind.Gold, ConciergeBrushes.Platinum, CoinType.Platinum),
+                new (PackIconKind.Gold, ConciergeBrushes.Copper, CoinType.Copper, background),
+                new (PackIconKind.Gold, ConciergeBrushes.Silver, CoinType.Silver, background),
+                new (PackIconKind.Gold, ConciergeBrushes.Electrum, CoinType.Electrum, background),
+                new (PackIconKind.Gold, ConciergeBrushes.Gold, CoinType.Gold, background),
+                new (PackIconKind.Gold, ConciergeBrushes.Platinum, CoinType.Platinum, background),
             ];
         }
 
@@ -550,7 +554,7 @@ namespace Concierge.Display
             var items = new List<ComboBoxItemControl>();
             foreach (var size in fontSizes)
             {
-                items.Add(new ComboBoxItemControl(PackIconKind.FormatSize, Brushes.LightBlue, size.ToString()));
+                items.Add(new ComboBoxItemControl(PackIconKind.FormatSize, Brushes.LightBlue, size.ToString(), ConciergeBrushes.ControlForeDarkBlue));
             }
 
             return items;
@@ -561,7 +565,7 @@ namespace Concierge.Display
             var items = new List<ComboBoxItemControl>();
             foreach (var font in fontFamilies)
             {
-                items.Add(new ComboBoxItemControl(PackIconKind.FormatFont, Brushes.LightBlue, font.ToString(), font));
+                items.Add(new ComboBoxItemControl(PackIconKind.FormatFont, Brushes.LightBlue, font.ToString(), font, ConciergeBrushes.ControlForeDarkBlue));
             }
 
             return items;

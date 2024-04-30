@@ -53,27 +53,6 @@ namespace Concierge.Display.Controls
                 typeof(IntegerUpDownTransparentControl),
                 new UIPropertyMetadata(1));
 
-        public static readonly DependencyProperty BackgroundBrushProperty =
-            DependencyProperty.Register(
-                "BackgroundBrush",
-                typeof(Brush),
-                typeof(AppearanceControl), // No idea why it only works this way
-                new UIPropertyMetadata(Brushes.Transparent));
-
-        public static readonly DependencyProperty ForegroundBrushProperty =
-            DependencyProperty.Register(
-                "ForegroundBrush",
-                typeof(Brush),
-                typeof(AppearanceControl), // No idea why it only works this way
-                new UIPropertyMetadata(Brushes.White));
-
-        public static readonly DependencyProperty ForegroundColorProperty =
-            DependencyProperty.Register(
-                "ForegroundColor",
-                typeof(Color),
-                typeof(AppearanceControl), // No idea why it only works this way
-                new UIPropertyMetadata(Colors.White));
-
         private static readonly RoutedEvent ValueChangedEvent =
             EventManager.RegisterRoutedEvent(
                 "ValueChanged",
@@ -178,7 +157,7 @@ namespace Concierge.Display.Controls
             set
             {
                 value = Math.Clamp(value, this.Minimum, this.Maximum);
-                this.TextBoxValue.Text = value.ToString();
+                this.TextBlockValue.Text = value.ToString();
 
                 this.LastValue = (int)this.GetValue(ValueProperty);
                 this.SetValue(ValueProperty, value);
@@ -192,32 +171,6 @@ namespace Concierge.Display.Controls
         {
             get { return (int)this.GetValue(IncrementProperty); }
             set { this.SetValue(IncrementProperty, value); }
-        }
-
-        public Brush BackgroundBrush
-        {
-            get
-            {
-                return (Brush)this.GetValue(BackgroundBrushProperty);
-            }
-
-            set
-            {
-                this.SetValue(BackgroundBrushProperty, value);
-                this.UpDownGrid.Background = value;
-            }
-        }
-
-        public Brush ForegroundBrush
-        {
-            get { return (Brush)this.GetValue(ForegroundBrushProperty); }
-            set { this.SetValue(ForegroundBrushProperty, value); }
-        }
-
-        public Color ForegroundColor
-        {
-            get { return (Color)this.GetValue(ForegroundColorProperty); }
-            set { this.SetValue(ForegroundColorProperty, value); }
         }
 
         private int LastValue { get; set; }
@@ -234,20 +187,6 @@ namespace Concierge.Display.Controls
         {
             DisplayUtility.SetControlEnableState(this.Increase, this.Value < this.Maximum);
             DisplayUtility.SetControlEnableState(this.Decrease, this.Value > this.Minimum);
-        }
-
-        private void AttemptToSetValue()
-        {
-            var currentText = this.TextBoxValue.Text;
-            var isValidNumber = int.TryParse(currentText, out var value);
-
-            if (!isValidNumber)
-            {
-                this.TextBoxValue.Text = this.Value.ToString();
-                return;
-            }
-
-            this.Value = value;
         }
 
         private void Increase_Click(object sender, RoutedEventArgs e)
@@ -270,64 +209,14 @@ namespace Concierge.Display.Controls
             }
         }
 
-        private void TextBoxValue_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.IsDown && e.Key == Key.Up && this.Value < this.Maximum)
-            {
-                this.Value += this.Increment;
-                this.RaiseEvent(new RoutedEventArgs(IncreaseClickedEvent));
-            }
-            else if (e.IsDown && e.Key == Key.Down && this.Value > this.Minimum)
-            {
-                this.Value -= this.Increment;
-                this.RaiseEvent(new RoutedEventArgs(DecreaseClickedEvent));
-            }
-            else if (e.IsDown && e.Key == Key.Enter)
-            {
-                this.AttemptToSetValue();
-            }
-        }
-
-        private void TextBoxValue_LostFocus(object sender, RoutedEventArgs e)
-        {
-            this.AttemptToSetValue();
-            Program.NotTyping();
-        }
-
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Hand;
         }
 
-        private void TextBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Mouse.OverrideCursor = Cursors.IBeam;
-        }
-
         private void Control_MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
-        }
-
-        private void TextBoxValue_MouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            this.Value += (e.Delta > 0 ? 1 : -1) * this.Increment;
-            this.TextBoxValue.Select(this.TextBoxValue.Text.Length, 0);
-            SoundService.PlayUpdateValue();
-        }
-
-        private void TextBoxValue_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Program.Typing();
-            if (this.TextBoxValue.Text.Equals("0"))
-            {
-                this.TextBoxValue.Text = string.Empty;
-            }
-        }
-
-        private void TextBoxValue_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Clipboard.SetText(this.TextBoxValue.Text);
         }
     }
 }

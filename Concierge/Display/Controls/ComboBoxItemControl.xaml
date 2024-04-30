@@ -15,11 +15,9 @@
         MouseLeave="Grid_MouseLeave">
         <Border
             x:Name="MainBorder"
-            BorderThickness="1"
-            BorderBrush="#262E42">
+            BorderThickness="1">
             <Grid
-                x:Name="MainGrid"
-                Background="#262E42">
+                x:Name="MainGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="1*" />

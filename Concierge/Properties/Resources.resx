@@ -934,8 +934,17 @@
   <data name="Tool" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Tool.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="WealthWindow_AddRadioButton" xml:space="preserve">
-    <value>Money can be exchanged for goods and services.</value>
+  <data name="WealthWindow_Add1000Button" xml:space="preserve">
+    <value>Add 1000 coins to the value.</value>
+  </data>
+  <data name="WealthWindow_Add100Button" xml:space="preserve">
+    <value>Add 100 coins to the value.</value>
+  </data>
+  <data name="WealthWindow_Add10Button" xml:space="preserve">
+    <value>Add 10 coins to the value.</value>
+  </data>
+  <data name="WealthWindow_Add1Button" xml:space="preserve">
+    <value>Add 1 coin to the value.</value>
   </data>
   <data name="WealthWindow_AmountUpDown" xml:space="preserve">
     <value>Wealth appears in many forms in the world. Coins, gemstones, trade goods, art objects, animals, and property can reflect your character’s financial well-being.</value>
@@ -949,14 +958,17 @@
   <data name="WealthWindow_GpRadioButton" xml:space="preserve">
     <value>With one gold piece, a character can buy a bedroll or 50 feet of good rope. A skilled artisan can earn one gold piece a day. The gold piece is the standard unit of measure for wealth, even if the coin itself is not commonly used.</value>
   </data>
+  <data name="WealthWindow_MinusButton" xml:space="preserve">
+    <value>Why couldn't I have 3 money and no kids?</value>
+  </data>
+  <data name="WealthWindow_PlusButton" xml:space="preserve">
+    <value>Money can be exchanged for goods and services.</value>
+  </data>
   <data name="WealthWindow_PpRadioButton" xml:space="preserve">
     <value>The platinum piece originates from fallen empires and lost kingdoms, and they sometimes arouse suspicion and skepticism when used in transactions. A platinum piece is worth ten gold pieces.</value>
   </data>
   <data name="WealthWindow_SpRadioButton" xml:space="preserve">
     <value>One gold piece is worth ten silver pieces, the most prevalent coin among commoners. A silver piece buys a laborer's work for half a day, a flask of lamp oil, or a night's rest in a poor inn.</value>
-  </data>
-  <data name="WealthWindow_SubtractRadioButton" xml:space="preserve">
-    <value>Why couldn't I have 3 money and no kids?</value>
   </data>
   <data name="Weapon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Weapon.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

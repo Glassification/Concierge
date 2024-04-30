@@ -2644,11 +2644,38 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Money can be exchanged for goods and services..
+        ///   Looks up a localized string similar to Add 1000 coins to the value..
         /// </summary>
-        internal static string WealthWindow_AddRadioButton {
+        internal static string WealthWindow_Add1000Button {
             get {
-                return ResourceManager.GetString("WealthWindow_AddRadioButton", resourceCulture);
+                return ResourceManager.GetString("WealthWindow_Add1000Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add 100 coins to the value..
+        /// </summary>
+        internal static string WealthWindow_Add100Button {
+            get {
+                return ResourceManager.GetString("WealthWindow_Add100Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add 10 coins to the value..
+        /// </summary>
+        internal static string WealthWindow_Add10Button {
+            get {
+                return ResourceManager.GetString("WealthWindow_Add10Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add 1 coin to the value..
+        /// </summary>
+        internal static string WealthWindow_Add1Button {
+            get {
+                return ResourceManager.GetString("WealthWindow_Add1Button", resourceCulture);
             }
         }
         
@@ -2689,6 +2716,24 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Why couldn&apos;t I have 3 money and no kids?.
+        /// </summary>
+        internal static string WealthWindow_MinusButton {
+            get {
+                return ResourceManager.GetString("WealthWindow_MinusButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Money can be exchanged for goods and services..
+        /// </summary>
+        internal static string WealthWindow_PlusButton {
+            get {
+                return ResourceManager.GetString("WealthWindow_PlusButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The platinum piece originates from fallen empires and lost kingdoms, and they sometimes arouse suspicion and skepticism when used in transactions. A platinum piece is worth ten gold pieces..
         /// </summary>
         internal static string WealthWindow_PpRadioButton {
@@ -2703,15 +2748,6 @@ namespace Concierge.Properties {
         internal static string WealthWindow_SpRadioButton {
             get {
                 return ResourceManager.GetString("WealthWindow_SpRadioButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Why couldn&apos;t I have 3 money and no kids?.
-        /// </summary>
-        internal static string WealthWindow_SubtractRadioButton {
-            get {
-                return ResourceManager.GetString("WealthWindow_SubtractRadioButton", resourceCulture);
             }
         }
         

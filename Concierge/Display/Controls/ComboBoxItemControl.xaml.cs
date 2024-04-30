@@ -18,9 +18,15 @@ namespace Concierge.Display.Controls
     /// </summary>
     public partial class ComboBoxItemControl : UserControl
     {
+        private Brush originalBackground;
+
         public ComboBoxItemControl()
         {
             this.InitializeComponent();
+
+            this.MainBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;
+            this.MainGrid.Background = ConciergeBrushes.ControlForeBlue;
+            this.originalBackground = ConciergeBrushes.ControlForeBlue;
         }
 
         public ComboBoxItemControl(IUnique item)
@@ -47,6 +53,20 @@ namespace Concierge.Display.Controls
             this.ItemName.Foreground = Brushes.White;
         }
 
+        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, Brush background)
+            : this()
+        {
+            this.ItemIcon.Kind = icon;
+            this.ItemIcon.Foreground = iconColor;
+
+            this.ItemName.Text = name;
+            this.ItemName.Foreground = Brushes.White;
+
+            this.MainBorder.BorderBrush = background;
+            this.MainGrid.Background = background;
+            this.originalBackground = background;
+        }
+
         public ComboBoxItemControl(PackIconKind icon, Brush iconColor, Enum name)
             : this()
         {
@@ -55,6 +75,20 @@ namespace Concierge.Display.Controls
 
             this.ItemName.Text = name.ToString().Strip(" ").PascalCase();
             this.ItemName.Foreground = Brushes.White;
+        }
+
+        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, Enum name, Brush background)
+            : this()
+        {
+            this.ItemIcon.Kind = icon;
+            this.ItemIcon.Foreground = iconColor;
+
+            this.ItemName.Text = name.ToString().Strip(" ").PascalCase();
+            this.ItemName.Foreground = Brushes.White;
+
+            this.MainBorder.BorderBrush = background;
+            this.MainGrid.Background = background;
+            this.originalBackground = background;
         }
 
         public ComboBoxItemControl(PackIconKind icon, Brush iconColor, Enum name, object tag)
@@ -68,7 +102,7 @@ namespace Concierge.Display.Controls
             this.Tag = tag;
         }
 
-        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, object tag)
+        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, object tag, Brush background)
             : this()
         {
             this.ItemIcon.Kind = icon;
@@ -77,6 +111,10 @@ namespace Concierge.Display.Controls
             this.ItemName.Text = name;
             this.ItemName.Foreground = Brushes.White;
             this.Tag = tag;
+
+            this.MainBorder.BorderBrush = background;
+            this.MainGrid.Background = background;
+            this.originalBackground = background;
         }
 
         public IUnique? Item { get; private set; }
@@ -96,8 +134,8 @@ namespace Concierge.Display.Controls
 
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.MainGrid.Background = ConciergeBrushes.ControlForeBlue;
-            this.MainBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;
+            this.MainGrid.Background = this.originalBackground;
+            this.MainBorder.BorderBrush = this.originalBackground;
         }
     }
 }

@@ -226,12 +226,12 @@
                             <components:ConciergeComboBox 
                                 x:Name="FontFamilyList"
                                 Width="200"
-                                Style="{StaticResource ComboBoxStyle}"
+                                Style="{StaticResource DarkComboBoxStyle}"
                                 SelectionChanged="FontFamilyList_SelectionChanged"
                                 Margin="5, 0, 5, 0"/>
                             <components:ConciergeComboBox 
                                 x:Name="FontSizeList"
-                                Style="{StaticResource ComboBoxStyle}"
+                                Style="{StaticResource DarkComboBoxStyle}"
                                 IsEditable="True"
                                 TextBoxBase.TextChanged="FontSizeList_TextChanged"
                                 Margin="5, 0, 5, 0"/>

@@ -66,6 +66,11 @@ namespace Concierge.Display.Controls
                 typeof(RoutedEventHandler),
                 typeof(DiceRollControl));
 
+        private readonly ResourceDictionary resourceDictionary = new ()
+        {
+            Source = new Uri("Display/Dictionaries/DisplaySpinnerDictionary.xaml", UriKind.RelativeOrAbsolute),
+        };
+
         public DiceRollControl()
         {
             this.InitializeComponent();
@@ -139,6 +144,19 @@ namespace Concierge.Display.Controls
 
             var rolledDice = DiceRoll.RollDice(diceNumber, diceSides);
             return new DiceRoll(diceSides, rolledDice, modified);
+        }
+
+        public void Initialize(string style, Brush foreground)
+        {
+            this.DiceNumberUpDown.Decrease.Style = this.resourceDictionary[style] as Style;
+            this.DiceNumberUpDown.Increase.Style = this.resourceDictionary[style] as Style;
+            this.DiceNumberUpDown.Decrease.Foreground = foreground;
+            this.DiceNumberUpDown.Increase.Foreground = foreground;
+
+            this.DiceModifierUpDown.Decrease.Style = this.resourceDictionary[style] as Style;
+            this.DiceModifierUpDown.Increase.Style = this.resourceDictionary[style] as Style;
+            this.DiceModifierUpDown.Decrease.Foreground = foreground;
+            this.DiceModifierUpDown.Increase.Foreground = foreground;
         }
 
         private void ButtonRoll_Click(object sender, RoutedEventArgs e)

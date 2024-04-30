@@ -10,10 +10,13 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media;
 
-    using Concierge.Character;
+    using Concierge.Character.Enums;
     using Concierge.Common;
     using Concierge.Common.Extensions;
+    using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
@@ -37,9 +40,26 @@ namespace Concierge.Display.Pages
             this.Players = [];
             this.RollHistory = [];
             this.DiceHistory = new History(this.historyReadWriter.ReadList<string>(this.diceHistoryFile), string.Empty);
+            this.CoinComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox(ConciergeBrushes.ControlForeDarkBlue);
+            this.CoinComboBox.Text = CoinType.Gold.ToString();
 
             this.SetDefaultDiceValues();
             this.SetDefaultDivideValues();
+
+            this.D4DiceRollDisplay.Initialize("LightControlButtonStyle", Brushes.White);
+            this.D6DiceRollDisplay.Initialize("DarkControlButtonStyle", Brushes.White);
+            this.D8DiceRollDisplay.Initialize("LightControlButtonStyle", Brushes.White);
+            this.D10DiceRollDisplay.Initialize("DarkControlButtonStyle", Brushes.White);
+            this.D100DiceRollDisplay.Initialize("LightControlButtonStyle", Brushes.White);
+            this.D12DiceRollDisplay.Initialize("DarkControlButtonStyle", Brushes.White);
+            this.D20DiceRollDisplay.Initialize("LightControlButtonStyle", Brushes.White);
+
+            this.PlayersInput.Initialize(Brushes.White);
+            this.CopperInput.Initialize(Brushes.Black);
+            this.SilverInput.Initialize(Brushes.Black);
+            this.ElectrumInput.Initialize(Brushes.Black);
+            this.GoldInput.Initialize(Brushes.Black);
+            this.PlatinumInput.Initialize(Brushes.Black);
         }
 
         public ConciergePage ConciergePage => ConciergePage.Tools;
@@ -93,10 +113,6 @@ namespace Concierge.Display.Pages
                 this.DivideLootDataGrid.Items.Add(player);
                 totalValue += player.Total;
             }
-
-            this.TotalSplitGoldField.Text = this.Players.IsEmpty() ?
-                string.Empty :
-                $"Total Gold: {Wealth.FormatGoldValue(totalValue)}";
         }
 
         private void GetPlayers()
@@ -170,7 +186,6 @@ namespace Concierge.Display.Pages
             this.D100DiceRollDisplay.ResetDiceValue();
             this.D12DiceRollDisplay.ResetDiceValue();
             this.D20DiceRollDisplay.ResetDiceValue();
-            this.DxDiceRollDisplay.ResetDiceValue();
 
             this.CustomResult.Text = "0";
         }
@@ -236,7 +251,31 @@ namespace Concierge.Display.Pages
             this.SetDefaultDivideValues();
             this.DivideLootDataGrid.Items.Clear();
             this.Players.Clear();
-            this.TotalSplitGoldField.Text = string.Empty;
+        }
+
+        private TextBlock GetCoinSpinner(string coin)
+        {
+            if (coin.Equals("copper", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.CopperInput.CoinAmount;
+            }
+
+            if (coin.Equals("silver", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.SilverInput.CoinAmount;
+            }
+
+            if (coin.Equals("electrum", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.ElectrumInput.CoinAmount;
+            }
+
+            if (coin.Equals("platinum", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.PlatinumInput.CoinAmount;
+            }
+
+            return this.GoldInput.CoinAmount;
         }
 
         private void ResetHistoryButton_Click(object sender, RoutedEventArgs e)
@@ -305,8 +344,13 @@ namespace Concierge.Display.Pages
             this.RollDiceHistoryDataGrid.UnselectAll();
         }
 
-        private void DivideLootDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void AddCoinButton_Click(object sender, RoutedEventArgs e)
         {
+            if (sender is ConciergeDesignButton button && button.Tag is int amount)
+            {
+                var textBlock = this.GetCoinSpinner(this.CoinComboBox.Text);
+                textBlock.Text = $"{int.Parse(textBlock.Text) + amount}";
+            }
         }
     }
 }

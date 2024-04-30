@@ -4,6 +4,7 @@
 
 namespace Concierge.Display.Controls
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
@@ -41,17 +42,8 @@ namespace Concierge.Display.Controls
 
         public Brush LabelTextColor
         {
-            get
-            {
-                return (Brush)this.GetValue(LabelTextColorProperty);
-            }
-
-            set
-            {
-                this.SetValue(LabelTextColorProperty, value);
-                this.InputUpDown.ForegroundBrush = value;
-                this.InputUpDown.ForegroundColor = value is SolidColorBrush solidBrush ? solidBrush.Color : Colors.White;
-            }
+            get => (Brush)this.GetValue(LabelTextColorProperty);
+            set => this.SetValue(LabelTextColorProperty, value);
         }
 
         public string LabelText
@@ -75,11 +67,17 @@ namespace Concierge.Display.Controls
             }
         }
 
-        public int InputValue => this.InputUpDown.Value;
+        public int InputValue => int.Parse(this.CoinAmount.Text);
 
         public void ResetInputValue()
         {
-            this.InputUpDown.Value = 0;
+            this.CoinAmount.Text = "0";
+        }
+
+        public void Initialize(Brush foreground)
+        {
+            this.CoinAmount.Foreground = foreground;
+            this.ClearButton.Foreground = foreground;
         }
     }
 }

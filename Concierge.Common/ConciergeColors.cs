@@ -24,6 +24,7 @@ namespace Concierge.Common
             HighlightRichTextBox = Colors.DarkOrchid;
             TreeItemHover = Color.FromArgb(255, 130, 223, 251);
             ControlForeBlue = Color.FromArgb(255, 38, 46, 66);
+            ControlForeDarkBlue = Color.FromArgb(255, 31, 37, 53);
             ControlBackBlue = Color.FromArgb(255, 23, 27, 36);
             Verdigris = Color.FromArgb(255, 72, 179, 185);
             Mint = Color.FromArgb(255, 72, 185, 135);
@@ -98,6 +99,11 @@ namespace Concierge.Common
         /// Gets the Concierge-defined color that has an ARGB value of #FF262E42.
         /// </summary>
         public static Color ControlForeBlue { get; }
+
+        /// <summary>
+        /// Gets the Concierge-defined color that has an ARGB value of #FF1F2535.
+        /// </summary>
+        public static Color ControlForeDarkBlue { get; }
 
         /// <summary>
         /// Gets the Concierge-defined color that has an ARGB value of #FF171B24.

@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:components="clr-namespace:Concierge.Display.Components"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:controls="clr-namespace:Concierge.Display.Controls"
     xmlns:local="clr-namespace:Concierge.Display.Controls"
     mc:Ignorable="d" 
@@ -22,8 +23,8 @@
                 x:Name="DivideLootGrid"
                 Margin="-1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40*"/>
-                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Label-->
@@ -40,14 +41,29 @@
                 </Grid>
 
                 <!--Input-->
-                <controls:IntegerUpDownTransparentControl 
+                <TextBlock
                     Grid.Column="1"
-                    x:Name="InputUpDown"
-                    Maximum="999999"
-                    Minimum="0"
-                    ValueFontSize="30"
-                    Height="auto"
-                    Margin="10,0,10,0"/>
+                    x:Name="CoinAmount"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Text="8465"
+                    FontSize="30"/>
+
+                <components:ConciergeDesignButton 
+                    Grid.Column="1"
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="ClearButton"
+                    Width="25"
+                    Foreground="White"
+                    Margin="0, 0, 0, 0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    ToolTip="Add 100 Coins">
+                    <materialDesign:PackIcon
+                        Kind="NotificationClearAll"
+                        Height="25"
+                        Width="25"/>
+                </components:ConciergeDesignButton>
             </Grid>
         </Border>
     </Grid>
