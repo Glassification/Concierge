@@ -35,6 +35,11 @@ namespace Concierge.Display.Controls
                 typeof(SpellSlotsControl), // No idea why it only works this way
                 new UIPropertyMetadata(Brushes.Transparent));
 
+        private readonly ResourceDictionary resourceDictionary = new ()
+        {
+            Source = new Uri("Display/Dictionaries/DisplaySpinnerDictionary.xaml", UriKind.RelativeOrAbsolute),
+        };
+
         public DivideLootInputControl()
         {
             this.InitializeComponent();
@@ -74,10 +79,17 @@ namespace Concierge.Display.Controls
             this.CoinAmount.Text = "0";
         }
 
-        public void Initialize(Brush foreground)
+        public void Initialize(string style, Brush foreground)
         {
+            this.ClearButton.Style = this.resourceDictionary[style] as Style;
+
             this.CoinAmount.Foreground = foreground;
             this.ClearButton.Foreground = foreground;
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.CoinAmount.Text = "0";
         }
     }
 }

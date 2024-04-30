@@ -16,8 +16,10 @@ namespace Concierge.Display
     using Concierge.Common.Enums;
     using Concierge.Configuration;
     using Concierge.Display.Controls;
+    using Concierge.Display.Enums;
     using Concierge.Search.Enums;
     using MaterialDesignThemes.Wpf;
+    using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
     public static class ComboBoxGenerator
     {
@@ -122,18 +124,26 @@ namespace Concierge.Display
 
         public static List<ComboBoxItemControl> CoinTypesComboBox()
         {
-            return CoinTypesComboBox(ConciergeBrushes.ControlForeBlue);
+            return
+            [
+                new (PackIconKind.Gold, ConciergeBrushes.Copper, CoinType.Copper),
+                new (PackIconKind.Gold, ConciergeBrushes.Silver, CoinType.Silver),
+                new (PackIconKind.Gold, ConciergeBrushes.Electrum, CoinType.Electrum),
+                new (PackIconKind.Gold, ConciergeBrushes.Gold, CoinType.Gold),
+                new (PackIconKind.Gold, ConciergeBrushes.Platinum, CoinType.Platinum),
+            ];
         }
 
-        public static List<ComboBoxItemControl> CoinTypesComboBox(Brush background)
+        public static List<ComboBoxItemControl> DivideLootComboBox(Brush background)
         {
             return
             [
-                new (PackIconKind.Gold, ConciergeBrushes.Copper, CoinType.Copper, background),
-                new (PackIconKind.Gold, ConciergeBrushes.Silver, CoinType.Silver, background),
-                new (PackIconKind.Gold, ConciergeBrushes.Electrum, CoinType.Electrum, background),
-                new (PackIconKind.Gold, ConciergeBrushes.Gold, CoinType.Gold, background),
-                new (PackIconKind.Gold, ConciergeBrushes.Platinum, CoinType.Platinum, background),
+                new (PackIconKind.AccountGroup, Brushes.SteelBlue, DivideLootSelection.Players, background),
+                new (PackIconKind.Gold, ConciergeBrushes.Copper, DivideLootSelection.Copper, background),
+                new (PackIconKind.Gold, ConciergeBrushes.Silver, DivideLootSelection.Silver, background),
+                new (PackIconKind.Gold, ConciergeBrushes.Electrum, DivideLootSelection.Electrum, background),
+                new (PackIconKind.Gold, ConciergeBrushes.Gold, DivideLootSelection.Gold, background),
+                new (PackIconKind.Gold, ConciergeBrushes.Platinum, DivideLootSelection.Platinum, background),
             ];
         }
 

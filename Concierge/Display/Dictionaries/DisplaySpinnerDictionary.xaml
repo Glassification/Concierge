@@ -50,13 +50,13 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="PlayerControlButtonStyle" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="PlayerControlButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="#33415C" />
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0.5,1,1,1"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border 
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -74,13 +74,13 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="CopperControlButtonStyle" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="CopperControlButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="#B87333" />
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0.5,1,1,1"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border 
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -98,13 +98,13 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="SilverControlButtonStyle" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="SilverControlButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Silver" />
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0.5,1,1,1"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border 
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -122,13 +122,13 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="ElectrumControlButtonStyle" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="ElectrumControlButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="#50C878" />
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0.5,1,1,1"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border 
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -146,13 +146,13 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="GoldControlButtonStyle" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="GoldControlButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="#CFB53B" />
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0.5,1,1,1"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border 
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -170,13 +170,13 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="PlatinumControlButtonStyle" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="PlatinumControlButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="#e5e4e2" />
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0.5,1,1,1"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border 
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"

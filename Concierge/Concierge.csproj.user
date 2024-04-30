@@ -188,9 +188,6 @@
     <Page Update="Display\Dictionaries\DataGridDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Display\Dictionaries\DisplaySpinnerDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Display\Dictionaries\FontDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>

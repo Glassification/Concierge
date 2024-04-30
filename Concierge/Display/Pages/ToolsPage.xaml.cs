@@ -16,7 +16,6 @@ namespace Concierge.Display.Pages
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Display.Components;
-    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
@@ -29,7 +28,7 @@ namespace Concierge.Display.Pages
     /// </summary>
     public partial class ToolsPage : Page, IConciergePage
     {
-        private readonly IReadWriters historyReadWriter;
+        private readonly HistoryReadWriter historyReadWriter;
         private readonly string diceHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.DiceHistoryName);
 
         public ToolsPage()
@@ -40,7 +39,7 @@ namespace Concierge.Display.Pages
             this.Players = [];
             this.RollHistory = [];
             this.DiceHistory = new History(this.historyReadWriter.ReadList<string>(this.diceHistoryFile), string.Empty);
-            this.CoinComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox(ConciergeBrushes.ControlForeDarkBlue);
+            this.CoinComboBox.ItemsSource = ComboBoxGenerator.DivideLootComboBox(ConciergeBrushes.ControlForeDarkBlue);
             this.CoinComboBox.Text = CoinType.Gold.ToString();
 
             this.SetDefaultDiceValues();
@@ -54,12 +53,12 @@ namespace Concierge.Display.Pages
             this.D12DiceRollDisplay.Initialize("DarkControlButtonStyle", Brushes.White);
             this.D20DiceRollDisplay.Initialize("LightControlButtonStyle", Brushes.White);
 
-            this.PlayersInput.Initialize(Brushes.White);
-            this.CopperInput.Initialize(Brushes.Black);
-            this.SilverInput.Initialize(Brushes.Black);
-            this.ElectrumInput.Initialize(Brushes.Black);
-            this.GoldInput.Initialize(Brushes.Black);
-            this.PlatinumInput.Initialize(Brushes.Black);
+            this.PlayersInput.Initialize("PlayerControlButtonStyle", Brushes.White);
+            this.CopperInput.Initialize("CopperControlButtonStyle", Brushes.Black);
+            this.SilverInput.Initialize("SilverControlButtonStyle", Brushes.Black);
+            this.ElectrumInput.Initialize("ElectrumControlButtonStyle", Brushes.Black);
+            this.GoldInput.Initialize("GoldControlButtonStyle", Brushes.Black);
+            this.PlatinumInput.Initialize("PlatinumControlButtonStyle", Brushes.Black);
         }
 
         public ConciergePage ConciergePage => ConciergePage.Tools;
@@ -251,10 +250,16 @@ namespace Concierge.Display.Pages
             this.SetDefaultDivideValues();
             this.DivideLootDataGrid.Items.Clear();
             this.Players.Clear();
+            this.CoinComboBox.Text = CoinType.Gold.ToString();
         }
 
         private TextBlock GetCoinSpinner(string coin)
         {
+            if (coin.Equals("players", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.PlayersInput.CoinAmount;
+            }
+
             if (coin.Equals("copper", StringComparison.InvariantCultureIgnoreCase))
             {
                 return this.CopperInput.CoinAmount;

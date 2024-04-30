@@ -23,8 +23,12 @@ namespace Concierge.Display.Windows.Utility
     /// </summary>
     public partial class IconPickerWindow : ConciergeWindow
     {
-        private readonly List<ConciergeDesignButton> iconList = [];
         private readonly int maxIcons;
+        private readonly List<ConciergeDesignButton> iconList = [];
+        private readonly ResourceDictionary resourceDictionary = new ()
+        {
+            Source = new Uri("Display/Dictionaries/ButtonDictionary.xaml", UriKind.RelativeOrAbsolute),
+        };
 
         private CustomColor customColor = CustomColor.Invalid;
 
@@ -72,16 +76,11 @@ namespace Concierge.Display.Windows.Utility
                 .DistinctBy(x => x.ToString());
 
             var iconWrapPanel = new WrapPanel();
-            var resourceDictionary = new ResourceDictionary
-            {
-                Source = new Uri("Display/Dictionaries/ButtonDictionary.xaml", UriKind.RelativeOrAbsolute),
-            };
-
             foreach (var icon in icons)
             {
                 var button = new ConciergeDesignButton()
                 {
-                    Style = resourceDictionary["ConciergeDesignButtonStyle"] as Style,
+                    Style = this.resourceDictionary["ConciergeDesignButtonStyle"] as Style,
                     Foreground = Brushes.White,
                     Width = 30,
                     Height = 30,

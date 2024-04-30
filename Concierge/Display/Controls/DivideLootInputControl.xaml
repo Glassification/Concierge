@@ -53,12 +53,13 @@
                     Grid.Column="1"
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
                     x:Name="ClearButton"
-                    Width="25"
+                    Width="30"
                     Foreground="White"
-                    Margin="0, 0, 0, 0"
+                    Margin="0, 0, 10, 0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    ToolTip="Add 100 Coins">
+                    ToolTip="Clear"
+                    Click="ClearButton_Click">
                     <materialDesign:PackIcon
                         Kind="NotificationClearAll"
                         Height="25"
