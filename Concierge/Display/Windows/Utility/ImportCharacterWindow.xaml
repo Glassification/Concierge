@@ -168,13 +168,14 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Ammunition:"/>
+                        Text="Augments:"
+                        Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Value-->
                 <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
-                        x:Name="AmmoCheckBox"
+                        x:Name="AugmentCheckBox"
                         Style="{StaticResource CheckBoxStyle}"
                         Checked="ImportCheckBox_Checked"/>
                 </Grid>

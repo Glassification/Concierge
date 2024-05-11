@@ -5,6 +5,7 @@
 namespace Concierge.Common.Extensions
 {
     using System;
+    using System.Buffers.Text;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
@@ -471,7 +472,7 @@ namespace Concierge.Common.Extensions
                 throw new ArgumentException("T must be an enumerated type");
             }
 
-            return (T)Enum.Parse(typeof(T), str);
+            return (T)Enum.Parse(typeof(T), str.Strip(" "));
         }
 
         /// <summary>
@@ -494,7 +495,7 @@ namespace Concierge.Common.Extensions
                 throw new ArgumentException("T must be an enumerated type");
             }
 
-            return Enum.TryParse(str, out T value) ? value : default;
+            return Enum.TryParse(str.Strip(" "), out T value) ? value : default;
         }
 
         /// <summary>
@@ -512,6 +513,21 @@ namespace Concierge.Common.Extensions
             }
 
             return $"{str}{plural}";
+        }
+
+        /// <summary>
+        /// Determines whether the input string is a valid Base64-encoded string.
+        /// </summary>
+        /// <remarks>
+        /// Base64 encoding is a method of encoding binary data into a text format.
+        /// This method checks if the input string can be successfully decoded from Base64 format.
+        /// </remarks>
+        /// <param name="str">The input string to check for Base64 encoding.</param>
+        /// <returns>True if the input string is valid Base64-encoded data; otherwise, false.</returns>
+        public static bool IsBase64(this string str)
+        {
+            Span<byte> buffer = new (new byte[str.Length]);
+            return Convert.TryFromBase64String(str, buffer, out _);
         }
 
         [GeneratedRegex(@"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline, "en-CA")]

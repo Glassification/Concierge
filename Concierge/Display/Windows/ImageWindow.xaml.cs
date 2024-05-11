@@ -4,7 +4,9 @@
 
 namespace Concierge.Display.Windows
 {
+    using System.IO;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Media;
 
     using Concierge.Character;
@@ -12,6 +14,7 @@ namespace Concierge.Display.Windows
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
     using Concierge.Persistence.Enums;
@@ -25,6 +28,10 @@ namespace Concierge.Display.Windows
         private readonly FileAccessService fileAccessService = new ();
         private readonly ImageEncoding imageEncoding = new (Program.ErrorService);
 
+        private Portrait image = new ();
+        private bool isDrawing;
+        private string base64 = string.Empty;
+
         public ImageWindow()
         {
             this.InitializeComponent();
@@ -32,12 +39,11 @@ namespace Concierge.Display.Windows
 
             this.FillTypeComboBox.ItemsSource = ComboBoxGenerator.StretchLevelComboBox();
             this.ConciergePage = ConciergePage.None;
-            this.CharacterImage = new Portrait();
-            this.OriginalFileName = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.UseCustomImageCheckBox);
-            this.SetMouseOverEvents(this.ImageSourceTextBox, this.ImageSourceTextBackground);
+            this.SetMouseOverEvents(this.ClearImageButton);
+            this.SetMouseOverEvents(this.OpenImageButton);
             this.SetMouseOverEvents(this.FillTypeComboBox);
         }
 
@@ -45,16 +51,9 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(ImageWindow);
 
-        private string OriginalFileName { get; set; }
-
-        private bool IsDrawing { get; set; }
-
-        private Portrait CharacterImage { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.CharacterImage = Program.CcsFile.Character.Detail.Portrait;
             this.CancelButton.Content = buttonText;
 
             this.FillFields();
@@ -70,7 +69,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.CharacterImage = castItem;
+            this.image = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -84,43 +83,78 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
-            this.IsDrawing = true;
+            this.isDrawing = true;
 
-            this.ImageSourceTextBox.Text = this.OriginalFileName = this.CharacterImage.Path;
-            this.FillTypeComboBox.Text = this.CharacterImage.Stretch.PascalCase();
-            this.UseCustomImageCheckBox.IsChecked = this.CharacterImage.UseCustomImage;
+            var useImage = this.image.UseCustomImage;
+            var stretch = this.image.Stretch;
 
-            this.SetEnabledState(this.CharacterImage.UseCustomImage);
+            this.FillTypeComboBox.Text = stretch.PascalCase();
+            this.ImageNameTextBox.Text = this.image.Name;
+            this.UseCustomImageCheckBox.IsChecked = useImage;
+            this.HorizontalPreview.Stretch = stretch;
+            this.VerticalPreview.Stretch = stretch;
+            this.base64 = this.image.Encoded;
 
-            this.IsDrawing = false;
+            this.SetEnabledState(useImage);
+
+            this.isDrawing = false;
+        }
+
+        private void ClearFields()
+        {
+            this.isDrawing = true;
+
+            this.FillTypeComboBox.Text = Stretch.None.PascalCase();
+            this.ImageNameTextBox.Text = string.Empty;
+            this.UseCustomImageCheckBox.IsChecked = false;
+            this.HorizontalPreview.Stretch = Stretch.None;
+            this.VerticalPreview.Stretch = Stretch.None;
+            this.base64 = string.Empty;
+
+            this.SetEnabledState(false);
+
+            this.isDrawing = false;
         }
 
         private void UpdateCharacterImage()
         {
-            if (this.ImageSourceTextBox.Text.IsNullOrWhiteSpace())
-            {
-                return;
-            }
+            var oldItem = this.image.DeepCopy();
 
-            var oldItem = this.CharacterImage.DeepCopy();
+            this.image.Stretch = this.FillTypeComboBox.Text.ToEnum<Stretch>();
+            this.image.Name = this.ImageNameTextBox.Text;
+            this.image.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
+            this.image.Encoded = this.base64;
 
-            if (!this.OriginalFileName.Equals(this.ImageSourceTextBox.Text))
-            {
-                this.CharacterImage.Encoded = this.imageEncoding.Encode(this.ImageSourceTextBox.Text);
-            }
-
-            this.CharacterImage.Stretch = this.FillTypeComboBox.Text.Strip(" ").ToEnum<Stretch>();
-            this.CharacterImage.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
-
-            Program.UndoRedoService.AddCommand(new EditCommand<Portrait>(this.CharacterImage, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Portrait>(this.image, oldItem, this.ConciergePage));
         }
 
         private void SetEnabledState(bool isEnabled)
         {
-            DisplayUtility.SetControlEnableState(this.ImageSourceTextBox, isEnabled);
             DisplayUtility.SetControlEnableState(this.FillTypeComboBox, isEnabled);
             DisplayUtility.SetControlEnableState(this.OpenImageButton, isEnabled);
-            DisplayUtility.SetControlEnableState(this.ImageSourceTextBackground, isEnabled);
+            DisplayUtility.SetControlEnableState(this.ImageNameTextBox, isEnabled);
+            DisplayUtility.SetControlEnableState(this.ImageNameTextBackground, isEnabled);
+
+            var renderImage = isEnabled && !this.base64.IsNullOrWhiteSpace();
+            this.HorizontalPreview.Source = renderImage ? this.imageEncoding.Decode(this.base64) : null;
+            this.VerticalPreview.Source = renderImage ? this.imageEncoding.Decode(this.base64) : null;
+
+            this.ImageNameTextBackground.IsEnabled = false;
+        }
+
+        private bool IsValidImage()
+        {
+            if (this.base64.IsNullOrWhiteSpace())
+            {
+                ConciergeMessageBox.Show(
+                    "Please select an image, or disable custom images before continuing.",
+                    "Warning",
+                    ConciergeButtons.Ok,
+                    ConciergeIcons.Warning);
+                return false;
+            }
+
+            return true;
         }
 
         private void OpenImageButton_Click(object sender, RoutedEventArgs e)
@@ -129,19 +163,28 @@ namespace Concierge.Display.Windows
 
             if (!fileName.IsNullOrWhiteSpace())
             {
-                this.ImageSourceTextBox.Text = fileName;
+                this.ImageNameTextBox.Text = Path.GetFileName(fileName);
+                this.base64 = this.imageEncoding.Encode(fileName);
+                this.HorizontalPreview.Source = this.imageEncoding.Decode(this.base64);
+                this.VerticalPreview.Source = this.imageEncoding.Decode(this.base64);
             }
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ReturnAndClose();
+            if (this.IsValidImage())
+            {
+                this.ReturnAndClose();
+            }
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.UpdateCharacterImage();
-            this.InvokeApplyChanges();
+            if (this.IsValidImage())
+            {
+                this.UpdateCharacterImage();
+                this.InvokeApplyChanges();
+            }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -158,7 +201,7 @@ namespace Concierge.Display.Windows
 
         private void UseCustomImageCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (!this.IsDrawing)
+            if (!this.isDrawing)
             {
                 this.SetEnabledState(true);
             }
@@ -166,10 +209,25 @@ namespace Concierge.Display.Windows
 
         private void UseCustomImageCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (!this.IsDrawing)
+            if (!this.isDrawing)
             {
                 this.SetEnabledState(false);
             }
+        }
+
+        private void FillTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           if (e.AddedItems[0] is ComboBoxItemControl item)
+            {
+                var stretch = item.ToString().ToEnum<Stretch>();
+                this.HorizontalPreview.Stretch = stretch;
+                this.VerticalPreview.Stretch = stretch;
+            }
+        }
+
+        private void ClearImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.ClearFields();
         }
     }
 }

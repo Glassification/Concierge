@@ -19,7 +19,6 @@ namespace Concierge.Display
     using Concierge.Display.Enums;
     using Concierge.Search.Enums;
     using MaterialDesignThemes.Wpf;
-    using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
     public static class ComboBoxGenerator
     {

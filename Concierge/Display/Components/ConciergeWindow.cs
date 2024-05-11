@@ -198,6 +198,14 @@ namespace Concierge.Display.Components
             this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
+        /// <summary>
+        /// Applies rounded corners to the window if the operating system is Windows 11.
+        /// </summary>
+        /// <remarks>
+        /// Windows 11 introduced rounded window corners as a design element.
+        /// This method sets the window corner preference to rounded if the operating system is Windows 11.
+        /// If the operating system is not Windows 11, it applies a standard border style to the window.
+        /// </remarks>
         protected void UseRoundedCorners()
         {
             if (SystemUtility.GetWindowsVersion() == OSVersion.Windows11)

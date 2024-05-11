@@ -511,10 +511,13 @@
   <data name="HpWindow_HpUpDown" xml:space="preserve">
     <value>The amount of healing or damage to take. 10 points to Gryffindor!</value>
   </data>
+  <data name="ImageWindow_ClearImageButton" xml:space="preserve">
+    <value>Remove the stored image from the character sheet. </value>
+  </data>
   <data name="ImageWindow_FillTypeComboBox" xml:space="preserve">
     <value>Change how the image is stretched to fill the canvas.</value>
   </data>
-  <data name="ImageWindow_ImageSourceTextBox" xml:space="preserve">
+  <data name="ImageWindow_OpenImageButton" xml:space="preserve">
     <value>You can safely delete the image after loading it into Concierge.</value>
   </data>
   <data name="ImageWindow_UseCustomImageCheckBox" xml:space="preserve">

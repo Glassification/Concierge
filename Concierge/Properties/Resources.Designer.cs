@@ -1316,6 +1316,15 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove the stored image from the character sheet. .
+        /// </summary>
+        internal static string ImageWindow_ClearImageButton {
+            get {
+                return ResourceManager.GetString("ImageWindow_ClearImageButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change how the image is stretched to fill the canvas..
         /// </summary>
         internal static string ImageWindow_FillTypeComboBox {
@@ -1327,9 +1336,9 @@ namespace Concierge.Properties {
         /// <summary>
         ///   Looks up a localized string similar to You can safely delete the image after loading it into Concierge..
         /// </summary>
-        internal static string ImageWindow_ImageSourceTextBox {
+        internal static string ImageWindow_OpenImageButton {
             get {
-                return ResourceManager.GetString("ImageWindow_ImageSourceTextBox", resourceCulture);
+                return ResourceManager.GetString("ImageWindow_OpenImageButton", resourceCulture);
             }
         }
         

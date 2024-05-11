@@ -52,7 +52,7 @@ namespace Concierge.Display.Utility
         private void UncheckAllExcept(string name)
         {
             this.AbilitiesCheckBox.UncheckUnlessNameMatches(name);
-            this.AmmoCheckBox.UncheckUnlessNameMatches(name);
+            this.AugmentCheckBox.UncheckUnlessNameMatches(name);
             this.InventoryCheckBox.UncheckUnlessNameMatches(name);
             this.NotesCheckBox.UncheckUnlessNameMatches(name);
             this.LanguageCheckBox.UncheckUnlessNameMatches(name);
@@ -76,9 +76,9 @@ namespace Concierge.Display.Utility
                 this.characterImporter.AddImporter(new AbilityImporter(Program.CcsFile.Character));
             }
 
-            if (this.AmmoCheckBox.IsChecked ?? false)
+            if (this.AugmentCheckBox.IsChecked ?? false)
             {
-                this.characterImporter.AddImporter(new AmmunitionImporter(Program.CcsFile.Character));
+                this.characterImporter.AddImporter(new AugmentationImporter(Program.CcsFile.Character));
             }
 
             if (this.InventoryCheckBox.IsChecked ?? false)
@@ -130,7 +130,7 @@ namespace Concierge.Display.Utility
             }
 
             this.AbilitiesCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Ability);
-            this.AmmoCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Ammunition);
+            this.AugmentCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Augmentation);
             this.InventoryCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Inventory);
             this.NotesCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Journal);
             this.LanguageCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Language);

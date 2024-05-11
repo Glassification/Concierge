@@ -1,4 +1,4 @@
-﻿// <copyright file="AmmunitionImporter.cs" company="Thomas Beckett">
+﻿// <copyright file="AugmentationImporter.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -13,13 +13,13 @@ namespace Concierge.Services.ImportService.Importers
     /// <summary>
     /// Represents an importer for ammunition data.
     /// </summary>
-    public sealed class AmmunitionImporter : Importer
+    public sealed class AugmentationImporter : Importer
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AmmunitionImporter"/> class with the specified character.
+        /// Initializes a new instance of the <see cref="AugmentationImporter"/> class with the specified character.
         /// </summary>
         /// <param name="character">The character sheet to import ammunition data into.</param>
-        public AmmunitionImporter(CharacterSheet character)
+        public AugmentationImporter(CharacterSheet character)
             : base(character)
         {
         }

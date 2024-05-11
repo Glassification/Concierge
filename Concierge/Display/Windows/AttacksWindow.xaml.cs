@@ -216,7 +216,7 @@ namespace Concierge.Display.Windows
             var oldItem = weapon.DeepCopy();
 
             weapon.Name = this.AttackComboBox.Text;
-            weapon.Type = this.TypeComboBox.Text.Strip(" ").ToEnum<WeaponTypes>();
+            weapon.Type = this.TypeComboBox.Text.ToEnum<WeaponTypes>();
             weapon.Ability = this.AbilityComboBox.Text.ToEnum<Abilities>();
             weapon.Damage = this.DamageTextBox.Text;
             weapon.Misc = this.MiscDamageTextBox.Text;
@@ -241,7 +241,7 @@ namespace Concierge.Display.Windows
             return new Weapon(Program.CcsFile.CharacterService)
             {
                 Name = this.AttackComboBox.Text,
-                Type = this.TypeComboBox.Text.Strip(" ").ToEnum<WeaponTypes>(),
+                Type = this.TypeComboBox.Text.ToEnum<WeaponTypes>(),
                 Ability = this.AbilityComboBox.Text.ToEnum<Abilities>(),
                 Damage = this.DamageTextBox.Text,
                 Misc = this.MiscDamageTextBox.Text,

@@ -98,7 +98,7 @@ namespace Concierge.Display.Utility
                 MatchCase = this.MatchCaseCheckBox.IsChecked ?? false,
                 MatchWholeWord = this.MatchWholeWordCheckBox.IsChecked ?? false,
                 UseRegex = this.UseRegexCheckBox.IsChecked ?? false,
-                SearchDomain = this.SearchDomainComboBox.Text.Strip(" ").ToEnum<SearchDomain>(),
+                SearchDomain = this.SearchDomainComboBox.Text.ToEnum<SearchDomain>(),
                 TextToSearch = this.SearchTextBox.Text,
             };
         }

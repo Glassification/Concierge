@@ -137,7 +137,7 @@ namespace Concierge.Display.Windows
                 Type = this.ResourceNameComboBox.Text,
                 Total = this.PoolUpDown.Value,
                 Spent = this.SpentUpDown.Value,
-                Recovery = this.RecoveryComboBox.Text.Strip(" ").ToEnum<Recovery>(),
+                Recovery = this.RecoveryComboBox.Text.ToEnum<Recovery>(),
                 Note = this.NotesTextBox.Text,
             };
         }
@@ -161,7 +161,7 @@ namespace Concierge.Display.Windows
                 this.ClassResource.Type = this.ResourceNameComboBox.Text;
                 this.ClassResource.Total = this.PoolUpDown.Value;
                 this.ClassResource.Spent = this.SpentUpDown.Value;
-                this.ClassResource.Recovery = this.RecoveryComboBox.Text.Strip(" ").ToEnum<Recovery>();
+                this.ClassResource.Recovery = this.RecoveryComboBox.Text.ToEnum<Recovery>();
                 this.ClassResource.Note = this.NotesTextBox.Text;
 
                 if (!this.ClassResource.IsCustom)

@@ -15,7 +15,7 @@ namespace Concierge.Services.ImportService
     public static class AutoSelection
     {
         private static readonly string[] AbilityMatch = ["ability", "abilities", "abilitys"];
-        private static readonly string[] AmmunitionMatch = ["ammunition", "ammunitions", "ammo", "ammos"];
+        private static readonly string[] AugmentationMatch = ["augmentation", "augmentations", "augment", "augments"];
         private static readonly string[] InventoryMatch = ["inventory", "inventorys", "inventories"];
         private static readonly string[] JournalMatch = ["journal", "journals", "chapter", "chapters", "note", "notes"];
         private static readonly string[] LanguageMatch = ["language", "languages"];
@@ -42,7 +42,7 @@ namespace Concierge.Services.ImportService
             return selectionType switch
             {
                 SelectionType.Ability => ListContains(AbilityMatch, fileName),
-                SelectionType.Ammunition => ListContains(AmmunitionMatch, fileName),
+                SelectionType.Augmentation => ListContains(AugmentationMatch, fileName),
                 SelectionType.Inventory => ListContains(InventoryMatch, fileName),
                 SelectionType.Journal => ListContains(JournalMatch, fileName),
                 SelectionType.Language => ListContains(LanguageMatch, fileName),

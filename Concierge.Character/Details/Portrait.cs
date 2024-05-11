@@ -19,10 +19,15 @@ namespace Concierge.Character
         public Portrait()
         {
             this.Encoded = string.Empty;
-            this.Path = string.Empty;
+            this.Name = string.Empty;
             this.Stretch = Stretch.UniformToFill;
             this.UseCustomImage = false;
         }
+
+        /// <summary>
+        /// Gets an empty instance of a Portrait.
+        /// </summary>
+        public static Portrait Empty => new ();
 
         /// <summary>
         /// Gets or sets the base64-encoded representation of the image.
@@ -30,9 +35,9 @@ namespace Concierge.Character
         public string Encoded { get; set; }
 
         /// <summary>
-        /// Gets or sets the path to the image file.
+        /// Gets or sets the name of the image file.
         /// </summary>
-        public string Path { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the stretch mode for displaying the image.
@@ -53,7 +58,7 @@ namespace Concierge.Character
             return new Portrait()
             {
                 Encoded = this.Encoded,
-                Path = this.Path,
+                Name = this.Name,
                 Stretch = this.Stretch,
                 UseCustomImage = this.UseCustomImage,
             };

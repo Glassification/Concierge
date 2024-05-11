@@ -90,7 +90,7 @@ namespace Concierge.Display.Windows
 
             senses.InitiativeBonus = this.InitiativeBonusUpDown.Value;
             senses.PerceptionBonus = this.PerceptionBonusUpDown.Value;
-            senses.Vision = this.VisionComboBox.Text.Strip(" ").ToEnum<VisionTypes>();
+            senses.Vision = this.VisionComboBox.Text.ToEnum<VisionTypes>();
             senses.BaseMovement = this.BaseMovementUpDown.Value;
             senses.MovementBonus = this.MovementBonusUpDown.Value;
             senses.Inspiration = this.InspirationCheckBox.IsChecked ?? false;

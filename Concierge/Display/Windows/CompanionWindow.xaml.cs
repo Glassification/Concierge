@@ -80,7 +80,7 @@ namespace Concierge.Display.Windows
             this.Properties.Name = this.NameTextBox.Text;
             this.Properties.ArmorClass = this.AcUpDown.Value;
             this.Properties.Perception = this.PerceptionUpDown.Value;
-            this.Properties.Vision = this.VisionComboBox.Text.Strip(" ").ToEnum<VisionTypes>();
+            this.Properties.Vision = this.VisionComboBox.Text.ToEnum<VisionTypes>();
             this.Properties.Movement = this.MovementUpDown.Value;
             this.Properties.CreatureSize = this.CreatureSizeComboBox.Text.ToEnum<CreatureSizes>();
             this.Properties.Initiative = this.InitiativeUpDown.Value;

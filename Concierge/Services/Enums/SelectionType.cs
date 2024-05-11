@@ -7,7 +7,7 @@ namespace Concierge.Services.Enums
     public enum SelectionType
     {
         Ability,
-        Ammunition,
+        Augmentation,
         Inventory,
         Journal,
         Language,

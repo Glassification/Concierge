@@ -153,7 +153,7 @@ namespace Concierge.Display.Windows
             return new Ability()
             {
                 Name = this.NameComboBox.Text,
-                Type = this.TypeComboBox.Text.Strip(" ").ToEnum<AbilityTypes>(),
+                Type = this.TypeComboBox.Text.ToEnum<AbilityTypes>(),
                 Level = this.LevelUpDown.Value,
                 Uses = this.UsesTextBox.Text,
                 Recovery = this.RecoveryTextBox.Text,
@@ -177,7 +177,7 @@ namespace Concierge.Display.Windows
             var oldItem = ability.DeepCopy();
 
             ability.Name = this.NameComboBox.Text;
-            ability.Type = this.TypeComboBox.Text.Strip(" ").ToEnum<AbilityTypes>();
+            ability.Type = this.TypeComboBox.Text.ToEnum<AbilityTypes>();
             ability.Level = this.LevelUpDown.Value;
             ability.Uses = this.UsesTextBox.Text;
             ability.Recovery = this.RecoveryTextBox.Text;
