@@ -20,21 +20,21 @@ namespace Concierge.Character.Vitals
         /// </summary>
         public Status()
         {
-            this.Blinded = new Condition(ConditionDescriptions.Blinded, ConditionTypes.Blinded);
-            this.Charmed = new Condition(ConditionDescriptions.Charmed, ConditionTypes.Charmed);
-            this.Death = new Condition(ConditionDescriptions.Death, ConditionTypes.Dead);
-            this.Deafened = new Condition(ConditionDescriptions.Deafened, ConditionTypes.Deafened);
-            this.Frightened = new Condition(ConditionDescriptions.Frightened, ConditionTypes.Frightened);
-            this.Grappled = new Condition(ConditionDescriptions.Grappled, ConditionTypes.Grappled);
-            this.Incapacitated = new Condition(ConditionDescriptions.Incapacitated, ConditionTypes.Incapacitated);
-            this.Invisible = new Condition(ConditionDescriptions.Invisible, ConditionTypes.Invisible);
-            this.Paralyzed = new Condition(ConditionDescriptions.Paralyzed, ConditionTypes.Paralyzed);
-            this.Petrified = new Condition(ConditionDescriptions.Petrified, ConditionTypes.Petrified);
-            this.Poisoned = new Condition(ConditionDescriptions.Poisoned, ConditionTypes.Poisoned);
-            this.Prone = new Condition(ConditionDescriptions.Prone, ConditionTypes.Prone);
-            this.Restrained = new Condition(ConditionDescriptions.Restrained, ConditionTypes.Restrained);
-            this.Stunned = new Condition(ConditionDescriptions.Stunned, ConditionTypes.Stunned);
-            this.Unconscious = new Condition(ConditionDescriptions.Unconscious, ConditionTypes.Unconscious);
+            this.Blinded = new Condition(ConditionTypes.Blinded);
+            this.Charmed = new Condition(ConditionTypes.Charmed);
+            this.Death = new Condition(ConditionTypes.Dead);
+            this.Deafened = new Condition(ConditionTypes.Deafened);
+            this.Frightened = new Condition(ConditionTypes.Frightened);
+            this.Grappled = new Condition(ConditionTypes.Grappled);
+            this.Incapacitated = new Condition(ConditionTypes.Incapacitated);
+            this.Invisible = new Condition(ConditionTypes.Invisible);
+            this.Paralyzed = new Condition(ConditionTypes.Paralyzed);
+            this.Petrified = new Condition(ConditionTypes.Petrified);
+            this.Poisoned = new Condition(ConditionTypes.Poisoned);
+            this.Prone = new Condition(ConditionTypes.Prone);
+            this.Restrained = new Condition(ConditionTypes.Restrained);
+            this.Stunned = new Condition(ConditionTypes.Stunned);
+            this.Unconscious = new Condition(ConditionTypes.Unconscious);
             this.Exhaustion = new Exhaustion();
             this.StatusEffects = [];
         }

@@ -4,6 +4,8 @@
 
 namespace Concierge.Character.Magic
 {
+    using System;
+
     using Concierge.Common;
 
     /// <summary>
@@ -16,7 +18,6 @@ namespace Concierge.Character.Magic
         /// </summary>
         public SpellSlots()
         {
-            this.PactTotal = 0;
             this.FirstTotal = 0;
             this.SecondTotal = 0;
             this.ThirdTotal = 0;
@@ -29,8 +30,6 @@ namespace Concierge.Character.Magic
 
             this.Reset();
         }
-
-        public int PactTotal { get; set; }
 
         public int FirstTotal { get; set; }
 
@@ -49,8 +48,6 @@ namespace Concierge.Character.Magic
         public int EighthTotal { get; set; }
 
         public int NinethTotal { get; set; }
-
-        public int PactUsed { get; set; }
 
         public int FirstUsed { get; set; }
 
@@ -78,7 +75,6 @@ namespace Concierge.Character.Magic
         {
             return new SpellSlots()
             {
-                PactTotal = this.PactTotal,
                 FirstTotal = this.FirstTotal,
                 SecondTotal = this.SecondTotal,
                 ThirdTotal = this.ThirdTotal,
@@ -88,7 +84,6 @@ namespace Concierge.Character.Magic
                 SeventhTotal = this.SeventhTotal,
                 EighthTotal = this.EighthTotal,
                 NinethTotal = this.NinethTotal,
-                PactUsed = this.PactUsed,
                 FirstUsed = this.FirstUsed,
                 SecondUsed = this.SecondUsed,
                 ThirdUsed = this.ThirdUsed,
@@ -106,7 +101,6 @@ namespace Concierge.Character.Magic
         /// </summary>
         public void Reset()
         {
-            this.PactUsed = 0;
             this.FirstUsed = 0;
             this.SecondUsed = 0;
             this.ThirdUsed = 0;
@@ -119,18 +113,61 @@ namespace Concierge.Character.Magic
         }
 
         /// <summary>
+        /// Simulates a short rest for a Warlock character, allowing them to recover expended spell slots based on their level.
+        /// </summary>
+        /// <remarks>
+        /// A short rest for a Warlock character allows them to recover expended spell slots.
+        /// The number of recovered spell slots depends on the Warlock's level.
+        /// </remarks>
+        /// <param name="warlockLevel">The level of the Warlock character.</param>
+        public void ShortRest(int warlockLevel)
+        {
+            switch (warlockLevel)
+            {
+                case 1:
+                    this.FirstUsed = Math.Max(this.FirstUsed -= 1, 0);
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    this.SecondUsed = Math.Max(this.SecondUsed -= 2, 0);
+                    break;
+                case 5:
+                case 6:
+                    this.ThirdUsed = Math.Max(this.ThirdUsed -= 2, 0);
+                    break;
+                case 7:
+                case 8:
+                    this.FourthUsed = Math.Max(this.FourthUsed -= 2, 0);
+                    break;
+                case 9:
+                case 10:
+                    this.FifthUsed = Math.Max(this.FifthUsed -= 2, 0);
+                    break;
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                    this.FifthUsed = Math.Max(this.FifthUsed -= 3, 0);
+                    break;
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                    this.FifthUsed = Math.Max(this.FifthUsed -= 4, 0);
+                    break;
+            }
+        }
+
+        /// <summary>
         /// Increments the used spell slots based on the spell slot name.
         /// </summary>
         /// <param name="name">The name of the spell slot.</param>
         /// <returns>A tuple containing the updated used and total spell slots.</returns>
         public (int used, int total) Increment(string name)
         {
-            if (name.Contains("pact", System.StringComparison.InvariantCultureIgnoreCase) && this.PactUsed < this.PactTotal)
-            {
-                this.PactUsed++;
-                return (this.PactUsed, this.PactTotal);
-            }
-
             if (name.Contains("first", System.StringComparison.InvariantCultureIgnoreCase) && this.FirstUsed < this.FirstTotal)
             {
                 this.FirstUsed++;

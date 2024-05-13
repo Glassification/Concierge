@@ -20,7 +20,7 @@ namespace Concierge.Character
         {
             this.Encoded = string.Empty;
             this.Name = string.Empty;
-            this.Stretch = Stretch.UniformToFill;
+            this.Stretch = Stretch.None;
             this.UseCustomImage = false;
         }
 

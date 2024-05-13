@@ -54,7 +54,6 @@ namespace Concierge.Display.Controls
 
         public void FillSpellSlots(SpellSlots spellSlots)
         {
-            DrawSpellSlot(this.TotalPactField, this.UsedPactField, this.PactGrid, this.PactBorder, spellSlots.PactUsed, spellSlots.PactTotal);
             DrawSpellSlot(this.TotalFirstField, this.UsedFirstField, this.FirstGrid, this.FirstBorder, spellSlots.FirstUsed, spellSlots.FirstTotal);
             DrawSpellSlot(this.TotalSecondField, this.UsedSecondField, this.SecondGrid, this.SecondBorder, spellSlots.SecondUsed, spellSlots.SecondTotal);
             DrawSpellSlot(this.TotalThirdField, this.UsedThirdField, this.ThirdGrid, this.ThirdBorder, spellSlots.ThirdUsed, spellSlots.ThirdTotal);
@@ -65,7 +64,6 @@ namespace Concierge.Display.Controls
             DrawSpellSlot(this.TotalEighthField, this.UsedEighthField, this.EighthGrid, this.EighthBorder, spellSlots.EighthUsed, spellSlots.EighthTotal);
             DrawSpellSlot(this.TotalNinethField, this.UsedNinethField, this.NinethGrid, this.NinethBorder, spellSlots.NinethUsed, spellSlots.NinethTotal);
 
-            this.DrawSpellSlotHeader(this.PactHeaderGrid, this.PactHeaderBorder);
             this.DrawSpellSlotHeader(this.FirstHeaderGrid, this.FirstHeaderBorder);
             this.DrawSpellSlotHeader(this.SecondHeaderGrid, this.SecondHeaderBorder);
             this.DrawSpellSlotHeader(this.ThirdHeaderGrid, this.ThirdHeaderBorder);
@@ -98,7 +96,6 @@ namespace Concierge.Display.Controls
         {
             return name switch
             {
-                "PactHeaderGrid" => this.TotalPactField.Text.Equals(this.UsedPactField.Text),
                 "FirstHeaderGrid" => this.TotalFirstField.Text.Equals(this.UsedFirstField.Text),
                 "SecondHeaderGrid" => this.TotalSecondField.Text.Equals(this.UsedSecondField.Text),
                 "ThirdHeaderGrid" => this.TotalThirdField.Text.Equals(this.UsedThirdField.Text),

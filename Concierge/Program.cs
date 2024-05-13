@@ -22,6 +22,7 @@ namespace Concierge
     public static class Program
     {
         private static ConciergeVersion version = new ();
+        private static CharacterSheet baseState = new ();
 
         static Program()
         {
@@ -40,7 +41,7 @@ namespace Concierge
             MessageService = new MessageService();
             CcsFile = new CcsFile();
             MainWindow = null;
-            BaseState = new CharacterSheet();
+            baseState = new CharacterSheet();
 
             SoundService.SetVolume();
 
@@ -76,7 +77,7 @@ namespace Concierge
         /// <summary>
         /// Gets a value indicating whether the current character sheet is modified.
         /// </summary>
-        public static bool IsModified => !BaseState.Equals(CcsFile.Character);
+        public static bool IsModified => !baseState.Equals(CcsFile.Character);
 
         /// <summary>
         /// Gets or sets the current character sheet file.
@@ -135,8 +136,6 @@ namespace Concierge
         /// </summary>
         public static MainWindow? MainWindow { get; private set; }
 
-        private static CharacterSheet BaseState { get; set; }
-
         /// <summary>
         /// Initializes the main application window.
         /// </summary>
@@ -167,7 +166,7 @@ namespace Concierge
         /// </summary>
         public static void Unmodify()
         {
-            BaseState = CcsFile.Character.DeepCopy();
+            baseState = CcsFile.Character.DeepCopy();
             ModifiedChanged?.Invoke(IsModified, new EventArgs());
             Logger.Info($"Updated Base State.");
         }

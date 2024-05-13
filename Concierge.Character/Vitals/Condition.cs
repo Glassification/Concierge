@@ -6,6 +6,7 @@ namespace Concierge.Character.Vitals
 {
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Represents a condition that can affect a character or creature.
@@ -16,27 +17,22 @@ namespace Concierge.Character.Vitals
         /// Initializes a new instance of the <see cref="Condition"/> class with default values.
         /// </summary>
         public Condition()
-            : this(string.Empty, ConditionTypes.None, ConditionStatus.Normal)
+            : this(ConditionTypes.None)
         {
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Condition"/> class with the specified description and type, and default status.
         /// </summary>
-        /// <param name="description">The description of the condition.</param>
         /// <param name="type">The type of the condition.</param>
-        public Condition(string description, ConditionTypes type)
-            : this(description, type, ConditionStatus.Normal)
+        public Condition(ConditionTypes type)
         {
+            this.Description = ConditionDescriptions.Get(type);
+            this.Status = ConditionStatus.Normal;
+            this.Type = type;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Condition"/> class with the specified description, type, and status.
-        /// </summary>
-        /// <param name="description">The description of the condition.</param>
-        /// <param name="type">The type of the condition.</param>
-        /// <param name="status">The status of the condition.</param>
-        public Condition(string description, ConditionTypes type, ConditionStatus status)
+        private Condition(string description, ConditionTypes type, ConditionStatus status)
         {
             this.Description = description;
             this.Status = status;
@@ -61,11 +57,13 @@ namespace Concierge.Character.Vitals
         /// <summary>
         /// Gets the name of the condition.
         /// </summary>
+        [JsonIgnore]
         public string Name => this.Type.ToString();
 
         /// <summary>
         /// Gets the value of the condition.
         /// </summary>
+        [JsonIgnore]
         public string Value => $"{this.Name} - {this.Description}";
 
         /// <summary>

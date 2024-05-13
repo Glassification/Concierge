@@ -236,6 +236,30 @@ namespace Concierge.Character
         }
 
         /// <summary>
+        /// Retrieves the Warlock level of the character based on their class disposition.
+        /// </summary>
+        /// <returns>
+        /// The Warlock level of the character, or 0 if the character does not have a Warlock class.
+        /// </returns>
+        public int GetWarlockLevel()
+        {
+            if (this.Disposition.Class1.Name.Contains("Warlock", System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.Disposition.Class1.Level;
+            }
+            else if (this.Disposition.Class2.Name.Contains("Warlock", System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.Disposition.Class2.Level;
+            }
+            else if (this.Disposition.Class3.Name.Contains("Warlock", System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.Disposition.Class3.Level;
+            }
+
+            return 0;
+        }
+
+        /// <summary>
         /// Determines whether the specified object is equal to the current object.
         /// </summary>
         /// <param name="obj">The object to compare with the current object.</param>

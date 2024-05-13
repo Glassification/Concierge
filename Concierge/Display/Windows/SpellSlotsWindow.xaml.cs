@@ -25,7 +25,6 @@ namespace Concierge.Display.Windows
             this.SpellSlots = new SpellSlots();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetMouseOverEvents(this.UsedPactUpDown);
             this.SetMouseOverEvents(this.Used1UpDown);
             this.SetMouseOverEvents(this.Used2UpDown);
             this.SetMouseOverEvents(this.Used3UpDown);
@@ -35,7 +34,6 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.Used7UpDown);
             this.SetMouseOverEvents(this.Used8UpDown);
             this.SetMouseOverEvents(this.Used9UpDown);
-            this.SetMouseOverEvents(this.TotalPactUpDown);
             this.SetMouseOverEvents(this.Total1UpDown);
             this.SetMouseOverEvents(this.Total2UpDown);
             this.SetMouseOverEvents(this.Total3UpDown);
@@ -95,7 +93,6 @@ namespace Concierge.Display.Windows
 
         private void FillUsed()
         {
-            this.UsedPactUpDown.Value = this.SpellSlots.PactUsed;
             this.Used1UpDown.Value = this.SpellSlots.FirstUsed;
             this.Used2UpDown.Value = this.SpellSlots.SecondUsed;
             this.Used3UpDown.Value = this.SpellSlots.ThirdUsed;
@@ -109,7 +106,6 @@ namespace Concierge.Display.Windows
 
         private void FillTotal()
         {
-            this.TotalPactUpDown.Value = this.SpellSlots.PactTotal;
             this.Total1UpDown.Value = this.SpellSlots.FirstTotal;
             this.Total2UpDown.Value = this.SpellSlots.SecondTotal;
             this.Total3UpDown.Value = this.SpellSlots.ThirdTotal;
@@ -125,7 +121,6 @@ namespace Concierge.Display.Windows
         {
             var oldItem = this.SpellSlots.DeepCopy();
 
-            this.SpellSlots.PactUsed = this.UsedPactUpDown.Value;
             this.SpellSlots.FirstUsed = this.Used1UpDown.Value;
             this.SpellSlots.SecondUsed = this.Used2UpDown.Value;
             this.SpellSlots.ThirdUsed = this.Used3UpDown.Value;
@@ -136,7 +131,6 @@ namespace Concierge.Display.Windows
             this.SpellSlots.EighthUsed = this.Used8UpDown.Value;
             this.SpellSlots.NinethUsed = this.Used9UpDown.Value;
 
-            this.SpellSlots.PactTotal = this.TotalPactUpDown.Value;
             this.SpellSlots.FirstTotal = this.Total1UpDown.Value;
             this.SpellSlots.SecondTotal = this.Total2UpDown.Value;
             this.SpellSlots.ThirdTotal = this.Total3UpDown.Value;
@@ -152,7 +146,6 @@ namespace Concierge.Display.Windows
 
         private void SetSpentLimit()
         {
-            this.UsedPactUpDown.Maximum = this.TotalPactUpDown.Value;
             this.Used1UpDown.Maximum = this.Total1UpDown.Value;
             this.Used2UpDown.Maximum = this.Total2UpDown.Value;
             this.Used3UpDown.Maximum = this.Total3UpDown.Value;

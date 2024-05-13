@@ -104,7 +104,6 @@ namespace Concierge.Leveling
             {
                 var spellSlotDto = LevelingMap.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level);
 
-                spellSlots.PactTotal += spellSlotDto.Pact;
                 spellSlots.FirstTotal += spellSlotDto.First;
                 spellSlots.SecondTotal += spellSlotDto.Second;
                 spellSlots.ThirdTotal += spellSlotDto.Third;

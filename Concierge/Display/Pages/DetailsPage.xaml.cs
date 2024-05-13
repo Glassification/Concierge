@@ -140,7 +140,7 @@ namespace Concierge.Display.Pages
             var conditions = character.Vitality.Status.ActiveConditions();
             foreach (var condition in conditions)
             {
-                this.ConditionsDataGrid.Items.Add(condition.Value);
+                this.ConditionsDataGrid.Items.Add(condition);
             }
 
             if (character.Vitality.Status.Exhaustion.IsAfflicted())

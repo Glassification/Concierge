@@ -4,6 +4,7 @@
 
 namespace Concierge.Display.Windows
 {
+    using System;
     using System.IO;
     using System.Windows;
     using System.Windows.Controls;
@@ -144,7 +145,7 @@ namespace Concierge.Display.Windows
 
         private bool IsValidImage()
         {
-            if (this.base64.IsNullOrWhiteSpace())
+            if (this.base64.IsNullOrWhiteSpace() && (this.UseCustomImageCheckBox.IsChecked ?? false))
             {
                 ConciergeMessageBox.Show(
                     "Please select an image, or disable custom images before continuing.",
@@ -160,14 +161,22 @@ namespace Concierge.Display.Windows
         private void OpenImageButton_Click(object sender, RoutedEventArgs e)
         {
             var fileName = this.fileAccessService.OpenFile((int)ImageFiltersIndex.Png, FileConstants.ImageOpenFilter, ImageFiltersIndex.Png.ToString().ToLower());
-
-            if (!fileName.IsNullOrWhiteSpace())
+            if (fileName.IsNullOrWhiteSpace())
             {
-                this.ImageNameTextBox.Text = Path.GetFileName(fileName);
-                this.base64 = this.imageEncoding.Encode(fileName);
-                this.HorizontalPreview.Source = this.imageEncoding.Decode(this.base64);
-                this.VerticalPreview.Source = this.imageEncoding.Decode(this.base64);
+                return;
             }
+
+            var base64 = this.imageEncoding.Encode(fileName);
+            var image = this.imageEncoding.Decode(base64);
+            if (image is null)
+            {
+                return;
+            }
+
+            this.HorizontalPreview.Source = image;
+            this.VerticalPreview.Source = image;
+            this.ImageNameTextBox.Text = Path.GetFileName(fileName);
+            this.base64 = base64;
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

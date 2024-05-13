@@ -133,7 +133,7 @@ namespace Concierge.Tools.DiceRoller
         public static int RollHitDie(Dice hitDie)
         {
             var val = 1;
-            for (int i = 0; i < RollLimit && val != 1; i++)
+            for (int i = 0; i < RollLimit && val == 1; i++)
             {
                 val = random.Next(1, (int)hitDie + 1);
             }

@@ -323,10 +323,10 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.RelativeScale, Brushes.LightBlue, Stretch.None),
-                new (PackIconKind.RelativeScale, Brushes.Goldenrod, Stretch.Fill),
-                new (PackIconKind.RelativeScale, Brushes.OrangeRed, Stretch.Uniform),
-                new (PackIconKind.RelativeScale, Brushes.IndianRed, Stretch.UniformToFill),
+                new (PackIconKind.AspectRatio, Brushes.LightBlue, Stretch.None),
+                new (PackIconKind.AspectRatio, Brushes.Goldenrod, Stretch.Fill),
+                new (PackIconKind.AspectRatio, Brushes.OrangeRed, Stretch.Uniform),
+                new (PackIconKind.AspectRatio, Brushes.IndianRed, Stretch.UniformToFill),
             ];
         }
 

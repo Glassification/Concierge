@@ -166,9 +166,9 @@
                             <Image
                                 x:Name="HorizontalPreview"/>
                             <Border
-                                Margin="0"
+                                Margin="-5"
                                 BorderBrush="#1E2636"
-                                BorderThickness="5"
+                                BorderThickness="10"
                                 CornerRadius="10"/>
                         </Grid>
                     </Border>

@@ -366,9 +366,7 @@ namespace Concierge.Display
             var oldCompanionHitDice = character.Companion.HitDice.DeepCopy();
             var oldConcentratedSpell = character.SpellCasting.ConcentratedSpell;
 
-            character.SpellCasting.SpellSlots.PactUsed = 0;
             character.Companion.RollShortRestHitDice(character.Companion.HitDice.GetFirstAvailable(), character.Companion.Attributes.Constitution);
-
             if (character.Disposition.Class1.IsValid)
             {
                 character.Vitality.RollShortRestHitDice(HitDice.GetHitDice(character.Disposition.Class1.Name), character.Attributes.Constitution);
@@ -382,6 +380,12 @@ namespace Concierge.Display
             if (character.Disposition.Class3.IsValid)
             {
                 character.Vitality.RollShortRestHitDice(HitDice.GetHitDice(character.Disposition.Class3.Name), character.Attributes.Constitution);
+            }
+
+            var warlockLevel = character.GetWarlockLevel();
+            if (warlockLevel > 0)
+            {
+                character.SpellCasting.SpellSlots.ShortRest(warlockLevel);
             }
 
             Program.UndoRedoService.AddCommand(

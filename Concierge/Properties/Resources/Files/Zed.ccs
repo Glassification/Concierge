@@ -1,0 +1,490 @@
+{
+  "Character": {
+    "Attributes": {
+      "Strength": {
+        "Proficiency": false,
+        "SaveOverride": 0,
+        "Score": 10,
+        "Type": 0
+      },
+      "Dexterity": {
+        "Proficiency": false,
+        "SaveOverride": 0,
+        "Score": 10,
+        "Type": 1
+      },
+      "Constitution": {
+        "Proficiency": false,
+        "SaveOverride": 0,
+        "Score": 12,
+        "Type": 2
+      },
+      "Intelligence": {
+        "Proficiency": false,
+        "SaveOverride": 0,
+        "Score": 10,
+        "Type": 3
+      },
+      "Wisdom": {
+        "Proficiency": false,
+        "SaveOverride": 0,
+        "Score": 10,
+        "Type": 4
+      },
+      "Charisma": {
+        "Proficiency": false,
+        "SaveOverride": 0,
+        "Score": 10,
+        "Type": 5
+      },
+      "Athletics": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 1,
+        "SkillOverride": 4
+      },
+      "Acrobatics": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 2,
+        "SkillOverride": 4
+      },
+      "SleightOfHand": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 3,
+        "SkillOverride": 4
+      },
+      "Stealth": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 4,
+        "SkillOverride": 4
+      },
+      "Arcana": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 5,
+        "SkillOverride": 4
+      },
+      "History": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 6,
+        "SkillOverride": 4
+      },
+      "Investigation": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 7,
+        "SkillOverride": 4
+      },
+      "Nature": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 8,
+        "SkillOverride": 4
+      },
+      "Religion": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 9,
+        "SkillOverride": 4
+      },
+      "AnimalHandling": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 10,
+        "SkillOverride": 4
+      },
+      "Insight": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 11,
+        "SkillOverride": 4
+      },
+      "Medicine": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 12,
+        "SkillOverride": 4
+      },
+      "Perception": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 13,
+        "SkillOverride": 4
+      },
+      "Survival": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 14,
+        "SkillOverride": 4
+      },
+      "Deception": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 15,
+        "SkillOverride": 4
+      },
+      "Intimidation": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 16,
+        "SkillOverride": 4
+      },
+      "Performance": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 17,
+        "SkillOverride": 4
+      },
+      "Persuasion": {
+        "Expertise": false,
+        "Proficiency": false,
+        "Type": 18,
+        "SkillOverride": 4
+      }
+    },
+    "Companion": {
+      "Attributes": {
+        "Strength": 10,
+        "Dexterity": 10,
+        "Constitution": 10,
+        "Intelligence": 10,
+        "Wisdom": 10,
+        "Charisma": 10
+      },
+      "CompanionImage": {
+        "Encoded": "",
+        "Name": "",
+        "Stretch": 0,
+        "UseCustomImage": false
+      },
+      "Health": {
+        "MaxHealth": 0,
+        "BaseHealth": 0,
+        "TemporaryHealth": 0
+      },
+      "HitDice": {
+        "TotalD6": 0,
+        "TotalD8": 0,
+        "TotalD10": 0,
+        "TotalD12": 0,
+        "SpentD6": 0,
+        "SpentD8": 0,
+        "SpentD10": 0,
+        "SpentD12": 0
+      },
+      "Properties": {
+        "ArmorClass": 0,
+        "CreatureSize": 4,
+        "Initiative": 0,
+        "Movement": 0,
+        "Name": "",
+        "Perception": 0,
+        "Vision": 0
+      },
+      "Weapons": []
+    },
+    "Detail": {
+      "Abilities": [],
+      "Appearance": {
+        "Gender": "",
+        "Age": 0,
+        "Height": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 0
+        },
+        "Weight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
+        "SkinColour": {
+          "A": 85,
+          "R": 255,
+          "G": 0,
+          "B": 0,
+          "Hex": "#FF0000",
+          "IsValid": false,
+          "IsCustom": false,
+          "Name": "Not Set",
+          "Id": "b142e385-d39e-4158-8424-0b4d32e5c385"
+        },
+        "EyeColour": {
+          "A": 85,
+          "R": 255,
+          "G": 0,
+          "B": 0,
+          "Hex": "#FF0000",
+          "IsValid": false,
+          "IsCustom": false,
+          "Name": "Not Set",
+          "Id": "871eb3e7-a6b6-4d6b-aef0-90fda050316e"
+        },
+        "HairColour": {
+          "A": 85,
+          "R": 255,
+          "G": 0,
+          "B": 0,
+          "Hex": "#FF0000",
+          "IsValid": false,
+          "IsCustom": false,
+          "Name": "Not Set",
+          "Id": "6b327b1a-c3b8-4b1b-a8f4-d8380b45a365"
+        },
+        "DistinguishingMarks": ""
+      },
+      "Languages": [],
+      "Personality": {
+        "Trait1": "",
+        "Trait2": "",
+        "Ideal": "",
+        "Bond": "",
+        "Flaw": "",
+        "Notes": ""
+      },
+      "Portrait": {
+        "Encoded": "",
+        "Name": "",
+        "Stretch": 0,
+        "UseCustomImage": false
+      },
+      "Proficiencies": [],
+      "Senses": {
+        "InitiativeBonus": 0,
+        "Inspiration": false,
+        "PerceptionBonus": 0,
+        "BaseMovement": 30,
+        "MovementBonus": 0,
+        "Vision": 0
+      }
+    },
+    "Disposition": {
+      "Alignment": "",
+      "Background": "Charlatan",
+      "Class1": {
+        "Name": "Warlock",
+        "Subclass": "The Archfey",
+        "ClassNumber": 1,
+        "Level": 0
+      },
+      "Class2": {
+        "Name": "",
+        "Subclass": "",
+        "ClassNumber": 2,
+        "Level": 0
+      },
+      "Class3": {
+        "Name": "",
+        "Subclass": "",
+        "ClassNumber": 3,
+        "Level": 0
+      },
+      "Experience": "",
+      "Name": "Zed",
+      "Race": {
+        "Name": "Elf",
+        "Subrace": "Drow"
+      }
+    },
+    "Equipment": {
+      "Augmentation": [],
+      "Defense": {
+        "Armor": {
+          "Ac": 0,
+          "Id": "a50e2dd9-cb1e-426f-8f3e-f7a0e5f1ece7",
+          "IsCustom": false,
+          "Name": "",
+          "Stealth": 0,
+          "Strength": 0,
+          "Type": 0,
+          "Weight": {
+            "Value": 0.0,
+            "UnitType": 0,
+            "Measurement": 1
+          }
+        },
+        "ArmorStatus": 1,
+        "MagicAc": 0,
+        "MiscAc": 0,
+        "Shield": "",
+        "ShieldAc": 0,
+        "ShieldWeight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        }
+      },
+      "Inventory": [],
+      "Weapons": []
+    },
+    "Journal": {
+      "Chapters": []
+    },
+    "SpellCasting": {
+      "MagicalClasses": [
+        {
+          "Ability": 6,
+          "Id": "e1bb9069-0c3b-4a6b-bcb7-390980dfa525",
+          "IsCustom": false,
+          "KnownCantrips": 0,
+          "KnownSpells": 0,
+          "Level": 0,
+          "Name": "Warlock",
+          "SpellSlots": 0
+        }
+      ],
+      "Spells": [],
+      "SpellSlots": {
+        "FirstTotal": 0,
+        "SecondTotal": 0,
+        "ThirdTotal": 0,
+        "FourthTotal": 0,
+        "FifthTotal": 0,
+        "SixthTotal": 0,
+        "SeventhTotal": 0,
+        "EighthTotal": 0,
+        "NinethTotal": 0,
+        "FirstUsed": 0,
+        "SecondUsed": 0,
+        "ThirdUsed": 0,
+        "FourthUsed": 0,
+        "FifthUsed": 0,
+        "SixthUsed": 0,
+        "SeventhUsed": 0,
+        "EighthUsed": 0,
+        "NinethUsed": 0
+      }
+    },
+    "Vitality": {
+      "ClassResources": [],
+      "DeathSavingThrows": {
+        "CurrentDeathSave": 0,
+        "DeathSaves": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "Health": {
+        "MaxHealth": 0,
+        "BaseHealth": 0,
+        "TemporaryHealth": 0
+      },
+      "HitDice": {
+        "TotalD6": 0,
+        "TotalD8": 0,
+        "TotalD10": 0,
+        "TotalD12": 0,
+        "SpentD6": 0,
+        "SpentD8": 0,
+        "SpentD10": 0,
+        "SpentD12": 0
+      },
+      "Status": {
+        "Blinded": {
+          "Status": 0,
+          "Type": 1,
+          "Description": "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage."
+        },
+        "Charmed": {
+          "Status": 0,
+          "Type": 2,
+          "Description": "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage."
+        },
+        "Death": {
+          "Status": 0,
+          "Type": 3,
+          "Description": "You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP."
+        },
+        "Deafened": {
+          "Status": 0,
+          "Type": 4,
+          "Description": "You cannot hear and automatically fails any ability check that requires hearing."
+        },
+        "Exhaustion": {
+          "Description": "",
+          "Status": 0,
+          "Value": "Normal -  ."
+        },
+        "Frightened": {
+          "Status": 0,
+          "Type": 5,
+          "Description": "You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source."
+        },
+        "Grappled": {
+          "Status": 0,
+          "Type": 6,
+          "Description": "Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away."
+        },
+        "Incapacitated": {
+          "Status": 0,
+          "Type": 7,
+          "Description": "You Cannot take Actions or reactions."
+        },
+        "Invisible": {
+          "Status": 0,
+          "Type": 8,
+          "Description": "You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage."
+        },
+        "Paralyzed": {
+          "Status": 0,
+          "Type": 9,
+          "Description": "You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit."
+        },
+        "Petrified": {
+          "Status": 0,
+          "Type": 10,
+          "Description": "You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease."
+        },
+        "Poisoned": {
+          "Status": 0,
+          "Type": 11,
+          "Description": "You have disadvantage on Attack rolls and Ability Checks."
+        },
+        "Prone": {
+          "Status": 0,
+          "Type": 12,
+          "Description": "Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage."
+        },
+        "Restrained": {
+          "Status": 0,
+          "Type": 13,
+          "Description": "Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage."
+        },
+        "Stunned": {
+          "Status": 0,
+          "Type": 14,
+          "Description": "You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage."
+        },
+        "Unconscious": {
+          "Status": 0,
+          "Type": 15,
+          "Description": "You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit."
+        },
+        "StatusEffects": []
+      }
+    },
+    "Wealth": {
+      "Copper": 0,
+      "Silver": 0,
+      "Electrum": 0,
+      "Gold": 0,
+      "Platinum": 0
+    }
+  },
+  "Hash": "0F352370BA34DC7D4F919E7D715EC5E9849FEE5F33FC288F17BF8DE4DDF7FB38",
+  "OriginalCreationDate": "Monday, 13 May 2024 04:58:42 PM",
+  "LastSaveDate": "2024-05-13T17:01:49.6379119-05:00",
+  "Version": {
+    "Major": 5,
+    "Minor": 8,
+    "Patch": 7
+  },
+  "IsEmpty": false
+}
