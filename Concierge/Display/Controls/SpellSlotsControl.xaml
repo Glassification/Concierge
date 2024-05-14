@@ -101,7 +101,7 @@
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="1st"
-                                    FontSize="17"
+                                    FontSize="18"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
@@ -175,7 +175,7 @@
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="2nd"
-                                    FontSize="17"
+                                    FontSize="18"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
@@ -249,7 +249,7 @@
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="3rd"
-                                    FontSize="17"
+                                    FontSize="18"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
@@ -323,7 +323,7 @@
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="4th"
-                                    FontSize="17"
+                                    FontSize="18"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
@@ -397,7 +397,7 @@
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="5th"
-                                    FontSize="17"
+                                    FontSize="18"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
@@ -471,7 +471,7 @@
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="6th"
-                                    FontSize="17"
+                                    FontSize="18"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
@@ -545,7 +545,7 @@
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="7th"
-                                    FontSize="17"
+                                    FontSize="18"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
@@ -619,7 +619,7 @@
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="8th"
-                                    FontSize="17"
+                                    FontSize="18"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
@@ -693,7 +693,7 @@
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="9th"
-                                    FontSize="17"
+                                    FontSize="18"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>

@@ -2739,7 +2739,6 @@
         }
       ],
       "SpellSlots": {
-        "PactTotal": 0,
         "FirstTotal": 4,
         "SecondTotal": 2,
         "ThirdTotal": 0,
@@ -2749,7 +2748,6 @@
         "SeventhTotal": 0,
         "EighthTotal": 0,
         "NinethTotal": 0,
-        "PactUsed": 0,
         "FirstUsed": 0,
         "SecondUsed": 0,
         "ThirdUsed": 0,
@@ -2899,13 +2897,13 @@
       "Platinum": 500
     }
   },
-  "Hash": "9B38B1DE06FC64833CD7CF7E25FE99C9F1E6E62035EEF524ACF9BD29BE916BC5",
+  "Hash": "4FCDE608DDCBE22395C6628494FBCD34A2D3CA8BFAED43E72C0CD7830D2DF2C5",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-05-12T18:59:46.6010637-05:00",
+  "LastSaveDate": "2024-05-13T18:51:52.6472022-05:00",
   "Version": {
     "Major": 5,
     "Minor": 8,
-    "Patch": 7
+    "Patch": 8
   },
   "IsEmpty": false
 }

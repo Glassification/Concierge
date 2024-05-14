@@ -838,9 +838,6 @@
   <data name="SpellSlotsWindow_Total9UpDown" xml:space="preserve">
     <value>The maximum amount of usable 9th level spells.</value>
   </data>
-  <data name="SpellSlotsWindow_TotalPactUpDown" xml:space="preserve">
-    <value>The maximum amount of usable Pact spells.</value>
-  </data>
   <data name="SpellSlotsWindow_Used1UpDown" xml:space="preserve">
     <value>The number of remaining 1st level spell slots.</value>
   </data>
@@ -867,9 +864,6 @@
   </data>
   <data name="SpellSlotsWindow_Used9UpDown" xml:space="preserve">
     <value>The number of remaining 9th level spell slots.</value>
-  </data>
-  <data name="SpellSlotsWindow_UsedPactUpDown" xml:space="preserve">
-    <value>The number of remaining Pact spell slots.</value>
   </data>
   <data name="SpellWindow_AreaTextBox" xml:space="preserve">
     <value>Typically will be one of five different shapes: cone, cube, cylinder, line, or sphere.</value>

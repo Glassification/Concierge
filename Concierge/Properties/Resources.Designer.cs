@@ -2332,15 +2332,6 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The maximum amount of usable Pact spells..
-        /// </summary>
-        internal static string SpellSlotsWindow_TotalPactUpDown {
-            get {
-                return ResourceManager.GetString("SpellSlotsWindow_TotalPactUpDown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The number of remaining 1st level spell slots..
         /// </summary>
         internal static string SpellSlotsWindow_Used1UpDown {
@@ -2418,15 +2409,6 @@ namespace Concierge.Properties {
         internal static string SpellSlotsWindow_Used9UpDown {
             get {
                 return ResourceManager.GetString("SpellSlotsWindow_Used9UpDown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of remaining Pact spell slots..
-        /// </summary>
-        internal static string SpellSlotsWindow_UsedPactUpDown {
-            get {
-                return ResourceManager.GetString("SpellSlotsWindow_UsedPactUpDown", resourceCulture);
             }
         }
         

@@ -531,8 +531,8 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.TapeMeasure, ConciergeBrushes.Deer, UnitTypes.Imperial),
-                new (PackIconKind.TapeMeasure, ConciergeBrushes.Mint, UnitTypes.Metric),
+                new (PackIconKind.WeightLb, ConciergeBrushes.Deer, UnitTypes.Imperial),
+                new (PackIconKind.WeightKg, ConciergeBrushes.Mint, UnitTypes.Metric),
             ];
         }
 
