@@ -35,6 +35,11 @@ namespace Concierge.Character.Equipable
         /// </summary>
         public int Ac { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether a characters full DEX modifier should be used.
+        /// </summary>
+        public bool FullDex { get; set; }
+
         public Guid Id { get; set; }
 
         public bool IsCustom { get; set; }
@@ -93,6 +98,7 @@ namespace Concierge.Character.Equipable
                 Stealth = this.Stealth,
                 Id = this.Id,
                 IsCustom = this.IsCustom,
+                FullDex = this.FullDex,
             };
         }
 

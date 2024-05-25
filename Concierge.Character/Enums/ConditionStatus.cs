@@ -12,6 +12,7 @@ namespace Concierge.Character.Enums
         Normal,
         Afflicted,
         Encumbered,
+        ArmorEncumbered,
         HeavilyEncumbered,
         Exhaustion1,
         Exhaustion2,

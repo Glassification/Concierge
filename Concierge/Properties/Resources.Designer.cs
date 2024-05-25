@@ -297,6 +297,15 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Heavier armors usually limit the contribution of a characters DEX modifier. Some armor traits might allow the full bonus to be applied..
+        /// </summary>
+        internal static string ArmorWindow_FullAcCheckBox {
+            get {
+                return ResourceManager.GetString("ArmorWindow_FullAcCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total of any magic bonuses that affect Armor Class..
         /// </summary>
         internal static string ArmorWindow_MagicArmorClassUpDown {
@@ -329,15 +338,6 @@ namespace Concierge.Properties {
         internal static string ArmorWindow_ShieldTextBox {
             get {
                 return ResourceManager.GetString("ArmorWindow_ShieldTextBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Generally weighs more than 0..
-        /// </summary>
-        internal static string ArmorWindow_ShieldWeightUpDown {
-            get {
-                return ResourceManager.GetString("ArmorWindow_ShieldWeightUpDown", resourceCulture);
             }
         }
         

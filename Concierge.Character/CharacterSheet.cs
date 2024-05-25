@@ -98,21 +98,8 @@ namespace Concierge.Character
             {
                 var weight = 0.0;
 
-                foreach (var item in this.Equipment.Inventory)
-                {
-                    if (!item.IgnoreWeight)
-                    {
-                        weight += item.Weight.Value * item.Amount;
-                    }
-                }
-
-                foreach (var weapon in this.Equipment.Weapons)
-                {
-                    if (!weapon.IgnoreWeight)
-                    {
-                        weight += weapon.Weight.Value;
-                    }
-                }
+                this.Equipment.Inventory.ForEach(x => weight += x.IgnoreWeight ? 0 : x.Weight.Value * x.Amount);
+                this.Equipment.Weapons.ForEach(y => weight += y.IgnoreWeight ? 0 : y.Weight.Value);
 
                 weight += this.Equipment.Defense.TotalWeight;
 
@@ -129,7 +116,7 @@ namespace Concierge.Character
         /// Gets the encumbrance status of the character.
         /// </summary>
         [JsonIgnore]
-        public ConditionStatus Encumbrance
+        public Encumbrance Encumbrance
         {
             get
             {
@@ -137,7 +124,7 @@ namespace Concierge.Character
 
                 if (this.Equipment.Defense.Armor.Strength > this.Attributes.Strength.Score)
                 {
-                    encumbrance = ConditionStatus.Encumbered;
+                    encumbrance = ConditionStatus.ArmorEncumbered;
                 }
 
                 if (AppSettingsManager.UserSettings.UseEncumbrance)
@@ -153,7 +140,7 @@ namespace Concierge.Character
                     }
                 }
 
-                return encumbrance;
+                return new Encumbrance(encumbrance);
             }
         }
 
@@ -200,39 +187,31 @@ namespace Concierge.Character
         /// <returns>The movement speed of the character.</returns>
         public int GetMovement(int baseMovement = -1)
         {
+            if (this.HasNoMovement())
+            {
+                return 0;
+            }
+
             if (baseMovement < 0)
             {
                 baseMovement = this.Detail.Senses.BaseMovement + this.Detail.Senses.MovementBonus;
             }
 
-            var grappled = this.Vitality.Status.Grappled;
-            var restrained = this.Vitality.Status.Restrained;
-            if (this.Vitality.Status.Exhaustion.Status == ConditionStatus.Exhaustion5 ||
-                grappled.Status == ConditionStatus.Afflicted ||
-                restrained.Status == ConditionStatus.Afflicted)
+            if (this.Encumbrance.Status == ConditionStatus.Encumbered || this.Encumbrance.Status == ConditionStatus.ArmorEncumbered)
             {
-                return 0;
+                baseMovement -= 10;
             }
-            else
+            else if (this.Encumbrance.Status == ConditionStatus.HeavilyEncumbered)
             {
-                if (this.Encumbrance == ConditionStatus.Encumbered)
-                {
-                    baseMovement -= 10;
-                }
-                else if (this.Encumbrance == ConditionStatus.HeavilyEncumbered)
-                {
-                    baseMovement -= 20;
-                }
-
-                if (this.Vitality.Status.Exhaustion.Status == ConditionStatus.Exhaustion2 ||
-                    this.Vitality.Status.Exhaustion.Status == ConditionStatus.Exhaustion3 ||
-                    this.Vitality.Status.Exhaustion.Status == ConditionStatus.Exhaustion4)
-                {
-                    baseMovement /= 2;
-                }
-
-                return baseMovement;
+                baseMovement -= 20;
             }
+
+            if (this.IsExhausted())
+            {
+                baseMovement /= 2;
+            }
+
+            return baseMovement;
         }
 
         /// <summary>
@@ -304,6 +283,22 @@ namespace Concierge.Character
                 Vitality = this.Vitality.DeepCopy(),
                 Wealth = this.Wealth.DeepCopy(),
             };
+        }
+
+        private bool HasNoMovement()
+        {
+            return
+                this.Vitality.Status.Exhaustion.Status == ConditionStatus.Exhaustion5 ||
+                this.Vitality.Status.Grappled.Status == ConditionStatus.Afflicted ||
+                this.Vitality.Status.Restrained.Status == ConditionStatus.Afflicted;
+        }
+
+        private bool IsExhausted()
+        {
+            return
+                this.Vitality.Status.Exhaustion.Status == ConditionStatus.Exhaustion2 ||
+                this.Vitality.Status.Exhaustion.Status == ConditionStatus.Exhaustion3 ||
+                this.Vitality.Status.Exhaustion.Status == ConditionStatus.Exhaustion4;
         }
     }
 }

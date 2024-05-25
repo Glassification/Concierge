@@ -13,6 +13,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Data;
     using Concierge.Data.Units;
     using Concierge.Display.Components;
@@ -45,10 +46,10 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.StealthComboBox);
             this.SetMouseOverEvents(this.ShieldTextBox, this.ShieldTextBackground);
             this.SetMouseOverEvents(this.ShieldArmorClassUpDown);
-            this.SetMouseOverEvents(this.ShieldWeightUpDown);
             this.SetMouseOverEvents(this.MiscArmorClassUpDown);
             this.SetMouseOverEvents(this.MagicArmorClassUpDown);
             this.SetMouseOverEvents(this.StatusComboBox);
+            this.SetMouseOverEvents(this.FullAcCheckBox);
         }
 
         public override string HeaderText => "Edit Defense";
@@ -97,6 +98,8 @@ namespace Concierge.Display.Windows
 
         private void FillFields(Armor armor)
         {
+            this.FullAcCheckBox.UpdatingValue();
+
             this.ArmorNameComboBox.Text = armor.Name;
             this.TypeComboBox.Text = armor.Type.ToString();
             this.ArmorClassUpDown.Value = armor.Ac;
@@ -104,14 +107,14 @@ namespace Concierge.Display.Windows
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.StrengthUpDown.Value = armor.Strength;
             this.StealthComboBox.Text = armor.Stealth.ToString();
-
+            this.FullAcCheckBox.IsChecked = armor.FullDex;
             this.ShieldTextBox.Text = this.SelectedDefense.Shield;
             this.ShieldArmorClassUpDown.Value = this.SelectedDefense.ShieldAc;
-            this.ShieldWeightUpDown.Value = this.SelectedDefense.ShieldWeight.Value;
-            this.ShieldWeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.MiscArmorClassUpDown.Value = this.SelectedDefense.MiscAc;
             this.MagicArmorClassUpDown.Value = this.SelectedDefense.MagicAc;
             this.StatusComboBox.Text = this.SelectedDefense.ArmorStatus.ToString();
+
+            this.FullAcCheckBox.UpdatedValue();
         }
 
         private void UpdateDefense(Defense defense)
@@ -124,9 +127,9 @@ namespace Concierge.Display.Windows
             defense.Armor.Weight.Value = this.WeightUpDown.Value;
             defense.Armor.Strength = this.StrengthUpDown.Value;
             defense.Armor.Stealth = this.StealthComboBox.Text.ToEnum<ArmorStealth>();
+            defense.Armor.FullDex = this.FullAcCheckBox.IsChecked ?? false;
             defense.Shield = this.ShieldTextBox.Text;
             defense.ShieldAc = this.ShieldArmorClassUpDown.Value;
-            defense.ShieldWeight.Value = this.ShieldWeightUpDown.Value;
             defense.MiscAc = this.MiscArmorClassUpDown.Value;
             defense.MagicAc = this.MagicArmorClassUpDown.Value;
             defense.ArmorStatus = this.StatusComboBox.Text.ToEnum<ArmorStatus>();
@@ -142,6 +145,7 @@ namespace Concierge.Display.Windows
             this.ArmorNameComboBox.Text = name;
             this.TypeComboBox.Text = ArmorType.None.ToString();
             this.ArmorClassUpDown.Value = 0;
+            this.FullAcCheckBox.IsChecked = false;
             this.WeightUpDown.Value = 0.0;
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.StrengthUpDown.Value = 0;
@@ -155,6 +159,7 @@ namespace Concierge.Display.Windows
                 Name = this.ArmorNameComboBox.Text,
                 Type = this.TypeComboBox.Text.ToEnum<ArmorType>(),
                 Ac = this.ArmorClassUpDown.Value,
+                FullDex = this.FullAcCheckBox.IsChecked ?? false,
                 Weight = new UnitDouble(this.WeightUpDown.Value, UnitTypes.Imperial, Measurements.Weight),
                 Strength = this.StrengthUpDown.Value,
                 Stealth = this.StealthComboBox.Text.ToEnum<ArmorStealth>(),
@@ -211,6 +216,24 @@ namespace Concierge.Display.Windows
             Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.ArmorNameComboBox.ItemsSource = DefaultItems;
+        }
+
+        private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.TypeComboBox.SelectedItem is not ComboBoxItemControl item)
+            {
+                return;
+            }
+
+            var type = item.Text.ToEnum<ArmorType>();
+            var enabled = type != ArmorType.None && type != ArmorType.Light;
+            if (!enabled)
+            {
+                this.FullAcCheckBox.IsChecked = false;
+            }
+
+            DisplayUtility.SetControlEnableState(this.FullAcCheckBox, enabled);
+            DisplayUtility.SetControlEnableState(this.FullAcLabel, enabled);
         }
     }
 }

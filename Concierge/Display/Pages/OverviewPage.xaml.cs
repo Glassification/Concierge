@@ -8,10 +8,13 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media;
 
+    using Concierge.Character;
     using Concierge.Character.Aspects;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Display;
@@ -57,6 +60,8 @@ namespace Concierge.Display.Pages
             this.VisionLabel.Value = character.Detail.Senses.Vision.PascalCase();
             this.MovementLabel.Value = character.GetMovement().ToString();
             this.InspirationLabel.IconKind = character.Detail.Senses.Inspiration ? PackIconKind.WeatherSunset : PackIconKind.None;
+
+            this.MovementLabel.SetValueColor(GetMovementColor(character));
         }
 
         public void DrawAttributes()
@@ -142,6 +147,28 @@ namespace Concierge.Display.Pages
         public void Edit(object itemToEdit)
         {
             throw new NotImplementedException();
+        }
+
+        private static SolidColorBrush GetMovementColor(CharacterSheet character)
+        {
+            var baseMovement = character.Detail.Senses.BaseMovement;
+            var movement = character.GetMovement();
+            if (movement == 0)
+            {
+                return Brushes.DarkGray;
+            }
+
+            if (movement < baseMovement)
+            {
+                return Brushes.IndianRed;
+            }
+
+            if (movement > baseMovement)
+            {
+                return ConciergeBrushes.Mint;
+            }
+
+            return Brushes.White;
         }
 
         private void DrawDeathSavingThrows()

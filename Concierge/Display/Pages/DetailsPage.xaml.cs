@@ -145,12 +145,12 @@ namespace Concierge.Display.Pages
 
             if (character.Vitality.Status.Exhaustion.IsAfflicted())
             {
-                this.ConditionsDataGrid.Items.Add(character.Vitality.Status.Exhaustion.Value);
+                this.ConditionsDataGrid.Items.Add(character.Vitality.Status.Exhaustion);
             }
 
-            if (character.Encumbrance != ConditionStatus.Normal)
+            if (character.Encumbrance.Status != ConditionStatus.Normal)
             {
-                this.ConditionsDataGrid.Items.Add($"{character.Encumbrance.PascalCase()} - {ConditionDescriptions.Encumbered}");
+                this.ConditionsDataGrid.Items.Add(character.Encumbrance);
             }
         }
 
@@ -458,6 +458,7 @@ namespace Concierge.Display.Pages
                 this.Window_ApplyChanges,
                 ConciergePage.Details);
             this.DrawDefense();
+            this.DrawConditions();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -466,6 +467,7 @@ namespace Concierge.Display.Pages
             {
                 case nameof(ArmorWindow):
                     this.DrawDefense();
+                    this.DrawConditions();
                     break;
                 case nameof(AppearanceWindow):
                     this.DrawAppearance();

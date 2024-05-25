@@ -13,7 +13,6 @@ namespace Concierge.Character.Vitals
     /// </summary>
     public static class ConditionDescriptions
     {
-        public const string Encumbered = "A carry weight exceeding 5 and 10 times Strength will reduce speed by 10 and 20 respectively.";
         public const string Fatigued = "Exhaustion levels stack up to 6. A long rest reduces the level by 1.";
 
         private static readonly Dictionary<ConditionTypes, string> descriptions = new ()

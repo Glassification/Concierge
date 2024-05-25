@@ -8,6 +8,7 @@ namespace Concierge.Display.Controls
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     using MaterialDesignThemes.Wpf;
 
@@ -135,6 +136,11 @@ namespace Concierge.Display.Controls
                 this.LabelValue.Visibility = value ? Visibility.Collapsed : Visibility.Visible;
                 this.LabelIcon.Visibility = value ? Visibility.Visible : Visibility.Collapsed;
             }
+        }
+
+        public void SetValueColor(Brush brush)
+        {
+            this.LabelValue.Foreground = brush;
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "We need for bindings.")]

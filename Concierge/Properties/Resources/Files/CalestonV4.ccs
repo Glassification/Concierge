@@ -618,6 +618,7 @@
       "Defense": {
         "Armor": {
           "Ac": 13,
+          "FullDex": false,
           "Id": "31ccdf86-6b62-483d-b43e-8f93c5a4962b",
           "IsCustom": false,
           "Name": "Studded Leather",
@@ -634,12 +635,7 @@
         "MagicAc": 0,
         "MiscAc": 0,
         "Shield": "",
-        "ShieldAc": 0,
-        "ShieldWeight": {
-          "Value": 0.0,
-          "UnitType": 0,
-          "Measurement": 1
-        }
+        "ShieldAc": 0
       },
       "Inventory": [
         {
@@ -2897,9 +2893,9 @@
       "Platinum": 500
     }
   },
-  "Hash": "4FCDE608DDCBE22395C6628494FBCD34A2D3CA8BFAED43E72C0CD7830D2DF2C5",
+  "Hash": "818E86BAC2690C02CAA2FCD2E37B09DDCDF0065D1546C292C92341B65C4393DC",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-05-13T18:51:52.6472022-05:00",
+  "LastSaveDate": "2024-05-24T15:03:06.0946369-05:00",
   "Version": {
     "Major": 5,
     "Minor": 8,

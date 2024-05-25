@@ -53,7 +53,7 @@ namespace Concierge.Common.Extensions
         /// </summary>
         /// <param name="color">The Color object.</param>
         /// <returns>The hue value of the color.</returns>
-        public static double GetHue(this Color color)
+        public static int GetHue(this Color color)
         {
             double hue;
             var min = Math.Min(Math.Min(color.R, color.G), color.B);
@@ -66,16 +66,17 @@ namespace Concierge.Common.Extensions
 
             hue = max == color.R
                 ? (color.G - color.B) / (max - min)
-                : max == color.G ? 2 + ((color.B - color.R) / (max - min)) : 4 + ((color.R - color.G) / (max - min));
+                : max == color.G
+                    ? 2 + ((color.B - color.R) / (max - min))
+                    : 4 + ((color.R - color.G) / (max - min));
 
             hue *= 60;
-
             if (hue < 0)
             {
                 hue += 360;
             }
 
-            return Math.Round(hue);
+            return (int)Math.Round(hue);
         }
 
         /// <summary>

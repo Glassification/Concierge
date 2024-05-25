@@ -9,14 +9,14 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     mc:Ignorable="d"
     Title="Modify Armor"
-    Height="535"
+    Height="475"
     Width="800"
     Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="360"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -72,7 +72,6 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Equipped-->
@@ -114,7 +113,8 @@
                         <components:ConciergeComboBox
                             Style="{StaticResource ComboBoxStyle}"
                             x:Name="TypeComboBox"
-                            IsEditable="False"/>
+                            IsEditable="False"
+                            SelectionChanged="TypeComboBox_SelectionChanged"/>
                     </Grid>
                 </Grid>
 
@@ -122,18 +122,32 @@
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="30*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Armor Class:"/>
-                    </Grid>
+                    <components:ConciergeLabel
+                        Grid.Column="0"
+                        Text="Armor Class:"/>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDownControl x:Name="ArmorClassUpDown"/>
+                    <controls:IntegerUpDownControl
+                        Grid.Column="1"
+                        x:Name="ArmorClassUpDown"/>
+
+                    <Grid Grid.Column="2" Margin="20,0,0,0">
+                        <components:ConciergeLabel
+                            x:Name="FullAcLabel"
+                            Text="Full DEX:"
+                            FontSize="17"
+                            Margin="-20, 0, 0, 0"/>
+                        <components:ConciergeCheckBox 
+                            x:Name="FullAcCheckBox"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="0,0,10,0"
+                            Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
 
@@ -147,7 +161,7 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <TextBlock 
-                            Text="Weight:"
+                            Text="Armor Weight:"
                             Foreground="White"
                             FontSize="19"
                             HorizontalAlignment="Left"
@@ -187,41 +201,16 @@
                         <controls:IntegerUpDownControl x:Name="StrengthUpDown"/>
                     </Grid>
                 </Grid>
-
-                <!--Type-->
-                <Grid Grid.Row="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text=" Armor Stealth:"
-                            HorizontalAlignment="Left"
-                            Margin="3,0,0,0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="StealthComboBox"
-                            IsEditable="False"/>
-                    </Grid>
-                </Grid>
             </Grid>
 
             <!--Right-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="16*"/>
-                    <RowDefinition Height="16*"/>
-                    <RowDefinition Height="16*"/>
-                    <RowDefinition Height="16*"/>
-                    <RowDefinition Height="16*"/>
-                    <RowDefinition Height="16*"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Shield-->
@@ -264,39 +253,28 @@
                     </Grid>
                 </Grid>
 
-                <!--Weight-->
+                <!--Misc AC-->
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock 
-                            Text="Shield Weight:"
-                            Foreground="White"
-                            FontSize="19"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Margin="10, 12, 0, 0"/>
-                        <TextBlock 
-                            x:Name="ShieldWeightUnits"
-                            Text="Measurement"
-                            Foreground="Goldenrod"
-                            FontSize="12"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Bottom"
-                            Margin="10, 0, 0, 12"/>
-                    </Grid>
-
+                    <components:ConciergeLabel
+                        Grid.Column="0"
+                        Text="Misc / Magic AC:"/>
                     <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:DoubleUpDownControl x:Name="ShieldWeightUpDown"  Increment="0.5"/>
-                    </Grid>
+                    <controls:IntegerUpDownControl
+                        Grid.Column="1"
+                        x:Name="MiscArmorClassUpDown"/>
+                    <controls:IntegerUpDownControl
+                        Grid.Column="2"
+                        x:Name="MagicArmorClassUpDown"/>
                 </Grid>
 
-                <!--Misc AC-->
+                <!--Type-->
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
@@ -306,35 +284,21 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Misc AC:"/>
+                            Text=" Armor Stealth:"
+                            HorizontalAlignment="Left"
+                            Margin="3,0,0,0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:IntegerUpDownControl x:Name="MiscArmorClassUpDown"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="StealthComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
-                <!--Magic AC-->
                 <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Magic AC:"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDownControl x:Name="MagicArmorClassUpDown"/>
-                    </Grid>
-                </Grid>
-
-                <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>

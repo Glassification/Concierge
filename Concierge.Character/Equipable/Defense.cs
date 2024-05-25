@@ -11,7 +11,6 @@ namespace Concierge.Character.Equipable
     using Concierge.Character.Enums;
     using Concierge.Common;
     using Concierge.Common.Attributes;
-    using Concierge.Data;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
@@ -30,7 +29,6 @@ namespace Concierge.Character.Equipable
             this.Armor = new Armor();
             this.ArmorStatus = ArmorStatus.Doffed;
             this.Shield = string.Empty;
-            this.ShieldWeight = UnitDouble.Empty;
         }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Concierge.Character.Equipable
             this.Armor = armor;
             this.ArmorStatus = ArmorStatus.Doffed;
             this.Shield = string.Empty;
-            this.ShieldWeight = UnitDouble.Empty;
         }
 
         /// <summary>
@@ -75,11 +72,6 @@ namespace Concierge.Character.Equipable
         /// </summary>
         public int ShieldAc { get; set; }
 
-        /// <summary>
-        /// Gets or sets the weight of the shield.
-        /// </summary>
-        public UnitDouble ShieldWeight { get; set; }
-
         [SearchIgnore]
         [JsonIgnore]
         public PackIconKind ArmorStatusIcon => this.ArmorStatus == ArmorStatus.Doffed ? PackIconKind.ShieldOff : PackIconKind.Shield;
@@ -89,7 +81,7 @@ namespace Concierge.Character.Equipable
         public Brush ArmorStatusBrush => this.ArmorStatus == ArmorStatus.Doffed ? Brushes.IndianRed : ConciergeBrushes.Mint;
 
         [JsonIgnore]
-        public double TotalWeight => this.Armor.Weight.Value + this.ShieldWeight.Value;
+        public double TotalWeight => this.Armor.Weight.Value;
 
         /// <summary>
         /// Creates a deep copy of the <see cref="Defense"/> object.
@@ -105,7 +97,6 @@ namespace Concierge.Character.Equipable
                 MiscAc = this.MiscAc,
                 Shield = this.Shield,
                 ShieldAc = this.ShieldAc,
-                ShieldWeight = this.ShieldWeight.DeepCopy(),
             };
         }
 
@@ -126,6 +117,7 @@ namespace Concierge.Character.Equipable
                 _ => 0,
             };
 
+            armorAC = this.Armor.FullDex ? dexterity.Bonus : armorAC;
             return armorClass + (this.ArmorStatus == ArmorStatus.Donned ? armorAC + this.Armor.Ac : baseAC);
         }
     }

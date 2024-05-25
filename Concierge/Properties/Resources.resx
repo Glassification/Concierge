@@ -193,6 +193,9 @@
   <data name="ArmorWindow_ArmorNameComboBox" xml:space="preserve">
     <value>This could be the generic type of armor equipped, or a spectacular named set of armor. Or anything in between.</value>
   </data>
+  <data name="ArmorWindow_FullAcCheckBox" xml:space="preserve">
+    <value>Heavier armors usually limit the contribution of a characters DEX modifier. Some armor traits might allow the full bonus to be applied.</value>
+  </data>
   <data name="ArmorWindow_MagicArmorClassUpDown" xml:space="preserve">
     <value>Total of any magic bonuses that affect Armor Class.</value>
   </data>
@@ -204,9 +207,6 @@
   </data>
   <data name="ArmorWindow_ShieldTextBox" xml:space="preserve">
     <value>Usually made from wood or metal and carried in one hand.</value>
-  </data>
-  <data name="ArmorWindow_ShieldWeightUpDown" xml:space="preserve">
-    <value>Generally weighs more than 0.</value>
   </data>
   <data name="ArmorWindow_StatusComboBox" xml:space="preserve">
     <value>Unequipped armor will not provide any bonus or armor class improvements.</value>
