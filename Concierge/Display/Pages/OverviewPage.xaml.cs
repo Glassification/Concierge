@@ -59,7 +59,8 @@ namespace Concierge.Display.Pages
             this.PerceptionLabel.Value = character.PassivePerception.ToString();
             this.VisionLabel.Value = character.Detail.Senses.Vision.PascalCase();
             this.MovementLabel.Value = character.GetMovement().ToString();
-            this.InspirationLabel.IconKind = character.Detail.Senses.Inspiration ? PackIconKind.WeatherSunset : PackIconKind.None;
+            this.InspirationLabel.IconKind = character.Detail.Senses.Inspiration ? PackIconKind.WeatherSunny : PackIconKind.WeatherSunnyOff;
+            this.InspirationLabel.ToolTip = GetInsperationToolTip(character);
 
             this.MovementLabel.SetValueColor(GetMovementColor(character));
         }
@@ -147,6 +148,14 @@ namespace Concierge.Display.Pages
         public void Edit(object itemToEdit)
         {
             throw new NotImplementedException();
+        }
+
+        private static string GetInsperationToolTip(CharacterSheet character)
+        {
+            var name = character.Disposition.Name.IsNullOrWhiteSpace() ? "Character" : character.Disposition.Name;
+            var insperation = character.Detail.Senses.Inspiration;
+
+            return insperation ? $"{name} is inspired" : $"{name} is not inspired";
         }
 
         private static SolidColorBrush GetMovementColor(CharacterSheet character)

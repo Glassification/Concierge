@@ -14,7 +14,6 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Enums;
     using Concierge.Character.Vitals;
     using Concierge.Commands;
-    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;

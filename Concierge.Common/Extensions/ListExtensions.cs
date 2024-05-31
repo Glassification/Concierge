@@ -29,10 +29,7 @@ namespace Concierge.Common.Extensions
         /// <typeparam name="T">The type of elements in the list.</typeparam>
         /// <param name="list">The list.</param>
         /// <returns><c>true</c> if the list is empty; otherwise, <c>false</c>.</returns>
-        public static bool IsEmpty<T>(this IList<T> list)
-        {
-            return list.Count == 0;
-        }
+        public static bool IsEmpty<T>(this IList<T> list) => list.Count == 0;
 
         /// <summary>
         /// Creates a deep copy of the list by deep copying each element in the list.

@@ -9,7 +9,7 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="Modify Senses"
-    Height="415"
+    Height="485"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
 
@@ -17,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="180"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
@@ -144,7 +145,7 @@
                 ValueChanged="IntegerUpDown_ValueChanged"/>
         </Grid>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="17.5*"/>
                 <ColumnDefinition Width="32.5*"/>
@@ -164,7 +165,7 @@
            
         </Grid>
 
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="50*"/>
@@ -212,7 +213,7 @@
         </Grid>
         
         <Border
-            Grid.Row="4"
+            Grid.Row="5"
             BorderBrush="#29303E"
             BorderThickness="5"
             CornerRadius="10"
@@ -233,7 +234,7 @@
         </Border>
 
         <!--Buttons-->
-        <Grid Grid.Row="5">
+        <Grid Grid.Row="6">
             <StackPanel
                 Orientation="Horizontal"
                 VerticalAlignment="Center"

@@ -41,7 +41,7 @@ namespace Concierge.Common
         bool IsCustom { get; set; }
 
         /// <summary>
-        /// Gets information about the unique item.
+        /// Gets or sets the name of the unique item.
         /// </summary>
         string Name { get; set; }
 

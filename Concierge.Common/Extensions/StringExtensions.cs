@@ -87,20 +87,14 @@ namespace Concierge.Common.Extensions
         /// </summary>
         /// <param name="str">The string to test.</param>
         /// <returns>true if the string is null, empty, or consists only of white-space characters; otherwise, false.</returns>
-        public static bool IsNullOrWhiteSpace(this string? str)
-        {
-            return string.IsNullOrWhiteSpace(str);
-        }
+        public static bool IsNullOrWhiteSpace(this string? str) => string.IsNullOrWhiteSpace(str);
 
         /// <summary>
         /// Determines whether the specified string is null or empty.
         /// </summary>
         /// <param name="str">The string to test.</param>
         /// <returns>true if the string is null or empty; otherwise, false.</returns>
-        public static bool IsNullOrEmpty(this string str)
-        {
-            return string.IsNullOrEmpty(str);
-        }
+        public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
 
         /// <summary>
         /// Converts the input string to PascalCase format.
@@ -164,10 +158,7 @@ namespace Concierge.Common.Extensions
         /// <param name="str">The string to strip.</param>
         /// <param name="textToStrip">The text to remove.</param>
         /// <returns>The modified string.</returns>
-        public static string Strip(this string str, string textToStrip)
-        {
-            return str.Replace(textToStrip, string.Empty);
-        }
+        public static string Strip(this string str, string textToStrip) => str.Replace(textToStrip, string.Empty);
 
         /// <summary>
         /// Removes the specified texts from the string.
