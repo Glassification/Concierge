@@ -142,6 +142,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields(Spell spell)
         {
+            Program.Drawing();
             this.PreparedCheckBox.UpdatingValue();
             this.RitualCheckBox.UpdatingValue();
             this.ConcentrationCheckBox.UpdatingValue();
@@ -169,10 +170,12 @@ namespace Concierge.Display.Windows
             this.RitualCheckBox.UpdatedValue();
             this.ConcentrationCheckBox.UpdatedValue();
             this.RequireSpellSlotCheckBox.UpdatedValue();
+            Program.NotDrawing();
         }
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
             this.PreparedCheckBox.UpdatingValue();
             this.RitualCheckBox.UpdatingValue();
             this.ConcentrationCheckBox.UpdatingValue();
@@ -198,6 +201,7 @@ namespace Concierge.Display.Windows
             this.RitualCheckBox.UpdatedValue();
             this.ConcentrationCheckBox.UpdatedValue();
             this.RequireSpellSlotCheckBox.UpdatedValue();
+            Program.NotDrawing();
         }
 
         private void UpdateSpell(Spell spell)

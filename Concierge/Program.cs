@@ -36,6 +36,7 @@ namespace Concierge
             Logger.Start(AssemblyVersion.ToString());
 
             IsTyping = false;
+            IsDrawing = false;
             ErrorService = new ErrorService(Logger);
             UndoRedoService = new UndoRedoService();
             MessageService = new MessageService();
@@ -73,6 +74,11 @@ namespace Concierge
         /// Gets a value indicating whether the user is typing.
         /// </summary>
         public static bool IsTyping { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether a window is drawing fields.
+        /// </summary>
+        public static bool IsDrawing { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether the current character sheet is modified.
@@ -185,6 +191,22 @@ namespace Concierge
         public static void NotTyping()
         {
             IsTyping = false;
+        }
+
+        /// <summary>
+        /// Sets the IsDrawing flag to true, indicating that a window is drawing fields.
+        /// </summary>
+        public static void Drawing()
+        {
+            IsDrawing = true;
+        }
+
+        /// <summary>
+        /// Sets the IsDrawing flag to false, indicating that a window is finished drawing fields.
+        /// </summary>
+        public static void NotDrawing()
+        {
+            IsDrawing = false;
         }
     }
 }

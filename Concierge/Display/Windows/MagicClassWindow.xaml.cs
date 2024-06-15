@@ -127,6 +127,8 @@ namespace Concierge.Display.Windows
 
         private void FillFields(MagicalClass magicClass)
         {
+            Program.Drawing();
+
             this.SettingValues = true;
             this.ClassNameComboBox.Text = magicClass.Name;
             this.AbilityComboBox.Text = magicClass.Ability.ToString();
@@ -137,10 +139,14 @@ namespace Concierge.Display.Windows
             this.SpellsUpDown.Value = magicClass.KnownSpells;
             this.PreparedSpellsTextBox.Text = magicClass.PreparedSpells.ToString();
             this.SettingValues = false;
+
+            Program.NotDrawing();
         }
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
+
             this.SettingValues = true;
             this.ClassNameComboBox.Text = name;
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
@@ -151,6 +157,8 @@ namespace Concierge.Display.Windows
             this.SpellsUpDown.Value = 0;
             this.PreparedSpellsTextBox.Text = "0";
             this.SettingValues = false;
+
+            Program.NotDrawing();
         }
 
         private void UpdateMagicClass(MagicalClass magicClass)
@@ -196,7 +204,10 @@ namespace Concierge.Display.Windows
             string ability = this.AbilityComboBox.SelectedItem.ToString() ?? Abilities.NONE.ToString();
             this.AttackBonusTextBox.Text = Program.CcsFile.CharacterService.CalculateBonusWithProficiency(ability.ToEnum<Abilities>()).ToString();
             this.SpellSaveTextBox.Text = (Program.CcsFile.CharacterService.CalculateBonusWithProficiency(ability.ToEnum<Abilities>()) + Constants.BaseDC).ToString();
-            this.PreparedSpellsTextBox.Text = Program.CcsFile.Character.SpellCasting.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared)?.ToList()?.Count.ToString() ?? "0";
+            this.PreparedSpellsTextBox.Text = Program.CcsFile.Character.SpellCasting.Spells
+                .Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem?.ToString()) ?? false) && x.Prepared)
+                ?.ToList()
+                ?.StrCount();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

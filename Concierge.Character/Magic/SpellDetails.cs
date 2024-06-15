@@ -37,8 +37,8 @@ namespace Concierge.Character.Magic
         public void AddHeaderDetails(List<SpellDetail> list)
         {
             list.Add(new SpellDetail("Spellcasting Level", this.spellCasting.CasterLevel.ToString(), PackIconKind.WizardHat, Brushes.SteelBlue));
-            list.Add(new SpellDetail("Total Spells", this.spellCasting.Spells.Count.ToString(), PackIconKind.Counter, ConciergeBrushes.Mint));
-            list.Add(new SpellDetail("Prepared Spells", this.spellCasting.PreparedSpells.Count.ToString(), PackIconKind.Counter, ConciergeBrushes.Mint));
+            list.Add(new SpellDetail("Total Spells", this.spellCasting.Spells.StrCount(), PackIconKind.Counter, ConciergeBrushes.Mint));
+            list.Add(new SpellDetail("Prepared Spells", this.spellCasting.PreparedSpells.StrCount(), PackIconKind.Counter, ConciergeBrushes.Mint));
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Concierge.Character.Magic
                 return;
             }
 
-            list.Add(new SpellDetail($"{(level == 0 ? "Cantips" : $"Level {level} Spells")}", spells.Count.ToString(), PackIconKind.AutoFix, Brushes.Plum));
+            list.Add(new SpellDetail($"{(level == 0 ? "Cantips" : $"Level {level} Spells")}", spells.StrCount(), PackIconKind.AutoFix, Brushes.Plum));
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Concierge.Character.Magic
             };
             var category = magicClass.GetCategory();
 
-            list.Add(new SpellDetail($"{(name.Equals(string.Empty) ? "Unclassed" : name)} Spells", spells.Count.ToString(), category.IconKind, category.Brush));
+            list.Add(new SpellDetail($"{(name.Equals(string.Empty) ? "Unclassed" : name)} Spells", spells.StrCount(), category.IconKind, category.Brush));
         }
 
         /// <summary>

@@ -156,6 +156,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields(Weapon weapon)
         {
+            Program.Drawing();
             this.AttunedCheckBox.UpdatingValue();
             this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
@@ -182,10 +183,12 @@ namespace Concierge.Display.Windows
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
+            Program.NotDrawing();
         }
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
             this.AttunedCheckBox.UpdatingValue();
             this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
@@ -209,6 +212,7 @@ namespace Concierge.Display.Windows
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
+            Program.NotDrawing();
         }
 
         private void UpdateWeapon(Weapon weapon)

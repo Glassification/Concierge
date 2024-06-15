@@ -116,16 +116,24 @@ namespace Concierge.Display.Windows
 
         private void FillFields(Language language)
         {
+            Program.Drawing();
+
             this.NameComboBox.Text = language.Name;
             this.ScriptTextBox.Text = language.Script;
             this.SpeakersTextBox.Text = language.Speakers;
+
+            Program.NotDrawing();
         }
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
+
             this.NameComboBox.Text = name;
             this.ScriptTextBox.Text = string.Empty;
             this.SpeakersTextBox.Text = string.Empty;
+
+            Program.NotDrawing();
         }
 
         private void UpdateLanguage(Language language)

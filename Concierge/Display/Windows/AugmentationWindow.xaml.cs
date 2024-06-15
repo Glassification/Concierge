@@ -133,6 +133,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields(Augment augment)
         {
+            Program.Drawing();
             this.SetQuantityState(augment.Recoverable);
             this.RecoverableCheckBox.UpdatingValue();
 
@@ -148,10 +149,13 @@ namespace Concierge.Display.Windows
 
             this.UsedUpDown.Maximum = this.QuantityUpDown.Value;
             this.RecoverableCheckBox.UpdatedValue();
+            Program.NotDrawing();
         }
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
+
             this.NameComboBox.Text = name;
             this.QuantityUpDown.Value = 0;
             this.BonusTextBox.Text = string.Empty;
@@ -161,6 +165,8 @@ namespace Concierge.Display.Windows
             this.RecoverableCheckBox.IsChecked = false;
             this.DescriptionTextBox.Text = string.Empty;
             this.SetIconFields(CustomIcon.Empty);
+
+            Program.NotDrawing();
         }
 
         private void SetIconFields(CustomIcon icon)

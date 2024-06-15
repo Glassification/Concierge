@@ -70,12 +70,16 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.TotalHpUpDown.Value = this.Health.MaxHealth;
             this.CurrentHpUpDown.Value = this.Health.BaseHealth;
             this.TemporaryHpUpDown.Value = this.Health.TemporaryHealth;
 
             this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
             this.CurrentHpUpDown.Minimum = -this.TotalHpUpDown.Value;
+
+            Program.NotDrawing();
         }
 
         private void UpdateHealth()

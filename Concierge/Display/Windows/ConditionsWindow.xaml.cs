@@ -78,6 +78,8 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.BlindedCheckBox.IsChecked = this.status.Blinded.IsAfflicted();
             this.CharmedCheckBox.IsChecked = this.status.Charmed.IsAfflicted();
             this.DeafenedCheckBox.IsChecked = this.status.Deafened.IsAfflicted();
@@ -94,6 +96,8 @@ namespace Concierge.Display.Windows
             this.RestrainedCheckBox.IsChecked = this.status.Restrained.IsAfflicted();
             this.StunnedCheckBox.IsChecked = this.status.Stunned.IsAfflicted();
             this.UnconsciousCheckBox.IsChecked = this.status.Unconscious.IsAfflicted();
+
+            Program.NotDrawing();
         }
 
         private void UpdateConditions()

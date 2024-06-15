@@ -91,6 +91,8 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.AthleticsComboBox.Text = this.attributes.Athletics.SkillOverride.ToString();
             this.AcrobaticsComboBox.Text = this.attributes.Acrobatics.SkillOverride.ToString();
             this.SleightOfHandComboBox.Text = this.attributes.SleightOfHand.SkillOverride.ToString();
@@ -109,6 +111,8 @@ namespace Concierge.Display.Windows
             this.IntimidationComboBox.Text = this.attributes.Intimidation.SkillOverride.ToString();
             this.PerformanceComboBox.Text = this.attributes.Performance.SkillOverride.ToString();
             this.PersuasionComboBox.Text = this.attributes.Persuasion.SkillOverride.ToString();
+
+            Program.NotDrawing();
         }
 
         private void UpdateSkills()

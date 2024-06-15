@@ -168,6 +168,8 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.GenderComboBox.Text = this.Appearance.Gender;
             this.AgeUpDown.Value = this.Appearance.Age;
             this.WeightUpDown.Value = this.Appearance.Weight.Value;
@@ -180,6 +182,7 @@ namespace Concierge.Display.Windows
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
 
             this.FillHeightFields();
+            Program.NotDrawing();
         }
 
         private void UpdateAppearance()

@@ -103,19 +103,32 @@
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel 
-                            Text="Prepared:"/>
-                    </Grid>
+                    <components:ConciergeLabel 
+                        Grid.Column="0"
+                        Text="Prepared:"/>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Margin="20,0,0,0">
+                    <Grid Grid.Column="1" Margin="0,0,0,0">
                         <components:ConciergeCheckBox 
                             x:Name="PreparedCheckBox"
+                            Style="{StaticResource CheckBoxStyle}"/>
+                    </Grid>
+
+                    <components:ConciergeLabel
+                        Grid.Column="2"
+                        x:Name="RequireSpellSlotLabel"
+                        Text="Spell Sot:"/>
+
+                    <!--Value-->
+                    <Grid Grid.Column="3" Margin="0,0,0,0">
+                        <components:ConciergeCheckBox 
+                            x:Name="RequireSpellSlotCheckBox"
                             Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
@@ -273,8 +286,7 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="240"/>
                 </Grid.RowDefinitions>
 
                 <!--Range-->
@@ -340,29 +352,8 @@
                     </components:ConciergeTextBoxBackground>
                 </Grid>
 
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <components:ConciergeLabel
-                        Grid.Column="0"
-                        x:Name="RequireSpellSlotLabel"
-                        Text="Requires Spell Sot:"
-                        FontSize="17"/>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1" Margin="20,0,0,0">
-                        <components:ConciergeCheckBox 
-                            x:Name="RequireSpellSlotCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"/>
-                    </Grid>
-                </Grid>
-
                 <!--Class-->
-                <Grid Grid.Row="4">
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -383,7 +374,7 @@
                 </Grid>
 
                 <!--Notes-->
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>

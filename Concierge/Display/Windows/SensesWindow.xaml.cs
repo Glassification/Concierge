@@ -70,6 +70,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
             var character = Program.CcsFile.Character;
 
             this.InitiativeTextBox.Text = character.Initiative.ToString();
@@ -81,6 +82,8 @@ namespace Concierge.Display.Windows
             this.BaseMovementUpDown.Value = character.Detail.Senses.BaseMovement;
             this.MovementBonusUpDown.Value = character.Detail.Senses.MovementBonus;
             this.InspirationCheckBox.IsChecked = character.Detail.Senses.Inspiration;
+
+            Program.NotDrawing();
         }
 
         private void UpdateSenses()

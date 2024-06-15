@@ -112,6 +112,8 @@ namespace Concierge.Display.Windows
 
         private void ClearFields(CoinType coinType = CoinType.Gold)
         {
+            Program.Drawing();
+
             this.SelectCoinTypeRadioButton(coinType);
             this.AmountUpDown.Value = 0;
 
@@ -120,16 +122,22 @@ namespace Concierge.Display.Windows
             this.EP = this.SelectedWealth.Electrum;
             this.GP = this.SelectedWealth.Gold;
             this.PP = this.SelectedWealth.Platinum;
+
+            Program.NotDrawing();
         }
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.AmountUpDown.Value = 0;
             this.CopperField.Text = this.CP.ToString();
             this.SilverField.Text = this.SP.ToString();
             this.ElectrumField.Text = this.EP.ToString();
             this.GoldField.Text = this.GP.ToString();
             this.PlatinumField.Text = this.PP.ToString();
+
+            Program.NotDrawing();
         }
 
         private void SelectCoinTypeRadioButton(CoinType coinType)

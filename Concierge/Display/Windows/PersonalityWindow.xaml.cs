@@ -73,12 +73,16 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.Trait1TextBox.Text = this.Personality.Trait1;
             this.Trait2TextBox.Text = this.Personality.Trait2;
             this.IdealTextBox.Text = this.Personality.Ideal;
             this.BondTextBox.Text = this.Personality.Bond;
             this.FlawTextBox.Text = this.Personality.Flaw;
             this.NotesTextBox.Text = this.Personality.Notes;
+
+            Program.NotDrawing();
         }
 
         private void UpdatePersonality()

@@ -5,12 +5,9 @@
 namespace Concierge.Common.Extensions
 {
     using System;
-    using System.Buffers.Text;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Text.RegularExpressions;
-    using System.Windows.Media;
 
     using Concierge.Common.Dtos;
 
@@ -19,68 +16,12 @@ namespace Concierge.Common.Extensions
     /// </summary>
     public static partial class StringExtensions
     {
-        private static readonly List<string> destinations =
-        [
-            "aftncn", "aftnsep", "aftnsepc", "annotation", "atnauthor", "atndate", "atnicn", "atnid",
-            "atnparent", "atnref", "atntime", "atrfend", "atrfstart", "author", "background",
-            "bkmkend", "bkmkstart", "blipuid", "buptim", "category", "colorschememapping",
-            "colortbl", "comment", "company", "creatim", "datafield", "datastore", "defchp", "defpap",
-            "do", "doccomm", "docvar", "dptxbxtext", "ebcend", "ebcstart", "factoidname", "falt",
-            "fchars", "ffdeftext", "ffentrymcr", "ffexitmcr", "ffformat", "ffhelptext", "ffl",
-            "ffname", "ffstattext", "field", "file", "filetbl", "fldinst", "fldrslt", "fldtype",
-            "fname", "fontemb", "fontfile", "fonttbl", "footer", "footerf", "footerl", "footerr",
-            "footnote", "formfield", "ftncn", "ftnsep", "ftnsepc", "g", "generator", "gridtbl",
-            "header", "headerf", "headerl", "headerr", "hl", "hlfr", "hlinkbase", "hlloc", "hlsrc",
-            "hsv", "htmltag", "info", "keycode", "keywords", "latentstyles", "lchars", "levelnumbers",
-            "leveltext", "lfolevel", "linkval", "list", "listlevel", "listname", "listoverride",
-            "listoverridetable", "listpicture", "liststylename", "listtable", "listtext",
-            "lsdlockedexcept", "macc", "maccPr", "mailmerge", "maln", "malnScr", "manager", "margPr",
-            "mbar", "mbarPr", "mbaseJc", "mbegChr", "mborderBox", "mborderBoxPr", "mbox", "mboxPr",
-            "mchr", "mcount", "mctrlPr", "md", "mdeg", "mdegHide", "mden", "mdiff", "mdPr", "me",
-            "mendChr", "meqArr", "meqArrPr", "mf", "mfName", "mfPr", "mfunc", "mfuncPr", "mgroupChr",
-            "mgroupChrPr", "mgrow", "mhideBot", "mhideLeft", "mhideRight", "mhideTop", "mhtmltag",
-            "mlim", "mlimloc", "mlimlow", "mlimlowPr", "mlimupp", "mlimuppPr", "mm", "mmaddfieldname",
-            "mmath", "mmathPict", "mmathPr", "mmaxdist", "mmc", "mmcJc", "mmconnectstr",
-            "mmconnectstrdata", "mmcPr", "mmcs", "mmdatasource", "mmheadersource", "mmmailsubject",
-            "mmodso", "mmodsofilter", "mmodsofldmpdata", "mmodsomappedname", "mmodsoname",
-            "mmodsorecipdata", "mmodsosort", "mmodsosrc", "mmodsotable", "mmodsoudl",
-            "mmodsoudldata", "mmodsouniquetag", "mmPr", "mmquery", "mmr", "mnary", "mnaryPr",
-            "mnoBreak", "mnum", "mobjDist", "moMath", "moMathPara", "moMathParaPr", "mopEmu",
-            "mphant", "mphantPr", "mplcHide", "mpos", "mr", "mrad", "mradPr", "mrPr", "msepChr",
-            "mshow", "mshp", "msPre", "msPrePr", "msSub", "msSubPr", "msSubSup", "msSubSupPr", "msSup",
-            "msSupPr", "mstrikeBLTR", "mstrikeH", "mstrikeTLBR", "mstrikeV", "msub", "msubHide",
-            "msup", "msupHide", "mtransp", "mtype", "mvertJc", "mvfmf", "mvfml", "mvtof", "mvtol",
-            "mzeroAsc", "mzeroDesc", "mzeroWid", "nesttableprops", "nextfile", "nonesttables",
-            "objalias", "objclass", "objdata", "object", "objname", "objsect", "objtime", "oldcprops",
-            "oldpprops", "oldsprops", "oldtprops", "oleclsid", "operator", "panose", "password",
-            "passwordhash", "pgp", "pgptbl", "picprop", "pict", "pn", "pnseclvl", "pntext", "pntxta",
-            "pntxtb", "printim", "private", "propname", "protend", "protstart", "protusertbl", "pxe",
-            "result", "revtbl", "revtim", "rsidtbl", "rxe", "shp", "shpgrp", "shpinst",
-            "shppict", "shprslt", "shptxt", "sn", "sp", "staticval", "stylesheet", "subject", "sv",
-            "svb", "tc", "template", "themedata", "title", "txe", "ud", "upr", "userprops",
-            "wgrffmtfilter", "windowcaption", "writereservation", "writereservhash", "xe", "xform",
-            "xmlattrname", "xmlattrvalue", "xmlclose", "xmlname", "xmlnstbl",
-            "xmlopen",
-        ];
-
-        private static readonly Dictionary<string, string> specialCharacters = new ()
-        {
-            { "par", "\n" },
-            { "sect", "\n\n" },
-            { "page", "\n\n" },
-            { "line", "\n" },
-            { "tab", "\t" },
-            { "emdash", "\u2014" },
-            { "endash", "\u2013" },
-            { "emspace", "\u2003" },
-            { "enspace", "\u2002" },
-            { "qmspace", "\u2005" },
-            { "bullet", "\u2022" },
-            { "lquote", "\u2018" },
-            { "rquote", "\u2019" },
-            { "ldblquote", "\u201C" },
-            { "rdblquote", "\u201D" },
-        };
+        /// <summary>
+        /// Checks whether the given string is in RTF (Rich Text Format) format.
+        /// </summary>
+        /// <param name="text">The string to check.</param>
+        /// <returns>True if the string is in RTF format, false otherwise.</returns>
+        public static bool IsRtf(this string text) => !text.IsNullOrWhiteSpace() && text.TrimStart().StartsWith(@"{\rtf", StringComparison.Ordinal);
 
         /// <summary>
         /// Determines whether the specified string is null, empty, or consists only of white-space characters.
@@ -95,6 +36,34 @@ namespace Concierge.Common.Extensions
         /// <param name="str">The string to test.</param>
         /// <returns>true if the string is null or empty; otherwise, false.</returns>
         public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
+
+        /// <summary>
+        /// Removes the specified text from the string.
+        /// </summary>
+        /// <param name="str">The string to strip.</param>
+        /// <param name="textToStrip">The text to remove.</param>
+        /// <returns>The modified string.</returns>
+        public static string Strip(this string str, string textToStrip) => str.Replace(textToStrip, string.Empty);
+
+        /// <summary>
+        /// Pluralizes a string based on the count provided.
+        /// </summary>
+        /// <param name="str">The string to be pluralized.</param>
+        /// <param name="plural">The plural form of the string.</param>
+        /// <param name="count">The count determining whether the string should be pluralized.</param>
+        /// <returns>The pluralized string if the count is greater than 1; otherwise, returns the original string.</returns>
+        public static string Pluralize(this string str, string plural, int count) => count == 1 ? str : $"{str}{plural}";
+
+        /// <summary>
+        /// Determines whether the input string is a valid Base64-encoded string.
+        /// </summary>
+        /// <remarks>
+        /// Base64 encoding is a method of encoding binary data into a text format.
+        /// This method checks if the input string can be successfully decoded from Base64 format.
+        /// </remarks>
+        /// <param name="str">The input string to check for Base64 encoding.</param>
+        /// <returns>True if the input string is valid Base64-encoded data; otherwise, false.</returns>
+        public static bool IsBase64(this string str) => Convert.TryFromBase64String(str, new (new byte[str.Length]), out _);
 
         /// <summary>
         /// Converts the input string to PascalCase format.
@@ -153,14 +122,6 @@ namespace Concierge.Common.Extensions
         }
 
         /// <summary>
-        /// Removes the specified text from the string.
-        /// </summary>
-        /// <param name="str">The string to strip.</param>
-        /// <param name="textToStrip">The text to remove.</param>
-        /// <returns>The modified string.</returns>
-        public static string Strip(this string str, string textToStrip) => str.Replace(textToStrip, string.Empty);
-
-        /// <summary>
         /// Removes the specified texts from the string.
         /// </summary>
         /// <param name="str">The string to strip.</param>
@@ -168,6 +129,8 @@ namespace Concierge.Common.Extensions
         /// <returns>The modified string.</returns>
         public static string Strip(this string str, params string[] textToStrip)
         {
+
+
             foreach (var text in textToStrip)
             {
                 str = str.Replace(text, string.Empty);
@@ -214,16 +177,6 @@ namespace Concierge.Common.Extensions
             }
 
             return true;
-        }
-
-        /// <summary>
-        /// Checks whether the given string is in RTF (Rich Text Format) format.
-        /// </summary>
-        /// <param name="text">The string to check.</param>
-        /// <returns>True if the string is in RTF format, false otherwise.</returns>
-        public static bool IsRtf(this string text)
-        {
-            return !text.IsNullOrWhiteSpace() && text.TrimStart().StartsWith(@"{\rtf", StringComparison.Ordinal);
         }
 
         /// <summary>
@@ -300,16 +253,16 @@ namespace Concierge.Common.Extensions
                 else if (!word.IsNullOrEmpty())
                 {
                     curskip = 0;
-                    if (destinations.Contains(word))
+                    if (RtfHelper.DestinationsContains(word))
                     {
                         ignorable = true;
                     }
                     else if (ignorable)
                     {
                     }
-                    else if (specialCharacters.TryGetValue(word, out string? value))
+                    else if (RtfHelper.TryGetSpecialCharacter(word, out string? value))
                     {
-                        outList.Add(value);
+                        outList.Add(value ?? string.Empty);
                     }
                     else if (word == "uc")
                     {
@@ -430,13 +383,7 @@ namespace Concierge.Common.Extensions
         /// <returns>The determiner ("a" or "an") based on the first character of the input string.</returns>
         public static string GetDeterminer(this string str, bool lowercase)
         {
-            if (str.Length == 0)
-            {
-                return lowercase ? "a" : "A";
-            }
-
-            var isVowel = "aeiouAEIOU".Contains(str[0]);
-            if (isVowel)
+            if (str.Length > 0 && "aeiouAEIOU".Contains(str[0]))
             {
                 return lowercase ? "an" : "An";
             }
@@ -487,38 +434,6 @@ namespace Concierge.Common.Extensions
             }
 
             return Enum.TryParse(str.Strip(" "), out T value) ? value : default;
-        }
-
-        /// <summary>
-        /// Pluralizes a string based on the count provided.
-        /// </summary>
-        /// <param name="str">The string to be pluralized.</param>
-        /// <param name="plural">The plural form of the string.</param>
-        /// <param name="count">The count determining whether the string should be pluralized.</param>
-        /// <returns>The pluralized string if the count is greater than 1; otherwise, returns the original string.</returns>
-        public static string Pluralize(this string str, string plural, int count)
-        {
-            if (count == 1)
-            {
-                return str;
-            }
-
-            return $"{str}{plural}";
-        }
-
-        /// <summary>
-        /// Determines whether the input string is a valid Base64-encoded string.
-        /// </summary>
-        /// <remarks>
-        /// Base64 encoding is a method of encoding binary data into a text format.
-        /// This method checks if the input string can be successfully decoded from Base64 format.
-        /// </remarks>
-        /// <param name="str">The input string to check for Base64 encoding.</param>
-        /// <returns>True if the input string is valid Base64-encoded data; otherwise, false.</returns>
-        public static bool IsBase64(this string str)
-        {
-            Span<byte> buffer = new (new byte[str.Length]);
-            return Convert.TryFromBase64String(str, buffer, out _);
         }
 
         [GeneratedRegex(@"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline, "en-CA")]

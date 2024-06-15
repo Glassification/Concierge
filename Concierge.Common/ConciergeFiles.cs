@@ -73,42 +73,24 @@ namespace Concierge.Common
         /// <param name="fileName">The name of the file.</param>
         /// <param name="fileLocation">The location of the file.</param>
         /// <returns><c>true</c> if the file exists; otherwise, <c>false</c>.</returns>
-        public static bool FileExistsAtLocation(string fileName, string fileLocation)
-        {
-            return File.Exists(Path.Combine(fileLocation, fileName));
-        }
+        public static bool FileExistsAtLocation(string fileName, string fileLocation) => File.Exists(Path.Combine(fileLocation, fileName));
 
         /// <summary>
         /// Gets the correct path for the appsettings JSON file.
         /// </summary>
         /// <returns>The correct path for the appsettings JSON file.</returns>
-        public static string GetCorrectAppSettingsPath()
-        {
-            return FileExistsAtLocation(AppSettingsName, AppDataDirectory) ?
-                AppDataDirectory :
-                BaseDirectory;
-        }
+        public static string GetCorrectAppSettingsPath() => FileExistsAtLocation(AppSettingsName, AppDataDirectory) ? AppDataDirectory : BaseDirectory;
 
         /// <summary>
         /// Gets the correct path for the custom colors JSON file.
         /// </summary>
         /// <returns>The correct path for the custom colors JSON file.</returns>
-        public static string GetCorrectCustomColorsPath()
-        {
-            return FileExistsAtLocation(CustomColorsName, AppDataDirectory) ?
-                AppDataDirectory :
-                BaseDirectory;
-        }
+        public static string GetCorrectCustomColorsPath() => FileExistsAtLocation(CustomColorsName, AppDataDirectory) ? AppDataDirectory : BaseDirectory;
 
         /// <summary>
         /// Gets the correct path for the custom items text file.
         /// </summary>
         /// <returns>The correct path for the custom items text file.</returns>
-        public static string GetCorrectCustomItemsPath()
-        {
-            return FileExistsAtLocation(CustomItemsName, AppDataDirectory) ?
-                AppDataDirectory :
-                BaseDirectory;
-        }
+        public static string GetCorrectCustomItemsPath() => FileExistsAtLocation(CustomItemsName, AppDataDirectory) ? AppDataDirectory : BaseDirectory;
     }
 }

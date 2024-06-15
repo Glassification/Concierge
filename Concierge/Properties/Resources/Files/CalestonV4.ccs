@@ -2479,7 +2479,7 @@
           "Components": "Bow of the Spelldrinker",
           "Concentration": false,
           "CurrentConcentration": false,
-          "Damage": "30 Force Damage",
+          "Damage": "30 Force",
           "Description": "Lose 30hp and fire a magical arrow of pure force. If the creature is casting a spell <= 5th level, the spell fails. Target must make saving throw using spellcasting modifier. On failed save take 30 damage, on success take 15 damage.",
           "Duration": "Reaction",
           "ExpendSpellSlot": false,
@@ -2893,13 +2893,13 @@
       "Platinum": 500
     }
   },
-  "Hash": "818E86BAC2690C02CAA2FCD2E37B09DDCDF0065D1546C292C92341B65C4393DC",
+  "Hash": "48A6249068EC1B36589326ABC0879B1692F9D8DAA69FB6DC5559A51420E08D6D",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-05-24T15:03:06.0946369-05:00",
+  "LastSaveDate": "2024-06-02T14:11:49.126166-05:00",
   "Version": {
     "Major": 5,
     "Minor": 8,
-    "Patch": 8
+    "Patch": 10
   },
   "IsEmpty": false
 }

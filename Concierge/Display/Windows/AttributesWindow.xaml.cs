@@ -74,12 +74,16 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.StrengthUpDown.Value = this.attributes.Strength.Score;
             this.DexterityUpDown.Value = this.attributes.Dexterity.Score;
             this.ConstitutionUpDown.Value = this.attributes.Constitution.Score;
             this.IntelligenceUpDown.Value = this.attributes.Intelligence.Score;
             this.WisdomUpDown.Value = this.attributes.Wisdom.Score;
             this.CharismaUpDown.Value = this.attributes.Charisma.Score;
+
+            Program.NotDrawing();
         }
 
         private void UpdateAttributes()

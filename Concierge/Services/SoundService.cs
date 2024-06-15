@@ -65,7 +65,7 @@ namespace Concierge.Services
         /// </summary>
         public static void PlayNavigation()
         {
-            if (AppSettingsManager.UserSettings.MuteSounds || SkipClick || navigationSound is null)
+            if (ShouldNotPlay(navigationSound, SkipClick))
             {
                 return;
             }
@@ -80,7 +80,7 @@ namespace Concierge.Services
         /// </summary>
         public static void PlayUpdateValue()
         {
-            if (AppSettingsManager.UserSettings.MuteSounds || updateValueSound is null)
+            if (ShouldNotPlay(updateValueSound))
             {
                 return;
             }
@@ -95,7 +95,7 @@ namespace Concierge.Services
         /// </summary>
         public static void PlayWarning()
         {
-            if (AppSettingsManager.UserSettings.MuteSounds || warningSound is null)
+            if (ShouldNotPlay(warningSound))
             {
                 return;
             }
@@ -129,6 +129,15 @@ namespace Concierge.Services
             updateValueSound.Volume = volume / 100f;
             navigationSound.Volume = volume / 100f;
             warningSound.Volume = volume / 100f;
+        }
+
+        private static bool ShouldNotPlay(MediaPlayer mediaPlayer, bool skipClick = false)
+        {
+            return
+                AppSettingsManager.UserSettings.MuteSounds ||
+                skipClick ||
+                Program.IsDrawing ||
+                mediaPlayer is null;
         }
     }
 }

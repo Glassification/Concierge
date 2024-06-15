@@ -98,6 +98,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields(Armor armor)
         {
+            Program.Drawing();
             this.FullAcCheckBox.UpdatingValue();
 
             this.ArmorNameComboBox.Text = armor.Name;
@@ -115,6 +116,7 @@ namespace Concierge.Display.Windows
             this.StatusComboBox.Text = this.SelectedDefense.ArmorStatus.ToString();
 
             this.FullAcCheckBox.UpdatedValue();
+            Program.NotDrawing();
         }
 
         private void UpdateDefense(Defense defense)
@@ -142,6 +144,8 @@ namespace Concierge.Display.Windows
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
+
             this.ArmorNameComboBox.Text = name;
             this.TypeComboBox.Text = ArmorType.None.ToString();
             this.ArmorClassUpDown.Value = 0;
@@ -150,6 +154,8 @@ namespace Concierge.Display.Windows
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.StrengthUpDown.Value = 0;
             this.StealthComboBox.Text = ArmorStealth.Normal.ToString();
+
+            Program.NotDrawing();
         }
 
         private Armor Create()

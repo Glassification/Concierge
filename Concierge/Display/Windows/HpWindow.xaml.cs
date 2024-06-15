@@ -51,9 +51,11 @@ namespace Concierge.Display.Windows
                 return ConciergeResult.NoResult;
             }
 
+            Program.Drawing();
             this.IsHealing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.HpUpDown.Value = this.PreviousHeal;
+            Program.NotDrawing();
 
             this.ShowConciergeWindow();
             this.SetPreviousValue();
@@ -75,9 +77,11 @@ namespace Concierge.Display.Windows
                 return ConciergeResult.NoResult;
             }
 
+            Program.Drawing();
             this.IsHealing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.HpUpDown.Value = this.PreviousDamage;
+            Program.NotDrawing();
 
             this.ShowConciergeWindow();
             this.SetPreviousValue();
@@ -105,6 +109,7 @@ namespace Concierge.Display.Windows
 
         private void SetPreviousValue()
         {
+            Program.Drawing();
             if (this.IsHealing)
             {
                 this.PreviousHeal = this.HpUpDown.Value;
@@ -113,6 +118,8 @@ namespace Concierge.Display.Windows
             {
                 this.PreviousDamage = this.HpUpDown.Value;
             }
+
+            Program.NotDrawing();
         }
 
         private void ConcentrationCheck(int damage)

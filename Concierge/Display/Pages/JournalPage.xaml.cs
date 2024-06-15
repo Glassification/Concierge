@@ -202,7 +202,6 @@ namespace Concierge.Display.Pages
         private void LoadCurrentDocument(string text)
         {
             var dataFormat = DataFormats.Rtf;
-
             if (!text.IsRtf())
             {
                 text = string.Empty;

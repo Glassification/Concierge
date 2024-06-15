@@ -103,8 +103,12 @@ namespace Concierge.Display.Windows
 
         private void ClearFields()
         {
+            Program.Drawing();
+
             this.SlotComboBox.Text = this.PreviousSlot;
             this.ItemComboBox.Text = string.Empty;
+
+            Program.NotDrawing();
         }
 
         private bool EquipItem()

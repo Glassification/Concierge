@@ -64,6 +64,8 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.NameTextBox.Text = this.Properties.Name;
             this.AcUpDown.Value = this.Properties.ArmorClass;
             this.PerceptionUpDown.Value = this.Properties.Perception;
@@ -71,6 +73,8 @@ namespace Concierge.Display.Windows
             this.MovementUpDown.Value = this.Properties.Movement;
             this.CreatureSizeComboBox.Text = this.Properties.CreatureSize.ToString();
             this.InitiativeUpDown.Value = this.Properties.Initiative;
+
+            Program.NotDrawing();
         }
 
         private void UpdateCompanion()

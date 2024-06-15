@@ -112,6 +112,8 @@ namespace Concierge.Display.Windows
 
         private void FillFields(ClassResource resource)
         {
+            Program.Drawing();
+
             this.ResourceNameComboBox.Text = resource.Type;
             this.PoolUpDown.Value = resource.Total;
             this.SpentUpDown.Value = resource.Spent;
@@ -119,15 +121,20 @@ namespace Concierge.Display.Windows
             this.NotesTextBox.Text = resource.Note;
 
             this.SpentUpDown.Maximum = this.PoolUpDown.Value;
+            Program.NotDrawing();
         }
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
+
             this.ResourceNameComboBox.Text = name;
             this.PoolUpDown.Value = 0;
             this.SpentUpDown.Value = 0;
             this.RecoveryComboBox.Text = Recovery.None.ToString();
             this.NotesTextBox.Text = string.Empty;
+
+            Program.NotDrawing();
         }
 
         private ClassResource Create()

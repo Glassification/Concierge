@@ -184,8 +184,12 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.ProficiencyTextComboBox.Text = this.SelectedProficiency.Name;
             this.ProficiencyComboBox.Text = this.SelectedProficiency.ProficiencyType.ToString();
+
+            Program.NotDrawing();
         }
 
         private Proficiency Create()
@@ -222,11 +226,15 @@ namespace Concierge.Display.Windows
 
         private void ClearFields(bool resetType)
         {
+            Program.Drawing();
+
             this.ProficiencyTextComboBox.Text = string.Empty;
             if (resetType)
             {
                 this.ProficiencyComboBox.Text = ProficiencyTypes.Weapon.ToString();
             }
+
+            Program.NotDrawing();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

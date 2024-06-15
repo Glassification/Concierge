@@ -12,24 +12,23 @@ namespace Concierge.Common.Extensions
     public static class ListExtensions
     {
         /// <summary>
-        /// Swaps the positions of two elements in the list.
-        /// </summary>
-        /// <typeparam name="T">The type of elements in the list.</typeparam>
-        /// <param name="list">The list.</param>
-        /// <param name="indexA">The index of the first element.</param>
-        /// <param name="indexB">The index of the second element.</param>
-        public static void Swap<T>(this IList<T> list, int indexA, int indexB)
-        {
-            (list[indexB], list[indexA]) = (list[indexA], list[indexB]);
-        }
-
-        /// <summary>
         /// Checks if the list is empty.
         /// </summary>
         /// <typeparam name="T">The type of elements in the list.</typeparam>
         /// <param name="list">The list.</param>
         /// <returns><c>true</c> if the list is empty; otherwise, <c>false</c>.</returns>
         public static bool IsEmpty<T>(this IList<T> list) => list.Count == 0;
+
+        /// <summary>
+        /// Returns the count of elements in the list as a string.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the list.</typeparam>
+        /// <param name="list">The list whose elements are to be counted. It can be null.</param>
+        /// <returns>
+        /// A string representing the count of elements in the list.
+        /// If the list is null, returns "0".
+        /// </returns>
+        public static string StrCount<T>(this IList<T>? list) => list?.Count.ToString() ?? "0";
 
         /// <summary>
         /// Creates a deep copy of the list by deep copying each element in the list.
@@ -75,6 +74,18 @@ namespace Concierge.Common.Extensions
             }
 
             return filteredList;
+        }
+
+        /// <summary>
+        /// Swaps the positions of two elements in the list.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the list.</typeparam>
+        /// <param name="list">The list.</param>
+        /// <param name="indexA">The index of the first element.</param>
+        /// <param name="indexB">The index of the second element.</param>
+        public static void Swap<T>(this IList<T> list, int indexA, int indexB)
+        {
+            (list[indexB], list[indexA]) = (list[indexA], list[indexB]);
         }
     }
 }

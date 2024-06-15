@@ -30,7 +30,6 @@ namespace Concierge.Display.Windows
         private readonly ImageEncoding imageEncoding = new (Program.ErrorService);
 
         private Portrait image = new ();
-        private bool isDrawing;
         private string base64 = string.Empty;
 
         public ImageWindow()
@@ -84,7 +83,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
-            this.isDrawing = true;
+            Program.Drawing();
 
             var useImage = this.image.UseCustomImage;
             var stretch = this.image.Stretch;
@@ -98,12 +97,12 @@ namespace Concierge.Display.Windows
 
             this.SetEnabledState(useImage);
 
-            this.isDrawing = false;
+            Program.NotDrawing();
         }
 
         private void ClearFields()
         {
-            this.isDrawing = true;
+            Program.Drawing();
 
             this.FillTypeComboBox.Text = Stretch.None.PascalCase();
             this.ImageNameTextBox.Text = string.Empty;
@@ -114,7 +113,7 @@ namespace Concierge.Display.Windows
 
             this.SetEnabledState(false);
 
-            this.isDrawing = false;
+            Program.NotDrawing();
         }
 
         private void UpdateCharacterImage()
@@ -210,7 +209,7 @@ namespace Concierge.Display.Windows
 
         private void UseCustomImageCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (!this.isDrawing)
+            if (!Program.IsDrawing)
             {
                 this.SetEnabledState(true);
             }
@@ -218,7 +217,7 @@ namespace Concierge.Display.Windows
 
         private void UseCustomImageCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (!this.isDrawing)
+            if (!Program.IsDrawing)
             {
                 this.SetEnabledState(false);
             }

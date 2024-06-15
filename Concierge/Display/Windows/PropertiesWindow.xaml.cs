@@ -70,8 +70,6 @@ namespace Concierge.Display.Windows
 
         private string OriginalFileName { get; set; }
 
-        private bool IsDrawing { get; set; }
-
         private bool IsChanging { get; set; }
 
         public override ConciergeResult ShowWizardSetup(string buttonText)
@@ -130,7 +128,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
-            this.IsDrawing = true;
+            Program.Drawing();
 
             this.NameTextBox.Text = this.disposition.Name;
             this.RaceComboBox.Text = this.disposition.Race.Name;
@@ -157,7 +155,7 @@ namespace Concierge.Display.Windows
             SetIntegerUpDownMax(this.Class2Level, this.Class1Level.Value, this.Class3Level.Value);
             SetIntegerUpDownMax(this.Class3Level, this.Class2Level.Value, this.Class1Level.Value);
 
-            this.IsDrawing = false;
+            Program.NotDrawing();
         }
 
         private void UpdateProperties()

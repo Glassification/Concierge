@@ -17,6 +17,22 @@ namespace Concierge.Common.Utilities
     public static class DisplayUtility
     {
         /// <summary>
+        /// Sets the text style for the total amount based on the total and used values.
+        /// </summary>
+        /// <param name="total">The value representing the total amount.</param>
+        /// <param name="used">The value representing the used amount.</param>
+        /// <returns>The Brush representing the text style.</returns>
+        public static Brush SetTotalTextStyle(int total, int used) => total <= used ? Brushes.DarkGray : Brushes.White;
+
+        /// <summary>
+        /// Sets the box style for the total amount based on the total and used values.
+        /// </summary>
+        /// <param name="total">The value representing the total amount.</param>
+        /// <param name="used">The value representing the used amount.</param>
+        /// <returns>The Brush representing the box style.</returns>
+        public static Brush SetTotalBoxStyle(int total, int used) => total <= used ? ConciergeBrushes.DarkGreyBox : ConciergeBrushes.ControlForeBlue;
+
+        /// <summary>
         /// Retrieves the element of type T that is currently under the mouse cursor.
         /// </summary>
         /// <typeparam name="T">The type of the element to retrieve.</typeparam>
@@ -76,28 +92,6 @@ namespace Concierge.Common.Utilities
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Sets the text style for the total amount based on the total and used values.
-        /// </summary>
-        /// <param name="total">The value representing the total amount.</param>
-        /// <param name="used">The value representing the used amount.</param>
-        /// <returns>The Brush representing the text style.</returns>
-        public static Brush SetTotalTextStyle(int total, int used)
-        {
-            return total <= used ? Brushes.DarkGray : Brushes.White;
-        }
-
-        /// <summary>
-        /// Sets the box style for the total amount based on the total and used values.
-        /// </summary>
-        /// <param name="total">The value representing the total amount.</param>
-        /// <param name="used">The value representing the used amount.</param>
-        /// <returns>The Brush representing the box style.</returns>
-        public static Brush SetTotalBoxStyle(int total, int used)
-        {
-            return total <= used ? ConciergeBrushes.DarkGreyBox : ConciergeBrushes.ControlForeBlue;
         }
 
         /// <summary>

@@ -18,7 +18,6 @@ namespace Concierge.Common.Utilities
         public static string CreateCharacters(string character, int count)
         {
             var characters = string.Empty;
-
             for (int i = 0; i < count; i++)
             {
                 characters += character;

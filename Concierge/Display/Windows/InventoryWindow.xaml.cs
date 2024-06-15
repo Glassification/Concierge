@@ -141,6 +141,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields(Inventory inventory)
         {
+            Program.Drawing();
             this.AttunedCheckBox.UpdatingValue();
             this.IgnoreWeightCheckBox.UpdatingValue();
             this.ConsumableCheckBox.UpdatingValue();
@@ -166,10 +167,12 @@ namespace Concierge.Display.Windows
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
             this.ConsumableCheckBox.UpdatedValue();
+            Program.NotDrawing();
         }
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
             this.AttunedCheckBox.UpdatingValue();
             this.IgnoreWeightCheckBox.UpdatingValue();
 
@@ -192,6 +195,7 @@ namespace Concierge.Display.Windows
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
+            Program.NotDrawing();
         }
 
         private Inventory ToInventory()

@@ -67,12 +67,16 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.StrengthComboBox.Text = this.attributes.Strength.SaveOverride.ToString();
             this.DexterityComboBox.Text = this.attributes.Dexterity.SaveOverride.ToString();
             this.ConstitutionComboBox.Text = this.attributes.Constitution.SaveOverride.ToString();
             this.IntelligenceComboBox.Text = this.attributes.Intelligence.SaveOverride.ToString();
             this.WisdomComboBox.Text = this.attributes.Wisdom.SaveOverride.ToString();
             this.CharismaComboBox.Text = this.attributes.Charisma.SaveOverride.ToString();
+
+            Program.NotDrawing();
         }
 
         private void UpdateSavingThrows()

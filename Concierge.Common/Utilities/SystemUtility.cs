@@ -49,10 +49,7 @@ namespace Concierge.Common.Utilities
         /// Retrieves information about the current Internet status.
         /// </summary>
         /// <returns>An instance of <see cref="InternetInfo"/> containing information about the Internet status.</returns>
-        public static InternetInfo GetInternetStatus()
-        {
-            return new InternetInfo(string.Empty, HasInternet ? InternetStatus.Wireless : InternetStatus.Disconnected);
-        }
+        public static InternetInfo GetInternetStatus() => new (string.Empty, HasInternet ? InternetStatus.Wireless : InternetStatus.Disconnected);
 
         /// <summary>
         /// Retrieves the battery status information.

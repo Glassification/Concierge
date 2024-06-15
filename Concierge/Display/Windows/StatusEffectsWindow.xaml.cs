@@ -118,16 +118,24 @@ namespace Concierge.Display.Windows
 
         private void FillFields(StatusEffect statusEffect)
         {
+            Program.Drawing();
+
             this.NameComboBox.Text = statusEffect.Name;
             this.TypeComboBox.Text = statusEffect.Type.ToString();
             this.DescriptionTextBox.Text = statusEffect.Description;
+
+            Program.NotDrawing();
         }
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
+
             this.NameComboBox.Text = name;
             this.TypeComboBox.Text = StatusEffectTypes.None.ToString();
             this.DescriptionTextBox.Text = string.Empty;
+
+            Program.NotDrawing();
         }
 
         private void UpdateStatusEffect()

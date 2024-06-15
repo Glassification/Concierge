@@ -108,6 +108,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields(CompanionWeapon weapon)
         {
+            Program.Drawing();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = weapon.Name;
@@ -120,10 +121,12 @@ namespace Concierge.Display.Windows
             this.NotesTextBox.Text = weapon.Note;
 
             this.ProficencyOverrideCheckBox.UpdatedValue();
+            Program.NotDrawing();
         }
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = name;
@@ -136,6 +139,7 @@ namespace Concierge.Display.Windows
             this.NotesTextBox.Text = string.Empty;
 
             this.ProficencyOverrideCheckBox.UpdatedValue();
+            Program.NotDrawing();
         }
 
         private void UpdateWeapon(CompanionWeapon weapon)

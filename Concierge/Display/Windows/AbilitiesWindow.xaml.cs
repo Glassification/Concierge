@@ -128,6 +128,8 @@ namespace Concierge.Display.Windows
 
         private void FillFields(Ability ability)
         {
+            Program.Drawing();
+
             this.NameComboBox.Text = ability.Name;
             this.TypeComboBox.Text = ability.Type.PascalCase();
             this.LevelUpDown.Value = ability.Level;
@@ -135,10 +137,14 @@ namespace Concierge.Display.Windows
             this.RecoveryTextBox.Text = ability.Recovery;
             this.ActionTextBox.Text = ability.Action;
             this.NotesTextBox.Text = ability.Description;
+
+            Program.NotDrawing();
         }
 
         private void ClearFields(string name = "")
         {
+            Program.Drawing();
+
             this.NameComboBox.Text = name;
             this.TypeComboBox.Text = AbilityTypes.None.ToString();
             this.LevelUpDown.Value = 0;
@@ -146,6 +152,8 @@ namespace Concierge.Display.Windows
             this.RecoveryTextBox.Text = string.Empty;
             this.ActionTextBox.Text = string.Empty;
             this.NotesTextBox.Text = string.Empty;
+
+            Program.NotDrawing();
         }
 
         private Ability Create()

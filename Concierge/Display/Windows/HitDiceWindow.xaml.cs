@@ -77,6 +77,8 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.TotalD6UpDown.Value = this.HitDice.TotalD6;
             this.TotalD8UpDown.Value = this.HitDice.TotalD8;
             this.TotalD10UpDown.Value = this.HitDice.TotalD10;
@@ -86,6 +88,8 @@ namespace Concierge.Display.Windows
             this.UsedD8UpDown.Value = this.HitDice.SpentD8;
             this.UsedD10UpDown.Value = this.HitDice.SpentD10;
             this.UsedD12UpDown.Value = this.HitDice.SpentD12;
+
+            Program.NotDrawing();
         }
 
         private void UpdateHitDice()

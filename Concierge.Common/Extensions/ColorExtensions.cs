@@ -14,6 +14,27 @@ namespace Concierge.Common.Extensions
     public static class ColorExtensions
     {
         /// <summary>
+        /// Retrieves the foreground color (either white or black) based on the brightness of the color.
+        /// </summary>
+        /// <param name="color">The Color object.</param>
+        /// <returns>A SolidColorBrush representing the foreground color.</returns>
+        public static SolidColorBrush GetForeColor(this Color color) => color.GetBrightness() < Constants.BrightnessTransition ? Brushes.White : Brushes.Black;
+
+        /// <summary>
+        /// Calculates the brightness value of the specified color.
+        /// </summary>
+        /// <param name="color">The color to calculate the brightness from.</param>
+        /// <returns>The brightness value of the color, ranging from 0 to 255.</returns>
+        public static int GetBrightness(this Color color) => (int)Math.Sqrt((color.R * color.R * 0.241) + (color.G * color.G * 0.691) + (color.B * color.B * 0.068));
+
+        /// <summary>
+        /// Converts the color to a hexadecimal string representation without the alpha channel.
+        /// </summary>
+        /// <param name="color">The Color object.</param>
+        /// <returns>A hexadecimal string representation of the color without the alpha channel.</returns>
+        public static string ToHexWithoutAlpha(this Color color) => color.ToString().Remove(1, 2);
+
+        /// <summary>
         /// Retrieves the name of the color, or the HEX value if name is undefined.
         /// </summary>
         /// <param name="color">The Color object.</param>
@@ -27,20 +48,6 @@ namespace Concierge.Common.Extensions
             });
             return properties is not null ? properties.Name.PascalCase() : color.ToHexWithoutAlpha();
         }
-
-        /// <summary>
-        /// Retrieves the foreground color (either white or black) based on the brightness of the color.
-        /// </summary>
-        /// <param name="color">The Color object.</param>
-        /// <returns>A SolidColorBrush representing the foreground color.</returns>
-        public static SolidColorBrush GetForeColor(this Color color) => color.GetBrightness() < Constants.BrightnessTransition ? Brushes.White : Brushes.Black;
-
-        /// <summary>
-        /// Calculates the brightness value of the specified color.
-        /// </summary>
-        /// <param name="color">The color to calculate the brightness from.</param>
-        /// <returns>The brightness value of the color, ranging from 0 to 255.</returns>
-        public static int GetBrightness(this Color color) => (int)Math.Sqrt((color.R * color.R * 0.241) + (color.G * color.G * 0.691) + (color.B * color.B * 0.068));
 
         /// <summary>
         /// Retrieves the hue value of the color.
@@ -72,13 +79,6 @@ namespace Concierge.Common.Extensions
 
             return (int)Math.Round(hue);
         }
-
-        /// <summary>
-        /// Converts the color to a hexadecimal string representation without the alpha channel.
-        /// </summary>
-        /// <param name="color">The Color object.</param>
-        /// <returns>A hexadecimal string representation of the color without the alpha channel.</returns>
-        public static string ToHexWithoutAlpha(this Color color) => color.ToString().Remove(1, 2);
 
         /// <summary>
         /// Saturates the color by a given percentage.

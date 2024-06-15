@@ -87,8 +87,12 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            Program.Drawing();
+
             this.FillTotal();
             this.FillUsed();
+
+            Program.NotDrawing();
         }
 
         private void FillUsed()

@@ -118,10 +118,7 @@ namespace Concierge.Common.Extensions
         /// </summary>
         /// <param name="propertyInfo">The object representing the property to check.</param>
         /// <returns><c>true</c> if the property has the <paramref name="SearchIgnore"/> attribute; otherwise, <c>false</c>.</returns>
-        private static bool HasIgnoreAttribute(PropertyInfo propertyInfo)
-        {
-            return propertyInfo.GetCustomAttribute(typeof(SearchIgnore)) is not null;
-        }
+        private static bool HasIgnoreAttribute(PropertyInfo propertyInfo) => propertyInfo.GetCustomAttribute(typeof(SearchIgnore)) is not null;
 
         /// <summary>
         ///  Recursively sets the properties of the <paramref name="originalItem"/> object with the corresponding values from the <paramref name="item"/> object.
