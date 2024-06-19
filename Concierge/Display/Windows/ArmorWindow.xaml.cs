@@ -19,6 +19,7 @@ namespace Concierge.Display.Windows
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for ArmorWindow.xaml.
@@ -197,11 +198,12 @@ namespace Concierge.Display.Windows
 
         private void ArmorNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ArmorNameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Armor armor)
+            var isLocked = this.LockButton.IsChecked ?? false;
+            if (this.ArmorNameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Armor armor && !isLocked)
             {
                 this.FillFields(armor);
             }
-            else
+            else if (!isLocked)
             {
                 this.ClearFields(this.ArmorNameComboBox.Text);
             }
@@ -240,6 +242,16 @@ namespace Concierge.Display.Windows
 
             DisplayUtility.SetControlEnableState(this.FullAcCheckBox, enabled);
             DisplayUtility.SetControlEnableState(this.FullAcLabel, enabled);
+        }
+
+        private void LockButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.Lock;
+        }
+
+        private void LockButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.LockOpenVariant;
         }
     }
 }

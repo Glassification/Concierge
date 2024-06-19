@@ -25,7 +25,7 @@ namespace Concierge.Services
     public sealed class CustomItemService
     {
         private readonly CustomItemReadWriter readwriter;
-        private readonly string filePath = Path.Combine(ConciergeFiles.GetCorrectCustomItemsPath(), ConciergeFiles.CustomItemsName);
+        private readonly string filePath = Path.Combine(ConciergeFiles.CustomItemsPath, ConciergeFiles.CustomItemsName);
         private readonly List<IUnique> customItems;
 
         /// <summary>

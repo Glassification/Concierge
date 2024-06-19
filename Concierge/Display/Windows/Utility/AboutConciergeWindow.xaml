@@ -8,13 +8,13 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="About Concierge"
-    Height="295"
+    Height="315"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="180"/>
+            <RowDefinition Height="200"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -40,111 +40,118 @@
         
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="5*"/>
-                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
 
                     <!--Version-->
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40*"/>
-                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
                         </Grid.ColumnDefinitions>
 
                         <!--Title-->
-                        <Grid Grid.Column="0">
-                            <components:ConciergeLabel 
-                                Text="Version:"/>
-                        </Grid>
+                        <components:ConciergeLabel
+                            Grid.Column="0"
+                            Text="Version:"/>
 
                         <!--Value-->
-                        <Grid Grid.Column="1">
-                            <TextBlock
+                        <TextBlock
                             x:Name="VersionField"
+                            Grid.Column="1"
                             Text="0.0.0"
                             Foreground="White"
                             FontSize="20"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"/>
-                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <components:ConciergeLabel
+                            Grid.Column="0"
+                            Text=".NET Runtime:"/>
+                        <components:ConciergeLabel
+                            x:Name="DotNetField"
+                            Grid.Column="1"
+                            Text="4.7.2"/>
                     </Grid>
 
                     <!--Designer-->
-                    <Grid Grid.Row="1">
+                    <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40*"/>
-                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
                         </Grid.ColumnDefinitions>
 
                         <!--Title-->
-                        <Grid Grid.Column="0">
-                            <components:ConciergeLabel 
-                                Text="Designed By:"/>
-                        </Grid>
+                        <components:ConciergeLabel 
+                            Grid.Column="0"
+                            Text="Designed By:"/>
 
                         <!--Value-->
-                        <Grid Grid.Column="1">
-                            <components:ConciergeLabel
-                                x:Name="DesignerField"
-                                Text="Tommy"/>
-                        </Grid>
+                        <components:ConciergeLabel
+                            x:Name="DesignerField"
+                            Grid.Column="1"
+                            Text="Tommy"/>
                     </Grid>
                 </Grid>
 
-                <Grid Grid.Column="1">
-                    <Grid>
-                        <TextBlock
-                            x:Name="LicenseField"
-                            Text="Some Text Here"
-                            Foreground="White"
-                            FontSize="15"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            TextWrapping="Wrap"
-                            Margin="10"/>
-                    </Grid>
-                </Grid>
+                <TextBlock
+                    x:Name="LicenseField"
+                    Grid.Column="1"
+                    Text="Some Text Here"
+                    Foreground="White"
+                    FontSize="15"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"
+                    Margin="25,10,10,10"/>
             </Grid>
 
             <Grid Grid.Row="1">
                 <!--Copyright-->
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="75*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            x:Name="CopyrightLabel"
-                            Text="Copyright:"/>
-                    </Grid>
+                    <components:ConciergeLabel
+                        x:Name="CopyrightLabel"
+                        Grid.Column="0"
+                        Text="Copyright:"/>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
-                        <TextBlock
-                            x:Name="CopyrightField"
-                            Text="2021"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
-                    </Grid>
+                    <TextBlock
+                        x:Name="CopyrightField"
+                        Grid.Column="1"
+                        Text="2021"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
                 </Grid>
             </Grid>
             

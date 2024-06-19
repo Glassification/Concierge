@@ -129,8 +129,6 @@ namespace Concierge.Common.Extensions
         /// <returns>The modified string.</returns>
         public static string Strip(this string str, params string[] textToStrip)
         {
-
-
             foreach (var text in textToStrip)
             {
                 str = str.Replace(text, string.Empty);

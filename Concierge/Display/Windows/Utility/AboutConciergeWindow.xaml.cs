@@ -4,6 +4,7 @@
 
 namespace Concierge.Display.Utility
 {
+    using System;
     using System.Windows;
 
     using Concierge.Common;
@@ -14,7 +15,8 @@ namespace Concierge.Display.Utility
     /// </summary>
     public partial class AboutConciergeWindow : ConciergeWindow
     {
-        private const char CopyrightSymbol = (char)169;
+        private const char CopyrightSymbol = (char)169; // nice
+        private const int VersionOffset = 4;
 
         public AboutConciergeWindow()
         {
@@ -30,15 +32,16 @@ namespace Concierge.Display.Utility
 
         public override object? ShowWindow()
         {
-            this.Read();
+            this.FillFields();
             this.ShowConciergeWindow();
 
             return null;
         }
 
-        private void Read()
+        private void FillFields()
         {
             this.VersionField.Text = $"{Program.AssemblyVersion}{(Program.IsDebug ? " - Debug" : string.Empty)}";
+            this.DotNetField.Text = $"{Environment.Version} - C# {Environment.Version.Major + VersionOffset}";
             this.DesignerField.Text = Constants.Designer;
             this.LicenseField.Text = Constants.License;
             this.CopyrightField.Text = $"{CopyrightSymbol}{Constants.Copyright}";

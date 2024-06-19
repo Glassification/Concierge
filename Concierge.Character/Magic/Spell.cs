@@ -40,6 +40,7 @@ namespace Concierge.Character.Magic
             this.Name = string.Empty;
             this.Range = string.Empty;
             this.Save = string.Empty;
+            this.Created = DateTime.Now;
         }
 
         public string Area { get; set; }
@@ -49,6 +50,8 @@ namespace Concierge.Character.Magic
         public string Components { get; set; }
 
         public bool Concentration { get; set; }
+
+        public DateTime Created { get; set; }
 
         public bool CurrentConcentration { get; set; }
 
@@ -153,6 +156,7 @@ namespace Concierge.Character.Magic
                 IsCustom = this.IsCustom,
                 CurrentConcentration = this.CurrentConcentration,
                 ExpendSpellSlot = this.ExpendSpellSlot,
+                Created = this.Created,
             };
         }
 

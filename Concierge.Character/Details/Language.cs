@@ -28,7 +28,10 @@ namespace Concierge.Character.Details
             this.Script = string.Empty;
             this.Speakers = string.Empty;
             this.Id = Guid.NewGuid();
+            this.Created = DateTime.Now;
         }
+
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the language.
@@ -81,6 +84,7 @@ namespace Concierge.Character.Details
                 Speakers = this.Speakers,
                 Id = this.Id,
                 IsCustom = this.IsCustom,
+                Created = this.Created,
             };
         }
 

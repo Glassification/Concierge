@@ -80,6 +80,25 @@
                     <components:ConciergeLabel
                         Text="Type:"
                         Grid.Column="0"/>
+                    <components:ConciergeDesignToggleButton
+                        Grid.Column="0"
+                        x:Name="LockButton"
+                        Width="30"
+                        Height="30"
+                        Foreground="White"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,0,0"
+                        Checked="LockButton_Checked"
+                        Unchecked="LockButton_Unchecked"
+                        ToolTip="Lock current fields"
+                        Style="{StaticResource ConciergeTransparentToggleButtonStyle}">
+                        <materialDesign:PackIcon
+                            x:Name="LockIcon"
+                            Kind="LockOpenVariant"
+                            Width="25"
+                            Height="25"/>
+                    </components:ConciergeDesignToggleButton>
+                    
                     <components:ConciergeComboBox
                         Grid.Column="1"
                         x:Name="ResourceNameComboBox"

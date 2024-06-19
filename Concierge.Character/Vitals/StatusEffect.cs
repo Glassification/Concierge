@@ -28,7 +28,10 @@ namespace Concierge.Character.Vitals
             this.Description = string.Empty;
             this.Id = Guid.NewGuid();
             this.Name = string.Empty;
+            this.Created = DateTime.Now;
         }
+
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or sets the description of the status effect.
@@ -86,6 +89,7 @@ namespace Concierge.Character.Vitals
                 Description = this.Description,
                 Id = this.Id,
                 IsCustom = this.IsCustom,
+                Created = this.Created,
             };
         }
 

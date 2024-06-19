@@ -31,7 +31,10 @@ namespace Concierge.Character.Vitals
             this.Note = string.Empty;
             this.Recovery = Recovery.None;
             this.Type = string.Empty;
+            this.Created = DateTime.Now;
         }
+
+        public DateTime Created { get; set; }
 
         public bool IsCustom { get; set; }
 
@@ -122,6 +125,7 @@ namespace Concierge.Character.Vitals
                 Recovery = this.Recovery,
                 Id = this.Id,
                 IsCustom = this.IsCustom,
+                Created = this.Created,
             };
         }
 

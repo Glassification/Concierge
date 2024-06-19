@@ -15,6 +15,7 @@ namespace Concierge.Display.Windows
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for ClassResourceWindow.xaml.
@@ -218,11 +219,12 @@ namespace Concierge.Display.Windows
 
         private void ResourceNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ResourceNameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is ClassResource resource)
+            var isLocked = this.LockButton.IsChecked ?? false;
+            if (this.ResourceNameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is ClassResource resource && !isLocked)
             {
                 this.FillFields(resource);
             }
-            else
+            else if (!isLocked)
             {
                 this.ClearFields(this.ResourceNameComboBox.Text);
             }
@@ -243,6 +245,16 @@ namespace Concierge.Display.Windows
             Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.ResourceNameComboBox.ItemsSource = DefaultItems;
+        }
+
+        private void LockButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.Lock;
+        }
+
+        private void LockButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.LockOpenVariant;
         }
     }
 }

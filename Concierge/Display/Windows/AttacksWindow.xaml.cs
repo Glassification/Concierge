@@ -20,6 +20,7 @@ namespace Concierge.Display.Windows
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for AttacksWindow.xaml.
@@ -297,11 +298,12 @@ namespace Concierge.Display.Windows
 
         private void AttackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.AttackComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Weapon weapon)
+            var isLocked = this.LockButton.IsChecked ?? false;
+            if (this.AttackComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Weapon weapon && !isLocked)
             {
                 this.FillFields(weapon);
             }
-            else
+            else if (!isLocked)
             {
                 this.ClearFields(this.AttackComboBox.Text);
             }
@@ -322,6 +324,16 @@ namespace Concierge.Display.Windows
             Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.AttackComboBox.ItemsSource = DefaultItems;
+        }
+
+        private void LockButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.Lock;
+        }
+
+        private void LockButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.LockOpenVariant;
         }
     }
 }

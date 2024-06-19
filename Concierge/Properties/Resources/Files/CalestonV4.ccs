@@ -199,7 +199,8 @@
           "Action": "--",
           "Description": "When you enter a ruin or dungeon, you can correctly ascertain its original purpose and determine its builders (must be known race). In addition, you can determine the value of art objects more than a century old.",
           "IsCustom": false,
-          "Id": "13b27774-9059-4245-a0d0-28ac54db78d3"
+          "Id": "13b27774-9059-4245-a0d0-28ac54db78d3",
+          "Created": "2024-06-15T19:39:04.7573581-05:00"
         },
         {
           "Type": 3,
@@ -211,7 +212,8 @@
           "Action": "--",
           "Description": "You gain proficiency with one skill, one tool or one language, and you gain expertise with one skill.",
           "IsCustom": false,
-          "Id": "2fa34781-1266-4225-9c06-8dfbd0ee7f6c"
+          "Id": "2fa34781-1266-4225-9c06-8dfbd0ee7f6c",
+          "Created": "2024-06-15T19:39:04.7592172-05:00"
         },
         {
           "Type": 4,
@@ -223,7 +225,8 @@
           "Action": "--",
           "Description": "Avtg on saving throws against being charmed. Magic cannot put me to sleep",
           "IsCustom": false,
-          "Id": "f5915da0-893d-459c-bfbf-d8fc3952808d"
+          "Id": "f5915da0-893d-459c-bfbf-d8fc3952808d",
+          "Created": "2024-06-15T19:39:04.7592475-05:00"
         },
         {
           "Type": 2,
@@ -235,7 +238,8 @@
           "Action": "--",
           "Description": "Double proficiency bonus in select skills (Again at level 6)",
           "IsCustom": false,
-          "Id": "80998f9c-2217-4416-943e-6f650552a4b9"
+          "Id": "80998f9c-2217-4416-943e-6f650552a4b9",
+          "Created": "2024-06-15T19:39:04.7592666-05:00"
         },
         {
           "Type": 2,
@@ -247,7 +251,8 @@
           "Action": "--",
           "Description": "Takes 4 times longer to convey meaning. Target must also know Cant",
           "IsCustom": false,
-          "Id": "d10193a4-3439-4ad5-a42c-112f26c9074a"
+          "Id": "d10193a4-3439-4ad5-a42c-112f26c9074a",
+          "Created": "2024-06-15T19:39:04.7592853-05:00"
         },
         {
           "Type": 2,
@@ -259,7 +264,8 @@
           "Action": "5d6 Damage",
           "Description": "Must have advantage or target must have enemy within 5 feet",
           "IsCustom": false,
-          "Id": "977b05ff-b4a4-4107-89a5-c1e40f135b2e"
+          "Id": "977b05ff-b4a4-4107-89a5-c1e40f135b2e",
+          "Created": "2024-06-15T19:39:04.7593015-05:00"
         },
         {
           "Type": 2,
@@ -271,7 +277,8 @@
           "Action": "--",
           "Description": "Dash, Disengage, Hide as bonus action",
           "IsCustom": false,
-          "Id": "1b2551b1-570f-4655-9218-f5ed9d1530be"
+          "Id": "1b2551b1-570f-4655-9218-f5ed9d1530be",
+          "Created": "2024-06-15T19:39:04.7593164-05:00"
         },
         {
           "Type": 2,
@@ -283,7 +290,8 @@
           "Action": "--",
           "Description": "Stow/retrieve/pick lock/disarm trap at range. Succeed on Sleight of Hand check to remain unnoticed. Use bonus action to control the hand.",
           "IsCustom": false,
-          "Id": "caabb08b-9032-4c8a-8c88-c642a4de8f4b"
+          "Id": "caabb08b-9032-4c8a-8c88-c642a4de8f4b",
+          "Created": "2024-06-15T19:39:04.7593305-05:00"
         },
         {
           "Type": 2,
@@ -295,7 +303,8 @@
           "Action": "Reaction",
           "Description": "Use reaction to take half damage against an attack you can see.",
           "IsCustom": false,
-          "Id": "8847cfc4-7035-4731-8ef6-2cec4a20a34c"
+          "Id": "8847cfc4-7035-4731-8ef6-2cec4a20a34c",
+          "Created": "2024-06-15T19:39:04.7593466-05:00"
         },
         {
           "Type": 2,
@@ -307,7 +316,8 @@
           "Action": "Dex Save",
           "Description": "Succeed on a DEX save and take no damage, Fail and take half damage.",
           "IsCustom": false,
-          "Id": "daff77f2-0f74-4e35-b2df-9291d727531b"
+          "Id": "daff77f2-0f74-4e35-b2df-9291d727531b",
+          "Created": "2024-06-15T19:39:04.7593629-05:00"
         },
         {
           "Type": 2,
@@ -319,7 +329,8 @@
           "Action": "Disadvantage on saves",
           "Description": "If hidden when casting a spell on a creature, it will have disadvantage on any saving throw against the spell.",
           "IsCustom": false,
-          "Id": "ef1f8a93-2b27-4b69-afa3-83602e5c9faf"
+          "Id": "ef1f8a93-2b27-4b69-afa3-83602e5c9faf",
+          "Created": "2024-06-15T19:39:04.7593781-05:00"
         }
       ],
       "Appearance": {
@@ -336,6 +347,7 @@
           "Measurement": 1
         },
         "SkinColour": {
+          "Created": "2024-06-15T19:39:04.7470514-05:00",
           "A": 255,
           "R": 255,
           "G": 233,
@@ -347,6 +359,7 @@
           "Id": "9010325f-dd40-42a3-b67d-05216c10d2a9"
         },
         "EyeColour": {
+          "Created": "2024-06-15T19:39:04.7470584-05:00",
           "A": 255,
           "R": 65,
           "G": 130,
@@ -358,6 +371,7 @@
           "Id": "bf08d775-b38a-4ebd-8055-78943d58a3af"
         },
         "HairColour": {
+          "Created": "2024-06-15T19:39:04.7470657-05:00",
           "A": 255,
           "R": 0,
           "G": 0,
@@ -372,6 +386,7 @@
       },
       "Languages": [
         {
+          "Created": "2024-06-15T19:39:04.7602623-05:00",
           "Name": "Common",
           "Script": "Common",
           "Speakers": "Humans, halflings, half-elves, half-orcs",
@@ -379,6 +394,7 @@
           "Id": "95b8f21a-c6ab-4629-ba85-39d494a54b67"
         },
         {
+          "Created": "2024-06-15T19:39:04.7611218-05:00",
           "Name": "Dwarvish",
           "Script": "Dwarvish",
           "Speakers": "Dwarves",
@@ -386,6 +402,7 @@
           "Id": "729fa8c0-fab7-4aca-8c26-131b5c237820"
         },
         {
+          "Created": "2024-06-15T19:39:04.7611373-05:00",
           "Name": "Elvish",
           "Script": "Elvish",
           "Speakers": "Elves",
@@ -393,6 +410,7 @@
           "Id": "97080809-18a8-4744-b6e1-d8adbee37172"
         },
         {
+          "Created": "2024-06-15T19:39:04.7611453-05:00",
           "Name": "Infernal",
           "Script": "Infernal",
           "Speakers": "Devils, Tieflings",
@@ -400,6 +418,7 @@
           "Id": "00bc98a4-aa2f-462a-9969-7b1589782d4b"
         },
         {
+          "Created": "2024-06-15T19:39:04.7611536-05:00",
           "Name": "Primordial",
           "Script": "Dwarvish",
           "Speakers": "Elementals",
@@ -407,6 +426,7 @@
           "Id": "2ae41eed-ee8d-4fe1-9035-de7ef564d852"
         },
         {
+          "Created": "2024-06-15T19:39:04.7611624-05:00",
           "Name": "Sylvan",
           "Script": "Elvish",
           "Speakers": "Fey creatures (dryads, brownies, leprechauns)",
@@ -414,6 +434,7 @@
           "Id": "a7da549e-4a3a-40b9-881b-4dc607c1a9e4"
         },
         {
+          "Created": "2024-06-15T19:39:04.7611703-05:00",
           "Name": "Celestial",
           "Script": "Celestial",
           "Speakers": "Celestials (angels, devas)",
@@ -437,60 +458,70 @@
       },
       "Proficiencies": [
         {
+          "Created": "0001-01-01T00:00:00",
           "Name": "Simple Ranged Weapons",
           "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "aa1a9e34-df58-4c36-9a81-7ca5c3f6f7ec"
         },
         {
+          "Created": "0001-01-01T00:00:00",
           "Name": "Simple Melee Weapons",
           "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "ac31e566-cac1-4419-aeeb-bd8179b5dd46"
         },
         {
+          "Created": "0001-01-01T00:00:00",
           "Name": "Shortsword",
           "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "00af3db0-b72c-4c6f-8d46-1c8b9a8652b8"
         },
         {
+          "Created": "0001-01-01T00:00:00",
           "Name": "Rapier",
           "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "5b239904-a5f3-46ca-b1fd-a25cfec7a6cf"
         },
         {
+          "Created": "0001-01-01T00:00:00",
           "Name": "Longsword",
           "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "f1dcf939-a348-4fa4-9870-735db47921f2"
         },
         {
+          "Created": "0001-01-01T00:00:00",
           "Name": "Hand Crossbow",
           "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "2e1db4eb-808f-4879-a523-bf101355502f"
         },
         {
+          "Created": "0001-01-01T00:00:00",
           "Name": "Light",
           "IsCustom": false,
           "ProficiencyType": 0,
           "Id": "8be64685-64ae-4cfb-8b07-7f40ad36fd0d"
         },
         {
+          "Created": "0001-01-01T00:00:00",
           "Name": "Thieves' Tools",
           "IsCustom": false,
           "ProficiencyType": 1,
           "Id": "37ef9900-8083-49d6-bc73-eba09511945b"
         },
         {
+          "Created": "0001-01-01T00:00:00",
           "Name": "Cartographer's Tools",
           "IsCustom": false,
           "ProficiencyType": 1,
           "Id": "9fcf45e8-dc61-4f26-a076-9969588e5d0c"
         },
         {
+          "Created": "0001-01-01T00:00:00",
           "Name": "Calligrapher's Supplies",
           "IsCustom": false,
           "ProficiencyType": 1,
@@ -537,11 +568,13 @@
     "Equipment": {
       "Augmentation": [
         {
+          "Created": "2024-06-15T19:39:04.7684147-05:00",
           "Damage": "",
           "DamageType": 8,
           "Description": "A fin-stabilized projectile launched by a bow.",
           "Icon": {
             "Color": {
+              "Created": "2024-06-15T19:39:04.7684097-05:00",
               "A": 255,
               "R": 205,
               "G": 92,
@@ -563,11 +596,13 @@
           "Type": 1
         },
         {
+          "Created": "2024-06-15T19:39:04.7684852-05:00",
           "Damage": "2d4+8",
           "DamageType": 14,
           "Description": "Heal target on it instead of damaging them.",
           "Icon": {
             "Color": {
+              "Created": "2024-06-15T19:39:04.7684843-05:00",
               "A": 255,
               "R": 205,
               "G": 92,
@@ -589,11 +624,13 @@
           "Type": 1
         },
         {
+          "Created": "2024-06-15T19:39:04.768523-05:00",
           "Damage": "5d6",
           "DamageType": 15,
           "Description": "Apply bonus damage to an attack, when the attacker has advantage.",
           "Icon": {
             "Color": {
+              "Created": "2024-06-15T19:39:04.7685226-05:00",
               "A": 255,
               "R": 70,
               "G": 130,
@@ -618,6 +655,7 @@
       "Defense": {
         "Armor": {
           "Ac": 13,
+          "Created": "2024-06-15T19:39:04.7470703-05:00",
           "FullDex": false,
           "Id": "31ccdf86-6b62-483d-b43e-8f93c5a4962b",
           "IsCustom": false,
@@ -643,7 +681,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4435852-06:00",
+          "Created": "2024-06-15T19:39:04.7707387-05:00",
           "Description": "Very old map oh a mountain range. It looks to be similar to the sunset mountains. Written in Dwarvish.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -667,7 +705,7 @@
           "Attuned": false,
           "CoinType": 1,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4435932-06:00",
+          "Created": "2024-06-15T19:39:04.7708519-05:00",
           "Description": "A bag containing 10,000 pieces of candy.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -691,7 +729,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4436001-06:00",
+          "Created": "2024-06-15T19:39:04.7708953-05:00",
           "Description": "The bag stores items in an extra-dimensional space. Can hold up to 500lbs, and 64 cubic feet. Turning the bag inside out will spill all its contents.",
           "EquipmentSlot": 5,
           "IgnoreWeight": false,
@@ -715,7 +753,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4436074-06:00",
+          "Created": "2024-06-15T19:39:04.7709467-05:00",
           "Description": "As an action, you can spill these tiny metal balls from their pouch to cover a level, square area that is 10 feet on a side. A creature moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall prone. A creature moving through the area at half speed doesn't need to make the save.",
           "EquipmentSlot": 5,
           "IgnoreWeight": false,
@@ -739,7 +777,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.443614-06:00",
+          "Created": "2024-06-15T19:39:04.7709849-05:00",
           "Description": "The potion will keep you clean for 24 hours. They brush your hair, teeth, and leave you smelling great. Has a small chance of bubbles coming out your mouth.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -763,7 +801,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4435567-06:00",
+          "Created": "2024-06-15T19:39:04.7710234-05:00",
           "Description": "Stylish black gloves.",
           "EquipmentSlot": 2,
           "IgnoreWeight": false,
@@ -787,7 +825,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4435421-06:00",
+          "Created": "2024-06-15T19:39:04.7710579-05:00",
           "Description": "Simple cloak with usable hood. Used to hide facial features.",
           "EquipmentSlot": 1,
           "IgnoreWeight": false,
@@ -811,7 +849,7 @@
           "Attuned": true,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4435502-06:00",
+          "Created": "2024-06-15T19:39:04.7710923-05:00",
           "Description": "Use to cast create darkness. 1d4 uses per day.",
           "EquipmentSlot": 2,
           "IgnoreWeight": false,
@@ -835,7 +873,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.4436209-06:00",
+          "Created": "2024-06-15T19:39:04.7711262-05:00",
           "Description": "As an action, you can spread a bag of caltrops to cover a square area that is 5 feet on a side. Any creature that enters the area must succeed on a DC 15 Dexterity saving throw or stop moving this turn and take 1 piercing damage. Taking this damage reduces the creature's walking speed by 10 feet until the creature regains at least 1 hit point. A creature moving through the area at half speed doesn't need to make the save.",
           "EquipmentSlot": 5,
           "IgnoreWeight": false,
@@ -859,7 +897,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4436275-06:00",
+          "Created": "2024-06-15T19:39:04.7711643-05:00",
           "Description": "Contains a compass, ruler, triangle, pen, parchment, and calipers. Must follow rules detailed in the “Creating Detailed Maps” section. Can create high quality maps that can be modified and sold as artwork. Cannot get lost in a mapped area, and can be granted additional bonuses whilst navigating a mapped area.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -883,7 +921,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4436373-06:00",
+          "Created": "2024-06-15T19:39:04.771199-05:00",
           "Description": "This set of clothes is designed specifically to be expensive and to show it, including fancy, tailored clothes in whatever fashion happens to be the current style in the courts of the nobles. Precious metals and gems could be worked into the clothing.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -907,7 +945,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4436445-06:00",
+          "Created": "2024-06-15T19:39:04.7712336-05:00",
           "Description": " Woman's fur coat found in abandoned farm house",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -931,7 +969,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4436508-06:00",
+          "Created": "2024-06-15T19:39:04.7712699-05:00",
           "Description": "Contract to protect mage from danger.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -955,7 +993,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4436569-06:00",
+          "Created": "2024-06-15T19:39:04.7713042-05:00",
           "Description": "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -979,7 +1017,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.443663-06:00",
+          "Created": "2024-06-15T19:39:04.7713422-05:00",
           "Description": "An insignia representing membership with the Dragon Cult.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1003,7 +1041,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4436691-06:00",
+          "Created": "2024-06-15T19:39:04.7713785-05:00",
           "Description": "This one-handed hammer with an iron head is useful for pounding pitons into a wall.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1027,7 +1065,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-12-10T10:40:49.5482439-06:00",
+          "Created": "2024-06-15T19:39:04.771414-05:00",
           "Description": "These iron horseshoes come in a set of four. While all four shoes are affixed to the hooves of a horse or similar creature, they increase the creature's walking speed by 30 feet.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1051,7 +1089,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4436882-06:00",
+          "Created": "2024-06-15T19:39:04.7714519-05:00",
           "Description": "Intel on the imperial forces.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1075,7 +1113,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.4436945-06:00",
+          "Created": "2024-06-15T19:39:04.7714872-05:00",
           "Description": "A hooded lantern casts bright light in a 30-foot radius and dim light for an additional 30 feet. Once lit, it burns for 6 hours on a flask (1 pint) of oil. As an action, you can lower the hood, reducing the light to dim light in a 5-foot radius.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1099,7 +1137,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4435648-06:00",
+          "Created": "2024-06-15T19:39:04.7715366-05:00",
           "Description": "A pair of high-top black boots.",
           "EquipmentSlot": 4,
           "IgnoreWeight": false,
@@ -1123,7 +1161,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4437009-06:00",
+          "Created": "2024-06-15T19:39:04.7715783-05:00",
           "Description": "A thin stick thought to be magical in some way.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1147,7 +1185,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4437069-06:00",
+          "Created": "2024-06-15T19:39:04.7716149-05:00",
           "Description": "Map to an unspecified location.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1171,7 +1209,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4437128-06:00",
+          "Created": "2024-06-15T19:39:04.7716579-05:00",
           "Description": "Rod found in Bag of Holding (Might be a key).",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1195,7 +1233,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.4437189-06:00",
+          "Created": "2024-06-15T19:39:04.7716929-05:00",
           "Description": "Oil usually comes in a clay flask that holds 1 pint. As an action, you can splash the oil in this flask onto a creature within 5 feet of you or throw it up to 20 feet, shattering it on impact. Make a ranged attack against a target creature or object, treating the oil as an improvised weapon. On a hit, the target is covered in oil. If the target takes any fire damage before the oil dries (after 1 minute), the target takes an additional 5 fire damage from the burning oil. You can also pour a flask of oil on the ground to cover a 5-foot-square area, provided that the surface is level. If lit, the oil burns for 2 rounds and deals 5 fire damage to any creature that enters the area or ends its turn in the area. A creature can take this damage only once per turn.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1219,7 +1257,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4437257-06:00",
+          "Created": "2024-06-15T19:39:04.7717327-05:00",
           "Description": "Whisper into the crystal and another creature with the other in the pair will hear you. 1 action to use.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1243,7 +1281,7 @@
           "Attuned": false,
           "CoinType": 1,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.4437326-06:00",
+          "Created": "2024-06-15T19:39:04.7717689-05:00",
           "Description": "When a wall doesn't offer handholds and footholds, you can make your own. A piton is a steel spike with an eye through which you can loop a rope.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1267,7 +1305,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4437391-06:00",
+          "Created": "2024-06-15T19:39:04.7718063-05:00",
           "Description": "Stuffed animal won at a rigged carnival game.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1291,7 +1329,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.4437452-06:00",
+          "Created": "2024-06-15T19:39:04.7718445-05:00",
           "Description": "See spell: Detect Thoughts. One time use.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1315,7 +1353,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:30:26.1781108-06:00",
+          "Created": "2024-06-15T19:39:04.7718804-05:00",
           "Description": "A character who drinks the magical red fluid in this vial regains 2d4 + 2 hit points. Drinking or administering a potion takes an action for automatic 10 hp, bonus action will roll for hp.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1339,7 +1377,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:30:37.4179408-06:00",
+          "Created": "2024-06-15T19:39:04.7719171-05:00",
           "Description": "A character who drinks the magical red fluid in this vial regains 8d4 + 8 hit points. Drinking or administering a potion takes an action for automatic 40 hp, bonus action will roll for hp.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1363,7 +1401,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-12-09T22:47:23.0337983-06:00",
+          "Created": "2024-06-15T19:39:04.7719627-05:00",
           "Description": "A character who drinks the magical red fluid in this vial regains 10d4 + 20 hit points. Drinking or administering a potion takes an action for automatic 60 hp, bonus action will roll for hp.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1387,7 +1425,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.4437512-06:00",
+          "Created": "2024-06-15T19:39:04.7719992-05:00",
           "Description": "Grants resistance to fire",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1411,7 +1449,7 @@
           "Attuned": false,
           "CoinType": 4,
           "Consumable": true,
-          "CreationDate": "2023-12-09T23:20:42.6082037-06:00",
+          "Created": "2024-06-15T19:39:04.7720348-05:00",
           "Description": "When you drink this potion, your Strength score changes to 29 for 1 hour. The potion has no effect on you if your Strength is equal to or greater than that score.  This potion's transparent liquid has floating in it a sliver of fingernail from a storm giant.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1435,7 +1473,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-12-09T23:11:07.5329253-06:00",
+          "Created": "2024-06-15T19:39:04.7720738-05:00",
           "Description": "When you drink this potion, it removes any exhaustion you are suffering and cures any disease or poison affecting you. For the next 24 hours, you regain the maximum number of hit points for any Hit Die you spend. The potion's crimson liquid regularly pulses with dull light, calling to mind a heartbeat.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1459,7 +1497,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.4437572-06:00",
+          "Created": "2024-06-15T19:39:04.7721123-05:00",
           "Description": "If ingested causes the poison condition. Creature must save on a CD 12 Constitution save. Causes 1d12 poison damage.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1483,7 +1521,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.4437637-06:00",
+          "Created": "2024-06-15T19:39:04.7721494-05:00",
           "Description": "A quiver can hold up to 20 arrows.",
           "EquipmentSlot": 1,
           "IgnoreWeight": true,
@@ -1507,7 +1545,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.4437702-06:00",
+          "Created": "2024-06-15T19:39:04.7722095-05:00",
           "Description": "Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1531,7 +1569,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4437803-06:00",
+          "Created": "2024-06-15T19:39:04.7722463-05:00",
           "Description": "Sacks containing some sort of chemicals that give off a lot of heat.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1555,7 +1593,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4437868-06:00",
+          "Created": "2024-06-15T19:39:04.7722827-05:00",
           "Description": "Rope, has 2 hit points and can be burst with a DC 17 Strength check.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1579,7 +1617,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-02-12T13:29:58.4437933-06:00",
+          "Created": "2024-06-15T19:39:04.7723188-05:00",
           "Description": "Food for one person for a meal.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1603,7 +1641,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-12-09T20:50:02.4590289-06:00",
+          "Created": "2024-06-15T19:39:04.7723546-05:00",
           "Description": "This scroll protects against mundane ranged weapons. Once this spell blocks 100 points of damage it is discharged.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1627,7 +1665,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-12-09T20:51:01.4546359-06:00",
+          "Created": "2024-06-15T19:39:04.7723912-05:00",
           "Description": "Grants the identify spell.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1651,7 +1689,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-12-10T10:44:54.4395382-06:00",
+          "Created": "2024-06-15T19:39:04.7724271-05:00",
           "Description": "Encloses you in an invisible barrier that extends from you to form a 5-foot-radius, 10-foot-high cylinder. For 5 minutes, this barrier prevents fiends from entering or affecting anything within the cylinder. The cylinder moves with you and remains centered on you. However, if you move in such a way that a fiend would be inside the cylinder, the effect ends. A creature can attempt to overcome the barrier by using an action to make a DC 15 Charisma check. On a success, the creature ceases to be affected by the barrier.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1675,7 +1713,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-12-09T20:52:33.3332455-06:00",
+          "Created": "2024-06-15T19:39:04.7724657-05:00",
           "Description": "Grants the spell Spider CLimb",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1699,7 +1737,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-12-09T20:51:51.9521351-06:00",
+          "Created": "2024-06-15T19:39:04.7725012-05:00",
           "Description": "Grants spell of Ventriloquism.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1723,7 +1761,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438056-06:00",
+          "Created": "2024-06-15T19:39:04.7725381-05:00",
           "Description": "Say the words 'trust is earned' to get all the perks befitting a lieutenant.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1747,7 +1785,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438116-06:00",
+          "Created": "2024-06-15T19:39:04.7725742-05:00",
           "Description": "A small marble like bead coloured a translucent green.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1771,7 +1809,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-12-09T23:12:26.9856977-06:00",
+          "Created": "2024-06-15T19:39:04.7726097-05:00",
           "Description": "This viscous, milky-white substance can form a permanent adhesive bond between any two objects. It must be stored in a jar or flask that has been coated inside with oil of slipperiness.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1795,7 +1833,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438176-06:00",
+          "Created": "2024-06-15T19:39:04.7726463-05:00",
           "Description": "A 10-foot length of string, typically found in a burglar's pack.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1819,7 +1857,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4435251-06:00",
+          "Created": "2024-06-15T19:39:04.7726831-05:00",
           "Description": "Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes. Base AC of 13 + DEX modifier.",
           "EquipmentSlot": 1,
           "IgnoreWeight": true,
@@ -1843,7 +1881,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438236-06:00",
+          "Created": "2024-06-15T19:39:04.7727188-05:00",
           "Description": "The knife has a mouth on it that keeps repeating \"Eating a human is a mortal sin\".",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1867,7 +1905,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.443831-06:00",
+          "Created": "2024-06-15T19:39:04.7727569-05:00",
           "Description": "A simple and portable canvas shelter, a tent sleeps two.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1891,7 +1929,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438373-06:00",
+          "Created": "2024-06-15T19:39:04.772792-05:00",
           "Description": "This set of tools includes a small file, a set of lock picks, a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1915,7 +1953,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438439-06:00",
+          "Created": "2024-06-15T19:39:04.7728282-05:00",
           "Description": "Ticket to the party in Solas' honor. Not too useful now.",
           "EquipmentSlot": 5,
           "IgnoreWeight": false,
@@ -1939,7 +1977,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438499-06:00",
+          "Created": "2024-06-15T19:39:04.7728626-05:00",
           "Description": "This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch -- or anything else with abundant, exposed fuel -- takes an action. Lighting any other fire takes 1 minute.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -1963,7 +2001,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438562-06:00",
+          "Created": "2024-06-15T19:39:04.7728986-05:00",
           "Description": "A carved crystal that faintly glows in the moonlight. (Stolen from ruins in the Scaled Plains)",
           "EquipmentSlot": 0,
           "IgnoreWeight": true,
@@ -1987,7 +2025,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": true,
-          "CreationDate": "2023-12-09T23:15:00.2654906-06:00",
+          "Created": "2024-06-15T19:39:04.7729333-05:00",
           "Description": "This tube holds milky liquid with a strong alcohol smell. You can use an action to pour the contents of the tube onto a surface within reach. The liquid instantly dissolves up to 1 square foot of adhesive it touches, including sovereign glue.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -2011,7 +2049,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438622-06:00",
+          "Created": "2024-06-15T19:39:04.7729693-05:00",
           "Description": "A box with 3 locks on it, all interconnected. Strong divination magic from within.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -2035,7 +2073,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438683-06:00",
+          "Created": "2024-06-15T19:39:04.7730038-05:00",
           "Description": "A vial can hold 4 ounces of liquid or 7 doses of drugs.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -2059,7 +2097,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438751-06:00",
+          "Created": "2024-06-15T19:39:04.7730377-05:00",
           "Description": "A waterskin can hold 4 pints of liquid.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -2083,7 +2121,7 @@
           "Attuned": false,
           "CoinType": 3,
           "Consumable": false,
-          "CreationDate": "2023-12-10T10:36:55.8544459-06:00",
+          "Created": "2024-06-15T19:39:04.7730721-05:00",
           "Description": "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to cold damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest white dragon within 30 miles of you. This special action can't be used again until the next dawn. This armor consists of a coat and leggings of leather covered with overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets.",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -2107,7 +2145,7 @@
           "Attuned": false,
           "CoinType": 0,
           "Consumable": false,
-          "CreationDate": "2023-02-12T13:29:58.4438811-06:00",
+          "Created": "2024-06-15T19:39:04.7731102-05:00",
           "Description": "A wooden staff belonging to Declan",
           "EquipmentSlot": 5,
           "IgnoreWeight": true,
@@ -2133,6 +2171,7 @@
           "Amount": 1,
           "Attuned": false,
           "CoinType": 3,
+          "Created": "2024-06-15T19:39:04.7732242-05:00",
           "Damage": "1d4 +5",
           "DamageType": 8,
           "EquipmentSlot": 1,
@@ -2158,6 +2197,7 @@
           "Amount": 1,
           "Attuned": false,
           "CoinType": 3,
+          "Created": "2024-06-15T19:39:04.7733071-05:00",
           "Damage": "1d8 +5",
           "DamageType": 8,
           "EquipmentSlot": 2,
@@ -2183,6 +2223,7 @@
           "Amount": 1,
           "Attuned": false,
           "CoinType": 3,
+          "Created": "2024-06-15T19:39:04.7733757-05:00",
           "Damage": "1d4 +5",
           "DamageType": 8,
           "EquipmentSlot": 5,
@@ -2208,6 +2249,7 @@
           "Amount": 1,
           "Attuned": false,
           "CoinType": 3,
+          "Created": "2024-06-15T19:39:04.7734383-05:00",
           "Damage": "1d6 +5",
           "DamageType": 8,
           "EquipmentSlot": 2,
@@ -2233,6 +2275,7 @@
           "Amount": 1,
           "Attuned": false,
           "CoinType": 3,
+          "Created": "2024-06-15T19:39:04.7735127-05:00",
           "Damage": "1d8+3d6",
           "DamageType": 8,
           "EquipmentSlot": 5,
@@ -2258,6 +2301,7 @@
           "Amount": 1,
           "Attuned": false,
           "CoinType": 3,
+          "Created": "2024-06-15T19:39:04.7735766-05:00",
           "Damage": "1d8",
           "DamageType": 12,
           "EquipmentSlot": 5,
@@ -2286,7 +2330,7 @@
           "Documents": [
             {
               "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch Our group stopped off in the city of Damera for rest and supplies. Gray spent time getting a permit so he could bring the dead eagle into the city and eat it, against Caleston's protests. Unfortunately the carcass was too decayed and he was force to leave it at customs. The journey ahead needed a horse and carriage so Kussandrick and Caleston scouted out a promising barn that might hold the quarry inside. Kussandrick created a distraction by urinating and Caleston was able to successfully enter the barn undetected. We stole the horse and carriage, lit the barn on fire, escaped the city, and met up with Gray and Gilbert.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch Continuing on the journey to Blinding Rock, we came across a damaged bridge and an overly enthusiastic engineer. We were forced to go kill a (troll?) and then convinced the workers to hoist us across with their crane. After setting up camp for the night we were set upon by bandits who tried to get the jump on the group. Caleston was able to escape the fight unscathed, but the rest were not so lucky.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Cheap Blosem}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
-              "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+              "Created": "2023-02-22T18:16:29",
               "Id": "7055fd90-f8bf-4d3b-9f49-8d94a6303d92",
               "IsExpanded": false,
               "IsCustom": false,
@@ -2294,7 +2338,7 @@
             },
             {
               "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs29\\f3\\cf0 \\cf0\\ql{\\fs30\\f3 {\\cf1\\ltrch We met up with Filbin, who had helped us in our last battle. He took us to his hideout which turned out to be a very well finished cave system, and potentialy new base of operations. After so many nights on the road, a real be was all we needed for a good nights sleep. We headed out the bright and early the next morning to find the Group spreading lycanthropy. Gilbert used his zone of truth spell again, but nothing much was learned. Upon reaching our destination, we were set upon by a pack of werewolves and Kussandrick might have been infected. We were able to open a secret door by getting Gray to just break the mechanism. }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\fs30\\f3 {\\ltrch }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\fs30\\f3 {\\cf1\\ltrch The door did not fully open so we had to crawl through a small tunnel. Inside the complex we fought off many a werebeast, in one hell of a fight. After looting we found }{\\i\\cf1\\ltrch Glasses of Seeing}{\\cf1\\ltrch  and an }{\\i\\cf1\\ltrch Immovable Rod}{\\cf1\\ltrch . The source was already taken so we had to travel to the city of Aveburry and find Erwin (female elf). To get her to trust us, we had to say we were with Filbin only in her company; and to tell her \"}{\\i\\cf1\\ltrch remember stary night}{\\cf1\\ltrch \" and mention Filbin's name. The city is at least partially in favor of lycanthropy as a last ditch effort to save themselves, and the druids might know where source is. It was best that we didn't make it known we are trying to stop the werebeasts.  Aveburry is built in the trees with the South and West protected by walls. There are no houses on the ground and people must move from tree to tree, some trees are magic.  There is a herb shop called the Spider's Grove on east side of town. Erwin is likely in the Treaty Retreat. We encountered a half-elf named Jeramy doesn't speak elvish.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
-              "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+              "Created": "2023-02-22T18:16:29",
               "Id": "e94f6f96-75f4-4344-8175-488880d01bfb",
               "IsExpanded": false,
               "IsCustom": false,
@@ -2302,7 +2346,7 @@
             },
             {
               "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;\\red0\\green255\\blue255;\\red128\\green0\\blue0;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch We were able to discover that the source might be in the town hall. }{\\cf2\\ltrch Fenissa }{\\ltrch wants to distribute source around the city using the inhibitors (giant floating crystals). After smooth talking our way into the vaults, fighting some water elementals, and solving a puzzle we finally opened the door. We were told it is better to destroy rather than steal the Source, but it wasn't there. However, there was an inhibitor which we were able to destroy. After heading back up to the council chamber to meet }{\\cf2\\ltrch Erwin}{\\ltrch , we arrived while }{\\cf2\\ltrch Fenissa }{\\ltrch was in the middle of a speech}{\\cf2\\ltrch  }{\\ltrch whereupon we were attacked by werewolves. The party dealt with them, but }{\\cf2\\ltrch Fenissa }{\\ltrch escaped to fight another day. We were, however, able to save }{\\cf2\\ltrch Grommash Frume}{\\ltrch  who informed us that the plan to infect the city with lycanthropy was something of a worst kept secret.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch After the fight, we explained ourselves to }{\\cf2\\ltrch Grommash }{\\ltrch and were allowed to search }{\\cf2\\ltrch Finissa's }{\\ltrch office. Inside we found a letter implicating }{\\cf2\\ltrch Silverpine }{\\ltrch with the scheme, a reference to a meeting point outside the city, and a map of trade routes suggesting the location of their lair. Her and }{\\cf2\\ltrch Silverpine }{\\ltrch were scheming together. We also noticed she has a lot of books on the fae wilds, and }{\\cf2\\ltrch Gromash Froom's}{\\ltrch  daughter is leader of }{\\cf3\\ltrch The Boiling Fist}{\\ltrch , }{\\cf2\\ltrch Mondath }{\\ltrch (They are not on the best of terms). We made haste for the meeting point, picking up }{\\cf2\\ltrch Filbin }{\\ltrch along the way, and planned our attack. Quick work was made of the defenders and only }{\\cf2\\ltrch Finissa }{\\ltrch and a guard were left alive. From our interigation we learned }{\\cf2\\ltrch Silverpine }{\\ltrch in the second tower, and the source is some kind of fae artifact. The guard was left alive, }{\\cf2\\ltrch Finissa }{\\ltrch executed, and our course was set for the first tower that is haunted by G; a spirit from the battle of the 4th incoursion, and not a fan of lycanthropy.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
-              "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+              "Created": "2023-02-22T18:16:29",
               "Id": "b64ca418-c97e-48bd-baee-e16422a54d32",
               "IsExpanded": false,
               "IsCustom": false,
@@ -2310,7 +2354,7 @@
             },
             {
               "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;\\red0\\green128\\blue255;\\red0\\green255\\blue255;\\red255\\green128\\blue128;\\red255\\green128\\blue0;\\red128\\green0\\blue128;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs29\\f3\\cf0 \\cf0\\ql{\\fs30\\f3 {\\cf1\\ltrch We pressed on, making it to the first tower and discovered it in ruins. After entering the abandoned building, we all jumped down a pit into a small underground lake (except }{\\cf2\\ltrch Kus}{\\cf1\\ltrch , who decided to take the hidden staircase) and found a small island with a treasure chest on it. Trying to take some gold caused the ghost to appear and we were forced to deal with him using the power of song. He granted us several silvered weapons and a special bow. We then trekked to the second tower, entered stealthfully, and killed the first person we saw blowing our cover. The fight was difficult, and }{\\cf3\\ltrch Silverpine }{\\cf1\\ltrch managed to escape (although is likely dead on the other side). We discovered a magical anomaly that absorbed items put into it.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\fs30\\f3 {\\ltrch }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\fs30\\f3 {\\cf1\\ltrch The battle concluded, we closed to the anomaly with the }{\\i\\cf4\\ltrch Immovable Rod }{\\cf1\\ltrch and gathered some new weapons. }{\\cf3\\ltrch Erwin }{\\cf1\\ltrch decided to go back to }{\\cf5\\ltrch Aveburry}{\\cf1\\ltrch , and }{\\cf3\\ltrch Filbin }{\\cf1\\ltrch and the rest of us went to find the crashed meteorite. We reached the location and found the remains of a battle, with the meteor already looted. A clue was found on a dead }{\\cf6\\ltrch Cult of the Dragon }{\\cf1\\ltrch member that contained reference to a camp near the *** mountains. Despite }{\\cf2\\ltrch Caleston's}{\\cf1\\ltrch  protests, the group set out for the camp. After an encounter with an unknown monster, being attacked by snakes, and finding an impaled family, we fought another epic battle. }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
-              "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+              "Created": "2023-02-22T18:16:29",
               "Id": "5cf5d376-1618-42ac-a5a7-c62daf40c644",
               "IsExpanded": false,
               "IsCustom": false,
@@ -2318,7 +2362,7 @@
             },
             {
               "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch We made our way back to the barn to interogate our hostage Thelo, who told us about their hunting lodge deep in the mountains. Gray did most of the work, and while this was going on Caleston found some winter gear for the trek through the mountains. Something attacked Caleston during the night and left a mark scratched into his chest, the same mark as the one on the children of the murdered family. We set off for the mountain pass and reached a fork in the road and went left, eventually coming accross a giant's cave. Backtracking to the fork there appeared a magic door in the cliffside, and uppon entering we stumbled into a warmly lit bar bussling with patrons. Each of us received a gift and we set off again. We finally reached the hunting lodge and after an intial stealthful approach our cover was blown and we had to fight our way through.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
-              "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+              "Created": "2023-02-22T18:16:29",
               "Id": "f066d29a-df66-46ef-9a8d-73aa72dc8c88",
               "IsExpanded": false,
               "IsCustom": false,
@@ -2326,7 +2370,7 @@
             },
             {
               "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;\\red255\\green128\\blue0;\\red0\\green128\\blue255;\\red128\\green255\\blue255;\\red128\\green0\\blue255;\\red128\\green0\\blue0;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch After finally breaking into the }{\\cf2\\ltrch hunting }{\\ltrch lodge we immediately split up. }{\\cf3\\ltrch Caleston }{\\ltrch went down to the basement and discovered two prisoners chained up in a dungeon. One prisoner was a monk named }{\\cf3\\ltrch Lafawnda }{\\ltrch and the other was a dwarf named }{\\cf4\\ltrch ###}{\\ltrch . Meanwhile }{\\cf3\\ltrch Gray }{\\ltrch and }{\\cf3\\ltrch Kussandrick }{\\ltrch started blindly charging through the mansion, placing the entire house an alert. We quickly dispatched two smaller groups of enemies that rushed in, but just then the }{\\cf2\\ltrch lodge }{\\ltrch started shaking and all of the doors began locking. We forced our way into the main room and came face to face with an enormous group of enemies including the leader, a large black }{\\cf4\\ltrch dragonborn}{\\ltrch . A drawn out battle ensued where our hero's journy nearly came to an end, if not for the quick thinking of }{\\cf3\\ltrch Gilbert }{\\ltrch and the assistance of }{\\cf3\\ltrch Lafawnda}{\\ltrch . With the last of the foes cut down and our heroes victorious, the }{\\cf2\\ltrch lodge }{\\ltrch began shaking again . . . }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch Just then a woman who claimed to be a maid made her way downstairs. She said we had really fucked up and a giant dragon was on its way to secure the lodge. We all hightailed it out, running back down the mountain and taking shelter in the giants cave. While we originally assumed the small bed was for a Dwarf, it was in fact for their \"young adult\" child. }{\\cf3\\ltrch Caleston }{\\ltrch and }{\\cf3\\ltrch Gray }{\\ltrch wanted to not tell him anything, but }{\\cf3\\ltrch Lafawnda }{\\ltrch demanded we tell the truth. }{\\cf3\\ltrch Caleston }{\\ltrch volunteered to tell the kid in the morning and }{\\cf3\\ltrch Lafawnda }{\\ltrch forced }{\\cf3\\ltrch Gilbert }{\\ltrch to stay and observe. }{\\cf3\\ltrch Caleston }{\\ltrch tried to skirt the truth but }{\\cf3\\ltrch Gilbert }{\\ltrch just blurted everything out, causing the giant to sprint out of the cave and run off. We met up with }{\\cf4\\ltrch Filbin }{\\ltrch back at the farm house and began our journey back to }{\\cf5\\ltrch Blinding Rock}{\\ltrch , while being hunted by a demon. }{\\cf3\\ltrch Caleston's}{\\ltrch  usually powerful wisdom failed him during the start of the trek and he was haunted by nightmares about a demonic presence. He came up with a plan to sleep during the day while being carried by }{\\cf3\\ltrch Gray}{\\ltrch , and keep watch at night, negating the demons influence. After several days travel, the group finally reached }{\\cf5\\ltrch Blinding Rock }{\\ltrch and were met at the entrance by some shockingly racist Drow and }{\\cf3\\ltrch Gray }{\\ltrch opened his dumb mouth and claimed }{\\cf3\\ltrch Kussandrick }{\\ltrch and }{\\cf3\\ltrch Caleston }{\\ltrch were slaves. After debriefing with }{\\cf6\\ltrch Mondath Frume}{\\ltrch , we took a shopping trip in the city and found an eccentric vendor with some interesting magical items. }{\\cf3\\ltrch Caleston }{\\ltrch also met with a spider priest and learned of a way to help his demon problem if the party completed a task for her.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
-              "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+              "Created": "2023-02-22T18:16:29",
               "Id": "9df11d32-f672-4858-9847-e62a5c507051",
               "IsExpanded": false,
               "IsCustom": false,
@@ -2334,7 +2378,7 @@
             },
             {
               "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch With our path set, we finally set off to search for a giant snail shell in the depths of Blinding Rock. Because the group is now in MBRGA (Make Blinding Rock Great Again) Country, Caleston could no longer be the face of the group and was forced to watch as Gray took up the mantle. The group found the entrance to the mine, acquired passes, and started the long trek down in search of their quarry. Caleston forgot to ask where giant snails could be found so he picked a direction and started walking. After several hours Gray got fed up and demanded they turn around and ask directions, but before they could a unicorn appeared and then disappeared just as quickly. The group made it back to the 'surface' and Gray convinced a local named Zandos to be our guide, to his later regret after Grey started to put the fear of God into him. During this whole endeavor Caleston was also suffering from severe exhaustion from his demon problems, and so was moving at a reduced speed.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch After a few hours journey in the RIGHT direction, we stumbled across two Dark Elves and their three slaves. While most of the group didn't want to get involved, Lafawnda demanded we do the right thing. But it was Gilbert's purchase of the female slaves that sparked Caleston's decision to go back and kill the slavers while the rest of the group argued (and also to get the money Gilbert payed). He made short work of the first elf, but the other one caused him a little bit of difficulty and he was forced to call for help. After a short battle the last elf made a run for it, but we were just barely able to kill him and free the slaves. Caleston took most of the gold as a finder's fee, and Gilbert was none too happy about losing his groupies. }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch We set off once again, deeper and deeper into the earth. Magical spells seemed to be malfunctioning in these tunnels, but Gray was adamant his spell casting was in no way related to the odd occurrences. Even after he turned himself into a potted plant several times. Meanwhile, Zandos was getting increasingly panicked because the snails were nowhere to be found and Gray's threats were becoming more creative. Just when all seemed lost for Zandos, a giant snail appeared out of the darkness. The great beast loomed in front of the adventures, fangs glistening, eye stalks menacing, ready to give our hero's a real challenge. Caleston then killed it with two shots, before it could even react. All seemed well until Gray cast a spell and caused crazed unicorn to appear and start attacking the group. It was a tough fight, but things were looking good until Gray in his infinite stupidity cast another spell and spawned a yet another unicorn. After several close calls, the unicorns were banished and the party was victorious. Caleston collected the shell and the party began the long trip back to the 'surface' with Gray now acutely aware of the consequences of casting spells this far down.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
-              "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+              "Created": "2023-02-22T18:16:29",
               "Id": "a018d7a8-f2eb-42f3-b91e-9200ad7ef009",
               "IsExpanded": false,
               "IsCustom": false,
@@ -2342,14 +2386,14 @@
             },
             {
               "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch After licking our wounds we easily convinced Gray and Kussandrick to carry the giant snail shell up through the tunnels. Things were going well until we came accross a a narrow pathway winfing around a large underground lake, with absolutly no monsters calling it home. After berating Gray for his magic use, Caleston asked Gilbert to use a healing spell on him. He realized the magnitue of his his mistake as soon as the words were out of his mouth, but it was too late. He was healed, but Lafonda, Caleston and Gilbert were covered heat to toe in grease. While Gilbert began cleaning up his mess, Gray got impacient and figured he was powerfull enough to travers the narrow path without Calestons perceptive eyes. This nearly proved to be his undoing, when he lost his footing and began to falled into the monster infested waters below. He would have been lost forever if not for the quick thinking of Kussandrick, and his unequaled strength; hauling up Gray's useless body without breaking a sweat. Gilbert, Lafonda, and Caleston all made it down without any trouble; proving once and for all which party members were just dead weight.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch After finally reaching the \"surface\" Gray presented our papers to the guards stationed at the mine entrance. The gaurds were very confused as to where he got the papers from, and almost instantly Gray had a new enemy. Caleston took charge of the situation and led the party back to the spider temple to deal with the creature that had been hunting him since Gray's wild goose chase. The spider preist led Caleston down further }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch would you Kill your father if he was a kid?}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch The loving peacock}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Fantastic travler jh}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
-              "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+              "Created": "2023-02-22T18:16:29",
               "Id": "2cdec6d5-a35b-4136-ad22-f6c8abdedec7",
               "IsExpanded": false,
               "IsCustom": false,
               "Name": "A Fork in the Road"
             }
           ],
-          "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+          "Created": "2023-02-22T18:16:29",
           "Id": "9202490d-a706-40ca-92d1-076540964c1c",
           "IsExpanded": false,
           "IsCustom": false,
@@ -2359,14 +2403,14 @@
           "Documents": [
             {
               "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs27\\f3\\cf1 \\cf1\\ql{\\f3 {\\lang4105\\ltrch So Caleston grew up in }{\\lang4105\\b\\ltrch Odessen}{\\lang4105\\ltrch , the capital city of }{\\lang4105\\b\\ltrch Alar}{\\lang4105\\ltrch .}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch His mom was and elf named }{\\lang4105\\b\\ltrch Alyndra Na\\'eflo}{\\lang4105\\ltrch  and is dad was a human named }{\\lang4105\\b\\ltrch Carson Levett}{\\lang4105\\ltrch .}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch His parents worked as archeologists for the}{\\lang4105\\b\\ltrch  Alarian Trading Company}{\\lang4105\\ltrch . }\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch They\\rquote re basically like a crown corporation that was spun off into its own entity. Still has very close ties to the government and is always looking for magical artifacts, or old technology to increase its power.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Cal was never particular good at the whole archeology part, but had a knack for finding treasure, and an even greater knack for setting of traps. Didn\\rquote t really care about the history of the site or its political importance, just enjoyed a good mystery. And knowing things that other people didn\\rquote t.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch     Parents were eventually sent on an expedition to a site in the }{\\lang4105\\b\\ltrch White that Wends}{\\lang4105\\ltrch , an arctic tundra far outside the boarders of }{\\lang4105\\b\\ltrch Alar}{\\lang4105\\ltrch .}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch     It was all very hush hush, so Cal didn\\rquote t know any of the details or location.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Parents never came back from it, he doesn\\rquote t know what happened.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch He was in his mid-20s at that point, so he packed up his stuff, sold off the house, and went off on an adventure to find the location his parents were sent to.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch He only spent about a month searching before the trail got cold. Seemed like someone never wanted the expedition site to be found.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Eventually he just started joining up with other archeologists on dig sites to lend his \\ldblquote expertise\\rdblquote . Most people saw his last name and assumed he shared his parents\\rquote  skill.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Joined up with a group that would enter ruins on behalf of a client to retrieve some item, or just do a search and sweep.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Their last mission was to the }{\\lang4105\\b\\ltrch Scaled Plains}{\\lang4105\\ltrch , a large dragon burial site. Client fronted them a lot of gold to outfit themselves. Happened across Kaleigh\\rquote s character (Declan?) in a tavern, saw his scales, and bullshitted each other into joining forces.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch During the expedition, Cal set of a trap deep under the ruins and the whole place started coming down. He totally bailed on his crew and barely managed to get out. He assumed everyone else was dead and didn\\rquote t have any way to pay the client back so he boarded the first ship he came across in [that port town this whole campaign started in]. }\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch His trinket, a small spherical crystal that glows faintly in the moonlight, was the only thing of seeming value he found in the scaled plains.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
-              "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+              "Created": "2023-02-22T18:16:29",
               "Id": "7f948a0c-b421-4634-bb4e-48a8591b0703",
               "IsExpanded": false,
               "IsCustom": false,
               "Name": "Caleston's Story v2"
             }
           ],
-          "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+          "Created": "2023-02-22T18:16:29",
           "Id": "faa9bfcf-da5f-4e0c-8b3d-a0b1b1a45400",
           "IsExpanded": false,
           "IsCustom": false,
@@ -2376,7 +2420,7 @@
           "Documents": [
             {
               "Rtf": "",
-              "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+              "Created": "2023-02-22T18:16:29",
               "Id": "75dd6d85-aa63-40e2-8190-7bec9f799096",
               "IsExpanded": false,
               "IsCustom": false,
@@ -2384,14 +2428,14 @@
             },
             {
               "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Calibri;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;\\red70\\green130\\blue180;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f2\\cf1 \\cf1\\ql{\\f2 {\\lang4105\\ltrch Vault is in office. She does cazy shit for it to open. Office is on top floor. }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\lang4105\\cf2\\ltrch scroll protect from fiends}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch Using an action to read the scroll encloses you in an invisible barrier that extends from you to form a 5-foot-radius, 10-foot-high cylinder. For 5 minutes, this barrier prevents fiends from entering or affecting anything within the cylinder. The cylinder moves with you and remains centered on you. However, if you move in such a way that a fiend would be inside the cylinder, the effect ends. A creature can attempt to overcome the barrier by using an action to make a DC 15 Charisma check. On a success, the creature ceases to be affected by the barrier.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
-              "Created": "Saturday, 09 December 2023 09:23:29 PM",
+              "Created": "2023-12-09T21:23:29",
               "Id": "084ab386-217e-485d-85f7-e2b87baf7623",
               "IsExpanded": false,
               "IsCustom": false,
               "Name": "2023-12-09"
             }
           ],
-          "Created": "Wednesday, 22 February 2023 06:16:29 PM",
+          "Created": "2023-02-22T18:16:29",
           "Id": "e5ca1f3a-3120-4ff4-87ba-831784b49ffc",
           "IsExpanded": true,
           "IsCustom": false,
@@ -2403,6 +2447,7 @@
       "MagicalClasses": [
         {
           "Ability": 4,
+          "Created": "2024-06-15T19:39:04.7838117-05:00",
           "Id": "22646a4e-bda0-4b87-b046-6d3a606407df",
           "IsCustom": false,
           "KnownCantrips": 3,
@@ -2418,6 +2463,7 @@
           "Class": "Arcane Trickster",
           "Components": "V, S",
           "Concentration": false,
+          "Created": "2024-06-15T19:39:04.7856686-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Create spectral hand that manipulates objects. Can pick up <= 10 lbs.",
@@ -2438,6 +2484,7 @@
           "Class": "Arcane Trickster",
           "Components": "V, S",
           "Concentration": false,
+          "Created": "2024-06-15T19:39:04.7857207-05:00",
           "CurrentConcentration": false,
           "Damage": "1d8 Lightning",
           "Description": "Target can't take reactions until next turn. Advantage if target has metal armor.",
@@ -2458,6 +2505,7 @@
           "Class": "Arcane Trickster",
           "Components": "S, M (bit of fleece)",
           "Concentration": false,
+          "Created": "2024-06-15T19:39:04.7857479-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Create illusory sound or image. Investigation check against spell DC to detect.",
@@ -2478,6 +2526,7 @@
           "Class": "",
           "Components": "Bow of the Spelldrinker",
           "Concentration": false,
+          "Created": "2024-06-15T19:39:04.7857737-05:00",
           "CurrentConcentration": false,
           "Damage": "30 Force",
           "Description": "Lose 30hp and fire a magical arrow of pure force. If the creature is casting a spell <= 5th level, the spell fails. Target must make saving throw using spellcasting modifier. On failed save take 30 damage, on success take 15 damage.",
@@ -2498,6 +2547,7 @@
           "Class": "Arcane Trickster",
           "Components": "V, S",
           "Concentration": false,
+          "Created": "2024-06-15T19:39:04.7857984-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Create illusion to appear as someone else.  Foiled by Investigation vs. spell DC.",
@@ -2518,6 +2568,7 @@
           "Class": null,
           "Components": "Scroll",
           "Concentration": false,
+          "Created": "2024-06-15T19:39:04.785822-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Learn what an item is and what spells affect it.",
@@ -2538,6 +2589,7 @@
           "Class": "",
           "Components": "V,M (a piece of parchment rolled up into a cone)",
           "Concentration": false,
+          "Created": "2024-06-15T19:39:04.7861438-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "You can make your voice (or any sound that you can normally make vocally) seem to issue from someplace else. You can speak in any language you know. With respect to such voices and sounds, anyone who hears the sound can attempt an Investigation check against your spell save DC. On a success, they recognize it as illusory, but still hear it. You can dismiss it at will for the duration.",
@@ -2558,6 +2610,7 @@
           "Class": null,
           "Components": "V, S",
           "Concentration": false,
+          "Created": "2024-06-15T19:39:04.7861728-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Charm target so it treats you as friendly. Gets advantage to save if fighting you.",
@@ -2578,6 +2631,7 @@
           "Class": null,
           "Components": "Jump Blade",
           "Concentration": false,
+          "Created": "2024-06-15T19:39:04.7861974-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Target's jump distance tripled until spell ends. Can be used once per long rest.",
@@ -2598,6 +2652,7 @@
           "Class": "Arcane Trickster",
           "Components": "V, S, M (tiny tarts and a feather)",
           "Concentration": true,
+          "Created": "2024-06-15T19:39:04.786221-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Target (INT > 4) is prone, incapacitated, can't stand. WIS save each turn to end.",
@@ -2618,6 +2673,7 @@
           "Class": "Arcane Trickster",
           "Components": "V, S, M (bit of fleece)",
           "Concentration": true,
+          "Created": "2024-06-15T19:39:04.7862453-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Create visual-only illusion. Use action to make it move. Investigation to discover.",
@@ -2638,6 +2694,7 @@
           "Class": null,
           "Components": "Calamari Ring",
           "Concentration": true,
+          "Created": "2024-06-15T19:39:04.7862691-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Creates darkness normal light can't dispel. Dispels light spells <= 2nd level. Darkvision cannot see through it. If cast on creature or object, it will move with it.",
@@ -2658,6 +2715,7 @@
           "Class": "Arcane Trickster",
           "Components": "V, S, M (eyelash in gum arabic)",
           "Concentration": true,
+          "Created": "2024-06-15T19:39:04.7862946-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Target becomes invisible. Ends if target attacks or casts a spell.",
@@ -2678,6 +2736,7 @@
           "Class": null,
           "Components": "V",
           "Concentration": false,
+          "Created": "2024-06-15T19:39:04.7863177-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Teleport <= 30 ft. away to unoccupied location. Bonus Action.",
@@ -2698,6 +2757,7 @@
           "Class": null,
           "Components": "Scroll",
           "Concentration": true,
+          "Created": "2024-06-15T19:39:04.7863408-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "Target can walk on walls or ceiling. Climbing speed becomes walking speed.",
@@ -2718,6 +2778,7 @@
           "Class": null,
           "Components": "Detect thoughts potion",
           "Concentration": true,
+          "Created": "2024-06-15T19:39:04.7863646-05:00",
           "CurrentConcentration": false,
           "Damage": "--",
           "Description": "You can focus your mind on any one creature that you can see within 30 feet of you. You can sense surface thought, probing deeper will need the creature to make a wisdom saving throw.",
@@ -2758,6 +2819,7 @@
     "Vitality": {
       "ClassResources": [
         {
+          "Created": "2024-06-15T19:39:04.7897765-05:00",
           "IsCustom": false,
           "Id": "b75af3ce-00db-4705-a3eb-a48fbda4468c",
           "Note": "Uses d6.",
@@ -2767,6 +2829,7 @@
           "Total": 5
         },
         {
+          "Created": "2024-06-15T19:39:04.7913651-05:00",
           "IsCustom": false,
           "Id": "59f4dbfa-77c6-4f68-ae57-2216473ad0c9",
           "Note": "1d4 uses per day.",
@@ -2893,13 +2956,13 @@
       "Platinum": 500
     }
   },
-  "Hash": "48A6249068EC1B36589326ABC0879B1692F9D8DAA69FB6DC5559A51420E08D6D",
+  "Hash": "5201FD8FC6632FD3B82A90EB6CBD3301158DA1C12D1111CB5E8CA15B74947D13",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-06-02T14:11:49.126166-05:00",
+  "LastSaveDate": "2024-06-15T19:39:07.4641307-05:00",
   "Version": {
     "Major": 5,
     "Minor": 8,
-    "Patch": 10
+    "Patch": 11
   },
   "IsEmpty": false
 }

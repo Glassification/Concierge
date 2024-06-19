@@ -50,7 +50,7 @@ namespace Concierge
             var consolReadWrite = new ConsoleReadWriter(ErrorService);
 
             CustomItemService = new CustomItemService();
-            CustomColorService = colorReadWriter.ReadJson<CustomColorService>(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName));
+            CustomColorService = colorReadWriter.ReadJson<CustomColorService>(Path.Combine(ConciergeFiles.CustomColorsPath, ConciergeFiles.CustomColorsName));
 
             consolReadWrite.Clear(Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput));
         }

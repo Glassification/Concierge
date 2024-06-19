@@ -34,7 +34,7 @@ namespace Concierge.Character.Journals
         {
             this.Id = Guid.NewGuid();
             this.Name = name;
-            this.Created = ConciergeDateTime.OriginalCreationNow;
+            this.Created = DateTime.Now;
         }
 
         /// <summary>
@@ -42,10 +42,7 @@ namespace Concierge.Character.Journals
         /// </summary>
         public static Chapter Empty => new (string.Empty);
 
-        /// <summary>
-        /// Gets or sets the creation timestamp of the entry.
-        /// </summary>
-        public string Created { get; set; }
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets the custom type of the entry.

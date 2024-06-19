@@ -11,7 +11,6 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Enums;
     using Concierge.Character.Equipable;
     using Concierge.Commands;
-    using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
@@ -22,6 +21,9 @@ namespace Concierge.Display.Windows
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
+    using MaterialDesignThemes.Wpf;
+
+    using Constants = Concierge.Common.Constants;
 
     /// <summary>
     /// Interaction logic for InventoryWindow.xaml.
@@ -287,9 +289,14 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Inventory inventory)
+            var isLocked = this.LockButton.IsChecked ?? false;
+            if (this.NameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Inventory inventory && !isLocked)
             {
                 this.FillFields(inventory);
+            }
+            else if (!isLocked)
+            {
+                this.ClearFields();
             }
         }
 
@@ -328,6 +335,16 @@ namespace Concierge.Display.Windows
 
             DisplayUtility.SetControlEnableState(this.AmountUpDown, false);
             DisplayUtility.SetControlEnableState(this.AmountTextBlock, false);
+        }
+
+        private void LockButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.Lock;
+        }
+
+        private void LockButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.LockOpenVariant;
         }
     }
 }

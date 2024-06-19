@@ -42,7 +42,10 @@ namespace Concierge.Character.Details
         {
             this.Name = name;
             this.ProficiencyType = type;
+            this.Created = DateTime.Now;
         }
+
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the proficiency.
@@ -83,6 +86,7 @@ namespace Concierge.Character.Details
                 ProficiencyType = this.ProficiencyType,
                 Id = this.Id,
                 IsCustom = this.IsCustom,
+                Created = this.Created,
             };
         }
 

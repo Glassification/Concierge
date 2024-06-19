@@ -14,6 +14,7 @@ namespace Concierge.Display.Windows
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for LanguagesWindow.xaml.
@@ -196,11 +197,12 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Language language)
+            var isLocked = this.LockButton.IsChecked ?? false;
+            if (this.NameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Language language && !isLocked)
             {
                 this.FillFields(language);
             }
-            else
+            else if (!isLocked)
             {
                 this.ClearFields(this.NameComboBox.Text);
             }
@@ -221,6 +223,16 @@ namespace Concierge.Display.Windows
             Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.NameComboBox.ItemsSource = DefaultItems;
+        }
+
+        private void LockButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.Lock;
+        }
+
+        private void LockButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.LockOpenVariant;
         }
     }
 }

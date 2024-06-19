@@ -19,6 +19,7 @@ namespace Concierge.Display.Windows
     using Concierge.Display.Enums;
     using Concierge.Display.Windows.Utility;
     using Concierge.Services;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for AugmentationWindow.xaml.
@@ -258,11 +259,12 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Augment ammunition)
+            var isLocked = this.LockButton.IsChecked ?? false;
+            if (this.NameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Augment ammunition && !isLocked)
             {
                 this.FillFields(ammunition);
             }
-            else
+            else if (!isLocked)
             {
                 this.ClearFields(this.NameComboBox.Text);
             }
@@ -329,6 +331,16 @@ namespace Concierge.Display.Windows
             this.IconSymbol.Kind = this.customIcon.Kind;
             this.IconSymbol.Foreground = this.customIcon.Color.Brush;
             this.IconTextBox.Text = this.customIcon.Name;
+        }
+
+        private void LockButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.Lock;
+        }
+
+        private void LockButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.LockOpenVariant;
         }
     }
 }

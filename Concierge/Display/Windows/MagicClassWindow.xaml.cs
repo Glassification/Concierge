@@ -12,11 +12,13 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Enums;
     using Concierge.Character.Magic;
     using Concierge.Commands;
-    using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
+    using MaterialDesignThemes.Wpf;
+
+    using Constants = Concierge.Common.Constants;
 
     /// <summary>
     /// Interaction logic for MagicClassWindow.xaml.
@@ -244,11 +246,12 @@ namespace Concierge.Display.Windows
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ClassNameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is MagicalClass magicClass)
+            var isLocked = this.LockButton.IsChecked ?? false;
+            if (this.ClassNameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is MagicalClass magicClass && !isLocked)
             {
                 this.FillFields(magicClass);
             }
-            else
+            else if (!isLocked)
             {
                 this.ClearFields(this.ClassNameComboBox.Text);
             }
@@ -269,6 +272,16 @@ namespace Concierge.Display.Windows
             Program.CustomItemService.AddItem(this.Create());
             this.ClearFields();
             this.ClassNameComboBox.ItemsSource = DefaultItems;
+        }
+
+        private void LockButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.Lock;
+        }
+
+        private void LockButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.LockOpenVariant;
         }
     }
 }

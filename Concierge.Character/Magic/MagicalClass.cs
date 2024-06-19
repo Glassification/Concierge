@@ -41,12 +41,15 @@ namespace Concierge.Character.Magic
             this.characterService = characterService;
             this.Name = string.Empty;
             this.Id = Guid.NewGuid();
+            this.Created = DateTime.Now;
         }
 
         public Abilities Ability { get; set; }
 
         [JsonIgnore]
         public int Attack => this.characterService.CalculateBonusWithProficiency(this.Ability);
+
+        public DateTime Created { get; set; }
 
         [JsonIgnore]
         [SearchIgnore]
@@ -118,6 +121,7 @@ namespace Concierge.Character.Magic
                 SpellSlots = this.SpellSlots,
                 Id = this.Id,
                 IsCustom = this.IsCustom,
+                Created = this.Created,
             };
         }
 

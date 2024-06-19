@@ -43,6 +43,7 @@ namespace Concierge.Data
             this.B = color.B;
             this.Name = isHex ? this.Color.GetName() : name.PascalCase();
             this.Id = Guid.NewGuid();
+            this.Created = DateTime.Now;
         }
 
         /// <summary>
@@ -63,6 +64,7 @@ namespace Concierge.Data
             this.G = rgb[1 + alphaOffset];
             this.B = rgb[2 + alphaOffset];
             this.Id = Guid.NewGuid();
+            this.Created = DateTime.Now;
         }
 
         /// <summary>
@@ -83,6 +85,7 @@ namespace Concierge.Data
             this.G = g;
             this.B = b;
             this.Id = Guid.NewGuid();
+            this.Created = DateTime.Now;
         }
 
         /// <summary>
@@ -130,6 +133,8 @@ namespace Concierge.Data
         /// </summary>
         [JsonIgnore]
         public Color Color => Color.FromArgb(this.A, this.R, this.G, this.B);
+
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets the <see cref="Brush"/> object representation of the custom color.
@@ -273,6 +278,7 @@ namespace Concierge.Data
                 IsValid = this.IsValid,
                 Id = this.Id,
                 IsCustom = this.IsCustom,
+                Created = this.Created,
             };
         }
 

@@ -49,6 +49,7 @@ namespace Concierge.Character.Equipable
             this.Id = Guid.NewGuid();
             this.EquipmentSlot = EquipmentSlot.None;
             this.Amount = 1;
+            this.Created = DateTime.Now;
 
             this.characterService = characterService;
         }
@@ -66,6 +67,8 @@ namespace Concierge.Character.Equipable
         /// Gets or sets the coin type associated with the weapon.
         /// </summary>
         public CoinType CoinType { get; set; }
+
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or sets the damage inflicted by the weapon.
@@ -208,6 +211,7 @@ namespace Concierge.Character.Equipable
                 Amount = this.Amount,
                 EquipmentSlot = this.EquipmentSlot,
                 IsCustom = this.IsCustom,
+                Created = this.Created,
             };
         }
 

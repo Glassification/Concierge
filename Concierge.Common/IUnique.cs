@@ -47,6 +47,11 @@ namespace Concierge.Common
 
         string Information { get; }
 
+        /// <summary>
+        /// Gets or sets creation date time of the unique item.
+        /// </summary>
+        DateTime Created { get; set; }
+
         CategoryDto GetCategory();
     }
 }

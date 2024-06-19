@@ -16,6 +16,7 @@ namespace Concierge.Display.Windows
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for SpellWindow.xaml.
@@ -288,11 +289,12 @@ namespace Concierge.Display.Windows
 
         private void SpellNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.SpellNameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Spell spell)
+            var isLocked = this.LockButton.IsChecked ?? false;
+            if (this.SpellNameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Spell spell && !isLocked)
             {
                 this.FillFields(spell);
             }
-            else
+            else if (!isLocked)
             {
                 this.ClearFields(this.SpellNameComboBox.Text);
             }
@@ -318,6 +320,16 @@ namespace Concierge.Display.Windows
         private void LevelUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
             this.SetRequireSpellSlotState(this.LevelUpDown.Value > 0);
+        }
+
+        private void LockButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.Lock;
+        }
+
+        private void LockButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.LockIcon.Kind = PackIconKind.LockOpenVariant;
         }
     }
 }

@@ -42,6 +42,7 @@ namespace Concierge.Character.Companions
             this.Range = string.Empty;
             this.Note = string.Empty;
             this.Id = Guid.NewGuid();
+            this.Created = DateTime.Now;
 
             this.characterService = characterService;
         }
@@ -50,6 +51,8 @@ namespace Concierge.Character.Companions
         /// Gets or sets the ability associated with the weapon.
         /// </summary>
         public Abilities Ability { get; set; }
+
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or sets the damage inflicted by the weapon.
@@ -162,6 +165,7 @@ namespace Concierge.Character.Companions
                 ProficiencyOverride = this.ProficiencyOverride,
                 Id = this.Id,
                 IsCustom = this.IsCustom,
+                Created = this.Created,
             };
         }
 

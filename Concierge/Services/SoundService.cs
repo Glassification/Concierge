@@ -65,14 +65,10 @@ namespace Concierge.Services
         /// </summary>
         public static void PlayNavigation()
         {
-            if (ShouldNotPlay(navigationSound, SkipClick))
+            if (ShouldPlay(navigationSound, SkipClick))
             {
-                return;
+                Play(navigationSound);
             }
-
-            navigationSound.Stop();
-            navigationSound.Position = TimeSpan.Zero;
-            navigationSound.Play();
         }
 
         /// <summary>
@@ -80,14 +76,10 @@ namespace Concierge.Services
         /// </summary>
         public static void PlayUpdateValue()
         {
-            if (ShouldNotPlay(updateValueSound))
+            if (ShouldPlay(updateValueSound))
             {
-                return;
+                Play(updateValueSound);
             }
-
-            updateValueSound.Stop();
-            updateValueSound.Position = TimeSpan.Zero;
-            updateValueSound.Play();
         }
 
         /// <summary>
@@ -95,14 +87,10 @@ namespace Concierge.Services
         /// </summary>
         public static void PlayWarning()
         {
-            if (ShouldNotPlay(warningSound))
+            if (ShouldPlay(warningSound))
             {
-                return;
+                Play(warningSound);
             }
-
-            warningSound.Stop();
-            warningSound.Position = TimeSpan.Zero;
-            warningSound.Play();
         }
 
         /// <summary>
@@ -131,13 +119,20 @@ namespace Concierge.Services
             warningSound.Volume = volume / 100f;
         }
 
-        private static bool ShouldNotPlay(MediaPlayer mediaPlayer, bool skipClick = false)
+        private static void Play(MediaPlayer mediaPlayer)
+        {
+            mediaPlayer.Stop();
+            mediaPlayer.Position = TimeSpan.Zero;
+            mediaPlayer.Play();
+        }
+
+        private static bool ShouldPlay(MediaPlayer mediaPlayer, bool skipClick = false)
         {
             return
-                AppSettingsManager.UserSettings.MuteSounds ||
-                skipClick ||
-                Program.IsDrawing ||
-                mediaPlayer is null;
+                !AppSettingsManager.UserSettings.MuteSounds &&
+                !skipClick &&
+                !Program.IsDrawing &&
+                mediaPlayer is not null;
         }
     }
 }

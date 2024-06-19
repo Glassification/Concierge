@@ -121,8 +121,8 @@
                     Width="0.20*"
                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                 <DataGridTextColumn
-                    Header="Id"
-                    Binding="{Binding Id}"
+                    Header="Creation Date"
+                    Binding="{Binding Created}"
                     Width="0.58*"
                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
             </DataGrid.Columns>

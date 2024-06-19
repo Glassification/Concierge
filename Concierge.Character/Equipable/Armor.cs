@@ -28,12 +28,15 @@ namespace Concierge.Character.Equipable
             this.Name = string.Empty;
             this.Weight = UnitDouble.Empty;
             this.Id = Guid.NewGuid();
+            this.Created = DateTime.Now;
         }
 
         /// <summary>
         /// Gets or sets the armor class (AC) provided by the armor.
         /// </summary>
         public int Ac { get; set; }
+
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether a characters full DEX modifier should be used.
@@ -99,6 +102,7 @@ namespace Concierge.Character.Equipable
                 Id = this.Id,
                 IsCustom = this.IsCustom,
                 FullDex = this.FullDex,
+                Created = this.Created,
             };
         }
 

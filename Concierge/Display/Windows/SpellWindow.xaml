@@ -85,10 +85,27 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Name:"/>
-                    </Grid>
+                    <components:ConciergeLabel
+                        Grid.Column="0"
+                        Text="Name:"/>
+                    <components:ConciergeDesignToggleButton
+                        Grid.Column="0"
+                        x:Name="LockButton"
+                        Width="30"
+                        Height="30"
+                        Foreground="White"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,10,0"
+                        Checked="LockButton_Checked"
+                        Unchecked="LockButton_Unchecked"
+                        ToolTip="Lock current fields"
+                        Style="{StaticResource ConciergeTransparentToggleButtonStyle}">
+                        <materialDesign:PackIcon
+                            x:Name="LockIcon"
+                            Kind="LockOpenVariant"
+                            Width="25"
+                            Height="25"/>
+                    </components:ConciergeDesignToggleButton>
 
                     <!--Value-->
                     <Grid Grid.Column="1">

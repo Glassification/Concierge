@@ -35,6 +35,7 @@ namespace Concierge.Character.Details
             this.Action = string.Empty;
             this.Description = string.Empty;
             this.Id = Guid.NewGuid();
+            this.Created = DateTime.Now;
         }
 
         /// <summary>
@@ -99,6 +100,8 @@ namespace Concierge.Character.Details
 
         public Guid Id { get; set; }
 
+        public DateTime Created { get; set; }
+
         [JsonIgnore]
         [SearchIgnore]
         public Brush IconColor => this.GetCategory().Brush;
@@ -129,6 +132,7 @@ namespace Concierge.Character.Details
                 Description = this.Description,
                 Id = this.Id,
                 IsCustom = this.IsCustom,
+                Created = this.Created,
             };
         }
 

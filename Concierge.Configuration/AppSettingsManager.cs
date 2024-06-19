@@ -24,7 +24,7 @@ namespace Concierge.Configuration
 
             // Loads application settings from a JSON file
             var config = new ConfigurationBuilder()
-                .SetBasePath(ConciergeFiles.GetCorrectAppSettingsPath())
+                .SetBasePath(ConciergeFiles.AppsettingsPath)
                 .AddJsonFile(ConciergeFiles.AppSettingsName)
                 .Build();
 
@@ -138,7 +138,7 @@ namespace Concierge.Configuration
             };
 
             var config = JsonConvert.SerializeObject(appSettings, Formatting.Indented);
-            var appSettingsPath = Path.Combine(ConciergeFiles.GetCorrectAppSettingsPath(), ConciergeFiles.AppSettingsName);
+            var appSettingsPath = Path.Combine(ConciergeFiles.AppsettingsPath, ConciergeFiles.AppSettingsName);
             File.WriteAllText(appSettingsPath, config);
         }
     }

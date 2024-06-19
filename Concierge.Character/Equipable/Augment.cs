@@ -35,7 +35,10 @@ namespace Concierge.Character.Equipable
             this.Damage = string.Empty;
             this.Description = string.Empty;
             this.Id = Guid.NewGuid();
+            this.Created = DateTime.Now;
         }
+
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or sets the damage dealt by the augment.
@@ -174,6 +177,7 @@ namespace Concierge.Character.Equipable
                 Recoverable = this.Recoverable,
                 Description = this.Description,
                 Icon = this.Icon.DeepCopy(),
+                Created = this.Created,
             };
         }
 

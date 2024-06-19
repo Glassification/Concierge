@@ -31,6 +31,11 @@ namespace Concierge.Services.EasterEggs
 
         public void CheckCode(Key key)
         {
+            if (this.CodeIndex == sequence.Length)
+            {
+                this.CodeIndex = 0;
+            }
+
             if (key == sequence[this.CodeIndex])
             {
                 this.CodeIndex++;

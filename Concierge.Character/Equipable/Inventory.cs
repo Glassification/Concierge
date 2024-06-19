@@ -34,7 +34,7 @@ namespace Concierge.Character.Equipable
             this.Notes = string.Empty;
             this.ItemCategory = "Adventuring Gear";
             this.Id = Guid.NewGuid();
-            this.CreationDate = DateTime.Now;
+            this.Created = DateTime.Now;
             this.EquipmentSlot = EquipmentSlot.None;
         }
 
@@ -61,7 +61,7 @@ namespace Concierge.Character.Equipable
         /// <summary>
         /// Gets or sets the creation date of the item.
         /// </summary>
-        public DateTime CreationDate { get; set; }
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or sets the description of the item.
@@ -219,7 +219,7 @@ namespace Concierge.Character.Equipable
                 Index = this.Index,
                 EquppedId = this.EquppedId,
                 Id = this.Id,
-                CreationDate = this.CreationDate,
+                Created = this.Created,
                 IsEquipped = this.IsEquipped,
                 EquipmentSlot = this.EquipmentSlot,
                 IsCustom = this.IsCustom,

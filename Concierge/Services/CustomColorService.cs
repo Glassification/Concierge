@@ -126,7 +126,7 @@ namespace Concierge.Services
 
         private void Update()
         {
-            this.readwriter.WriteJson(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName), this);
+            this.readwriter.WriteJson(Path.Combine(ConciergeFiles.CustomColorsPath, ConciergeFiles.CustomColorsName), this);
         }
     }
 }
