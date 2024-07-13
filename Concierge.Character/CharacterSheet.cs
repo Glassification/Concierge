@@ -13,6 +13,7 @@ namespace Concierge.Character
     using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Common;
+    using Concierge.Common.Enums;
     using Concierge.Configuration;
     using Concierge.Data.Units;
     using Newtonsoft.Json;
@@ -22,6 +23,10 @@ namespace Concierge.Character
     /// </summary>
     public sealed class CharacterSheet : ICopyable<CharacterSheet>
     {
+        private const int LightStrength = 5;
+        private const int MediumStrength = 10;
+        private const int HeavyStrength = 15;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CharacterSheet"/> class.
         /// </summary>
@@ -105,7 +110,7 @@ namespace Concierge.Character
 
                 if (AppSettingsManager.UserSettings.UseCoinWeight)
                 {
-                    weight += UnitConversion.Weight(AppSettingsManager.UserSettings.UnitOfMeasurement, this.Wealth.TotalCoins / Constants.CoinGroup);
+                    weight += UnitConversion.Weight(AppSettingsManager.UserSettings.UnitOfMeasurement, this.Wealth.TotalWeight);
                 }
 
                 return weight;
@@ -121,7 +126,6 @@ namespace Concierge.Character
             get
             {
                 var encumbrance = ConditionStatus.Normal;
-
                 if (this.Equipment.Defense.Armor.Strength > this.Attributes.Strength.Score)
                 {
                     encumbrance = ConditionStatus.ArmorEncumbered;
@@ -129,8 +133,7 @@ namespace Concierge.Character
 
                 if (AppSettingsManager.UserSettings.UseEncumbrance)
                 {
-                    if (
-                        this.CarryWeight > this.LightCapacity && this.CarryWeight <= this.MediumCapacity)
+                    if (ConciergeMath.Between(this.CarryWeight, this.LightCapacity, this.MediumCapacity, Inclusivity.RightInclusive))
                     {
                         encumbrance = ConditionStatus.Encumbered;
                     }
@@ -166,19 +169,19 @@ namespace Concierge.Character
         /// Gets the light carrying capacity of the character.
         /// </summary>
         [JsonIgnore]
-        public double LightCapacity => this.Attributes.Strength.Score * UnitConversion.LightMultiplier;
+        public double LightCapacity => UnitConversion.GetStrength(this.Attributes.Strength.Score * LightStrength);
 
         /// <summary>
         /// Gets the medium carrying capacity of the character.
         /// </summary>
         [JsonIgnore]
-        public double MediumCapacity => this.Attributes.Strength.Score * UnitConversion.MediumMultiplier;
+        public double MediumCapacity => UnitConversion.GetStrength(this.Attributes.Strength.Score * MediumStrength);
 
         /// <summary>
         /// Gets the heavy carrying capacity of the character.
         /// </summary>
         [JsonIgnore]
-        public double HeavyCapacity => this.Attributes.Strength.Score * UnitConversion.HeavyMultiplier;
+        public double HeavyCapacity => UnitConversion.GetStrength(this.Attributes.Strength.Score * HeavyStrength);
 
         /// <summary>
         /// Gets the movement speed of the character.

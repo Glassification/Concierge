@@ -8,7 +8,9 @@ namespace Concierge.Character.Vitals
 
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
+    using Concierge.Tools.DiceRoller;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -16,6 +18,7 @@ namespace Concierge.Character.Vitals
     /// </summary>
     public sealed class DeathSavingThrows : ICopyable<DeathSavingThrows>
     {
+        private const int SaveThreshold = 10;
         private const int MaxDeathSaves = 5;
         private const int SavesInARow = 3;
 
@@ -75,15 +78,18 @@ namespace Concierge.Character.Vitals
         /// Records a death saving throw.
         /// </summary>
         /// <param name="deathSave">The result of the death saving throw.</param>
-        public void MakeDeathSave(AbilitySave deathSave)
+        public DiceRoll RollDeathSave()
         {
             this.LazyInitialize();
+
+            var diceRoll = new DiceRoll(Dice.D20);
             if (this.CurrentDeathSave < MaxDeathSaves)
             {
-                this.DeathSaves[this.CurrentDeathSave] = deathSave;
-
+                this.DeathSaves[this.CurrentDeathSave] = diceRoll.Total >= SaveThreshold ? AbilitySave.Success : AbilitySave.Failure;
                 this.CurrentDeathSave++;
             }
+
+            return diceRoll;
         }
 
         /// <summary>
@@ -116,7 +122,6 @@ namespace Concierge.Character.Vitals
         private bool HasRequiredInARow(AbilitySave deathSave)
         {
             var count = 0;
-
             foreach (var save in this.DeathSaves)
             {
                 if (save == deathSave)

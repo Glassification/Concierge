@@ -4,6 +4,7 @@
 
 namespace Concierge.Data.Units
 {
+    using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Configuration;
 
@@ -14,25 +15,6 @@ namespace Concierge.Data.Units
     {
         private const double InchesToCentimetres = 2.54;
         private const double KiliogramToPounds = 0.45359237;
-
-        private const int LightStrength = 5;
-        private const int MediumStrength = 10;
-        private const int HeavyStrength = 15;
-
-        /// <summary>
-        /// Gets the multiplier value for light strength.
-        /// </summary>
-        public static double LightMultiplier => GetStrengthMultiplier(LightStrength);
-
-        /// <summary>
-        /// Gets the multiplier value for medium strength.
-        /// </summary>
-        public static double MediumMultiplier => GetStrengthMultiplier(MediumStrength);
-
-        /// <summary>
-        /// Gets the multiplier value for heavy strength.
-        /// </summary>
-        public static double HeavyMultiplier => GetStrengthMultiplier(HeavyStrength);
 
         /// <summary>
         /// Converts a height value from one unit type to another.
@@ -83,12 +65,20 @@ namespace Concierge.Data.Units
             };
         }
 
-        private static double GetStrengthMultiplier(int baseStrength)
+        /// <summary>
+        /// Calculates the strength value based on the unit of measurement set in the application settings.
+        /// </summary>
+        /// <param name="baseStrength">The base strength value in Imperial units.</param>
+        /// <returns>
+        /// The strength value, adjusted for the unit of measurement. If the unit of measurement is set to Metric,
+        /// the strength value is converted from pounds to kilograms and rounded so that the last digit is a multiple of 5.
+        /// </returns>
+        public static double GetStrength(int baseStrength)
         {
             return AppSettingsManager.UserSettings.UnitOfMeasurement switch
             {
                 UnitTypes.Imperial => baseStrength,
-                UnitTypes.Metric => (baseStrength / 2) + (baseStrength * 0.05),
+                UnitTypes.Metric => ConciergeMath.RoundLastDigitTo5(baseStrength * KiliogramToPounds),
                 _ => baseStrength,
             };
         }

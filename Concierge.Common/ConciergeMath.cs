@@ -6,6 +6,8 @@ namespace Concierge.Common
 {
     using System;
 
+    using Concierge.Common.Enums;
+
     /// <summary>
     /// Provides constants and static methods for 5E D&amp;D calculations.
     /// </summary>
@@ -49,12 +51,63 @@ namespace Concierge.Common
         public static int Regain(int spent) => Math.Max(spent -= Math.Max(spent / 2, 1), 0);
 
         /// <summary>
-        /// Determines whether a specified value is between a start (inclusive) and an end (exclusive) value.
+        /// Determines if a value falls within a specified range according to the specified inclusivity or exclusivity.
         /// </summary>
-        /// <param name="value">The value to check.</param>
-        /// <param name="start">The start of the range (inclusive).</param>
-        /// <param name="end">The end of the range (exclusive).</param>
-        /// <returns>True if the value is between the start and end values; otherwise, false.</returns>
-        public static bool Between(int value, int start, int end) => value >= start && value < end;
+        /// <param name="value">The value to be checked.</param>
+        /// <param name="start">The start of the range.</param>
+        /// <param name="end">The end of the range.</param>
+        /// <param name="inclusivity">The type of inclusivity/exclusivity to be applied.</param>
+        /// <returns>
+        /// A boolean indicating whether the value falls within the specified range according to the specified inclusivity/exclusivity.
+        /// </returns>
+        public static bool Between(int value, int start, int end, Inclusivity inclusivity)
+        {
+            return Between((double)value, (double)start, (double)end, inclusivity);
+        }
+
+        /// <summary>
+        /// Determines if a value falls within a specified range according to the specified inclusivity or exclusivity.
+        /// </summary>
+        /// <param name="value">The value to be checked.</param>
+        /// <param name="start">The start of the range.</param>
+        /// <param name="end">The end of the range.</param>
+        /// <param name="inclusivity">The type of inclusivity/exclusivity to be applied.</param>
+        /// <returns>
+        /// A boolean indicating whether the value falls within the specified range according to the specified inclusivity/exclusivity.
+        /// </returns>
+        public static bool Between(double value, double start, double end, Inclusivity inclusivity)
+        {
+            return inclusivity switch
+            {
+                Inclusivity.Inclusive => value >= start && value <= end,
+                Inclusivity.Exclusive => value > start && value < end,
+                Inclusivity.LeftInclusive => value >= start && value < end,
+                Inclusivity.RightInclusive => value > start && value <= end,
+                _ => false,
+            };
+        }
+
+        /// <summary>
+        /// Rounds a double value to ensure that the last digit of the rounded value is a multiple of 5,
+        /// with a precision of 2 decimal places.
+        /// </summary>
+        /// <param name="value">The value to be rounded.</param>
+        /// <returns>The rounded value with the last digit being a multiple of 5.</returns>
+        public static double RoundLastDigitTo5(double value)
+        {
+            var shifted = (int)Math.Round(Math.Round(value, SignificantDigits) * 100);
+            var remainder = shifted % 10;
+
+            if (remainder < 5)
+            {
+                shifted = (shifted / 10 * 10) + 5;
+            }
+            else
+            {
+                shifted = ((shifted / 10) + 1) * 10;
+            }
+
+            return Math.Round(shifted / 100.0, SignificantDigits);
+        }
     }
 }

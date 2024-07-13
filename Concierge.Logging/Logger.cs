@@ -25,6 +25,9 @@ namespace Concierge.Logging
         private readonly ManualResetEvent terminate = new (false);
         private readonly ManualResetEvent waiting = new (false);
         private readonly Thread loggingThread;
+        private readonly bool isDebug;
+
+        private bool isStarted;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Logger"/> class.
@@ -37,8 +40,8 @@ namespace Concierge.Logging
             this.loggingThread = new Thread(new ThreadStart(this.ProcessQueue)) { IsBackground = true };
             this.loggingThread.Start();
 
-            this.IsDebug = isDebug;
-            this.IsStarted = false;
+            this.isDebug = isDebug;
+            this.isStarted = false;
             this.SessionLog = [];
         }
 
@@ -46,10 +49,6 @@ namespace Concierge.Logging
         /// Gets the list of log entries collected during the logger session.
         /// </summary>
         public List<string> SessionLog { get; private set; }
-
-        private bool IsDebug { get; init; }
-
-        private bool IsStarted { get; set; }
 
         /// <summary>
         /// Logs an information message.
@@ -130,16 +129,16 @@ namespace Concierge.Logging
         /// <param name="version">The version of the application.</param>
         public void Start(string version)
         {
-            if (this.IsStarted)
+            if (this.isStarted)
             {
                 return;
             }
 
             this.NewLine();
-            this.Info($"Starting Concierge v{version}{(this.IsDebug ? " - Debug" : string.Empty)}");
+            this.Info($"Starting Concierge v{version}{(this.isDebug ? " - Debug" : string.Empty)}");
             this.Info($"WiFi Connected: {SystemUtility.HasInternet}");
             this.Info($"Starting {SystemUtility.GetBatteryStatus()}");
-            this.IsStarted = true;
+            this.isStarted = true;
         }
 
         /// <summary>
@@ -147,14 +146,14 @@ namespace Concierge.Logging
         /// </summary>
         public void Stop()
         {
-            if (!this.IsStarted)
+            if (!this.isStarted)
             {
                 return;
             }
 
-            this.Info($"Stopping Concierge{(this.IsDebug ? " - Debug" : string.Empty)}");
+            this.Info($"Stopping Concierge{(this.isDebug ? " - Debug" : string.Empty)}");
             this.Info($"Stopping {SystemUtility.GetBatteryStatus()}");
-            this.IsStarted = false;
+            this.isStarted = false;
         }
 
         public override string ToString()
@@ -201,7 +200,7 @@ namespace Concierge.Logging
         /// <returns>The unwrapped exception messages.</returns>
         protected virtual string UnwrapExceptionMessages(Exception? ex)
         {
-            if (ex == null)
+            if (ex is null)
             {
                 return string.Empty;
             }
@@ -249,9 +248,9 @@ namespace Concierge.Logging
             var logRow = this.ComposeLogRow(message, logType);
             this.SessionLog.Add(logRow);
 
-            if (this.IsDebug)
+            if (this.isDebug)
             {
-                System.Diagnostics.Debug.WriteLine(logRow);
+                System.Diagnostics.Debug.WriteLine(message, $"[{logType}]");
             }
 
             if (this.logVerbosity == LogVerbosity.Full)

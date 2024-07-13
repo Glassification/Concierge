@@ -11,13 +11,16 @@ namespace Concierge.Tools.DiceRoller
     using Concierge.Common.Enums;
 
     /// <summary>
-    /// Represents the result of rolling dice in a role-playing game.
+    /// Represents the result of rolling dice in D&amp;D 5E.
     /// </summary>
     public sealed class DiceRoll : IDiceRoll
     {
         private const int RollLimit = 20;
 
         private static readonly Random random = new ();
+        private readonly int number;
+
+        private List<int> diceList;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DiceRoll"/> class with the specified parameters.
@@ -25,12 +28,12 @@ namespace Concierge.Tools.DiceRoller
         /// <param name="sides">The number of sides on each die.</param>
         /// <param name="number">The number of dice to roll.</param>
         /// <param name="modifier">An additional modifier to apply to the roll.</param>
-        public DiceRoll(Dice sides, int number, int modifier)
+        public DiceRoll(Dice sides, int number = 1, int modifier = 0)
         {
             this.Sides = (int)sides;
             this.Modifier = modifier;
-            this.Number = number;
-            this.DiceList = [.. RollDice(number, (int)sides)];
+            this.number = number;
+            this.diceList = [.. RollDice(number, (int)sides)];
             this.Max = ((int)sides * number) + modifier;
             this.Min = number + modifier;
         }
@@ -41,12 +44,12 @@ namespace Concierge.Tools.DiceRoller
         /// <param name="sides">The number of sides on each die.</param>
         /// <param name="list">The list of individual die roll results.</param>
         /// <param name="modifier">An additional modifier to apply to the roll.</param>
-        public DiceRoll(int sides, int[] list, int modifier)
+        public DiceRoll(int sides, int[] list, int modifier = 0)
         {
             this.Sides = sides;
             this.Modifier = modifier;
-            this.Number = list.Length;
-            this.DiceList = new List<int>(list);
+            this.number = list.Length;
+            this.diceList = new List<int>(list);
             this.Max = (sides * list.Length) + modifier;
             this.Min = list.Length + modifier;
         }
@@ -70,9 +73,8 @@ namespace Concierge.Tools.DiceRoller
         {
             get
             {
-                var str = $"{this.DiceList.Count}d{this.Sides}(";
-
-                foreach (int die in this.DiceList)
+                var str = $"{this.diceList.Count}d{this.Sides}(";
+                foreach (int die in this.diceList)
                 {
                     str += die + ", ";
                 }
@@ -90,7 +92,7 @@ namespace Concierge.Tools.DiceRoller
         /// <summary>
         /// Gets the total sum of the rolled dice results along with the modifier.
         /// </summary>
-        public int Total => Math.Max(this.DiceList.Sum() + this.Modifier, 0);
+        public int Total => Math.Max(this.diceList.Sum() + this.Modifier, 0);
 
         /// <summary>
         /// Gets the maximum possible value of the rolled dice.
@@ -102,9 +104,16 @@ namespace Concierge.Tools.DiceRoller
         /// </summary>
         public int Min { get; private set; }
 
-        private List<int> DiceList { get; set; }
-
-        private int Number { get; init; }
+        /// <summary>
+        /// Rolls a set of dice with the specified number of sides and dice count.
+        /// </summary>
+        /// <param name="diceNumber">The number of dice to roll.</param>
+        /// <param name="diceSides">The number of sides on each die.</param>
+        /// <returns>An array of rolled die values.</returns>
+        public static int[] RollDice(int diceNumber, Dice diceSides)
+        {
+            return RollDice(diceNumber, (int)diceSides);
+        }
 
         /// <summary>
         /// Rolls a set of dice with the specified number of sides and dice count.
@@ -151,7 +160,7 @@ namespace Concierge.Tools.DiceRoller
         /// </summary>
         public void ReRoll()
         {
-            this.DiceList = [.. RollDice(this.Number, this.Sides)];
+            this.diceList = [.. RollDice(this.number, this.Sides)];
         }
     }
 }

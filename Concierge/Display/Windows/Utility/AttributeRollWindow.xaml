@@ -115,6 +115,12 @@
                     Content="Roll Dice"
                     Click="RollDiceButton_Click">
                 </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="StandardArrayButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Standard Array"
+                    Click="StandardArrayButton_Click">
+                </components:ConciergeTextButton>
             </StackPanel>
         </Grid>
     </Grid>

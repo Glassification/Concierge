@@ -7,6 +7,7 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Display.Components;
+    using Concierge.Tools.Enums;
     using Concierge.Tools.Generators.Attributes;
 
     /// <summary>
@@ -14,14 +15,12 @@ namespace Concierge.Display.Utility
     /// </summary>
     public partial class AttributeRollWindow : ConciergeWindow
     {
-        private readonly AttributeGenerator attributeGenerator;
+        private readonly AttributeGenerator attributeGenerator = new ();
 
         public AttributeRollWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
-
-            this.attributeGenerator = new AttributeGenerator();
         }
 
         public override string HeaderText => "Roll Attributes";
@@ -46,18 +45,27 @@ namespace Concierge.Display.Utility
             this.Roll6Label.Text = rolls[5].ToString();
         }
 
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.CloseConciergeWindow();
+        }
+
         private void RollDiceButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = this.attributeGenerator.Generate(new AttributeSettings());
+            var result = this.attributeGenerator.Generate(new AttributeSettings(AbilityScores.Roll));
             if (result is AttributeResult attributeResult)
             {
                 this.SetValues(attributeResult.Rolls);
             }
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void StandardArrayButton_Click(object sender, RoutedEventArgs e)
         {
-            this.CloseConciergeWindow();
+            var result = this.attributeGenerator.Generate(new AttributeSettings(AbilityScores.StandardArray));
+            if (result is AttributeResult attributeResult)
+            {
+                this.SetValues(attributeResult.Rolls);
+            }
         }
     }
 }

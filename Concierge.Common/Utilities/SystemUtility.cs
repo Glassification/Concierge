@@ -129,15 +129,15 @@ namespace Concierge.Common.Utilities
             }
 
             var buildNumber = Environment.OSVersion.Version.Build;
-            if (ConciergeMath.Between(buildNumber, Windows7, Windows8))
+            if (ConciergeMath.Between(buildNumber, Windows7, Windows8, Inclusivity.LeftInclusive))
             {
                 osVersion = OSVersion.Windows7;
             }
-            else if (ConciergeMath.Between(buildNumber, Windows8, Windows10))
+            else if (ConciergeMath.Between(buildNumber, Windows8, Windows10, Inclusivity.LeftInclusive))
             {
                 osVersion = OSVersion.Windows8;
             }
-            else if (ConciergeMath.Between(buildNumber, Windows10, Windows11))
+            else if (ConciergeMath.Between(buildNumber, Windows10, Windows11, Inclusivity.LeftInclusive))
             {
                 osVersion = OSVersion.Windows10;
             }

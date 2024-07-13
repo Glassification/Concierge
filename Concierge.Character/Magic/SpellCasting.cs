@@ -116,18 +116,18 @@ namespace Concierge.Character.Magic
             var classes = magicalClasses.Select(x => x.Name).ToList();
             classes.Add(string.Empty);
 
-            spellDetails.AddHeaderDetails(list);
-            spellDetails.AddConcentrationDetails(list);
+            spellDetails.AddHeader(list);
+            spellDetails.AddConcentration(list);
             spellDetails.AddMostFrequentSchool(list);
 
             for (int i = 0; i < Spell.Levels; i++)
             {
-                spellDetails.AddSpellLevelDetails(list, i);
+                spellDetails.AddSpellLevel(list, i);
             }
 
             foreach (var magicalClass in classes)
             {
-                spellDetails.AddSpellClassDetails(list, magicalClass);
+                spellDetails.AddSpellClass(list, magicalClass);
             }
 
             return list;

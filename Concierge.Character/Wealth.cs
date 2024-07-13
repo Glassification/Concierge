@@ -65,6 +65,12 @@ namespace Concierge.Character
         public int TotalCoins => this.Copper + this.Silver + this.Electrum + this.Gold + this.Platinum;
 
         /// <summary>
+        /// Gets the total weight of coins.
+        /// </summary>
+        [JsonIgnore]
+        public double TotalWeight => this.TotalCoins / Constants.CoinGroup;
+
+        /// <summary>
         /// Converts a value from a specific coin type to gold.
         /// </summary>
         /// <param name="value">The value to convert.</param>

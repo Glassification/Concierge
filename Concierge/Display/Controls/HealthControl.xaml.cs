@@ -4,17 +4,21 @@
 
 namespace Concierge.Display.Controls
 {
+    using System.Text;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
+    using Concierge.Tools.DiceRoller;
     using MaterialDesignThemes.Wpf;
 
     /// <summary>
@@ -202,43 +206,44 @@ namespace Concierge.Display.Controls
             };
         }
 
+        private static void SetStatusText(DiceRoll diceRoll, CharacterSheet character)
+        {
+            var deathSave = character.Vitality.DeathSavingThrows;
+            var name = character.Disposition.Name;
+            var bulder = new StringBuilder($"Rolled {diceRoll}");
+            if (deathSave.DeathSaveStatus == AbilitySave.Success)
+            {
+                bulder.Append(StringUtility.CreateCharacters(" ", 6));
+                bulder.Append(name.IsNullOrWhiteSpace() ? "Succeeded 3 saves and stabilized!" : $"{name} succeeded 3 saves and is stabilized!");
+            }
+            else if (deathSave.DeathSaveStatus == AbilitySave.Failure)
+            {
+                bulder.Append(StringUtility.CreateCharacters(" ", 6));
+                bulder.Append(name.IsNullOrWhiteSpace() ? "Failed 3 saves and died!" : $"{name} failed 3 saves and has died!");
+            }
+
+            Program.MainWindow?.DisplayStatusText(bulder.ToString());
+        }
+
         private void SetButtonEnableState(AbilitySave abilitySave)
         {
             var isEnabled = abilitySave == AbilitySave.None;
-            DisplayUtility.SetControlEnableState(this.PassSave, isEnabled);
-            DisplayUtility.SetControlEnableState(this.FailSave, isEnabled);
+            DisplayUtility.SetControlEnableState(this.RollSave, isEnabled);
         }
 
-        private void PassSave_Click(object sender, RoutedEventArgs e)
+        private void RollSave_Click(object sender, RoutedEventArgs e)
         {
             var character = Program.CcsFile.Character;
-
             if (character.Vitality.DeathSavingThrows.DeathSaveStatus != AbilitySave.None)
             {
                 return;
             }
 
             var oldItem = character.Vitality.DeathSavingThrows.DeepCopy();
-            character.Vitality.DeathSavingThrows.MakeDeathSave(AbilitySave.Success);
+            var diceRoll = character.Vitality.DeathSavingThrows.RollDeathSave();
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
 
-            this.SetButtonEnableState(character.Vitality.DeathSavingThrows.DeathSaveStatus);
-            this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));
-        }
-
-        private void FailSave_Click(object sender, RoutedEventArgs e)
-        {
-            var character = Program.CcsFile.Character;
-
-            if (character.Vitality.DeathSavingThrows.DeathSaveStatus != AbilitySave.None)
-            {
-                return;
-            }
-
-            var oldItem = character.Vitality.DeathSavingThrows.DeepCopy();
-            character.Vitality.DeathSavingThrows.MakeDeathSave(AbilitySave.Failure);
-            Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
-
+            SetStatusText(diceRoll, character);
             this.SetButtonEnableState(character.Vitality.DeathSavingThrows.DeathSaveStatus);
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));
         }

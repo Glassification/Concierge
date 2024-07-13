@@ -4,10 +4,15 @@
 
 namespace Concierge.Tools.Generators.Attributes
 {
+    using Concierge.Tools.Enums;
+
     public sealed class AttributeSettings : IGeneratorSettings
     {
-        public AttributeSettings()
+        public AttributeSettings(AbilityScores abilityScores)
         {
+            this.AbilityScores = abilityScores;
         }
+
+        public AbilityScores AbilityScores { get; private set; }
     }
 }

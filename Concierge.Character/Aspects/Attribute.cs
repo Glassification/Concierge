@@ -17,7 +17,7 @@ namespace Concierge.Character.Aspects
     public abstract class Attribute : ICopyable<Attribute>
     {
         /// <summary>
-        /// The count of attributes in D&amp;D, which is 6.
+        /// The count of attributes in D&amp;D 5E.
         /// </summary>
         public const int Count = 6;
 
@@ -78,7 +78,6 @@ namespace Concierge.Character.Aspects
         public int GetSaveBonus(int proficiency)
         {
             var bonus = 0;
-
             if (this.Proficiency)
             {
                 bonus += proficiency;

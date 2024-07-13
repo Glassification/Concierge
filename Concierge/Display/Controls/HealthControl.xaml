@@ -137,9 +137,8 @@
                             <ColumnDefinition Width="12.5*"/>
                             <ColumnDefinition Width="12.5*"/>
                             <ColumnDefinition Width="12.5*"/>
-                            <ColumnDefinition Width="12.5*"/>
-                            <ColumnDefinition Width="12.5*"/>
-                            <ColumnDefinition Width="12.5*"/>
+                            <ColumnDefinition Width="18.75*"/>
+                            <ColumnDefinition Width="18.75*"/>
                         </Grid.ColumnDefinitions>
 
                         <materialDesign:PackIcon
@@ -187,40 +186,29 @@
                             VerticalAlignment="Stretch"
                             Height="auto"
                             Width="auto"/>
-
+                        
                         <components:ConciergeDesignButton 
+                            Margin="0,0,5,0"
                             Grid.Column="5"
                             Style="{StaticResource ConciergeDesignButtonStyle}"
-                            x:Name="PassSave"
+                            x:Name="RollSave"
                             Height="auto"
                             Width="auto"
-                            HorizontalAlignment="Stretch"
+                            HorizontalAlignment="Right"
                             VerticalAlignment="Stretch"
-                            Foreground="#48B987"
-                            ToolTip="Succeed on Death Save"
-                            Click="PassSave_Click">
-                            <materialDesign:PackIcon Kind="CheckCircle" Width="20" Height="20"/>
-                        </components:ConciergeDesignButton>
-                        <components:ConciergeDesignButton 
-                            Grid.Column="6"
-                            Style="{StaticResource ConciergeDesignButtonStyle}"
-                            x:Name="FailSave"
-                            Height="auto"
-                            Width="auto"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Foreground="IndianRed"
-                            ToolTip="Fail on Death Save"
-                            Click="FailSave_Click">
-                            <materialDesign:PackIcon Kind="CloseCircle" Width="20" Height="20"/>
+                            Foreground="#B9487B"
+                            ToolTip="Make a Death Save"
+                            Click="RollSave_Click">
+                            <materialDesign:PackIcon Kind="SendCircle" Width="20" Height="20"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeDesignButton
-                            Grid.Column="7"
+                            Margin="5,0,0,0"
+                            Grid.Column="6"
                             Style="{StaticResource ConciergeDesignButtonStyle}"
                             x:Name="ResetSaves"
                             Height="auto"
                             Width="auto"
-                            HorizontalAlignment="Stretch"
+                            HorizontalAlignment="Left"
                             VerticalAlignment="Stretch"
                             Foreground="SteelBlue"
                             ToolTip="Reset Death Saves"

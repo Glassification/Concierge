@@ -6,6 +6,7 @@ namespace Concierge.Data
 {
     using System.Windows.Media;
 
+    using Concierge.Common.Dtos;
     using MaterialDesignThemes.Wpf;
 
     /// <summary>
@@ -14,7 +15,7 @@ namespace Concierge.Data
     public sealed class SpellDetail
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpellDetail"/> class with the specified header and value.
+        /// Initializes a new instance of the <see cref="SpellDetail"/> class with the specified header, value, icon, and icon color.
         /// </summary>
         /// <param name="header">The header of the spell detail.</param>
         /// <param name="value">The value of the spell detail.</param>
@@ -26,6 +27,20 @@ namespace Concierge.Data
             this.Value = value;
             this.Icon = icon;
             this.IconColor = iconColor;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpellDetail"/> class with the specified header, value, and category.
+        /// </summary>
+        /// <param name="header">The header text of the spell detail.</param>
+        /// <param name="value">The value or description of the spell detail.</param>
+        /// <param name="category">The category to which the spell detail belongs, providing the icon and icon color.</param>
+        public SpellDetail(string header, string value, CategoryDto category)
+        {
+            this.Header = header;
+            this.Value = value;
+            this.Icon = category.IconKind;
+            this.IconColor = category.Brush;
         }
 
         private SpellDetail()

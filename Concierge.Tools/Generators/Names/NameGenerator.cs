@@ -23,15 +23,15 @@ namespace Concierge.Tools.Generators.Names
 
         public IGeneratorResult Generate(IGeneratorSettings generatorSettings)
         {
-            if (generatorSettings is NameSettings nameSettings)
+            if (generatorSettings is not NameSettings nameSettings)
             {
-                var firstName = this.GetName(nameSettings, NameType.First);
-                var lastName = this.GetName(nameSettings, NameType.Last);
-
-                return new NameResult(firstName, lastName);
+                return new NameResult();
             }
 
-            return new NameResult();
+            var firstName = this.GetName(nameSettings, NameType.First);
+            var lastName = this.GetName(nameSettings, NameType.Last);
+
+            return new NameResult(firstName, lastName);
         }
 
         private List<Name> GetSubList(NameSettings settings, NameType nameType)

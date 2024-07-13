@@ -34,7 +34,7 @@ namespace Concierge.Character.Magic
         /// Adds header details such as spellcasting level, total spells, and prepared spells to the list.
         /// </summary>
         /// <param name="list">The list of spell details to add to.</param>
-        public void AddHeaderDetails(List<SpellDetail> list)
+        public void AddHeader(List<SpellDetail> list)
         {
             list.Add(new SpellDetail("Spellcasting Level", this.spellCasting.CasterLevel.ToString(), PackIconKind.WizardHat, Brushes.SteelBlue));
             list.Add(new SpellDetail("Total Spells", this.spellCasting.Spells.StrCount(), PackIconKind.Counter, ConciergeBrushes.Mint));
@@ -46,7 +46,7 @@ namespace Concierge.Character.Magic
         /// </summary>
         /// <param name="list">The list of spell details to add to.</param>
         /// <param name="level">The spell level.</param>
-        public void AddSpellLevelDetails(List<SpellDetail> list, int level)
+        public void AddSpellLevel(List<SpellDetail> list, int level)
         {
             var spells = this.spellCasting.Spells.Where(x => x.Level == level).ToList();
             if (spells.IsEmpty())
@@ -62,7 +62,7 @@ namespace Concierge.Character.Magic
         /// </summary>
         /// <param name="list">The list of spell details to add to.</param>
         /// <param name="name">The name of the magical class.</param>
-        public void AddSpellClassDetails(List<SpellDetail> list, string name)
+        public void AddSpellClass(List<SpellDetail> list, string name)
         {
             var spells = this.spellCasting.Spells.Where(x => x.Class?.Equals(name) ?? false).ToList();
             if (spells.IsEmpty())
@@ -74,9 +74,8 @@ namespace Concierge.Character.Magic
             {
                 Name = name,
             };
-            var category = magicClass.GetCategory();
 
-            list.Add(new SpellDetail($"{(name.Equals(string.Empty) ? "Unclassed" : name)} Spells", spells.StrCount(), category.IconKind, category.Brush));
+            list.Add(new SpellDetail($"{(name.Equals(string.Empty) ? "Unclassed" : name)} Spells", spells.StrCount(), magicClass.GetCategory()));
         }
 
         /// <summary>
@@ -90,16 +89,15 @@ namespace Concierge.Character.Magic
                 .OrderByDescending(y => y.Count())
                 .SelectMany(z => z)
                 .First();
-            var category = spell.GetCategory();
 
-            list.Add(new SpellDetail("Most Common School", spell.School.ToString(), category.IconKind, category.Brush));
+            list.Add(new SpellDetail("Most Common School", spell.School.ToString(), spell.GetCategory()));
         }
 
         /// <summary>
         /// Adds details about the currently concentrated spell to the list.
         /// </summary>
         /// <param name="list">The list of spell details to add to.</param>
-        public void AddConcentrationDetails(List<SpellDetail> list)
+        public void AddConcentration(List<SpellDetail> list)
         {
             var spell = this.spellCasting.ConcentratedSpell;
             if (spell is null)

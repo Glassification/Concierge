@@ -152,7 +152,7 @@ namespace Concierge.Logging
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0063:Use simple 'using' statement", Justification = "Improve readability.")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0063:Use simple 'using' statement", Justification = "Simple using is retarded.")]
         protected override void CreateLog(string message)
         {
             var logFilePath = Path.Combine(this.LogLocation, this.LogFileName);

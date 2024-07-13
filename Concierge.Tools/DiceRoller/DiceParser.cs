@@ -152,7 +152,7 @@ namespace Concierge.Tools.DiceRoller
                 }
 
                 var roll = DiceRoll.RollDice(number, sides);
-                objectList.Add(new DiceRoll(sides, roll, 0));
+                objectList.Add(new DiceRoll(sides, roll));
             }
 
             return objectList;
