@@ -60,7 +60,7 @@ namespace Concierge.Display.Components
 
             var packIcon = new PackIcon()
             {
-                Kind = PackIconKind.PaperOutline,
+                Kind = PackIconKind.FileDocument,
                 Foreground = Brushes.SteelBlue,
                 Width = ElementSize,
                 Height = ElementSize,

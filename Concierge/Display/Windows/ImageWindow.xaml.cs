@@ -159,7 +159,11 @@ namespace Concierge.Display.Windows
 
         private void OpenImageButton_Click(object sender, RoutedEventArgs e)
         {
-            var fileName = this.fileAccessService.OpenFile((int)ImageFiltersIndex.Png, FileConstants.ImageOpenFilter, ImageFiltersIndex.Png.ToString().ToLower());
+            var fileName = this.fileAccessService.OpenFile(
+                (int)ImageFiltersIndex.Png,
+                FileConstants.ImageOpenFilter,
+                ImageFiltersIndex.Png.ToString().ToLower(),
+                string.Empty);
             if (fileName.IsNullOrWhiteSpace())
             {
                 return;

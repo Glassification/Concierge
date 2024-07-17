@@ -1,4 +1,4 @@
-﻿// <copyright file="ConsoleReadWriter.cs" company="Thomas Beckett">
+﻿// <copyright file="AppDataReadWriter.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -7,49 +7,41 @@ namespace Concierge.Persistence.ReadWriters
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.IO.Compression;
 
     using Concierge.Common;
-    using Concierge.Common.Extensions;
-    using Newtonsoft.Json;
 
-    public sealed class ConsoleReadWriter : IReadWriters
+    public sealed class AppDataReadWriter : IReadWriters
     {
         private readonly IErrorService errorService;
 
-        public ConsoleReadWriter(IErrorService errorService)
+        public AppDataReadWriter(IErrorService errorService)
         {
             this.errorService = errorService;
         }
 
         public void Append<T>(string filePath, T value)
         {
-            try
-            {
-                var json = JsonConvert.SerializeObject(value);
-                File.AppendAllText(filePath, json);
-                File.AppendAllText(filePath, "\n");
-            }
-            catch (Exception ex)
-            {
-                this.errorService.LogError(ex);
-            }
+            throw new NotImplementedException();
         }
 
         public void Clear(string filePath)
         {
-            try
-            {
-                File.WriteAllText(filePath, string.Empty);
-            }
-            catch (Exception ex)
-            {
-                this.errorService.LogError(ex);
-            }
+            throw new NotImplementedException();
         }
 
         public bool Read(string filePath)
         {
-            throw new NotImplementedException();
+            try
+            {
+                ZipFile.ExtractToDirectory(filePath, ConciergeFiles.AppDataDirectory, true);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                this.errorService.LogError(ex);
+                return false;
+            }
         }
 
         public T ReadJson<T>(string filePath)
@@ -66,27 +58,7 @@ namespace Concierge.Persistence.ReadWriters
 
         public List<T> ReadList<T>(string filePath)
         {
-            var list = new List<T>();
-
-            try
-            {
-                var rawJson = File.ReadAllLines(filePath);
-                foreach (var line in rawJson)
-                {
-                    var json = JsonConvert.DeserializeObject<T>(line);
-                    if (json is not null)
-                    {
-                        list.Add(json);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ex = ex.TryConvertToReadWriterException(filePath);
-                this.errorService.LogError(ex);
-            }
-
-            return list;
+            throw new NotImplementedException();
         }
 
         public List<T> ReadList<T>(byte[] file)
@@ -96,7 +68,21 @@ namespace Concierge.Persistence.ReadWriters
 
         public bool Write(string filePath)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+
+                ZipFile.CreateFromDirectory(ConciergeFiles.AppDataDirectory, filePath);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                this.errorService.LogError(ex);
+                return false;
+            }
         }
 
         public bool WriteJson<T>(string filePath, T value)

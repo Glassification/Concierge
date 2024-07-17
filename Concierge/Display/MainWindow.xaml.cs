@@ -5,6 +5,7 @@
 namespace Concierge.Display
 {
     using System;
+    using System.IO;
     using System.Runtime.InteropServices;
     using System.Windows;
     using System.Windows.Controls;
@@ -24,7 +25,8 @@ namespace Concierge.Display
     using Concierge.Display.Utility;
     using Concierge.Display.Windows;
     using Concierge.Display.Windows.Utility;
-    using Concierge.Persistence.Exporters;
+    using Concierge.Persistence;
+    using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
     using Concierge.Services.EasterEggs;
     using Concierge.Tools.WorkerServices;
@@ -51,6 +53,7 @@ namespace Concierge.Display
         public readonly JournalPage JournalPage = new ();
 
         private readonly FileAccessService fileAccessService = new ();
+        private readonly AppDataReadWriter appDataReadWriter = new (Program.ErrorService);
         private readonly AutosaveService autosaveTimer = new (new FileAccessService());
         private readonly BackupService backupService = new (new FileAccessService(), ConciergeFiles.BackupDirectory);
         private readonly DateTimeWorkerService dateTimeService = new ();
@@ -79,33 +82,11 @@ namespace Concierge.Display
             this.DataContext = this;
 
             this.StartServices();
+            this.SetMenuEvents();
 
             this.ButtonClose.ResetScaling();
             this.ButtonMinimize.ResetScaling();
             this.MaximizeButton.ResetScaling();
-
-            this.MenuButton.NewCharacterMenuItem.AddClickEvent(this.NewCharacterButton_Click);
-            this.MenuButton.OpenCharacterMenuItem.AddClickEvent(this.OpenCharacterButton_Click);
-            this.MenuButton.ImportCharacterMenuItem.AddClickEvent(this.ImportCharacterButton_Click);
-            this.MenuButton.SaveCharacterMenuItem.AddClickEvent(this.SaveCharacterButton_Click);
-            this.MenuButton.SaveAsCharacterMenuItem.AddClickEvent(this.SaveCharacterAsButton_Click);
-            this.MenuButton.UndoMenuItem.AddClickEvent(this.UndoButton_Click);
-            this.MenuButton.RedoMenuItem.AddClickEvent(this.RedoButton_Click);
-            this.MenuButton.CharacterCreationMenuItem.AddClickEvent(this.CharacterCreationButton_Click);
-            this.MenuButton.LevelUpMenuItem.AddClickEvent(this.LevelUpButton_Click);
-            this.MenuButton.ShortRestMenuItem.AddClickEvent(this.ShortRestButton_Click);
-            this.MenuButton.LongRestMenuItem.AddClickEvent(this.LongRestButton_Click);
-            this.MenuButton.CharacterPropertiesMenuItem.AddClickEvent(this.PropertiesButton_Click);
-            this.MenuButton.ConsoleMenuItem.AddClickEvent(this.ConsoleButton_Click);
-            this.MenuButton.CustomItemsMenuItem.AddClickEvent(this.CustomItemsButton_Click);
-            this.MenuButton.SearchMenuItem.AddClickEvent(this.SearchButton_Click);
-            this.MenuButton.ExportAppDataMenuItem.AddClickEvent(this.ExportAppDataButton_Click);
-            this.MenuButton.MessageHistoryMenuItem.AddClickEvent(this.MessageHistoryButton_Click);
-            this.MenuButton.KeyboardMenuItem.AddClickEvent(this.OnScreenKeyboardButton_Click);
-            this.MenuButton.SettingsMenuItem.AddClickEvent(this.SettingsButton_Click);
-            this.MenuButton.AboutMenuItem.AddClickEvent(this.AboutButton_Click);
-            this.MenuButton.HelpMenuItem.AddClickEvent(this.GlossaryButton_Click);
-            this.MenuButton.ExitMenuItem.AddClickEvent(this.ButtonClose_Click);
 
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
             Program.InitializeMainWindow(this);
@@ -557,6 +538,33 @@ namespace Concierge.Display
             }
         }
 
+        private void SetMenuEvents()
+        {
+            this.MenuButton.NewCharacterMenuItem.AddClickEvent(this.NewCharacterButton_Click);
+            this.MenuButton.OpenCharacterMenuItem.AddClickEvent(this.OpenCharacterButton_Click);
+            this.MenuButton.ImportCharacterMenuItem.AddClickEvent(this.ImportCharacterButton_Click);
+            this.MenuButton.SaveCharacterMenuItem.AddClickEvent(this.SaveCharacterButton_Click);
+            this.MenuButton.SaveAsCharacterMenuItem.AddClickEvent(this.SaveCharacterAsButton_Click);
+            this.MenuButton.UndoMenuItem.AddClickEvent(this.UndoButton_Click);
+            this.MenuButton.RedoMenuItem.AddClickEvent(this.RedoButton_Click);
+            this.MenuButton.CharacterCreationMenuItem.AddClickEvent(this.CharacterCreationButton_Click);
+            this.MenuButton.LevelUpMenuItem.AddClickEvent(this.LevelUpButton_Click);
+            this.MenuButton.ShortRestMenuItem.AddClickEvent(this.ShortRestButton_Click);
+            this.MenuButton.LongRestMenuItem.AddClickEvent(this.LongRestButton_Click);
+            this.MenuButton.CharacterPropertiesMenuItem.AddClickEvent(this.PropertiesButton_Click);
+            this.MenuButton.ConsoleMenuItem.AddClickEvent(this.ConsoleButton_Click);
+            this.MenuButton.CustomItemsMenuItem.AddClickEvent(this.CustomItemsButton_Click);
+            this.MenuButton.SearchMenuItem.AddClickEvent(this.SearchButton_Click);
+            this.MenuButton.ExportAppDataMenuItem.AddClickEvent(this.ExportAppDataButton_Click);
+            this.MenuButton.ImportAppDataMenuItem.AddClickEvent(this.ImportAppDataButton_Click);
+            this.MenuButton.MessageHistoryMenuItem.AddClickEvent(this.MessageHistoryButton_Click);
+            this.MenuButton.KeyboardMenuItem.AddClickEvent(this.OnScreenKeyboardButton_Click);
+            this.MenuButton.SettingsMenuItem.AddClickEvent(this.SettingsButton_Click);
+            this.MenuButton.AboutMenuItem.AddClickEvent(this.AboutButton_Click);
+            this.MenuButton.HelpMenuItem.AddClickEvent(this.GlossaryButton_Click);
+            this.MenuButton.ExitMenuItem.AddClickEvent(this.ButtonClose_Click);
+        }
+
         private void SetUndoRedoState()
         {
             DisplayUtility.SetControlEnableState(this.MenuButton.UndoMenuItem, Program.UndoRedoService.CanUndo);
@@ -948,9 +956,30 @@ namespace Concierge.Display
         {
             SoundService.PlayNavigation();
 
-            if (new AppDataExporter(Program.Logger).Export())
+            var fileName = this.fileAccessService.SaveFile(0, FileConstants.ZipFilter, "zip", FileConstants.DefaultAppDataFileName);
+            if (this.appDataReadWriter.Write(fileName))
             {
-                this.DisplayStatusText("Successfully Exported AppData.");
+                this.DisplayStatusText($"Successfully Exported {Path.GetFileName(fileName)}");
+            }
+        }
+
+        private void ImportAppDataButton_Click(object sender, RoutedEventArgs e)
+        {
+            SoundService.PlayNavigation();
+
+            var fileName = this.fileAccessService.OpenFile(0, FileConstants.ZipFilter, "zip", FileConstants.DefaultAppDataFileName);
+            if (!fileName.IsNullOrWhiteSpace())
+            {
+                var result = ConciergeMessageBox.Show(
+                    "This will permanently overwrite the existing Concierge AppData. Do you want to continue?",
+                    "Warning",
+                    ConciergeButtons.Yes | ConciergeButtons.No,
+                    ConciergeIcons.Warning);
+
+                if (result == ConciergeResult.Yes && this.appDataReadWriter.Read(fileName))
+                {
+                    this.DisplayStatusText($"Successfully Imported {Path.GetFileName(fileName)}");
+                }
             }
         }
 

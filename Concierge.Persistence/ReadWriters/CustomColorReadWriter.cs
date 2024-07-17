@@ -32,6 +32,11 @@ namespace Concierge.Persistence.ReadWriters
             throw new NotImplementedException();
         }
 
+        public bool Read(string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
         public T ReadJson<T>(string filePath)
             where T : new()
         {
@@ -67,6 +72,11 @@ namespace Concierge.Persistence.ReadWriters
         }
 
         public List<T> ReadList<T>(byte[] file)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Write(string filePath)
         {
             throw new NotImplementedException();
         }

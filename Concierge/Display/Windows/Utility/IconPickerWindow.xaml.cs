@@ -134,9 +134,11 @@ namespace Concierge.Display.Windows.Utility
 
         private void FilterTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            switch (e.Key)
             {
-                this.FillFields();
+                case Key.Enter:
+                    this.FillFields();
+                    break;
             }
         }
     }

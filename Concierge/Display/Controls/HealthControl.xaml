@@ -199,7 +199,7 @@
                             Foreground="#B9487B"
                             ToolTip="Make a Death Save"
                             Click="RollSave_Click">
-                            <materialDesign:PackIcon Kind="SendCircle" Width="20" Height="20"/>
+                            <materialDesign:PackIcon Kind="PlayCircle" Width="20" Height="20"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeDesignButton
                             Margin="5,0,0,0"
@@ -213,7 +213,7 @@
                             Foreground="SteelBlue"
                             ToolTip="Reset Death Saves"
                             Click="ResetSaves_Click">
-                            <materialDesign:PackIcon Kind="RefreshCircle" Width="20" Height="20"/>
+                            <materialDesign:PackIcon Kind="SyncCircle" Width="20" Height="20"/>
                         </components:ConciergeDesignButton>
                         </Grid>
                 </Border>

@@ -77,5 +77,17 @@ namespace Concierge.Persistence.ReadWriters
         /// </summary>
         /// <param name="filePath">The file path to clear.</param>
         public void Clear(string filePath);
+
+        /// <summary>
+        /// Reads anything from the specified file path.
+        /// </summary>
+        /// <returns><c>true</c> if the read operation is successful, otherwise <c>false</c>.</returns>
+        public bool Read(string filePath);
+
+        /// <summary>
+        /// Writes anything to the specified file path.
+        /// </summary>
+        /// <returns><c>true</c> if the write operation is successful, otherwise <c>false</c>.</returns>
+        public bool Write(string filePath);
     }
 }

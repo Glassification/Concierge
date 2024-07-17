@@ -144,7 +144,11 @@ namespace Concierge.Display.Utility
         private void OpenFileButton_Click(object sender, RoutedEventArgs e)
         {
             var filterIndex = this.ImportCharacterButton.IsChecked ?? false ? CcsFiltersIndex.Ccs : CcsFiltersIndex.Json;
-            var file = this.fileAccessService.OpenFile((int)filterIndex, FileConstants.CcsOpenFilter, filterIndex.ToString().ToLower());
+            var file = this.fileAccessService.OpenFile(
+                (int)filterIndex,
+                FileConstants.CcsOpenFilter,
+                filterIndex.ToString().ToLower(),
+                string.Empty);
 
             if (!file.IsNullOrWhiteSpace())
             {

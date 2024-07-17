@@ -103,5 +103,15 @@ namespace Concierge.Persistence.ReadWriters
                 using var createStream = File.Create(filePath);
             }
         }
+
+        public bool Read(string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Write(string filePath)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

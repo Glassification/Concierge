@@ -192,7 +192,8 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Weapons:"/>
+                        Text="Weapons:"
+                        Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Value-->
@@ -215,7 +216,8 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Abilities:"/>
+                        Text="Abilities:"
+                        Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Value-->
@@ -238,7 +240,8 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Inventory:"/>
+                        Text="Inventory:"
+                        Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Value-->
@@ -261,7 +264,8 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Spells:"/>
+                        Text="Spells:"
+                        Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Value-->
@@ -284,7 +288,8 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Journal:"/>
+                        Text="Journal:"
+                        Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Value-->
@@ -307,7 +312,8 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Language:"/>
+                        Text="Language:"
+                        Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Value-->
@@ -330,7 +336,8 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Proficiency:"/>
+                        Text="Proficiency:"
+                        Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Value-->
@@ -353,7 +360,8 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Status Effects:"/>
+                        Text="Status Effects:"
+                        Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Value-->
@@ -376,7 +384,8 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Class Resources:"/>
+                        Text="Class Resources:"
+                        Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Value-->

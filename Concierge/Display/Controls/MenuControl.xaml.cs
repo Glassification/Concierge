@@ -41,6 +41,7 @@ namespace Concierge.Display.Controls
             this.CustomItemsMenuItem.AddClickEvent(this.MenuButton_Click);
             this.SearchMenuItem.AddClickEvent(this.MenuButton_Click);
             this.ExportAppDataMenuItem.AddClickEvent(this.MenuButton_Click);
+            this.ImportAppDataMenuItem.AddClickEvent(this.MenuButton_Click);
             this.MessageHistoryMenuItem.AddClickEvent(this.MenuButton_Click);
             this.KeyboardMenuItem.AddClickEvent(this.MenuButton_Click);
             this.SettingsMenuItem.AddClickEvent(this.MenuButton_Click);
@@ -54,6 +55,7 @@ namespace Concierge.Display.Controls
             {
                 this.ConsoleMenuItem.Visibility = Visibility.Collapsed;
                 this.ExportAppDataMenuItem.Visibility = Visibility.Collapsed;
+                this.ImportAppDataMenuItem.Visibility = Visibility.Collapsed;
                 this.MessageHistoryMenuItem.Visibility = Visibility.Collapsed;
             }
         }

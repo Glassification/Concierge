@@ -206,7 +206,13 @@
                                                 x:Name="ExportAppDataMenuItem"
                                                 Label="Export AppData..."
                                                 Shortcut=""
-                                                IconKind="Export"
+                                                IconKind="IframeExportOutline"
+                                                IconColor="#ffd166"/>
+                                            <local:PopupButton
+                                                x:Name="ImportAppDataMenuItem"
+                                                Label="Import AppData..."
+                                                Shortcut=""
+                                                IconKind="IframeImportOutline"
                                                 IconColor="#ffd166"/>
                                             <local:PopupButton
                                                 x:Name="MessageHistoryMenuItem"

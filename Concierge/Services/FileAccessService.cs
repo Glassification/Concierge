@@ -80,19 +80,44 @@ namespace Concierge.Services
         /// <param name="filterIndex">The index of the file dialog filter.</param>
         /// <param name="filter">The file dialog filter string.</param>
         /// <param name="defaultExtension">The default extension for the file dialog.</param>
+        /// <param name="defaultName">The default name for the file dialog.</param>
         /// <returns>The path of the selected file, or an empty string if no file is selected.</returns>
-        public string OpenFile(int filterIndex, string filter, string defaultExtension)
+        public string OpenFile(int filterIndex, string filter, string defaultExtension, string defaultName)
         {
             if (ShouldUseDefaultOpen())
             {
                 this.openFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
             }
 
+            this.openFileDialog.FileName = defaultName;
             this.openFileDialog.Filter = filter;
             this.openFileDialog.DefaultExt = defaultExtension;
             this.openFileDialog.FilterIndex = filterIndex;
 
             return this.openFileDialog.ShowDialog() ?? false ? this.openFileDialog.FileName : string.Empty;
+        }
+
+        /// <summary>
+        /// Opens a file dialog window for selecting a file to save.
+        /// </summary>
+        /// <param name="filterIndex">The index of the file dialog filter.</param>
+        /// <param name="filter">The file dialog filter string.</param>
+        /// <param name="defaultExtension">The default extension for the file dialog.</param>
+        /// <param name="defaultName">The default name for the file dialog.</param>
+        /// <returns>The path of the selected file, or an empty string if no file is selected.</returns>
+        public string SaveFile(int filterIndex, string filter, string defaultExtension, string defaultName)
+        {
+            if (ShouldUseDefaultSave())
+            {
+                this.saveFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
+            }
+
+            this.saveFileDialog.FileName = defaultName;
+            this.saveFileDialog.Filter = filter;
+            this.saveFileDialog.DefaultExt = defaultExtension;
+            this.saveFileDialog.FilterIndex = filterIndex;
+
+            return this.saveFileDialog.ShowDialog() ?? false ? this.saveFileDialog.FileName : string.Empty;
         }
 
         /// <summary>
