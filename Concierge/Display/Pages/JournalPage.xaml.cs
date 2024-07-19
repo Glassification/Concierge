@@ -31,7 +31,7 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for JournalPage.xaml.
     /// </summary>
-    public partial class JournalPage : Page, IConciergePage
+    public partial class JournalPage : ConciergePage
     {
         private const int MaxUndoQueue = 25;
 
@@ -46,6 +46,8 @@ namespace Concierge.Display.Pages
             this.FontFamilyList.ItemsSource = ComboBoxGenerator.FontFamilyComboBox();
             this.FontSizeList.ItemsSource = ComboBoxGenerator.FontSizeComboBox();
             this.NotesTextBox.UndoLimit = MaxUndoQueue;
+            this.HasEditableDataGrid = false;
+            this.ConciergePages = ConciergePages.Journal;
 
             this.BoldButton.Initialize(ConciergeBrushes.Deer);
             this.ItalicButton.Initialize(ConciergeBrushes.Deer);
@@ -54,10 +56,6 @@ namespace Concierge.Display.Pages
             this.SetDefaultFontStyle();
             this.ClearTextBox();
         }
-
-        public ConciergePage ConciergePage => ConciergePage.Journal;
-
-        public bool HasEditableDataGrid => false;
 
         public Document? SelectedDocument
         {
@@ -79,7 +77,7 @@ namespace Concierge.Display.Pages
 
         private bool SelectionLock { get; set; }
 
-        public void Draw(bool isNewCharacterSheet = false)
+        public override void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawTreeView();
             if (isNewCharacterSheet)
@@ -88,7 +86,7 @@ namespace Concierge.Display.Pages
             }
         }
 
-        public void Edit(object itemToEdit)
+        public override void Edit(object itemToEdit)
         {
             throw new NotImplementedException();
         }
@@ -516,7 +514,7 @@ namespace Concierge.Display.Pages
                 button.Tag as Chapter,
                 typeof(JournalWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Journal);
+                ConciergePages.Journal);
             this.Draw();
         }
 
@@ -531,7 +529,7 @@ namespace Concierge.Display.Pages
                 button.Tag as Chapter,
                 typeof(JournalWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Journal);
+                ConciergePages.Journal);
             this.Draw();
         }
 
@@ -548,7 +546,7 @@ namespace Concierge.Display.Pages
                     chapterTreeViewItem.Chapter,
                     typeof(JournalWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.Journal);
+                    ConciergePages.Journal);
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
             {
@@ -556,7 +554,7 @@ namespace Concierge.Display.Pages
                     documentTreeViewItem.Document,
                     typeof(JournalWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.Journal);
+                    ConciergePages.Journal);
             }
 
             this.Draw();
@@ -583,7 +581,7 @@ namespace Concierge.Display.Pages
                 }
 
                 var index = Program.CcsFile.Character.Journal.Chapters.IndexOf(chapterTreeViewItem.Chapter);
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Chapter>(Program.CcsFile.Character.Journal.Chapters, chapterTreeViewItem.Chapter, index, this.ConciergePage));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Chapter>(Program.CcsFile.Character.Journal.Chapters, chapterTreeViewItem.Chapter, index, this.ConciergePages));
                 Program.CcsFile.Character.Journal.Chapters.Remove(chapterTreeViewItem.Chapter);
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
@@ -601,7 +599,7 @@ namespace Concierge.Display.Pages
 
                 var chapter = Program.CcsFile.Character.Journal.GetChapter(documentTreeViewItem.Document.Id);
                 var index = chapter.Documents.IndexOf(documentTreeViewItem.Document);
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Document>(chapter.Documents, documentTreeViewItem.Document, index, this.ConciergePage));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Document>(chapter.Documents, documentTreeViewItem.Document, index, this.ConciergePages));
                 chapter.Documents.Remove(documentTreeViewItem.Document);
             }
 

@@ -28,7 +28,7 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.FatiguedComboBox.ItemsSource = ComboBoxGenerator.ExhaustionLevelComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.BlindedCheckBox);

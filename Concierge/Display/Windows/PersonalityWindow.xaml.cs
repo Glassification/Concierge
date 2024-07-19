@@ -21,7 +21,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.Personality = new Personality();
             this.DescriptionTextBlock.DataContext = this.Description;
 

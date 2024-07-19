@@ -100,7 +100,7 @@ namespace Concierge.Common
             this.current = this.redoStack.Pop();
             this.undoStack.Push(this.current);
 
-            if (this.current.ConciergePage != ConciergePage.None)
+            if (this.current.ConciergePage != ConciergePages.None)
             {
                 mainWindow.MoveSelection(this.current.ConciergePage);
             }
@@ -128,7 +128,7 @@ namespace Concierge.Common
             this.current = this.undoStack.Pop();
             this.redoStack.Push(this.current);
 
-            if (this.current.ConciergePage != ConciergePage.None)
+            if (this.current.ConciergePage != ConciergePages.None)
             {
                 mainWindow.MoveSelection(this.current.ConciergePage);
             }

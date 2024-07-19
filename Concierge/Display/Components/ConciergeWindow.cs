@@ -61,7 +61,7 @@ namespace Concierge.Display.Components
 
         public abstract string WindowName { get; }
 
-        public ConciergePage ConciergePage { get; set; }
+        public ConciergePages ConciergePage { get; set; }
 
         protected ConciergeResult Result { get; set; }
 

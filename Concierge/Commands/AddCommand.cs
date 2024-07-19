@@ -23,7 +23,7 @@ namespace Concierge.Commands
         /// <param name="list">The list to which the item will be added.</param>
         /// <param name="item">The item to add to the list.</param>
         /// <param name="conciergePage">The ConciergePage associated with this command.</param>
-        public AddCommand(List<T> list, T item, ConciergePage conciergePage)
+        public AddCommand(List<T> list, T item, ConciergePages conciergePage)
         {
             this.ConciergePage = conciergePage;
             this.list = list;

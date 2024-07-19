@@ -98,15 +98,7 @@ namespace Concierge.Common
             var shifted = (int)Math.Round(Math.Round(value, SignificantDigits) * 100);
             var remainder = shifted % 10;
 
-            if (remainder < 5)
-            {
-                shifted = (shifted / 10 * 10) + 5;
-            }
-            else
-            {
-                shifted = ((shifted / 10) + 1) * 10;
-            }
-
+            shifted = remainder < 5 ? (shifted / 10 * 10) + 5 : ((shifted / 10) + 1) * 10;
             return Math.Round(shifted / 100.0, SignificantDigits);
         }
     }

@@ -193,7 +193,7 @@ namespace Concierge.Display.Controls
             this.skill.Proficiency = !this.skill.Proficiency;
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(this.skill, skillCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(this.skill, skillCopy, ConciergePages.Overview));
         }
 
         private void ExpertiseToggle_MouseDown(object sender, MouseButtonEventArgs e)
@@ -204,7 +204,7 @@ namespace Concierge.Display.Controls
             this.skill.Expertise = !this.skill.Expertise;
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(this.skill, skillCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(this.skill, skillCopy, ConciergePages.Overview));
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
     /// </summary>
-    public partial class ToolsPage : Page, IConciergePage
+    public partial class ToolsPage : ConciergePage
     {
         private readonly HistoryReadWriter historyReadWriter;
         private readonly string diceHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.DiceHistoryName);
@@ -41,6 +41,8 @@ namespace Concierge.Display.Pages
             this.DiceHistory = new History(this.historyReadWriter.ReadList<string>(this.diceHistoryFile), string.Empty);
             this.CoinComboBox.ItemsSource = ComboBoxGenerator.DivideLootComboBox(ConciergeBrushes.ControlForeDarkBlue);
             this.CoinComboBox.Text = CoinType.Gold.ToString();
+            this.HasEditableDataGrid = false;
+            this.ConciergePages = ConciergePages.Tools;
 
             this.SetDefaultDiceValues();
             this.SetDefaultDivideValues();
@@ -61,23 +63,19 @@ namespace Concierge.Display.Pages
             this.PlatinumInput.Initialize("PlatinumControlButtonStyle", Brushes.Black);
         }
 
-        public ConciergePage ConciergePage => ConciergePage.Tools;
-
-        public bool HasEditableDataGrid => false;
-
         private List<Player> Players { get; set; }
 
         private List<IDiceRoll> RollHistory { get; }
 
         private History DiceHistory { get; set; }
 
-        public void Draw(bool isNewCharacterSheet = false)
+        public override void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawDiceHistory();
             this.DrawDivideLoot();
         }
 
-        public void Edit(object itemToEdit)
+        public override void Edit(object itemToEdit)
         {
             if (itemToEdit is Player player)
             {

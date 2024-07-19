@@ -37,7 +37,7 @@ namespace Concierge.Display.Windows
             this.AbilityComboBox.ItemsSource = ComboBoxGenerator.AbilitiesComboBox();
             this.DamageTypeComboBox.ItemsSource = ComboBoxGenerator.DamageTypesComboBox();
             this.CoinTypeComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.Weapons = [];
             this.SelectedAttack = new Weapon();
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -313,11 +313,7 @@ namespace Concierge.Display.Windows
         {
             if (this.AttackComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Attack.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Attack.\nA name is required before saving a custom item.");
                 return;
             }
 

@@ -52,7 +52,7 @@ namespace Concierge.Display.Components
 
         public int LastIndex => this.Items.Count - 1;
 
-        public void SortListFromDataGrid<T>(List<T> list, ConciergePage conciergePage)
+        public void SortListFromDataGrid<T>(List<T> list, ConciergePages conciergePage)
         {
             if (this.Items.IsEmpty)
             {
@@ -81,7 +81,7 @@ namespace Concierge.Display.Components
             this.RaiseEvent(newEventArgs);
         }
 
-        public int NextItem<T>(List<T> list, int limit, int increment, ConciergePage conciergePage)
+        public int NextItem<T>(List<T> list, int limit, int increment, ConciergePages conciergePage)
         {
             if (this.SelectedItem == null)
             {

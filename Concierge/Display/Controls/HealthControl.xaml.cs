@@ -241,7 +241,7 @@ namespace Concierge.Display.Controls
 
             var oldItem = character.Vitality.DeathSavingThrows.DeepCopy();
             var diceRoll = character.Vitality.DeathSavingThrows.RollDeathSave();
-            Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePages.Overview));
 
             SetStatusText(diceRoll, character);
             this.SetButtonEnableState(character.Vitality.DeathSavingThrows.DeathSaveStatus);
@@ -253,7 +253,7 @@ namespace Concierge.Display.Controls
             var character = Program.CcsFile.Character;
             var oldItem = character.Vitality.DeathSavingThrows.DeepCopy();
             character.Vitality.DeathSavingThrows.ResetDeathSaves();
-            Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePages.Overview));
 
             this.SetButtonEnableState(character.Vitality.DeathSavingThrows.DeathSaveStatus);
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));

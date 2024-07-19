@@ -59,7 +59,7 @@ namespace Concierge.Commands
             this.oldClassResource = classResource.Old;
             this.newClassResource = classResource.New;
 
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.character = Program.CcsFile.Character;
         }
 

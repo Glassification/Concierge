@@ -25,7 +25,7 @@ namespace Concierge.Commands
         /// <param name="item">The item to be deleted from the list.</param>
         /// <param name="index">The index at which the item was located before deletion.</param>
         /// <param name="conciergePage">The ConciergePage associated with this command.</param>
-        public DeleteCommand(List<T> list, T item, int index, ConciergePage conciergePage)
+        public DeleteCommand(List<T> list, T item, int index, ConciergePages conciergePage)
         {
             this.ConciergePage = conciergePage;
             this.list = list;

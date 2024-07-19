@@ -27,13 +27,16 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for AttacksPage.xaml.
     /// </summary>
-    public partial class AttacksPage : Page, IConciergePage
+    public partial class AttacksPage : ConciergePage
     {
-        private MultiSelectService multiSelectService;
+        private readonly MultiSelectService multiSelectService;
 
         public AttacksPage()
         {
             this.InitializeComponent();
+
+            this.HasEditableDataGrid = true;
+            this.ConciergePages = ConciergePages.Attacks;
             this.MultiSelectButton.Initialize(ConciergeBrushes.DarkPink);
             this.multiSelectService = new MultiSelectService(
                 this.AugmentUpButton,
@@ -47,20 +50,16 @@ namespace Concierge.Display.Pages
 
         private delegate void DrawList();
 
-        public bool HasEditableDataGrid => true;
-
-        public ConciergePage ConciergePage => ConciergePage.Attacks;
-
         private List<Weapon> WeaponDisplayList => Program.CcsFile.Character.Equipment.Weapons.Filter(this.SearchFilter.FilterText).ToList();
 
-        public void Draw(bool isNewCharacterSheet = false)
+        public override void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawWeaponList();
             this.DrawAugmentList();
             this.DrawStatusEffects();
         }
 
-        public void Edit(object itemToEdit)
+        public override void Edit(object itemToEdit)
         {
             if (itemToEdit is Augment ammunition)
             {
@@ -69,7 +68,7 @@ namespace Concierge.Display.Pages
                     ammunition,
                     typeof(AugmentationWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.Attacks);
+                    ConciergePages.Attacks);
                 this.DrawAugmentList();
                 this.AugmentDataGrid.SetSelectedIndex(index);
             }
@@ -80,7 +79,7 @@ namespace Concierge.Display.Pages
                     weapon,
                     typeof(AttacksWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.Attacks);
+                    ConciergePages.Attacks);
                 this.DrawWeaponList();
                 this.WeaponDataGrid.SetSelectedIndex(index);
             }
@@ -91,7 +90,7 @@ namespace Concierge.Display.Pages
                     statusEffect,
                     typeof(StatusEffectsWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.Attacks);
+                    ConciergePages.Attacks);
                 this.DrawStatusEffects();
                 this.StatusEffectsDataGrid.SetSelectedIndex(index);
             }
@@ -109,7 +108,7 @@ namespace Concierge.Display.Pages
 
         private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
         {
-            var index = dataGrid.NextItem(list, limit, increment, this.ConciergePage);
+            var index = dataGrid.NextItem(list, limit, increment, this.ConciergePages);
 
             if (index != -1)
             {
@@ -218,7 +217,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Equipment.Augmentation,
                 typeof(AugmentationWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Attacks);
+                ConciergePages.Attacks);
 
             this.DrawAugmentList();
             if (added)
@@ -233,7 +232,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Equipment.Weapons,
                 typeof(AttacksWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Attacks);
+                ConciergePages.Attacks);
 
             this.DrawWeaponList();
             if (added)
@@ -268,7 +267,7 @@ namespace Concierge.Display.Pages
             var augment = (Augment)this.AugmentDataGrid.SelectedItem;
             var index = this.AugmentDataGrid.SelectedIndex;
 
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Augment>(Program.CcsFile.Character.Equipment.Augmentation, augment, index, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Augment>(Program.CcsFile.Character.Equipment.Augmentation, augment, index, this.ConciergePages));
             Program.CcsFile.Character.Equipment.Augmentation.Remove(augment);
             this.DrawAugmentList();
             this.AugmentDataGrid.SetSelectedIndex(index);
@@ -284,7 +283,7 @@ namespace Concierge.Display.Pages
             var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
             var index = this.WeaponDataGrid.SelectedIndex;
 
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Equipment.Weapons, weapon, index, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Equipment.Weapons, weapon, index, this.ConciergePages));
             Program.CcsFile.Character.Equipment.Weapons.Remove(weapon);
             this.DrawWeaponList();
             this.WeaponDataGrid.SetSelectedIndex(index);
@@ -292,12 +291,12 @@ namespace Concierge.Display.Pages
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.WeaponDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Equipment.Weapons, this.ConciergePage);
+            this.WeaponDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Equipment.Weapons, this.ConciergePages);
         }
 
         private void AugmentDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.AugmentDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Equipment.Augmentation, this.ConciergePage);
+            this.AugmentDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Equipment.Augmentation, this.ConciergePages);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -334,7 +333,7 @@ namespace Concierge.Display.Pages
             var effect = (StatusEffect)this.StatusEffectsDataGrid.SelectedItem;
             var index = this.StatusEffectsDataGrid.SelectedIndex;
 
-            Program.UndoRedoService.AddCommand(new DeleteCommand<StatusEffect>(Program.CcsFile.Character.Vitality.Status.StatusEffects, effect, index, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new DeleteCommand<StatusEffect>(Program.CcsFile.Character.Vitality.Status.StatusEffects, effect, index, this.ConciergePages));
             Program.CcsFile.Character.Vitality.Status.StatusEffects.Remove(effect);
             this.DrawStatusEffects();
             this.StatusEffectsDataGrid.SetSelectedIndex(index);
@@ -346,7 +345,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Vitality.Status.StatusEffects,
                 typeof(StatusEffectsWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Attacks);
+                ConciergePages.Attacks);
             this.DrawStatusEffects();
 
             if (added)
@@ -367,7 +366,7 @@ namespace Concierge.Display.Pages
 
         private void StatusEffectsDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.StatusEffectsDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Vitality.Status.StatusEffects, this.ConciergePage);
+            this.StatusEffectsDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Vitality.Status.StatusEffects, this.ConciergePages);
         }
 
         private void AttackDataGrid_Filtered(object sender, RoutedEventArgs e)
@@ -400,13 +399,13 @@ namespace Concierge.Display.Pages
                     {
                         var oldItem = augment.DeepCopy();
                         augment.Use(UseItem.Empty);
-                        commands.Add(new EditCommand<Augment>(augment, oldItem, this.ConciergePage));
+                        commands.Add(new EditCommand<Augment>(augment, oldItem, this.ConciergePages));
                     }
                 }
 
                 this.DrawAugmentList();
 
-                Program.UndoRedoService.AddCommand(new CompositeCommand(this.ConciergePage, [.. commands]));
+                Program.UndoRedoService.AddCommand(new CompositeCommand(this.ConciergePages, [.. commands]));
             }
         }
 
@@ -425,7 +424,7 @@ namespace Concierge.Display.Pages
             this.DrawAugmentList();
             this.AugmentDataGrid.SetSelectedIndex(index);
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Augment>(augment, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Augment>(augment, oldItem, this.ConciergePages));
         }
 
         private void AugmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

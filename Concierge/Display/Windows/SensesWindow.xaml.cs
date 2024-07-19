@@ -25,7 +25,7 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.VisionComboBox.ItemsSource = ComboBoxGenerator.VisionComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.BaseMovementUpDown);

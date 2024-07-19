@@ -60,7 +60,7 @@ namespace Concierge.Commands
             this.oldSpellSlots = oldSpellSlots;
             this.newSpellSlots = newSpellSlots;
             this.oldConcentratedSpell = oldConcentratedSpell;
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.character = Program.CcsFile.Character;
         }
 

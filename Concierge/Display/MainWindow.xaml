@@ -21,6 +21,8 @@
     BorderThickness="0"
     KeyDown="MainWindow_KeyPress"
     WindowState="Maximized"
+    AllowDrop="True"
+    Drop="ConciergeMainWindow_Drop"
     Style="{StaticResource WindowFontStyle}">
 
     <!-- Main Grid Area -->

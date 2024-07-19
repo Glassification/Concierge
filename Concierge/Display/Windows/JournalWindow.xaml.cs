@@ -22,7 +22,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.CurrentEntry = Entry.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -142,11 +142,7 @@ namespace Concierge.Display.Windows
 
         private void InvalidNameMessage()
         {
-            ConciergeMessageBox.Show(
-                $"Cannot create a {this.TreeViewButtonType.ToString().ToLower()} with a missing name. Add a valid one to continue.",
-                "Warning",
-                ConciergeButtons.Ok,
-                ConciergeIcons.Warning);
+            ConciergeMessageBox.ShowWarning($"Cannot create a {this.TreeViewButtonType.ToString().ToLower()} with a missing name. Add a valid one to continue.");
         }
 
         private bool OkApplyChanges()

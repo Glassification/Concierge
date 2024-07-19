@@ -84,7 +84,7 @@ namespace Concierge.Display.Windows.Utility
                     false,
                     typeof(InventoryWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.None);
+                    ConciergePages.None);
                 this.Draw();
                 return;
             }
@@ -122,7 +122,7 @@ namespace Concierge.Display.Windows.Utility
                 item,
                 type,
                 this.Window_ApplyChanges,
-                ConciergePage.None);
+                ConciergePages.None);
             this.Draw();
         }
 

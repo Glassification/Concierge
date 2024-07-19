@@ -1,10 +1,10 @@
-﻿// <copyright file="ConciergePage.cs" company="Thomas Beckett">
+﻿// <copyright file="ConciergePages.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Display.Enums
 {
-    public enum ConciergePage
+    public enum ConciergePages
     {
         Overview,
         Details,

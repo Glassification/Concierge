@@ -131,7 +131,7 @@ namespace Concierge.Display.Controls
                 Mouse.OverrideCursor = Cursors.Arrow;
             }
 
-            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(spellSlots, oldItem, ConciergePage.Spellcasting));
+            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(spellSlots, oldItem, ConciergePages.Spellcasting));
 
             this.RaiseEvent(new RoutedEventArgs(ValueChangedEvent));
         }

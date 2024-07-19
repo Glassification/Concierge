@@ -26,18 +26,17 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
     /// </summary>
-    public partial class EquipmentPage : Page, IConciergePage
+    public partial class EquipmentPage : ConciergePage
     {
         private readonly ImageEncoding encodingService = new (Program.ErrorService);
 
         public EquipmentPage()
         {
             this.InitializeComponent();
+
+            this.HasEditableDataGrid = true;
+            this.ConciergePages = ConciergePages.Equipment;
         }
-
-        public ConciergePage ConciergePage => ConciergePage.Equipment;
-
-        public bool HasEditableDataGrid => true;
 
         private object? SelectedItem { get; set; }
 
@@ -47,12 +46,51 @@ namespace Concierge.Display.Pages
 
         private ConciergeDataGrid? SelectedDataGrid { get; set; }
 
-        public void Draw(bool isNewCharacterSheet = false)
+        public override void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawAttunement();
             this.DrawEquippedItems();
             this.DrawImage();
             this.DrawPreparedSpells();
+        }
+
+        public override void Edit(object itemToEdit)
+        {
+            if (itemToEdit is Inventory inventory && this.SelectedDataGrid is not null)
+            {
+                var index = this.SelectedDataGrid.SelectedIndex;
+                ConciergeWindowService.ShowEdit(
+                    inventory,
+                    true,
+                    typeof(InventoryWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePages.Equipment);
+                this.Draw();
+                this.SelectedDataGrid.SetSelectedIndex(index);
+            }
+            else if (itemToEdit is Weapon weapon && this.SelectedDataGrid is not null)
+            {
+                var index = this.SelectedDataGrid.SelectedIndex;
+                ConciergeWindowService.ShowEdit(
+                    weapon,
+                    true,
+                    typeof(AttacksWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePages.Equipment);
+                this.Draw();
+                this.SelectedDataGrid.SetSelectedIndex(index);
+            }
+            else if (itemToEdit is Spell spell && this.SelectedDataGrid is not null)
+            {
+                var index = this.SelectedDataGrid.SelectedIndex;
+                ConciergeWindowService.ShowEdit(
+                    spell,
+                    typeof(SpellWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePages.Equipment);
+                this.DrawPreparedSpells();
+                this.SelectedDataGrid.SetSelectedIndex(index);
+            }
         }
 
         public void DrawAttunement()
@@ -95,45 +133,6 @@ namespace Concierge.Display.Pages
             Program.CcsFile.Character.SpellCasting.PreparedSpells.ForEach(spell => this.PreparedSpellsDataGrid.Items.Add(spell));
         }
 
-        public void Edit(object itemToEdit)
-        {
-            if (itemToEdit is Inventory inventory && this.SelectedDataGrid is not null)
-            {
-                var index = this.SelectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
-                    inventory,
-                    true,
-                    typeof(InventoryWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePage.Equipment);
-                this.Draw();
-                this.SelectedDataGrid.SetSelectedIndex(index);
-            }
-            else if (itemToEdit is Weapon weapon && this.SelectedDataGrid is not null)
-            {
-                var index = this.SelectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
-                    weapon,
-                    true,
-                    typeof(AttacksWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePage.Equipment);
-                this.Draw();
-                this.SelectedDataGrid.SetSelectedIndex(index);
-            }
-            else if (itemToEdit is Spell spell && this.SelectedDataGrid is not null)
-            {
-                var index = this.SelectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
-                    spell,
-                    typeof(SpellWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePage.Equipment);
-                this.DrawPreparedSpells();
-                this.SelectedDataGrid.SetSelectedIndex(index);
-            }
-        }
-
         private void DrawEquippedItem(List<IEquipable> items, ConciergeDataGrid dataGrid)
         {
             dataGrid.Items.Clear();
@@ -145,14 +144,14 @@ namespace Concierge.Display.Pages
         {
             var oldItem = item.DeepCopy();
             EquippedItems.Dequip(item);
-            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(item, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(item, oldItem, this.ConciergePages));
         }
 
         private void DequipWeapon(Weapon weapon)
         {
             var oldItem = weapon.DeepCopy();
             EquippedItems.Dequip(weapon);
-            Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePages));
         }
 
         private bool SetEquipmetDataGridControlState(ConciergeDataGrid dataGrid)
@@ -268,7 +267,7 @@ namespace Concierge.Display.Pages
                 string.Empty,
                 typeof(EquipmentWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Equipment);
+                ConciergePages.Equipment);
             this.Draw();
 
             if (added)
@@ -327,7 +326,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Detail.Portrait,
                 typeof(ImageWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Equipment);
+                ConciergePages.Equipment);
             this.DrawImage();
         }
 

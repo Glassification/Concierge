@@ -28,7 +28,7 @@ namespace Concierge.Display.Windows
 
             this.PreviousHeal = 0;
             this.PreviousDamage = 0;
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.HpUpDown);
@@ -125,7 +125,7 @@ namespace Concierge.Display.Windows
         private void ConcentrationCheck(int damage)
         {
             var concentratedSpell = Program.CcsFile.Character.SpellCasting.ConcentratedSpell;
-            if (this.ConciergePage != ConciergePage.Overview || concentratedSpell is null)
+            if (this.ConciergePage != ConciergePages.Overview || concentratedSpell is null)
             {
                 return;
             }

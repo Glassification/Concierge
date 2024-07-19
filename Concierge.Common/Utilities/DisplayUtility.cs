@@ -74,7 +74,7 @@ namespace Concierge.Common.Utilities
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj)
             where T : DependencyObject
         {
-            if (depObj != null)
+            if (depObj is not null)
             {
                 foreach (object rawChild in LogicalTreeHelper.GetChildren(depObj))
                 {

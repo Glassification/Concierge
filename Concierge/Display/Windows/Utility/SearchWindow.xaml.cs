@@ -16,7 +16,6 @@ namespace Concierge.Display.Utility
     using Concierge.Common.Utilities;
     using Concierge.Display;
     using Concierge.Display.Components;
-    using Concierge.Display.Enums;
     using Concierge.Search;
     using Concierge.Search.Enums;
 
@@ -106,7 +105,6 @@ namespace Concierge.Display.Utility
         private void Search()
         {
             var settings = this.ToSettings();
-
             if (this.conciergeSearch.SearchSettings.Equals(settings))
             {
                 return;
@@ -125,17 +123,16 @@ namespace Concierge.Display.Utility
             }
 
             this.Search();
-
             if (this.SearchResults.IsEmpty())
             {
                 return;
             }
 
             this.Opacity = 0.8;
-
             var result = this.SearchResults[this.SearchIndex];
+
             this.ClearHighlightedResults();
-            this.mainWindow.MoveSelection(result.ConciergePage.ConciergePage);
+            this.mainWindow.MoveSelection(result.ConciergePage.ConciergePages);
             this.conciergeNavigate.Navigate(result);
             this.Focus();
         }
@@ -174,12 +171,7 @@ namespace Concierge.Display.Utility
         {
             if ((this.UseRegexCheckBox.IsChecked ?? false) && !this.SearchTextBox.Text.IsValidRegex())
             {
-                ConciergeMessageBox.Show(
-                    $"The current Regex: {this.SearchTextBox.Text} is invalid.",
-                    "Error",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Error);
-
+                ConciergeMessageBox.ShowError($"The current Regex: {this.SearchTextBox.Text} is invalid.");
                 return false;
             }
 

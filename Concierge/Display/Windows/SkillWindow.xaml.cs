@@ -44,7 +44,7 @@ namespace Concierge.Display.Windows
             this.PerformanceComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
             this.PersuasionComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
 
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.AthleticsComboBox);

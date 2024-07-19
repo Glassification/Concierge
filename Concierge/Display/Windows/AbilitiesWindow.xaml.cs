@@ -30,7 +30,7 @@ namespace Concierge.Display.Windows
 
             this.NameComboBox.ItemsSource = DefaultItems;
             this.TypeComboBox.ItemsSource = ComboBoxGenerator.AbilityTypesComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.Abilities = [];
             this.SelectedAbility = new Ability();
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -240,11 +240,7 @@ namespace Concierge.Display.Windows
         {
             if (this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Ability.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Ability.\nA name is required before saving a custom item.");
                 return;
             }
 

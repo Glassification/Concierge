@@ -6,7 +6,7 @@ namespace Concierge.Search
 {
     using System.Text.RegularExpressions;
 
-    using Concierge.Display;
+    using Concierge.Display.Components;
     using Concierge.Display.Pages;
 
     /// <summary>
@@ -29,7 +29,7 @@ namespace Concierge.Search
         /// <param name="item">The matched item.</param>
         /// <param name="searchRegex">The regular expression used for searching.</param>
         /// <param name="conciergePage">The Concierge page associated with the search result.</param>
-        public SearchResult(string searchText, object item, Regex searchRegex, IConciergePage conciergePage)
+        public SearchResult(string searchText, object item, Regex searchRegex, ConciergePage conciergePage)
         {
             this.SearchText = searchText;
             this.Item = item;
@@ -45,7 +45,7 @@ namespace Concierge.Search
         /// <summary>
         /// Gets or sets the Concierge page associated with the search result.
         /// </summary>
-        public IConciergePage ConciergePage { get; set; }
+        public ConciergePage ConciergePage { get; set; }
 
         /// <summary>
         /// Gets or sets the text used for searching.

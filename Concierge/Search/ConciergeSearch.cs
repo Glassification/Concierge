@@ -118,7 +118,7 @@ namespace Concierge.Search
             this.SearchPage(this.mainWindow.JournalPage);
         }
 
-        private void SearchPage(IConciergePage conciergePage)
+        private void SearchPage(ConciergePage conciergePage)
         {
             this.SearchDataGrids(conciergePage);
             this.SearchTextBlocks(conciergePage);
@@ -126,15 +126,10 @@ namespace Concierge.Search
             this.SearchDocuments(conciergePage);
         }
 
-        private void SearchDocuments(IConciergePage conciergePage)
+        private void SearchDocuments(ConciergePage conciergePage)
         {
-            if (conciergePage is not Page page)
-            {
-                return;
-            }
-
             var chapters = Program.CcsFile.Character.Journal.Chapters;
-            if (chapters.Count == 0 || !DisplayUtility.FindVisualChildren<RichTextBox>(page).Any())
+            if (chapters.Count == 0 || !DisplayUtility.FindVisualChildren<RichTextBox>(conciergePage).Any())
             {
                 return;
             }
@@ -157,14 +152,9 @@ namespace Concierge.Search
             }
         }
 
-        private void SearchTreeView(IConciergePage conciergePage)
+        private void SearchTreeView(ConciergePage conciergePage)
         {
-            if (conciergePage is not Page page)
-            {
-                return;
-            }
-
-            var treeViews = DisplayUtility.FindVisualChildren<TreeView>(page);
+            var treeViews = DisplayUtility.FindVisualChildren<TreeView>(conciergePage);
             if (!treeViews.Any())
             {
                 return;
@@ -212,14 +202,9 @@ namespace Concierge.Search
             }
         }
 
-        private void SearchTextBlocks(IConciergePage conciergePage)
+        private void SearchTextBlocks(ConciergePage conciergePage)
         {
-            if (conciergePage is not Page page)
-            {
-                return;
-            }
-
-            var textBlocks = DisplayUtility.FindVisualChildren<ConciergeTextBlock>(page);
+            var textBlocks = DisplayUtility.FindVisualChildren<ConciergeTextBlock>(conciergePage);
             if (!textBlocks.Any())
             {
                 return;
@@ -234,14 +219,9 @@ namespace Concierge.Search
             }
         }
 
-        private void SearchDataGrids(IConciergePage conciergePage)
+        private void SearchDataGrids(ConciergePage conciergePage)
         {
-            if (conciergePage is not Page page)
-            {
-                return;
-            }
-
-            var dataGrids = DisplayUtility.FindVisualChildren<ConciergeDataGrid>(page);
+            var dataGrids = DisplayUtility.FindVisualChildren<ConciergeDataGrid>(conciergePage);
             if (!dataGrids.Any())
             {
                 return;
@@ -253,7 +233,7 @@ namespace Concierge.Search
             }
         }
 
-        private void SearchList<T>(IEnumerable<T> list, IConciergePage conciergePage)
+        private void SearchList<T>(IEnumerable<T> list, ConciergePage conciergePage)
         {
             foreach (var item in list)
             {
@@ -269,7 +249,7 @@ namespace Concierge.Search
             }
         }
 
-        private bool SearchListObject(object item, IConciergePage conciergePage)
+        private bool SearchListObject(object item, ConciergePage conciergePage)
         {
             this.depth++;
 

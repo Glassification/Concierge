@@ -27,7 +27,7 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.SlotComboBox.ItemsSource = ComboBoxGenerator.EquipmentSlotLevelComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.PreviousSlot = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 

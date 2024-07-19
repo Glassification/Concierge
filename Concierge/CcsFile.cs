@@ -35,6 +35,7 @@ namespace Concierge
             this.Version = new ConciergeVersion();
             this.AbsolutePath = string.Empty;
             this.Hash = string.Empty;
+            this.IsEmpty = true;
         }
 
         /// <summary>
@@ -87,9 +88,9 @@ namespace Concierge
         public ConciergeVersion Version { get; set; }
 
         /// <summary>
-        /// Gets a value indicating whether the character file is empty.
+        /// Gets or sets a value indicating whether the character file is empty.
         /// </summary>
-        public bool IsEmpty { get; }
+        public bool IsEmpty { get; set; }
 
         /// <summary>
         /// Checks if the character file is saved.
@@ -171,6 +172,7 @@ namespace Concierge
             }
 
             this.CharacterService = new CharacterService(this.Character);
+            this.IsEmpty = false;
             foreach (var weapon in this.Character.Equipment.Weapons)
             {
                 weapon.Initialize(this.CharacterService);

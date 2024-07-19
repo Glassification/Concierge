@@ -1,4 +1,4 @@
-﻿<Page
+﻿<components:ConciergePage
     x:Class="Concierge.Display.Pages.OverviewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,8 +9,7 @@
     xmlns:controls="clr-namespace:Concierge.Display.Controls"
     xmlns:local="clr-namespace:Concierge.Display.Pages"
     mc:Ignorable="d"
-    Title="OverviewPage"
-    Style="{StaticResource PageFontStyle}">
+    Title="OverviewPage">
 
     <Grid Background="#0F1220">
         <Grid>
@@ -527,4 +526,4 @@
             </Grid>
         </Grid>
     </Grid>
-</Page>
+</components:ConciergePage>

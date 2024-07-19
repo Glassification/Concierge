@@ -24,7 +24,7 @@ namespace Concierge.Commands
         {
             this.currentConcentration = currentConcentration;
             this.newConcentration = newConcentration;
-            this.ConciergePage = ConciergePage.Spellcasting;
+            this.ConciergePage = ConciergePages.Spellcasting;
         }
 
         public override void Redo()

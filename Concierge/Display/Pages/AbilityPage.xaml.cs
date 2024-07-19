@@ -13,6 +13,7 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Details;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
+    using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Display.Windows.Utility;
@@ -22,25 +23,24 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for AbilityPage.xaml.
     /// </summary>
-    public partial class AbilityPage : Page, IConciergePage
+    public partial class AbilityPage : ConciergePage
     {
         public AbilityPage()
         {
             this.InitializeComponent();
+
+            this.HasEditableDataGrid = true;
+            this.ConciergePages = ConciergePages.Abilities;
         }
-
-        public bool HasEditableDataGrid => true;
-
-        public ConciergePage ConciergePage => ConciergePage.Inventory;
 
         private List<Ability> DisplayList => Program.CcsFile.Character.Detail.Abilities.Filter(this.SearchFilter.FilterText).ToList();
 
-        public void Draw(bool isNewCharacterSheet = false)
+        public override void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawAbilities();
         }
 
-        public void Edit(object itemToEdit)
+        public override void Edit(object itemToEdit)
         {
             if (itemToEdit is not Ability ability)
             {
@@ -52,7 +52,7 @@ namespace Concierge.Display.Pages
                 ability,
                 typeof(AbilitiesWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Abilities);
+                ConciergePages.Abilities);
             this.DrawAbilities();
             this.AbilitiesDataGrid.SetSelectedIndex(index);
         }
@@ -86,7 +86,7 @@ namespace Concierge.Display.Pages
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Detail.Abilities, 0, -1, this.ConciergePage);
+            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Detail.Abilities, 0, -1, this.ConciergePages);
 
             if (index != -1)
             {
@@ -97,7 +97,7 @@ namespace Concierge.Display.Pages
 
         private void DownButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Detail.Abilities, Program.CcsFile.Character.Detail.Abilities.Count - 1, 1, this.ConciergePage);
+            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Detail.Abilities, Program.CcsFile.Character.Detail.Abilities.Count - 1, 1, this.ConciergePages);
 
             if (index != -1)
             {
@@ -117,7 +117,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Detail.Abilities,
                 typeof(AbilitiesWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Abilities);
+                ConciergePages.Abilities);
             this.DrawAbilities();
 
             if (added)
@@ -141,7 +141,7 @@ namespace Concierge.Display.Pages
                 var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
                 var index = this.AbilitiesDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Ability>(Program.CcsFile.Character.Detail.Abilities, ability, index, this.ConciergePage));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Ability>(Program.CcsFile.Character.Detail.Abilities, ability, index, this.ConciergePages));
                 Program.CcsFile.Character.Detail.Abilities.Remove(ability);
                 this.DrawAbilities();
                 this.AbilitiesDataGrid.SetSelectedIndex(index);
@@ -150,7 +150,7 @@ namespace Concierge.Display.Pages
 
         private void AbilitiesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.AbilitiesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Detail.Abilities, this.ConciergePage);
+            this.AbilitiesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Detail.Abilities, this.ConciergePages);
         }
 
         private void AbilityDataGrid_Filtered(object sender, RoutedEventArgs e)

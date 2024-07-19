@@ -6,18 +6,16 @@ namespace Concierge.Display.Pages
 {
     using System;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Character;
     using Concierge.Character.Aspects;
-    using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
-    using Concierge.Display;
+    using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
@@ -26,19 +24,18 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for OverviewPage.xaml.
     /// </summary>
-    public partial class OverviewPage : Page, IConciergePage
+    public partial class OverviewPage : ConciergePage
     {
         public OverviewPage()
         {
             this.InitializeComponent();
+
+            this.HasEditableDataGrid = false;
+            this.ConciergePages = ConciergePages.Overview;
             this.InspirationLabel.IsIcon = true;
         }
 
-        public bool HasEditableDataGrid => false;
-
-        public ConciergePage ConciergePage => ConciergePage.Overview;
-
-        public void Draw(bool isNewCharacterSheet = false)
+        public override void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawDetails();
             this.DrawAttributes();
@@ -49,6 +46,11 @@ namespace Concierge.Display.Pages
             this.DrawHitDice();
             this.DrawWealth();
             this.DrawWeight();
+        }
+
+        public override void Edit(object itemToEdit)
+        {
+            throw new NotImplementedException();
         }
 
         public void DrawDetails()
@@ -145,11 +147,6 @@ namespace Concierge.Display.Pages
             this.WeightDisplay.FormatCarryWeight(Program.CcsFile.Character);
         }
 
-        public void Edit(object itemToEdit)
-        {
-            throw new NotImplementedException();
-        }
-
         private static string GetInsperationToolTip(CharacterSheet character)
         {
             var name = character.Disposition.Name.IsNullOrWhiteSpace() ? "Character" : character.Disposition.Name;
@@ -194,7 +191,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Vitality,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Overview);
+                ConciergePages.Overview);
             this.DrawHealth();
         }
 
@@ -204,7 +201,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Vitality,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Overview);
+                ConciergePages.Overview);
             this.DrawHealth();
         }
 
@@ -238,7 +235,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Vitality.Health,
                 typeof(HealthWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Overview);
+                ConciergePages.Overview);
             this.DrawHealth();
         }
 
@@ -250,7 +247,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Vitality.HitDice,
                 typeof(HitDiceWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Overview);
+                ConciergePages.Overview);
             this.DrawHitDice();
         }
 
@@ -263,7 +260,7 @@ namespace Concierge.Display.Pages
                 sender,
                 typeof(WealthWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Overview);
+                ConciergePages.Overview);
             this.DrawWealth();
         }
 
@@ -275,7 +272,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Attributes,
                 typeof(SavingThrowWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Overview);
+                ConciergePages.Overview);
             this.DrawSavingThrows();
         }
 
@@ -287,7 +284,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Attributes,
                 typeof(SkillWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Overview);
+                ConciergePages.Overview);
             this.DrawSkills();
         }
 
@@ -299,7 +296,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Detail.Senses,
                 typeof(SensesWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Overview);
+                ConciergePages.Overview);
             this.DrawDetails();
         }
 
@@ -311,7 +308,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Attributes,
                 typeof(AttributesWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Overview);
+                ConciergePages.Overview);
             this.Draw();
         }
 
@@ -354,7 +351,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Equipment.Defense,
                 typeof(ArmorWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Overview);
+                ConciergePages.Overview);
             this.DrawArmorClass();
         }
 
@@ -369,7 +366,7 @@ namespace Concierge.Display.Pages
             character.Attributes.SetProficiencyState(state);
             this.DrawSkills();
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(character.Attributes, attributeCopy, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(character.Attributes, attributeCopy, this.ConciergePages));
         }
 
         private void AllExpertise_MouseDown(object sender, MouseButtonEventArgs e)
@@ -383,7 +380,7 @@ namespace Concierge.Display.Pages
             character.Attributes.SetExpertiseState(state);
             this.DrawSkills();
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(character.Attributes, attributeCopy, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(character.Attributes, attributeCopy, this.ConciergePages));
         }
 
         private void SaveProficiency_MouseDown(object sender, MouseButtonEventArgs e)
@@ -402,7 +399,7 @@ namespace Concierge.Display.Pages
             character.Attributes.Charisma.Proficiency = state;
             this.DrawSavingThrows();
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(character.Attributes, attributeCopy, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(character.Attributes, attributeCopy, this.ConciergePages));
         }
     }
 }

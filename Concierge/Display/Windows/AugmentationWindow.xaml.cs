@@ -37,7 +37,7 @@ namespace Concierge.Display.Windows
             this.NameComboBox.ItemsSource = DefaultItems;
             this.DamageTypeComboBox.ItemsSource = ComboBoxGenerator.DamageTypesComboBox();
             this.TypeComboBox.ItemsSource = ComboBoxGenerator.AugmentTypeComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.Augmentation = [];
             this.SelectedAugment = new Augment();
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -283,11 +283,7 @@ namespace Concierge.Display.Windows
         {
             if (this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Augmentation.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Augmentation.\nA name is required before saving a custom item.");
                 return;
             }
 

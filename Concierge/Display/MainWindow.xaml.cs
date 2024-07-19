@@ -20,6 +20,7 @@ namespace Concierge.Display
     using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Data.Enums;
+    using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
     using Concierge.Display.Utility;
@@ -96,7 +97,7 @@ namespace Concierge.Display
 
         public static double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
 
-        public IConciergePage? CurrentPage => (this.ListViewMenu.SelectedItem as ListViewItem)?.Tag as IConciergePage;
+        public ConciergePage? CurrentPage => (this.ListViewMenu.SelectedItem as ListViewItem)?.Tag as ConciergePage;
 
         public double ScaleValueX
         {
@@ -188,7 +189,7 @@ namespace Concierge.Display
                 string.Empty,
                 typeof(SettingsWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.None);
+                ConciergePages.None);
             this.DrawAll();
 
             this.StartStopAutosaveTimer();
@@ -423,25 +424,25 @@ namespace Concierge.Display
             this.DrawAll();
         }
 
-        public void PageSelection(IConciergePage? conciergePage)
+        public void PageSelection(ConciergePage? conciergePage)
         {
-            if (conciergePage is not Page page)
+            if (conciergePage is null)
             {
                 return;
             }
 
             this.CollapseAll();
             this.UpdateStatusBar();
-            page.Visibility = Visibility.Visible;
-            this.FrameContent.Content = page;
+            conciergePage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = conciergePage;
             conciergePage.Draw();
 
-            Program.Logger.Info($"Navigate to {page.GetType().Name}");
+            Program.Logger.Info($"Navigate to {conciergePage.GetType().Name}");
         }
 
-        public void MoveSelection(ConciergePage page)
+        public void MoveSelection(ConciergePages page)
         {
-            if (page == ConciergePage.None)
+            if (page == ConciergePages.None)
             {
                 return;
             }
@@ -574,6 +575,7 @@ namespace Concierge.Display
         private void Save(bool saveAs)
         {
             this.JournalPage.SaveTextBox();
+            Program.CcsFile.IsEmpty = false;
 
             if (saveAs)
             {
@@ -650,19 +652,19 @@ namespace Concierge.Display
 
         private void SetListViewItemTag()
         {
-            this.GetListViewItem(ConciergePage.Overview).Tag = this.OverviewPage;
-            this.GetListViewItem(ConciergePage.Details).Tag = this.DetailsPage;
-            this.GetListViewItem(ConciergePage.Attacks).Tag = this.AttacksPage;
-            this.GetListViewItem(ConciergePage.Abilities).Tag = this.AbilityPage;
-            this.GetListViewItem(ConciergePage.Equipment).Tag = this.EquipmentPage;
-            this.GetListViewItem(ConciergePage.Inventory).Tag = this.InventoryPage;
-            this.GetListViewItem(ConciergePage.Spellcasting).Tag = this.SpellcastingPage;
-            this.GetListViewItem(ConciergePage.Companion).Tag = this.CompanionPage;
-            this.GetListViewItem(ConciergePage.Journal).Tag = this.JournalPage;
-            this.GetListViewItem(ConciergePage.Tools).Tag = this.ToolsPage;
+            this.GetListViewItem(ConciergePages.Overview).Tag = this.OverviewPage;
+            this.GetListViewItem(ConciergePages.Details).Tag = this.DetailsPage;
+            this.GetListViewItem(ConciergePages.Attacks).Tag = this.AttacksPage;
+            this.GetListViewItem(ConciergePages.Abilities).Tag = this.AbilityPage;
+            this.GetListViewItem(ConciergePages.Equipment).Tag = this.EquipmentPage;
+            this.GetListViewItem(ConciergePages.Inventory).Tag = this.InventoryPage;
+            this.GetListViewItem(ConciergePages.Spellcasting).Tag = this.SpellcastingPage;
+            this.GetListViewItem(ConciergePages.Companion).Tag = this.CompanionPage;
+            this.GetListViewItem(ConciergePages.Journal).Tag = this.JournalPage;
+            this.GetListViewItem(ConciergePages.Tools).Tag = this.ToolsPage;
         }
 
-        private ListViewItem GetListViewItem(ConciergePage page)
+        private ListViewItem GetListViewItem(ConciergePages page)
         {
             if (this.ListViewMenu.Items[(int)page] is ListViewItem item)
             {
@@ -777,34 +779,34 @@ namespace Concierge.Display
                     this.Undo();
                     break;
                 case Key.D1:
-                    this.MoveSelection(ConciergePage.Overview);
+                    this.MoveSelection(ConciergePages.Overview);
                     break;
                 case Key.D2:
-                    this.MoveSelection(ConciergePage.Details);
+                    this.MoveSelection(ConciergePages.Details);
                     break;
                 case Key.D3:
-                    this.MoveSelection(ConciergePage.Attacks);
+                    this.MoveSelection(ConciergePages.Attacks);
                     break;
                 case Key.D4:
-                    this.MoveSelection(ConciergePage.Equipment);
+                    this.MoveSelection(ConciergePages.Equipment);
                     break;
                 case Key.D5:
-                    this.MoveSelection(ConciergePage.Inventory);
+                    this.MoveSelection(ConciergePages.Inventory);
                     break;
                 case Key.D6:
-                    this.MoveSelection(ConciergePage.Spellcasting);
+                    this.MoveSelection(ConciergePages.Spellcasting);
                     break;
                 case Key.D7:
-                    this.MoveSelection(ConciergePage.Abilities);
+                    this.MoveSelection(ConciergePages.Abilities);
                     break;
                 case Key.D8:
-                    this.MoveSelection(ConciergePage.Companion);
+                    this.MoveSelection(ConciergePages.Companion);
                     break;
                 case Key.D9:
-                    this.MoveSelection(ConciergePage.Journal);
+                    this.MoveSelection(ConciergePages.Journal);
                     break;
                 case Key.D0:
-                    this.MoveSelection(ConciergePage.Tools);
+                    this.MoveSelection(ConciergePages.Tools);
                     break;
             }
         }
@@ -886,7 +888,7 @@ namespace Concierge.Display
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-            this.PageSelection((sender as ListViewItem)?.Tag as IConciergePage);
+            this.PageSelection((sender as ListViewItem)?.Tag as ConciergePage);
         }
 
         private void OpenCharacterProperties()
@@ -897,7 +899,7 @@ namespace Concierge.Display
                 Program.CcsFile.Character.Disposition,
                 typeof(PropertiesWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.None);
+                ConciergePages.None);
 
             this.DrawAll();
         }
@@ -1099,6 +1101,24 @@ namespace Concierge.Display
         {
             SoundService.PlayNavigation();
             SystemUtility.OpenOnScreenKeyboard();
+        }
+
+        private void ConciergeMainWindow_Drop(object sender, DragEventArgs e)
+        {
+            if (ConciergeDragDrop.IsHandled)
+            {
+                ConciergeDragDrop.Reset();
+                return;
+            }
+
+            var file = ConciergeDragDrop.Capture(e.Data, ".ccs");
+            if (!file.IsValid)
+            {
+                ConciergeMessageBox.ShowError($"Could not open '{file.FilePath}'\nOnly valid .ccs files can be dropped in Concierge.");
+                return;
+            }
+
+            this.OpenCharacterSheet(file.FilePath);
         }
     }
 }

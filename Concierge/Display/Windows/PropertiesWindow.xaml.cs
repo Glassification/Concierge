@@ -177,7 +177,7 @@ namespace Concierge.Display.Windows
             this.disposition.Class2.Subclass = this.Class2Subclass.Text;
             this.disposition.Class3.Subclass = this.Class3Subclass.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Disposition>(this.disposition, oldItem, ConciergePage.None));
+            Program.UndoRedoService.AddCommand(new EditCommand<Disposition>(this.disposition, oldItem, ConciergePages.None));
         }
 
         private void CheckClass1State(string name)

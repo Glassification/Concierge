@@ -10,7 +10,6 @@ namespace Concierge.Display.Windows
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Commands;
-    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
@@ -25,7 +24,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.SelectedWealth = new Wealth();
             this.DescriptionTextBlock.DataContext = this.Description;
 

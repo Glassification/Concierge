@@ -23,7 +23,7 @@ namespace Concierge.Commands
         /// <param name="newSettingsDto">The user settings after the update.</param>
         public UpdateSettingsCommand(UserSettingsDto oldSettingsDto, UserSettingsDto newSettingsDto)
         {
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.oldSettingsDto = oldSettingsDto;
             this.newSettingsDto = newSettingsDto;
         }

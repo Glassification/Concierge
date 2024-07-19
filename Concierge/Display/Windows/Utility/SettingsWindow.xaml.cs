@@ -17,7 +17,6 @@ namespace Concierge.Display.Utility
     using Concierge.Configuration.Objects;
     using Concierge.Display;
     using Concierge.Display.Components;
-    using Concierge.Display.Enums;
     using Concierge.Services;
 
     /// <summary>
@@ -62,7 +61,7 @@ namespace Concierge.Display.Utility
             get
             {
                 var interval = Defaults.AutosaveIntervals[(int)this.AutosaveInterval.Value];
-                return $"Autosave Interval:  {interval} {"minute".Pluralize("s", interval)}";
+                return $"Interval:  {interval} {"minute".Pluralize("s", interval)}";
             }
         }
 
@@ -86,6 +85,8 @@ namespace Concierge.Display.Utility
 
         private void FillFields()
         {
+            var userSettings = AppSettingsManager.UserSettings;
+
             this.AutosaveCheckBox.UpdatingValue();
             this.CoinWeightCheckBox.UpdatingValue();
             this.EncumbranceCheckBox.UpdatingValue();
@@ -94,32 +95,32 @@ namespace Concierge.Display.Utility
             this.DefaultOpenCheckBox.UpdatingValue();
             this.DefaultSaveCheckBox.UpdatingValue();
 
-            this.AutosaveCheckBox.IsChecked = AppSettingsManager.UserSettings.Autosaving.Enabled;
-            this.AutosaveInterval.Value = AppSettingsManager.UserSettings.Autosaving.Interval;
-            this.CoinWeightCheckBox.IsChecked = AppSettingsManager.UserSettings.UseCoinWeight;
-            this.EncumbranceCheckBox.IsChecked = AppSettingsManager.UserSettings.UseEncumbrance;
+            this.AutosaveCheckBox.IsChecked = userSettings.Autosaving.Enabled;
+            this.AutosaveInterval.Value = userSettings.Autosaving.Interval;
+            this.CoinWeightCheckBox.IsChecked = userSettings.UseCoinWeight;
+            this.EncumbranceCheckBox.IsChecked = userSettings.UseEncumbrance;
             this.IntervalTextBox.Text = this.FormattedInterval;
-            this.HealingThreshold.Value = AppSettingsManager.UserSettings.HealingThreshold;
+            this.HealingThreshold.Value = userSettings.HealingThreshold;
             this.HealingThresholdLabel.Text = this.FormattedThreshold;
-            this.MuteCheckBox.IsChecked = AppSettingsManager.UserSettings.MuteSounds;
-            this.CheckVersionCheckBox.IsChecked = AppSettingsManager.UserSettings.CheckVersion;
-            this.UnitOfMeasurementComboBox.Text = AppSettingsManager.UserSettings.UnitOfMeasurement.ToString();
-            this.HeaderAlignmentComboBox.Text = AppSettingsManager.UserSettings.HeaderAlignment.ToString();
-            this.VolumeSlider.Value = AppSettingsManager.UserSettings.Volume;
+            this.MuteCheckBox.IsChecked = userSettings.MuteSounds;
+            this.CheckVersionCheckBox.IsChecked = userSettings.CheckVersion;
+            this.UnitOfMeasurementComboBox.Text = userSettings.UnitOfMeasurement.ToString();
+            this.HeaderAlignmentComboBox.Text = userSettings.HeaderAlignment.ToString();
+            this.VolumeSlider.Value = userSettings.Volume;
             this.VolumeLabel.Text = this.FormattedVolume;
-            this.DefaultSaveCheckBox.IsChecked = AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder;
-            this.DefaultOpenCheckBox.IsChecked = AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder;
-            this.OpenTextBox.Text = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
-            this.SaveTextBox.Text = AppSettingsManager.UserSettings.DefaultFolder.SaveFolder;
+            this.DefaultSaveCheckBox.IsChecked = userSettings.DefaultFolder.UseSaveFolder;
+            this.DefaultOpenCheckBox.IsChecked = userSettings.DefaultFolder.UseOpenFolder;
+            this.OpenTextBox.Text = userSettings.DefaultFolder.OpenFolder;
+            this.SaveTextBox.Text = userSettings.DefaultFolder.SaveFolder;
 
-            DisplayUtility.SetControlEnableState(this.AutosaveInterval, AppSettingsManager.UserSettings.Autosaving.Enabled);
-            DisplayUtility.SetControlEnableState(this.IntervalTextBox, AppSettingsManager.UserSettings.Autosaving.Enabled);
-            DisplayUtility.SetControlEnableState(this.SaveFolderButton, AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder);
-            DisplayUtility.SetControlEnableState(this.SaveTextBackground, AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder);
-            DisplayUtility.SetControlEnableState(this.OpenFolderButton, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
-            DisplayUtility.SetControlEnableState(this.OpenTextBackground, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
-            DisplayUtility.SetControlEnableState(this.VolumeLabel, !AppSettingsManager.UserSettings.MuteSounds);
-            DisplayUtility.SetControlEnableState(this.VolumeSlider, !AppSettingsManager.UserSettings.MuteSounds);
+            DisplayUtility.SetControlEnableState(this.AutosaveInterval, userSettings.Autosaving.Enabled);
+            DisplayUtility.SetControlEnableState(this.IntervalTextBox, userSettings.Autosaving.Enabled);
+            DisplayUtility.SetControlEnableState(this.SaveFolderButton, userSettings.DefaultFolder.UseSaveFolder);
+            DisplayUtility.SetControlEnableState(this.SaveTextBackground, userSettings.DefaultFolder.UseSaveFolder);
+            DisplayUtility.SetControlEnableState(this.OpenFolderButton, userSettings.DefaultFolder.UseOpenFolder);
+            DisplayUtility.SetControlEnableState(this.OpenTextBackground, userSettings.DefaultFolder.UseOpenFolder);
+            DisplayUtility.SetControlEnableState(this.VolumeLabel, !userSettings.MuteSounds);
+            DisplayUtility.SetControlEnableState(this.VolumeSlider, !userSettings.MuteSounds);
 
             this.OpenWarningVisibility();
             this.SaveWarningVisibility();
@@ -137,11 +138,7 @@ namespace Concierge.Display.Utility
         {
             if (Program.CcsFile.IsFileSaved(this.AutosaveCheckBox.IsChecked))
             {
-                ConciergeMessageBox.Show(
-                    "You must save this sheet before enabling autosave.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("You must save this sheet before enabling auto-save.");
 
                 return false;
             }

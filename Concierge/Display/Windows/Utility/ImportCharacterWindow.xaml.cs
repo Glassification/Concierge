@@ -177,11 +177,7 @@ namespace Concierge.Display.Utility
 
             if (!isSuccess)
             {
-                ConciergeMessageBox.Show(
-                    "Concierge was unable to find any data to import.",
-                    "Error",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Error);
+                ConciergeMessageBox.ShowError("Concierge was unable to find any data to import.");
                 return;
             }
 

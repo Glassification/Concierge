@@ -14,6 +14,7 @@ namespace Concierge.Display.Pages
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
+    using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Persistence;
@@ -22,23 +23,22 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for CompanionPage.xaml.
     /// </summary>
-    public partial class CompanionPage : Page, IConciergePage
+    public partial class CompanionPage : ConciergePage
     {
         private readonly ImageEncoding imageEncoding = new (Program.ErrorService);
 
         public CompanionPage()
         {
             this.InitializeComponent();
+
+            this.HasEditableDataGrid = true;
+            this.ConciergePages = ConciergePages.Companion;
             this.HealthDisplay.InitializeDisplay();
         }
 
-        public ConciergePage ConciergePage => ConciergePage.Companion;
-
-        public bool HasEditableDataGrid => true;
-
         private List<CompanionWeapon> DisplayList => Program.CcsFile.Character.Companion.Weapons.Filter(this.SearchFilter.FilterText).ToList();
 
-        public void Draw(bool isNewCharacterSheet = false)
+        public override void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawAttributes();
             this.DrawDetails();
@@ -48,7 +48,7 @@ namespace Concierge.Display.Pages
             this.DrawImage();
         }
 
-        public void Edit(object itemToEdit)
+        public override void Edit(object itemToEdit)
         {
             if (itemToEdit is not CompanionWeapon weapon)
             {
@@ -60,7 +60,7 @@ namespace Concierge.Display.Pages
                 weapon,
                 typeof(CompanionAttacksWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Companion);
+                ConciergePages.Companion);
             this.DrawAttacks();
             this.WeaponDataGrid.SetSelectedIndex(index);
         }
@@ -134,12 +134,12 @@ namespace Concierge.Display.Pages
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.WeaponDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Companion.Weapons, this.ConciergePage);
+            this.WeaponDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Companion.Weapons, this.ConciergePages);
         }
 
         private void AttacksUpButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Weapons, 0, -1, this.ConciergePage);
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Weapons, 0, -1, this.ConciergePages);
 
             if (index != -1)
             {
@@ -150,7 +150,7 @@ namespace Concierge.Display.Pages
 
         private void AttacksDownButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Equipment.Weapons, Program.CcsFile.Character.Companion.Weapons.Count - 1, 1, this.ConciergePage);
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Equipment.Weapons, Program.CcsFile.Character.Companion.Weapons.Count - 1, 1, this.ConciergePages);
 
             if (index != -1)
             {
@@ -170,7 +170,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Companion.Weapons,
                 typeof(CompanionAttacksWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Companion);
+                ConciergePages.Companion);
             this.DrawAttacks();
 
             if (added)
@@ -195,7 +195,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.WeaponDataGrid.SelectedIndex;
-            Program.UndoRedoService.AddCommand(new DeleteCommand<CompanionWeapon>(Program.CcsFile.Character.Companion.Weapons, weapon, index, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new DeleteCommand<CompanionWeapon>(Program.CcsFile.Character.Companion.Weapons, weapon, index, this.ConciergePages));
             Program.CcsFile.Character.Companion.Weapons.Remove(weapon);
             this.DrawAttacks();
             this.WeaponDataGrid.SetSelectedIndex(index);
@@ -207,7 +207,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Companion.Health,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Companion);
+                ConciergePages.Companion);
             this.DrawHealth();
         }
 
@@ -217,7 +217,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Companion.Health,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Companion);
+                ConciergePages.Companion);
             this.DrawHealth();
         }
 
@@ -243,7 +243,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Companion.Health,
                 typeof(HealthWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Companion);
+                ConciergePages.Companion);
             this.DrawHealth();
         }
 
@@ -255,7 +255,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Companion.HitDice,
                 typeof(HitDiceWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Companion);
+                ConciergePages.Companion);
             this.DrawHealth();
             this.DrawHitDice();
         }
@@ -268,7 +268,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Companion.Attributes,
                 typeof(CompanionAttributesWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Companion);
+                ConciergePages.Companion);
             this.DrawAttributes();
             this.DrawAttacks();
         }
@@ -281,7 +281,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Companion.Properties,
                 typeof(CompanionWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Companion);
+                ConciergePages.Companion);
             this.DrawDetails();
         }
 
@@ -293,7 +293,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Companion.CompanionImage,
                 typeof(ImageWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Companion);
+                ConciergePages.Companion);
             this.DrawImage();
         }
 

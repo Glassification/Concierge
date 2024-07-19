@@ -12,7 +12,6 @@ namespace Concierge.Services
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Tools;
-    using MaterialDesignThemes.Wpf;
 
     using static Concierge.Display.Components.ConciergeWindow;
 
@@ -32,7 +31,7 @@ namespace Concierge.Services
         /// <param name="applyEvent">The event handler for applying changes.</param>
         /// <param name="conciergePage">The Concierge page associated with the window.</param>
         /// <returns><c>true</c> if the operation was successful; otherwise, <c>false</c>.</returns>
-        public static bool ShowAdd<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        public static bool ShowAdd<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePages conciergePage)
         {
             var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
@@ -54,7 +53,7 @@ namespace Concierge.Services
         /// <param name="typeOfWindow">The type of the window.</param>
         /// <param name="applyEvent">The event handler for applying changes.</param>
         /// <param name="conciergePage">The Concierge page to associate with the window.</param>
-        public static void ShowEdit<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        public static void ShowEdit<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePages conciergePage)
         {
             var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
@@ -77,7 +76,7 @@ namespace Concierge.Services
         /// <param name="typeOfWindow">The type of the window.</param>
         /// <param name="applyEvent">The event handler for applying changes.</param>
         /// <param name="conciergePage">The Concierge page to associate with the window.</param>
-        public static void ShowEdit<T>(T item, object sender, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        public static void ShowEdit<T>(T item, object sender, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePages conciergePage)
         {
             var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
@@ -100,7 +99,7 @@ namespace Concierge.Services
         /// <param name="typeOfWindow">The type of the window.</param>
         /// <param name="applyEvent">The event handler for applying changes.</param>
         /// <param name="conciergePage">The Concierge page to associate with the window.</param>
-        public static void ShowEdit<T>(T item, bool equippedItem, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        public static void ShowEdit<T>(T item, bool equippedItem, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePages conciergePage)
         {
             var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
@@ -123,7 +122,7 @@ namespace Concierge.Services
         /// <param name="applyEvent">The event handler for applying changes.</param>
         /// <param name="conciergePage">The Concierge page to associate with the window.</param>
         /// <returns>The result of showing the window.</returns>
-        public static ConciergeResult ShowHeal<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        public static ConciergeResult ShowHeal<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePages conciergePage)
         {
             var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
@@ -146,7 +145,7 @@ namespace Concierge.Services
         /// <param name="applyEvent">The event handler for applying changes.</param>
         /// <param name="conciergePage">The Concierge page to associate with the window.</param>
         /// <returns>The result of showing the window.</returns>
-        public static ConciergeResult ShowDamage<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        public static ConciergeResult ShowDamage<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePages conciergePage)
         {
             var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)

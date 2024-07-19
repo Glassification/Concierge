@@ -25,7 +25,7 @@ namespace Concierge.Display.Windows
 
             this.VisionComboBox.ItemsSource = ComboBoxGenerator.VisionComboBox();
             this.CreatureSizeComboBox.ItemsSource = ComboBoxGenerator.CreatureSizesComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.Properties = new CompanionProperties();
             this.DescriptionTextBlock.DataContext = this.Description;
 

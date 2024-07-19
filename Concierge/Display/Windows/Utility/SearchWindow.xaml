@@ -125,6 +125,14 @@
                     <ColumnDefinition Width="65*"/>
                 </Grid.ColumnDefinitions>
 
+                <TextBlock
+                    x:Name="SearchResultTextBlock"
+                    Foreground="#48B987"
+                    FontSize="15"
+                    Text="Found 0/3 results."
+                    VerticalAlignment="Center"
+                    Margin="100,0,0,0"/>
+
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel 
@@ -156,16 +164,6 @@
                 <components:ConciergeTextBoxBackground Grid.Column="1">
                     <components:ConciergeTextBox x:Name="SearchTextBox"/>
                 </components:ConciergeTextBoxBackground>
-            </Grid>
-
-            <Grid Grid.Row="5">
-                <TextBlock
-                    x:Name="SearchResultTextBlock"
-                    Foreground="#48B987"
-                    FontSize="15"
-                    Text="Found 0/3 results."
-                    VerticalAlignment="Center"
-                    Margin="100,0,0,0"/>
             </Grid>
         </Grid>
 

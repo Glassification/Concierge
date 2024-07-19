@@ -25,7 +25,7 @@ namespace Concierge.Commands
         /// <param name="oldListOrder">The original order of items in the list before the modification.</param>
         /// <param name="newListOrder">The new order of items in the list after the modification.</param>
         /// <param name="conciergePage">The ConciergePage associated with this command.</param>
-        public ListOrderCommand(List<T> sourceList, List<T> oldListOrder, List<T> newListOrder, ConciergePage conciergePage)
+        public ListOrderCommand(List<T> sourceList, List<T> oldListOrder, List<T> newListOrder, ConciergePages conciergePage)
         {
             this.ConciergePage = conciergePage;
             this.sourceList = sourceList;

@@ -30,7 +30,7 @@ namespace Concierge.Commands
         /// <param name="newHealth">The new health state of the character after taking damage.</param>
         /// <param name="concentratedSpell">The concentrated spell associated with the character (optional).</param>
         /// <param name="conciergePage">The ConciergePage associated with this command.</param>
-        public DamageCommand(Vitality vitality, Health oldHealth, Health newHealth, Spell? concentratedSpell, ConciergePage conciergePage)
+        public DamageCommand(Vitality vitality, Health oldHealth, Health newHealth, Spell? concentratedSpell, ConciergePages conciergePage)
         {
             this.vitality = vitality;
             this.oldHealth = oldHealth;

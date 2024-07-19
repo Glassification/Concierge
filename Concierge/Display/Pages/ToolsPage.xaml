@@ -1,4 +1,4 @@
-﻿<Page
+﻿<components:ConciergePage
     x:Class="Concierge.Display.Pages.ToolsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -13,8 +13,7 @@
     mc:Ignorable="d" 
     d:DesignHeight="600"
     d:DesignWidth="1020"
-    Title="ToolsPage"
-    Style="{StaticResource PageFontStyle}">
+    Title="ToolsPage">
 
     <Grid Background="#0F1220">
         <Grid.RowDefinitions>
@@ -73,7 +72,7 @@
                                 Margin="0, 0, 60, 0"
                                 Click="ResetHistoryButton_Click"
                                 ToolTip="Reset History">
-                                <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25"/>
+                                <materialDesign:PackIcon Kind="SyncCircle" Height="25" Width="25"/>
                             </components:ConciergeDesignButton>
                         </StackPanel>
                     </Grid>
@@ -497,7 +496,7 @@
                                 Click="ResetLootButton_Click"
                                 Margin="0, 0, 60, 0"
                                 ToolTip="Reset Loot">
-                                <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25"/>
+                                <materialDesign:PackIcon Kind="SyncCircle" Height="25" Width="25"/>
                             </components:ConciergeDesignButton>
                         </StackPanel>
                     </Grid>
@@ -610,4 +609,4 @@
             </Grid>
         </Border>
     </Grid>
-</Page>
+</components:ConciergePage>

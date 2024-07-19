@@ -32,7 +32,7 @@ namespace Concierge.Display.Windows
 
             this.ClassNameComboBox.ItemsSource = DefaultItems;
             this.AbilityComboBox.ItemsSource = ComboBoxGenerator.AbilitiesComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.SelectedClass = new MagicalClass();
             this.MagicClasses = [];
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -261,11 +261,7 @@ namespace Concierge.Display.Windows
         {
             if (this.ClassNameComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Spellcasting Class.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Spellcasting Class.\nA name is required before saving a custom item.");
                 return;
             }
 

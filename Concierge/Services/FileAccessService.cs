@@ -47,6 +47,11 @@ namespace Concierge.Services
             if (!file.IsNullOrWhiteSpace())
             {
                 var ccsFile2 = this.readwriter.ReadJson<CcsFile>(file);
+                if (ccsFile2.IsEmpty)
+                {
+                    return ccsFile2;
+                }
+
                 ccsFile2.AbsolutePath = file;
                 ccsFile2.Initialize();
 

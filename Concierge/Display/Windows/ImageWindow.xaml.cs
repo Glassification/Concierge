@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.IO;
     using System.Windows;
     using System.Windows.Controls;
@@ -38,7 +37,7 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.FillTypeComboBox.ItemsSource = ComboBoxGenerator.StretchLevelComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.UseCustomImageCheckBox);
@@ -146,11 +145,7 @@ namespace Concierge.Display.Windows
         {
             if (this.base64.IsNullOrWhiteSpace() && (this.UseCustomImageCheckBox.IsChecked ?? false))
             {
-                ConciergeMessageBox.Show(
-                    "Please select an image, or disable custom images before continuing.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Warning);
+                ConciergeMessageBox.ShowWarning("Please select an image, or disable custom images before continuing.");
                 return false;
             }
 

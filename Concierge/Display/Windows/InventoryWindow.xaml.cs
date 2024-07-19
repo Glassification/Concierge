@@ -38,7 +38,7 @@ namespace Concierge.Display.Windows
             this.NameComboBox.ItemsSource = DefaultItems;
             this.CategoryComboBox.ItemsSource = ComboBoxGenerator.ItemCategoriesComboBox();
             this.CoinTypeComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.SelectedItem = new Inventory();
             this.Items = [];
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -250,11 +250,7 @@ namespace Concierge.Display.Windows
                 if (Program.CcsFile.Character.Equipment.EquippedItems.Attuned > Constants.MaxAttunedItems)
                 {
                     inventory.Attuned = false;
-                    ConciergeMessageBox.Show(
-                        $"You can only attune to a max of {Constants.MaxAttunedItems} items.",
-                        "Error",
-                        ConciergeButtons.Ok,
-                        ConciergeIcons.Error);
+                    ConciergeMessageBox.ShowError($"You can only attune to a max of {Constants.MaxAttunedItems} items.");
                 }
             }
 
@@ -310,11 +306,7 @@ namespace Concierge.Display.Windows
         {
             if (this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Inventory item.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Inventory item.\nA name is required before saving a custom item.");
                 return;
             }
 

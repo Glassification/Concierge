@@ -31,7 +31,7 @@ namespace Concierge.Display.Windows
             this.SpellNameComboBox.ItemsSource = DefaultItems;
             this.SchoolComboBox.ItemsSource = ComboBoxGenerator.ArcaneSchoolsComboBox();
             this.ClassComboBox.ItemsSource = ComboBoxGenerator.ClassesComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.SelectedSpell = new Spell();
             this.Spells = [];
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -304,11 +304,7 @@ namespace Concierge.Display.Windows
         {
             if (this.SpellNameComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Spell.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Spell.\nA name is required before saving a custom item.");
                 return;
             }
 

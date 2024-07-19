@@ -32,7 +32,7 @@ namespace Concierge.Display.Windows
             this.WisdomComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
             this.CharismaComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
 
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.StrengthComboBox);

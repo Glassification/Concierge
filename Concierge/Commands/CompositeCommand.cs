@@ -20,7 +20,7 @@ namespace Concierge.Commands
         /// </summary>
         /// <param name="conciergePage">The ConciergePage associated with this composite command.</param>
         /// <param name="commands">The commands to be combined into the composite command.</param>
-        public CompositeCommand(ConciergePage conciergePage, params Command[] commands)
+        public CompositeCommand(ConciergePages conciergePage, params Command[] commands)
         {
             this.commands.AddRange(commands);
             this.ConciergePage = conciergePage;

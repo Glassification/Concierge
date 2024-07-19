@@ -186,7 +186,7 @@ namespace Concierge.Display.Controls
 
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Attribute>(this.attribute, attributeCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attribute>(this.attribute, attributeCopy, ConciergePages.Overview));
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.GenderComboBox.ItemsSource = ComboBoxGenerator.GenderComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.Appearance = new Appearance();
             this.EyeColor = CustomColor.Invalid;
             this.HairColor = CustomColor.Invalid;

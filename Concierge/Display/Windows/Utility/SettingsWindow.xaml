@@ -81,7 +81,7 @@
                         <components:ConciergeLabel
                             Grid.Row="0"
                             Grid.Column="0"
-                            Text="Autosave:"/>
+                            Text="Auto-save:"/>
                         <Grid
                             Grid.Row="0"
                             Grid.Column="1"
@@ -96,14 +96,15 @@
                         <components:ConciergeLabel
                             Grid.Row="1"
                             Grid.Column="0"
+                            Margin="20,0,0,0"
                             x:Name="IntervalTextBox"
-                            Text="Autosave Interval (minutes):"
+                            Text="Auto-save Interval (minutes):"
                             FontSize="18"/>
                         <components:ConciergeSlider
                             Grid.Row="1"
                             Grid.Column="1"
                             x:Name="AutosaveInterval"
-                            Margin="0,0,20,0"
+                            Margin="10,0,20,0"
                             Maximum="9"
                             Interval="1"
                             TickPlacement="BottomRight"

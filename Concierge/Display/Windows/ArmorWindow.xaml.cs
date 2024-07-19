@@ -35,7 +35,7 @@ namespace Concierge.Display.Windows
             this.TypeComboBox.ItemsSource = ComboBoxGenerator.ArmorTypeComboBox();
             this.StealthComboBox.ItemsSource = ComboBoxGenerator.StealthComboBox();
             this.StatusComboBox.ItemsSource = ComboBoxGenerator.ArmorStatusComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.SelectedDefense = new Defense();
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -213,11 +213,7 @@ namespace Concierge.Display.Windows
         {
             if (this.ArmorNameComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Armor.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Armor.\nA name is required before saving a custom item.");
                 return;
             }
 

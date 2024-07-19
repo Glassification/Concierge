@@ -45,13 +45,13 @@ namespace Concierge
 
         private static void LoadAllPages(MainWindow mainWindow)
         {
-            var pages = EnumUtility.GetValues<ConciergePage>();
+            var pages = EnumUtility.GetValues<ConciergePages>();
             foreach (var page in pages)
             {
                 mainWindow.MoveSelection(page);
             }
 
-            mainWindow.MoveSelection(ConciergePage.Overview);
+            mainWindow.MoveSelection(ConciergePages.Overview);
         }
 
         private void Dispatcher_UnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

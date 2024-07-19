@@ -34,7 +34,7 @@ namespace Concierge.Display.Windows
 
             this.ProficiencyComboBox.ItemsSource = ComboBoxGenerator.ProficiencyTypesComboBox();
             this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems(ProficiencyTypes.Weapon);
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.SelectedProficiencies = [];
             this.SelectedProficiency = new Proficiency();
 
@@ -270,11 +270,7 @@ namespace Concierge.Display.Windows
         {
             if (this.ProficiencyTextComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Proficiency.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Proficiency.\nA name is required before saving a custom item.");
                 return;
             }
 

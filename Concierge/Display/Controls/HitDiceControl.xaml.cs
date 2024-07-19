@@ -26,9 +26,9 @@ namespace Concierge.Display.Controls
         public static readonly DependencyProperty ConciergePageProperty =
             DependencyProperty.Register(
                 "ConciergePage",
-                typeof(ConciergePage),
+                typeof(ConciergePages),
                 typeof(HitDiceControl),
-                new UIPropertyMetadata(ConciergePage.Overview));
+                new UIPropertyMetadata(ConciergePages.Overview));
 
         public static readonly RoutedEvent EditClickedEvent =
             EventManager.RegisterRoutedEvent(
@@ -67,9 +67,9 @@ namespace Concierge.Display.Controls
             remove { this.RemoveHandler(ValueChangedEvent, value); }
         }
 
-        public ConciergePage ConciergePage
+        public ConciergePages ConciergePage
         {
-            get { return (ConciergePage)this.GetValue(ConciergePageProperty); }
+            get { return (ConciergePages)this.GetValue(ConciergePageProperty); }
             set { this.SetValue(ConciergePageProperty, value); }
         }
 

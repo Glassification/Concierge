@@ -27,7 +27,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.ResourceNameComboBox.ItemsSource = DefaultItems;
             this.RecoveryComboBox.ItemsSource = ComboBoxGenerator.RecoveryComboBox();
             this.ClassResource = new ClassResource();
@@ -234,11 +234,7 @@ namespace Concierge.Display.Windows
         {
             if (this.ResourceNameComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Resource.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Resource.\nA name is required before saving a custom item.");
                 return;
             }
 

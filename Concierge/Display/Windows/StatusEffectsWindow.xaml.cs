@@ -28,7 +28,7 @@ namespace Concierge.Display.Windows
 
             this.NameComboBox.ItemsSource = DefaultItems;
             this.TypeComboBox.ItemsSource = ComboBoxGenerator.StatusEffectTypesComboBox();
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.SelectedEffect = new StatusEffect();
             this.StatusEffects = [];
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -200,11 +200,7 @@ namespace Concierge.Display.Windows
         {
             if (this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Status Effect.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Status Effect.\nA name is required before saving a custom item.");
                 return;
             }
 

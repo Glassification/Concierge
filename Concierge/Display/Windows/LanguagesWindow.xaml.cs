@@ -27,7 +27,7 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.NameComboBox.ItemsSource = DefaultItems;
-            this.ConciergePage = ConciergePage.None;
+            this.ConciergePage = ConciergePages.None;
             this.SelectedLanguage = new Language();
             this.Languages = [];
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -212,11 +212,7 @@ namespace Concierge.Display.Windows
         {
             if (this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
-                ConciergeMessageBox.Show(
-                    "Could not save the Language.\nA name is required before saving a custom item.",
-                    "Warning",
-                    ConciergeButtons.Ok,
-                    ConciergeIcons.Alert);
+                ConciergeMessageBox.ShowWarning("Could not save the Language.\nA name is required before saving a custom item.");
                 return;
             }
 

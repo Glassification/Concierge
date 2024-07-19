@@ -22,18 +22,17 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for DetailsPage.xaml.
     /// </summary>
-    public partial class DetailsPage : Page, IConciergePage
+    public partial class DetailsPage : ConciergePage
     {
         public DetailsPage()
         {
             this.InitializeComponent();
+
+            this.HasEditableDataGrid = true;
+            this.ConciergePages = ConciergePages.Details;
         }
 
-        public ConciergePage ConciergePage => ConciergePage.Details;
-
-        public bool HasEditableDataGrid => true;
-
-        public void Draw(bool isNewCharacterSheet = false)
+        public override void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawAppearance();
             this.DrawPersonality();
@@ -44,7 +43,7 @@ namespace Concierge.Display.Pages
             this.DrawConditions();
         }
 
-        public void Edit(object itemToEdit)
+        public override void Edit(object itemToEdit)
         {
             if (itemToEdit is Proficiency proficiency)
             {
@@ -59,7 +58,7 @@ namespace Concierge.Display.Pages
                     proficiency,
                     typeof(ProficiencyWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.Details);
+                    ConciergePages.Details);
                 this.DrawProficiencies();
                 selectedDataGrid.SetSelectedIndex(index);
             }
@@ -70,7 +69,7 @@ namespace Concierge.Display.Pages
                     language,
                     typeof(LanguagesWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.Details);
+                    ConciergePages.Details);
                 this.DrawLanguages();
                 this.LanguagesDataGrid.SetSelectedIndex(index);
             }
@@ -81,7 +80,7 @@ namespace Concierge.Display.Pages
                     resource,
                     typeof(ClassResourceWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.Details);
+                    ConciergePages.Details);
                 this.DrawResources();
                 this.ResourcesDataGrid.SetSelectedIndex(index);
             }
@@ -203,7 +202,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = dataGrid.SelectedIndex;
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Detail.Proficiencies, proficiency, index, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Detail.Proficiencies, proficiency, index, this.ConciergePages));
             Program.CcsFile.Character.Detail.Proficiencies.Remove(proficiency);
 
             this.DrawProficiencies();
@@ -251,7 +250,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Detail.Proficiencies,
                 typeof(ProficiencyWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Details);
+                ConciergePages.Details);
 
             this.DrawProficiencies();
         }
@@ -308,7 +307,7 @@ namespace Concierge.Display.Pages
                     characteristic.Proficiencies,
                     oldList,
                     new List<Proficiency>(characteristic.Proficiencies),
-                    this.ConciergePage));
+                    this.ConciergePages));
         }
 
         private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
@@ -317,7 +316,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Vitality.Status,
                 typeof(ConditionsWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Details);
+                ConciergePages.Details);
             this.DrawConditions();
         }
 
@@ -346,7 +345,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Detail.Languages,
                 typeof(LanguagesWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Details);
+                ConciergePages.Details);
             this.DrawLanguages();
 
             if (added)
@@ -361,7 +360,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Vitality.ClassResources,
                 typeof(ClassResourceWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Details);
+                ConciergePages.Details);
             this.DrawResources();
 
             if (added)
@@ -378,7 +377,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.LanguagesDataGrid.SelectedIndex;
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Detail.Languages, language, index, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Detail.Languages, language, index, this.ConciergePages));
             Program.CcsFile.Character.Detail.Languages.Remove(language);
             this.DrawLanguages();
             this.LanguagesDataGrid.SetSelectedIndex(index);
@@ -392,7 +391,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.ResourcesDataGrid.SelectedIndex;
-            Program.UndoRedoService.AddCommand(new DeleteCommand<ClassResource>(Program.CcsFile.Character.Vitality.ClassResources, resource, index, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new DeleteCommand<ClassResource>(Program.CcsFile.Character.Vitality.ClassResources, resource, index, this.ConciergePages));
             Program.CcsFile.Character.Vitality.ClassResources.Remove(resource);
             this.DrawResources();
             this.ResourcesDataGrid.SetSelectedIndex(index);
@@ -415,12 +414,12 @@ namespace Concierge.Display.Pages
 
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.LanguagesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Detail.Languages, this.ConciergePage);
+            this.LanguagesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Detail.Languages, this.ConciergePages);
         }
 
         private void ResourcesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.ResourcesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Vitality.ClassResources, this.ConciergePage);
+            this.ResourcesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Vitality.ClassResources, this.ConciergePages);
         }
 
         private void AppearanceDisplay_EditClicked(object sender, RoutedEventArgs e)
@@ -431,7 +430,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Detail.Appearance,
                 typeof(AppearanceWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Details);
+                ConciergePages.Details);
             this.DrawAppearance();
         }
 
@@ -443,7 +442,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Detail.Personality,
                 typeof(PersonalityWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Details);
+                ConciergePages.Details);
             this.DrawPersonality();
         }
 
@@ -455,7 +454,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Equipment.Defense,
                 typeof(ArmorWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Details);
+                ConciergePages.Details);
             this.DrawDefense();
             this.DrawConditions();
         }

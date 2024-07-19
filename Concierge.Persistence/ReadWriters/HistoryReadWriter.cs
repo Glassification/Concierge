@@ -32,6 +32,11 @@ namespace Concierge.Persistence.ReadWriters
             }
         }
 
+        public bool Read(string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
         public T ReadJson<T>(string filePath)
             where T : new()
         {
@@ -74,6 +79,11 @@ namespace Concierge.Persistence.ReadWriters
             throw new NotImplementedException();
         }
 
+        public bool Write(string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool WriteJson<T>(string filePath, T value)
         {
             throw new NotImplementedException();
@@ -102,16 +112,6 @@ namespace Concierge.Persistence.ReadWriters
             {
                 using var createStream = File.Create(filePath);
             }
-        }
-
-        public bool Read(string filePath)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Write(string filePath)
-        {
-            throw new NotImplementedException();
         }
     }
 }

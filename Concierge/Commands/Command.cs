@@ -21,7 +21,7 @@ namespace Concierge.Commands
         /// <summary>
         /// Gets or sets the ConciergePage associated with this command.
         /// </summary>
-        public ConciergePage ConciergePage { get; set; }
+        public ConciergePages ConciergePage { get; set; }
 
         /// <summary>
         /// Performs the redo operation for this command.

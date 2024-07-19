@@ -26,7 +26,7 @@ namespace Concierge.Commands
         /// <param name="originalItem">The original item before the edit operation.</param>
         /// <param name="oldItem">The item's previous state before the edit operation.</param>
         /// <param name="conciergePage">The ConciergePage associated with this command.</param>
-        public EditCommand(T originalItem, T oldItem, ConciergePage conciergePage)
+        public EditCommand(T originalItem, T oldItem, ConciergePages conciergePage)
         {
             if (originalItem is not ICopyable<T> newItem || oldItem is null)
             {

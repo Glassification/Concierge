@@ -14,7 +14,7 @@ namespace Concierge.Display.Dictionaries
     {
         private static void PageEdit(DataGridRow dataGridRow)
         {
-            var page = dataGridRow.Tag as IConciergePage;
+            var page = dataGridRow.Tag as ConciergePage;
             if (page?.HasEditableDataGrid ?? false)
             {
                 SoundService.PlayUpdateValue();
