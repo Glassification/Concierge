@@ -157,6 +157,12 @@
                             </Popup>
                         </Grid>
                         <local:PopupButton
+                            x:Name="PartyMenuItem"
+                            Label="Party..."
+                            Shortcut=""
+                            IconKind="AccountGroup"
+                            IconColor="#06d6a0"/>
+                        <local:PopupButton
                             x:Name="ShortRestMenuItem"
                             Label="Short Rest"
                             Shortcut="Ctrl+R"

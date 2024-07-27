@@ -79,12 +79,7 @@ namespace Concierge.Display.Windows.Utility
             }
             else if (item is Inventory)
             {
-                WindowService.ShowEdit(
-                    item,
-                    false,
-                    typeof(InventoryWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.None);
+                WindowService.ShowEdit(item, false, typeof(InventoryWindow), this.Window_ApplyChanges, ConciergePages.None);
                 this.Draw();
                 return;
             }
@@ -118,11 +113,7 @@ namespace Concierge.Display.Windows.Utility
                 return;
             }
 
-            WindowService.ShowEdit(
-                item,
-                type,
-                this.Window_ApplyChanges,
-                ConciergePages.None);
+            WindowService.ShowEdit(item, type, this.Window_ApplyChanges, ConciergePages.None);
             this.Draw();
         }
 
@@ -170,8 +161,7 @@ namespace Concierge.Display.Windows.Utility
                 Program.CustomColorService.UpdateCustomColors();
                 this.Draw();
             }
-            else
-            if (this.CustomItemsDataGrid.SelectedItem is IUnique unique)
+            else if (this.CustomItemsDataGrid.SelectedItem is IUnique unique)
             {
                 this.ShowEdit(unique);
                 Program.CustomItemService.UpdateItem();

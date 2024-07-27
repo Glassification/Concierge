@@ -558,6 +558,16 @@ namespace Concierge.Display
             ];
         }
 
+        public static List<ComboBoxItemControl> PartyStatusComboBox()
+        {
+            return
+            [
+                new (PackIconKind.HeadCheck, ConciergeBrushes.Mint, PartyStatus.Alive),
+                new (PackIconKind.HeadQuestion, ConciergeBrushes.Deer, PartyStatus.Missing),
+                new (PackIconKind.HeadRemove, Brushes.IndianRed, PartyStatus.Dead),
+            ];
+        }
+
         public static List<ComboBoxItemControl> FontSizeComboBox()
         {
             var items = new List<ComboBoxItemControl>();

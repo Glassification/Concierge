@@ -7,6 +7,7 @@ namespace Concierge.Display.Pages
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -116,9 +117,11 @@ namespace Concierge.Display.Pages
         {
             this.Players.Clear();
 
+            var party = Program.CcsFile.Character.Adventurers.Where(x => x.Status == PartyStatus.Alive).ToList();
+            var namedPlayers = party.Count == this.PlayersInput.InputValue;
             for (int i = 0; i < this.PlayersInput.InputValue; i++)
             {
-                this.Players.Add(new Player($"Player {i + 1}"));
+                this.Players.Add(new Player(namedPlayers ? party[i].CharacterName : $"Player {i + 1}"));
             }
         }
 

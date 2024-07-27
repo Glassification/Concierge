@@ -15,6 +15,7 @@ namespace Concierge
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Represents the main program logic and settings for the application.

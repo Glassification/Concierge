@@ -1,0 +1,186 @@
+﻿<components:ConciergeWindow
+    x:Class="Concierge.Display.Windows.AdventurersWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Concierge.Display.Windows"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:components="clr-namespace:Concierge.Display.Components"
+    mc:Ignorable="d"
+    Title="Adventuring Party"
+    Height="530"
+    Width="850"
+    Style="{StaticResource WindowFontStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="415"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0" Background="#0E121E">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Left">
+                <TextBlock
+                    Text="Adventuring Party"
+                    x:Name="HeaderTextBlock"
+                    Foreground="#A9C7FF"
+                    FontSize="35"
+                    VerticalAlignment="Center"
+                    Margin="30, -3, 0, 0"
+                    FontWeight="Bold"
+                    FontFamily="Segoe UI SemiLight"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                Grid.Row="0">
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="UpButton"
+                    Click="UpButton_Click"
+                    Width="45"
+                    Foreground="SteelBlue"
+                    ToolTip="Move Selected Adventurer Up">
+                    <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="DownButton"
+                    Click="DownButton_Click"
+                    Width="45"
+                    Foreground="SteelBlue"
+                    ToolTip="Move Selected Adventurer Down">
+                    <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="ClearButton"
+                    Click="ClearButton_Click"
+                    Width="45"
+                    Foreground="Silver"
+                    ToolTip="Clear Selected Adventurer">
+                    <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <Label
+                    Height="25"
+                    Width="25"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Transparent"/>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="AddButton"
+                    Click="AddButton_Click"
+                    Width="45"
+                    Foreground="#48B987"
+                    ToolTip="Add New Adventurer">
+                    <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="EditButton"
+                    Click="EditButton_Click"
+                    Width="45"
+                    Foreground="#B98748"
+                    ToolTip="Edit Selected Adventurer">
+                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="DeleteButton"
+                    Click="DeleteButton_Click"
+                    Width="45"
+                    Foreground="IndianRed"
+                    ToolTip="Delete Selected Adventurer">
+                    <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <Label
+                    Height="25"
+                    Width="25"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Transparent"/>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="CloseButton"
+                    Width="45"
+                    Foreground="White"
+                    ToolTip="Close"
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click">
+                    <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+            </StackPanel>
+        </Grid>
+
+        <components:ConciergeDataGrid
+            Grid.Row="1"
+            x:Name="AdventurersDataGrid"
+            Margin="10,0,10,10"
+            Style="{DynamicResource WindowDataGridStyle}"
+            Sorted="AdventurersDataGrid_Sorted"
+            SelectionChanged="AdventurersDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn  Width="0.02*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <materialDesign:PackIcon
+                                Kind="AccountMultiple"
+                                Foreground="{Binding IconColor}"
+                                Height="auto"
+                                Width="auto"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn
+                    Header="Player Name"
+                    Binding="{Binding PlayerName}"
+                    Width="0.22*"
+                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                <DataGridTextColumn
+                    Header="Character Name"
+                    Binding="{Binding CharacterName}"
+                    Width="0.26*"
+                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                <DataGridTextColumn
+                    Header="Level"
+                    Binding="{Binding Level}"
+                    Width="0.10*"
+                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                <DataGridTextColumn
+                    Header="Race"
+                    Binding="{Binding Race}"
+                    Width="0.20*"
+                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                <DataGridTextColumn
+                    Header="Class"
+                    Binding="{Binding Class}"
+                    Width="0.20*"
+                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+            </DataGrid.Columns>
+        </components:ConciergeDataGrid>
+
+        <Grid Grid.Row="3">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="0,0,10,0">
+                <components:ConciergeTextButton 
+                    x:Name="CreateEntriesButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Create Journal Entries"
+                    ToolTip="Generate Party Chapter in Journal"
+                    Click="CreateEntriesButton_Click">
+                </components:ConciergeTextButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</components:ConciergeWindow>

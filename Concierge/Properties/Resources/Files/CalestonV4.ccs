@@ -1,5 +1,47 @@
 {
   "Character": {
+    "Adventurers": [
+      {
+        "PlayerName": "Colby",
+        "CharacterName": "Gilbert",
+        "Race": "Human",
+        "Class": "Cleric",
+        "Level": 10,
+        "Status": 0
+      },
+      {
+        "PlayerName": "Daniel",
+        "CharacterName": "Kussandrik",
+        "Race": "Half-Elf",
+        "Class": "Barbarian",
+        "Level": 10,
+        "Status": 0
+      },
+      {
+        "PlayerName": "Kaleigh",
+        "CharacterName": "Declan",
+        "Race": "Half-Elf",
+        "Class": "Sorcerer",
+        "Level": 10,
+        "Status": 0
+      },
+      {
+        "PlayerName": "Thomas",
+        "CharacterName": "Caleston Nailo",
+        "Race": "Half-Elf",
+        "Class": "Rogue",
+        "Level": 10,
+        "Status": 0
+      },
+      {
+        "PlayerName": "Travis",
+        "CharacterName": "Gray",
+        "Race": "Goliath",
+        "Class": "Fighter",
+        "Level": 10,
+        "Status": 0
+      }
+    ],
     "Attributes": {
       "Strength": {
         "Proficiency": false,
@@ -2956,13 +2998,13 @@
       "Platinum": 500
     }
   },
-  "Hash": "5201FD8FC6632FD3B82A90EB6CBD3301158DA1C12D1111CB5E8CA15B74947D13",
+  "Hash": "29BD25EC2F79DB200E4B6E392CEFAB391B9C12F629581FA58FB4ADF0CC80E49C",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-07-18T09:26:36.0682814-05:00",
+  "LastSaveDate": "2024-07-27T13:42:23.8789265-05:00",
   "Version": {
     "Major": 5,
-    "Minor": 8,
-    "Patch": 15
+    "Minor": 9,
+    "Patch": 0
   },
   "IsEmpty": false
 }

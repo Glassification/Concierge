@@ -551,6 +551,7 @@ namespace Concierge.Display
             this.MenuButton.RedoMenuItem.AddClickEvent(this.RedoButton_Click);
             this.MenuButton.CharacterCreationMenuItem.AddClickEvent(this.CharacterCreationButton_Click);
             this.MenuButton.LevelUpMenuItem.AddClickEvent(this.LevelUpButton_Click);
+            this.MenuButton.PartyMenuItem.AddClickEvent(this.PartyMembersButton_Click);
             this.MenuButton.ShortRestMenuItem.AddClickEvent(this.ShortRestButton_Click);
             this.MenuButton.LongRestMenuItem.AddClickEvent(this.LongRestButton_Click);
             this.MenuButton.CharacterPropertiesMenuItem.AddClickEvent(this.PropertiesButton_Click);
@@ -897,6 +898,13 @@ namespace Concierge.Display
         {
             SoundService.PlayNavigation();
             this.ShortRest();
+        }
+
+        private void PartyMembersButton_Click(object sender, RoutedEventArgs e)
+        {
+            SoundService.PlayNavigation();
+            Program.Logger.Info($"Open adventuring party.");
+            WindowService.ShowWindow(typeof(AdventurersWindow));
         }
 
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)

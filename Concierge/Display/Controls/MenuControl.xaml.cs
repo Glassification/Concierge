@@ -32,6 +32,7 @@ namespace Concierge.Display.Controls
             this.SaveAsCharacterMenuItem.AddClickEvent(this.MenuButton_Click);
 
             this.CharacterCreationMenuItem.AddClickEvent(this.MenuButton_Click);
+            this.PartyMenuItem.AddClickEvent(this.MenuButton_Click);
             this.LevelUpMenuItem.AddClickEvent(this.MenuButton_Click);
             this.ShortRestMenuItem.AddClickEvent(this.MenuButton_Click);
             this.LongRestMenuItem.AddClickEvent(this.MenuButton_Click);

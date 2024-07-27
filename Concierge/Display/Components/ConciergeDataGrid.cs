@@ -122,7 +122,7 @@ namespace Concierge.Display.Components
             this.ScrollIntoView(this.SelectedItem);
         }
 
-        public bool SetButtonControlsEnableState(params ConciergeDesignButton[] buttons)
+        public bool SetButtonControlsEnableState(params Button[] buttons)
         {
             var hasSelection = this.SelectedItem is not null;
             foreach (var button in buttons)

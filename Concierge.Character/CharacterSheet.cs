@@ -4,7 +4,10 @@
 
 namespace Concierge.Character
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Concierge.Character.Aspects;
+    using Concierge.Character.Companions;
     using Concierge.Character.Details;
     using Concierge.Character.Dispositions;
     using Concierge.Character.Enums;
@@ -14,6 +17,7 @@ namespace Concierge.Character
     using Concierge.Character.Vitals;
     using Concierge.Common;
     using Concierge.Common.Enums;
+    using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Data.Units;
     using Newtonsoft.Json;
@@ -32,6 +36,7 @@ namespace Concierge.Character
         /// </summary>
         public CharacterSheet()
         {
+            this.Adventurers = [];
             this.Attributes = new Attributes();
             this.Companion = new Companion();
             this.Detail = new Detail();
@@ -47,6 +52,11 @@ namespace Concierge.Character
         /// Gets an empty character sheet instance.
         /// </summary>
         public static CharacterSheet Empty => new ();
+
+        /// <summary>
+        /// Gets or sets the adventuring party of the character.
+        /// </summary>
+        public List<Adventurer> Adventurers { get; set; }
 
         /// <summary>
         /// Gets or sets the attributes of the character.
@@ -276,6 +286,7 @@ namespace Concierge.Character
         {
             return new CharacterSheet()
             {
+                Adventurers = [.. this.Adventurers.DeepCopy()],
                 Attributes = this.Attributes.DeepCopy(),
                 Companion = this.Companion.DeepCopy(),
                 Detail = this.Detail.DeepCopy(),
