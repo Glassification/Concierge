@@ -42,7 +42,8 @@ namespace Concierge.Display.Components
             var file = ConciergeDragDrop.Capture(e.Data, ".ccs");
             if (!file.IsValid)
             {
-                ConciergeMessageBox.ShowError($"Could not open '{file.FilePath}'\nOnly valid .ccs files can be dropped in Concierge.");
+                var message = file.FilePath.IsNullOrWhiteSpace() ? string.Empty : $"Could not open '{file.FilePath}'\n";
+                ConciergeMessageBox.ShowError($"{message}{file.ErrorMessage}");
                 return;
             }
 

@@ -64,7 +64,7 @@ namespace Concierge.Display.Pages
             if (itemToEdit is Augment ammunition)
             {
                 var index = this.AugmentDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     ammunition,
                     typeof(AugmentationWindow),
                     this.Window_ApplyChanges,
@@ -75,7 +75,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is Weapon weapon)
             {
                 var index = this.WeaponDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     weapon,
                     typeof(AttacksWindow),
                     this.Window_ApplyChanges,
@@ -86,7 +86,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is StatusEffect statusEffect)
             {
                 var index = this.StatusEffectsDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     statusEffect,
                     typeof(StatusEffectsWindow),
                     this.Window_ApplyChanges,
@@ -213,7 +213,7 @@ namespace Concierge.Display.Pages
 
         private void AugmentAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.Equipment.Augmentation,
                 typeof(AugmentationWindow),
                 this.Window_ApplyChanges,
@@ -228,7 +228,7 @@ namespace Concierge.Display.Pages
 
         private void AttacksAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.Equipment.Weapons,
                 typeof(AttacksWindow),
                 this.Window_ApplyChanges,
@@ -243,7 +243,7 @@ namespace Concierge.Display.Pages
 
         private void AugmentEditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.AugmentDataGrid.SelectedItem != null)
+            if (this.AugmentDataGrid.SelectedItem is not null)
             {
                 this.Edit(this.AugmentDataGrid.SelectedItem);
             }
@@ -251,7 +251,7 @@ namespace Concierge.Display.Pages
 
         private void AttacksEditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WeaponDataGrid.SelectedItem != null)
+            if (this.WeaponDataGrid.SelectedItem is not null)
             {
                 this.Edit(this.WeaponDataGrid.SelectedItem);
             }
@@ -341,7 +341,7 @@ namespace Concierge.Display.Pages
 
         private void AddEffectsButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.Vitality.Status.StatusEffects,
                 typeof(StatusEffectsWindow),
                 this.Window_ApplyChanges,
@@ -356,7 +356,7 @@ namespace Concierge.Display.Pages
 
         private void EditEffectsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.StatusEffectsDataGrid.SelectedItem == null)
+            if (this.StatusEffectsDataGrid.SelectedItem is null)
             {
                 return;
             }
@@ -388,7 +388,7 @@ namespace Concierge.Display.Pages
             var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
             var result = weapon.Use(new UseItem(0, augmentation.ToArray()));
 
-            var windowResult = ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+            var windowResult = WindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
 
             if (!augmentation.IsEmpty() && windowResult == ConciergeResult.OK)
             {

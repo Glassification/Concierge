@@ -1,4 +1,4 @@
-﻿// <copyright file="ConciergeWindowService.cs" company="Thomas Beckett">
+﻿// <copyright file="WindowService.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -20,7 +20,7 @@ namespace Concierge.Services
     /// <summary>
     /// Provides methods for showing various types of Concierge windows.
     /// </summary>
-    public static class ConciergeWindowService
+    public static class WindowService
     {
         /// <summary>
         /// Shows the window to add an item.

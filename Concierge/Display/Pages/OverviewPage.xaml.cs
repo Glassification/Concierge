@@ -187,7 +187,7 @@ namespace Concierge.Display.Pages
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = ConciergeWindowService.ShowDamage(
+            var result = WindowService.ShowDamage(
                 Program.CcsFile.Character.Vitality,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
@@ -197,7 +197,7 @@ namespace Concierge.Display.Pages
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowHeal(
+            WindowService.ShowHeal(
                 Program.CcsFile.Character.Vitality,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
@@ -231,7 +231,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Vitality.Health,
                 typeof(HealthWindow),
                 this.Window_ApplyChanges,
@@ -243,7 +243,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Vitality.HitDice,
                 typeof(HitDiceWindow),
                 this.Window_ApplyChanges,
@@ -255,7 +255,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Wealth,
                 sender,
                 typeof(WealthWindow),
@@ -268,7 +268,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Attributes,
                 typeof(SavingThrowWindow),
                 this.Window_ApplyChanges,
@@ -280,7 +280,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Attributes,
                 typeof(SkillWindow),
                 this.Window_ApplyChanges,
@@ -292,7 +292,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Detail.Senses,
                 typeof(SensesWindow),
                 this.Window_ApplyChanges,
@@ -304,7 +304,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Attributes,
                 typeof(AttributesWindow),
                 this.Window_ApplyChanges,
@@ -347,7 +347,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Equipment.Defense,
                 typeof(ArmorWindow),
                 this.Window_ApplyChanges,

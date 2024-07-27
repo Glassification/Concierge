@@ -70,11 +70,7 @@ namespace Concierge.Character.Magic
                 return;
             }
 
-            var magicClass = new MagicalClass()
-            {
-                Name = name,
-            };
-
+            var magicClass = new MagicalClass(name);
             list.Add(new SpellDetail($"{(name.Equals(string.Empty) ? "Unclassed" : name)} Spells", spells.StrCount(), magicClass.GetCategory()));
         }
 

@@ -40,7 +40,7 @@ namespace Concierge.Common.Extensions
         /// <returns><c>true</c> if the object is a generic list; otherwise, <c>false</c>.</returns>
         public static bool IsList(this object value)
         {
-            if (value == null)
+            if (value is null)
             {
                 return false;
             }
@@ -58,7 +58,7 @@ namespace Concierge.Common.Extensions
         /// <param name="itemToCopy">The item containing the properties to be copied.</param>
         public static void SetProperties<T>(this object originalItem, object itemToCopy)
         {
-            if (originalItem == null)
+            if (originalItem is null)
             {
                 return;
             }

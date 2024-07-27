@@ -113,7 +113,7 @@ namespace Concierge.Display.Windows
 
         private void GenerateAttributesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NonBlockingWindow = ConciergeWindowService.ShowNonBlockingWindow(typeof(AttributeRollWindow));
+            this.NonBlockingWindow = WindowService.ShowNonBlockingWindow(typeof(AttributeRollWindow));
         }
     }
 }

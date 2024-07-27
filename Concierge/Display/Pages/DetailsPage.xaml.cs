@@ -54,7 +54,7 @@ namespace Concierge.Display.Pages
                 }
 
                 var index = selectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     proficiency,
                     typeof(ProficiencyWindow),
                     this.Window_ApplyChanges,
@@ -65,7 +65,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is Language language)
             {
                 var index = this.LanguagesDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     language,
                     typeof(LanguagesWindow),
                     this.Window_ApplyChanges,
@@ -76,7 +76,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is ClassResource resource)
             {
                 var index = this.ResourcesDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     resource,
                     typeof(ClassResourceWindow),
                     this.Window_ApplyChanges,
@@ -178,15 +178,15 @@ namespace Concierge.Display.Pages
 
         private ConciergeDataGrid? GetSelectedProficencyDataGrid()
         {
-            if (this.WeaponProficiencyDataGrid.SelectedItem != null)
+            if (this.WeaponProficiencyDataGrid.SelectedItem is not null)
             {
                 return this.WeaponProficiencyDataGrid;
             }
-            else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
+            else if (this.ArmorProficiencyDataGrid.SelectedItem is not null)
             {
                 return this.ArmorProficiencyDataGrid;
             }
-            else if (this.ToolProficiencyDataGrid.SelectedItem != null)
+            else if (this.ToolProficiencyDataGrid.SelectedItem is not null)
             {
                 return this.ToolProficiencyDataGrid;
             }
@@ -238,7 +238,7 @@ namespace Concierge.Display.Pages
         {
             var dataGrid = this.GetSelectedProficencyDataGrid();
 
-            if (dataGrid != null)
+            if (dataGrid is not null)
             {
                 this.Edit(dataGrid.SelectedItem);
             }
@@ -246,7 +246,7 @@ namespace Concierge.Display.Pages
 
         private void AddProficencyButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.Detail.Proficiencies,
                 typeof(ProficiencyWindow),
                 this.Window_ApplyChanges,
@@ -312,7 +312,7 @@ namespace Concierge.Display.Pages
 
         private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Vitality.Status,
                 typeof(ConditionsWindow),
                 this.Window_ApplyChanges,
@@ -322,7 +322,7 @@ namespace Concierge.Display.Pages
 
         private void EditLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.LanguagesDataGrid.SelectedItem != null)
+            if (this.LanguagesDataGrid.SelectedItem is not null)
             {
                 this.Edit(this.LanguagesDataGrid.SelectedItem);
             }
@@ -330,9 +330,9 @@ namespace Concierge.Display.Pages
 
         private void EditResourcesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.ResourcesDataGrid.SelectedItem != null)
+            if (this.ResourcesDataGrid.SelectedItem is not null)
             {
-                if (this.ResourcesDataGrid.SelectedItem != null)
+                if (this.ResourcesDataGrid.SelectedItem is not null)
                 {
                     this.Edit(this.ResourcesDataGrid.SelectedItem);
                 }
@@ -341,7 +341,7 @@ namespace Concierge.Display.Pages
 
         private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.Detail.Languages,
                 typeof(LanguagesWindow),
                 this.Window_ApplyChanges,
@@ -356,7 +356,7 @@ namespace Concierge.Display.Pages
 
         private void AddResourcesButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.Vitality.ClassResources,
                 typeof(ClassResourceWindow),
                 this.Window_ApplyChanges,
@@ -426,7 +426,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Detail.Appearance,
                 typeof(AppearanceWindow),
                 this.Window_ApplyChanges,
@@ -438,7 +438,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Detail.Personality,
                 typeof(PersonalityWindow),
                 this.Window_ApplyChanges,
@@ -450,7 +450,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Equipment.Defense,
                 typeof(ArmorWindow),
                 this.Window_ApplyChanges,

@@ -20,7 +20,7 @@ namespace Concierge.Common.Extensions
         public static TreeViewItem? GetSelectedTreeViewItemParent(this TreeViewItem item)
         {
             var parent = VisualTreeHelper.GetParent(item);
-            while (!(parent is TreeViewItem || parent is TreeView))
+            while (parent is not null && parent is not TreeViewItem & parent is not TreeView)
             {
                 parent = VisualTreeHelper.GetParent(parent);
             }
@@ -36,7 +36,7 @@ namespace Concierge.Common.Extensions
         /// <returns>True if the item is successfully set as selected, false otherwise.</returns>
         private static bool SetSelected(ItemsControl parent, object child)
         {
-            if (parent == null || child == null)
+            if (parent is null || child is null)
             {
                 return false;
             }
@@ -47,7 +47,7 @@ namespace Concierge.Common.Extensions
                 return childNode.IsSelected = true;
             }
 
-            if (parent.Items.Count > 0)
+            if (parent.Items.Count == 0)
             {
                 foreach (var childItem in parent.Items)
                 {

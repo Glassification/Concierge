@@ -322,7 +322,7 @@ namespace Concierge.Display.Windows
 
         private void EditIconButton_Click(object sender, RoutedEventArgs e)
         {
-            this.customIcon = ConciergeWindowService.ShowIconWindow(typeof(IconPickerWindow), this.customIcon);
+            this.customIcon = WindowService.ShowIconWindow(typeof(IconPickerWindow), this.customIcon);
 
             this.IconSymbol.Kind = this.customIcon.Kind;
             this.IconSymbol.Foreground = this.customIcon.Color.Brush;

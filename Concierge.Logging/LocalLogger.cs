@@ -121,7 +121,9 @@ namespace Concierge.Logging
                 return;
             }
 
-            var archiveFolderInfo = Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(rotatedPath) ?? string.Empty, $"{Path.GetFileNameWithoutExtension(this.LogFileName)}.{fileTime}"));
+            var archiveFolderInfo = Directory.CreateDirectory(Path.Combine(
+                Path.GetDirectoryName(rotatedPath) ?? string.Empty,
+                $"{Path.GetFileNameWithoutExtension(this.LogFileName)}.{fileTime}"));
             foreach (var chunk in chunks)
             {
                 Directory.Move(chunk.FullName, Path.Combine(archiveFolderInfo.FullName, chunk.Name));

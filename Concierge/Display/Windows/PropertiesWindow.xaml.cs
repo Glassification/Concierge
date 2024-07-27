@@ -280,7 +280,7 @@ namespace Concierge.Display.Windows
 
         private void GenerateNameButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ConciergeWindowService.ShowWindow(typeof(NameGeneratorWindow)) is string name)
+            if (WindowService.ShowWindow(typeof(NameGeneratorWindow)) is string name)
             {
                 this.NameTextBox.Text = name;
             }

@@ -42,7 +42,7 @@ namespace Concierge.Services.EasterEggs
 
                 if (sequence.Length == this.CodeIndex)
                 {
-                    ConciergeWindowService.ShowWindow(typeof(KonamiCodeWindow));
+                    WindowService.ShowWindow(typeof(KonamiCodeWindow));
                     this.CodeIndex = 0;
                 }
             }
@@ -52,7 +52,7 @@ namespace Concierge.Services.EasterEggs
 
                 if (sequence.Length == this.CodeIndex)
                 {
-                    ConciergeWindowService.ShowWindow(typeof(KonamiCodeWindow));
+                    WindowService.ShowWindow(typeof(KonamiCodeWindow));
                     this.CodeIndex = 0;
                 }
             }

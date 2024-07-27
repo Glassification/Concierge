@@ -56,7 +56,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.WeaponDataGrid.SelectedIndex;
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 weapon,
                 typeof(CompanionAttacksWindow),
                 this.Window_ApplyChanges,
@@ -108,7 +108,7 @@ namespace Concierge.Display.Pages
             this.CompanionImage.Source = image.UseCustomImage ? this.imageEncoding.Decode(image.Encoded) : null;
             this.CompanionImage.Stretch = image.Stretch;
 
-            this.DefaultCompanionImage.Visibility = this.CompanionImage.Source == null ? Visibility.Visible : Visibility.Hidden;
+            this.DefaultCompanionImage.Visibility = this.CompanionImage.Source is null ? Visibility.Visible : Visibility.Hidden;
         }
 
         public void DrawHitDice()
@@ -166,7 +166,7 @@ namespace Concierge.Display.Pages
 
         private void AttacksAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.Companion.Weapons,
                 typeof(CompanionAttacksWindow),
                 this.Window_ApplyChanges,
@@ -181,7 +181,7 @@ namespace Concierge.Display.Pages
 
         private void AttacksEditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WeaponDataGrid.SelectedItem != null)
+            if (this.WeaponDataGrid.SelectedItem is not null)
             {
                 this.Edit(this.WeaponDataGrid.SelectedItem);
             }
@@ -203,7 +203,7 @@ namespace Concierge.Display.Pages
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowDamage(
+            WindowService.ShowDamage(
                 Program.CcsFile.Character.Companion.Health,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
@@ -213,7 +213,7 @@ namespace Concierge.Display.Pages
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowHeal(
+            WindowService.ShowHeal(
                 Program.CcsFile.Character.Companion.Health,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
@@ -239,7 +239,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Health,
                 typeof(HealthWindow),
                 this.Window_ApplyChanges,
@@ -251,7 +251,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.HitDice,
                 typeof(HitDiceWindow),
                 this.Window_ApplyChanges,
@@ -264,7 +264,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Attributes,
                 typeof(CompanionAttributesWindow),
                 this.Window_ApplyChanges,
@@ -277,7 +277,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Properties,
                 typeof(CompanionWindow),
                 this.Window_ApplyChanges,
@@ -289,7 +289,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.CompanionImage,
                 typeof(ImageWindow),
                 this.Window_ApplyChanges,

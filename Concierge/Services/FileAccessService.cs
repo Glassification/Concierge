@@ -44,18 +44,19 @@ namespace Concierge.Services
         /// <returns>The <see cref="CcsFile"/> object representing the opened CCS file, or null if the operation fails.</returns>
         public CcsFile? OpenCcs(string file)
         {
+            CcsFile? ccsFile;
             if (!file.IsNullOrWhiteSpace())
             {
-                var ccsFile2 = this.readwriter.ReadJson<CcsFile>(file);
-                if (ccsFile2.IsEmpty)
+                ccsFile = this.readwriter.ReadJson<CcsFile>(file);
+                if (ccsFile.IsEmpty)
                 {
-                    return ccsFile2;
+                    return ccsFile;
                 }
 
-                ccsFile2.AbsolutePath = file;
-                ccsFile2.Initialize();
+                ccsFile.AbsolutePath = file;
+                ccsFile.Initialize();
 
-                return !ccsFile2.CheckHash() || (AppSettingsManager.UserSettings.CheckVersion && !ccsFile2.CheckVersion()) ? new CcsFile() : ccsFile2;
+                return !ccsFile.CheckHash() || (AppSettingsManager.UserSettings.CheckVersion && !ccsFile.CheckVersion()) ? new CcsFile() : ccsFile;
             }
 
             if (ShouldUseDefaultOpen())
@@ -63,12 +64,9 @@ namespace Concierge.Services
                 this.openFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
             }
 
-            this.openFileDialog.Filter = FileConstants.CcsOpenFilter;
-            this.openFileDialog.DefaultExt = "ccs";
-            this.openFileDialog.FilterIndex = (int)CcsFiltersIndex.Ccs;
-
-            var ccsFile = this.openFileDialog.ShowDialog() ?? false ? this.readwriter.ReadJson<CcsFile>(this.openFileDialog.FileName) : null;
-            if (ccsFile is null)
+            SetupDialog(this.openFileDialog, string.Empty, "ccs", FileConstants.CcsOpenFilter, (int)CcsFiltersIndex.Ccs);
+            ccsFile = this.openFileDialog.ShowDialog() ?? false ? this.readwriter.ReadJson<CcsFile>(this.openFileDialog.FileName) : null;
+            if (ccsFile is null || ccsFile.IsEmpty)
             {
                 return null;
             }
@@ -94,11 +92,7 @@ namespace Concierge.Services
                 this.openFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
             }
 
-            this.openFileDialog.FileName = defaultName;
-            this.openFileDialog.Filter = filter;
-            this.openFileDialog.DefaultExt = defaultExtension;
-            this.openFileDialog.FilterIndex = filterIndex;
-
+            SetupDialog(this.openFileDialog, defaultName, defaultExtension, filter, filterIndex);
             return this.openFileDialog.ShowDialog() ?? false ? this.openFileDialog.FileName : string.Empty;
         }
 
@@ -117,11 +111,7 @@ namespace Concierge.Services
                 this.saveFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
             }
 
-            this.saveFileDialog.FileName = defaultName;
-            this.saveFileDialog.Filter = filter;
-            this.saveFileDialog.DefaultExt = defaultExtension;
-            this.saveFileDialog.FilterIndex = filterIndex;
-
+            SetupDialog(this.saveFileDialog, defaultName, defaultExtension, filter, filterIndex);
             return this.saveFileDialog.ShowDialog() ?? false ? this.saveFileDialog.FileName : string.Empty;
         }
 
@@ -188,10 +178,8 @@ namespace Concierge.Services
             }
 
             var name = ccsFile.Character.Disposition.Name;
-            this.saveFileDialog.FileName = name.IsNullOrWhiteSpace() ? FileConstants.DefaultFileName : name;
-            this.saveFileDialog.Filter = FileConstants.SaveFilter;
-            this.saveFileDialog.DefaultExt = "ccs";
-            this.saveFileDialog.FilterIndex = (int)CcsFiltersIndex.Ccs;
+            name = name.IsNullOrWhiteSpace() ? FileConstants.DefaultFileName : name;
+            SetupDialog(this.saveFileDialog, name, "ccs", FileConstants.SaveFilter, (int)CcsFiltersIndex.Ccs);
 
             if (this.saveFileDialog.ShowDialog() ?? false)
             {
@@ -214,6 +202,14 @@ namespace Concierge.Services
             }
 
             return false;
+        }
+
+        private static void SetupDialog(FileDialog fileDialog, string fileName, string defaultExt, string filter, int filterIndex)
+        {
+            fileDialog.FileName = fileName;
+            fileDialog.Filter = filter;
+            fileDialog.DefaultExt = defaultExt;
+            fileDialog.FilterIndex = filterIndex;
         }
 
         private static bool ShouldUseDefaultOpen()

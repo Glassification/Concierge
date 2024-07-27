@@ -67,7 +67,7 @@ namespace Concierge.Common.Utilities
                 {
                     PropertyData pData = battery.Properties["BatteryStatus"];
 
-                    if (pData != null && pData.Value != null && Enum.IsDefined(typeof(BatteryStatus), pData.Value))
+                    if (pData is not null && pData.Value is not null && Enum.IsDefined(typeof(BatteryStatus), pData.Value))
                     {
                         status = (BatteryStatus)pData.Value;
                     }

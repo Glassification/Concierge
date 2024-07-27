@@ -130,7 +130,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.abilitySave = ConciergeWindowService.ShowAbilityCheckWindow(
+            this.abilitySave = WindowService.ShowAbilityCheckWindow(
                 typeof(ConcentrationCheckWindow),
                 Program.CcsFile.Character.Attributes.Constitution,
                 damage);

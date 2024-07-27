@@ -39,8 +39,8 @@ namespace Concierge.Display
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:Fields should be private", Justification = "Needs access from outside class.")]
     public partial class MainWindow : Window
     {
-        public static readonly DependencyProperty ScaleValuePropertyX = DependencyProperty.Register("ScaleValueX", typeof(double), typeof(MainWindow), new UIPropertyMetadata(1.0, new PropertyChangedCallback(OnScaleValueChanged), new CoerceValueCallback(OnCoerceScaleValueX)));
-        public static readonly DependencyProperty ScaleValuePropertyY = DependencyProperty.Register("ScaleValueY", typeof(double), typeof(MainWindow), new UIPropertyMetadata(1.0, new PropertyChangedCallback(OnScaleValueChanged), new CoerceValueCallback(OnCoerceScaleValueY)));
+        public static readonly DependencyProperty ScaleValuePropertyX = ConciergeScaling.Register("ScaleValueX");
+        public static readonly DependencyProperty ScaleValuePropertyY = ConciergeScaling.Register("ScaleValueY");
 
         public readonly OverviewPage OverviewPage = new ();
         public readonly InventoryPage InventoryPage = new ();
@@ -60,7 +60,6 @@ namespace Concierge.Display
         private readonly DateTimeWorkerService dateTimeService = new ();
         private readonly SystemWorkerService systemService = new ();
         private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (Common.Constants.StatusDisplayTime);
-        private readonly CharacterCreationWizard characterCreationWizard = new ();
         private readonly EasterEggService easterEggService = new ();
 
         public MainWindow()
@@ -154,7 +153,7 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Open Character Creation.");
 
-            var result = this.characterCreationWizard.Prompt();
+            var result = CharacterWizard.Prompt();
             if (result != ConciergeResult.OK)
             {
                 return;
@@ -168,7 +167,9 @@ namespace Concierge.Display
 
             this.ResetCharacterSheet();
             this.DrawAll();
-            if (!this.characterCreationWizard.Start())
+
+            var characterWizard = new CharacterWizard(Program.CcsFile.Character);
+            if (!characterWizard.StartCreation())
             {
                 this.ResetCharacterSheet();
                 this.DisplayStatusText("Canceled character creation wizard");
@@ -185,7 +186,7 @@ namespace Concierge.Display
         public void OpenSettings()
         {
             Program.Logger.Info($"Open settings.");
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 string.Empty,
                 typeof(SettingsWindow),
                 this.Window_ApplyChanges,
@@ -199,16 +200,14 @@ namespace Concierge.Display
         public void OpenGlossary()
         {
             Program.Logger.Info($"Open glossary.");
-
-            ConciergeWindowService.ShowNonBlockingWindow(typeof(GlossaryWindow));
+            WindowService.ShowNonBlockingWindow(typeof(GlossaryWindow));
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "The way she goes.")]
         public void OpenCustomItems()
         {
             Program.Logger.Info($"Open custom items.");
-
-            ConciergeWindowService.ShowWindow(typeof(CustomItemWindow));
+            WindowService.ShowWindow(typeof(CustomItemWindow));
         }
 
         public void OpenCharacterSheet(string file = "")
@@ -247,7 +246,7 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Importing data to character sheet.");
 
-            ConciergeWindowService.ShowWindow(typeof(ImportCharacterWindow), this.Window_ApplyChanges);
+            WindowService.ShowWindow(typeof(ImportCharacterWindow), this.Window_ApplyChanges);
 
             this.DisplayStatusText("Imported Character Data!");
             this.DrawAll();
@@ -271,7 +270,7 @@ namespace Concierge.Display
 
         public void OpenConsole()
         {
-            ConciergeWindowService.ShowWindow(typeof(ConciergeConsoleWindow), this.Window_ApplyChanges);
+            WindowService.ShowWindow(typeof(ConciergeConsoleWindow), this.Window_ApplyChanges);
         }
 
         public void DrawAll(bool isNewCharacterSheet = false)
@@ -391,7 +390,7 @@ namespace Concierge.Display
         public void LevelUp()
         {
             Program.Logger.Info($"Level up.");
-            ConciergeWindowService.ShowWindow(typeof(LevelUpWindow), this.Window_ApplyChanges);
+            WindowService.ShowWindow(typeof(LevelUpWindow), this.Window_ApplyChanges);
 
             this.DrawAll();
         }
@@ -399,7 +398,7 @@ namespace Concierge.Display
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Way she goes.")]
         public void Search()
         {
-            ConciergeWindowService.ShowWindow(typeof(SearchWindow));
+            WindowService.ShowWindow(typeof(SearchWindow));
         }
 
         public void Redo()
@@ -473,6 +472,15 @@ namespace Concierge.Display
             this.animatedTimedTextWorkerService.StartWorker(message);
         }
 
+        public virtual double OnCoerceScaleValue(double value)
+        {
+            return double.IsNaN(value) ? 1.0d : Math.Max(0.1, value);
+        }
+
+        public virtual void OnScaleValueChanged(double oldValue, double newValue)
+        {
+        }
+
         [LibraryImport("dwmapi.dll", EntryPoint = "DwmSetWindowAttribute")]
         internal static partial int DwmSetWindowAttribute(
             IntPtr hwnd,
@@ -488,15 +496,6 @@ namespace Concierge.Display
             Application.Current.Shutdown();
         }
 
-        protected virtual double OnCoerceScaleValue(double value)
-        {
-            return double.IsNaN(value) ? 1.0d : Math.Max(0.1, value);
-        }
-
-        protected virtual void OnScaleValueChanged(double oldValue, double newValue)
-        {
-        }
-
         protected void ForceRoundedCorners()
         {
             IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
@@ -505,21 +504,23 @@ namespace Concierge.Display
             Marshal.ThrowExceptionForHR(DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)));
         }
 
-        private static object OnCoerceScaleValueX(DependencyObject o, object value)
+        private static void ShiftPlusKeyPress(KeyEventArgs keyEvent)
         {
-            return o is MainWindow mainWindow ? mainWindow.OnCoerceScaleValue((double)value) : value;
-        }
-
-        private static object OnCoerceScaleValueY(DependencyObject o, object value)
-        {
-            return o is MainWindow mainWindow ? mainWindow.OnCoerceScaleValue((double)value) : value;
-        }
-
-        private static void OnScaleValueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-            if (o is MainWindow mainWindow)
+            if (!IsShift)
             {
-                mainWindow.OnScaleValueChanged((double)e.OldValue, (double)e.NewValue);
+                return;
+            }
+
+            var keyPressed = keyEvent.Key;
+            if (keyEvent.Key == Key.System)
+            {
+                keyPressed = keyEvent.SystemKey;
+            }
+
+            switch (keyPressed)
+            {
+                case Key.Tab:
+                    break;
             }
         }
 
@@ -591,6 +592,33 @@ namespace Concierge.Display
             }
         }
 
+        private void ExportAppData()
+        {
+            var fileName = this.fileAccessService.SaveFile(0, FileConstants.ZipFilter, "zip", FileConstants.DefaultAppDataFileName);
+            if (!fileName.IsNullOrWhiteSpace() && this.appDataReadWriter.Write(fileName))
+            {
+                this.DisplayStatusText($"Successfully Exported {Path.GetFileName(fileName)}");
+            }
+        }
+
+        private void ImportAppData()
+        {
+            var fileName = this.fileAccessService.OpenFile(0, FileConstants.ZipFilter, "zip", FileConstants.DefaultAppDataFileName);
+            if (!fileName.IsNullOrWhiteSpace())
+            {
+                var result = ConciergeMessageBox.Show(
+                    "This will permanently overwrite the existing Concierge AppData. Do you want to continue?",
+                    "Warning",
+                    ConciergeButtons.Yes | ConciergeButtons.No,
+                    ConciergeIcons.Warning);
+
+                if (result == ConciergeResult.Yes && this.appDataReadWriter.Read(fileName))
+                {
+                    this.DisplayStatusText($"Successfully Imported {Path.GetFileName(fileName)}");
+                }
+            }
+        }
+
         private void UpdateStatusBar()
         {
             this.MessageBar.DrawTime();
@@ -600,8 +628,8 @@ namespace Concierge.Display
         {
             double yScale = this.Height / SystemParameters.PrimaryScreenHeight;
             double xScale = this.Width / SystemParameters.PrimaryScreenWidth;
-            this.ScaleValueX = (double)OnCoerceScaleValueX(this.MainGrid, xScale);
-            this.ScaleValueY = (double)OnCoerceScaleValueY(this.MainGrid, yScale);
+            this.ScaleValueX = (double)ConciergeScaling.OnCoerceScaleValueX(this.MainGrid, xScale);
+            this.ScaleValueY = (double)ConciergeScaling.OnCoerceScaleValueY(this.MainGrid, yScale);
         }
 
         private ConciergeResult CheckSaveBeforeAction(string action)
@@ -692,26 +720,6 @@ namespace Concierge.Display
             }
         }
 
-        private void ShiftPlusKeyPress(KeyEventArgs keyEvent)
-        {
-            if (!IsShift)
-            {
-                return;
-            }
-
-            var keyPressed = keyEvent.Key;
-            if (keyEvent.Key == Key.System)
-            {
-                keyPressed = keyEvent.SystemKey;
-            }
-
-            switch (keyPressed)
-            {
-                case Key.Tab:
-                    break;
-            }
-        }
-
         private void ControlPlusKeyPress(KeyEventArgs keyEvent)
         {
             if (!IsControl)
@@ -728,10 +736,13 @@ namespace Concierge.Display
             switch (keyPressed)
             {
                 case Key.A:
-                    ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
+                    WindowService.ShowWindow(typeof(AboutConciergeWindow));
                     break;
                 case Key.C:
                     this.OpenCustomItems();
+                    break;
+                case Key.E:
+                    this.ExportAppData();
                     break;
                 case Key.F:
                     this.Search();
@@ -744,6 +755,9 @@ namespace Concierge.Display
                     break;
                 case Key.K:
                     SystemUtility.OpenOnScreenKeyboard();
+                    break;
+                case Key.M:
+                    this.ImportAppData();
                     break;
                 case Key.N:
                     this.NewCharacterSheet();
@@ -834,7 +848,7 @@ namespace Concierge.Display
             this.FrameContent.Focus();
 
             this.ControlPlusKeyPress(e);
-            this.ShiftPlusKeyPress(e);
+            ShiftPlusKeyPress(e);
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -895,7 +909,7 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Open properties.");
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Disposition,
                 typeof(PropertiesWindow),
                 this.Window_ApplyChanges,
@@ -919,7 +933,7 @@ namespace Concierge.Display
         private void MessageHistoryButton_Click(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-            ConciergeWindowService.ShowWindow(typeof(MessageHistoryWindow));
+            WindowService.ShowWindow(typeof(MessageHistoryWindow));
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
@@ -927,7 +941,7 @@ namespace Concierge.Display
             SoundService.PlayNavigation();
             Program.Logger.Info($"Open About.");
 
-            ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
+            WindowService.ShowWindow(typeof(AboutConciergeWindow));
         }
 
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
@@ -957,32 +971,13 @@ namespace Concierge.Display
         private void ExportAppDataButton_Click(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
-            var fileName = this.fileAccessService.SaveFile(0, FileConstants.ZipFilter, "zip", FileConstants.DefaultAppDataFileName);
-            if (this.appDataReadWriter.Write(fileName))
-            {
-                this.DisplayStatusText($"Successfully Exported {Path.GetFileName(fileName)}");
-            }
+            this.ExportAppData();
         }
 
         private void ImportAppDataButton_Click(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
-            var fileName = this.fileAccessService.OpenFile(0, FileConstants.ZipFilter, "zip", FileConstants.DefaultAppDataFileName);
-            if (!fileName.IsNullOrWhiteSpace())
-            {
-                var result = ConciergeMessageBox.Show(
-                    "This will permanently overwrite the existing Concierge AppData. Do you want to continue?",
-                    "Warning",
-                    ConciergeButtons.Yes | ConciergeButtons.No,
-                    ConciergeIcons.Warning);
-
-                if (result == ConciergeResult.Yes && this.appDataReadWriter.Read(fileName))
-                {
-                    this.DisplayStatusText($"Successfully Imported {Path.GetFileName(fileName)}");
-                }
-            }
+            this.ImportAppData();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -1114,7 +1109,8 @@ namespace Concierge.Display
             var file = ConciergeDragDrop.Capture(e.Data, ".ccs");
             if (!file.IsValid)
             {
-                ConciergeMessageBox.ShowError($"Could not open '{file.FilePath}'\nOnly valid .ccs files can be dropped in Concierge.");
+                var message = file.FilePath.IsNullOrWhiteSpace() ? string.Empty : $"Could not open '{file.FilePath}'\n";
+                ConciergeMessageBox.ShowError($"{message}{file.ErrorMessage}");
                 return;
             }
 

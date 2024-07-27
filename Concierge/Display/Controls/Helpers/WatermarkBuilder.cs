@@ -58,7 +58,7 @@ namespace Concierge.Display.Controls
         /// <param name="e">A <see cref="DependencyPropertyChangedEventArgs"/> that contains the event data.</param>
         private static void OnWatermarkChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Control control = (Control)d;
+            var control = (Control)d;
             control.Loaded += Control_Loaded;
 
             if (d is ComboBox)
@@ -94,14 +94,14 @@ namespace Concierge.Display.Controls
         /// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
         private static void Control_GotKeyboardFocus(object sender, RoutedEventArgs e)
         {
-            Control c = (Control)sender;
-            if (ShouldShowWatermark(c))
+            var control = (Control)sender;
+            if (ShouldShowWatermark(control))
             {
-                ShowWatermark(c);
+                ShowWatermark(control);
             }
             else
             {
-                RemoveWatermark(c);
+                RemoveWatermark(control);
             }
         }
 
@@ -112,7 +112,7 @@ namespace Concierge.Display.Controls
         /// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
         private static void Control_Loaded(object sender, RoutedEventArgs e)
         {
-            Control control = (Control)sender;
+            var control = (Control)sender;
             if (ShouldShowWatermark(control))
             {
                 ShowWatermark(control);
@@ -126,21 +126,21 @@ namespace Concierge.Display.Controls
         /// <param name="e">A <see cref="EventArgs"/> that contains the event data.</param>
         private static void ItemsSourceChanged(object sender, EventArgs e)
         {
-            ItemsControl c = (ItemsControl)sender;
-            if (c.ItemsSource != null)
+            var itemsControl = (ItemsControl)sender;
+            if (itemsControl.ItemsSource is not null)
             {
-                if (ShouldShowWatermark(c))
+                if (ShouldShowWatermark(itemsControl))
                 {
-                    ShowWatermark(c);
+                    ShowWatermark(itemsControl);
                 }
                 else
                 {
-                    RemoveWatermark(c);
+                    RemoveWatermark(itemsControl);
                 }
             }
             else
             {
-                ShowWatermark(c);
+                ShowWatermark(itemsControl);
             }
         }
 
@@ -151,15 +151,15 @@ namespace Concierge.Display.Controls
         /// <param name="e">A <see cref="ItemsChangedEventArgs"/> that contains the event data.</param>
         private static void ItemsChanged(object sender, ItemsChangedEventArgs e)
         {
-            if (itemsControls.TryGetValue(sender, out ItemsControl? control))
+            if (itemsControls.TryGetValue(sender, out ItemsControl? itemsControl))
             {
-                if (ShouldShowWatermark(control))
+                if (ShouldShowWatermark(itemsControl))
                 {
-                    ShowWatermark(control);
+                    ShowWatermark(itemsControl);
                 }
                 else
                 {
-                    RemoveWatermark(control);
+                    RemoveWatermark(itemsControl);
                 }
             }
         }
@@ -170,18 +170,16 @@ namespace Concierge.Display.Controls
         /// <param name="control">Element to remove the watermark from.</param>
         private static void RemoveWatermark(UIElement control)
         {
-            AdornerLayer layer = AdornerLayer.GetAdornerLayer(control);
-
-            // layer could be null if control is no longer in the visual tree
-            if (layer != null)
+            var layer = AdornerLayer.GetAdornerLayer(control);
+            if (layer is not null)
             {
-                Adorner[] adorners = layer.GetAdorners(control);
-                if (adorners == null)
+                var adorners = layer.GetAdorners(control);
+                if (adorners is null)
                 {
                     return;
                 }
 
-                foreach (Adorner adorner in adorners)
+                foreach (var adorner in adorners)
                 {
                     if (adorner is WatermarkAdorner)
                     {
@@ -198,10 +196,8 @@ namespace Concierge.Display.Controls
         /// <param name="control">Control to show the watermark on.</param>
         private static void ShowWatermark(Control control)
         {
-            AdornerLayer layer = AdornerLayer.GetAdornerLayer(control);
-
-            // layer could be null if control is no longer in the visual tree
-            if (layer != null)
+            var layer = AdornerLayer.GetAdornerLayer(control);
+            if (layer is not null)
             {
                 layer.Add(new WatermarkAdorner(control, GetWatermark(control)));
             }

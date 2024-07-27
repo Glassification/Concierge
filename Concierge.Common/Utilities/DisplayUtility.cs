@@ -52,7 +52,7 @@ namespace Concierge.Common.Utilities
         public static T? FindVisualParent<T>(UIElement? element)
             where T : UIElement
         {
-            while (element != null)
+            while (element is not null)
             {
                 if (element is T correctlyTyped)
                 {

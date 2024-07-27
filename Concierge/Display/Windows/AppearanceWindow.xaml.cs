@@ -234,15 +234,15 @@ namespace Concierge.Display.Windows
             switch (button.Name)
             {
                 case "SkinColorPreview":
-                    var skinColor = ConciergeWindowService.ShowColorWindow(typeof(ColorPickerWindow), this.SkinColor);
+                    var skinColor = WindowService.ShowColorWindow(typeof(ColorPickerWindow), this.SkinColor);
                     this.SkinColor = skinColor.IsValid ? skinColor : this.SkinColor;
                     break;
                 case "EyeColorPreview":
-                    var eyeColor = ConciergeWindowService.ShowColorWindow(typeof(ColorPickerWindow), this.EyeColor);
+                    var eyeColor = WindowService.ShowColorWindow(typeof(ColorPickerWindow), this.EyeColor);
                     this.EyeColor = eyeColor.IsValid ? eyeColor : this.EyeColor;
                     break;
                 case "HairColorPreview":
-                    var hairColor = ConciergeWindowService.ShowColorWindow(typeof(ColorPickerWindow), this.HairColor);
+                    var hairColor = WindowService.ShowColorWindow(typeof(ColorPickerWindow), this.HairColor);
                     this.HairColor = hairColor.IsValid ? hairColor : this.HairColor;
                     break;
             }

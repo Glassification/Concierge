@@ -33,6 +33,15 @@ namespace Concierge.Character.Magic
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="MagicalClass"/> class with a specified name.
+        /// </summary>
+        public MagicalClass(string name)
+            : this(new CharacterService(CharacterSheet.Empty))
+        {
+            this.Name = name;
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="MagicalClass"/> class with the specified <see cref="CharacterService"/>.
         /// </summary>
         /// <param name="characterService">The character service associated with the magical class.</param>

@@ -205,13 +205,13 @@
                                             <local:PopupButton
                                                 x:Name="ExportAppDataMenuItem"
                                                 Label="Export AppData..."
-                                                Shortcut=""
+                                                Shortcut="Ctrl+E"
                                                 IconKind="IframeExportOutline"
                                                 IconColor="#ffd166"/>
                                             <local:PopupButton
                                                 x:Name="ImportAppDataMenuItem"
-                                                Label="Import AppData..."
-                                                Shortcut=""
+                                                Label="Import AppData...  "
+                                                Shortcut="Ctrl+M"
                                                 IconKind="IframeImportOutline"
                                                 IconColor="#ffd166"/>
                                             <local:PopupButton

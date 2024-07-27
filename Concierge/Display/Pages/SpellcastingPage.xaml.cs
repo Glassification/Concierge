@@ -53,7 +53,7 @@ namespace Concierge.Display.Pages
             if (itemToEdit is Spell spell)
             {
                 var index = this.SpellListDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     spell,
                     typeof(SpellWindow),
                     this.Window_ApplyChanges,
@@ -65,7 +65,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is MagicalClass magicClass)
             {
                 var index = this.MagicalClassDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     magicClass,
                     typeof(MagicClassWindow),
                     this.Window_ApplyChanges,
@@ -168,7 +168,7 @@ namespace Concierge.Display.Pages
 
         private void MagicalClassAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.SpellCasting.MagicalClasses,
                 typeof(MagicClassWindow),
                 this.Window_ApplyChanges,
@@ -183,7 +183,7 @@ namespace Concierge.Display.Pages
 
         private void SpellAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.SpellCasting.Spells,
                 typeof(SpellWindow),
                 this.Window_ApplyChanges,
@@ -209,7 +209,7 @@ namespace Concierge.Display.Pages
 
         private void MagicalClassDeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.MagicalClassDataGrid.SelectedItem != null)
+            if (this.MagicalClassDataGrid.SelectedItem is not null)
             {
                 var magicClass = (MagicalClass)this.MagicalClassDataGrid.SelectedItem;
                 var index = this.MagicalClassDataGrid.SelectedIndex;
@@ -223,7 +223,7 @@ namespace Concierge.Display.Pages
 
         private void SpellDeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SpellListDataGrid.SelectedItem != null)
+            if (this.SpellListDataGrid.SelectedItem is not null)
             {
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 var index = this.SpellListDataGrid.SelectedIndex;
@@ -273,7 +273,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.SpellCasting.SpellSlots,
                 typeof(SpellSlotsWindow),
                 this.Window_ApplyChanges,
@@ -347,7 +347,7 @@ namespace Concierge.Display.Pages
             }
 
             Program.UndoRedoService.AddCommand(new CompositeCommand(this.ConciergePages, [.. commands]));
-            ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+            WindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             this.DrawSpellList();
             this.DrawSpellSlots();
             this.SpellListDataGrid.SetSelectedIndex(index);
@@ -371,7 +371,7 @@ namespace Concierge.Display.Pages
 
         private void SpellInformationButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowWindow(typeof(SpellDetailsWindow));
+            WindowService.ShowWindow(typeof(SpellDetailsWindow));
         }
     }
 }

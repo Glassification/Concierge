@@ -27,7 +27,7 @@ namespace Concierge.Display.Components
             this.LayoutTransform = new ScaleTransform(scaling, scaling, 0.5, 0.5);
         }
 
-        public bool IsHighlighted => this.OriginalBackgroundColor != null || this.OriginalForegroundColor != null;
+        public bool IsHighlighted => this.OriginalBackgroundColor is not null || this.OriginalForegroundColor is not null;
 
         private Brush? OriginalBackgroundColor { get; set; }
 

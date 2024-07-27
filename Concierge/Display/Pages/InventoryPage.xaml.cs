@@ -48,7 +48,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.InventoryDataGrid.SelectedIndex;
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 inventory,
                 false,
                 typeof(InventoryWindow),
@@ -118,7 +118,7 @@ namespace Concierge.Display.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.Equipment.Inventory,
                 typeof(InventoryWindow),
                 this.Window_ApplyChanges,
@@ -133,7 +133,7 @@ namespace Concierge.Display.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.InventoryDataGrid.SelectedItem != null)
+            if (this.InventoryDataGrid.SelectedItem is not null)
             {
                 this.Edit(this.InventoryDataGrid.SelectedItem);
             }
@@ -141,7 +141,7 @@ namespace Concierge.Display.Pages
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.InventoryDataGrid.SelectedItem != null)
+            if (this.InventoryDataGrid.SelectedItem is not null)
             {
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
                 var index = this.InventoryDataGrid.SelectedIndex;
@@ -194,7 +194,7 @@ namespace Concierge.Display.Pages
             var oldItem = item.DeepCopy();
             var result = item.Use(UseItem.Empty);
 
-            var windowResult = ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+            var windowResult = WindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             if (windowResult != ConciergeResult.OK)
             {
                 item.Amount = oldItem.Amount;

@@ -68,7 +68,7 @@ namespace Concierge.Display.Windows.Utility
             }
             else if (item is CustomColor color)
             {
-                var result = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), color);
+                var result = WindowService.ShowColorWindow(typeof(CustomColorWindow), color);
                 if (result.IsValid)
                 {
                     color.ShallowCopy(result);
@@ -79,7 +79,7 @@ namespace Concierge.Display.Windows.Utility
             }
             else if (item is Inventory)
             {
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     item,
                     false,
                     typeof(InventoryWindow),
@@ -118,7 +118,7 @@ namespace Concierge.Display.Windows.Utility
                 return;
             }
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 item,
                 type,
                 this.Window_ApplyChanges,

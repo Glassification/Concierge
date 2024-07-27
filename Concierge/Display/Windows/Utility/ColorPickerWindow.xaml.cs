@@ -119,7 +119,7 @@ namespace Concierge.Display.Utility
 
         private void SelectCustomColorButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), this.SelectedColor);
+            var result = WindowService.ShowColorWindow(typeof(CustomColorWindow), this.SelectedColor);
 
             if (result.IsValid)
             {

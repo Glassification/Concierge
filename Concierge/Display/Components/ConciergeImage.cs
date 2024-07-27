@@ -17,7 +17,7 @@ namespace Concierge.Display.Components
 
         public void LoadFromByteArray(byte[] array)
         {
-            if (array == null || array.Length == 0)
+            if (array is null || array.Length == 0)
             {
                 return;
             }

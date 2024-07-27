@@ -6,9 +6,7 @@ namespace Concierge.Persistence
 {
     using System;
     using System.IO;
-    using System.Linq;
     using System.Windows;
-    using System.Windows.Navigation;
 
     /// <summary>
     /// Utility class for capturing file paths from IDataObject in drag-and-drop operations.
@@ -30,16 +28,21 @@ namespace Concierge.Persistence
         {
             if (!data.GetDataPresent(DataFormats.FileDrop))
             {
-                return DropFile.Empty;
+                return new DropFile(string.Empty, "Data is not a FileDrop.");
             }
 
-            var file = ((string[])data.GetData(DataFormats.FileDrop)).FirstOrDefault(string.Empty);
-            if (!Path.GetExtension(file).Equals(extension, StringComparison.InvariantCultureIgnoreCase))
+            var file = (string[])data.GetData(DataFormats.FileDrop);
+            if (file.Length != 1)
             {
-                return new DropFile(file, false);
+                return new DropFile(string.Empty, "Cannot open multiple files at once.");
             }
 
-            return new DropFile(file, true);
+            if (!Path.GetExtension(file[0]).Equals(extension, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return new DropFile(file[0], "Cannot open non .ccs files.");
+            }
+
+            return new DropFile(file[0]);
         }
 
         /// <summary>

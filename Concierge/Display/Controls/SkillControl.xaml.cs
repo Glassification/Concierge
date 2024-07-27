@@ -156,7 +156,7 @@ namespace Concierge.Display.Controls
 
         private void SkillField_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ConciergeWindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), this.skill, 0);
+            WindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), this.skill, 0);
         }
 
         private void Toggle_MouseEnter(object sender, MouseEventArgs e)

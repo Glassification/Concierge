@@ -59,7 +59,7 @@ namespace Concierge.Display.Pages
             if (itemToEdit is Inventory inventory && this.SelectedDataGrid is not null)
             {
                 var index = this.SelectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     inventory,
                     true,
                     typeof(InventoryWindow),
@@ -71,7 +71,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is Weapon weapon && this.SelectedDataGrid is not null)
             {
                 var index = this.SelectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     weapon,
                     true,
                     typeof(AttacksWindow),
@@ -83,7 +83,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is Spell spell && this.SelectedDataGrid is not null)
             {
                 var index = this.SelectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     spell,
                     typeof(SpellWindow),
                     this.Window_ApplyChanges,
@@ -124,7 +124,7 @@ namespace Concierge.Display.Pages
             this.CharacterImage.Source = portrait.UseCustomImage ? this.encodingService.Decode(portrait.Encoded) : null;
             this.CharacterImage.Stretch = portrait.Stretch;
 
-            this.DefaultCharacterImage.Visibility = this.CharacterImage.Source == null ? Visibility.Visible : Visibility.Hidden;
+            this.DefaultCharacterImage.Visibility = this.CharacterImage.Source is null ? Visibility.Visible : Visibility.Hidden;
         }
 
         public void DrawPreparedSpells()
@@ -263,7 +263,7 @@ namespace Concierge.Display.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 string.Empty,
                 typeof(EquipmentWindow),
                 this.Window_ApplyChanges,
@@ -278,7 +278,7 @@ namespace Concierge.Display.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedItem == null)
+            if (this.SelectedItem is null)
             {
                 return;
             }
@@ -322,7 +322,7 @@ namespace Concierge.Display.Pages
         {
             SoundService.PlayNavigation();
 
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 Program.CcsFile.Character.Detail.Portrait,
                 typeof(ImageWindow),
                 this.Window_ApplyChanges,
@@ -346,7 +346,7 @@ namespace Concierge.Display.Pages
             if (this.SelectedItem is IUsable usable)
             {
                 var result = usable.Use(UseItem.Empty);
-                ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+                WindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             }
         }
     }

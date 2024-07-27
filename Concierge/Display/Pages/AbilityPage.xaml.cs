@@ -48,7 +48,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.AbilitiesDataGrid.SelectedIndex;
-            ConciergeWindowService.ShowEdit(
+            WindowService.ShowEdit(
                 ability,
                 typeof(AbilitiesWindow),
                 this.Window_ApplyChanges,
@@ -113,7 +113,7 @@ namespace Concierge.Display.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd(
+            var added = WindowService.ShowAdd(
                 Program.CcsFile.Character.Detail.Abilities,
                 typeof(AbilitiesWindow),
                 this.Window_ApplyChanges,
@@ -128,7 +128,7 @@ namespace Concierge.Display.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.AbilitiesDataGrid.SelectedItem != null)
+            if (this.AbilitiesDataGrid.SelectedItem is not null)
             {
                 this.Edit(this.AbilitiesDataGrid.SelectedItem);
             }
@@ -136,7 +136,7 @@ namespace Concierge.Display.Pages
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.AbilitiesDataGrid.SelectedItem != null)
+            if (this.AbilitiesDataGrid.SelectedItem is not null)
             {
                 var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
                 var index = this.AbilitiesDataGrid.SelectedIndex;
@@ -182,7 +182,7 @@ namespace Concierge.Display.Pages
             var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
             var result = ability.Use(UseItem.Empty);
 
-            ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+            WindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
         }
 
         private void AbilitiesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

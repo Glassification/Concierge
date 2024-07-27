@@ -83,7 +83,7 @@ namespace Concierge.Display.Components
 
         public int NextItem<T>(List<T> list, int limit, int increment, ConciergePages conciergePage)
         {
-            if (this.SelectedItem == null)
+            if (this.SelectedItem is null)
             {
                 return -1;
             }

@@ -19,7 +19,7 @@ namespace Concierge.Services
     /// </summary>
     public sealed class ErrorService : IErrorService
     {
-        private Logger logger;
+        private readonly Logger logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ErrorService"/> class with the specified logger.
@@ -52,7 +52,7 @@ namespace Concierge.Services
             }
 
             this.logger.Error(conciergeException);
-            IsFatalException(conciergeException);
+            KillIfFatal(conciergeException);
         }
 
         private static ConciergeException GetConciergeException(Exception ex)
@@ -65,7 +65,7 @@ namespace Concierge.Services
             return new GenericException(ex);
         }
 
-        private static void IsFatalException(ConciergeException ex)
+        private static void KillIfFatal(ConciergeException ex)
         {
             if (ex.IsFatal)
             {

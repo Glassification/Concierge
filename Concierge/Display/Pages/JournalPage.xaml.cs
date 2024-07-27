@@ -67,9 +67,9 @@ namespace Concierge.Display.Pages
             set
             {
                 this.selectedDocument = value;
-                this.NotesTextBox.IsEnabled = value != null;
+                this.NotesTextBox.IsEnabled = value is not null;
 
-                DisplayUtility.SetControlEnableState(this.ToolbarStackPanel, value != null);
+                DisplayUtility.SetControlEnableState(this.ToolbarStackPanel, value is not null);
             }
         }
 
@@ -99,7 +99,7 @@ namespace Concierge.Display.Pages
 
         public void SaveTextBox()
         {
-            if (this.SelectedDocument != null)
+            if (this.SelectedDocument is not null)
             {
                 this.SelectedDocument.Rtf = this.SaveCurrentDocument();
                 Program.Modify();
@@ -411,7 +411,7 @@ namespace Concierge.Display.Pages
 
             if (this.NotesTreeView?.SelectedItem is DocumentTreeViewItem treeViewItem)
             {
-                if (this.SelectedDocument != null)
+                if (this.SelectedDocument is not null)
                 {
                     this.SaveTextBox();
                 }
@@ -425,7 +425,7 @@ namespace Concierge.Display.Pages
             }
             else if (this.NotesTreeView?.SelectedItem is ChapterTreeViewItem)
             {
-                if (this.SelectedDocument != null)
+                if (this.SelectedDocument is not null)
                 {
                     this.SaveTextBox();
                 }
@@ -510,7 +510,7 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            ConciergeWindowService.ShowAdd(
+            WindowService.ShowAdd(
                 button.Tag as Chapter,
                 typeof(JournalWindow),
                 this.Window_ApplyChanges,
@@ -525,7 +525,7 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            ConciergeWindowService.ShowAdd(
+            WindowService.ShowAdd(
                 button.Tag as Chapter,
                 typeof(JournalWindow),
                 this.Window_ApplyChanges,
@@ -535,14 +535,14 @@ namespace Concierge.Display.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.NotesTreeView.SelectedItem == null)
+            if (this.NotesTreeView.SelectedItem is null)
             {
                 return;
             }
 
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     chapterTreeViewItem.Chapter,
                     typeof(JournalWindow),
                     this.Window_ApplyChanges,
@@ -550,7 +550,7 @@ namespace Concierge.Display.Pages
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
             {
-                ConciergeWindowService.ShowEdit(
+                WindowService.ShowEdit(
                     documentTreeViewItem.Document,
                     typeof(JournalWindow),
                     this.Window_ApplyChanges,
@@ -562,7 +562,7 @@ namespace Concierge.Display.Pages
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.NotesTreeView.SelectedItem == null)
+            if (this.NotesTreeView.SelectedItem is null)
             {
                 return;
             }

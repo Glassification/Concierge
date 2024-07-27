@@ -1,4 +1,4 @@
-﻿// <copyright file="CharacterCreationWizard.cs" company="Thomas Beckett">
+﻿// <copyright file="CharacterWizard.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -7,6 +7,7 @@ namespace Concierge.Services
     using System;
     using System.Linq;
 
+    using Concierge.Character;
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
@@ -17,15 +18,18 @@ namespace Concierge.Services
     /// <summary>
     /// Represents the Character Creation Wizard, guiding users through the process of creating a character.
     /// </summary>
-    public sealed class CharacterCreationWizard
+    public sealed class CharacterWizard
     {
+        private readonly CharacterSheet character;
+
         private bool isStopped;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CharacterCreationWizard"/> class.
+        /// Initializes a new instance of the <see cref="CharacterWizard"/> class.
         /// </summary>
-        public CharacterCreationWizard()
+        public CharacterWizard(CharacterSheet character)
         {
+            this.character = character;
             this.isStopped = false;
         }
 
@@ -33,8 +37,7 @@ namespace Concierge.Services
         /// Prompts the user with an initial message introducing the Character Creation Wizard.
         /// </summary>
         /// <returns>The result of the prompt.</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "The way she goes.")]
-        public ConciergeResult Prompt()
+        public static ConciergeResult Prompt()
         {
             return ConciergeMessageBox.Show(
                 "This is the Concierge Character Creation Wizard. This will help jump start your path to godhood.",
@@ -47,12 +50,12 @@ namespace Concierge.Services
         /// Starts the character creation process.
         /// </summary>
         /// <returns><c>true</c> if the process is started successfully; otherwise, <c>false</c>.</returns>
-        public bool Start()
+        public bool StartCreation()
         {
             this.isStopped = false;
 
             this.RunSetupSteps();
-            RemoveDuplicates();
+            this.RemoveDuplicates();
             Program.UndoRedoService.Clear();
 
             return !this.isStopped;
@@ -61,44 +64,41 @@ namespace Concierge.Services
         /// <summary>
         /// Stops the character creation process.
         /// </summary>
-        public void Stop()
+        public void StopCreation()
         {
             this.isStopped = true;
         }
 
-        private static void RunDefinitions()
+        private void RunDefinitions()
         {
-            var character = Program.CcsFile.Character;
-            character.Detail.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Disposition.Class1.Name, false));
+            this.character.Detail.Proficiencies.AddRange(LevelingMap.GetProficiencies(this.character.Disposition.Class1.Name, false));
 
-            var saves = LevelingMap.GetSavingThrows(character.Disposition.Class1.Name);
-            character.Attributes.Strength.Proficiency = saves.Strength;
-            character.Attributes.Dexterity.Proficiency = saves.Dexterity;
-            character.Attributes.Constitution.Proficiency = saves.Constitution;
-            character.Attributes.Intelligence.Proficiency = saves.Intelligence;
-            character.Attributes.Wisdom.Proficiency = saves.Wisdom;
-            character.Attributes.Charisma.Proficiency = saves.Charisma;
+            var saves = LevelingMap.GetSavingThrows(this.character.Disposition.Class1.Name);
+            this.character.Attributes.Strength.Proficiency = saves.Strength;
+            this.character.Attributes.Dexterity.Proficiency = saves.Dexterity;
+            this.character.Attributes.Constitution.Proficiency = saves.Constitution;
+            this.character.Attributes.Intelligence.Proficiency = saves.Intelligence;
+            this.character.Attributes.Wisdom.Proficiency = saves.Wisdom;
+            this.character.Attributes.Charisma.Proficiency = saves.Charisma;
 
-            if (character.Disposition.Class2.Level > 0)
+            if (this.character.Disposition.Class2.Level > 0)
             {
-                character.Detail.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Disposition.Class2.Name, true));
+                this.character.Detail.Proficiencies.AddRange(LevelingMap.GetProficiencies(this.character.Disposition.Class2.Name, true));
             }
 
-            if (character.Disposition.Class3.Level > 0)
+            if (this.character.Disposition.Class3.Level > 0)
             {
-                character.Detail.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Disposition.Class3.Name, true));
+                this.character.Detail.Proficiencies.AddRange(LevelingMap.GetProficiencies(this.character.Disposition.Class3.Name, true));
             }
 
-            var senses = LevelingMap.GetRaceSenses(character.Disposition.Race);
-            character.Detail.Senses.BaseMovement = senses.Movement;
-            character.Detail.Senses.Vision = senses.VisionType;
+            var senses = LevelingMap.GetRaceSenses(this.character.Disposition.Race);
+            this.character.Detail.Senses.BaseMovement = senses.Movement;
+            this.character.Detail.Senses.Vision = senses.VisionType;
         }
 
-        private static void RemoveDuplicates()
+        private void RemoveDuplicates()
         {
-            var character = Program.CcsFile.Character;
-
-            character.Detail.Proficiencies = character.Detail.Proficiencies.Distinct().ToList();
+            this.character.Detail.Proficiencies = this.character.Detail.Proficiencies.Distinct().ToList();
         }
 
         private void RunSetupSteps()
@@ -107,7 +107,7 @@ namespace Concierge.Services
             this.NextSetupStep(typeof(MagicClassWindow), "Continue");
             this.NextSetupStep(typeof(AttributesWindow), "Skip Section");
             this.NextSetupStep(typeof(LevelUpWindow), "Skip Section");
-            RunDefinitions();
+            this.RunDefinitions();
             this.NextSetupStep(typeof(SensesWindow), "Skip Section");
             this.NextSetupStep(typeof(HealthWindow), "Skip Section");
             this.NextSetupStep(typeof(HitDiceWindow), "Skip Section");
@@ -152,7 +152,7 @@ namespace Concierge.Services
 
                     if (confirmExitResult is ConciergeResult.Yes or ConciergeResult.Exit)
                     {
-                        this.Stop();
+                        this.StopCreation();
                     }
                 }
             }
