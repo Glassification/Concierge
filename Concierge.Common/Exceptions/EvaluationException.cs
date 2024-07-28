@@ -16,7 +16,7 @@ namespace Concierge.Common.Exceptions
         /// </summary>
         /// <param name="severity">The severity level of the exception. Defaults to Severity.Release.</param>
         public EvaluationException(Severity severity = Severity.Release)
-            : base("There is nothing to evaluate.", severity, false)
+            : base("No valid expression was detected to evaluate.", severity, false)
         {
         }
     }

@@ -95,7 +95,9 @@ namespace Concierge.Display.Windows
             }
             else
             {
-                this.adventurers.Add(this.ToAdventurer());
+                var adventurer = this.ToAdventurer();
+                this.adventurers.Add(adventurer);
+                Program.UndoRedoService.AddCommand(new AddCommand<Adventurer>(this.adventurers, adventurer, this.ConciergePage));
             }
 
             this.CloseConciergeWindow();
@@ -148,7 +150,6 @@ namespace Concierge.Display.Windows
             this.itemsAdded = true;
             var item = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Adventurer>(this.adventurers, item, this.ConciergePage));
             return item;
         }
 
@@ -178,7 +179,10 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.adventurers.Add(this.ToAdventurer());
+            var adventurer = this.ToAdventurer();
+            this.adventurers.Add(adventurer);
+            Program.UndoRedoService.AddCommand(new AddCommand<Adventurer>(this.adventurers, adventurer, this.ConciergePage));
+
             this.ClearFields();
             this.InvokeApplyChanges();
         }

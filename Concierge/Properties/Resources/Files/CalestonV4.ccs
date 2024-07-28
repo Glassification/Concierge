@@ -2479,9 +2479,50 @@
           ],
           "Created": "2023-02-22T18:16:29",
           "Id": "e5ca1f3a-3120-4ff4-87ba-831784b49ffc",
-          "IsExpanded": true,
+          "IsExpanded": false,
           "IsCustom": false,
           "Name": "Session Notes"
+        },
+        {
+          "Documents": [
+            {
+              "Rtf": "",
+              "Created": "2024-07-27T18:31:00.2819271-05:00",
+              "Id": "3e6904c8-0a24-456c-b494-4626ce70c8fc",
+              "IsExpanded": false,
+              "IsCustom": false,
+              "Name": "Gilbert"
+            },
+            {
+              "Rtf": "",
+              "Created": "2024-07-27T18:31:00.2820232-05:00",
+              "Id": "e4d29594-f269-4f1b-ada5-712ccfdf60e7",
+              "IsExpanded": false,
+              "IsCustom": false,
+              "Name": "Kussandrik"
+            },
+            {
+              "Rtf": "",
+              "Created": "2024-07-27T18:31:00.2820255-05:00",
+              "Id": "cb05d05d-8095-4149-b5e3-40df558b8078",
+              "IsExpanded": false,
+              "IsCustom": false,
+              "Name": "Declan"
+            },
+            {
+              "Rtf": "",
+              "Created": "2024-07-27T18:31:00.2820274-05:00",
+              "Id": "db827da8-5c2f-446e-9b55-02210e957ec3",
+              "IsExpanded": false,
+              "IsCustom": false,
+              "Name": "Gray"
+            }
+          ],
+          "Created": "2024-07-27T18:31:00.2815555-05:00",
+          "Id": "cb136c4d-48a5-475e-97c2-a8c1e1d07044",
+          "IsExpanded": false,
+          "IsCustom": false,
+          "Name": "Party Members"
         }
       ]
     },
@@ -2998,9 +3039,9 @@
       "Platinum": 500
     }
   },
-  "Hash": "29BD25EC2F79DB200E4B6E392CEFAB391B9C12F629581FA58FB4ADF0CC80E49C",
+  "Hash": "0D8B6681A11D0DEC08E053CD4186CEB949E22FF57904E9E56B282104466E0A4E",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-07-27T13:42:23.8789265-05:00",
+  "LastSaveDate": "2024-07-27T18:31:18.0277535-05:00",
   "Version": {
     "Major": 5,
     "Minor": 9,

@@ -5,7 +5,7 @@
 namespace Concierge.Character
 {
     using System.Collections.Generic;
-    using System.Linq;
+
     using Concierge.Character.Aspects;
     using Concierge.Character.Companions;
     using Concierge.Character.Details;
