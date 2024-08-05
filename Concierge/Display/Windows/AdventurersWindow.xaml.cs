@@ -195,6 +195,10 @@ namespace Concierge.Display.Windows
                 Program.MainWindow?.DisplayStatusText("Generated missing character entries in journal.");
                 Program.UndoRedoService.AddCommand(new CompositeCommand(ConciergePages.None, [.. commands]));
             }
+            else
+            {
+                Program.MainWindow?.DisplayStatusText("No missing character entires detected in journal.");
+            }
         }
     }
 }

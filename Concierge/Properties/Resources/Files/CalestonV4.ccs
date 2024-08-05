@@ -7,7 +7,8 @@
         "Race": "Human",
         "Class": "Cleric",
         "Level": 10,
-        "Status": 0
+        "Status": 0,
+        "Type": 1
       },
       {
         "PlayerName": "Daniel",
@@ -15,7 +16,8 @@
         "Race": "Half-Elf",
         "Class": "Barbarian",
         "Level": 10,
-        "Status": 0
+        "Status": 0,
+        "Type": 1
       },
       {
         "PlayerName": "Kaleigh",
@@ -23,7 +25,8 @@
         "Race": "Half-Elf",
         "Class": "Sorcerer",
         "Level": 10,
-        "Status": 0
+        "Status": 0,
+        "Type": 1
       },
       {
         "PlayerName": "Thomas",
@@ -31,7 +34,8 @@
         "Race": "Half-Elf",
         "Class": "Rogue",
         "Level": 10,
-        "Status": 0
+        "Status": 0,
+        "Type": 0
       },
       {
         "PlayerName": "Travis",
@@ -39,7 +43,8 @@
         "Race": "Goliath",
         "Class": "Fighter",
         "Level": 10,
-        "Status": 0
+        "Status": 0,
+        "Type": 1
       }
     ],
     "Attributes": {
@@ -627,7 +632,7 @@
               "Name": "Indian Red",
               "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
             },
-            "Kind": 557
+            "Kind": 559
           },
           "Id": "445e7a78-cecc-4bc3-8c19-aab50dc976ba",
           "IsCustom": false,
@@ -655,7 +660,7 @@
               "Name": "Indian Red",
               "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
             },
-            "Kind": 557
+            "Kind": 559
           },
           "Id": "5fd39538-e488-4232-83a1-dfc54de8ba88",
           "IsCustom": false,
@@ -683,7 +688,7 @@
               "Name": "Steel Blue",
               "Id": "a5c8f700-1cfc-4dec-a055-8d7be15cd5da"
             },
-            "Kind": 2427
+            "Kind": 2433
           },
           "Id": "d031c3c5-e950-4498-98d3-fa89db302ef0",
           "IsCustom": false,
@@ -2516,6 +2521,14 @@
               "IsExpanded": false,
               "IsCustom": false,
               "Name": "Gray"
+            },
+            {
+              "Rtf": "",
+              "Created": "2024-07-27T21:28:00.852948-05:00",
+              "Id": "6e67824e-4dc2-4a1a-8714-a7dc5458d94f",
+              "IsExpanded": false,
+              "IsCustom": false,
+              "Name": "Caleston Nailo"
             }
           ],
           "Created": "2024-07-27T18:31:00.2815555-05:00",
@@ -3039,13 +3052,13 @@
       "Platinum": 500
     }
   },
-  "Hash": "0D8B6681A11D0DEC08E053CD4186CEB949E22FF57904E9E56B282104466E0A4E",
+  "Hash": "63374DD4215470810894554FD78A8C76522274C94D4B21A7C4E278078D8218A0",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-07-27T18:31:18.0277535-05:00",
+  "LastSaveDate": "2024-07-28T14:04:47.0842936-05:00",
   "Version": {
     "Major": 5,
     "Minor": 9,
-    "Patch": 0
+    "Patch": 1
   },
   "IsEmpty": false
 }

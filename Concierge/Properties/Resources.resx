@@ -163,6 +163,9 @@
   <data name="AdventurerWindow_StatusComboBox" xml:space="preserve">
     <value>Specifies if a party member is still in the party, has left, or has been killed.</value>
   </data>
+  <data name="AdventurerWindow_TypeComboBox" xml:space="preserve">
+    <value>I come from under the hill. From under hills and over hills my path has led. And through the air, I am he who walks unseen.</value>
+  </data>
   <data name="Alignment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Alignment.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

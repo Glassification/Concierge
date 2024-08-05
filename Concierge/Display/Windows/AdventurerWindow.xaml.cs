@@ -33,11 +33,13 @@ namespace Concierge.Display.Windows
             this.RaceComboBox.ItemsSource = ComboBoxGenerator.RacesComboBox();
             this.ClassComboBox.ItemsSource = ComboBoxGenerator.ClassesComboBox();
             this.StatusComboBox.ItemsSource = ComboBoxGenerator.PartyStatusComboBox();
+            this.TypeComboBox.ItemsSource = ComboBoxGenerator.PartyTypeComboBox();
             this.ConciergePage = ConciergePages.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.RaceComboBox);
             this.SetMouseOverEvents(this.ClassComboBox);
+            this.SetMouseOverEvents(this.TypeComboBox);
             this.SetMouseOverEvents(this.StatusComboBox);
             this.SetMouseOverEvents(this.LevelUpDown);
             this.SetMouseOverEvents(this.PlayerNameTextBox, this.PlayerNameTextBackground);
@@ -113,6 +115,7 @@ namespace Concierge.Display.Windows
             this.RaceComboBox.Text = adventurer.Race;
             this.ClassComboBox.Text = adventurer.Class;
             this.StatusComboBox.Text = adventurer.Status.ToString();
+            this.TypeComboBox.Text = adventurer.Type.PascalCase();
 
             Program.NotDrawing();
         }
@@ -127,6 +130,7 @@ namespace Concierge.Display.Windows
             this.RaceComboBox.Text = string.Empty;
             this.ClassComboBox.Text = string.Empty;
             this.StatusComboBox.Text = PartyStatus.Alive.ToString();
+            this.TypeComboBox.Text = PartyType.PartyMember.PascalCase();
 
             Program.NotDrawing();
         }
@@ -141,6 +145,7 @@ namespace Concierge.Display.Windows
             adventurer.Race = this.RaceComboBox.Text;
             adventurer.Class = this.ClassComboBox.Text;
             adventurer.Status = this.StatusComboBox.Text.ToEnum<PartyStatus>();
+            adventurer.Type = this.TypeComboBox.Text.ToEnum<PartyType>();
 
             Program.UndoRedoService.AddCommand(new EditCommand<Adventurer>(adventurer, oldItem, this.ConciergePage));
         }
@@ -163,6 +168,7 @@ namespace Concierge.Display.Windows
                 Race = this.RaceComboBox.Text,
                 Class = this.ClassComboBox.Text,
                 Status = this.StatusComboBox.Text.ToEnum<PartyStatus>(),
+                Type = this.TypeComboBox.Text.ToEnum<PartyType>(),
             };
         }
 

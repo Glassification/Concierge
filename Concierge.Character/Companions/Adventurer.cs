@@ -8,6 +8,7 @@ namespace Concierge.Character.Companions
 
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -24,6 +25,7 @@ namespace Concierge.Character.Companions
             this.PlayerName = string.Empty;
             this.Race = string.Empty;
             this.Class = string.Empty;
+            this.Type = PartyType.PartyMember;
         }
 
         /// <summary>
@@ -61,6 +63,11 @@ namespace Concierge.Character.Companions
         /// </summary>
         public PartyStatus Status { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of the adventurer character.
+        /// </summary>
+        public PartyType Type { get; set; }
+
         [JsonIgnore]
         public Brush IconColor
         {
@@ -72,6 +79,21 @@ namespace Concierge.Character.Companions
                     PartyStatus.Missing => ConciergeBrushes.Deer,
                     PartyStatus.Dead => Brushes.IndianRed,
                     _ => Brushes.Red,
+                };
+            }
+        }
+
+        [JsonIgnore]
+        public PackIconKind Icon
+        {
+            get
+            {
+                return this.Type switch
+                {
+                    PartyType.PlayerCharacter => PackIconKind.AccountTie,
+                    PartyType.PartyMember => PackIconKind.Account,
+                    PartyType.Npc => PackIconKind.AccountSchool,
+                    _ => PackIconKind.Error,
                 };
             }
         }
@@ -90,6 +112,7 @@ namespace Concierge.Character.Companions
                 Class = this.Class,
                 Level = this.Level,
                 Status = this.Status,
+                Type = this.Type,
             };
         }
 

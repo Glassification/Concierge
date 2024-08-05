@@ -5,6 +5,7 @@
 namespace Concierge.Display.Controls
 {
     using System;
+    using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
@@ -18,12 +19,18 @@ namespace Concierge.Display.Controls
     /// </summary>
     public partial class ComboBoxItemControl : UserControl
     {
-        private Brush originalBackground;
+        private readonly Brush originalBackground;
 
         public ComboBoxItemControl()
         {
+            var resourceDictionary = new ResourceDictionary
+            {
+                Source = new Uri("Display/Dictionaries/FontDictionary.xaml", UriKind.RelativeOrAbsolute),
+            };
+
             this.InitializeComponent();
 
+            this.Style = resourceDictionary["UserControlFontStyle"] as Style;
             this.MainBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;
             this.MainGrid.Background = ConciergeBrushes.ControlForeBlue;
             this.originalBackground = ConciergeBrushes.ControlForeBlue;
@@ -102,15 +109,23 @@ namespace Concierge.Display.Controls
             this.Tag = tag;
         }
 
-        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, object tag, Brush background)
-            : this()
+        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, FontFamily font, Brush background)
         {
+            this.InitializeComponent();
+
+            this.FontFamily = font;
+            this.MainBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;
+            this.MainGrid.Background = ConciergeBrushes.ControlForeBlue;
+            this.originalBackground = ConciergeBrushes.ControlForeBlue;
+
             this.ItemIcon.Kind = icon;
             this.ItemIcon.Foreground = iconColor;
 
-            this.ItemName.Text = name;
+            this.ItemName.Text = font.ToString();
             this.ItemName.Foreground = Brushes.White;
-            this.Tag = tag;
+
+            this.ToolTip = font.ToString();
+            this.Tag = font;
 
             this.MainBorder.BorderBrush = background;
             this.MainGrid.Background = background;

@@ -75,9 +75,26 @@ namespace Concierge.Display.Controls
         public void DrawVolume()
         {
             var isMuted = AppSettingsManager.UserSettings.MuteSounds;
+            var volume = AppSettingsManager.UserSettings.Volume;
 
-            this.VolumeIcon.Kind = isMuted ? PackIconKind.VolumeMute : PackIconKind.VolumeHigh;
-            this.VolumeIcon.ToolTip = isMuted ? "Sound Off" : $"Sound On ({AppSettingsManager.UserSettings.Volume}%)";
+            this.VolumeIcon.Kind = GetSoundIcon(isMuted, volume);
+            this.VolumeIcon.ToolTip = isMuted ? "Sound Off" : $"Sound On ({volume}%)";
+        }
+
+        private static PackIconKind GetSoundIcon(bool isMuted, int volume)
+        {
+            if (isMuted)
+            {
+                return PackIconKind.VolumeMute;
+            }
+
+            return volume switch
+            {
+                int n when n <= 33 => PackIconKind.VolumeLow,
+                int n when n > 33 && n <= 66 => PackIconKind.VolumeMedium,
+                int n when n > 66 => PackIconKind.VolumeHigh,
+                _ => PackIconKind.VolumeMute,
+            };
         }
 
         private static TextBlock SetTextSize(TextBlock textBlock, double fontSize, double columnWidth)

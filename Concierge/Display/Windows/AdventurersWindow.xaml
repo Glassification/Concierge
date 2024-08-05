@@ -130,7 +130,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <materialDesign:PackIcon
-                                Kind="AccountMultiple"
+                                Kind="{Binding Icon}"
                                 Foreground="{Binding IconColor}"
                                 Height="auto"
                                 Width="auto"

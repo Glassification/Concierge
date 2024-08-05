@@ -198,6 +198,15 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I come from under the hill. From under hills and over hills my path has led. And through the air, I am he who walks unseen..
+        /// </summary>
+        internal static string AdventurerWindow_TypeComboBox {
+            get {
+                return ResourceManager.GetString("AdventurerWindow_TypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lawful Good
         ///Neutral Good
         ///Chaotic Good

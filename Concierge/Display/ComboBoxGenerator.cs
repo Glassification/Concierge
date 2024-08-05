@@ -6,7 +6,6 @@ namespace Concierge.Display
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Media;
 
@@ -18,13 +17,11 @@ namespace Concierge.Display
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
     using Concierge.Search.Enums;
+    using Concierge.Services;
     using MaterialDesignThemes.Wpf;
 
     public static class ComboBoxGenerator
     {
-        private static readonly double[] fontSizes = [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72];
-        private static readonly FontFamily[] fontFamilies = [.. Fonts.SystemFontFamilies.OrderBy(f => f.Source)];
-
         /// <summary>
         /// Generates a list of DetailedComboBoxItemControl using only custom items, sorted by their name.
         /// </summary>
@@ -558,6 +555,16 @@ namespace Concierge.Display
             ];
         }
 
+        public static List<ComboBoxItemControl> PartyTypeComboBox()
+        {
+            return
+            [
+                new (PackIconKind.AccountTie, Brushes.Goldenrod, PartyType.PlayerCharacter),
+                new (PackIconKind.Account, ConciergeBrushes.DarkPink, PartyType.PartyMember),
+                new (PackIconKind.AccountSchool, Brushes.SteelBlue, PartyType.Npc),
+            ];
+        }
+
         public static List<ComboBoxItemControl> PartyStatusComboBox()
         {
             return
@@ -571,7 +578,8 @@ namespace Concierge.Display
         public static List<ComboBoxItemControl> FontSizeComboBox()
         {
             var items = new List<ComboBoxItemControl>();
-            foreach (var size in fontSizes)
+            var sizes = FontService.ListFontSizes();
+            foreach (var size in sizes)
             {
                 items.Add(new ComboBoxItemControl(PackIconKind.FormatSize, Brushes.LightBlue, size.ToString(), ConciergeBrushes.ControlForeDarkBlue));
             }
@@ -582,9 +590,10 @@ namespace Concierge.Display
         public static List<ComboBoxItemControl> FontFamilyComboBox()
         {
             var items = new List<ComboBoxItemControl>();
-            foreach (var font in fontFamilies)
+            var fonts = FontService.ListValidFonts();
+            foreach (var font in fonts)
             {
-                items.Add(new ComboBoxItemControl(PackIconKind.FormatFont, Brushes.LightBlue, font.ToString(), font, ConciergeBrushes.ControlForeDarkBlue));
+                items.Add(new ComboBoxItemControl(PackIconKind.FormatFont, Brushes.LightBlue, font, ConciergeBrushes.ControlForeDarkBlue));
             }
 
             return items;
