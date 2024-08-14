@@ -71,7 +71,6 @@ namespace Concierge.Display
 
             this.GridContent.Width = GridContentWidthClose;
             this.IsMenuOpen = false;
-            this.IgnoreListItemSelectionChanged = true;
 
             this.SetListViewItemTag();
             this.SetUndoRedoState();
@@ -96,6 +95,10 @@ namespace Concierge.Display
 
         public static double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
 
+        public static bool IsControl => (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
+
+        public static bool IsShift => (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
+
         public ConciergePage? CurrentPage => (this.ListViewMenu.SelectedItem as ListViewItem)?.Tag as ConciergePage;
 
         public double ScaleValueX
@@ -113,12 +116,6 @@ namespace Concierge.Display
         }
 
         public bool IsMenuOpen { get; set; }
-
-        private static bool IsControl => (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
-
-        private static bool IsShift => (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
-
-        private bool IgnoreListItemSelectionChanged { get; set; }
 
         public void CloseWindow()
         {
@@ -403,24 +400,20 @@ namespace Concierge.Display
 
         public void Redo()
         {
-            if (!Program.UndoRedoService.CanRedo)
+            if (Program.UndoRedoService.CanRedo)
             {
-                return;
+                Program.UndoRedoService.Redo(this);
+                this.DrawAll();
             }
-
-            Program.UndoRedoService.Redo(this);
-            this.DrawAll();
         }
 
         public void Undo()
         {
-            if (!Program.UndoRedoService.CanUndo)
+            if (Program.UndoRedoService.CanUndo)
             {
-                return;
+                Program.UndoRedoService.Undo(this);
+                this.DrawAll();
             }
-
-            Program.UndoRedoService.Undo(this);
-            this.DrawAll();
         }
 
         public void PageSelection(ConciergePage? conciergePage)
@@ -441,12 +434,7 @@ namespace Concierge.Display
 
         public void MoveSelection(ConciergePages page)
         {
-            if (page == ConciergePages.None)
-            {
-                return;
-            }
-
-            if (page >= 0 && ((int)page) < this.ListViewMenu.Items.Count)
+            if (page != ConciergePages.None && page >= 0 && ((int)page) < this.ListViewMenu.Items.Count)
             {
                 this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[(int)page];
                 this.UpdateLayout();
@@ -675,7 +663,6 @@ namespace Concierge.Display
             Program.UndoRedoService.Clear();
 
             this.JournalPage.ClearTextBox();
-
             this.autosaveTimer.Stop();
         }
 

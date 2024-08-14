@@ -1,8 +1,8 @@
-﻿// <copyright file="ListScriptService.cs" company="Thomas Beckett">
+﻿// <copyright file="ListRunner.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Console.Services
+namespace Concierge.Console.Runners
 {
     using System.Linq;
 
@@ -13,7 +13,7 @@ namespace Concierge.Console.Services
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
 
-    public sealed class ListScriptService : ScriptService
+    public sealed class ListRunner : Runner
     {
         private static readonly string[] names =
         [
@@ -38,12 +38,12 @@ namespace Concierge.Console.Services
             "GetId",
         ];
 
-        public ListScriptService()
+        public ListRunner()
             : this(true)
         {
         }
 
-        public ListScriptService(bool isFirst)
+        public ListRunner(bool isFirst)
         {
             this.IsFirstList = isFirst;
         }

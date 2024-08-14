@@ -1,14 +1,16 @@
-﻿// <copyright file="UnknownScriptService.cs" company="Thomas Beckett">
+﻿// <copyright file="EchoRunner.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Console.Services
+namespace Concierge.Console.Runners
 {
     using System;
 
-    public sealed class UnknownScriptService : ScriptService
+    using Concierge.Console.Enums;
+
+    public sealed class EchoRunner : Runner
     {
-        public UnknownScriptService()
+        public EchoRunner()
         {
         }
 
@@ -18,12 +20,17 @@ namespace Concierge.Console.Services
 
         public override ConsoleResult Run(ConsoleCommand command)
         {
-            return ConsoleResult.DefaultError(command.Command);
+            return new ConsoleResult(command.Argument, ResultType.Information);
         }
 
         public override string List()
         {
             return string.Empty;
+        }
+
+        public override bool Contains(string name)
+        {
+            return name.Contains("Echo", StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

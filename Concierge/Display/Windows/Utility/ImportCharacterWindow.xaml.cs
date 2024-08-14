@@ -24,29 +24,26 @@ namespace Concierge.Display.Utility
     /// </summary>
     public partial class ImportCharacterWindow : ConciergeWindow
     {
-        private readonly FileAccessService fileAccessService;
-        private readonly CharacterImportService characterImporter;
+        private readonly FileAccessService fileAccessService = new ();
+        private readonly CharacterImportService characterImporter = new ();
+
+        private bool imported;
 
         public ImportCharacterWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
-
-            this.fileAccessService = new FileAccessService();
-            this.characterImporter = new CharacterImportService();
         }
 
         public override string HeaderText => "Import Details";
 
         public override string WindowName => nameof(ImportCharacterWindow);
 
-        private bool Imported { get; set; }
-
         public override object? ShowWindow()
         {
             this.ShowConciergeWindow();
 
-            return this.Imported;
+            return this.imported;
         }
 
         private void UncheckAllExcept(string name)
@@ -181,7 +178,7 @@ namespace Concierge.Display.Utility
                 return;
             }
 
-            this.Imported = true;
+            this.imported = true;
             Program.UndoRedoService.AddCommand(new EditCommand<CharacterSheet>(Program.CcsFile.Character, oldItem, this.ConciergePage));
             if (button.Name.Contains("Close"))
             {

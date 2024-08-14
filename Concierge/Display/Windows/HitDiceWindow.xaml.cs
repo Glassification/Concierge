@@ -16,13 +16,14 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class HitDiceWindow : ConciergeWindow
     {
+        private HitDice hitDice = new ();
+
         public HitDiceWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePages.None;
-            this.HitDice = new HitDice();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.UsedD6UpDown);
@@ -39,11 +40,9 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(HitDiceWindow);
 
-        private HitDice HitDice { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.HitDice = Program.CcsFile.Character.Vitality.HitDice;
+            this.hitDice = Program.CcsFile.Character.Vitality.HitDice;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -61,7 +60,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.HitDice = castItem;
+            this.hitDice = castItem;
             this.FillFields();
             this.SetUsedLimit();
             this.ShowConciergeWindow();
@@ -79,34 +78,34 @@ namespace Concierge.Display.Windows
         {
             Program.Drawing();
 
-            this.TotalD6UpDown.Value = this.HitDice.TotalD6;
-            this.TotalD8UpDown.Value = this.HitDice.TotalD8;
-            this.TotalD10UpDown.Value = this.HitDice.TotalD10;
-            this.TotalD12UpDown.Value = this.HitDice.TotalD12;
+            this.TotalD6UpDown.Value = this.hitDice.TotalD6;
+            this.TotalD8UpDown.Value = this.hitDice.TotalD8;
+            this.TotalD10UpDown.Value = this.hitDice.TotalD10;
+            this.TotalD12UpDown.Value = this.hitDice.TotalD12;
 
-            this.UsedD6UpDown.Value = this.HitDice.SpentD6;
-            this.UsedD8UpDown.Value = this.HitDice.SpentD8;
-            this.UsedD10UpDown.Value = this.HitDice.SpentD10;
-            this.UsedD12UpDown.Value = this.HitDice.SpentD12;
+            this.UsedD6UpDown.Value = this.hitDice.SpentD6;
+            this.UsedD8UpDown.Value = this.hitDice.SpentD8;
+            this.UsedD10UpDown.Value = this.hitDice.SpentD10;
+            this.UsedD12UpDown.Value = this.hitDice.SpentD12;
 
             Program.NotDrawing();
         }
 
         private void UpdateHitDice()
         {
-            var oldItem = this.HitDice.DeepCopy();
+            var oldItem = this.hitDice.DeepCopy();
 
-            this.HitDice.TotalD6 = this.TotalD6UpDown.Value;
-            this.HitDice.TotalD8 = this.TotalD8UpDown.Value;
-            this.HitDice.TotalD10 = this.TotalD10UpDown.Value;
-            this.HitDice.TotalD12 = this.TotalD12UpDown.Value;
+            this.hitDice.TotalD6 = this.TotalD6UpDown.Value;
+            this.hitDice.TotalD8 = this.TotalD8UpDown.Value;
+            this.hitDice.TotalD10 = this.TotalD10UpDown.Value;
+            this.hitDice.TotalD12 = this.TotalD12UpDown.Value;
 
-            this.HitDice.SpentD6 = this.UsedD6UpDown.Value;
-            this.HitDice.SpentD8 = this.UsedD8UpDown.Value;
-            this.HitDice.SpentD10 = this.UsedD10UpDown.Value;
-            this.HitDice.SpentD12 = this.UsedD12UpDown.Value;
+            this.hitDice.SpentD6 = this.UsedD6UpDown.Value;
+            this.hitDice.SpentD8 = this.UsedD8UpDown.Value;
+            this.hitDice.SpentD10 = this.UsedD10UpDown.Value;
+            this.hitDice.SpentD12 = this.UsedD12UpDown.Value;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(this.HitDice, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(this.hitDice, oldItem, this.ConciergePage));
         }
 
         private void SetUsedLimit()

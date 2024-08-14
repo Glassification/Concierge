@@ -16,13 +16,14 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class PersonalityWindow : ConciergeWindow
     {
+        private Personality personality = new ();
+
         public PersonalityWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePages.None;
-            this.Personality = new Personality();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.Trait1TextBox, this.Trait1TextBackground);
@@ -37,11 +38,9 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(PersonalityWindow);
 
-        private Personality Personality { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Personality = Program.CcsFile.Character.Detail.Personality;
+            this.personality = Program.CcsFile.Character.Detail.Personality;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -58,7 +57,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Personality = castItem;
+            this.personality = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -75,28 +74,28 @@ namespace Concierge.Display.Windows
         {
             Program.Drawing();
 
-            this.Trait1TextBox.Text = this.Personality.Trait1;
-            this.Trait2TextBox.Text = this.Personality.Trait2;
-            this.IdealTextBox.Text = this.Personality.Ideal;
-            this.BondTextBox.Text = this.Personality.Bond;
-            this.FlawTextBox.Text = this.Personality.Flaw;
-            this.NotesTextBox.Text = this.Personality.Notes;
+            this.Trait1TextBox.Text = this.personality.Trait1;
+            this.Trait2TextBox.Text = this.personality.Trait2;
+            this.IdealTextBox.Text = this.personality.Ideal;
+            this.BondTextBox.Text = this.personality.Bond;
+            this.FlawTextBox.Text = this.personality.Flaw;
+            this.NotesTextBox.Text = this.personality.Notes;
 
             Program.NotDrawing();
         }
 
         private void UpdatePersonality()
         {
-            var oldItem = this.Personality.DeepCopy();
+            var oldItem = this.personality.DeepCopy();
 
-            this.Personality.Trait1 = this.Trait1TextBox.Text;
-            this.Personality.Trait2 = this.Trait2TextBox.Text;
-            this.Personality.Ideal = this.IdealTextBox.Text;
-            this.Personality.Bond = this.BondTextBox.Text;
-            this.Personality.Flaw = this.FlawTextBox.Text;
-            this.Personality.Notes = this.NotesTextBox.Text;
+            this.personality.Trait1 = this.Trait1TextBox.Text;
+            this.personality.Trait2 = this.Trait2TextBox.Text;
+            this.personality.Ideal = this.IdealTextBox.Text;
+            this.personality.Bond = this.BondTextBox.Text;
+            this.personality.Flaw = this.FlawTextBox.Text;
+            this.personality.Notes = this.NotesTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Personality>(this.Personality, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Personality>(this.personality, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

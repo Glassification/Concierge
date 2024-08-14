@@ -13,12 +13,12 @@ namespace Concierge.Console.Scripts
 
     public sealed class ReadWriterScript<T> : IScript
     {
+        private readonly T item;
+
         public ReadWriterScript(T item)
         {
-            this.Item = item;
+            this.item = item;
         }
-
-        private T Item { get; set; }
 
         public ConsoleResult Evaluate(ConsoleCommand command)
         {
@@ -47,9 +47,9 @@ namespace Concierge.Console.Scripts
                 return new ConsoleResult($"No file specified to read {command.Name} from.", ResultType.Error);
             }
 
-            if (this.Item is not CcsFile)
+            if (this.item is not CcsFile)
             {
-                return new ConsoleResult($"{this.Item?.GetType()?.Name} does not support reading.", ResultType.Error);
+                return new ConsoleResult($"{this.item?.GetType()?.Name} does not support reading.", ResultType.Error);
             }
 
             try
@@ -72,7 +72,7 @@ namespace Concierge.Console.Scripts
 
             try
             {
-                var rawItem = JsonConvert.SerializeObject(this.Item, Formatting.Indented);
+                var rawItem = JsonConvert.SerializeObject(this.item, Formatting.Indented);
                 File.WriteAllText(command.Argument, rawItem);
 
                 return new ConsoleResult($"Wrote {command.Name} to {command.Argument}.", ResultType.Success);
@@ -85,9 +85,9 @@ namespace Concierge.Console.Scripts
 
         private ConsoleResult New(ConsoleCommand command)
         {
-            if (this.Item is not CcsFile)
+            if (this.item is not CcsFile)
             {
-                return new ConsoleResult($"{this.Item?.GetType()?.Name} does not support new.", ResultType.Error);
+                return new ConsoleResult($"{this.item?.GetType()?.Name} does not support new.", ResultType.Error);
             }
 
             try

@@ -4,6 +4,7 @@
 
 namespace Concierge.Console
 {
+    using System;
     using System.Text.RegularExpressions;
 
     using Concierge.Common;
@@ -66,6 +67,14 @@ namespace Concierge.Console
         {
             command = command.Strip(Constants.ConsolePrompt);
             this.Command = command;
+
+            if (command.StartsWith("Echo", StringComparison.InvariantCultureIgnoreCase))
+            {
+                this.IsValid = true;
+                this.Name = "Echo";
+                this.Argument = command.ReplaceFirst("Echo", string.Empty, StringComparison.InvariantCultureIgnoreCase);
+                return;
+            }
 
             var tokens = command.Split('.', 2);
             if (tokens.Length < 1)

@@ -6,7 +6,6 @@ namespace Concierge.Display.Pages
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text.RegularExpressions;
     using System.Windows;
     using System.Windows.Controls;
@@ -37,9 +36,9 @@ namespace Concierge.Display.Pages
 
         private delegate void DrawList();
 
-        private List<MagicalClass> MagicalClassDisplayList => Program.CcsFile.Character.SpellCasting.MagicalClasses.Filter(this.SearchFilter.FilterText).ToList();
+        private List<MagicalClass> MagicalClassDisplayList => [.. Program.CcsFile.Character.SpellCasting.MagicalClasses.Filter(this.SearchFilter.FilterText)];
 
-        private List<Spell> SpellDisplayList => Program.CcsFile.Character.SpellCasting.Spells.Filter(this.SearchFilter.FilterText).ToList();
+        private List<Spell> SpellDisplayList => [.. Program.CcsFile.Character.SpellCasting.Spells.Filter(this.SearchFilter.FilterText)];
 
         public override void Draw(bool isNewCharacterSheet = false)
         {
@@ -53,11 +52,7 @@ namespace Concierge.Display.Pages
             if (itemToEdit is Spell spell)
             {
                 var index = this.SpellListDataGrid.SelectedIndex;
-                WindowService.ShowEdit(
-                    spell,
-                    typeof(SpellWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Spellcasting);
+                WindowService.ShowEdit(spell, typeof(SpellWindow), this.Window_ApplyChanges, ConciergePages.Spellcasting);
                 this.DrawSpellList();
                 this.DrawMagicalClasses();
                 this.SpellListDataGrid.SetSelectedIndex(index);
@@ -65,11 +60,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is MagicalClass magicClass)
             {
                 var index = this.MagicalClassDataGrid.SelectedIndex;
-                WindowService.ShowEdit(
-                    magicClass,
-                    typeof(MagicClassWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Spellcasting);
+                WindowService.ShowEdit(magicClass, typeof(MagicClassWindow), this.Window_ApplyChanges, ConciergePages.Spellcasting);
                 this.DrawMagicalClasses();
                 this.MagicalClassDataGrid.SetSelectedIndex(index);
             }
@@ -104,7 +95,6 @@ namespace Concierge.Display.Pages
         private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
         {
             var index = dataGrid.NextItem(list, limit, increment, this.ConciergePages);
-
             if (index != -1)
             {
                 drawList();
@@ -272,12 +262,12 @@ namespace Concierge.Display.Pages
         private void SpellSlotsDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.SpellCasting.SpellSlots,
                 typeof(SpellSlotsWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Spellcasting);
+
             this.DrawSpellSlots();
         }
 
@@ -310,7 +300,6 @@ namespace Concierge.Display.Pages
             var spell = (Spell)this.SpellListDataGrid.SelectedItem;
             var index = this.SpellListDataGrid.SelectedIndex;
             var concentratedSpell = magic.ConcentratedSpell;
-
             if (concentratedSpell is not null && concentratedSpell.Id != spell.Id && spell.Concentration)
             {
                 var messageResult = ConciergeMessageBox.Show(

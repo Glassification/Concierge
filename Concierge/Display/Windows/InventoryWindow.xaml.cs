@@ -30,6 +30,11 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class InventoryWindow : ConciergeWindow
     {
+        private bool equippedItem;
+        private bool editing;
+        private Inventory selectedItem = new ();
+        private List<Inventory> items = [];
+
         public InventoryWindow()
         {
             this.InitializeComponent();
@@ -39,8 +44,6 @@ namespace Concierge.Display.Windows
             this.CategoryComboBox.ItemsSource = ComboBoxGenerator.ItemCategoriesComboBox();
             this.CoinTypeComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.SelectedItem = new Inventory();
-            this.Items = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameComboBox);
@@ -56,7 +59,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.DescriptionTextBox, this.DescriptionTextBackground);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Item";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Item";
 
         public override string WindowName => nameof(InventoryWindow);
 
@@ -64,19 +67,11 @@ namespace Concierge.Display.Windows
 
         private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Inventory, Program.CustomItemService.GetItems<Inventory>());
 
-        private bool EquippedItem { get; set; }
-
-        private bool Editing { get; set; }
-
-        private Inventory SelectedItem { get; set; }
-
-        private List<Inventory> Items { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Items = Program.CcsFile.Character.Equipment.Inventory;
+            this.items = Program.CcsFile.Character.Equipment.Inventory;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -93,10 +88,10 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedItem = castItem;
-            this.EquippedItem = equippedItem;
+            this.selectedItem = castItem;
+            this.equippedItem = equippedItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields(castItem);
@@ -110,9 +105,9 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Items = castItem;
+            this.items = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
@@ -129,13 +124,13 @@ namespace Concierge.Display.Windows
             }
 
             this.Result = ConciergeResult.OK;
-            if (this.Editing)
+            if (this.editing)
             {
-                this.UpdateInventory(this.SelectedItem);
+                this.UpdateInventory(this.selectedItem);
             }
             else
             {
-                this.Items.Add(this.ToInventory());
+                this.items.Add(this.ToInventory());
             }
 
             this.CloseConciergeWindow();
@@ -161,10 +156,10 @@ namespace Concierge.Display.Windows
             this.AttunedCheckBox.IsChecked = inventory.Attuned;
             this.ConsumableCheckBox.IsChecked = inventory.Consumable;
 
-            DisplayUtility.SetControlEnableState(this.AttunedText, this.EquippedItem);
-            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.EquippedItem);
-            DisplayUtility.SetControlEnableState(this.AmountTextBlock, !this.EquippedItem && inventory.Consumable);
-            DisplayUtility.SetControlEnableState(this.AmountUpDown, !this.EquippedItem && inventory.Consumable);
+            DisplayUtility.SetControlEnableState(this.AttunedText, this.equippedItem);
+            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.equippedItem);
+            DisplayUtility.SetControlEnableState(this.AmountTextBlock, !this.equippedItem && inventory.Consumable);
+            DisplayUtility.SetControlEnableState(this.AmountUpDown, !this.equippedItem && inventory.Consumable);
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
@@ -205,7 +200,7 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
             var item = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Inventory>(this.Items, item, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Inventory>(this.items, item, this.ConciergePage));
 
             return item;
         }
@@ -243,7 +238,7 @@ namespace Concierge.Display.Windows
             inventory.IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false;
             inventory.Consumable = this.ConsumableCheckBox.IsChecked ?? false;
 
-            if (this.EquippedItem)
+            if (this.equippedItem)
             {
                 inventory.Attuned = this.AttunedCheckBox.IsChecked ?? false;
 
@@ -273,7 +268,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Items.Add(this.ToInventory());
+            this.items.Add(this.ToInventory());
             this.ClearFields();
             this.InvokeApplyChanges();
         }

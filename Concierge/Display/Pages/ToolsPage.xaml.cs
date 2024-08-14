@@ -31,44 +31,38 @@ namespace Concierge.Display.Pages
     {
         private readonly HistoryReadWriter historyReadWriter;
         private readonly string diceHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.DiceHistoryName);
+        private readonly List<Player> players = [];
+        private readonly List<IDiceRoll> rollHistory = [];
+        private readonly History diceHistory;
 
         public ToolsPage()
         {
             this.InitializeComponent();
 
             this.historyReadWriter = new HistoryReadWriter(Program.ErrorService);
-            this.Players = [];
-            this.RollHistory = [];
-            this.DiceHistory = new History(this.historyReadWriter.ReadList<string>(this.diceHistoryFile), string.Empty);
+            this.diceHistory = new History(this.historyReadWriter.ReadList<string>(this.diceHistoryFile), string.Empty);
             this.CoinComboBox.ItemsSource = ComboBoxGenerator.DivideLootComboBox(ConciergeBrushes.ControlForeDarkBlue);
             this.CoinComboBox.Text = CoinType.Gold.ToString();
-            this.HasEditableDataGrid = false;
             this.ConciergePages = ConciergePages.Tools;
 
             this.SetDefaultDiceValues();
             this.SetDefaultDivideValues();
 
-            this.D4DiceRollDisplay.Initialize("LightControlButtonStyle", Brushes.White);
-            this.D6DiceRollDisplay.Initialize("DarkControlButtonStyle", Brushes.White);
-            this.D8DiceRollDisplay.Initialize("LightControlButtonStyle", Brushes.White);
-            this.D10DiceRollDisplay.Initialize("DarkControlButtonStyle", Brushes.White);
-            this.D100DiceRollDisplay.Initialize("LightControlButtonStyle", Brushes.White);
-            this.D12DiceRollDisplay.Initialize("DarkControlButtonStyle", Brushes.White);
-            this.D20DiceRollDisplay.Initialize("LightControlButtonStyle", Brushes.White);
+            this.D4DiceRollDisplay.Initialize("Light", Brushes.White);
+            this.D6DiceRollDisplay.Initialize("Dark", Brushes.White);
+            this.D8DiceRollDisplay.Initialize("Light", Brushes.White);
+            this.D10DiceRollDisplay.Initialize("Dark", Brushes.White);
+            this.D100DiceRollDisplay.Initialize("Light", Brushes.White);
+            this.D12DiceRollDisplay.Initialize("Dark", Brushes.White);
+            this.D20DiceRollDisplay.Initialize("Light", Brushes.White);
 
-            this.PlayersInput.Initialize("PlayerControlButtonStyle", Brushes.White);
-            this.CopperInput.Initialize("CopperControlButtonStyle", Brushes.Black);
-            this.SilverInput.Initialize("SilverControlButtonStyle", Brushes.Black);
-            this.ElectrumInput.Initialize("ElectrumControlButtonStyle", Brushes.Black);
-            this.GoldInput.Initialize("GoldControlButtonStyle", Brushes.Black);
-            this.PlatinumInput.Initialize("PlatinumControlButtonStyle", Brushes.Black);
+            this.PlayersInput.Initialize("Player", Brushes.White);
+            this.CopperInput.Initialize("Copper", Brushes.Black);
+            this.SilverInput.Initialize("Silver", Brushes.Black);
+            this.ElectrumInput.Initialize("Electrum", Brushes.Black);
+            this.GoldInput.Initialize("Gold", Brushes.Black);
+            this.PlatinumInput.Initialize("Platinum", Brushes.Black);
         }
-
-        private List<Player> Players { get; set; }
-
-        private List<IDiceRoll> RollHistory { get; }
-
-        private History DiceHistory { get; set; }
 
         public override void Draw(bool isNewCharacterSheet = false)
         {
@@ -91,8 +85,7 @@ namespace Concierge.Display.Pages
         public void DrawDiceHistory()
         {
             this.RollDiceHistoryDataGrid.Items.Clear();
-            this.RollHistory.ForEach(dice => this.RollDiceHistoryDataGrid.Items.Add(dice));
-
+            this.rollHistory.ForEach(dice => this.RollDiceHistoryDataGrid.Items.Add(dice));
             if (this.RollDiceHistoryDataGrid.Items.Count > 0)
             {
                 this.RollDiceHistoryDataGrid.SelectedItem = this.RollDiceHistoryDataGrid.Items[^1];
@@ -105,8 +98,7 @@ namespace Concierge.Display.Pages
         {
             var totalValue = 0.0;
             this.DivideLootDataGrid.Items.Clear();
-
-            foreach (var player in this.Players)
+            foreach (var player in this.players)
             {
                 this.DivideLootDataGrid.Items.Add(player);
                 totalValue += player.Total;
@@ -115,13 +107,13 @@ namespace Concierge.Display.Pages
 
         private void GetPlayers()
         {
-            this.Players.Clear();
+            this.players.Clear();
 
             var party = Program.CcsFile.Character.Adventurers.Where(x => x.Status == PartyStatus.Alive).ToList();
             var namedPlayers = party.Count == this.PlayersInput.InputValue;
             for (int i = 0; i < this.PlayersInput.InputValue; i++)
             {
-                this.Players.Add(new Player(namedPlayers ? party[i].CharacterName : $"Player {i + 1}"));
+                this.players.Add(new Player(namedPlayers ? party[i].CharacterName : $"Player {i + 1}"));
             }
         }
 
@@ -138,9 +130,8 @@ namespace Concierge.Display.Pages
 
         private void Distribute(Loot loot)
         {
-            var maxValue = loot.Total / this.Players.Count;
-
-            if (this.Players.Count <= 0)
+            var maxValue = loot.Total / this.players.Count;
+            if (this.players.Count <= 0)
             {
                 return;
             }
@@ -149,15 +140,15 @@ namespace Concierge.Display.Pages
             {
                 while (loot.CurrencyList[i] > 0)
                 {
-                    for (int j = 0; j < this.Players.Count; j++)
+                    for (int j = 0; j < this.players.Count; j++)
                     {
                         if (loot.CurrencyList[i] < 1)
                         {
                             break;
                         }
-                        else if (this.Players[j].Total < maxValue)
+                        else if (this.players[j].Total < maxValue)
                         {
-                            this.Players[j].CurrencyList[i]++;
+                            this.players[j].CurrencyList[i]++;
                             loot.CurrencyList[i]--;
                         }
                     }
@@ -173,7 +164,6 @@ namespace Concierge.Display.Pages
             var loot = this.GetLoot();
 
             this.Distribute(loot);
-
             this.DrawDivideLoot();
         }
 
@@ -212,8 +202,8 @@ namespace Concierge.Display.Pages
             {
                 var result = new CustomDiceRoll(input);
 
-                this.RollHistory.Add(result);
-                this.DiceHistory.Add(input);
+                this.rollHistory.Add(result);
+                this.diceHistory.Add(input);
                 this.DrawDiceHistory();
                 this.CustomInputTextBox.Text = string.Empty;
                 this.CustomResult.Text = result.Total.ToString();
@@ -236,11 +226,11 @@ namespace Concierge.Display.Pages
             switch (direction)
             {
                 case HistoryDirection.Backward:
-                    this.CustomInputTextBox.Text = this.DiceHistory.Backward();
+                    this.CustomInputTextBox.Text = this.diceHistory.Backward();
                     this.CustomInputTextBox.Select(this.CustomInputTextBox.Text.Length, 0);
                     break;
                 case HistoryDirection.Forward:
-                    this.CustomInputTextBox.Text = this.DiceHistory.Forward();
+                    this.CustomInputTextBox.Text = this.diceHistory.Forward();
                     this.CustomInputTextBox.Select(this.CustomInputTextBox.Text.Length, 0);
                     break;
             }
@@ -250,7 +240,7 @@ namespace Concierge.Display.Pages
         {
             this.SetDefaultDivideValues();
             this.DivideLootDataGrid.Items.Clear();
-            this.Players.Clear();
+            this.players.Clear();
             this.CoinComboBox.Text = CoinType.Gold.ToString();
         }
 
@@ -260,23 +250,19 @@ namespace Concierge.Display.Pages
             {
                 return this.PlayersInput.CoinAmount;
             }
-
-            if (coin.Equals("copper", StringComparison.InvariantCultureIgnoreCase))
+            else if (coin.Equals("copper", StringComparison.InvariantCultureIgnoreCase))
             {
                 return this.CopperInput.CoinAmount;
             }
-
-            if (coin.Equals("silver", StringComparison.InvariantCultureIgnoreCase))
+            else if (coin.Equals("silver", StringComparison.InvariantCultureIgnoreCase))
             {
                 return this.SilverInput.CoinAmount;
             }
-
-            if (coin.Equals("electrum", StringComparison.InvariantCultureIgnoreCase))
+            else if (coin.Equals("electrum", StringComparison.InvariantCultureIgnoreCase))
             {
                 return this.ElectrumInput.CoinAmount;
             }
-
-            if (coin.Equals("platinum", StringComparison.InvariantCultureIgnoreCase))
+            else if (coin.Equals("platinum", StringComparison.InvariantCultureIgnoreCase))
             {
                 return this.PlatinumInput.CoinAmount;
             }
@@ -287,7 +273,7 @@ namespace Concierge.Display.Pages
         private void ResetHistoryButton_Click(object sender, RoutedEventArgs e)
         {
             this.SetDefaultDiceValues();
-            this.RollHistory.Clear();
+            this.rollHistory.Clear();
             this.DrawDiceHistory();
             this.CustomInputTextBox.Text = string.Empty;
         }
@@ -320,7 +306,7 @@ namespace Concierge.Display.Pages
         {
             if (e.OriginalSource is DiceRoll diceRoll)
             {
-                this.RollHistory.Add(diceRoll);
+                this.rollHistory.Add(diceRoll);
                 this.DrawDiceHistory();
             }
         }

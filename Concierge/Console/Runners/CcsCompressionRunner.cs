@@ -1,12 +1,12 @@
-﻿// <copyright file="CcsCompressionScriptService.cs" company="Thomas Beckett">
+﻿// <copyright file="CcsCompressionRunner.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Console.Services
+namespace Concierge.Console.Runners
 {
     using Concierge.Console.Scripts;
 
-    public sealed class CcsCompressionScriptService : ScriptService
+    public sealed class CcsCompressionRunner : Runner
     {
         private static readonly string[] names =
         [
@@ -19,12 +19,12 @@ namespace Concierge.Console.Services
             "Unzip",
         ];
 
-        public CcsCompressionScriptService()
+        public CcsCompressionRunner()
             : this(true)
         {
         }
 
-        public CcsCompressionScriptService(bool isFirst)
+        public CcsCompressionRunner(bool isFirst)
         {
             this.IsFirstList = isFirst;
         }

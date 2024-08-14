@@ -16,15 +16,14 @@ namespace Concierge.Console.Scripts
     public sealed class ListScript<T> : IScript
         where T : IUnique, ICopyable<T>, new()
     {
+        private readonly List<T> defaultList;
+        private readonly List<T> characterList;
+
         public ListScript(List<T> defaultList, List<T> characterList)
         {
-            this.DefaultList = defaultList;
-            this.CharacterList = characterList;
+            this.defaultList = defaultList;
+            this.characterList = characterList;
         }
-
-        private List<T> DefaultList { get; set; }
-
-        private List<T> CharacterList { get; set; }
 
         public ConsoleResult Evaluate(ConsoleCommand command)
         {
@@ -60,21 +59,21 @@ namespace Concierge.Console.Scripts
         {
             if (command.Argument.IsNullOrWhiteSpace())
             {
-                this.CharacterList.AddRange(this.DefaultList);
+                this.characterList.AddRange(this.defaultList);
                 return new ConsoleResult($"All default items added to {command.Name}", ResultType.Success);
             }
 
             var item = this.GetDefaultItem(command.Argument);
             if (item is null)
             {
-                this.CharacterList.Add(new T()
+                this.characterList.Add(new T()
                 {
                     Name = command.Argument,
                 });
                 return new ConsoleResult($"Default item '{command.Argument}' could not be found. Added new item to {command.Name}.", ResultType.Warning);
             }
 
-            this.CharacterList.Add(item);
+            this.characterList.Add(item);
             return new ConsoleResult($"Added '{command.Argument}' to {command.Name}.", ResultType.Success);
         }
 
@@ -82,25 +81,25 @@ namespace Concierge.Console.Scripts
         {
             if (command.Argument.IsNullOrWhiteSpace())
             {
-                this.CharacterList.Clear();
+                this.characterList.Clear();
                 return new ConsoleResult($"All items removed from {command.Name}.", ResultType.Success);
             }
 
-            var item = this.GetCharacterItem(command.Argument);
-            if (item is null)
+            var items = this.GetCharacterItem(command.Argument);
+            if (items.IsEmpty())
             {
                 return new ConsoleResult($"Item '{command.Argument}' could not be found.", ResultType.Error);
             }
 
-            this.CharacterList.Remove(item);
-            return new ConsoleResult($"Removed '{command.Argument}' from {command.Name}.", ResultType.Success);
+            this.characterList.RemoveAll(x => items.Contains(x));
+            return new ConsoleResult($"Removed all '{command.Argument}' from {command.Name}.", ResultType.Success);
         }
 
         private ConsoleResult Count(ConsoleCommand command)
         {
             if (command.Argument.IsNullOrWhiteSpace())
             {
-                return new ConsoleResult($"{this.CharacterList.Count} items in {command.Name}.", ResultType.Success);
+                return new ConsoleResult($"{this.characterList.Count} items in {command.Name}.", ResultType.Success);
             }
 
             return new ConsoleResult($"Counting specific items is not implemented.", ResultType.Error);
@@ -112,14 +111,14 @@ namespace Concierge.Console.Scripts
             {
                 if (command.Argument.IsNullOrWhiteSpace())
                 {
-                    this.CharacterList.AddRange(this.DefaultList.DistinctBy(x => x.GetCategory().Name));
+                    this.characterList.AddRange(this.defaultList.DistinctBy(x => x.GetCategory().Name));
                     return new ConsoleResult($"All default item categories added to {command.Name}", ResultType.Success);
                 }
 
-                var items = this.DefaultList.Where(x => x.GetCategory().Name.Equals(command.Argument, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                var items = this.defaultList.Where(x => x.GetCategory().Name.Equals(command.Argument, StringComparison.InvariantCultureIgnoreCase)).ToList();
                 if (items.Count > 0)
                 {
-                    this.CharacterList.AddRange(items);
+                    this.characterList.AddRange(items);
                     return new ConsoleResult($"All default items with a category of {command.Argument} added to {command.Name}", ResultType.Success);
                 }
 
@@ -134,27 +133,29 @@ namespace Concierge.Console.Scripts
 
         private ConsoleResult GetId(ConsoleCommand command)
         {
+            var builder = new StringBuilder();
             if (command.Argument.IsNullOrWhiteSpace())
             {
-                var builder = new StringBuilder();
                 builder.AppendLine($"Listing Id for all {command.Name}:");
-                this.CharacterList.ForEach(x => builder.AppendLine($"Id for '{x.Name}' is [{x.Id}]."));
+                this.characterList.ForEach(x => builder.AppendLine($"Id for '{x.Name}' is [{x.Id}]."));
 
                 return new ConsoleResult(builder.ToString(), ResultType.Success);
             }
 
-            var item = this.GetCharacterItem(command.Argument);
-            if (item is null)
+            var items = this.GetCharacterItem(command.Argument);
+            if (items.IsEmpty())
             {
                 return new ConsoleResult($"Item '{command.Argument}' could not be found.", ResultType.Error);
             }
 
-            return new ConsoleResult($"Id for '{command.Argument}' is [{item.Id}].", ResultType.Success);
+            builder.AppendLine($"Listing Id for all {command.Argument}:");
+            items.ForEach(x => builder.AppendLine($"Id for '{x.Name}' is [{x.Id}]."));
+            return new ConsoleResult(builder.ToString(), ResultType.Success);
         }
 
         private T? GetDefaultItem(string name)
         {
-            var item = this.DefaultList.Where(x => x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            var item = this.defaultList.Where(x => x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             if (item is null)
             {
                 return item;
@@ -166,9 +167,6 @@ namespace Concierge.Console.Scripts
             return newItem;
         }
 
-        private T? GetCharacterItem(string name)
-        {
-            return this.CharacterList.Where(x => x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-        }
+        private List<T> GetCharacterItem(string name) => this.characterList.Where(x => x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).ToList();
     }
 }

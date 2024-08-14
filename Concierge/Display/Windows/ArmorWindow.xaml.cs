@@ -26,6 +26,8 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class ArmorWindow : ConciergeWindow
     {
+        private Defense selectedDefense = new ();
+
         public ArmorWindow()
         {
             this.InitializeComponent();
@@ -36,7 +38,6 @@ namespace Concierge.Display.Windows
             this.StealthComboBox.ItemsSource = ComboBoxGenerator.StealthComboBox();
             this.StatusComboBox.ItemsSource = ComboBoxGenerator.ArmorStatusComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.SelectedDefense = new Defense();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.ArmorNameComboBox);
@@ -59,15 +60,13 @@ namespace Concierge.Display.Windows
 
         private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Armor, Program.CustomItemService.GetItems<Armor>());
 
-        private Defense SelectedDefense { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.SelectedDefense = Program.CcsFile.Character.Equipment.Defense;
+            this.selectedDefense = Program.CcsFile.Character.Equipment.Defense;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
-            this.FillFields(this.SelectedDefense.Armor);
+            this.FillFields(this.selectedDefense.Armor);
             this.ShowConciergeWindow();
 
             return this.Result;
@@ -77,13 +76,13 @@ namespace Concierge.Display.Windows
         {
             if (item is Defense defense)
             {
-                this.SelectedDefense = defense;
-                this.FillFields(this.SelectedDefense.Armor);
+                this.selectedDefense = defense;
+                this.FillFields(this.selectedDefense.Armor);
                 this.ShowConciergeWindow();
             }
             else if (item is Armor armor)
             {
-                this.SelectedDefense = new Defense(armor);
+                this.selectedDefense = new Defense(armor);
                 this.FillFields(armor);
                 this.ShowConciergeWindow();
             }
@@ -93,7 +92,7 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeResult.OK;
 
-            this.UpdateDefense(this.SelectedDefense);
+            this.UpdateDefense(this.selectedDefense);
             this.CloseConciergeWindow();
         }
 
@@ -110,11 +109,11 @@ namespace Concierge.Display.Windows
             this.StrengthUpDown.Value = armor.Strength;
             this.StealthComboBox.Text = armor.Stealth.ToString();
             this.FullAcCheckBox.IsChecked = armor.FullDex;
-            this.ShieldTextBox.Text = this.SelectedDefense.Shield;
-            this.ShieldArmorClassUpDown.Value = this.SelectedDefense.ShieldAc;
-            this.MiscArmorClassUpDown.Value = this.SelectedDefense.MiscAc;
-            this.MagicArmorClassUpDown.Value = this.SelectedDefense.MagicAc;
-            this.StatusComboBox.Text = this.SelectedDefense.ArmorStatus.ToString();
+            this.ShieldTextBox.Text = this.selectedDefense.Shield;
+            this.ShieldArmorClassUpDown.Value = this.selectedDefense.ShieldAc;
+            this.MiscArmorClassUpDown.Value = this.selectedDefense.MiscAc;
+            this.MagicArmorClassUpDown.Value = this.selectedDefense.MagicAc;
+            this.StatusComboBox.Text = this.selectedDefense.ArmorStatus.ToString();
 
             this.FullAcCheckBox.UpdatedValue();
             Program.NotDrawing();
@@ -181,7 +180,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.UpdateDefense(this.SelectedDefense);
+            this.UpdateDefense(this.selectedDefense);
             this.InvokeApplyChanges();
         }
 

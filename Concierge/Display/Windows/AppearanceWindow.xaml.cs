@@ -21,9 +21,10 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class AppearanceWindow : ConciergeWindow
     {
-        private CustomColor? eyeColor;
-        private CustomColor? hairColor;
-        private CustomColor? skinColor;
+        private CustomColor? eyeColor = CustomColor.Invalid;
+        private CustomColor? hairColor = CustomColor.Invalid;
+        private CustomColor? skinColor = CustomColor.Invalid;
+        private Appearance appearance = new ();
 
         public AppearanceWindow()
         {
@@ -32,10 +33,6 @@ namespace Concierge.Display.Windows
 
             this.GenderComboBox.ItemsSource = ComboBoxGenerator.GenderComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.Appearance = new Appearance();
-            this.EyeColor = CustomColor.Invalid;
-            this.HairColor = CustomColor.Invalid;
-            this.SkinColor = CustomColor.Invalid;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.GenderComboBox);
@@ -55,8 +52,6 @@ namespace Concierge.Display.Windows
         public override string HeaderText => "Edit Appearance";
 
         public override string WindowName => nameof(AppearanceWindow);
-
-        private Appearance Appearance { get; set; }
 
         private CustomColor EyeColor
         {
@@ -105,7 +100,7 @@ namespace Concierge.Display.Windows
 
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Appearance = Program.CcsFile.Character.Detail.Appearance;
+            this.appearance = Program.CcsFile.Character.Detail.Appearance;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -122,7 +117,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Appearance = castItem;
+            this.appearance = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -137,9 +132,9 @@ namespace Concierge.Display.Windows
 
         private void FillHeightFields()
         {
-            if (this.Appearance.Height.UnitType == UnitTypes.Imperial)
+            if (this.appearance.Height.UnitType == UnitTypes.Imperial)
             {
-                var feedAndInches = UnitFormat.GetSeperateFeetAndInches(this.Appearance.Height.Value);
+                var feedAndInches = UnitFormat.GetSeperateFeetAndInches(this.appearance.Height.Value);
 
                 this.MetricGrid.Visibility = Visibility.Collapsed;
                 this.ImperialGrid.Visibility = Visibility.Visible;
@@ -150,13 +145,13 @@ namespace Concierge.Display.Windows
             {
                 this.MetricGrid.Visibility = Visibility.Visible;
                 this.ImperialGrid.Visibility = Visibility.Collapsed;
-                this.HeightUpDown.Value = this.Appearance.Height.Value;
+                this.HeightUpDown.Value = this.appearance.Height.Value;
             }
         }
 
         private double UpdateHeight()
         {
-            if (this.Appearance.Height.UnitType == UnitTypes.Imperial)
+            if (this.appearance.Height.UnitType == UnitTypes.Imperial)
             {
                 return UnitFormat.CombineFeetAndInches(this.FeetUpDown.Value, this.InchesUpDown.Value);
             }
@@ -170,13 +165,13 @@ namespace Concierge.Display.Windows
         {
             Program.Drawing();
 
-            this.GenderComboBox.Text = this.Appearance.Gender;
-            this.AgeUpDown.Value = this.Appearance.Age;
-            this.WeightUpDown.Value = this.Appearance.Weight.Value;
-            this.SkinColor = this.Appearance.SkinColour;
-            this.EyeColor = this.Appearance.EyeColour;
-            this.HairColor = this.Appearance.HairColour;
-            this.DistinguishingMarksTextBox.Text = this.Appearance.DistinguishingMarks;
+            this.GenderComboBox.Text = this.appearance.Gender;
+            this.AgeUpDown.Value = this.appearance.Age;
+            this.WeightUpDown.Value = this.appearance.Weight.Value;
+            this.SkinColor = this.appearance.SkinColour;
+            this.EyeColor = this.appearance.EyeColour;
+            this.HairColor = this.appearance.HairColour;
+            this.DistinguishingMarksTextBox.Text = this.appearance.DistinguishingMarks;
 
             this.HeightUnits.Text = $"({UnitFormat.HeightPostfix})";
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
@@ -187,18 +182,18 @@ namespace Concierge.Display.Windows
 
         private void UpdateAppearance()
         {
-            var oldItem = this.Appearance.DeepCopy();
+            var oldItem = this.appearance.DeepCopy();
 
-            this.Appearance.Gender = this.GenderComboBox.Text;
-            this.Appearance.Age = this.AgeUpDown.Value;
-            this.Appearance.Height.Value = this.UpdateHeight();
-            this.Appearance.Weight.Value = this.WeightUpDown.Value;
-            this.Appearance.SkinColour = this.SkinColor;
-            this.Appearance.EyeColour = this.EyeColor;
-            this.Appearance.HairColour = this.HairColor;
-            this.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
+            this.appearance.Gender = this.GenderComboBox.Text;
+            this.appearance.Age = this.AgeUpDown.Value;
+            this.appearance.Height.Value = this.UpdateHeight();
+            this.appearance.Weight.Value = this.WeightUpDown.Value;
+            this.appearance.SkinColour = this.SkinColor;
+            this.appearance.EyeColour = this.EyeColor;
+            this.appearance.HairColour = this.HairColor;
+            this.appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Appearance>(this.Appearance, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Appearance>(this.appearance, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

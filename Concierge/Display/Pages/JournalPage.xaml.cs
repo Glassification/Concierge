@@ -48,7 +48,6 @@ namespace Concierge.Display.Pages
             this.FontFamilyList.ItemsSource = ComboBoxGenerator.FontFamilyComboBox();
             this.FontSizeList.ItemsSource = ComboBoxGenerator.FontSizeComboBox();
             this.NotesTextBox.UndoLimit = MaxUndoQueue;
-            this.HasEditableDataGrid = false;
             this.ConciergePages = ConciergePages.Journal;
 
             this.BoldButton.Initialize(ConciergeBrushes.Deer);
@@ -213,7 +212,6 @@ namespace Concierge.Display.Pages
         private string SaveCurrentDocument()
         {
             var range = new TextRange(this.NotesTextBox.Document.ContentStart, this.NotesTextBox.Document.ContentEnd);
-
             try
             {
                 using var rtfMemoryStream = new MemoryStream();
@@ -262,7 +260,6 @@ namespace Concierge.Display.Pages
 
                 var chapterIndex = this.NotesTreeView.Items.IndexOf(chapterItem);
                 var index = chapterItem.Items.IndexOf(document);
-
                 if (func(index, useZero ? 0 : chapterItem.Items.Count - 2))
                 {
                     this.SelectedDocument.Rtf = this.SaveCurrentDocument();
@@ -281,7 +278,6 @@ namespace Concierge.Display.Pages
             else if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapter)
             {
                 var index = this.NotesTreeView.Items.IndexOf(chapter);
-
                 if (func(index, useZero ? 0 : this.NotesTreeView.Items.Count - 2))
                 {
                     this.SwapTreeViewItem(Program.CcsFile.Character.Journal.Chapters, index, index + increment);
@@ -352,48 +348,25 @@ namespace Concierge.Display.Pages
 
         private void BoldButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.BoldButton.IsChecked ?? false)
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
-            }
-            else
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Normal);
-            }
+            var weight = this.BoldButton.IsChecked ?? false ? FontWeights.Bold : FontWeights.Normal;
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, weight);
         }
 
         private void ItalicButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.ItalicButton.IsChecked ?? false)
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, FontStyles.Italic);
-            }
-            else
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, FontStyles.Normal);
-            }
+            var style = this.ItalicButton.IsChecked ?? false ? FontStyles.Italic : FontStyles.Normal;
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, style);
         }
 
         private void UnderlineButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.UnderlineButton.IsChecked ?? false)
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, TextDecorations.Underline);
-            }
-            else
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, null);
-            }
+            var decoration = this.UnderlineButton.IsChecked ?? false ? TextDecorations.Underline : null;
+            this.NotesTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, decoration);
         }
 
         private void FontFamilyList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.selectionLock)
-            {
-                return;
-            }
-
-            if (this.FontFamilyList.SelectedItem is ComboBoxItemControl control && control.Tag is FontFamily fontFamily)
+            if (!this.selectionLock && this.FontFamilyList.SelectedItem is ComboBoxItemControl control && control.Tag is FontFamily fontFamily)
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, fontFamily);
             }
@@ -401,12 +374,7 @@ namespace Concierge.Display.Pages
 
         private void FontSizeList_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (this.selectionLock)
-            {
-                return;
-            }
-
-            if (double.TryParse(this.FontSizeList.Text, out _))
+            if (!this.selectionLock && double.TryParse(this.FontSizeList.Text, out _))
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, this.FontSizeList.Text);
             }
@@ -525,11 +493,7 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            WindowService.ShowAdd(
-                button.Tag as Chapter,
-                typeof(JournalWindow),
-                this.Window_ApplyChanges,
-                ConciergePages.Journal);
+            WindowService.ShowAdd(button.Tag as Chapter, typeof(JournalWindow), this.Window_ApplyChanges, ConciergePages.Journal);
             this.Draw();
         }
 
@@ -540,11 +504,7 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            WindowService.ShowAdd(
-                button.Tag as Chapter,
-                typeof(JournalWindow),
-                this.Window_ApplyChanges,
-                ConciergePages.Journal);
+            WindowService.ShowAdd(button.Tag as Chapter, typeof(JournalWindow), this.Window_ApplyChanges, ConciergePages.Journal);
             this.Draw();
         }
 
@@ -557,19 +517,11 @@ namespace Concierge.Display.Pages
 
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {
-                WindowService.ShowEdit(
-                    chapterTreeViewItem.Chapter,
-                    typeof(JournalWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Journal);
+                WindowService.ShowEdit(chapterTreeViewItem.Chapter, typeof(JournalWindow), this.Window_ApplyChanges, ConciergePages.Journal);
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
             {
-                WindowService.ShowEdit(
-                    documentTreeViewItem.Document,
-                    typeof(JournalWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Journal);
+                WindowService.ShowEdit(documentTreeViewItem.Document, typeof(JournalWindow), this.Window_ApplyChanges, ConciergePages.Journal);
             }
 
             this.Draw();

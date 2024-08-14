@@ -1,8 +1,8 @@
-﻿// <copyright file="WealthScriptService.cs" company="Thomas Beckett">
+﻿// <copyright file="WealthRunner.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Console.Services
+namespace Concierge.Console.Runners
 {
     using System;
     using System.Linq;
@@ -10,7 +10,7 @@ namespace Concierge.Console.Services
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
 
-    public sealed class WealthScriptService : ScriptService
+    public sealed class WealthRunner : Runner
     {
         private static readonly string[] names =
         [
@@ -29,12 +29,12 @@ namespace Concierge.Console.Services
             "Count",
         ];
 
-        public WealthScriptService()
+        public WealthRunner()
             : this(true)
         {
         }
 
-        public WealthScriptService(bool isFirst)
+        public WealthRunner(bool isFirst)
         {
             this.IsFirstList = isFirst;
         }

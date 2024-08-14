@@ -15,23 +15,21 @@ namespace Concierge.Display.Windows.Utility
     /// </summary>
     public partial class UseItemWindow : ConciergeWindow
     {
+        private UsedItem usedItem = UsedItem.Empty;
+
         public UseItemWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
-
-            this.UsedItem = UsedItem.Empty;
         }
 
         public override string HeaderText => "Use Item";
 
         public override string WindowName => nameof(UseItemWindow);
 
-        private UsedItem UsedItem { get; set; }
-
         public override ConciergeResult ShowUseItemWindow(UsedItem usedItem)
         {
-            this.UsedItem = usedItem;
+            this.usedItem = usedItem;
             this.HeaderTextBlock.Text = usedItem.Name;
 
             this.FillFields(usedItem);
@@ -66,14 +64,14 @@ namespace Concierge.Display.Windows.Utility
 
         private void RollAttackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.UsedItem.Attack.ReRoll();
-            this.FillFields(this.UsedItem);
+            this.usedItem.Attack.ReRoll();
+            this.FillFields(this.usedItem);
         }
 
         private void RollDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.UsedItem.Damage.ReRoll();
-            this.FillFields(this.UsedItem);
+            this.usedItem.Damage.ReRoll();
+            this.FillFields(this.usedItem);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

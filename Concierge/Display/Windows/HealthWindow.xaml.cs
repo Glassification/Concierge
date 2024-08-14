@@ -16,13 +16,14 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class HealthWindow : ConciergeWindow
     {
+        private Health health = new ();
+
         public HealthWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePages.None;
-            this.Health = new Health();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.TotalHpUpDown);
@@ -34,11 +35,9 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(HealthWindow);
 
-        private Health Health { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Health = Program.CcsFile.Character.Vitality.Health;
+            this.health = Program.CcsFile.Character.Vitality.Health;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -55,7 +54,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Health = castItem;
+            this.health = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -72,9 +71,9 @@ namespace Concierge.Display.Windows
         {
             Program.Drawing();
 
-            this.TotalHpUpDown.Value = this.Health.MaxHealth;
-            this.CurrentHpUpDown.Value = this.Health.BaseHealth;
-            this.TemporaryHpUpDown.Value = this.Health.TemporaryHealth;
+            this.TotalHpUpDown.Value = this.health.MaxHealth;
+            this.CurrentHpUpDown.Value = this.health.BaseHealth;
+            this.TemporaryHpUpDown.Value = this.health.TemporaryHealth;
 
             this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
             this.CurrentHpUpDown.Minimum = -this.TotalHpUpDown.Value;
@@ -84,13 +83,13 @@ namespace Concierge.Display.Windows
 
         private void UpdateHealth()
         {
-            var oldItem = this.Health.DeepCopy();
+            var oldItem = this.health.DeepCopy();
 
-            this.Health.MaxHealth = this.TotalHpUpDown.Value;
-            this.Health.BaseHealth = this.CurrentHpUpDown.Value;
-            this.Health.TemporaryHealth = this.TemporaryHpUpDown.Value;
+            this.health.MaxHealth = this.TotalHpUpDown.Value;
+            this.health.BaseHealth = this.CurrentHpUpDown.Value;
+            this.health.TemporaryHealth = this.TemporaryHpUpDown.Value;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Health>(this.Health, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Health>(this.health, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

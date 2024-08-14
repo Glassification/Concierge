@@ -1,8 +1,8 @@
-﻿// <copyright file="ReadWriterScriptService.cs" company="Thomas Beckett">
+﻿// <copyright file="ReadWriterRunner.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Console.Services
+namespace Concierge.Console.Runners
 {
     using System.Collections.ObjectModel;
 
@@ -15,7 +15,7 @@ namespace Concierge.Console.Services
     using Concierge.Data;
     using Concierge.Tools.Generators.Names;
 
-    public sealed class ReadWriterScriptService : ScriptService
+    public sealed class ReadWriterRunner : Runner
     {
         private static readonly string[] names =
         [
@@ -52,12 +52,12 @@ namespace Concierge.Console.Services
             "New",
         ];
 
-        public ReadWriterScriptService()
+        public ReadWriterRunner()
             : this(true)
         {
         }
 
-        public ReadWriterScriptService(bool isFirst)
+        public ReadWriterRunner(bool isFirst)
         {
             this.IsFirstList = isFirst;
         }

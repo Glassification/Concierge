@@ -334,15 +334,42 @@ namespace Concierge.Common.Extensions
         }
 
         /// <summary>
-        /// Replaces the last occurrence of a substring in the input string with a new substring and returns the modified string.
+        /// Replaces the last occurrence of a specified string within the input string with another specified string, using the given string comparison option.
         /// </summary>
-        /// <param name="str">The input string.</param>
-        /// <param name="from">The substring to replace.</param>
-        /// <param name="to">The new substring to insert.</param>
-        /// <returns>The modified string with the last occurrence of the specified substring replaced.</returns>
-        public static string ReplaceLast(this string str, string from, string to)
+        /// <param name="str">The original string in which to search for the specified substring.</param>
+        /// <param name="from">The substring to be replaced.</param>
+        /// <param name="to">The substring to replace the last occurrence of <paramref name="from"/>.</param>
+        /// <param name="stringComparison">Specifies the rules for the string comparison.</param>
+        /// <returns>
+        /// A new string that is equivalent to the original string except that the last occurrence of <paramref name="from"/> is replaced with <paramref name="to"/>.
+        /// If the <paramref name="from"/> substring is not found, the original string is returned.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown if the substring <paramref name="from"/> is not found in the original string.</exception>
+        public static string ReplaceLast(this string str, string from, string to, StringComparison stringComparison)
         {
-            var index = str.LastIndexOf(from);
+            var index = str.LastIndexOf(from, stringComparison);
+            var newStr = str.Remove(index, from.Length);
+
+            newStr = newStr.Insert(index, to);
+
+            return newStr;
+        }
+
+        /// <summary>
+        /// Replaces the first occurrence of a specified string within the input string with another specified string, using the given string comparison option.
+        /// </summary>
+        /// <param name="str">The original string in which to search for the specified substring.</param>
+        /// <param name="from">The substring to be replaced.</param>
+        /// <param name="to">The substring to replace the first occurrence of <paramref name="from"/>.</param>
+        /// <param name="stringComparison">Specifies the rules for the string comparison.</param>
+        /// <returns>
+        /// A new string that is equivalent to the original string except that the first occurrence of <paramref name="from"/> is replaced with <paramref name="to"/>.
+        /// If the <paramref name="from"/> substring is not found, the original string is returned.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown if the substring <paramref name="from"/> is not found in the original string.</exception>
+        public static string ReplaceFirst(this string str, string from, string to, StringComparison stringComparison)
+        {
+            var index = str.IndexOf(from, stringComparison);
             var newStr = str.Remove(index, from.Length);
 
             newStr = newStr.Insert(index, to);

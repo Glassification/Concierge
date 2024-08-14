@@ -36,12 +36,10 @@ namespace Concierge.Display.Windows.Helpers
 
         private void OnPropertyChanged(string propertyName)
         {
-            if (this.PropertyChanged is null)
+            if (this.PropertyChanged is not null)
             {
-                return;
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-
-            this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    }
+}

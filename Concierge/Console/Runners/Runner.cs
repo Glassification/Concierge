@@ -1,8 +1,8 @@
-﻿// <copyright file="ScriptService.cs" company="Thomas Beckett">
+﻿// <copyright file="Runner.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Console.Services
+namespace Concierge.Console.Runners
 {
     using System;
     using System.Linq;
@@ -11,9 +11,9 @@ namespace Concierge.Console.Services
     using Concierge.Common.Extensions;
 
     /// <summary>
-    /// Represents a service for executing scripts associated with console commands.
+    /// Represents a service for running scripts associated with console commands.
     /// </summary>
-    public abstract class ScriptService
+    public abstract class Runner
     {
         /// <summary>
         /// The indentation string used for formatting output.
@@ -64,7 +64,7 @@ namespace Concierge.Console.Services
             }
 
             var builderString = builder.ToString();
-            builderString = builderString.ReplaceLast("|", "\\");
+            builderString = builderString.ReplaceLast("|", "\\", StringComparison.InvariantCultureIgnoreCase);
 
             return builderString;
         }
@@ -74,7 +74,7 @@ namespace Concierge.Console.Services
         /// </summary>
         /// <param name="name">The name of the command.</param>
         /// <returns><c>true</c> if this script service contains the specified command name; otherwise, <c>false</c>.</returns>
-        public bool Contains(string name)
+        public virtual bool Contains(string name)
         {
             return this.Names.Contains(name, StringComparer.InvariantCultureIgnoreCase);
         }

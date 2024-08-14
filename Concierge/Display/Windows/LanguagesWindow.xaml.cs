@@ -21,6 +21,10 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class LanguagesWindow : ConciergeWindow
     {
+        private bool editing;
+        private Language selectedLanguage = new ();
+        private List<Language> languages = [];
+
         public LanguagesWindow()
         {
             this.InitializeComponent();
@@ -28,8 +32,6 @@ namespace Concierge.Display.Windows
 
             this.NameComboBox.ItemsSource = DefaultItems;
             this.ConciergePage = ConciergePages.None;
-            this.SelectedLanguage = new Language();
-            this.Languages = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameComboBox);
@@ -37,7 +39,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.SpeakersTextBox, this.SpeakersTextBackground);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Language";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Language";
 
         public override string WindowName => nameof(LanguagesWindow);
 
@@ -45,17 +47,11 @@ namespace Concierge.Display.Windows
 
         private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Languages, Program.CustomItemService.GetItems<Language>());
 
-        private bool Editing { get; set; }
-
-        private Language SelectedLanguage { get; set; }
-
-        private List<Language> Languages { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Languages = Program.CcsFile.Character.Detail.Languages;
+            this.languages = Program.CcsFile.Character.Detail.Languages;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -72,9 +68,9 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Languages = castItem;
+            this.languages = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
@@ -90,9 +86,9 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedLanguage = castItem;
+            this.selectedLanguage = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields(castItem);
@@ -103,13 +99,13 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeResult.OK;
 
-            if (this.Editing)
+            if (this.editing)
             {
-                this.UpdateLanguage(this.SelectedLanguage);
+                this.UpdateLanguage(this.selectedLanguage);
             }
             else
             {
-                this.Languages.Add(this.ToLanguage());
+                this.languages.Add(this.ToLanguage());
             }
 
             this.CloseConciergeWindow();
@@ -166,7 +162,7 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
             var language = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Language>(this.Languages, language, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Language>(this.languages, language, this.ConciergePage));
 
             return language;
         }
@@ -184,7 +180,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Languages.Add(this.ToLanguage());
+            this.languages.Add(this.ToLanguage());
             this.ClearFields();
             this.InvokeApplyChanges();
         }
