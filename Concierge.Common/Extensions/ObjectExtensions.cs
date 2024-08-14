@@ -17,7 +17,7 @@ namespace Concierge.Common.Extensions
     /// </summary>
     public static class ObjectExtensions
     {
-        private static int Depth { get; set; }
+        private static int depth;
 
         /// <summary>
         /// Checks if the value's type is assignable to the specified type.
@@ -63,7 +63,7 @@ namespace Concierge.Common.Extensions
                 return;
             }
 
-            Depth = 0;
+            depth = 0;
             SetPropertiesHelper<T>(itemToCopy, originalItem);
         }
 
@@ -128,7 +128,7 @@ namespace Concierge.Common.Extensions
         /// <param name="originalItem">The original item to copy the properties to.</param>
         private static void SetPropertiesHelper<T>(object item, object? originalItem)
         {
-            Depth++;
+            depth++;
 
             var properties = item.GetType().GetProperties();
             foreach (var property in properties)
@@ -140,7 +140,7 @@ namespace Concierge.Common.Extensions
                         continue;
                     }
 
-                    if (propertyValue.IsTypeOf(typeof(ICopyable<>)) && Depth < Constants.MaxDepth)
+                    if (propertyValue.IsTypeOf(typeof(ICopyable<>)) && depth < Constants.MaxDepth)
                     {
                         SetPropertiesHelper<T>(propertyValue, property.GetValue(originalItem));
                     }
@@ -151,7 +151,7 @@ namespace Concierge.Common.Extensions
                 }
             }
 
-            Depth--;
+            depth--;
         }
     }
 }

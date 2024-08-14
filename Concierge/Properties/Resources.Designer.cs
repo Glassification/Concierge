@@ -144,6 +144,69 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The character’s race description includes sample names for members of that race. Hopefully some thought has been put into the name, even if it&apos;s just from a list..
+        /// </summary>
+        internal static string AdventurerWindow_CharacterNameTextBox {
+            get {
+                return ResourceManager.GetString("AdventurerWindow_CharacterNameTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Every adventurer is a member of a class. Class broadly describes a character’s vocation, what special talents he or she possesses, and the tactics he or she is most likely to employ..
+        /// </summary>
+        internal static string AdventurerWindow_ClassComboBox {
+            get {
+                return ResourceManager.GetString("AdventurerWindow_ClassComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typically, a character starts at 1st level and advances in level by adventuring and gaining experience points. A 1st-level character is inexperienced in the adventuring world.
+        /// </summary>
+        internal static string AdventurerWindow_LevelUpDown {
+            get {
+                return ResourceManager.GetString("AdventurerWindow_LevelUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Real friends are required to fill in this field..
+        /// </summary>
+        internal static string AdventurerWindow_PlayerNameTextBox {
+            get {
+                return ResourceManager.GetString("AdventurerWindow_PlayerNameTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Every character belongs to a race, one of the many intelligent humanoid species in the D&amp;D world. The most common player character races are dwarves, elves, halflings, and humans..
+        /// </summary>
+        internal static string AdventurerWindow_RaceComboBox {
+            get {
+                return ResourceManager.GetString("AdventurerWindow_RaceComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies if a party member is still in the party, has left, or has been killed..
+        /// </summary>
+        internal static string AdventurerWindow_StatusComboBox {
+            get {
+                return ResourceManager.GetString("AdventurerWindow_StatusComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I come from under the hill. From under hills and over hills my path has led. And through the air, I am he who walks unseen..
+        /// </summary>
+        internal static string AdventurerWindow_TypeComboBox {
+            get {
+                return ResourceManager.GetString("AdventurerWindow_TypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lawful Good
         ///Neutral Good
         ///Chaotic Good

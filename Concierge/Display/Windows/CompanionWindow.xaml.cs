@@ -18,6 +18,8 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class CompanionWindow : ConciergeWindow
     {
+        private CompanionProperties properties = new ();
+
         public CompanionWindow()
         {
             this.InitializeComponent();
@@ -26,7 +28,6 @@ namespace Concierge.Display.Windows
             this.VisionComboBox.ItemsSource = ComboBoxGenerator.VisionComboBox();
             this.CreatureSizeComboBox.ItemsSource = ComboBoxGenerator.CreatureSizesComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.Properties = new CompanionProperties();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameTextBox, this.NameTextBackground);
@@ -42,8 +43,6 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(CompanionWindow);
 
-        private CompanionProperties Properties { get; set; }
-
         public override void ShowEdit<T>(T properties)
         {
             if (properties is not CompanionProperties castItem)
@@ -51,7 +50,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Properties = castItem;
+            this.properties = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -66,30 +65,30 @@ namespace Concierge.Display.Windows
         {
             Program.Drawing();
 
-            this.NameTextBox.Text = this.Properties.Name;
-            this.AcUpDown.Value = this.Properties.ArmorClass;
-            this.PerceptionUpDown.Value = this.Properties.Perception;
-            this.VisionComboBox.Text = this.Properties.Vision.PascalCase();
-            this.MovementUpDown.Value = this.Properties.Movement;
-            this.CreatureSizeComboBox.Text = this.Properties.CreatureSize.ToString();
-            this.InitiativeUpDown.Value = this.Properties.Initiative;
+            this.NameTextBox.Text = this.properties.Name;
+            this.AcUpDown.Value = this.properties.ArmorClass;
+            this.PerceptionUpDown.Value = this.properties.Perception;
+            this.VisionComboBox.Text = this.properties.Vision.PascalCase();
+            this.MovementUpDown.Value = this.properties.Movement;
+            this.CreatureSizeComboBox.Text = this.properties.CreatureSize.ToString();
+            this.InitiativeUpDown.Value = this.properties.Initiative;
 
             Program.NotDrawing();
         }
 
         private void UpdateCompanion()
         {
-            var oldItem = this.Properties.DeepCopy();
+            var oldItem = this.properties.DeepCopy();
 
-            this.Properties.Name = this.NameTextBox.Text;
-            this.Properties.ArmorClass = this.AcUpDown.Value;
-            this.Properties.Perception = this.PerceptionUpDown.Value;
-            this.Properties.Vision = this.VisionComboBox.Text.ToEnum<VisionTypes>();
-            this.Properties.Movement = this.MovementUpDown.Value;
-            this.Properties.CreatureSize = this.CreatureSizeComboBox.Text.ToEnum<CreatureSizes>();
-            this.Properties.Initiative = this.InitiativeUpDown.Value;
+            this.properties.Name = this.NameTextBox.Text;
+            this.properties.ArmorClass = this.AcUpDown.Value;
+            this.properties.Perception = this.PerceptionUpDown.Value;
+            this.properties.Vision = this.VisionComboBox.Text.ToEnum<VisionTypes>();
+            this.properties.Movement = this.MovementUpDown.Value;
+            this.properties.CreatureSize = this.CreatureSizeComboBox.Text.ToEnum<CreatureSizes>();
+            this.properties.Initiative = this.InitiativeUpDown.Value;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.Properties, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.properties, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

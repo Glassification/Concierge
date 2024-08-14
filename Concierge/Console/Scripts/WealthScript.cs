@@ -12,12 +12,12 @@ namespace Concierge.Console.Scripts
 
     public sealed class WealthScript : IScript
     {
+        private readonly Wealth wealth;
+
         public WealthScript(Wealth wealth)
         {
-            this.Wealth = wealth;
+            this.wealth = wealth;
         }
-
-        private Wealth Wealth { get; set; }
 
         public ConsoleResult Evaluate(ConsoleCommand command)
         {
@@ -79,20 +79,20 @@ namespace Concierge.Console.Scripts
             switch (wealthType)
             {
                 case "copper":
-                    this.Wealth.Copper += amount;
-                    return this.Wealth.Copper;
+                    this.wealth.Copper += amount;
+                    return this.wealth.Copper;
                 case "silver":
-                    this.Wealth.Silver += amount;
-                    return this.Wealth.Silver;
+                    this.wealth.Silver += amount;
+                    return this.wealth.Silver;
                 case "electrum":
-                    this.Wealth.Electrum += amount;
-                    return this.Wealth.Electrum;
+                    this.wealth.Electrum += amount;
+                    return this.wealth.Electrum;
                 case "gold":
-                    this.Wealth.Gold += amount;
-                    return this.Wealth.Gold;
+                    this.wealth.Gold += amount;
+                    return this.wealth.Gold;
                 case "platinum":
-                    this.Wealth.Platinum += amount;
-                    return this.Wealth.Platinum;
+                    this.wealth.Platinum += amount;
+                    return this.wealth.Platinum;
                 default:
                     return 0;
             }

@@ -24,8 +24,9 @@ namespace Concierge.Display.Utility
     public partial class NameGeneratorWindow : ConciergeWindow
     {
         private readonly string nameHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.NameGeneratorHistoryName);
-        private readonly NameGenerator nameGenerator;
-        private readonly HistoryReadWriter historyReadWriter;
+        private readonly NameGenerator nameGenerator = new ([.. Defaults.Names]);
+        private readonly HistoryReadWriter historyReadWriter = new (Program.ErrorService);
+        private readonly History history;
 
         public NameGeneratorWindow()
         {
@@ -34,9 +35,7 @@ namespace Concierge.Display.Utility
 
             this.RaceComboBox.ItemsSource = ComboBoxGenerator.RacesComboBox();
             this.GenderComboBox.ItemsSource = ComboBoxGenerator.GenderComboBox();
-            this.nameGenerator = new NameGenerator([.. Defaults.Names]);
-            this.historyReadWriter = new HistoryReadWriter(Program.ErrorService);
-            this.History = new History(this.historyReadWriter.ReadList<string>(this.nameHistoryFile), string.Empty);
+            this.history = new History(this.historyReadWriter.ReadList<string>(this.nameHistoryFile), string.Empty);
 
             this.SetGenderState(false);
             this.SetRaceState(false);
@@ -45,8 +44,6 @@ namespace Concierge.Display.Utility
         public override string HeaderText => "Name Generator";
 
         public override string WindowName => nameof(NameGeneratorWindow);
-
-        private History History { get; set; }
 
         public override object? ShowWindow()
         {
@@ -90,11 +87,11 @@ namespace Concierge.Display.Utility
             switch (direction)
             {
                 case HistoryDirection.Backward:
-                    this.NameTextBox.Text = this.History.Backward();
+                    this.NameTextBox.Text = this.history.Backward();
                     this.NameTextBox.Select(this.NameTextBox.Text.Length, 0);
                     break;
                 case HistoryDirection.Forward:
-                    this.NameTextBox.Text = this.History.Forward();
+                    this.NameTextBox.Text = this.history.Forward();
                     this.NameTextBox.Select(this.NameTextBox.Text.Length, 0);
                     break;
             }
@@ -121,7 +118,7 @@ namespace Concierge.Display.Utility
 
                 this.NameTextBox.Text = name;
                 this.historyReadWriter.Append(this.nameHistoryFile, name);
-                this.History.Add(name);
+                this.history.Add(name);
             }
         }
 

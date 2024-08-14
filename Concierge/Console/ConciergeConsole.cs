@@ -5,7 +5,6 @@
 namespace Concierge.Console
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.IO;
@@ -13,7 +12,7 @@ namespace Concierge.Console
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
-    using Concierge.Console.Services;
+    using Concierge.Console.Runners;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
 
@@ -118,8 +117,8 @@ namespace Concierge.Console
                 return ResultType.Error;
             }
 
-            var scripts = this.GetScriptService(command);
-            var result = RunAllScripts(command, scripts);
+            var consoleRunner = this.BuildRunner(command);
+            var result = consoleRunner.RunAll();
             Program.Logger.Info($"Command result: {result}");
 
             this.WriteResult(result);
@@ -127,84 +126,35 @@ namespace Concierge.Console
             return result.Type;
         }
 
-        private static ConsoleResult RunAllScripts(ConsoleCommand command, List<ScriptService> services)
-        {
-            var result = ConsoleResult.Empty;
-
-            foreach (var service in services)
-            {
-                result = service.Run(command);
-                if (result.Type != ResultType.NotImplemented)
-                {
-                    break;
-                }
-            }
-
-            return result;
-        }
-
         private static bool IsEmpty(string command)
         {
             return command.Strip(Constants.ConsolePrompt).IsNullOrWhiteSpace();
         }
 
-        private List<ScriptService> GetScriptService(ConsoleCommand command)
+        private ConsoleRun BuildRunner(ConsoleCommand command)
         {
-            var matchingScripts = new List<ScriptService>();
+            var consoleRun = new ConsoleRun(command);
 
-            var listScriptService = new ListScriptService();
-            var wealthScriptService = new WealthScriptService();
-            var readWriterScriptService = new ReadWriterScriptService();
-            var listCommandScriptService = new ListCommandsScriptService();
-            var ccsCompressionScriptService = new CcsCompressionScriptService();
-
-            if (listScriptService.Contains(command.Name))
-            {
-                matchingScripts.Add(listScriptService);
-            }
-
-            if (wealthScriptService.Contains(command.Name))
-            {
-                matchingScripts.Add(wealthScriptService);
-            }
-
-            if (readWriterScriptService.Contains(command.Name))
-            {
-                matchingScripts.Add(readWriterScriptService);
-            }
-
-            if (listCommandScriptService.Contains(command.Name))
-            {
-                matchingScripts.Add(listCommandScriptService);
-            }
-
-            if (ccsCompressionScriptService.Contains(command.Name))
-            {
-                matchingScripts.Add(ccsCompressionScriptService);
-            }
-
-            if (command.Name.Equals("Help", StringComparison.InvariantCultureIgnoreCase))
-            {
-                matchingScripts.Add(new HelpScriptService());
-            }
+            consoleRun.AddIfExists(new ListRunner());
+            consoleRun.AddIfExists(new WealthRunner());
+            consoleRun.AddIfExists(new ReadWriterRunner());
+            consoleRun.AddIfExists(new ListCommandsRunner());
+            consoleRun.AddIfExists(new CcsCompressionRunner());
+            consoleRun.AddIfExists(new HelpRunner());
+            consoleRun.AddIfExists(new EchoRunner());
+            consoleRun.Validate();
 
             if (command.Name.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
             {
                 this.ClearConsoleOutput();
             }
-
-            if (command.Name.Equals("Exit", StringComparison.InvariantCultureIgnoreCase))
+            else if (command.Name.Equals("Exit", StringComparison.InvariantCultureIgnoreCase))
             {
                 this.writeOutput = false;
                 this.Exited?.Invoke(command, new EventArgs());
             }
 
-            if (matchingScripts.IsEmpty())
-            {
-                matchingScripts.Add(new UnknownScriptService());
-            }
-
-            return matchingScripts;
+            return consoleRun;
         }
 
         private void GenerateHeader()

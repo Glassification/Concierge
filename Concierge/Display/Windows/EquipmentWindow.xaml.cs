@@ -21,6 +21,8 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class EquipmentWindow : ConciergeWindow
     {
+        private string previousSlot = string.Empty;
+
         public EquipmentWindow()
         {
             this.InitializeComponent();
@@ -28,7 +30,6 @@ namespace Concierge.Display.Windows
 
             this.SlotComboBox.ItemsSource = ComboBoxGenerator.EquipmentSlotLevelComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.PreviousSlot = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.SlotComboBox);
@@ -39,13 +40,11 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(EquipmentWindow);
 
-        public bool ItemsAdded { get; private set; }
-
-        private string PreviousSlot { get; set; }
+        public bool ItemsAdded { get; set; }
 
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.PreviousSlot = EquipmentSlot.Torso.ToString();
+            this.previousSlot = EquipmentSlot.Torso.ToString();
             this.ClearFields();
             this.ItemComboBox.ItemsSource = GetEquipableItems();
             this.OkButton.Visibility = Visibility.Collapsed;
@@ -58,7 +57,7 @@ namespace Concierge.Display.Windows
 
         public override bool ShowAdd<T>(T item)
         {
-            this.PreviousSlot = EquipmentSlot.Torso.ToString();
+            this.previousSlot = EquipmentSlot.Torso.ToString();
             this.ClearFields();
             this.ItemComboBox.ItemsSource = GetEquipableItems();
             this.ItemsAdded = false;
@@ -105,7 +104,7 @@ namespace Concierge.Display.Windows
         {
             Program.Drawing();
 
-            this.SlotComboBox.Text = this.PreviousSlot;
+            this.SlotComboBox.Text = this.previousSlot;
             this.ItemComboBox.Text = string.Empty;
 
             Program.NotDrawing();
@@ -124,7 +123,7 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.PreviousSlot = this.SlotComboBox.Text;
+            this.previousSlot = this.SlotComboBox.Text;
             this.ItemsAdded = true;
             var slot = this.SlotComboBox.Text.ToEnum<EquipmentSlot>();
 

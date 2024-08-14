@@ -22,6 +22,10 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class ClassResourceWindow : ConciergeWindow
     {
+        private bool editing;
+        private ClassResource classResource = new ();
+        private List<ClassResource> classResources = [];
+
         public ClassResourceWindow()
         {
             this.InitializeComponent();
@@ -30,8 +34,6 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePages.None;
             this.ResourceNameComboBox.ItemsSource = DefaultItems;
             this.RecoveryComboBox.ItemsSource = ComboBoxGenerator.RecoveryComboBox();
-            this.ClassResource = new ClassResource();
-            this.ClassResources = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.ResourceNameComboBox);
@@ -41,7 +43,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Resource";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Resource";
 
         public override string WindowName => nameof(ClassResourceWindow);
 
@@ -49,17 +51,11 @@ namespace Concierge.Display.Windows
 
         private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Resources, Program.CustomItemService.GetItems<ClassResource>());
 
-        private bool Editing { get; set; }
-
-        private ClassResource ClassResource { get; set; }
-
-        private List<ClassResource> ClassResources { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ClassResources = Program.CcsFile.Character.Vitality.ClassResources;
+            this.classResources = Program.CcsFile.Character.Vitality.ClassResources;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -76,8 +72,8 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.ClassResources = castItem;
-            this.Editing = false;
+            this.classResources = castItem;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ItemsAdded = false;
 
@@ -94,12 +90,12 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ClassResource = castItem;
+            this.classResource = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
-            this.FillFields(this.ClassResource);
+            this.FillFields(this.classResource);
             this.ShowConciergeWindow();
         }
 
@@ -155,31 +151,31 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
 
             var resource = this.Create();
-            Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.ClassResources, resource, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.classResources, resource, this.ConciergePage));
 
             return resource;
         }
 
         private void UpdateClassResource()
         {
-            if (this.Editing)
+            if (this.editing)
             {
-                var oldItem = this.ClassResource.DeepCopy();
+                var oldItem = this.classResource.DeepCopy();
 
-                this.ClassResource.Type = this.ResourceNameComboBox.Text;
-                this.ClassResource.Total = this.PoolUpDown.Value;
-                this.ClassResource.Spent = this.SpentUpDown.Value;
-                this.ClassResource.Recovery = this.RecoveryComboBox.Text.ToEnum<Recovery>();
-                this.ClassResource.Note = this.NotesTextBox.Text;
+                this.classResource.Type = this.ResourceNameComboBox.Text;
+                this.classResource.Total = this.PoolUpDown.Value;
+                this.classResource.Spent = this.SpentUpDown.Value;
+                this.classResource.Recovery = this.RecoveryComboBox.Text.ToEnum<Recovery>();
+                this.classResource.Note = this.NotesTextBox.Text;
 
-                if (!this.ClassResource.IsCustom)
+                if (!this.classResource.IsCustom)
                 {
-                    Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.classResource, oldItem, this.ConciergePage));
                 }
             }
             else
             {
-                this.ClassResources.Add(this.ToClassResource());
+                this.classResources.Add(this.ToClassResource());
             }
         }
 
@@ -198,7 +194,7 @@ namespace Concierge.Display.Windows
         {
             this.UpdateClassResource();
 
-            if (!this.Editing)
+            if (!this.editing)
             {
                 this.ClearFields();
             }

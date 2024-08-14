@@ -30,7 +30,6 @@ namespace Concierge.Display.Pages
         {
             this.InitializeComponent();
 
-            this.HasEditableDataGrid = false;
             this.ConciergePages = ConciergePages.Overview;
             this.InspirationLabel.IsIcon = true;
         }
@@ -230,85 +229,85 @@ namespace Concierge.Display.Pages
         private void EditHealth_Click(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Vitality.Health,
                 typeof(HealthWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Overview);
+
             this.DrawHealth();
         }
 
         private void HitDiceDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Vitality.HitDice,
                 typeof(HitDiceWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Overview);
+
             this.DrawHitDice();
         }
 
         private void WealthDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Wealth,
                 sender,
                 typeof(WealthWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Overview);
+
             this.DrawWealth();
         }
 
         private void Grid_SavingThrowMouseUp(object sender, MouseButtonEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Attributes,
                 typeof(SavingThrowWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Overview);
+
             this.DrawSavingThrows();
         }
 
         private void Grid_SkillMenuMouseUp(object sender, MouseButtonEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Attributes,
                 typeof(SkillWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Overview);
+
             this.DrawSkills();
         }
 
         private void Label_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Detail.Senses,
                 typeof(SensesWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Overview);
+
             this.DrawDetails();
         }
 
         private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Attributes,
                 typeof(AttributesWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Overview);
+
             this.Draw();
         }
 
@@ -346,12 +345,12 @@ namespace Concierge.Display.Pages
         private void ArmorClass_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Equipment.Defense,
                 typeof(ArmorWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Overview);
+
             this.DrawArmorClass();
         }
 

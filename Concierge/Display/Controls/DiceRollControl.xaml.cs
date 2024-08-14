@@ -148,13 +148,15 @@ namespace Concierge.Display.Controls
 
         public void Initialize(string style, Brush foreground)
         {
-            this.DiceNumberUpDown.Decrease.Style = this.resourceDictionary[style] as Style;
-            this.DiceNumberUpDown.Increase.Style = this.resourceDictionary[style] as Style;
+            var styleText = style.Contains("ControlButtonStyle") ? style : $"{style}ControlButtonStyle";
+
+            this.DiceNumberUpDown.Decrease.Style = this.resourceDictionary[styleText] as Style;
+            this.DiceNumberUpDown.Increase.Style = this.resourceDictionary[styleText] as Style;
             this.DiceNumberUpDown.Decrease.Foreground = foreground;
             this.DiceNumberUpDown.Increase.Foreground = foreground;
 
-            this.DiceModifierUpDown.Decrease.Style = this.resourceDictionary[style] as Style;
-            this.DiceModifierUpDown.Increase.Style = this.resourceDictionary[style] as Style;
+            this.DiceModifierUpDown.Decrease.Style = this.resourceDictionary[styleText] as Style;
+            this.DiceModifierUpDown.Increase.Style = this.resourceDictionary[styleText] as Style;
             this.DiceModifierUpDown.Decrease.Foreground = foreground;
             this.DiceModifierUpDown.Increase.Foreground = foreground;
         }

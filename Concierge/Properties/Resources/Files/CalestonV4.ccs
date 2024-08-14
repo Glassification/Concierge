@@ -1,5 +1,52 @@
 {
   "Character": {
+    "Adventurers": [
+      {
+        "PlayerName": "Colby",
+        "CharacterName": "Gilbert",
+        "Race": "Human",
+        "Class": "Cleric",
+        "Level": 10,
+        "Status": 0,
+        "Type": 1
+      },
+      {
+        "PlayerName": "Daniel",
+        "CharacterName": "Kussandrik",
+        "Race": "Half-Elf",
+        "Class": "Barbarian",
+        "Level": 10,
+        "Status": 0,
+        "Type": 1
+      },
+      {
+        "PlayerName": "Kaleigh",
+        "CharacterName": "Declan",
+        "Race": "Half-Elf",
+        "Class": "Sorcerer",
+        "Level": 10,
+        "Status": 0,
+        "Type": 1
+      },
+      {
+        "PlayerName": "Thomas",
+        "CharacterName": "Caleston Nailo",
+        "Race": "Half-Elf",
+        "Class": "Rogue",
+        "Level": 10,
+        "Status": 0,
+        "Type": 0
+      },
+      {
+        "PlayerName": "Travis",
+        "CharacterName": "Gray",
+        "Race": "Goliath",
+        "Class": "Fighter",
+        "Level": 10,
+        "Status": 0,
+        "Type": 1
+      }
+    ],
     "Attributes": {
       "Strength": {
         "Proficiency": false,
@@ -585,7 +632,7 @@
               "Name": "Indian Red",
               "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
             },
-            "Kind": 557
+            "Kind": 559
           },
           "Id": "445e7a78-cecc-4bc3-8c19-aab50dc976ba",
           "IsCustom": false,
@@ -613,7 +660,7 @@
               "Name": "Indian Red",
               "Id": "ffafb52f-b12e-4ce0-a688-a769f1dcd6a3"
             },
-            "Kind": 557
+            "Kind": 559
           },
           "Id": "5fd39538-e488-4232-83a1-dfc54de8ba88",
           "IsCustom": false,
@@ -641,7 +688,7 @@
               "Name": "Steel Blue",
               "Id": "a5c8f700-1cfc-4dec-a055-8d7be15cd5da"
             },
-            "Kind": 2427
+            "Kind": 2433
           },
           "Id": "d031c3c5-e950-4498-98d3-fa89db302ef0",
           "IsCustom": false,
@@ -2437,9 +2484,58 @@
           ],
           "Created": "2023-02-22T18:16:29",
           "Id": "e5ca1f3a-3120-4ff4-87ba-831784b49ffc",
-          "IsExpanded": true,
+          "IsExpanded": false,
           "IsCustom": false,
           "Name": "Session Notes"
+        },
+        {
+          "Documents": [
+            {
+              "Rtf": "",
+              "Created": "2024-07-27T18:31:00.2819271-05:00",
+              "Id": "3e6904c8-0a24-456c-b494-4626ce70c8fc",
+              "IsExpanded": false,
+              "IsCustom": false,
+              "Name": "Gilbert"
+            },
+            {
+              "Rtf": "",
+              "Created": "2024-07-27T18:31:00.2820232-05:00",
+              "Id": "e4d29594-f269-4f1b-ada5-712ccfdf60e7",
+              "IsExpanded": false,
+              "IsCustom": false,
+              "Name": "Kussandrik"
+            },
+            {
+              "Rtf": "",
+              "Created": "2024-07-27T18:31:00.2820255-05:00",
+              "Id": "cb05d05d-8095-4149-b5e3-40df558b8078",
+              "IsExpanded": false,
+              "IsCustom": false,
+              "Name": "Declan"
+            },
+            {
+              "Rtf": "",
+              "Created": "2024-07-27T18:31:00.2820274-05:00",
+              "Id": "db827da8-5c2f-446e-9b55-02210e957ec3",
+              "IsExpanded": false,
+              "IsCustom": false,
+              "Name": "Gray"
+            },
+            {
+              "Rtf": "",
+              "Created": "2024-07-27T21:28:00.852948-05:00",
+              "Id": "6e67824e-4dc2-4a1a-8714-a7dc5458d94f",
+              "IsExpanded": false,
+              "IsCustom": false,
+              "Name": "Caleston Nailo"
+            }
+          ],
+          "Created": "2024-07-27T18:31:00.2815555-05:00",
+          "Id": "cb136c4d-48a5-475e-97c2-a8c1e1d07044",
+          "IsExpanded": false,
+          "IsCustom": false,
+          "Name": "Party Members"
         }
       ]
     },
@@ -2956,13 +3052,13 @@
       "Platinum": 500
     }
   },
-  "Hash": "5201FD8FC6632FD3B82A90EB6CBD3301158DA1C12D1111CB5E8CA15B74947D13",
+  "Hash": "63374DD4215470810894554FD78A8C76522274C94D4B21A7C4E278078D8218A0",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-07-18T09:26:36.0682814-05:00",
+  "LastSaveDate": "2024-07-28T14:04:47.0842936-05:00",
   "Version": {
     "Major": 5,
-    "Minor": 8,
-    "Patch": 15
+    "Minor": 9,
+    "Patch": 1
   },
   "IsEmpty": false
 }

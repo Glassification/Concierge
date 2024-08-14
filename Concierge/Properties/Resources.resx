@@ -145,6 +145,27 @@
   <data name="AboutBanner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Images\AboutBanner.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="AdventurerWindow_CharacterNameTextBox" xml:space="preserve">
+    <value>The character’s race description includes sample names for members of that race. Hopefully some thought has been put into the name, even if it's just from a list.</value>
+  </data>
+  <data name="AdventurerWindow_ClassComboBox" xml:space="preserve">
+    <value>Every adventurer is a member of a class. Class broadly describes a character’s vocation, what special talents he or she possesses, and the tactics he or she is most likely to employ.</value>
+  </data>
+  <data name="AdventurerWindow_LevelUpDown" xml:space="preserve">
+    <value>Typically, a character starts at 1st level and advances in level by adventuring and gaining experience points. A 1st-level character is inexperienced in the adventuring world</value>
+  </data>
+  <data name="AdventurerWindow_PlayerNameTextBox" xml:space="preserve">
+    <value>Real friends are required to fill in this field.</value>
+  </data>
+  <data name="AdventurerWindow_RaceComboBox" xml:space="preserve">
+    <value>Every character belongs to a race, one of the many intelligent humanoid species in the D&amp;D world. The most common player character races are dwarves, elves, halflings, and humans.</value>
+  </data>
+  <data name="AdventurerWindow_StatusComboBox" xml:space="preserve">
+    <value>Specifies if a party member is still in the party, has left, or has been killed.</value>
+  </data>
+  <data name="AdventurerWindow_TypeComboBox" xml:space="preserve">
+    <value>I come from under the hill. From under hills and over hills my path has led. And through the air, I am he who walks unseen.</value>
+  </data>
   <data name="Alignment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Alignment.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

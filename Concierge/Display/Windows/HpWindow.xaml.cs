@@ -20,29 +20,26 @@ namespace Concierge.Display.Windows
     public partial class HpWindow : ConciergeWindow
     {
         private AbilitySave abilitySave;
+        private int previousHeal;
+        private int previousDamage;
+        private bool isHealing;
 
         public HpWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.PreviousHeal = 0;
-            this.PreviousDamage = 0;
+            this.previousHeal = 0;
+            this.previousDamage = 0;
             this.ConciergePage = ConciergePages.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.HpUpDown);
         }
 
-        public override string HeaderText => this.IsHealing ? "Healing" : "Damage";
+        public override string HeaderText => this.isHealing ? "Healing" : "Damage";
 
         public override string WindowName => nameof(HpWindow);
-
-        private int PreviousHeal { get; set; }
-
-        private int PreviousDamage { get; set; }
-
-        private bool IsHealing { get; set; }
 
         public override ConciergeResult ShowHeal<T>(T vitality)
         {
@@ -52,9 +49,9 @@ namespace Concierge.Display.Windows
             }
 
             Program.Drawing();
-            this.IsHealing = true;
+            this.isHealing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.HpUpDown.Value = this.PreviousHeal;
+            this.HpUpDown.Value = this.previousHeal;
             Program.NotDrawing();
 
             this.ShowConciergeWindow();
@@ -78,9 +75,9 @@ namespace Concierge.Display.Windows
             }
 
             Program.Drawing();
-            this.IsHealing = false;
+            this.isHealing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.HpUpDown.Value = this.PreviousDamage;
+            this.HpUpDown.Value = this.previousDamage;
             Program.NotDrawing();
 
             this.ShowConciergeWindow();
@@ -110,13 +107,13 @@ namespace Concierge.Display.Windows
         private void SetPreviousValue()
         {
             Program.Drawing();
-            if (this.IsHealing)
+            if (this.isHealing)
             {
-                this.PreviousHeal = this.HpUpDown.Value;
+                this.previousHeal = this.HpUpDown.Value;
             }
             else
             {
-                this.PreviousDamage = this.HpUpDown.Value;
+                this.previousDamage = this.HpUpDown.Value;
             }
 
             Program.NotDrawing();

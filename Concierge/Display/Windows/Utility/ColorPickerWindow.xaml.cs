@@ -20,34 +20,31 @@ namespace Concierge.Display.Utility
     /// </summary>
     public partial class ColorPickerWindow : ConciergeWindow
     {
+        private readonly CustomColorService customColorService = Program.CustomColorService;
+
+        private CustomColor selectedColor = CustomColor.Invalid;
+
         public ColorPickerWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.CustomColorService = Program.CustomColorService;
-            this.SelectedColor = CustomColor.Invalid;
-
-            InitializeColorList(this.CustomColorService.DotNetColors, this.DefaultColorList);
-            InitializeColorList(this.CustomColorService.CustomColors, this.CustomColorList);
-            SetColorButtons(this.DefaultColorsStackPanel, this.CustomColorService.DefaultColors);
-            SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
+            InitializeColorList(this.customColorService.DotNetColors, this.DefaultColorList);
+            InitializeColorList(this.customColorService.CustomColors, this.CustomColorList);
+            SetColorButtons(this.DefaultColorsStackPanel, this.customColorService.DefaultColors);
+            SetColorButtons(this.RecentColorsStackPanel, this.customColorService.RecentColors);
         }
 
         public override string HeaderText => "Colour Picker";
 
         public override string WindowName => nameof(ColorPickerWindow);
 
-        private CustomColor SelectedColor { get; set; }
-
-        private CustomColorService CustomColorService { get; set; }
-
         public override CustomColor ShowColorWindow(CustomColor color)
         {
-            this.SelectedColor = color;
+            this.selectedColor = color;
             this.ShowConciergeWindow();
 
-            return this.SelectedColor.DeepCopy();
+            return this.selectedColor.DeepCopy();
         }
 
         private static void SetColorButtons(StackPanel stackPanel, List<CustomColor> colors)
@@ -79,13 +76,13 @@ namespace Concierge.Display.Utility
 
             if (button.Index >= 0)
             {
-                this.SelectedColor = button.Color;
-                this.CustomColorService.UpdateRecentColors(button.Index);
+                this.selectedColor = button.Color;
+                this.customColorService.UpdateRecentColors(button.Index);
                 this.CloseConciergeWindow();
             }
             else
             {
-                this.SelectedColor = button.Color;
+                this.selectedColor = button.Color;
                 this.CloseConciergeWindow();
             }
         }
@@ -112,27 +109,27 @@ namespace Concierge.Display.Utility
 
         private void SelectDefaultColorButton_Click(object sender, RoutedEventArgs e)
         {
-            this.SelectedColor = this.SelectDefaultColorButton.Color;
-            this.CustomColorService.AddRecentColor(this.SelectedColor);
+            this.selectedColor = this.SelectDefaultColorButton.Color;
+            this.customColorService.AddRecentColor(this.selectedColor);
             this.CloseConciergeWindow();
         }
 
         private void SelectCustomColorButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = WindowService.ShowColorWindow(typeof(CustomColorWindow), this.SelectedColor);
+            var result = WindowService.ShowColorWindow(typeof(CustomColorWindow), this.selectedColor);
 
             if (result.IsValid)
             {
-                this.SelectedColor = result;
-                this.CustomColorService.AddRecentColor(this.SelectedColor);
-                this.CustomColorService.AddCustomColor(this.SelectedColor);
+                this.selectedColor = result;
+                this.customColorService.AddRecentColor(this.selectedColor);
+                this.customColorService.AddCustomColor(this.selectedColor);
                 this.CloseConciergeWindow();
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.SelectedColor = CustomColor.Invalid;
+            this.selectedColor = CustomColor.Invalid;
             this.CloseConciergeWindow();
         }
     }

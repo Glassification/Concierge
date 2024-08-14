@@ -6,7 +6,6 @@ namespace Concierge.Display.Pages
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -36,7 +35,7 @@ namespace Concierge.Display.Pages
             this.HealthDisplay.InitializeDisplay();
         }
 
-        private List<CompanionWeapon> DisplayList => Program.CcsFile.Character.Companion.Weapons.Filter(this.SearchFilter.FilterText).ToList();
+        private List<CompanionWeapon> DisplayList => [.. Program.CcsFile.Character.Companion.Weapons.Filter(this.SearchFilter.FilterText)];
 
         public override void Draw(bool isNewCharacterSheet = false)
         {
@@ -56,11 +55,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.WeaponDataGrid.SelectedIndex;
-            WindowService.ShowEdit(
-                weapon,
-                typeof(CompanionAttacksWindow),
-                this.Window_ApplyChanges,
-                ConciergePages.Companion);
+            WindowService.ShowEdit(weapon, typeof(CompanionAttacksWindow), this.Window_ApplyChanges, ConciergePages.Companion);
             this.DrawAttacks();
             this.WeaponDataGrid.SetSelectedIndex(index);
         }
@@ -238,24 +233,24 @@ namespace Concierge.Display.Pages
         private void HealthDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Health,
                 typeof(HealthWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Companion);
+
             this.DrawHealth();
         }
 
         private void HitDiceDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.HitDice,
                 typeof(HitDiceWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Companion);
+
             this.DrawHealth();
             this.DrawHitDice();
         }
@@ -263,12 +258,12 @@ namespace Concierge.Display.Pages
         private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Attributes,
                 typeof(CompanionAttributesWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Companion);
+
             this.DrawAttributes();
             this.DrawAttacks();
         }
@@ -276,24 +271,24 @@ namespace Concierge.Display.Pages
         private void CompanionDetails_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Properties,
                 typeof(CompanionWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Companion);
+
             this.DrawDetails();
         }
 
         private void CompanionImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.CompanionImage,
                 typeof(ImageWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Companion);
+
             this.DrawImage();
         }
 

@@ -30,6 +30,11 @@ namespace Concierge.Display.Pages
     {
         private readonly ImageEncoding encodingService = new (Program.ErrorService);
 
+        private object? selectedItem;
+        private int selectedIndex;
+        private bool isSelecting;
+        private ConciergeDataGrid? selectedDataGrid;
+
         public EquipmentPage()
         {
             this.InitializeComponent();
@@ -37,14 +42,6 @@ namespace Concierge.Display.Pages
             this.HasEditableDataGrid = true;
             this.ConciergePages = ConciergePages.Equipment;
         }
-
-        private object? SelectedItem { get; set; }
-
-        private int SelectedIndex { get; set; }
-
-        private bool IsSelecting { get; set; }
-
-        private ConciergeDataGrid? SelectedDataGrid { get; set; }
 
         public override void Draw(bool isNewCharacterSheet = false)
         {
@@ -56,9 +53,9 @@ namespace Concierge.Display.Pages
 
         public override void Edit(object itemToEdit)
         {
-            if (itemToEdit is Inventory inventory && this.SelectedDataGrid is not null)
+            if (itemToEdit is Inventory inventory && this.selectedDataGrid is not null)
             {
-                var index = this.SelectedDataGrid.SelectedIndex;
+                var index = this.selectedDataGrid.SelectedIndex;
                 WindowService.ShowEdit(
                     inventory,
                     true,
@@ -66,11 +63,11 @@ namespace Concierge.Display.Pages
                     this.Window_ApplyChanges,
                     ConciergePages.Equipment);
                 this.Draw();
-                this.SelectedDataGrid.SetSelectedIndex(index);
+                this.selectedDataGrid.SetSelectedIndex(index);
             }
-            else if (itemToEdit is Weapon weapon && this.SelectedDataGrid is not null)
+            else if (itemToEdit is Weapon weapon && this.selectedDataGrid is not null)
             {
-                var index = this.SelectedDataGrid.SelectedIndex;
+                var index = this.selectedDataGrid.SelectedIndex;
                 WindowService.ShowEdit(
                     weapon,
                     true,
@@ -78,18 +75,18 @@ namespace Concierge.Display.Pages
                     this.Window_ApplyChanges,
                     ConciergePages.Equipment);
                 this.Draw();
-                this.SelectedDataGrid.SetSelectedIndex(index);
+                this.selectedDataGrid.SetSelectedIndex(index);
             }
-            else if (itemToEdit is Spell spell && this.SelectedDataGrid is not null)
+            else if (itemToEdit is Spell spell && this.selectedDataGrid is not null)
             {
-                var index = this.SelectedDataGrid.SelectedIndex;
+                var index = this.selectedDataGrid.SelectedIndex;
                 WindowService.ShowEdit(
                     spell,
                     typeof(SpellWindow),
                     this.Window_ApplyChanges,
                     ConciergePages.Equipment);
                 this.DrawPreparedSpells();
-                this.SelectedDataGrid.SetSelectedIndex(index);
+                this.selectedDataGrid.SetSelectedIndex(index);
             }
         }
 
@@ -194,25 +191,15 @@ namespace Concierge.Display.Pages
 
         private void EquipmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is not ConciergeDataGrid dataGrid)
+            if (sender is not ConciergeDataGrid dataGrid || dataGrid.Tag is not string stringTag || this.isSelecting)
             {
                 return;
             }
 
-            if (dataGrid.Tag is not string stringTag)
-            {
-                return;
-            }
-
-            if (this.IsSelecting)
-            {
-                return;
-            }
-
-            this.IsSelecting = true;
-            this.SelectedItem = dataGrid.SelectedItem;
-            this.SelectedDataGrid = dataGrid;
-            this.SelectedIndex = dataGrid.SelectedIndex;
+            this.isSelecting = true;
+            this.selectedItem = dataGrid.SelectedItem;
+            this.selectedDataGrid = dataGrid;
+            this.selectedIndex = dataGrid.SelectedIndex;
 
             if (!stringTag.Equals(EquipmentSlot.Head.ToString()))
             {
@@ -245,7 +232,7 @@ namespace Concierge.Display.Pages
             }
 
             this.CheckAndSet();
-            this.IsSelecting = false;
+            this.isSelecting = false;
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -257,64 +244,51 @@ namespace Concierge.Display.Pages
             this.FeetEquipmentDataGrid.UnselectAll();
             this.PreparedSpellsDataGrid.UnselectAll();
 
-            this.SelectedItem = null;
-            this.SelectedDataGrid = null;
+            this.selectedItem = null;
+            this.selectedDataGrid = null;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = WindowService.ShowAdd(
-                string.Empty,
-                typeof(EquipmentWindow),
-                this.Window_ApplyChanges,
-                ConciergePages.Equipment);
+            var added = WindowService.ShowAdd(string.Empty, typeof(EquipmentWindow), this.Window_ApplyChanges, ConciergePages.Equipment);
             this.Draw();
-
             if (added)
             {
-                this.SelectedDataGrid?.SetSelectedIndex(this.SelectedDataGrid.LastIndex);
+                this.selectedDataGrid?.SetSelectedIndex(this.selectedDataGrid.LastIndex);
             }
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedItem is null)
+            if (this.selectedItem is not null)
             {
-                return;
+                this.Edit(this.selectedItem);
             }
-
-            this.Edit(this.SelectedItem);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedItem is null || this.SelectedDataGrid is null)
+            if ((this.selectedItem is not Inventory && this.selectedItem is not Weapon) || this.selectedDataGrid is null)
             {
                 return;
             }
 
-            if (this.SelectedItem is not Inventory && this.SelectedItem is not Weapon)
-            {
-                return;
-            }
-
-            var index = this.SelectedIndex;
-            if (this.SelectedItem is Inventory inventory)
+            var index = this.selectedIndex;
+            if (this.selectedItem is Inventory inventory)
             {
                 this.DequipInventory(inventory);
             }
-            else if (this.SelectedItem is Weapon weapon)
+            else if (this.selectedItem is Weapon weapon)
             {
                 this.DequipWeapon(weapon);
             }
 
             this.Draw();
-            this.SelectedDataGrid.SetSelectedIndex(index);
-
-            if (this.SelectedDataGrid.Items.Count == 0)
+            this.selectedDataGrid.SetSelectedIndex(index);
+            if (this.selectedDataGrid.Items.Count == 0)
             {
-                this.SelectedItem = null;
-                this.SelectedDataGrid = null;
+                this.selectedItem = null;
+                this.selectedDataGrid = null;
             }
         }
 
@@ -343,7 +317,7 @@ namespace Concierge.Display.Pages
 
         private void ItemUseButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedItem is IUsable usable)
+            if (this.selectedItem is IUsable usable)
             {
                 var result = usable.Use(UseItem.Empty);
                 WindowService.ShowUseItemWindow(typeof(UseItemWindow), result);

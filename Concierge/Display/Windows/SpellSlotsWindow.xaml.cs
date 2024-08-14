@@ -16,13 +16,14 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class SpellSlotsWindow : ConciergeWindow
     {
+        private SpellSlots spellSlots = new ();
+
         public SpellSlotsWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePages.None;
-            this.SpellSlots = new SpellSlots();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.Used1UpDown);
@@ -49,12 +50,10 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(SpellSlotsWindow);
 
-        private SpellSlots SpellSlots { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.SpellSlots = Program.CcsFile.Character.SpellCasting.SpellSlots;
+            this.spellSlots = Program.CcsFile.Character.SpellCasting.SpellSlots;
             this.CancelButton.Content = buttonText;
 
             this.FillFields();
@@ -71,7 +70,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.SpellSlots = castItem;
+            this.spellSlots = castItem;
             this.FillFields();
             this.SetSpentLimit();
             this.ShowConciergeWindow();
@@ -97,55 +96,55 @@ namespace Concierge.Display.Windows
 
         private void FillUsed()
         {
-            this.Used1UpDown.Value = this.SpellSlots.FirstUsed;
-            this.Used2UpDown.Value = this.SpellSlots.SecondUsed;
-            this.Used3UpDown.Value = this.SpellSlots.ThirdUsed;
-            this.Used4UpDown.Value = this.SpellSlots.FourthUsed;
-            this.Used5UpDown.Value = this.SpellSlots.FifthUsed;
-            this.Used6UpDown.Value = this.SpellSlots.SixthUsed;
-            this.Used7UpDown.Value = this.SpellSlots.SeventhUsed;
-            this.Used8UpDown.Value = this.SpellSlots.EighthUsed;
-            this.Used9UpDown.Value = this.SpellSlots.NinethUsed;
+            this.Used1UpDown.Value = this.spellSlots.FirstUsed;
+            this.Used2UpDown.Value = this.spellSlots.SecondUsed;
+            this.Used3UpDown.Value = this.spellSlots.ThirdUsed;
+            this.Used4UpDown.Value = this.spellSlots.FourthUsed;
+            this.Used5UpDown.Value = this.spellSlots.FifthUsed;
+            this.Used6UpDown.Value = this.spellSlots.SixthUsed;
+            this.Used7UpDown.Value = this.spellSlots.SeventhUsed;
+            this.Used8UpDown.Value = this.spellSlots.EighthUsed;
+            this.Used9UpDown.Value = this.spellSlots.NinethUsed;
         }
 
         private void FillTotal()
         {
-            this.Total1UpDown.Value = this.SpellSlots.FirstTotal;
-            this.Total2UpDown.Value = this.SpellSlots.SecondTotal;
-            this.Total3UpDown.Value = this.SpellSlots.ThirdTotal;
-            this.Total4UpDown.Value = this.SpellSlots.FourthTotal;
-            this.Total5UpDown.Value = this.SpellSlots.FifthTotal;
-            this.Total6UpDown.Value = this.SpellSlots.SixthTotal;
-            this.Total7UpDown.Value = this.SpellSlots.SeventhTotal;
-            this.Total8UpDown.Value = this.SpellSlots.EighthTotal;
-            this.Total9UpDown.Value = this.SpellSlots.NinethTotal;
+            this.Total1UpDown.Value = this.spellSlots.FirstTotal;
+            this.Total2UpDown.Value = this.spellSlots.SecondTotal;
+            this.Total3UpDown.Value = this.spellSlots.ThirdTotal;
+            this.Total4UpDown.Value = this.spellSlots.FourthTotal;
+            this.Total5UpDown.Value = this.spellSlots.FifthTotal;
+            this.Total6UpDown.Value = this.spellSlots.SixthTotal;
+            this.Total7UpDown.Value = this.spellSlots.SeventhTotal;
+            this.Total8UpDown.Value = this.spellSlots.EighthTotal;
+            this.Total9UpDown.Value = this.spellSlots.NinethTotal;
         }
 
         private void UpdateSpellSlots()
         {
-            var oldItem = this.SpellSlots.DeepCopy();
+            var oldItem = this.spellSlots.DeepCopy();
 
-            this.SpellSlots.FirstUsed = this.Used1UpDown.Value;
-            this.SpellSlots.SecondUsed = this.Used2UpDown.Value;
-            this.SpellSlots.ThirdUsed = this.Used3UpDown.Value;
-            this.SpellSlots.FourthUsed = this.Used4UpDown.Value;
-            this.SpellSlots.FifthUsed = this.Used5UpDown.Value;
-            this.SpellSlots.SixthUsed = this.Used6UpDown.Value;
-            this.SpellSlots.SeventhUsed = this.Used7UpDown.Value;
-            this.SpellSlots.EighthUsed = this.Used8UpDown.Value;
-            this.SpellSlots.NinethUsed = this.Used9UpDown.Value;
+            this.spellSlots.FirstUsed = this.Used1UpDown.Value;
+            this.spellSlots.SecondUsed = this.Used2UpDown.Value;
+            this.spellSlots.ThirdUsed = this.Used3UpDown.Value;
+            this.spellSlots.FourthUsed = this.Used4UpDown.Value;
+            this.spellSlots.FifthUsed = this.Used5UpDown.Value;
+            this.spellSlots.SixthUsed = this.Used6UpDown.Value;
+            this.spellSlots.SeventhUsed = this.Used7UpDown.Value;
+            this.spellSlots.EighthUsed = this.Used8UpDown.Value;
+            this.spellSlots.NinethUsed = this.Used9UpDown.Value;
 
-            this.SpellSlots.FirstTotal = this.Total1UpDown.Value;
-            this.SpellSlots.SecondTotal = this.Total2UpDown.Value;
-            this.SpellSlots.ThirdTotal = this.Total3UpDown.Value;
-            this.SpellSlots.FourthTotal = this.Total4UpDown.Value;
-            this.SpellSlots.FifthTotal = this.Total5UpDown.Value;
-            this.SpellSlots.SixthTotal = this.Total6UpDown.Value;
-            this.SpellSlots.SeventhTotal = this.Total7UpDown.Value;
-            this.SpellSlots.EighthTotal = this.Total8UpDown.Value;
-            this.SpellSlots.NinethTotal = this.Total9UpDown.Value;
+            this.spellSlots.FirstTotal = this.Total1UpDown.Value;
+            this.spellSlots.SecondTotal = this.Total2UpDown.Value;
+            this.spellSlots.ThirdTotal = this.Total3UpDown.Value;
+            this.spellSlots.FourthTotal = this.Total4UpDown.Value;
+            this.spellSlots.FifthTotal = this.Total5UpDown.Value;
+            this.spellSlots.SixthTotal = this.Total6UpDown.Value;
+            this.spellSlots.SeventhTotal = this.Total7UpDown.Value;
+            this.spellSlots.EighthTotal = this.Total8UpDown.Value;
+            this.spellSlots.NinethTotal = this.Total9UpDown.Value;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(this.SpellSlots, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(this.spellSlots, oldItem, this.ConciergePage));
         }
 
         private void SetSpentLimit()

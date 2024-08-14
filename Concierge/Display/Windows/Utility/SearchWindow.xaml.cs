@@ -28,6 +28,10 @@ namespace Concierge.Display.Utility
         private readonly ConciergeNavigate conciergeNavigate;
         private readonly MainWindow mainWindow;
 
+        private int searchIndex;
+        private SearchResult? previousResult;
+        private List<SearchResult> searchResults = [];
+
         public SearchWindow()
         {
             if (Program.MainWindow is null)
@@ -40,7 +44,6 @@ namespace Concierge.Display.Utility
 
             this.conciergeSearch = new ConciergeSearch(Program.MainWindow);
             this.conciergeNavigate = new ConciergeNavigate();
-            this.SearchResults = [];
             this.mainWindow = Program.MainWindow;
             this.SearchDomainComboBox.ItemsSource = ComboBoxGenerator.SearchDomainComboBox();
             this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.PascalCase();
@@ -51,13 +54,7 @@ namespace Concierge.Display.Utility
 
         public override string WindowName => nameof(SearchWindow);
 
-        private List<SearchResult> SearchResults { get; set; }
-
-        private int SearchIndex { get; set; }
-
-        private SearchResult? CurrentResult => this.SearchResults.Count > 0 ? this.SearchResults[this.SearchIndex] : null;
-
-        private SearchResult? PreviousResult { get; set; }
+        private SearchResult? CurrentResult => this.searchResults.Count > 0 ? this.searchResults[this.searchIndex] : null;
 
         public override object? ShowWindow()
         {
@@ -110,9 +107,9 @@ namespace Concierge.Display.Utility
                 return;
             }
 
-            this.SearchResults = this.conciergeSearch.Search(settings);
-            this.SearchIndex = 0;
-            this.PreviousResult = null;
+            this.searchResults = this.conciergeSearch.Search(settings);
+            this.searchIndex = 0;
+            this.previousResult = null;
         }
 
         private void SelectSearchResult()
@@ -123,13 +120,13 @@ namespace Concierge.Display.Utility
             }
 
             this.Search();
-            if (this.SearchResults.IsEmpty())
+            if (this.searchResults.IsEmpty())
             {
                 return;
             }
 
             this.Opacity = 0.8;
-            var result = this.SearchResults[this.SearchIndex];
+            var result = this.searchResults[this.searchIndex];
 
             this.ClearHighlightedResults();
             this.mainWindow.MoveSelection(result.ConciergePage.ConciergePages);
@@ -139,21 +136,21 @@ namespace Concierge.Display.Utility
 
         private void FormatResultText()
         {
-            if (this.SearchResults.IsEmpty())
+            if (this.searchResults.IsEmpty())
             {
                 this.SearchResultTextBlock.Text = "No results found!";
                 this.SearchResultTextBlock.Foreground = Brushes.IndianRed;
             }
             else
             {
-                this.SearchResultTextBlock.Text = $"Found {this.SearchIndex + 1}/{this.SearchResults.Count} results.";
+                this.SearchResultTextBlock.Text = $"Found {this.searchIndex + 1}/{this.searchResults.Count} results.";
                 this.SearchResultTextBlock.Foreground = Brushes.PaleGreen;
             }
         }
 
         private void ClearHighlightedResults()
         {
-            foreach (var result in this.SearchResults)
+            foreach (var result in this.searchResults)
             {
                 if (result.Item is ConciergeTextBlock item)
                 {
@@ -161,7 +158,7 @@ namespace Concierge.Display.Utility
                 }
             }
 
-            if (this.PreviousResult?.Item is Document || this.CurrentResult?.Item is Document)
+            if (this.previousResult?.Item is Document || this.CurrentResult?.Item is Document)
             {
                 Program.MainWindow?.JournalPage.ClearHighlightSelection();
             }
@@ -187,11 +184,11 @@ namespace Concierge.Display.Utility
 
         private void FindPreviousButton_Click(object? sender, RoutedEventArgs e)
         {
-            this.PreviousResult = this.SearchResults.Count > 0 ? this.SearchResults[this.SearchIndex] : null;
-            this.SearchIndex--;
-            if (this.SearchIndex < 0)
+            this.previousResult = this.searchResults.Count > 0 ? this.searchResults[this.searchIndex] : null;
+            this.searchIndex--;
+            if (this.searchIndex < 0)
             {
-                this.SearchIndex = this.SearchResults.Count - 1;
+                this.searchIndex = this.searchResults.Count - 1;
             }
 
             this.SelectSearchResult();
@@ -200,11 +197,11 @@ namespace Concierge.Display.Utility
 
         private void FindNextButton_Click(object? sender, RoutedEventArgs e)
         {
-            this.PreviousResult = this.SearchResults.Count > 0 ? this.SearchResults[this.SearchIndex] : null;
-            this.SearchIndex++;
-            if (this.SearchIndex >= this.SearchResults.Count)
+            this.previousResult = this.searchResults.Count > 0 ? this.searchResults[this.searchIndex] : null;
+            this.searchIndex++;
+            if (this.searchIndex >= this.searchResults.Count)
             {
-                this.SearchIndex = 0;
+                this.searchIndex = 0;
             }
 
             this.SelectSearchResult();

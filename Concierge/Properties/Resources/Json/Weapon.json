@@ -184,7 +184,7 @@
     "Ability": 0,
     "Damage": "2d6",
     "Misc": "",
-    "DamageType": 3,
+    "DamageType": 12,
     "Range": "5 / 5",
     "Note": "Heavy, two-handed",
     "Value": 50,

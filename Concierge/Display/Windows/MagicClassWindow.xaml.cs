@@ -25,6 +25,11 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class MagicClassWindow : ConciergeWindow
     {
+        private bool editing;
+        private bool settingValues;
+        private MagicalClass selectedClass = new ();
+        private List<MagicalClass> magicClasses = [];
+
         public MagicClassWindow()
         {
             this.InitializeComponent();
@@ -33,8 +38,6 @@ namespace Concierge.Display.Windows
             this.ClassNameComboBox.ItemsSource = DefaultItems;
             this.AbilityComboBox.ItemsSource = ComboBoxGenerator.AbilitiesComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.SelectedClass = new MagicalClass();
-            this.MagicClasses = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.ClassNameComboBox);
@@ -47,7 +50,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.PreparedSpellsTextBox, this.PreparedSpellsTextBackground);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Magical Class";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Magical Class";
 
         public override string WindowName => nameof(MagicClassWindow);
 
@@ -55,20 +58,12 @@ namespace Concierge.Display.Windows
 
         private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.MagicClasses, Program.CustomItemService.GetItems<MagicalClass>());
 
-        private bool Editing { get; set; }
-
-        private bool SettingValues { get; set; }
-
-        private MagicalClass SelectedClass { get; set; }
-
-        private List<MagicalClass> MagicClasses { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.MagicClasses = Program.CcsFile.Character.SpellCasting.MagicalClasses;
+            this.magicClasses = Program.CcsFile.Character.SpellCasting.MagicalClasses;
             this.CancelButton.Content = buttonText;
 
             this.ClearFields();
@@ -84,9 +79,9 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.MagicClasses = castItem;
+            this.magicClasses = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
@@ -102,9 +97,9 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedClass = castItem;
+            this.selectedClass = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields(castItem);
@@ -115,13 +110,13 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeResult.OK;
 
-            if (this.Editing)
+            if (this.editing)
             {
-                this.UpdateMagicClass(this.SelectedClass);
+                this.UpdateMagicClass(this.selectedClass);
             }
             else
             {
-                this.MagicClasses.Add(this.ToMagicClass());
+                this.magicClasses.Add(this.ToMagicClass());
             }
 
             this.CloseConciergeWindow();
@@ -131,7 +126,7 @@ namespace Concierge.Display.Windows
         {
             Program.Drawing();
 
-            this.SettingValues = true;
+            this.settingValues = true;
             this.ClassNameComboBox.Text = magicClass.Name;
             this.AbilityComboBox.Text = magicClass.Ability.ToString();
             this.AttackBonusTextBox.Text = magicClass.Attack.ToString();
@@ -140,7 +135,7 @@ namespace Concierge.Display.Windows
             this.CantripsUpDown.Value = magicClass.KnownCantrips;
             this.SpellsUpDown.Value = magicClass.KnownSpells;
             this.PreparedSpellsTextBox.Text = magicClass.PreparedSpells.ToString();
-            this.SettingValues = false;
+            this.settingValues = false;
 
             Program.NotDrawing();
         }
@@ -149,7 +144,7 @@ namespace Concierge.Display.Windows
         {
             Program.Drawing();
 
-            this.SettingValues = true;
+            this.settingValues = true;
             this.ClassNameComboBox.Text = name;
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
             this.AttackBonusTextBox.Text = "0";
@@ -158,7 +153,7 @@ namespace Concierge.Display.Windows
             this.CantripsUpDown.Value = 0;
             this.SpellsUpDown.Value = 0;
             this.PreparedSpellsTextBox.Text = "0";
-            this.SettingValues = false;
+            this.settingValues = false;
 
             Program.NotDrawing();
         }
@@ -196,7 +191,7 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
             var magicClass = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<MagicalClass>(this.MagicClasses, magicClass, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<MagicalClass>(this.magicClasses, magicClass, this.ConciergePage));
 
             return magicClass;
         }
@@ -225,7 +220,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.MagicClasses.Add(this.ToMagicClass());
+            this.magicClasses.Add(this.ToMagicClass());
             this.ClearFields();
             this.InvokeApplyChanges();
         }
@@ -238,7 +233,7 @@ namespace Concierge.Display.Windows
 
         private void AbilityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!this.SettingValues)
+            if (!this.settingValues)
             {
                 this.RefreshFields();
             }

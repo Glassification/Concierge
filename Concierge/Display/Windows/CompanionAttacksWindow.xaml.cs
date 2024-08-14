@@ -23,8 +23,8 @@ namespace Concierge.Display.Windows
     public partial class CompanionAttacksWindow : ConciergeWindow
     {
         private bool editing;
-        private CompanionWeapon selectedAttack;
-        private List<CompanionWeapon> weapons;
+        private CompanionWeapon selectedAttack = new ();
+        private List<CompanionWeapon> weapons = [];
 
         public CompanionAttacksWindow()
         {
@@ -35,8 +35,6 @@ namespace Concierge.Display.Windows
             this.AbilityComboBox.ItemsSource = ComboBoxGenerator.AbilitiesComboBox();
             this.DamageTypeComboBox.ItemsSource = ComboBoxGenerator.DamageTypesComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.weapons = [];
-            this.selectedAttack = new CompanionWeapon();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.AttackComboBox);

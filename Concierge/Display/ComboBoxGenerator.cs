@@ -6,7 +6,6 @@ namespace Concierge.Display
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Media;
 
@@ -18,19 +17,20 @@ namespace Concierge.Display
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
     using Concierge.Search.Enums;
+    using Concierge.Services;
     using MaterialDesignThemes.Wpf;
 
+    /// <summary>
+    /// Provides methods to generate various types of combo boxes for different data types and purposes.
+    /// </summary>
     public static class ComboBoxGenerator
     {
-        private static readonly double[] fontSizes = [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72];
-        private static readonly FontFamily[] fontFamilies = [.. Fonts.SystemFontFamilies.OrderBy(f => f.Source)];
-
         /// <summary>
-        /// Generates a list of DetailedComboBoxItemControl using only custom items, sorted by their name.
+        /// Generates a detailed selector combo box with custom items.
         /// </summary>
-        /// <typeparam name="T">The type of items that implement the IUnique interface.</typeparam>
-        /// <param name="customItems">A list of custom items to be combined with default items.</param>
-        /// <returns>A list of DetailedComboBoxItemControl with content, foreground color, and tag set based on the provided items.</returns>
+        /// <typeparam name="T">The type of the items, which must implement the IUnique interface.</typeparam>
+        /// <param name="customItems">A list of custom items to include in the combo box.</param>
+        /// <returns>A list of DetailedComboBoxItemControl objects.</returns>
         public static List<DetailedComboBoxItemControl> DetailedSelectorComboBox<T>(List<T> customItems)
             where T : IUnique
         {
@@ -45,12 +45,12 @@ namespace Concierge.Display
         }
 
         /// <summary>
-        /// Generates a list of DetailedComboBoxItemControl using default items and custom items, sorted by their name.
+        /// Generates a detailed selector combo box with both default and custom items.
         /// </summary>
-        /// <typeparam name="T">The type of items that implement the IUnique interface.</typeparam>
-        /// <param name="defaultItems">A collection of default items.</param>
-        /// <param name="customItems">A list of custom items to be combined with default items.</param>
-        /// <returns>A list of DetailedComboBoxItemControl with content, foreground color, and tag set based on the provided items.</returns>
+        /// <typeparam name="T">The type of the items, which must implement the IUnique interface.</typeparam>
+        /// <param name="defaultItems">A read-only collection of default items to include in the combo box.</param>
+        /// <param name="customItems">A list of custom items to include in the combo box.</param>
+        /// <returns>A list of DetailedComboBoxItemControl objects.</returns>
         public static List<DetailedComboBoxItemControl> DetailedSelectorComboBox<T>(ReadOnlyCollection<T> defaultItems, List<T> customItems)
             where T : IUnique
         {
@@ -66,12 +66,12 @@ namespace Concierge.Display
         }
 
         /// <summary>
-        /// Generates a list of ComboBoxItemControl using default items and custom items, sorted by their name.
+        /// Generates a selector combo box with both default and custom items.
         /// </summary>
-        /// <typeparam name="T">The type of items that implement the IUnique interface.</typeparam>
-        /// <param name="defaultItems">A collection of default items.</param>
-        /// <param name="customItems">A list of custom items to be combined with default items.</param>
-        /// <returns>A list of ComboBoxItemControl with content, foreground color, and tag set based on the provided items.</returns>
+        /// <typeparam name="T">The type of the items, which must implement the IUnique interface.</typeparam>
+        /// <param name="defaultItems">A read-only collection of default items to include in the combo box.</param>
+        /// <param name="customItems">A list of custom items to include in the combo box.</param>
+        /// <returns>A list of ComboBoxItemControl objects.</returns>
         public static List<ComboBoxItemControl> SelectorComboBox<T>(ReadOnlyCollection<T> defaultItems, List<T> customItems)
             where T : IUnique
         {
@@ -86,6 +86,10 @@ namespace Concierge.Display
             return comboBoxItems;
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting ability types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing ability types.</returns>
         public static List<ComboBoxItemControl> AbilityTypesComboBox()
         {
             return
@@ -98,6 +102,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting damage types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing damage types.</returns>
         public static List<ComboBoxItemControl> DamageTypesComboBox()
         {
             return
@@ -121,6 +129,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting coin types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing coin types.</returns>
         public static List<ComboBoxItemControl> CoinTypesComboBox()
         {
             return
@@ -133,6 +145,11 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting loot division options.
+        /// </summary>
+        /// <param name="background">The background brush for the combo box items.</param>
+        /// <returns>A list of ComboBoxItemControl objects representing loot division options.</returns>
         public static List<ComboBoxItemControl> DivideLootComboBox(Brush background)
         {
             return
@@ -146,6 +163,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting gender options.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing gender options.</returns>
         public static List<ComboBoxItemControl> GenderComboBox()
         {
             List<ComboBoxItemControl> list =
@@ -163,6 +184,10 @@ namespace Concierge.Display
             return list;
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting armor types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing armor types.</returns>
         public static List<ComboBoxItemControl> ArmorTypeComboBox()
         {
             return
@@ -175,6 +200,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting stealth options.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing stealth options.</returns>
         public static List<ComboBoxItemControl> StealthComboBox()
         {
             return
@@ -184,6 +213,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting armor status options.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing armor status options.</returns>
         public static List<ComboBoxItemControl> ArmorStatusComboBox()
         {
             return
@@ -193,6 +226,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting abilities.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing abilities.</returns>
         public static List<ComboBoxItemControl> AbilitiesComboBox()
         {
             return
@@ -207,6 +244,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting weapon types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing weapon types.</returns>
         public static List<ComboBoxItemControl> WeaponTypesComboBox()
         {
             return
@@ -253,6 +294,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting recovery options.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing recovery options.</returns>
         public static List<ComboBoxItemControl> RecoveryComboBox()
         {
             return
@@ -264,6 +309,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting vision types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing vision types.</returns>
         public static List<ComboBoxItemControl> VisionComboBox()
         {
             return
@@ -277,6 +326,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting creature sizes.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing creature sizes.</returns>
         public static List<ComboBoxItemControl> CreatureSizesComboBox()
         {
             return
@@ -293,6 +346,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting exhaustion levels.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing exhaustion levels.</returns>
         public static List<ComboBoxItemControl> ExhaustionLevelComboBox()
         {
             return
@@ -307,6 +364,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting equipment slot levels.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing equipment slot levels.</returns>
         public static List<ComboBoxItemControl> EquipmentSlotLevelComboBox()
         {
             return
@@ -319,6 +380,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting image stretch levels.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing stretch levels.</returns>
         public static List<ComboBoxItemControl> StretchLevelComboBox()
         {
             return
@@ -330,6 +395,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting proficiency types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing proficiency types.</returns>
         public static List<ComboBoxItemControl> ProficiencyTypesComboBox()
         {
             return
@@ -340,6 +409,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting moral alignment types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing alignment types.</returns>
         public static List<ComboBoxItemControl> AlignmentTypesComboBox()
         {
             var items = new List<ComboBoxItemControl>();
@@ -362,6 +435,10 @@ namespace Concierge.Display
             return items;
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting character backgrounds.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing backgrounds.</returns>
         public static List<ComboBoxItemControl> BackgroundsComboBox()
         {
             var items = new List<ComboBoxItemControl>();
@@ -373,6 +450,10 @@ namespace Concierge.Display
             return items;
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting character races.
+        /// </summary>
+        /// <returns>A list of DetailedComboBoxItemControl objects representing races.</returns>
         public static List<DetailedComboBoxItemControl> RacesComboBox()
         {
             var items = new List<DetailedComboBoxItemControl>();
@@ -384,6 +465,11 @@ namespace Concierge.Display
             return items;
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting sub-races based on a race filter.
+        /// </summary>
+        /// <param name="raceFilter">The race filter to apply to sub-races.</param>
+        /// <returns>A list of ComboBoxItemControl objects representing sub-races.</returns>
         public static List<ComboBoxItemControl> SubRacesComboBox(string raceFilter)
         {
             var items = new List<ComboBoxItemControl>();
@@ -406,6 +492,10 @@ namespace Concierge.Display
             return items;
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting classes.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing classes.</returns>
         public static List<ComboBoxItemControl> ClassesComboBox()
         {
             var items = new List<ComboBoxItemControl>();
@@ -417,6 +507,10 @@ namespace Concierge.Display
             return items;
         }
 
+        /// <summary>
+        /// Generates a detailed combo box for selecting detailed classes.
+        /// </summary>
+        /// <returns>A list of DetailedComboBoxItemControl objects representing classes.</returns>
         public static List<DetailedComboBoxItemControl> DetailedClassesComboBox()
         {
             var items = new List<DetailedComboBoxItemControl>();
@@ -428,6 +522,11 @@ namespace Concierge.Display
             return items;
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting subclasses based on a class filter.
+        /// </summary>
+        /// <param name="classFilter">The class filter to apply to subclasses.</param>
+        /// <returns>A list of ComboBoxItemControl objects representing subclasses.</returns>
         public static List<ComboBoxItemControl> SubClassesComboBox(string classFilter)
         {
             var items = new List<ComboBoxItemControl>();
@@ -450,6 +549,10 @@ namespace Concierge.Display
             return items;
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting item categories.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing item categories.</returns>
         public static List<ComboBoxItemControl> ItemCategoriesComboBox()
         {
             var inventory = new Inventory();
@@ -464,6 +567,10 @@ namespace Concierge.Display
             return items;
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting status checks.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing status checks.</returns>
         public static List<ComboBoxItemControl> StatusChecksComboBox()
         {
             return
@@ -476,6 +583,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting arcane spell schools.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing arcane schools.</returns>
         public static List<ComboBoxItemControl> ArcaneSchoolsComboBox()
         {
             return
@@ -492,6 +603,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting status effect types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing status effect types.</returns>
         public static List<ComboBoxItemControl> StatusEffectTypesComboBox()
         {
             return
@@ -503,6 +618,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting dice types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing dice types.</returns>
         public static List<ComboBoxItemControl> DiceComboBox()
         {
             return
@@ -518,6 +637,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting search domains.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing search domains.</returns>
         public static List<ComboBoxItemControl> SearchDomainComboBox()
         {
             return
@@ -527,6 +650,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting unit of measurement types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing unit types.</returns>
         public static List<ComboBoxItemControl> UnitTypesComboBox()
         {
             return
@@ -536,6 +663,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting horizontal alignment options.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing horizontal alignment options.</returns>
         public static List<ComboBoxItemControl> HorizontalAlignmentComboBox()
         {
             return
@@ -547,6 +678,10 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting augmentation types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing augment types.</returns>
         public static List<ComboBoxItemControl> AugmentTypeComboBox()
         {
             return
@@ -558,10 +693,42 @@ namespace Concierge.Display
             ];
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting adventuring party types.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing party types.</returns>
+        public static List<ComboBoxItemControl> PartyTypeComboBox()
+        {
+            return
+            [
+                new (PackIconKind.AccountTie, Brushes.Goldenrod, PartyType.PlayerCharacter),
+                new (PackIconKind.Account, ConciergeBrushes.DarkPink, PartyType.PartyMember),
+                new (PackIconKind.AccountSchool, Brushes.SteelBlue, PartyType.Npc),
+            ];
+        }
+
+        /// <summary>
+        /// Generates a combo box for selecting adventuring party status options.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing party status options.</returns>
+        public static List<ComboBoxItemControl> PartyStatusComboBox()
+        {
+            return
+            [
+                new (PackIconKind.HeadCheck, ConciergeBrushes.Mint, PartyStatus.Alive),
+                new (PackIconKind.HeadQuestion, ConciergeBrushes.Deer, PartyStatus.Missing),
+                new (PackIconKind.HeadRemove, Brushes.IndianRed, PartyStatus.Dead),
+            ];
+        }
+
+        /// <summary>
+        /// Generates a combo box for selecting font sizes.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing font sizes.</returns>
         public static List<ComboBoxItemControl> FontSizeComboBox()
         {
             var items = new List<ComboBoxItemControl>();
-            foreach (var size in fontSizes)
+            foreach (var size in FontService.ListFontSizes())
             {
                 items.Add(new ComboBoxItemControl(PackIconKind.FormatSize, Brushes.LightBlue, size.ToString(), ConciergeBrushes.ControlForeDarkBlue));
             }
@@ -569,12 +736,16 @@ namespace Concierge.Display
             return items;
         }
 
+        /// <summary>
+        /// Generates a combo box for selecting font families.
+        /// </summary>
+        /// <returns>A list of ComboBoxItemControl objects representing font families.</returns>
         public static List<ComboBoxItemControl> FontFamilyComboBox()
         {
             var items = new List<ComboBoxItemControl>();
-            foreach (var font in fontFamilies)
+            foreach (var font in FontService.ListValidFonts())
             {
-                items.Add(new ComboBoxItemControl(PackIconKind.FormatFont, Brushes.LightBlue, font.ToString(), font, ConciergeBrushes.ControlForeDarkBlue));
+                items.Add(new ComboBoxItemControl(PackIconKind.FormatFont, Brushes.LightBlue, font, ConciergeBrushes.ControlForeDarkBlue));
             }
 
             return items;

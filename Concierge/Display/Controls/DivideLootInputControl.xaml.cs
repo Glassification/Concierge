@@ -81,8 +81,9 @@ namespace Concierge.Display.Controls
 
         public void Initialize(string style, Brush foreground)
         {
-            this.ClearButton.Style = this.resourceDictionary[style] as Style;
+            var styleText = style.Contains("ControlButtonStyle") ? style : $"{style}ControlButtonStyle";
 
+            this.ClearButton.Style = this.resourceDictionary[styleText] as Style;
             this.CoinAmount.Foreground = foreground;
             this.ClearButton.Foreground = foreground;
         }

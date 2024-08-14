@@ -23,6 +23,10 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class AbilitiesWindow : ConciergeWindow
     {
+        private bool editing;
+        private Ability selectedAbility = new ();
+        private List<Ability> abilities = [];
+
         public AbilitiesWindow()
         {
             this.InitializeComponent();
@@ -31,8 +35,6 @@ namespace Concierge.Display.Windows
             this.NameComboBox.ItemsSource = DefaultItems;
             this.TypeComboBox.ItemsSource = ComboBoxGenerator.AbilityTypesComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.Abilities = [];
-            this.SelectedAbility = new Ability();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameComboBox);
@@ -46,23 +48,17 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ability";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Ability";
 
         public override string WindowName => nameof(AbilitiesWindow);
 
         private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Abilities, Program.CustomItemService.GetItems<Ability>());
 
-        private bool Editing { get; set; }
-
-        private Ability SelectedAbility { get; set; }
-
-        private List<Ability> Abilities { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Abilities = Program.CcsFile.Character.Detail.Abilities;
+            this.abilities = Program.CcsFile.Character.Detail.Abilities;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -79,9 +75,9 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedAbility = castItem;
+            this.selectedAbility = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields(castItem);
@@ -95,9 +91,9 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Abilities = castItem;
+            this.abilities = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
@@ -110,9 +106,9 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeResult.OK;
 
-            if (this.Editing)
+            if (this.editing)
             {
-                this.UpdateAbility(this.SelectedAbility);
+                this.UpdateAbility(this.selectedAbility);
             }
             else
             {
@@ -176,7 +172,7 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
             var ability = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Ability>(this.Abilities, ability, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Ability>(this.abilities, ability, this.ConciergePage));
 
             return ability;
         }
@@ -207,7 +203,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Abilities.Add(this.ToAbility());
+            this.abilities.Add(this.ToAbility());
             this.ClearFields();
             this.InvokeApplyChanges();
         }

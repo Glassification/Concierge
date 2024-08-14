@@ -19,13 +19,19 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class WealthWindow : ConciergeWindow
     {
+        private Wealth selectedWealth = new ();
+        private int cP;
+        private int sP;
+        private int eP;
+        private int gP;
+        private int pP;
+
         public WealthWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePages.None;
-            this.SelectedWealth = new Wealth();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.AmountUpDown);
@@ -46,21 +52,9 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(WealthWindow);
 
-        private int CP { get; set; }
-
-        private int SP { get; set; }
-
-        private int EP { get; set; }
-
-        private int GP { get; set; }
-
-        private int PP { get; set; }
-
-        private Wealth SelectedWealth { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.SelectedWealth = Program.CcsFile.Character.Wealth;
+            this.selectedWealth = Program.CcsFile.Character.Wealth;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -83,7 +77,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.SelectedWealth = castItem;
+            this.selectedWealth = castItem;
             this.ClearFields(wealthControl.SelectedCoin);
             this.FillFields();
             this.ShowConciergeWindow();
@@ -98,15 +92,15 @@ namespace Concierge.Display.Windows
 
         private void UpdateWealth()
         {
-            var oldItem = this.SelectedWealth.DeepCopy();
+            var oldItem = this.selectedWealth.DeepCopy();
 
-            this.SelectedWealth.Copper = this.CP;
-            this.SelectedWealth.Silver = this.SP;
-            this.SelectedWealth.Electrum = this.EP;
-            this.SelectedWealth.Gold = this.GP;
-            this.SelectedWealth.Platinum = this.PP;
+            this.selectedWealth.Copper = this.cP;
+            this.selectedWealth.Silver = this.sP;
+            this.selectedWealth.Electrum = this.eP;
+            this.selectedWealth.Gold = this.gP;
+            this.selectedWealth.Platinum = this.pP;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(this.SelectedWealth, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(this.selectedWealth, oldItem, this.ConciergePage));
         }
 
         private void ClearFields(CoinType coinType = CoinType.Gold)
@@ -116,11 +110,11 @@ namespace Concierge.Display.Windows
             this.SelectCoinTypeRadioButton(coinType);
             this.AmountUpDown.Value = 0;
 
-            this.CP = this.SelectedWealth.Copper;
-            this.SP = this.SelectedWealth.Silver;
-            this.EP = this.SelectedWealth.Electrum;
-            this.GP = this.SelectedWealth.Gold;
-            this.PP = this.SelectedWealth.Platinum;
+            this.cP = this.selectedWealth.Copper;
+            this.sP = this.selectedWealth.Silver;
+            this.eP = this.selectedWealth.Electrum;
+            this.gP = this.selectedWealth.Gold;
+            this.pP = this.selectedWealth.Platinum;
 
             Program.NotDrawing();
         }
@@ -130,11 +124,11 @@ namespace Concierge.Display.Windows
             Program.Drawing();
 
             this.AmountUpDown.Value = 0;
-            this.CopperField.Text = this.CP.ToString();
-            this.SilverField.Text = this.SP.ToString();
-            this.ElectrumField.Text = this.EP.ToString();
-            this.GoldField.Text = this.GP.ToString();
-            this.PlatinumField.Text = this.PP.ToString();
+            this.CopperField.Text = this.cP.ToString();
+            this.SilverField.Text = this.sP.ToString();
+            this.ElectrumField.Text = this.eP.ToString();
+            this.GoldField.Text = this.gP.ToString();
+            this.PlatinumField.Text = this.pP.ToString();
 
             Program.NotDrawing();
         }
@@ -166,23 +160,23 @@ namespace Concierge.Display.Windows
         {
             if (this.CpRadioButton.IsChecked ?? false)
             {
-                this.CP = Math.Max(0, this.CP + amount);
+                this.cP = Math.Max(0, this.cP + amount);
             }
             else if (this.SpRadioButton.IsChecked ?? false)
             {
-                this.SP = Math.Max(0, this.SP + amount);
+                this.sP = Math.Max(0, this.sP + amount);
             }
             else if (this.EpRadioButton.IsChecked ?? false)
             {
-                this.EP = Math.Max(0, this.EP + amount);
+                this.eP = Math.Max(0, this.eP + amount);
             }
             else if (this.GpRadioButton.IsChecked ?? false)
             {
-                this.GP = Math.Max(0, this.GP + amount);
+                this.gP = Math.Max(0, this.gP + amount);
             }
             else if (this.PpRadioButton.IsChecked ?? false)
             {
-                this.PP = Math.Max(0, this.PP + amount);
+                this.pP = Math.Max(0, this.pP + amount);
             }
         }
 

@@ -6,7 +6,6 @@ namespace Concierge.Display.Pages
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -33,7 +32,7 @@ namespace Concierge.Display.Pages
             this.ConciergePages = ConciergePages.Abilities;
         }
 
-        private List<Ability> DisplayList => Program.CcsFile.Character.Detail.Abilities.Filter(this.SearchFilter.FilterText).ToList();
+        private List<Ability> DisplayList => [.. Program.CcsFile.Character.Detail.Abilities.Filter(this.SearchFilter.FilterText)];
 
         public override void Draw(bool isNewCharacterSheet = false)
         {
@@ -48,11 +47,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.AbilitiesDataGrid.SelectedIndex;
-            WindowService.ShowEdit(
-                ability,
-                typeof(AbilitiesWindow),
-                this.Window_ApplyChanges,
-                ConciergePages.Abilities);
+            WindowService.ShowEdit(ability, typeof(AbilitiesWindow), this.Window_ApplyChanges, ConciergePages.Abilities);
             this.DrawAbilities();
             this.AbilitiesDataGrid.SetSelectedIndex(index);
         }
@@ -87,7 +82,6 @@ namespace Concierge.Display.Pages
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
             var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Detail.Abilities, 0, -1, this.ConciergePages);
-
             if (index != -1)
             {
                 this.DrawAbilities();
@@ -98,7 +92,6 @@ namespace Concierge.Display.Pages
         private void DownButton_Click(object sender, RoutedEventArgs e)
         {
             var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Detail.Abilities, Program.CcsFile.Character.Detail.Abilities.Count - 1, 1, this.ConciergePages);
-
             if (index != -1)
             {
                 this.DrawAbilities();
@@ -118,8 +111,8 @@ namespace Concierge.Display.Pages
                 typeof(AbilitiesWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Abilities);
-            this.DrawAbilities();
 
+            this.DrawAbilities();
             if (added)
             {
                 this.AbilitiesDataGrid.SetSelectedIndex(this.AbilitiesDataGrid.LastIndex);

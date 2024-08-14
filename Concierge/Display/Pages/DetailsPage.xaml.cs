@@ -54,33 +54,21 @@ namespace Concierge.Display.Pages
                 }
 
                 var index = selectedDataGrid.SelectedIndex;
-                WindowService.ShowEdit(
-                    proficiency,
-                    typeof(ProficiencyWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Details);
+                WindowService.ShowEdit(proficiency, typeof(ProficiencyWindow), this.Window_ApplyChanges, ConciergePages.Details);
                 this.DrawProficiencies();
                 selectedDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is Language language)
             {
                 var index = this.LanguagesDataGrid.SelectedIndex;
-                WindowService.ShowEdit(
-                    language,
-                    typeof(LanguagesWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Details);
+                WindowService.ShowEdit(language, typeof(LanguagesWindow), this.Window_ApplyChanges, ConciergePages.Details);
                 this.DrawLanguages();
                 this.LanguagesDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is ClassResource resource)
             {
                 var index = this.ResourcesDataGrid.SelectedIndex;
-                WindowService.ShowEdit(
-                    resource,
-                    typeof(ClassResourceWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Details);
+                WindowService.ShowEdit(resource, typeof(ClassResourceWindow), this.Window_ApplyChanges, ConciergePages.Details);
                 this.DrawResources();
                 this.ResourcesDataGrid.SetSelectedIndex(index);
             }
@@ -133,7 +121,6 @@ namespace Concierge.Display.Pages
         public void DrawConditions()
         {
             var character = Program.CcsFile.Character;
-
             this.ConditionsDataGrid.Items.Clear();
             var conditions = character.Vitality.Status.ActiveConditions();
             foreach (var condition in conditions)
@@ -425,36 +412,36 @@ namespace Concierge.Display.Pages
         private void AppearanceDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Detail.Appearance,
                 typeof(AppearanceWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Details);
+
             this.DrawAppearance();
         }
 
         private void PersonalityDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Detail.Personality,
                 typeof(PersonalityWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Details);
+
             this.DrawPersonality();
         }
 
         private void ArmorDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             SoundService.PlayNavigation();
-
             WindowService.ShowEdit(
                 Program.CcsFile.Character.Equipment.Defense,
                 typeof(ArmorWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Details);
+
             this.DrawDefense();
             this.DrawConditions();
         }

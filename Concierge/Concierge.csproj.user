@@ -66,6 +66,12 @@
     <Compile Update="Display\Pages\ToolsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Windows\AdventurersWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\AdventurerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Windows\CompanionAttacksWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -240,6 +246,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Pages\ToolsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Windows\AdventurersWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Windows\AdventurerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\AttributesWindow.xaml">

@@ -23,6 +23,10 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class SpellWindow : ConciergeWindow
     {
+        private bool editing;
+        private Spell selectedSpell = new ();
+        private List<Spell> spells = [];
+
         public SpellWindow()
         {
             this.InitializeComponent();
@@ -32,8 +36,6 @@ namespace Concierge.Display.Windows
             this.SchoolComboBox.ItemsSource = ComboBoxGenerator.ArcaneSchoolsComboBox();
             this.ClassComboBox.ItemsSource = ComboBoxGenerator.ClassesComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.SelectedSpell = new Spell();
-            this.Spells = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.SpellNameComboBox);
@@ -53,7 +55,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spell";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Spell";
 
         public override string WindowName => nameof(SpellWindow);
 
@@ -61,18 +63,12 @@ namespace Concierge.Display.Windows
 
         private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Spells, Program.CustomItemService.GetItems<Spell>());
 
-        private bool Editing { get; set; }
-
-        private Spell SelectedSpell { get; set; }
-
-        private List<Spell> Spells { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.Spells = Program.CcsFile.Character.SpellCasting.Spells;
+            this.spells = Program.CcsFile.Character.SpellCasting.Spells;
             this.CancelButton.Content = buttonText;
 
             this.ClearFields();
@@ -88,9 +84,9 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Spells = castItem;
+            this.spells = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
@@ -106,9 +102,9 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedSpell = castItem;
+            this.selectedSpell = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields(castItem);
@@ -119,13 +115,13 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeResult.OK;
 
-            if (this.Editing)
+            if (this.editing)
             {
-                this.UpdateSpell(this.SelectedSpell);
+                this.UpdateSpell(this.selectedSpell);
             }
             else
             {
-                this.Spells.Add(this.ToSpell());
+                this.spells.Add(this.ToSpell());
             }
 
             this.CloseConciergeWindow();
@@ -258,7 +254,7 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
             var spell = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Spell>(this.Spells, spell, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Spell>(this.spells, spell, this.ConciergePage));
 
             return spell;
         }
@@ -276,7 +272,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Spells.Add(this.ToSpell());
+            this.spells.Add(this.ToSpell());
             this.ClearFields();
             this.InvokeApplyChanges();
         }

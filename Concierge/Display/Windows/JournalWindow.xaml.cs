@@ -17,41 +17,38 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class JournalWindow : ConciergeWindow
     {
+        private bool editing;
+        private TreeButtonType treeViewButtonType;
+        private Entry currentEntry = Entry.Empty;
+
         public JournalWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePages.None;
-            this.CurrentEntry = Entry.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.DocumentTextBox, this.DocumentTextBackground);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} {this.TreeViewButtonType}";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} {this.treeViewButtonType}";
 
         public override string WindowName => nameof(JournalWindow);
-
-        private bool Editing { get; set; }
-
-        private TreeButtonType TreeViewButtonType { get; set; }
-
-        private Entry CurrentEntry { get; set; }
 
         public override bool ShowAdd<T>(T item)
         {
             if (item is Chapter chapter)
             {
-                this.TreeViewButtonType = TreeButtonType.Page;
-                this.CurrentEntry = chapter;
+                this.treeViewButtonType = TreeButtonType.Page;
+                this.currentEntry = chapter;
             }
             else
             {
-                this.TreeViewButtonType = TreeButtonType.Chapter;
+                this.treeViewButtonType = TreeButtonType.Chapter;
             }
 
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.CreationDateLabel.Visibility = Visibility.Collapsed;
 
@@ -63,7 +60,7 @@ namespace Concierge.Display.Windows
 
         public override void ShowEdit<T>(T note)
         {
-            this.Editing = true;
+            this.editing = true;
             if (note is Chapter chapter)
             {
                 this.EditChapter(chapter);
@@ -88,35 +85,35 @@ namespace Concierge.Display.Windows
 
         private void EditChapter(Chapter chapter)
         {
-            this.TreeViewButtonType = TreeButtonType.Chapter;
+            this.treeViewButtonType = TreeButtonType.Chapter;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.DocumentTextBox.Text = chapter.Name;
             this.CreationDateLabel.Text = $"Creation Date: {chapter.Created}";
-            this.CurrentEntry = chapter;
+            this.currentEntry = chapter;
 
             this.ShowConciergeWindow();
         }
 
         private void EditDocument(Document document)
         {
-            this.TreeViewButtonType = TreeButtonType.Page;
+            this.treeViewButtonType = TreeButtonType.Page;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.DocumentTextBox.Text = document.Name;
             this.CreationDateLabel.Text = $"Creation Date: {document.Created}";
-            this.CurrentEntry = document;
+            this.currentEntry = document;
 
             this.ShowConciergeWindow();
         }
 
         private void UpdateEntry()
         {
-            if (this.CurrentEntry is Document document)
+            if (this.currentEntry is Document document)
             {
                 var oldItem = document.DeepCopy();
                 document.Name = this.DocumentTextBox.Text;
                 Program.UndoRedoService.AddCommand(new EditCommand<Document>(document, oldItem, this.ConciergePage));
             }
-            else if (this.CurrentEntry is Chapter chapter)
+            else if (this.currentEntry is Chapter chapter)
             {
                 var oldItem = chapter.DeepCopy();
                 chapter.Name = this.DocumentTextBox.Text;
@@ -126,13 +123,13 @@ namespace Concierge.Display.Windows
 
         private void ToEntry()
         {
-            if (this.TreeViewButtonType == TreeButtonType.Chapter)
+            if (this.treeViewButtonType == TreeButtonType.Chapter)
             {
                 var newChapter = new Chapter(this.DocumentTextBox.Text);
                 Program.CcsFile.Character.Journal.Chapters.Add(newChapter);
                 Program.UndoRedoService.AddCommand(new AddCommand<Chapter>(Program.CcsFile.Character.Journal.Chapters, newChapter, this.ConciergePage));
             }
-            else if (this.CurrentEntry is Chapter chapter)
+            else if (this.currentEntry is Chapter chapter)
             {
                 var newDocument = new Document(this.DocumentTextBox.Text);
                 chapter.Documents.Add(newDocument);
@@ -142,7 +139,7 @@ namespace Concierge.Display.Windows
 
         private void InvalidNameMessage()
         {
-            ConciergeMessageBox.ShowWarning($"Cannot create a {this.TreeViewButtonType.ToString().ToLower()} with a missing name. Add a valid one to continue.");
+            ConciergeMessageBox.ShowWarning($"Cannot create a {this.treeViewButtonType.ToString().ToLower()} with a missing name. Add a valid one to continue.");
         }
 
         private bool OkApplyChanges()
@@ -152,7 +149,7 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            if (this.Editing)
+            if (this.editing)
             {
                 this.UpdateEntry();
             }

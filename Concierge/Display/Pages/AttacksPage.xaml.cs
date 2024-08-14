@@ -6,7 +6,6 @@ namespace Concierge.Display.Pages
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -50,7 +49,7 @@ namespace Concierge.Display.Pages
 
         private delegate void DrawList();
 
-        private List<Weapon> WeaponDisplayList => Program.CcsFile.Character.Equipment.Weapons.Filter(this.SearchFilter.FilterText).ToList();
+        private List<Weapon> WeaponDisplayList => [.. Program.CcsFile.Character.Equipment.Weapons.Filter(this.SearchFilter.FilterText)];
 
         public override void Draw(bool isNewCharacterSheet = false)
         {
@@ -64,33 +63,21 @@ namespace Concierge.Display.Pages
             if (itemToEdit is Augment ammunition)
             {
                 var index = this.AugmentDataGrid.SelectedIndex;
-                WindowService.ShowEdit(
-                    ammunition,
-                    typeof(AugmentationWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Attacks);
+                WindowService.ShowEdit(ammunition, typeof(AugmentationWindow), this.Window_ApplyChanges, ConciergePages.Attacks);
                 this.DrawAugmentList();
                 this.AugmentDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is Weapon weapon)
             {
                 var index = this.WeaponDataGrid.SelectedIndex;
-                WindowService.ShowEdit(
-                    weapon,
-                    typeof(AttacksWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Attacks);
+                WindowService.ShowEdit(weapon, typeof(AttacksWindow), this.Window_ApplyChanges, ConciergePages.Attacks);
                 this.DrawWeaponList();
                 this.WeaponDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is StatusEffect statusEffect)
             {
                 var index = this.StatusEffectsDataGrid.SelectedIndex;
-                WindowService.ShowEdit(
-                    statusEffect,
-                    typeof(StatusEffectsWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Attacks);
+                WindowService.ShowEdit(statusEffect, typeof(StatusEffectsWindow), this.Window_ApplyChanges, ConciergePages.Attacks);
                 this.DrawStatusEffects();
                 this.StatusEffectsDataGrid.SetSelectedIndex(index);
             }

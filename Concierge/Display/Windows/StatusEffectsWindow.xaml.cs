@@ -21,6 +21,10 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class StatusEffectsWindow : ConciergeWindow
     {
+        private bool editing;
+        private StatusEffect selectedEffect = new ();
+        private List<StatusEffect> statusEffects = [];
+
         public StatusEffectsWindow()
         {
             this.InitializeComponent();
@@ -29,8 +33,6 @@ namespace Concierge.Display.Windows
             this.NameComboBox.ItemsSource = DefaultItems;
             this.TypeComboBox.ItemsSource = ComboBoxGenerator.StatusEffectTypesComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.SelectedEffect = new StatusEffect();
-            this.StatusEffects = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameComboBox);
@@ -38,7 +40,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.DescriptionTextBox, this.DescriptionTextBackground);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Status Effect";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Status Effect";
 
         public override string WindowName => nameof(StatusEffectsWindow);
 
@@ -46,18 +48,12 @@ namespace Concierge.Display.Windows
 
         private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.StatusEffects, Program.CustomItemService.GetItems<StatusEffect>());
 
-        private bool Editing { get; set; }
-
-        private StatusEffect SelectedEffect { get; set; }
-
-        private List<StatusEffect> StatusEffects { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.StatusEffects = Program.CcsFile.Character.Vitality.Status.StatusEffects;
+            this.statusEffects = Program.CcsFile.Character.Vitality.Status.StatusEffects;
             this.CancelButton.Content = buttonText;
 
             this.ClearFields();
@@ -73,9 +69,9 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.StatusEffects = castItem;
+            this.statusEffects = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
@@ -91,10 +87,10 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.SelectedEffect = castItem;
+            this.selectedEffect = castItem;
 
             this.FillFields(castItem);
             this.ShowConciergeWindow();
@@ -104,13 +100,13 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeResult.OK;
 
-            if (this.Editing)
+            if (this.editing)
             {
                 this.UpdateStatusEffect();
             }
             else if (!this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
-                this.StatusEffects.Add(this.ToStatusEffect());
+                this.statusEffects.Add(this.ToStatusEffect());
             }
 
             this.CloseConciergeWindow();
@@ -140,15 +136,15 @@ namespace Concierge.Display.Windows
 
         private void UpdateStatusEffect()
         {
-            var oldItem = this.SelectedEffect.DeepCopy();
+            var oldItem = this.selectedEffect.DeepCopy();
 
-            this.SelectedEffect.Name = this.NameComboBox.Text;
-            this.SelectedEffect.Type = this.TypeComboBox.Text.ToEnum<StatusEffectTypes>();
-            this.SelectedEffect.Description = this.DescriptionTextBox.Text;
+            this.selectedEffect.Name = this.NameComboBox.Text;
+            this.selectedEffect.Type = this.TypeComboBox.Text.ToEnum<StatusEffectTypes>();
+            this.selectedEffect.Description = this.DescriptionTextBox.Text;
 
-            if (!this.SelectedEffect.IsCustom)
+            if (!this.selectedEffect.IsCustom)
             {
-                Program.UndoRedoService.AddCommand(new EditCommand<StatusEffect>(this.SelectedEffect, oldItem, this.ConciergePage));
+                Program.UndoRedoService.AddCommand(new EditCommand<StatusEffect>(this.selectedEffect, oldItem, this.ConciergePage));
             }
         }
 
@@ -167,7 +163,7 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
             var effect = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<StatusEffect>(this.StatusEffects, effect, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<StatusEffect>(this.statusEffects, effect, this.ConciergePage));
 
             return effect;
         }
@@ -185,7 +181,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.StatusEffects.Add(this.ToStatusEffect());
+            this.statusEffects.Add(this.ToStatusEffect());
             this.ClearFields();
             this.InvokeApplyChanges();
         }

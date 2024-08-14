@@ -26,9 +26,12 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class AugmentationWindow : ConciergeWindow
     {
+        private bool editing;
         private int oldQuantity;
         private int oldTotal;
         private CustomIcon customIcon = CustomIcon.Empty;
+        private Augment selectedAugment = new ();
+        private List<Augment> augmentation = [];
 
         public AugmentationWindow()
         {
@@ -38,8 +41,6 @@ namespace Concierge.Display.Windows
             this.DamageTypeComboBox.ItemsSource = ComboBoxGenerator.DamageTypesComboBox();
             this.TypeComboBox.ItemsSource = ComboBoxGenerator.AugmentTypeComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.Augmentation = [];
-            this.SelectedAugment = new Augment();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameComboBox);
@@ -53,7 +54,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.EditIconButton);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Augmentation";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Augmentation";
 
         public override string WindowName => nameof(AugmentationWindow);
 
@@ -61,17 +62,11 @@ namespace Concierge.Display.Windows
 
         private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Augmentation, Program.CustomItemService.GetItems<Augment>());
 
-        private bool Editing { get; set; }
-
-        private Augment SelectedAugment { get; set; }
-
-        private List<Augment> Augmentation { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Augmentation = Program.CcsFile.Character.Equipment.Augmentation;
+            this.augmentation = Program.CcsFile.Character.Equipment.Augmentation;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -88,9 +83,9 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Augmentation = castItem;
+            this.augmentation = castItem;
             this.ItemsAdded = false;
 
             this.SetQuantityState(false);
@@ -107,9 +102,9 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedAugment = castItem;
+            this.selectedAugment = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields(castItem);
@@ -120,13 +115,13 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeResult.OK;
 
-            if (this.Editing)
+            if (this.editing)
             {
-                this.UpdateAmmunition(this.SelectedAugment);
+                this.UpdateAmmunition(this.selectedAugment);
             }
             else
             {
-                this.Augmentation.Add(this.ToAugment());
+                this.augmentation.Add(this.ToAugment());
             }
 
             this.CloseConciergeWindow();
@@ -227,7 +222,7 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
             var augment = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Augment>(this.Augmentation, augment, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Augment>(this.augmentation, augment, this.ConciergePage));
 
             return augment;
         }
@@ -245,7 +240,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Augmentation.Add(this.ToAugment());
+            this.augmentation.Add(this.ToAugment());
             this.ClearFields();
 
             this.InvokeApplyChanges();

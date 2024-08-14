@@ -19,25 +19,22 @@ namespace Concierge.Display.Utility
     /// </summary>
     public partial class ConciergeConsoleWindow : ConciergeWindow
     {
+        private readonly ConciergeConsole console = new ();
+
+        private bool caretChanging;
+
         public ConciergeConsoleWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.Console = new ConciergeConsole();
-            this.DataContext = this.Console;
-            this.CaretChanging = false;
-
-            this.Console.Exited += this.ConciergeConsole_Exited;
+            this.DataContext = this.console;
+            this.console.Exited += this.ConciergeConsole_Exited;
         }
 
         public override string HeaderText => "Console";
 
         public override string WindowName => nameof(ConciergeConsoleWindow);
-
-        private ConciergeConsole Console { get; set; }
-
-        private bool CaretChanging { get; set; }
 
         public override object? ShowWindow()
         {
@@ -70,8 +67,8 @@ namespace Concierge.Display.Utility
             switch (e.Key)
             {
                 case Key.Enter:
-                    this.Console.ConsoleInput = this.InputBlock.Text;
-                    var result = this.Console.Execute();
+                    this.console.ConsoleInput = this.InputBlock.Text;
+                    var result = this.console.Execute();
                     this.InputBlock.Focus();
                     this.InputBlock.CaretIndex = this.InputBlock.Text.Length;
                     if (result == ResultType.Success || result == ResultType.Warning)
@@ -88,11 +85,11 @@ namespace Concierge.Display.Utility
             switch (e.Key)
             {
                 case Key.Up:
-                    this.InputBlock.Text = this.Console.History.Backward();
+                    this.InputBlock.Text = this.console.History.Backward();
                     this.InputBlock.CaretIndex = this.InputBlock.Text.Length;
                     break;
                 case Key.Down:
-                    this.InputBlock.Text = this.Console.History.Forward();
+                    this.InputBlock.Text = this.console.History.Forward();
                     this.InputBlock.CaretIndex = this.InputBlock.Text.Length;
                     break;
                 case Key.Back:
@@ -105,18 +102,18 @@ namespace Concierge.Display.Utility
 
         private void InputBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (this.CaretChanging)
+            if (this.caretChanging)
             {
                 return;
             }
 
-            this.CaretChanging = true;
+            this.caretChanging = true;
             if (this.InputBlock.CaretIndex < Constants.ConsolePrompt.Length)
             {
                 this.InputBlock.CaretIndex = Constants.ConsolePrompt.Length;
             }
 
-            this.CaretChanging = false;
+            this.caretChanging = false;
         }
 
         private void ConciergeConsole_Exited(object sender, EventArgs e)

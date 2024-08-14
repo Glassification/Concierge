@@ -1,19 +1,21 @@
-﻿// <copyright file="HelpScriptService.cs" company="Thomas Beckett">
+﻿// <copyright file="HelpRunner.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Console.Services
+namespace Concierge.Console.Runners
 {
     using System;
 
-    public sealed class HelpScriptService : ScriptService
+    using Concierge.Console.Enums;
+
+    public sealed class HelpRunner : Runner
     {
         private const string HelpMessage =
             @"The console is used to get direct access to certain commands. Commands have the form Name.Action(Argument) ex. Inventory.AddItem(Crowbar) to add a crowbar to your inventory.
 
 Use List.Commands() to see all valid commands.";
 
-        public HelpScriptService()
+        public HelpRunner()
         {
         }
 
@@ -23,12 +25,17 @@ Use List.Commands() to see all valid commands.";
 
         public override ConsoleResult Run(ConsoleCommand command)
         {
-            return new ConsoleResult(HelpMessage, Enums.ResultType.Success);
+            return new ConsoleResult(HelpMessage, ResultType.Information);
         }
 
         public override string List()
         {
             return string.Empty;
+        }
+
+        public override bool Contains(string name)
+        {
+            return name.Contains("Help", StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

@@ -36,17 +36,18 @@ namespace Concierge.Display.Pages
         private const int MaxUndoQueue = 25;
 
         private Document? selectedDocument;
+        private bool isLoading;
+        private bool isLocked;
+        private bool selectionLock;
 
         public JournalPage()
         {
             this.InitializeComponent();
 
             this.SelectedDocument = null;
-            this.Lock = false;
             this.FontFamilyList.ItemsSource = ComboBoxGenerator.FontFamilyComboBox();
             this.FontSizeList.ItemsSource = ComboBoxGenerator.FontSizeComboBox();
             this.NotesTextBox.UndoLimit = MaxUndoQueue;
-            this.HasEditableDataGrid = false;
             this.ConciergePages = ConciergePages.Journal;
 
             this.BoldButton.Initialize(ConciergeBrushes.Deer);
@@ -72,10 +73,6 @@ namespace Concierge.Display.Pages
                 DisplayUtility.SetControlEnableState(this.ToolbarStackPanel, value is not null);
             }
         }
-
-        private bool Lock { get; set; }
-
-        private bool SelectionLock { get; set; }
 
         public override void Draw(bool isNewCharacterSheet = false)
         {
@@ -192,8 +189,8 @@ namespace Concierge.Display.Pages
 
         private void SetDefaultFontStyle()
         {
-            this.NotesTextBox.FontSize = 20;
-            this.NotesTextBox.FontFamily = new FontFamily("Calibri");
+            this.NotesTextBox.FontSize = FontService.DefaultSize;
+            this.NotesTextBox.FontFamily = FontService.DefaultFont;
             this.NotesTextBox.Foreground = Brushes.White;
         }
 
@@ -215,7 +212,6 @@ namespace Concierge.Display.Pages
         private string SaveCurrentDocument()
         {
             var range = new TextRange(this.NotesTextBox.Document.ContentStart, this.NotesTextBox.Document.ContentEnd);
-
             try
             {
                 using var rtfMemoryStream = new MemoryStream();
@@ -264,7 +260,6 @@ namespace Concierge.Display.Pages
 
                 var chapterIndex = this.NotesTreeView.Items.IndexOf(chapterItem);
                 var index = chapterItem.Items.IndexOf(document);
-
                 if (func(index, useZero ? 0 : chapterItem.Items.Count - 2))
                 {
                     this.SelectedDocument.Rtf = this.SaveCurrentDocument();
@@ -283,7 +278,6 @@ namespace Concierge.Display.Pages
             else if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapter)
             {
                 var index = this.NotesTreeView.Items.IndexOf(chapter);
-
                 if (func(index, useZero ? 0 : this.NotesTreeView.Items.Count - 2))
                 {
                     this.SwapTreeViewItem(Program.CcsFile.Character.Journal.Chapters, index, index + increment);
@@ -302,14 +296,28 @@ namespace Concierge.Display.Pages
         private void SwapTreeViewItem<T>(IList<T> list, int oldIndex, int newIndex)
         {
             list.Swap(oldIndex, newIndex);
-            this.Lock = true;
+            this.isLocked = true;
             this.DrawTreeView();
-            this.Lock = false;
+            this.isLocked = false;
         }
 
         private void SetNotesTreeViewControlState()
         {
             this.NotesTreeView.SetButtonControlsEnableState(this.UpButton, this.DownButton, this.EditButton, this.DeleteButton);
+        }
+
+        private bool IsCaretAtEnd()
+        {
+            var contentEnd = this.NotesTextBox.Document.ContentEnd;
+            var caretPosition = this.NotesTextBox.CaretPosition;
+            var compare = contentEnd.CompareTo(caretPosition);
+            if (compare > 0)
+            {
+                var backOne = contentEnd.GetPositionAtOffset(-1, LogicalDirection.Backward);
+                return backOne.CompareTo(caretPosition) == 0;
+            }
+
+            return contentEnd.CompareTo(caretPosition) == 0;
         }
 
         private void CutButton_Click(object sender, RoutedEventArgs e)
@@ -340,48 +348,25 @@ namespace Concierge.Display.Pages
 
         private void BoldButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.BoldButton.IsChecked ?? false)
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
-            }
-            else
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Normal);
-            }
+            var weight = this.BoldButton.IsChecked ?? false ? FontWeights.Bold : FontWeights.Normal;
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, weight);
         }
 
         private void ItalicButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.ItalicButton.IsChecked ?? false)
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, FontStyles.Italic);
-            }
-            else
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, FontStyles.Normal);
-            }
+            var style = this.ItalicButton.IsChecked ?? false ? FontStyles.Italic : FontStyles.Normal;
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, style);
         }
 
         private void UnderlineButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.UnderlineButton.IsChecked ?? false)
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, TextDecorations.Underline);
-            }
-            else
-            {
-                this.NotesTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, null);
-            }
+            var decoration = this.UnderlineButton.IsChecked ?? false ? TextDecorations.Underline : null;
+            this.NotesTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, decoration);
         }
 
         private void FontFamilyList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.SelectionLock)
-            {
-                return;
-            }
-
-            if (this.FontFamilyList.SelectedItem is ComboBoxItemControl control && control.Tag is FontFamily fontFamily)
+            if (!this.selectionLock && this.FontFamilyList.SelectedItem is ComboBoxItemControl control && control.Tag is FontFamily fontFamily)
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, fontFamily);
             }
@@ -389,12 +374,7 @@ namespace Concierge.Display.Pages
 
         private void FontSizeList_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (this.SelectionLock)
-            {
-                return;
-            }
-
-            if (double.TryParse(this.FontSizeList.Text, out _))
+            if (!this.selectionLock && double.TryParse(this.FontSizeList.Text, out _))
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, this.FontSizeList.Text);
             }
@@ -402,13 +382,12 @@ namespace Concierge.Display.Pages
 
         private void NotesTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if (this.Lock)
+            if (this.isLocked)
             {
                 return;
             }
 
-            this.Lock = true;
-
+            this.isLocked = true;
             if (this.NotesTreeView?.SelectedItem is DocumentTreeViewItem treeViewItem)
             {
                 if (this.SelectedDocument is not null)
@@ -416,6 +395,7 @@ namespace Concierge.Display.Pages
                     this.SaveTextBox();
                 }
 
+                this.isLoading = true;
                 this.NotesTextBox.IsUndoEnabled = false;
                 this.NotesTextBox.IsUndoEnabled = true;
                 this.SelectedDocument = treeViewItem.Document;
@@ -439,13 +419,17 @@ namespace Concierge.Display.Pages
             }
 
             this.SetNotesTreeViewControlState();
-
-            this.Lock = false;
+            this.isLocked = false;
         }
 
         private void NotesTextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            this.SelectionLock = true;
+            if (this.IsCaretAtEnd() && !this.isLoading)
+            {
+                return;
+            }
+
+            this.selectionLock = true;
             object obj;
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.FontWeightProperty);
@@ -458,7 +442,7 @@ namespace Concierge.Display.Pages
             this.UnderlineButton.IsChecked = (obj != DependencyProperty.UnsetValue) && obj.Equals(TextDecorations.Underline);
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.FontFamilyProperty);
-            this.FontFamilyList.SelectedItem = obj;
+            this.FontFamilyList.Text = obj is FontFamily fontFamily ? fontFamily.Source : FontService.DefaultFont.Source;
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.FontSizeProperty);
             this.FontSizeList.Text = obj == DependencyProperty.UnsetValue ? string.Empty : obj.ToString();
@@ -466,7 +450,8 @@ namespace Concierge.Display.Pages
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.ForegroundProperty);
             this.ColorPicker.SelectedColor = obj == DependencyProperty.UnsetValue ? CustomColor.White : new CustomColor(obj.ToString() ?? "White", true);
 
-            this.SelectionLock = false;
+            this.isLoading = false;
+            this.selectionLock = false;
         }
 
         private void TreeViewItem_Expanded(object sender, RoutedEventArgs e)
@@ -495,12 +480,10 @@ namespace Concierge.Display.Pages
 
         private void ColorPicker_ColorChanged(object sender, RoutedEventArgs e)
         {
-            if (this.SelectionLock)
+            if (!this.selectionLock)
             {
-                return;
+                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, this.ColorPicker.SelectedColor.Color.ToString());
             }
-
-            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, this.ColorPicker.SelectedColor.Color.ToString());
         }
 
         private void AddChapterButton_Click(object sender, RoutedEventArgs e)
@@ -510,11 +493,7 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            WindowService.ShowAdd(
-                button.Tag as Chapter,
-                typeof(JournalWindow),
-                this.Window_ApplyChanges,
-                ConciergePages.Journal);
+            WindowService.ShowAdd(button.Tag as Chapter, typeof(JournalWindow), this.Window_ApplyChanges, ConciergePages.Journal);
             this.Draw();
         }
 
@@ -525,11 +504,7 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            WindowService.ShowAdd(
-                button.Tag as Chapter,
-                typeof(JournalWindow),
-                this.Window_ApplyChanges,
-                ConciergePages.Journal);
+            WindowService.ShowAdd(button.Tag as Chapter, typeof(JournalWindow), this.Window_ApplyChanges, ConciergePages.Journal);
             this.Draw();
         }
 
@@ -542,19 +517,11 @@ namespace Concierge.Display.Pages
 
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {
-                WindowService.ShowEdit(
-                    chapterTreeViewItem.Chapter,
-                    typeof(JournalWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Journal);
+                WindowService.ShowEdit(chapterTreeViewItem.Chapter, typeof(JournalWindow), this.Window_ApplyChanges, ConciergePages.Journal);
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
             {
-                WindowService.ShowEdit(
-                    documentTreeViewItem.Document,
-                    typeof(JournalWindow),
-                    this.Window_ApplyChanges,
-                    ConciergePages.Journal);
+                WindowService.ShowEdit(documentTreeViewItem.Document, typeof(JournalWindow), this.Window_ApplyChanges, ConciergePages.Journal);
             }
 
             this.Draw();

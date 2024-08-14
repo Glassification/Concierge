@@ -26,7 +26,7 @@ namespace Concierge.Display.Windows
         private readonly FileAccessService fileAccessService;
 
         private bool isNormalEdit;
-        private Disposition disposition;
+        private Disposition disposition = new ();
 
         public PropertiesWindow()
         {
@@ -42,8 +42,6 @@ namespace Concierge.Display.Windows
             this.Class1Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
             this.Class2Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
             this.Class3Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
-            this.disposition = new Disposition();
-            this.OriginalFileName = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameTextBox, this.NameTextBackground);
@@ -67,10 +65,6 @@ namespace Concierge.Display.Windows
         public override string HeaderText => "Edit Character Properties";
 
         public override string WindowName => nameof(PropertiesWindow);
-
-        private string OriginalFileName { get; set; }
-
-        private bool IsChanging { get; set; }
 
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {

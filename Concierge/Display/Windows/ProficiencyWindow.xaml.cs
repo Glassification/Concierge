@@ -27,6 +27,10 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class ProficiencyWindow : ConciergeWindow
     {
+        private bool editing;
+        private Proficiency selectedProficiency = new ();
+        private List<Proficiency> selectedProficiencies = [];
+
         public ProficiencyWindow()
         {
             this.InitializeComponent();
@@ -35,8 +39,6 @@ namespace Concierge.Display.Windows
             this.ProficiencyComboBox.ItemsSource = ComboBoxGenerator.ProficiencyTypesComboBox();
             this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems(ProficiencyTypes.Weapon);
             this.ConciergePage = ConciergePages.None;
-            this.SelectedProficiencies = [];
-            this.SelectedProficiency = new Proficiency();
 
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -44,24 +46,18 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.ProficiencyTextComboBox);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Proficiency";
 
         public override string WindowName => nameof(ProficiencyWindow);
 
         public bool ItemsAdded { get; private set; }
 
-        private bool Editing { get; set; }
-
-        private Proficiency SelectedProficiency { get; set; }
-
-        private List<Proficiency> SelectedProficiencies { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.SelectedProficiencies = Program.CcsFile.Character.Detail.Proficiencies;
+            this.selectedProficiencies = Program.CcsFile.Character.Detail.Proficiencies;
             this.CancelButton.Content = buttonText;
 
             this.SetEnabledState(true);
@@ -78,9 +74,9 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedProficiencies = castItem;
+            this.selectedProficiencies = castItem;
             this.ItemsAdded = false;
 
             this.SetEnabledState(true);
@@ -97,8 +93,8 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
-            this.SelectedProficiency = castItem;
+            this.editing = true;
+            this.selectedProficiency = castItem;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
@@ -116,13 +112,13 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            if (this.Editing)
+            if (this.editing)
             {
-                this.UpdateProficiency(this.SelectedProficiency);
+                this.UpdateProficiency(this.selectedProficiency);
             }
             else
             {
-                this.SelectedProficiencies.Add(this.ToProficiency());
+                this.selectedProficiencies.Add(this.ToProficiency());
             }
 
             this.CloseConciergeWindow();
@@ -186,8 +182,8 @@ namespace Concierge.Display.Windows
         {
             Program.Drawing();
 
-            this.ProficiencyTextComboBox.Text = this.SelectedProficiency.Name;
-            this.ProficiencyComboBox.Text = this.SelectedProficiency.ProficiencyType.ToString();
+            this.ProficiencyTextComboBox.Text = this.selectedProficiency.Name;
+            this.ProficiencyComboBox.Text = this.selectedProficiency.ProficiencyType.ToString();
 
             Program.NotDrawing();
         }
@@ -206,7 +202,7 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
             var proficiency = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Proficiency>(this.SelectedProficiencies, proficiency, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Proficiency>(this.selectedProficiencies, proficiency, this.ConciergePage));
 
             return proficiency;
         }
@@ -255,7 +251,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.SelectedProficiencies.Add(this.ToProficiency());
+            this.selectedProficiencies.Add(this.ToProficiency());
             this.ClearFields(false);
             this.InvokeApplyChanges();
         }

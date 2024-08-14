@@ -25,6 +25,8 @@ namespace Concierge.Display.Utility
     public partial class CustomColorWindow : ConciergeWindow
     {
         private Color color;
+        private bool rgbValueLock;
+        private bool rgbSliderLock;
 
         public CustomColorWindow()
         {
@@ -32,8 +34,6 @@ namespace Concierge.Display.Utility
             this.UseRoundedCorners();
 
             this.ColorPickerImage.LoadFromByteArray(Properties.Resources.ColorPickerBackground);
-            this.RgbValueLock = false;
-            this.RgbSliderLock = false;
         }
 
         public override string HeaderText => "Custom Colour";
@@ -53,10 +53,6 @@ namespace Concierge.Display.Utility
                 this.ColorPreviewFill.Background = new SolidColorBrush(this.color);
             }
         }
-
-        private bool RgbValueLock { get; set; }
-
-        private bool RgbSliderLock { get; set; }
 
         public override CustomColor ShowColorWindow(CustomColor startingColor)
         {
@@ -113,22 +109,22 @@ namespace Concierge.Display.Utility
 
         private void UpdateRgbSpinner(Color color)
         {
-            this.RgbValueLock = true;
+            this.rgbValueLock = true;
             this.RedUpDown.Value = color.R;
             this.GreenUpDown.Value = color.G;
             this.UpdateBrightness(color);
-            this.RgbValueLock = false;
+            this.rgbValueLock = false;
             this.BlueUpDown.Value = color.B;
         }
 
         private void UpdateRgbSlider(Color color)
         {
-            this.RgbSliderLock = true;
+            this.rgbSliderLock = true;
             this.RedSlider.Value = color.R;
             this.GreenSlider.Value = color.G;
             this.BlueSlider.Value = color.B;
             this.UpdateBrightness(color);
-            this.RgbSliderLock = false;
+            this.rgbSliderLock = false;
         }
 
         private void SetColorAtPoint()
@@ -168,7 +164,7 @@ namespace Concierge.Display.Utility
 
         private void UpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
-            if (this.RgbValueLock)
+            if (this.rgbValueLock)
             {
                 return;
             }
@@ -230,7 +226,7 @@ namespace Concierge.Display.Utility
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (this.RgbSliderLock)
+            if (this.rgbSliderLock)
             {
                 return;
             }

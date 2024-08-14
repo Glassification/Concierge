@@ -27,6 +27,11 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class AttacksWindow : ConciergeWindow
     {
+        private bool editing;
+        private bool equippedItem;
+        private Weapon selectedAttack = new ();
+        private List<Weapon> attack = [];
+
         public AttacksWindow()
         {
             this.InitializeComponent();
@@ -38,8 +43,6 @@ namespace Concierge.Display.Windows
             this.DamageTypeComboBox.ItemsSource = ComboBoxGenerator.DamageTypesComboBox();
             this.CoinTypeComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox();
             this.ConciergePage = ConciergePages.None;
-            this.Weapons = [];
-            this.SelectedAttack = new Weapon();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.AttackComboBox);
@@ -58,7 +61,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.AttunedCheckBox);
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Attack";
+        public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Attack";
 
         public override string WindowName => nameof(AttacksWindow);
 
@@ -66,19 +69,11 @@ namespace Concierge.Display.Windows
 
         private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Weapons, Program.CustomItemService.GetItems<Weapon>());
 
-        private bool Editing { get; set; }
-
-        private bool EquippedItem { get; set; }
-
-        private Weapon SelectedAttack { get; set; }
-
-        private List<Weapon> Weapons { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
-            this.Weapons = Program.CcsFile.Character.Equipment.Weapons;
+            this.attack = Program.CcsFile.Character.Equipment.Weapons;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.Editing = false;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.CancelButton.Content = buttonText;
 
@@ -95,8 +90,8 @@ namespace Concierge.Display.Windows
                 return false;
             }
 
-            this.Weapons = castItem;
-            this.Editing = false;
+            this.attack = castItem;
+            this.editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ItemsAdded = false;
 
@@ -113,10 +108,10 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedAttack = castItem;
-            this.EquippedItem = equippedItem;
+            this.selectedAttack = castItem;
+            this.equippedItem = equippedItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields(castItem);
@@ -130,9 +125,9 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            this.Editing = true;
+            this.editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedAttack = castItem;
+            this.selectedAttack = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields(castItem);
@@ -143,13 +138,13 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeResult.OK;
 
-            if (this.Editing)
+            if (this.editing)
             {
-                this.UpdateWeapon(this.SelectedAttack);
+                this.UpdateWeapon(this.selectedAttack);
             }
             else
             {
-                this.Weapons.Add(this.ToWeapon());
+                this.attack.Add(this.ToWeapon());
             }
 
             this.CloseConciergeWindow();
@@ -178,8 +173,8 @@ namespace Concierge.Display.Windows
             this.CoinTypeComboBox.Text = weapon.CoinType.ToString();
             this.AttunedCheckBox.IsChecked = weapon.Attuned;
 
-            DisplayUtility.SetControlEnableState(this.AttunedText, this.EquippedItem);
-            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.EquippedItem);
+            DisplayUtility.SetControlEnableState(this.AttunedText, this.equippedItem);
+            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.equippedItem);
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
@@ -267,7 +262,7 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
             var weapon = this.Create();
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.attack, weapon, this.ConciergePage));
 
             return weapon;
         }
@@ -286,7 +281,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Weapons.Add(this.ToWeapon());
+            this.attack.Add(this.ToWeapon());
             this.ClearFields();
             this.InvokeApplyChanges();
         }

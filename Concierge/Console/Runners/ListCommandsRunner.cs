@@ -1,8 +1,8 @@
-﻿// <copyright file="ListCommandsScriptService.cs" company="Thomas Beckett">
+﻿// <copyright file="ListCommandsRunner.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Console.Services
+namespace Concierge.Console.Runners
 {
     using System;
     using System.IO;
@@ -13,7 +13,7 @@ namespace Concierge.Console.Services
     using Concierge.Console.Enums;
     using Concierge.Persistence.ReadWriters;
 
-    public sealed class ListCommandsScriptService : ScriptService
+    public sealed class ListCommandsRunner : Runner
     {
         private static readonly string[] names =
         [
@@ -30,7 +30,7 @@ namespace Concierge.Console.Services
         private readonly HistoryReadWriter historyReadWriter;
         private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.ConsoleHistoryName);
 
-        public ListCommandsScriptService()
+        public ListCommandsRunner()
         {
             this.historyReadWriter = new HistoryReadWriter(Program.ErrorService);
         }
@@ -63,10 +63,10 @@ namespace Concierge.Console.Services
         {
             var builder = new StringBuilder();
 
-            builder.Append(new ListScriptService().List());
-            builder.Append(new WealthScriptService(false).List());
-            builder.Append(new ReadWriterScriptService(false).List());
-            builder.Append(new CcsCompressionScriptService(false).List());
+            builder.Append(new ListRunner().List());
+            builder.Append(new WealthRunner(false).List());
+            builder.Append(new ReadWriterRunner(false).List());
+            builder.Append(new CcsCompressionRunner(false).List());
             builder.Append(base.List());
 
             return builder.ToString();

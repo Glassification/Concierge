@@ -6,7 +6,6 @@ namespace Concierge.Display.Pages
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -33,7 +32,7 @@ namespace Concierge.Display.Pages
             this.ConciergePages = ConciergePages.Inventory;
         }
 
-        private List<Inventory> DisplayList => Program.CcsFile.Character.Equipment.Inventory.Filter(this.SearchFilter.FilterText).ToList();
+        private List<Inventory> DisplayList => [.. Program.CcsFile.Character.Equipment.Inventory.Filter(this.SearchFilter.FilterText)];
 
         public override void Draw(bool isNewCharacterSheet = false)
         {
@@ -48,12 +47,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.InventoryDataGrid.SelectedIndex;
-            WindowService.ShowEdit(
-                inventory,
-                false,
-                typeof(InventoryWindow),
-                this.Window_ApplyChanges,
-                ConciergePages.Inventory);
+            WindowService.ShowEdit(inventory, false, typeof(InventoryWindow), this.Window_ApplyChanges, ConciergePages.Inventory);
 
             this.DrawInventory();
             this.InventoryDataGrid.SetSelectedIndex(index);
@@ -92,7 +86,6 @@ namespace Concierge.Display.Pages
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
             var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Equipment.Inventory, 0, -1, this.ConciergePages);
-
             if (index != -1)
             {
                 this.DrawInventory();
@@ -103,7 +96,6 @@ namespace Concierge.Display.Pages
         private void DownButton_Click(object sender, RoutedEventArgs e)
         {
             var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Equipment.Inventory, Program.CcsFile.Character.Equipment.Inventory.Count - 1, 1, this.ConciergePages);
-
             if (index != -1)
             {
                 this.DrawInventory();
@@ -123,8 +115,8 @@ namespace Concierge.Display.Pages
                 typeof(InventoryWindow),
                 this.Window_ApplyChanges,
                 ConciergePages.Inventory);
-            this.DrawInventory();
 
+            this.DrawInventory();
             if (added)
             {
                 this.InventoryDataGrid.SetSelectedIndex(this.InventoryDataGrid.LastIndex);
@@ -193,7 +185,6 @@ namespace Concierge.Display.Pages
 
             var oldItem = item.DeepCopy();
             var result = item.Use(UseItem.Empty);
-
             var windowResult = WindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             if (windowResult != ConciergeResult.OK)
             {
