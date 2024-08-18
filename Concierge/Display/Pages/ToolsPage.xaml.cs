@@ -17,8 +17,10 @@ namespace Concierge.Display.Pages
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
     using Concierge.Persistence.ReadWriters;
+    using Concierge.Services;
     using Concierge.Tools;
     using Concierge.Tools.DiceRoller;
     using Concierge.Tools.Enums;
@@ -56,12 +58,12 @@ namespace Concierge.Display.Pages
             this.D12DiceRollDisplay.Initialize("Dark", Brushes.White);
             this.D20DiceRollDisplay.Initialize("Light", Brushes.White);
 
-            this.PlayersInput.Initialize("Player", Brushes.White);
-            this.CopperInput.Initialize("Copper", Brushes.Black);
-            this.SilverInput.Initialize("Silver", Brushes.Black);
-            this.ElectrumInput.Initialize("Electrum", Brushes.Black);
-            this.GoldInput.Initialize("Gold", Brushes.Black);
-            this.PlatinumInput.Initialize("Platinum", Brushes.Black);
+            this.PlayersInput.Initialize(DivideLootSelection.Players);
+            this.CopperInput.Initialize(DivideLootSelection.Copper);
+            this.SilverInput.Initialize(DivideLootSelection.Silver);
+            this.ElectrumInput.Initialize(DivideLootSelection.Electrum);
+            this.GoldInput.Initialize(DivideLootSelection.Gold);
+            this.PlatinumInput.Initialize(DivideLootSelection.Platinum);
         }
 
         public override void Draw(bool isNewCharacterSheet = false)
@@ -246,23 +248,23 @@ namespace Concierge.Display.Pages
 
         private TextBlock GetCoinSpinner(string coin)
         {
-            if (coin.Equals("players", StringComparison.InvariantCultureIgnoreCase))
+            if (coin.EqualsIgnoreCase("players"))
             {
                 return this.PlayersInput.CoinAmount;
             }
-            else if (coin.Equals("copper", StringComparison.InvariantCultureIgnoreCase))
+            else if (coin.EqualsIgnoreCase("copper"))
             {
                 return this.CopperInput.CoinAmount;
             }
-            else if (coin.Equals("silver", StringComparison.InvariantCultureIgnoreCase))
+            else if (coin.EqualsIgnoreCase("silver"))
             {
                 return this.SilverInput.CoinAmount;
             }
-            else if (coin.Equals("electrum", StringComparison.InvariantCultureIgnoreCase))
+            else if (coin.EqualsIgnoreCase("electrum"))
             {
                 return this.ElectrumInput.CoinAmount;
             }
-            else if (coin.Equals("platinum", StringComparison.InvariantCultureIgnoreCase))
+            else if (coin.EqualsIgnoreCase("platinum"))
             {
                 return this.PlatinumInput.CoinAmount;
             }
@@ -342,6 +344,15 @@ namespace Concierge.Display.Pages
             {
                 var textBlock = this.GetCoinSpinner(this.CoinComboBox.Text);
                 textBlock.Text = $"{int.Parse(textBlock.Text) + amount}";
+            }
+        }
+
+        private void Input_Selection(object sender, RoutedEventArgs e)
+        {
+            if (sender is DivideLootInputControl divideLootInput)
+            {
+                SoundService.PlayUpdateValue();
+                this.CoinComboBox.Text = divideLootInput.LabelText;
             }
         }
     }

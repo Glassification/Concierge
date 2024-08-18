@@ -37,7 +37,8 @@
                         FontSize="20"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Left"
-                        Margin="10, 0, 0, 0"/>
+                        Margin="10, 0, 0, 0"
+                        MouseDown="ConciergeTextBlock_MouseDown"/>
                 </Grid>
 
                 <!--Input-->

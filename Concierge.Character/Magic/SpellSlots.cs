@@ -7,6 +7,7 @@ namespace Concierge.Character.Magic
     using System;
 
     using Concierge.Common;
+    using Concierge.Common.Extensions;
 
     /// <summary>
     /// Represents the spell slots available for casting spells.
@@ -168,55 +169,55 @@ namespace Concierge.Character.Magic
         /// <returns>A tuple containing the updated used and total spell slots.</returns>
         public (int used, int total) Increment(string name)
         {
-            if (name.Contains("first", System.StringComparison.InvariantCultureIgnoreCase) && this.FirstUsed < this.FirstTotal)
+            if (name.ContainsIgnoreCase("first") && this.FirstUsed < this.FirstTotal)
             {
                 this.FirstUsed++;
                 return (this.FirstUsed, this.FirstTotal);
             }
 
-            if (name.Contains("second", System.StringComparison.InvariantCultureIgnoreCase) && this.SecondUsed < this.SecondTotal)
+            if (name.ContainsIgnoreCase("second") && this.SecondUsed < this.SecondTotal)
             {
                 this.SecondUsed++;
                 return (this.SecondUsed, this.SecondTotal);
             }
 
-            if (name.Contains("Third", System.StringComparison.InvariantCultureIgnoreCase) && this.ThirdUsed < this.ThirdTotal)
+            if (name.ContainsIgnoreCase("Third") && this.ThirdUsed < this.ThirdTotal)
             {
                 this.ThirdUsed++;
                 return (this.ThirdUsed, this.ThirdTotal);
             }
 
-            if (name.Contains("Fourth", System.StringComparison.InvariantCultureIgnoreCase) && this.FourthUsed < this.FourthTotal)
+            if (name.ContainsIgnoreCase("Fourth") && this.FourthUsed < this.FourthTotal)
             {
                 this.FourthUsed++;
                 return (this.FourthUsed, this.FourthTotal);
             }
 
-            if (name.Contains("Fifth", System.StringComparison.InvariantCultureIgnoreCase) && this.FifthUsed < this.FifthTotal)
+            if (name.ContainsIgnoreCase("Fifth") && this.FifthUsed < this.FifthTotal)
             {
                 this.FifthUsed++;
                 return (this.FifthUsed, this.FifthTotal);
             }
 
-            if (name.Contains("Sixth", System.StringComparison.InvariantCultureIgnoreCase) && this.SixthUsed < this.SixthTotal)
+            if (name.ContainsIgnoreCase("Sixth") && this.SixthUsed < this.SixthTotal)
             {
                 this.SixthUsed++;
                 return (this.SixthUsed, this.SixthTotal);
             }
 
-            if (name.Contains("Seventh", System.StringComparison.InvariantCultureIgnoreCase) && this.SeventhUsed < this.SeventhTotal)
+            if (name.ContainsIgnoreCase("Seventh") && this.SeventhUsed < this.SeventhTotal)
             {
                 this.SeventhUsed++;
                 return (this.SeventhUsed, this.SeventhTotal);
             }
 
-            if (name.Contains("Eighth", System.StringComparison.InvariantCultureIgnoreCase) && this.EighthUsed < this.EighthTotal)
+            if (name.ContainsIgnoreCase("Eighth") && this.EighthUsed < this.EighthTotal)
             {
                 this.EighthUsed++;
                 return (this.EighthUsed, this.EighthTotal);
             }
 
-            if (name.Contains("Ninth", System.StringComparison.InvariantCultureIgnoreCase) && this.NinethUsed < this.NinethTotal)
+            if (name.ContainsIgnoreCase("Ninth") && this.NinethUsed < this.NinethTotal)
             {
                 this.NinethUsed++;
                 return (this.NinethUsed, this.NinethTotal);

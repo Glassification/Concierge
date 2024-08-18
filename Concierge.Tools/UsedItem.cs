@@ -4,8 +4,7 @@
 
 namespace Concierge.Tools
 {
-    using System;
-
+    using Concierge.Common.Extensions;
     using Concierge.Tools.DiceRoller;
 
     /// <summary>
@@ -68,6 +67,6 @@ namespace Concierge.Tools
         /// <summary>
         /// Gets a value indicating whether the used item heals.
         /// </summary>
-        public bool IsHealing => this.DamageType.Contains("Heal", StringComparison.InvariantCultureIgnoreCase);
+        public bool IsHealing => this.DamageType.ContainsIgnoreCase("Heal");
     }
 }

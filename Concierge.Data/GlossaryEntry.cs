@@ -4,7 +4,6 @@
 
 namespace Concierge.Data
 {
-    using System;
     using System.Collections.Generic;
 
     using Concierge.Common.Extensions;
@@ -67,8 +66,8 @@ namespace Concierge.Data
             }
 
             var containsText =
-                this.Name.Contains(text, StringComparison.InvariantCultureIgnoreCase) ||
-                this.Markdown.Contains(text, StringComparison.InvariantCultureIgnoreCase);
+                this.Name.ContainsIgnoreCase(text) ||
+                this.Markdown.ContainsIgnoreCase(text);
 
             this.GlossaryEntries.ForEach(x => containsText |= x.Search(text));
 

@@ -19,12 +19,12 @@ namespace Concierge.Console.Scripts
 
         public ConsoleResult Evaluate(ConsoleCommand command)
         {
-            if (command.Action.Equals("Zip", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("Zip"))
             {
                 return Zip(command);
             }
 
-            if (command.Action.Equals("Unzip", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("Unzip"))
             {
                 return Unzip(command);
             }
@@ -48,9 +48,10 @@ namespace Concierge.Console.Scripts
             {
                 var file = File.ReadAllText(command.Argument);
                 var zipped = CcsCompression.Zip(file);
+                var newFile = CreateOutputFilePath(command.Argument, "Zip");
 
-                File.WriteAllBytes(CreateOutputFilePath(command.Argument, "Zip"), zipped);
-                return new ConsoleResult($"Zipped {command.Name} to '{command.Argument}'.", ResultType.Success);
+                File.WriteAllBytes(newFile, zipped);
+                return new ConsoleResult($"Zipped {command.Name} to '{newFile}'.", ResultType.Success);
             }
             catch (Exception ex)
             {
@@ -69,9 +70,10 @@ namespace Concierge.Console.Scripts
             {
                 var file = File.ReadAllBytes(command.Argument);
                 var unzipped = CcsCompression.Unzip(file);
+                var newFile = CreateOutputFilePath(command.Argument, "Unzip");
 
-                File.WriteAllText(CreateOutputFilePath(command.Argument, "Unzip"), unzipped);
-                return new ConsoleResult($"Unzipped {command.Name} to '{command.Argument}'.", ResultType.Success);
+                File.WriteAllText(newFile, unzipped);
+                return new ConsoleResult($"Unzipped {command.Name} to '{newFile}'.", ResultType.Success);
             }
             catch (Exception ex)
             {

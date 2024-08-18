@@ -22,17 +22,17 @@ namespace Concierge.Console.Scripts
 
         public ConsoleResult Evaluate(ConsoleCommand command)
         {
-            if (command.Action.Equals("Read", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("Read"))
             {
                 return this.Read(command);
             }
 
-            if (command.Action.Equals("Write", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("Write"))
             {
                 return this.Write(command);
             }
 
-            if (command.Action.Equals("New", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("New"))
             {
                 return this.New(command);
             }

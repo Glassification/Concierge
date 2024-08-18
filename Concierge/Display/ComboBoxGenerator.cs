@@ -16,7 +16,7 @@ namespace Concierge.Display
     using Concierge.Configuration;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
-    using Concierge.Search.Enums;
+    using Concierge.Searches.Enums;
     using Concierge.Services;
     using MaterialDesignThemes.Wpf;
 

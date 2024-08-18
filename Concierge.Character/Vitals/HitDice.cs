@@ -6,6 +6,7 @@ namespace Concierge.Character.Vitals
 {
     using Concierge.Common;
     using Concierge.Common.Enums;
+    using Concierge.Common.Extensions;
 
     /// <summary>
     /// Represents the hit dice of a character, including the total and spent hit dice for each type.
@@ -136,25 +137,25 @@ namespace Concierge.Character.Vitals
         /// <returns>A tuple containing the dice type, the number of used hit dice, and the total number of hit dice.</returns>
         public (Dice dice, int used, int total) Increment(string name)
         {
-            if (name.Contains("d6", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD6 < this.TotalD6)
+            if (name.ContainsIgnoreCase("d6") && this.SpentD6 < this.TotalD6)
             {
                 this.SpentD6++;
                 return (Dice.D6, this.SpentD6, this.TotalD6);
             }
 
-            if (name.Contains("d8", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD8 < this.TotalD8)
+            if (name.ContainsIgnoreCase("d8") && this.SpentD8 < this.TotalD8)
             {
                 this.SpentD8++;
                 return (Dice.D8, this.SpentD8, this.TotalD8);
             }
 
-            if (name.Contains("d10", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD10 < this.TotalD10)
+            if (name.ContainsIgnoreCase("d10") && this.SpentD10 < this.TotalD10)
             {
                 this.SpentD10++;
                 return (Dice.D10, this.SpentD10, this.TotalD10);
             }
 
-            if (name.Contains("d12", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD12 < this.TotalD12)
+            if (name.ContainsIgnoreCase("d12") && this.SpentD12 < this.TotalD12)
             {
                 this.SpentD12++;
                 return (Dice.D12, this.SpentD12, this.TotalD12);

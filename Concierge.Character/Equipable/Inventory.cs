@@ -291,7 +291,7 @@ namespace Concierge.Character.Equipable
 
         private string GetNotesDisplay()
         {
-            if (!this.Consumable || this.Notes.Contains("Consum", StringComparison.InvariantCultureIgnoreCase))
+            if (!this.Consumable || this.Notes.ContainsIgnoreCase("Consum"))
             {
                 return this.Notes;
             }

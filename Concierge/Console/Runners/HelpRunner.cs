@@ -6,6 +6,7 @@ namespace Concierge.Console.Runners
 {
     using System;
 
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
 
     public sealed class HelpRunner : Runner
@@ -35,7 +36,7 @@ Use List.Commands() to see all valid commands.";
 
         public override bool Contains(string name)
         {
-            return name.Contains("Help", StringComparison.InvariantCultureIgnoreCase);
+            return name.ContainsIgnoreCase("Help");
         }
     }
 }

@@ -317,7 +317,7 @@ namespace Concierge.Display.Pages
             if (spell.ExpendSpellSlot)
             {
                 var spellSlots = magic.SpellSlots.DeepCopy();
-                var name = spell.Class.Equals("Warlock", StringComparison.InvariantCultureIgnoreCase) ? "pact" : spell.Level.ToSpellSlot();
+                var name = spell.Class.EqualsIgnoreCase("Warlock") ? "pact" : spell.Level.ToSpellSlot();
                 var (used, total) = magic.SpellSlots.Increment(name);
                 if (used == 0 && total == 0)
                 {

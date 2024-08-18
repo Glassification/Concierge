@@ -100,7 +100,7 @@ namespace Concierge.Common.Extensions
                         continue;
                     }
 
-                    if (propertyValue?.ToString()?.Contains(filter, StringComparison.InvariantCultureIgnoreCase) ?? false)
+                    if (propertyValue?.ToString()?.ContainsIgnoreCase(filter) ?? false)
                     {
                         return true;
                     }

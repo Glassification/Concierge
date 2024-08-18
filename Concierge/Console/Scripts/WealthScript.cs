@@ -4,8 +4,6 @@
 
 namespace Concierge.Console.Scripts
 {
-    using System;
-
     using Concierge.Character;
     using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
@@ -21,17 +19,17 @@ namespace Concierge.Console.Scripts
 
         public ConsoleResult Evaluate(ConsoleCommand command)
         {
-            if (command.Action.Equals("Add", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("Add"))
             {
                 return this.AddWealth(command);
             }
 
-            if (command.Action.Equals("Subtract", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("Subtract"))
             {
                 return this.SubtractWealth(command);
             }
 
-            if (command.Action.Equals("Count", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("Count"))
             {
                 return this.Count(command);
             }

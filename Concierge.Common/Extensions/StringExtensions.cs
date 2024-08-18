@@ -35,7 +35,7 @@ namespace Concierge.Common.Extensions
         /// </summary>
         /// <param name="str">The string to test.</param>
         /// <returns>true if the string is null or empty; otherwise, false.</returns>
-        public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
+        public static bool IsNullOrEmpty(this string? str) => string.IsNullOrEmpty(str);
 
         /// <summary>
         /// Removes the specified text from the string.
@@ -51,7 +51,7 @@ namespace Concierge.Common.Extensions
         /// <param name="str">The string to be pluralized.</param>
         /// <param name="plural">The plural form of the string.</param>
         /// <param name="count">The count determining whether the string should be pluralized.</param>
-        /// <returns>The pluralized string if the count is greater than 1; otherwise, returns the original string.</returns>
+        /// <returns>The pluralized string if the count is not equal to 1; otherwise, returns the original string.</returns>
         public static string Pluralize(this string str, string plural, int count) => count == 1 ? str : $"{str}{plural}";
 
         /// <summary>
@@ -64,6 +64,26 @@ namespace Concierge.Common.Extensions
         /// <param name="str">The input string to check for Base64 encoding.</param>
         /// <returns>True if the input string is valid Base64-encoded data; otherwise, false.</returns>
         public static bool IsBase64(this string str) => Convert.TryFromBase64String(str, new (new byte[str.Length]), out _);
+
+        /// <summary>
+        /// Determines whether the specified string is equal to the current string, ignoring case.
+        /// </summary>
+        /// <param name="str">The current string.</param>
+        /// <param name="comparison">The string to compare with the current string.</param>
+        /// <returns>
+        /// <c>true</c> if the specified string is equal to the current string, ignoring case; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool EqualsIgnoreCase(this string str, string comparison) => str.Equals(comparison, StringComparison.InvariantCultureIgnoreCase);
+
+        /// <summary>
+        /// Determines whether the specified substring occurs within the current string, ignoring case.
+        /// </summary>
+        /// <param name="str">The current string.</param>
+        /// <param name="comparison">The substring to compare with the current string.</param>
+        /// <returns>
+        /// <c>true</c> if the specified substring occurs within the current string, ignoring case; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool ContainsIgnoreCase(this string str, string comparison) => str.Contains(comparison, StringComparison.InvariantCultureIgnoreCase);
 
         /// <summary>
         /// Converts the input string to PascalCase format.
@@ -391,7 +411,7 @@ namespace Concierge.Common.Extensions
         {
             foreach (var item in find)
             {
-                if (str.Equals(item, StringComparison.InvariantCultureIgnoreCase))
+                if (str.EqualsIgnoreCase(item))
                 {
                     return true;
                 }

@@ -144,11 +144,11 @@ namespace Concierge.Console
             consoleRun.AddIfExists(new EchoRunner());
             consoleRun.Validate();
 
-            if (command.Name.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Name.EqualsIgnoreCase("Clear"))
             {
                 this.ClearConsoleOutput();
             }
-            else if (command.Name.Equals("Exit", StringComparison.InvariantCultureIgnoreCase))
+            else if (command.Name.EqualsIgnoreCase("Ex3it"))
             {
                 this.writeOutput = false;
                 this.Exited?.Invoke(command, new EventArgs());
@@ -204,7 +204,6 @@ namespace Concierge.Console
         private void ClearConsoleOutput()
         {
             this.consoleReadWriter.Clear(this.consoleOutputFile);
-
             this.ConsoleOutput.Clear();
             this.GenerateHeader();
             this.writeOutput = false;

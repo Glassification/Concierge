@@ -147,7 +147,7 @@
                             Grid.Row="1"
                             FillBrush="#262E42"
                             x:Name="D4DiceRollDisplay"
-                            DiceName="d4"
+                            DiceName="D4"
                             DiceSides="4"
                             DiceSymbol="DiceD4"
                             DiceToolTip="Roll a d4"
@@ -157,7 +157,7 @@
                             Grid.Row="2"
                             FillBrush="#1E2636"
                             x:Name="D6DiceRollDisplay"
-                            DiceName="d6"
+                            DiceName="D6"
                             DiceSides="6"
                             DiceSymbol="DiceD6"
                             DiceToolTip="Roll a d6"
@@ -167,7 +167,7 @@
                             Grid.Row="3"
                             FillBrush="#262E42"
                             x:Name="D8DiceRollDisplay"
-                            DiceName="d8"
+                            DiceName="D8"
                             DiceSides="8"
                             DiceSymbol="DiceD8"
                             DiceToolTip="Roll a d8"
@@ -177,7 +177,7 @@
                             Grid.Row="4"
                             FillBrush="#1E2636"
                             x:Name="D10DiceRollDisplay"
-                            DiceName="d10"
+                            DiceName="D10"
                             DiceSides="10"
                             DiceSymbol="DiceD10"
                             DiceToolTip="Roll a d10"
@@ -187,7 +187,7 @@
                             Grid.Row="5"
                             FillBrush="#262E42"
                             x:Name="D100DiceRollDisplay"
-                            DiceName="d100"
+                            DiceName="D100"
                             DiceSides="100"
                             DiceSymbol="DiceMultiple"
                             DiceToolTip="Roll a d100"
@@ -197,7 +197,7 @@
                             Grid.Row="6"
                             FillBrush="#1E2636"
                             x:Name="D12DiceRollDisplay"
-                            DiceName="d12"
+                            DiceName="D12"
                             DiceSides="12"
                             DiceSymbol="DiceD12"
                             DiceToolTip="Roll a d12"
@@ -207,7 +207,7 @@
                             Grid.Row="7"
                             FillBrush="#262E42"
                             x:Name="D20DiceRollDisplay"
-                            DiceName="d20"
+                            DiceName="D20"
                             DiceSides="20"
                             DiceSymbol="DiceD20"
                             DiceToolTip="Roll a d20"
@@ -523,42 +523,48 @@
                             Grid.Row="0"
                             FillBrush="#33415C"
                             LabelTextColor="White"
-                            LabelText="Players"/>
+                            LabelText="Players"
+                            Selection="Input_Selection"/>
 
                         <controls:DivideLootInputControl
                             x:Name="CopperInput"
                             Grid.Row="1"
                             FillBrush="#b87333"
                             LabelTextColor="Black"
-                            LabelText="Copper"/>
+                            LabelText="Copper"
+                            Selection="Input_Selection"/>
 
                         <controls:DivideLootInputControl
                             x:Name="SilverInput"
                             Grid.Row="2"
                             FillBrush="Silver"
                             LabelTextColor="Black"
-                            LabelText="Silver"/>
+                            LabelText="Silver"
+                            Selection="Input_Selection"/>
 
                         <controls:DivideLootInputControl
                             x:Name="ElectrumInput"
                             Grid.Row="3"
                             FillBrush="#50c878"
                             LabelTextColor="Black"
-                            LabelText="Electrum"/>
+                            LabelText="Electrum"
+                            Selection="Input_Selection"/>
 
                         <controls:DivideLootInputControl
                             x:Name="GoldInput"
                             Grid.Row="4"
                             FillBrush="#CFB53B"
                             LabelTextColor="Black"
-                            LabelText="Gold"/>
+                            LabelText="Gold"
+                            Selection="Input_Selection"/>
 
                         <controls:DivideLootInputControl
                             x:Name="PlatinumInput"
                             Grid.Row="5"
                             FillBrush="#e5e4e2"
                             LabelTextColor="Black"
-                            LabelText="Platinum"/>
+                            LabelText="Platinum"
+                            Selection="Input_Selection"/>
                     </Grid>
 
                     <components:ConciergeDataGrid 

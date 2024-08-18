@@ -12,12 +12,12 @@ namespace Concierge.Display.Utility
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Import;
+    using Concierge.Import.Enums;
+    using Concierge.Import.Importers;
     using Concierge.Persistence;
     using Concierge.Persistence.Enums;
     using Concierge.Services;
-    using Concierge.Services.Enums;
-    using Concierge.Services.ImportService;
-    using Concierge.Services.ImportService.Importers;
 
     /// <summary>
     /// Interaction logic for ImportCharacterWindow.xaml.
@@ -25,7 +25,7 @@ namespace Concierge.Display.Utility
     public partial class ImportCharacterWindow : ConciergeWindow
     {
         private readonly FileAccessService fileAccessService = new ();
-        private readonly CharacterImportService characterImporter = new ();
+        private readonly CharacterImporter characterImporter = new ();
 
         private bool imported;
 

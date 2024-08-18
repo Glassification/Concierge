@@ -9,6 +9,8 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Media;
 
+    using Concierge.Display.Enums;
+
     /// <summary>
     /// Interaction logic for DivideLootInputControl.xaml.
     /// </summary>
@@ -35,6 +37,13 @@ namespace Concierge.Display.Controls
                 typeof(SpellSlotsControl), // No idea why it only works this way
                 new UIPropertyMetadata(Brushes.Transparent));
 
+        private static readonly RoutedEvent SelectionEvent =
+            EventManager.RegisterRoutedEvent(
+                "Selection",
+                RoutingStrategy.Bubble,
+                typeof(RoutedEventHandler),
+                typeof(DivideLootInputControl));
+
         private readonly ResourceDictionary resourceDictionary = new ()
         {
             Source = new Uri("Display/Dictionaries/DisplaySpinnerDictionary.xaml", UriKind.RelativeOrAbsolute),
@@ -43,6 +52,12 @@ namespace Concierge.Display.Controls
         public DivideLootInputControl()
         {
             this.InitializeComponent();
+        }
+
+        public event RoutedEventHandler Selection
+        {
+            add { this.AddHandler(SelectionEvent, value); }
+            remove { this.RemoveHandler(SelectionEvent, value); }
         }
 
         public Brush LabelTextColor
@@ -79,9 +94,11 @@ namespace Concierge.Display.Controls
             this.CoinAmount.Text = "0";
         }
 
-        public void Initialize(string style, Brush foreground)
+        public void Initialize(DivideLootSelection style)
         {
-            var styleText = style.Contains("ControlButtonStyle") ? style : $"{style}ControlButtonStyle";
+            var foreground = style == DivideLootSelection.Players ? Brushes.White : Brushes.Black;
+            var styleString = style.ToString();
+            var styleText = styleString.Contains("ControlButtonStyle") ? styleString : $"{styleString}ControlButtonStyle";
 
             this.ClearButton.Style = this.resourceDictionary[styleText] as Style;
             this.CoinAmount.Foreground = foreground;
@@ -91,6 +108,11 @@ namespace Concierge.Display.Controls
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             this.CoinAmount.Text = "0";
+        }
+
+        private void ConciergeTextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(SelectionEvent));
         }
     }
 }

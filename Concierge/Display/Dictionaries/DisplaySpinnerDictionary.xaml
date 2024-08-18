@@ -50,7 +50,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="PlayerControlButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="PlayersControlButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="#33415C" />
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0.5,1,1,1"/>

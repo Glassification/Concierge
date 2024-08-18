@@ -4,7 +4,6 @@
 
 namespace Concierge.Commands
 {
-    using System;
     using System.Linq;
 
     using Concierge.Character;
@@ -76,7 +75,7 @@ namespace Concierge.Commands
             if (this.newClassResource is not null)
             {
                 this.character.Vitality.ClassResources
-                    .Where(x => x.Type.Equals(this.newClassResource.Type, StringComparison.InvariantCultureIgnoreCase))
+                    .Where(x => x.Type.EqualsIgnoreCase(this.newClassResource.Type))
                     .First()
                     .SetProperties<ClassResource>(this.newClassResource);
             }
@@ -95,7 +94,7 @@ namespace Concierge.Commands
             if (this.oldClassResource is not null)
             {
                 this.character.Vitality.ClassResources
-                    .Where(x => x.Type.Equals(this.oldClassResource.Type, StringComparison.InvariantCultureIgnoreCase))
+                    .Where(x => x.Type.EqualsIgnoreCase(this.oldClassResource.Type))
                     .First()
                     .SetProperties<ClassResource>(this.oldClassResource);
             }

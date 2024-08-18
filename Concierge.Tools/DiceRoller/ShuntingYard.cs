@@ -12,7 +12,7 @@ namespace Concierge.Tools.DiceRoller
     /// </summary>
     public static class ShuntingYard
     {
-        private static readonly IDictionary<string, Operator> operators = new[]
+        private static readonly Dictionary<string, Operator> operators = new[]
         {
             new Operator("^", 4, true),
             new Operator("*", 3, false),

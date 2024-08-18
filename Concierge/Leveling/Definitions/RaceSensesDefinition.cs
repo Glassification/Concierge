@@ -4,9 +4,8 @@
 
 namespace Concierge.Leveling.Definitions
 {
-    using System;
-
     using Concierge.Character.Enums;
+    using Concierge.Common.Extensions;
     using Concierge.Leveling.Dtos.Definitions;
 
     public static class RaceSensesDefinition
@@ -18,7 +17,7 @@ namespace Concierge.Leveling.Definitions
 
         public static SensesDto GetElfSenses(string subrace)
         {
-            return new SensesDto(30, subrace.Contains("Drow", StringComparison.InvariantCultureIgnoreCase) ? VisionTypes.SuperiorDarkvision : VisionTypes.Darkvision);
+            return new SensesDto(30, subrace.ContainsIgnoreCase("Drow") ? VisionTypes.SuperiorDarkvision : VisionTypes.Darkvision);
         }
 
         public static SensesDto GetHalflingSenses()

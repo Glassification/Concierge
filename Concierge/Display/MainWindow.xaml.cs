@@ -13,6 +13,7 @@ namespace Concierge.Display
     using System.Windows.Interop;
     using System.Windows.Navigation;
 
+    using Concierge;
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common;
@@ -26,10 +27,10 @@ namespace Concierge.Display
     using Concierge.Display.Utility;
     using Concierge.Display.Windows;
     using Concierge.Display.Windows.Utility;
+    using Concierge.EasterEggs;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
-    using Concierge.Services.EasterEggs;
     using Concierge.Tools.WorkerServices;
     using MaterialDesignThemes.Wpf;
 
@@ -60,7 +61,7 @@ namespace Concierge.Display
         private readonly DateTimeWorkerService dateTimeService = new ();
         private readonly SystemWorkerService systemService = new ();
         private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (Common.Constants.StatusDisplayTime);
-        private readonly EasterEggService easterEggService = new ();
+        private readonly EasterEggManager easterEggService = new ();
 
         public MainWindow()
         {

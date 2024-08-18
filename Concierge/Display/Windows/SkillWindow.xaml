@@ -119,7 +119,7 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel 
-                            Text="Sleight of Hand:"
+                            Text="Sleight of  Hand:"
                             FontSize="15"/>
                     </Grid>
 

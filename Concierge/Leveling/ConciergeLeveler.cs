@@ -4,7 +4,6 @@
 
 namespace Concierge.Leveling
 {
-    using System;
     using System.Linq;
 
     using Concierge.Character;
@@ -12,6 +11,7 @@ namespace Concierge.Leveling
     using Concierge.Character.Magic;
     using Concierge.Commands;
     using Concierge.Common.Enums;
+    using Concierge.Common.Extensions;
     using Concierge.Leveling.Dtos.Leveler;
     using Concierge.Tools.DiceRoller;
 
@@ -84,7 +84,7 @@ namespace Concierge.Leveling
         private ClassResourcesDto LevelUpClassResource(Class newClass)
         {
             var resourceIncrease = LevelingMap.GetResourceIncrease(newClass.Name, newClass.Subclass, newClass.Level);
-            var resource = this.character.Vitality.ClassResources.Where(x => x.Type.Equals(resourceIncrease.Name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            var resource = this.character.Vitality.ClassResources.Where(x => x.Type.EqualsIgnoreCase(resourceIncrease.Name)).FirstOrDefault();
             var oldResource = resource?.DeepCopy();
 
             if (resource is not null)

@@ -4,9 +4,9 @@
 
 namespace Concierge.Console.Runners
 {
-    using System;
     using System.Linq;
 
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
 
@@ -45,7 +45,7 @@ namespace Concierge.Console.Runners
 
         public override ConsoleResult Run(ConsoleCommand command)
         {
-            return command.Name.Equals("All", StringComparison.InvariantCultureIgnoreCase) ? this.RunAllWealthScripts(command) : RunWealthScript(command);
+            return command.Name.EqualsIgnoreCase("All") ? this.RunAllWealthScripts(command) : RunWealthScript(command);
         }
 
         private static ConsoleResult RunWealthScript(ConsoleCommand command)

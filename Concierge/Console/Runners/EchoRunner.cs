@@ -6,6 +6,7 @@ namespace Concierge.Console.Runners
 {
     using System;
 
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
 
     public sealed class EchoRunner : Runner
@@ -30,7 +31,7 @@ namespace Concierge.Console.Runners
 
         public override bool Contains(string name)
         {
-            return name.Contains("Echo", StringComparison.InvariantCultureIgnoreCase);
+            return name.ContainsIgnoreCase("Echo");
         }
     }
 }

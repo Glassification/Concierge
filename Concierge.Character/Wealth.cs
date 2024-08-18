@@ -4,10 +4,9 @@
 
 namespace Concierge.Character
 {
-    using System;
-
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -106,22 +105,22 @@ namespace Concierge.Character
         /// <returns>The corresponding coin type.</returns>
         public static CoinType GetCoinType(string name)
         {
-            if (name.Contains(CoinType.Copper.ToString(), StringComparison.InvariantCultureIgnoreCase))
+            if (name.ContainsIgnoreCase(CoinType.Copper.ToString()))
             {
                 return CoinType.Copper;
             }
 
-            if (name.Contains(CoinType.Silver.ToString(), StringComparison.InvariantCultureIgnoreCase))
+            if (name.ContainsIgnoreCase(CoinType.Silver.ToString()))
             {
                 return CoinType.Silver;
             }
 
-            if (name.Contains(CoinType.Electrum.ToString(), StringComparison.InvariantCultureIgnoreCase))
+            if (name.ContainsIgnoreCase(CoinType.Electrum.ToString()))
             {
                 return CoinType.Electrum;
             }
 
-            if (name.Contains(CoinType.Platinum.ToString(), StringComparison.InvariantCultureIgnoreCase))
+            if (name.ContainsIgnoreCase(CoinType.Platinum.ToString()))
             {
                 return CoinType.Platinum;
             }

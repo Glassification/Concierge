@@ -235,15 +235,15 @@ namespace Concierge.Character
         /// </returns>
         public int GetWarlockLevel()
         {
-            if (this.Disposition.Class1.Name.Contains("Warlock", System.StringComparison.InvariantCultureIgnoreCase))
+            if (this.Disposition.Class1.Name.ContainsIgnoreCase("Warlock"))
             {
                 return this.Disposition.Class1.Level;
             }
-            else if (this.Disposition.Class2.Name.Contains("Warlock", System.StringComparison.InvariantCultureIgnoreCase))
+            else if (this.Disposition.Class2.Name.ContainsIgnoreCase("Warlock"))
             {
                 return this.Disposition.Class2.Level;
             }
-            else if (this.Disposition.Class3.Name.Contains("Warlock", System.StringComparison.InvariantCultureIgnoreCase))
+            else if (this.Disposition.Class3.Name.ContainsIgnoreCase("Warlock"))
             {
                 return this.Disposition.Class3.Level;
             }

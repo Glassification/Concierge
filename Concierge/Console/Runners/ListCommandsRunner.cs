@@ -4,7 +4,6 @@
 
 namespace Concierge.Console.Runners
 {
-    using System;
     using System.IO;
     using System.Text;
 
@@ -41,19 +40,19 @@ namespace Concierge.Console.Runners
 
         public override ConsoleResult Run(ConsoleCommand command)
         {
-            if (command.Action.Equals("Commands", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("Commands"))
             {
-                return new ConsoleResult(this.List(), ResultType.Success);
+                return new ConsoleResult(this.List(), ResultType.Information);
             }
 
-            if (command.Action.Equals("History", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("History"))
             {
-                return new ConsoleResult(this.History(), ResultType.Success);
+                return new ConsoleResult(this.History(), ResultType.Information);
             }
 
-            if (command.Action.Equals("Log", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("Log"))
             {
-                return new ConsoleResult(Log(), ResultType.Success);
+                return new ConsoleResult(Log(), ResultType.Information);
             }
 
             return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.NotImplemented);

@@ -4,7 +4,6 @@
 
 namespace Concierge.Character.Magic
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -87,7 +86,7 @@ namespace Concierge.Character.Magic
         /// <returns>The spell attack bonus for the specified magical class.</returns>
         public int GetSpellAttack(string className)
         {
-            return this.MagicalClasses.Where(x => x.Name.Equals(className, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault()?.Attack ?? 0;
+            return this.MagicalClasses.Where(x => x.Name.EqualsIgnoreCase(className)).FirstOrDefault()?.Attack ?? 0;
         }
 
         /// <summary>

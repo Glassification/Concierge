@@ -16,16 +16,16 @@ namespace Concierge.Display.Utility
     using Concierge.Common.Utilities;
     using Concierge.Display;
     using Concierge.Display.Components;
-    using Concierge.Search;
-    using Concierge.Search.Enums;
+    using Concierge.Searches;
+    using Concierge.Searches.Enums;
 
     /// <summary>
     /// Interaction logic for SearchWindow.xaml.
     /// </summary>
     public partial class SearchWindow : ConciergeWindow
     {
-        private readonly ConciergeSearch conciergeSearch;
-        private readonly ConciergeNavigate conciergeNavigate;
+        private readonly Search search;
+        private readonly Navigate navigate;
         private readonly MainWindow mainWindow;
 
         private int searchIndex;
@@ -42,8 +42,8 @@ namespace Concierge.Display.Utility
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.conciergeSearch = new ConciergeSearch(Program.MainWindow);
-            this.conciergeNavigate = new ConciergeNavigate();
+            this.search = new Search(Program.MainWindow);
+            this.navigate = new Navigate();
             this.mainWindow = Program.MainWindow;
             this.SearchDomainComboBox.ItemsSource = ComboBoxGenerator.SearchDomainComboBox();
             this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.PascalCase();
@@ -102,12 +102,12 @@ namespace Concierge.Display.Utility
         private void Search()
         {
             var settings = this.ToSettings();
-            if (this.conciergeSearch.SearchSettings.Equals(settings))
+            if (this.search.SearchSettings.Equals(settings))
             {
                 return;
             }
 
-            this.searchResults = this.conciergeSearch.Search(settings);
+            this.searchResults = this.search.Start(settings);
             this.searchIndex = 0;
             this.previousResult = null;
         }
@@ -130,7 +130,7 @@ namespace Concierge.Display.Utility
 
             this.ClearHighlightedResults();
             this.mainWindow.MoveSelection(result.ConciergePage.ConciergePages);
-            this.conciergeNavigate.Navigate(result);
+            this.navigate.Go(result);
             this.Focus();
         }
 

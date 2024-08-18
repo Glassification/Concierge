@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Controls
 {
-    using System;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
@@ -15,6 +14,7 @@ namespace Concierge.Display.Controls
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows.Utility;
@@ -179,7 +179,7 @@ namespace Concierge.Display.Controls
             }
 
             var packIcon = DisplayUtility.FindVisualChildren<PackIcon>(grid).First();
-            var check = packIcon.Name.Contains("Proficiency", StringComparison.InvariantCultureIgnoreCase) ? this.skill.Proficiency : this.skill.Expertise;
+            var check = packIcon.Name.ContainsIgnoreCase("Proficiency") ? this.skill.Proficiency : this.skill.Expertise;
 
             packIcon.Foreground = check ? ConciergeBrushes.Mint : Brushes.SlateGray;
             Mouse.OverrideCursor = Cursors.Arrow;

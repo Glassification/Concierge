@@ -27,27 +27,27 @@ namespace Concierge.Console.Scripts
 
         public ConsoleResult Evaluate(ConsoleCommand command)
         {
-            if (command.Action.Equals("AddItem", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("AddItem"))
             {
                 return this.AddItem(command);
             }
 
-            if (command.Action.Equals("RemoveItem", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("RemoveItem"))
             {
                 return this.RemoveItem(command);
             }
 
-            if (command.Action.Equals("Count", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("Count"))
             {
                 return this.Count(command);
             }
 
-            if (command.Action.Equals("AddCategory", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("AddCategory"))
             {
                 return this.AddCategory(command);
             }
 
-            if (command.Action.Equals("GetId", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.EqualsIgnoreCase("GetId"))
             {
                 return this.GetId(command);
             }
@@ -115,7 +115,7 @@ namespace Concierge.Console.Scripts
                     return new ConsoleResult($"All default item categories added to {command.Name}", ResultType.Success);
                 }
 
-                var items = this.defaultList.Where(x => x.GetCategory().Name.Equals(command.Argument, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                var items = this.defaultList.Where(x => x.GetCategory().Name.EqualsIgnoreCase(command.Argument)).ToList();
                 if (items.Count > 0)
                 {
                     this.characterList.AddRange(items);
@@ -155,7 +155,7 @@ namespace Concierge.Console.Scripts
 
         private T? GetDefaultItem(string name)
         {
-            var item = this.defaultList.Where(x => x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            var item = this.defaultList.Where(x => x.Name.EqualsIgnoreCase(name)).FirstOrDefault();
             if (item is null)
             {
                 return item;
@@ -167,6 +167,6 @@ namespace Concierge.Console.Scripts
             return newItem;
         }
 
-        private List<T> GetCharacterItem(string name) => this.characterList.Where(x => x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).ToList();
+        private List<T> GetCharacterItem(string name) => this.characterList.Where(x => x.Name.EqualsIgnoreCase(name)).ToList();
     }
 }

@@ -6,6 +6,7 @@ namespace Concierge.Console
 {
     using System.Collections.Generic;
 
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
     using Concierge.Console.Runners;
 
@@ -44,7 +45,10 @@ namespace Concierge.Console
         /// </summary>
         public void Validate()
         {
-            this.runners.Add(new UnknownRunner());
+            if (this.runners.IsEmpty())
+            {
+                this.runners.Add(new UnknownRunner());
+            }
         }
 
         /// <summary>
@@ -56,17 +60,16 @@ namespace Concierge.Console
         /// </returns>
         public ConsoleResult RunAll()
         {
-            var result = ConsoleResult.Empty;
             foreach (var runner in this.runners)
             {
-                result = runner.Run(this.command);
+                var result = runner.Run(this.command);
                 if (result.Type != ResultType.NotImplemented)
                 {
-                    break;
+                    return result;
                 }
             }
 
-            return result;
+            return ConsoleResult.Empty;
         }
     }
 }

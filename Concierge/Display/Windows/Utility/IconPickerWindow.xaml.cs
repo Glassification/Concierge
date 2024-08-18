@@ -72,7 +72,7 @@ namespace Concierge.Display.Windows.Utility
         {
             var icons = Enum.GetValues(typeof(PackIconKind))
                 .Cast<PackIconKind>()
-                .Where(x => filter.IsNullOrWhiteSpace() || x.ToString().Contains(filter, StringComparison.InvariantCultureIgnoreCase))
+                .Where(x => filter.IsNullOrWhiteSpace() || x.ToString().ContainsIgnoreCase(filter))
                 .DistinctBy(x => x.ToString());
 
             var iconWrapPanel = new WrapPanel();
