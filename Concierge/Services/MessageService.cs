@@ -12,7 +12,7 @@ namespace Concierge.Services
     /// <summary>
     /// Provides functionality for managing messages and message history.
     /// </summary>
-    public class MessageService
+    public sealed class MessageService
     {
         private readonly List<MessageHistory> messages = [];
 

@@ -12,12 +12,14 @@ namespace Concierge.Display.Components
     using Concierge.Common;
     using Concierge.Common.Utilities;
 
-    public sealed class ConciergeTextBoxBackground : Grid
+    public sealed class ConciergeTextBoxBackground : Border
     {
         public ConciergeTextBoxBackground()
         {
             this.Background = ConciergeBrushes.ControlForeBlue;
             this.Margin = new Thickness(0, 10, 20, 10);
+            this.CornerRadius = new CornerRadius(5);
+            this.BorderThickness = new Thickness(3);
 
             this.MouseDown += this.Control_MouseDown;
             this.MouseEnter += this.Control_MouseEnter;

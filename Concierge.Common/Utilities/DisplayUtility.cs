@@ -101,8 +101,15 @@ namespace Concierge.Common.Utilities
         /// <param name="isEnabled">The state indicating whether the control is enabled.</param>
         public static void SetControlEnableState(FrameworkElement element, bool isEnabled)
         {
-            element.IsEnabled = isEnabled;
-            element.Opacity = isEnabled ? 1 : 0.5;
+            if (element is IOpacity opacity)
+            {
+                opacity.SetEnableState(isEnabled);
+            }
+            else
+            {
+                element.IsEnabled = isEnabled;
+                element.Opacity = isEnabled ? 1 : 0.5;
+            }
         }
     }
 }

@@ -9,13 +9,14 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
+    using Concierge.Common;
     using Concierge.Common.Utilities;
     using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for IntegerUpDownControl.xaml.
     /// </summary>
-    public partial class IntegerUpDownControl : UserControl
+    public partial class IntegerUpDownControl : UserControl, IOpacity
     {
         public static readonly DependencyProperty ValueFontSizeProperty =
             DependencyProperty.Register(
@@ -180,6 +181,17 @@ namespace Concierge.Display.Controls
 
         private int LastValue { get; set; }
 
+        public void SetEnableState(bool state)
+        {
+            DisplayUtility.SetControlEnableState(this.Increase, state);
+            DisplayUtility.SetControlEnableState(this.Decrease, state);
+
+            this.TextBoxBorder.BorderBrush = state ? ConciergeBrushes.ControlForeBlue : ConciergeBrushes.DisabledControlForeBlue;
+
+            this.TextBoxValue.IsEnabled = state;
+            this.TextBoxBorder.Opacity = state ? 1 : 0.5;
+        }
+
         private static void OnValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
             if (target is IntegerUpDownControl conciergeIntegerUpDown)
@@ -198,7 +210,6 @@ namespace Concierge.Display.Controls
         {
             var currentText = this.TextBoxValue.Text;
             var isValidNumber = int.TryParse(currentText, out var value);
-
             if (!isValidNumber)
             {
                 this.TextBoxValue.Text = this.Value.ToString();
