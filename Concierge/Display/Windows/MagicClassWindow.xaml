@@ -160,6 +160,7 @@
                         <components:ConciergeTextBox
                             x:Name="AttackBonusTextBox"
                             FontSize="25"
+                            Margin="0"
                             HorizontalContentAlignment="Center"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -187,6 +188,7 @@
                         <components:ConciergeTextBox
                             x:Name="SpellSaveTextBox"
                             FontSize="25"
+                            Margin="0"
                             HorizontalContentAlignment="Center"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -286,6 +288,7 @@
                         <components:ConciergeTextBox
                             x:Name="PreparedSpellsTextBox"
                             FontSize="25"
+                            Margin="0"
                             HorizontalContentAlignment="Center"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>

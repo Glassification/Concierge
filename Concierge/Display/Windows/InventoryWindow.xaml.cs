@@ -186,9 +186,10 @@ namespace Concierge.Display.Windows
             this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
             this.ConsumableCheckBox.IsChecked = false;
 
-            this.AttunedText.Opacity = 0.5;
-            this.AttunedCheckBox.Opacity = 0.5;
-            this.AttunedCheckBox.IsEnabled = false;
+            DisplayUtility.SetControlEnableState(this.AttunedText, false);
+            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, false);
+            DisplayUtility.SetControlEnableState(this.AmountTextBlock, false);
+            DisplayUtility.SetControlEnableState(this.AmountUpDown, false);
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();

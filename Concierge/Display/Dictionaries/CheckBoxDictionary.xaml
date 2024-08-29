@@ -18,7 +18,7 @@
                                 x:Name="Border" 
                                 Width="15" 
                                 Height="15" 
-                                CornerRadius="0" 
+                                CornerRadius="3" 
                                 Background="#262E42"
                                 BorderThickness="0.5"
                                 BorderBrush="#1E2636">

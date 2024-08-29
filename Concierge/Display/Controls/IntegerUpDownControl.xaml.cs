@@ -198,7 +198,6 @@ namespace Concierge.Display.Controls
         {
             var currentText = this.TextBoxValue.Text;
             var isValidNumber = int.TryParse(currentText, out var value);
-
             if (!isValidNumber)
             {
                 this.TextBoxValue.Text = this.Value.ToString();
@@ -269,6 +268,7 @@ namespace Concierge.Display.Controls
 
         private void TextBoxValue_MouseWheel(object sender, MouseWheelEventArgs e)
         {
+            e.Handled = true;
             this.Value += (e.Delta > 0 ? 1 : -1) * this.Increment;
             this.TextBoxValue.Select(this.TextBoxValue.Text.Length, 0);
             SoundService.PlayUpdateValue();

@@ -62,13 +62,13 @@ namespace Concierge.Display.Controls
 
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.MainGrid.Background = ConciergeBrushes.Highlight;
+            this.MainBorder.Background = ConciergeBrushes.Highlight;
             this.MainBorder.BorderBrush = ConciergeBrushes.BorderHighlight;
         }
 
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.MainGrid.Background = ConciergeBrushes.ControlForeBlue;
+            this.MainBorder.Background = ConciergeBrushes.ControlForeBlue;
             this.MainBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;
         }
     }

@@ -21,6 +21,7 @@
                 <ResourceDictionary Source="Display/Dictionaries/SliderDictionary.xaml"/>
                 <ResourceDictionary Source="Display/Dictionaries/GroupBoxDictionary.xaml"/>
                 <ResourceDictionary Source="Display/Dictionaries/DisplaySpinnerDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/ListViewItemDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

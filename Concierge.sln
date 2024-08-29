@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5FE4C2DD-579A-4597-8259-6EFA2FFEDBD4}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitignore = .gitignore
 		README.md = README.md
 		stylecop.json = stylecop.json
 	EndProjectSection
@@ -28,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concierge.Configuration", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concierge.Persistence", "Concierge.Persistence\Concierge.Persistence.csproj", "{AED56ED7-93AB-469F-85C9-0BF67DBE5C28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concierge.Character", "Concierge.Character\Concierge.Character.csproj", "{A64BF7D0-EFBD-4E41-85A9-CC66D8F9A591}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concierge.Character", "Concierge.Character\Concierge.Character.csproj", "{A64BF7D0-EFBD-4E41-85A9-CC66D8F9A591}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

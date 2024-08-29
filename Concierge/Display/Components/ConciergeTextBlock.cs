@@ -19,6 +19,7 @@ namespace Concierge.Display.Components
             this.HorizontalAlignment = HorizontalAlignment.Center;
             this.VerticalAlignment = VerticalAlignment.Center;
             this.TextWrapping = TextWrapping.Wrap;
+            this.Margin = new Thickness(-1);
 
             this.OriginalBackgroundColor = null;
             this.OriginalForegroundColor = null;

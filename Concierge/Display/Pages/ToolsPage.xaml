@@ -237,35 +237,32 @@
                                     FontSize="23"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
-                                <Border
+
+                                <components:ConciergeTextBoxBackground
+                                    Background="#262E42"
                                     Grid.Column="1"
-                                    BorderThickness="1"
-                                    Background="#A9C7FF">
-                                    <components:ConciergeTextBoxBackground
+                                    Height="auto"
+                                    VerticalAlignment="Stretch"
+                                    Margin="1"
+                                    ToolTip="Up/Down to Scroll History">
+                                    <components:ConciergeTextBox
+                                        x:Name="CustomInputTextBox"
+                                        VerticalContentAlignment="Center"
+                                        Margin="10,1,10,1"
+                                        FontSize="18"
                                         Background="#262E42"
-                                        Height="auto"
-                                        VerticalAlignment="Stretch"
-                                        Margin="1"
-                                        ToolTip="Up/Down to Scroll History">
-                                        <components:ConciergeTextBox
-                                            x:Name="CustomInputTextBox"
-                                            VerticalContentAlignment="Center"
-                                            Margin="10,1,10,1"
-                                            FontSize="18"
-                                            Background="#262E42"
-                                            MouseWheel="CustomInputTextBox_MouseWheel"
-                                            PreviewKeyDown="CustomInputTextBox_PreviewKeyDown">
-                                            <controls:WatermarkBuilder.Watermark>
-                                                <TextBlock
-                                                    Text="Custom Roll eg. 4d6 + 1d4 + 5"
-                                                    Foreground="White"
-                                                    FontSize="13"
-                                                    VerticalAlignment="Center"
-                                                    HorizontalAlignment="Center"/>
-                                            </controls:WatermarkBuilder.Watermark>
-                                        </components:ConciergeTextBox>
-                                    </components:ConciergeTextBoxBackground>
-                                </Border>
+                                        MouseWheel="CustomInputTextBox_MouseWheel"
+                                        PreviewKeyDown="CustomInputTextBox_PreviewKeyDown">
+                                        <controls:WatermarkBuilder.Watermark>
+                                            <TextBlock
+                                                Text="Custom Roll eg. 4d6 + 1d4 + 5"
+                                                Foreground="White"
+                                                FontSize="13"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"/>
+                                        </controls:WatermarkBuilder.Watermark>
+                                    </components:ConciergeTextBox>
+                                </components:ConciergeTextBoxBackground>
                                 <components:ConciergeDesignButton 
                                     Grid.Column="2"
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 

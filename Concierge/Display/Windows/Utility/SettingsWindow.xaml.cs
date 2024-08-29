@@ -18,6 +18,7 @@ namespace Concierge.Display.Utility
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Services;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.
@@ -83,6 +84,14 @@ namespace Concierge.Display.Utility
             }
         }
 
+        private static void SetWarning(PackIcon packIcon, ConciergeTextBox path)
+        {
+            packIcon.Visibility =
+                Directory.Exists(path.Text) ?
+                    Visibility.Collapsed :
+                    Visibility.Visible;
+        }
+
         private void FillFields()
         {
             var userSettings = AppSettingsManager.UserSettings;
@@ -122,8 +131,8 @@ namespace Concierge.Display.Utility
             DisplayUtility.SetControlEnableState(this.VolumeLabel, !userSettings.MuteSounds);
             DisplayUtility.SetControlEnableState(this.VolumeSlider, !userSettings.MuteSounds);
 
-            this.OpenWarningVisibility();
-            this.SaveWarningVisibility();
+            SetWarning(this.OpenFolderWarning, this.OpenTextBox);
+            SetWarning(this.SaveFolderWarning, this.SaveTextBox);
 
             this.AutosaveCheckBox.UpdatedValue();
             this.CoinWeightCheckBox.UpdatedValue();
@@ -154,8 +163,8 @@ namespace Concierge.Display.Utility
                 CheckVersion = this.CheckVersionCheckBox.IsChecked ?? false,
                 DefaultFolder = new DefaultFolders()
                 {
-                    OpenFolder = Path.GetDirectoryName(this.OpenTextBox.Text) ?? string.Empty,
-                    SaveFolder = Path.GetDirectoryName(this.SaveTextBox.Text) ?? string.Empty,
+                    OpenFolder = this.OpenTextBox.Text,
+                    SaveFolder = this.SaveTextBox.Text,
                     UseSaveFolder = this.DefaultSaveCheckBox.IsChecked ?? false,
                     UseOpenFolder = this.DefaultOpenCheckBox.IsChecked ?? false,
                 },
@@ -172,26 +181,6 @@ namespace Concierge.Display.Utility
             AppSettingsManager.UpdateSettings(conciergeSettings, Program.IsDebug);
 
             return true;
-        }
-
-        private void SaveWarningVisibility()
-        {
-            this.SaveFolderWarning.Visibility =
-                this.SaveTextBox.Text.IsNullOrWhiteSpace() ?
-                Visibility.Collapsed :
-                Directory.Exists(this.SaveTextBox.Text) ?
-                    Visibility.Collapsed :
-                    Visibility.Visible;
-        }
-
-        private void OpenWarningVisibility()
-        {
-            this.OpenFolderWarning.Visibility =
-                this.OpenTextBox.Text.IsNullOrWhiteSpace() ?
-                Visibility.Collapsed :
-                Directory.Exists(this.OpenTextBox.Text) ?
-                    Visibility.Collapsed :
-                    Visibility.Visible;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -258,7 +247,7 @@ namespace Concierge.Display.Utility
         {
             DisplayUtility.SetControlEnableState(this.SaveFolderButton, true);
             DisplayUtility.SetControlEnableState(this.SaveTextBackground, true);
-            this.SaveWarningVisibility();
+            SetWarning(this.SaveFolderWarning, this.SaveTextBox);
         }
 
         private void DefaultSaveCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -272,7 +261,7 @@ namespace Concierge.Display.Utility
         {
             DisplayUtility.SetControlEnableState(this.OpenFolderButton, true);
             DisplayUtility.SetControlEnableState(this.OpenTextBackground, true);
-            this.OpenWarningVisibility();
+            SetWarning(this.OpenFolderWarning, this.OpenTextBox);
         }
 
         private void DefaultOpenCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -284,12 +273,12 @@ namespace Concierge.Display.Utility
 
         private void SaveTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this.SaveWarningVisibility();
+            SetWarning(this.SaveFolderWarning, this.SaveTextBox);
         }
 
         private void OpenTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this.OpenWarningVisibility();
+            SetWarning(this.OpenFolderWarning, this.OpenTextBox);
         }
 
         private void HealingThreshold_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

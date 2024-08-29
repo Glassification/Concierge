@@ -32,7 +32,7 @@ namespace Concierge.Display.Controls
 
             this.Style = resourceDictionary["UserControlFontStyle"] as Style;
             this.MainBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;
-            this.MainGrid.Background = ConciergeBrushes.ControlForeBlue;
+            this.MainBorder.Background = ConciergeBrushes.ControlForeBlue;
             this.originalBackground = ConciergeBrushes.ControlForeBlue;
         }
 
@@ -70,7 +70,7 @@ namespace Concierge.Display.Controls
             this.ItemName.Foreground = Brushes.White;
 
             this.MainBorder.BorderBrush = background;
-            this.MainGrid.Background = background;
+            this.MainBorder.Background = background;
             this.originalBackground = background;
         }
 
@@ -94,7 +94,7 @@ namespace Concierge.Display.Controls
             this.ItemName.Foreground = Brushes.White;
 
             this.MainBorder.BorderBrush = background;
-            this.MainGrid.Background = background;
+            this.MainBorder.Background = background;
             this.originalBackground = background;
         }
 
@@ -115,7 +115,7 @@ namespace Concierge.Display.Controls
 
             this.FontFamily = font;
             this.MainBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;
-            this.MainGrid.Background = ConciergeBrushes.ControlForeBlue;
+            this.MainBorder.Background = ConciergeBrushes.ControlForeBlue;
             this.originalBackground = ConciergeBrushes.ControlForeBlue;
 
             this.ItemIcon.Kind = icon;
@@ -128,7 +128,7 @@ namespace Concierge.Display.Controls
             this.Tag = font;
 
             this.MainBorder.BorderBrush = background;
-            this.MainGrid.Background = background;
+            this.MainBorder.Background = background;
             this.originalBackground = background;
         }
 
@@ -143,13 +143,13 @@ namespace Concierge.Display.Controls
 
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.MainGrid.Background = ConciergeBrushes.Highlight;
+            this.MainBorder.Background = ConciergeBrushes.Highlight;
             this.MainBorder.BorderBrush = ConciergeBrushes.BorderHighlight;
         }
 
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.MainGrid.Background = this.originalBackground;
+            this.MainBorder.Background = this.originalBackground;
             this.MainBorder.BorderBrush = this.originalBackground;
         }
     }

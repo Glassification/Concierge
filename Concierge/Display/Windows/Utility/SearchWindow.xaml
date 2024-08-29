@@ -9,7 +9,7 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="Concierge Search"
-    Height="395"
+    Height="405"
     Width="650"
     MouseMove="Window_MouseMove"
     KeyDown="Window_KeyDown"
@@ -17,7 +17,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="280"/>
+            <RowDefinition Height="290"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -47,7 +47,7 @@
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
@@ -162,7 +162,8 @@
 
                 <!--Value-->
                 <components:ConciergeTextBoxBackground Grid.Column="1">
-                    <components:ConciergeTextBox x:Name="SearchTextBox"/>
+                    <components:ConciergeTextBox
+                        x:Name="SearchTextBox"/>
                 </components:ConciergeTextBoxBackground>
             </Grid>
         </Grid>
