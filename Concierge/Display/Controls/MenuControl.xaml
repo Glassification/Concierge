@@ -68,8 +68,7 @@
                                     BorderThickness="1"
                                     CornerRadius="5">
                                     <Grid
-                                        Background="Transparent"
-                                        Margin="-1">
+                                        Background="Transparent">
                                         <StackPanel Orientation="Vertical">
                                             <local:PopupButton
                                                 x:Name="NewCharacterMenuItem"
@@ -141,8 +140,7 @@
                                     BorderThickness="1"
                                     CornerRadius="5">
                                     <Grid
-                                        Background="Transparent"
-                                        Margin="-1">
+                                        Background="Transparent">
                                         <StackPanel Orientation="Vertical">
                                             <local:PopupButton
                                                 x:Name="CharacterCreationMenuItem"
@@ -208,8 +206,7 @@
                                     BorderThickness="1"
                                     CornerRadius="5">
                                     <Grid
-                                        Background="Transparent"
-                                        Margin="-1">
+                                        Background="Transparent">
                                         <StackPanel Orientation="Vertical">
                                             <local:PopupButton
                                                 x:Name="ConsoleMenuItem"

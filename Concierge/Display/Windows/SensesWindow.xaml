@@ -74,6 +74,7 @@
                 IsEnabled="False">
                 <components:ConciergeTextBox
                     x:Name="InitiativeTextBox"
+                    Margin="0"
                     FontSize="25"
                     HorizontalContentAlignment="Center"/>
             </components:ConciergeTextBoxBackground>
@@ -101,7 +102,8 @@
                 IsEnabled="False">
                 <components:ConciergeTextBox
                     x:Name="PerceptionTextBox"
-                    FontSize="25"
+                    Margin="0"
+                    FontSize="24"
                     HorizontalContentAlignment="Center"/>
             </components:ConciergeTextBoxBackground>
             <components:ConciergeLabel
@@ -127,6 +129,7 @@
                 Grid.Row="2"
                 IsEnabled="False">
                 <components:ConciergeTextBox
+                    Margin="0"
                     x:Name="MovementTextBox"
                     FontSize="25"
                     HorizontalContentAlignment="Center"

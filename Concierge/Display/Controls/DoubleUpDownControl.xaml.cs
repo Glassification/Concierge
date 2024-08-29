@@ -9,14 +9,13 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Common;
     using Concierge.Common.Utilities;
     using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for DoubleUpDown.xaml.
     /// </summary>
-    public partial class DoubleUpDownControl : UserControl, IOpacity
+    public partial class DoubleUpDownControl : UserControl
     {
         public static readonly DependencyProperty MinimumProperty =
             DependencyProperty.Register(
@@ -160,17 +159,6 @@ namespace Concierge.Display.Controls
         {
             get { return (double)this.GetValue(IncrementProperty); }
             set { this.SetValue(IncrementProperty, value); }
-        }
-
-        public void SetEnableState(bool state)
-        {
-            DisplayUtility.SetControlEnableState(this.Increase, state);
-            DisplayUtility.SetControlEnableState(this.Decrease, state);
-
-            this.TextBoxBorder.BorderBrush = state ? ConciergeBrushes.ControlForeBlue : ConciergeBrushes.DisabledControlForeBlue;
-
-            this.TextBoxValue.IsEnabled = state;
-            this.TextBoxBorder.Opacity = state ? 1 : 0.5;
         }
 
         private static void OnValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)

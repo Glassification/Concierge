@@ -7,7 +7,7 @@ namespace Concierge.Display.Windows
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Media;
+
     using Concierge.Character.Enums;
     using Concierge.Character.Equipable;
     using Concierge.Commands;

@@ -9,14 +9,13 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Common;
     using Concierge.Common.Utilities;
     using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for IntegerUpDownControl.xaml.
     /// </summary>
-    public partial class IntegerUpDownControl : UserControl, IOpacity
+    public partial class IntegerUpDownControl : UserControl
     {
         public static readonly DependencyProperty ValueFontSizeProperty =
             DependencyProperty.Register(
@@ -181,17 +180,6 @@ namespace Concierge.Display.Controls
 
         private int LastValue { get; set; }
 
-        public void SetEnableState(bool state)
-        {
-            DisplayUtility.SetControlEnableState(this.Increase, state);
-            DisplayUtility.SetControlEnableState(this.Decrease, state);
-
-            this.TextBoxBorder.BorderBrush = state ? ConciergeBrushes.ControlForeBlue : ConciergeBrushes.DisabledControlForeBlue;
-
-            this.TextBoxValue.IsEnabled = state;
-            this.TextBoxBorder.Opacity = state ? 1 : 0.5;
-        }
-
         private static void OnValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
             if (target is IntegerUpDownControl conciergeIntegerUpDown)
@@ -280,6 +268,7 @@ namespace Concierge.Display.Controls
 
         private void TextBoxValue_MouseWheel(object sender, MouseWheelEventArgs e)
         {
+            e.Handled = true;
             this.Value += (e.Delta > 0 ? 1 : -1) * this.Increment;
             this.TextBoxValue.Select(this.TextBoxValue.Text.Length, 0);
             SoundService.PlayUpdateValue();
