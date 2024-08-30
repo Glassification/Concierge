@@ -9,7 +9,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Common.Utilities;
+    using Concierge.Common.Extensions;
     using Concierge.Services;
 
     /// <summary>
@@ -171,8 +171,8 @@ namespace Concierge.Display.Controls
 
         private void UpdateSpinnerStatus()
         {
-            DisplayUtility.SetControlEnableState(this.Increase, this.Value < this.Maximum);
-            DisplayUtility.SetControlEnableState(this.Decrease, this.Value > this.Minimum);
+            this.Increase.SetEnableState(this.Value < this.Maximum);
+            this.Decrease.SetEnableState(this.Value > this.Minimum);
         }
 
         private void AttemptToSetValue()

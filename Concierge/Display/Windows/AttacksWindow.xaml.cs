@@ -13,7 +13,6 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Data;
     using Concierge.Data.Units;
@@ -173,8 +172,8 @@ namespace Concierge.Display.Windows
             this.CoinTypeComboBox.Text = weapon.CoinType.ToString();
             this.AttunedCheckBox.IsChecked = weapon.Attuned;
 
-            DisplayUtility.SetControlEnableState(this.AttunedText, this.equippedItem);
-            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.equippedItem);
+            this.AttunedText.SetEnableState(this.equippedItem);
+            this.AttunedCheckBox.SetEnableState(this.equippedItem);
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();

@@ -11,7 +11,6 @@ namespace Concierge.Display.Utility
     using Concierge.Commands;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Configuration.Dtos;
     using Concierge.Configuration.Objects;
@@ -122,14 +121,14 @@ namespace Concierge.Display.Utility
             this.OpenTextBox.Text = userSettings.DefaultFolder.OpenFolder;
             this.SaveTextBox.Text = userSettings.DefaultFolder.SaveFolder;
 
-            DisplayUtility.SetControlEnableState(this.AutosaveInterval, userSettings.Autosaving.Enabled);
-            DisplayUtility.SetControlEnableState(this.IntervalTextBox, userSettings.Autosaving.Enabled);
-            DisplayUtility.SetControlEnableState(this.SaveFolderButton, userSettings.DefaultFolder.UseSaveFolder);
-            DisplayUtility.SetControlEnableState(this.SaveTextBackground, userSettings.DefaultFolder.UseSaveFolder);
-            DisplayUtility.SetControlEnableState(this.OpenFolderButton, userSettings.DefaultFolder.UseOpenFolder);
-            DisplayUtility.SetControlEnableState(this.OpenTextBackground, userSettings.DefaultFolder.UseOpenFolder);
-            DisplayUtility.SetControlEnableState(this.VolumeLabel, !userSettings.MuteSounds);
-            DisplayUtility.SetControlEnableState(this.VolumeSlider, !userSettings.MuteSounds);
+            this.AutosaveInterval.SetEnableState(userSettings.Autosaving.Enabled);
+            this.IntervalTextBox.SetEnableState(userSettings.Autosaving.Enabled);
+            this.SaveFolderButton.SetEnableState(userSettings.DefaultFolder.UseSaveFolder);
+            this.SaveTextBackground.SetEnableState(userSettings.DefaultFolder.UseSaveFolder);
+            this.OpenFolderButton.SetEnableState(userSettings.DefaultFolder.UseOpenFolder);
+            this.OpenTextBackground.SetEnableState(userSettings.DefaultFolder.UseOpenFolder);
+            this.VolumeLabel.SetEnableState(!userSettings.MuteSounds);
+            this.VolumeSlider.SetEnableState(!userSettings.MuteSounds);
 
             SetWarning(this.OpenFolderWarning, this.OpenTextBox);
             SetWarning(this.SaveFolderWarning, this.SaveTextBox);
@@ -215,14 +214,14 @@ namespace Concierge.Display.Utility
 
         private void AutosaveCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.AutosaveInterval, true);
-            DisplayUtility.SetControlEnableState(this.IntervalTextBox, true);
+            this.AutosaveInterval.SetEnableState(true);
+            this.IntervalTextBox.SetEnableState(true);
         }
 
         private void AutosaveCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.AutosaveInterval, false);
-            DisplayUtility.SetControlEnableState(this.IntervalTextBox, false);
+            this.AutosaveInterval.SetEnableState(false);
+            this.IntervalTextBox.SetEnableState(false);
         }
 
         private void SaveFolderButton_Click(object sender, RoutedEventArgs e)
@@ -245,29 +244,29 @@ namespace Concierge.Display.Utility
 
         private void DefaultSaveCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.SaveFolderButton, true);
-            DisplayUtility.SetControlEnableState(this.SaveTextBackground, true);
+            this.SaveFolderButton.SetEnableState(true);
+            this.SaveTextBackground.SetEnableState(true);
             SetWarning(this.SaveFolderWarning, this.SaveTextBox);
         }
 
         private void DefaultSaveCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.SaveFolderButton, false);
-            DisplayUtility.SetControlEnableState(this.SaveTextBackground, false);
+            this.SaveFolderButton.SetEnableState(false);
+            this.SaveTextBackground.SetEnableState(false);
             this.SaveFolderWarning.Visibility = Visibility.Collapsed;
         }
 
         private void DefaultOpenCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.OpenFolderButton, true);
-            DisplayUtility.SetControlEnableState(this.OpenTextBackground, true);
+            this.OpenFolderButton.SetEnableState(true);
+            this.OpenTextBackground.SetEnableState(true);
             SetWarning(this.OpenFolderWarning, this.OpenTextBox);
         }
 
         private void DefaultOpenCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.OpenFolderButton, false);
-            DisplayUtility.SetControlEnableState(this.OpenTextBackground, false);
+            this.OpenFolderButton.SetEnableState(false);
+            this.OpenTextBackground.SetEnableState(false);
             this.OpenFolderWarning.Visibility = Visibility.Collapsed;
         }
 
@@ -293,14 +292,14 @@ namespace Concierge.Display.Utility
 
         private void MuteCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.VolumeLabel, false);
-            DisplayUtility.SetControlEnableState(this.VolumeSlider, false);
+            this.VolumeLabel.SetEnableState(false);
+            this.VolumeSlider.SetEnableState(false);
         }
 
         private void MuteCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.VolumeLabel, true);
-            DisplayUtility.SetControlEnableState(this.VolumeSlider, true);
+            this.VolumeLabel.SetEnableState(true);
+            this.VolumeSlider.SetEnableState(true);
         }
     }
 }

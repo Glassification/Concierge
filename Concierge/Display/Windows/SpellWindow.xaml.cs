@@ -12,7 +12,6 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Magic;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
@@ -129,8 +128,8 @@ namespace Concierge.Display.Windows
 
         private void SetRequireSpellSlotState(bool state)
         {
-            DisplayUtility.SetControlEnableState(this.RequireSpellSlotLabel, state);
-            DisplayUtility.SetControlEnableState(this.RequireSpellSlotCheckBox, state);
+            this.RequireSpellSlotLabel.SetEnableState(state);
+            this.RequireSpellSlotCheckBox.SetEnableState(state);
             if (!state)
             {
                 this.RequireSpellSlotCheckBox.IsChecked = false;

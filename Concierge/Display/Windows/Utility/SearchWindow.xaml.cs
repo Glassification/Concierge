@@ -13,7 +13,6 @@ namespace Concierge.Display.Utility
     using Concierge.Character.Journals;
     using Concierge.Common.Exceptions;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Searches;
@@ -239,16 +238,16 @@ namespace Concierge.Display.Utility
 
         private void UseRegexCheckBox_Checked(object? sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.MatchWholeWordLabel, false);
-            DisplayUtility.SetControlEnableState(this.MatchWholeWordCheckBox, false);
+            this.MatchWholeWordLabel.SetEnableState(false);
+            this.MatchWholeWordCheckBox.SetEnableState(false);
 
             this.MatchWholeWordCheckBox.IsChecked = false;
         }
 
         private void UseRegexCheckBox_Unchecked(object? sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.MatchWholeWordLabel, true);
-            DisplayUtility.SetControlEnableState(this.MatchWholeWordCheckBox, true);
+            this.MatchWholeWordLabel.SetEnableState(true);
+            this.MatchWholeWordCheckBox.SetEnableState(true);
         }
     }
 }

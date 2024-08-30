@@ -76,6 +76,7 @@
                 <!--Value-->
                 <components:ConciergeTextBoxBackground
                     x:Name="PlayerNameTextBackground"
+                    Margin="0,5,20,5"
                     Grid.Column="1">
                     <components:ConciergeTextBox 
                         x:Name="PlayerNameTextBox"
@@ -97,6 +98,7 @@
                 <!--Value-->
                 <components:ConciergeTextBoxBackground
                     x:Name="CharacterNameTextBackground"
+                    Margin="0,5,20,5"
                     Grid.Column="1">
                     <components:ConciergeTextBox 
                         x:Name="CharacterNameTextBox"

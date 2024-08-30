@@ -164,8 +164,8 @@ namespace Concierge.Display.Controls
             this.HpBackground.Background = brush;
             this.HpBorder.BorderBrush = brush;
 
-            DisplayUtility.SetControlEnableState(this.HealDamageButton, !vitality.Health.IsFull);
-            DisplayUtility.SetControlEnableState(this.TakeDamageButton, !vitality.Health.IsEmpty);
+            this.HealDamageButton.SetEnableState(!vitality.Health.IsFull);
+            this.TakeDamageButton.SetEnableState(!vitality.Health.IsEmpty);
         }
 
         public void Draw(Health health)
@@ -183,8 +183,8 @@ namespace Concierge.Display.Controls
             this.HpBackground.Background = brush;
             this.HpBorder.BorderBrush = brush;
 
-            DisplayUtility.SetControlEnableState(this.HealDamageButton, !health.IsFull);
-            DisplayUtility.SetControlEnableState(this.TakeDamageButton, !health.IsEmpty);
+            this.HealDamageButton.SetEnableState(!health.IsFull);
+            this.TakeDamageButton.SetEnableState(!health.IsEmpty);
         }
 
         public void SetDeathSaveStyle(DeathSavingThrows deathSavingThrows)
@@ -228,7 +228,7 @@ namespace Concierge.Display.Controls
         private void SetButtonEnableState(AbilitySave abilitySave)
         {
             var isEnabled = abilitySave == AbilitySave.None;
-            DisplayUtility.SetControlEnableState(this.RollSave, isEnabled);
+            this.RollSave.SetEnableState(isEnabled);
         }
 
         private void RollSave_Click(object sender, RoutedEventArgs e)

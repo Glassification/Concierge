@@ -93,16 +93,5 @@ namespace Concierge.Common.Utilities
                 }
             }
         }
-
-        /// <summary>
-        /// Sets the enable state of a control element and adjusts its opacity.
-        /// </summary>
-        /// <param name="element">The control element.</param>
-        /// <param name="isEnabled">The state indicating whether the control is enabled.</param>
-        public static void SetControlEnableState(FrameworkElement element, bool isEnabled)
-        {
-            element.IsEnabled = isEnabled;
-            element.Opacity = isEnabled ? 1 : 0.5;
-        }
     }
 }

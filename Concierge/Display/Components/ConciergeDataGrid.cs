@@ -12,7 +12,6 @@ namespace Concierge.Display.Components
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
 
     public sealed class ConciergeDataGrid : DataGrid
@@ -127,7 +126,7 @@ namespace Concierge.Display.Components
             var hasSelection = this.SelectedItem is not null;
             foreach (var button in buttons)
             {
-                DisplayUtility.SetControlEnableState(button, hasSelection);
+                button.SetEnableState(hasSelection);
             }
 
             return hasSelection;

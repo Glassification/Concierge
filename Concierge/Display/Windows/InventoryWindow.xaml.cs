@@ -13,7 +13,6 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Data;
     using Concierge.Data.Units;
@@ -156,10 +155,10 @@ namespace Concierge.Display.Windows
             this.AttunedCheckBox.IsChecked = inventory.Attuned;
             this.ConsumableCheckBox.IsChecked = inventory.Consumable;
 
-            DisplayUtility.SetControlEnableState(this.AttunedText, this.equippedItem);
-            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.equippedItem);
-            DisplayUtility.SetControlEnableState(this.AmountTextBlock, !this.equippedItem && inventory.Consumable);
-            DisplayUtility.SetControlEnableState(this.AmountUpDown, !this.equippedItem && inventory.Consumable);
+            this.AttunedText.SetEnableState(this.equippedItem);
+            this.AttunedCheckBox.SetEnableState(this.equippedItem);
+            this.AmountTextBlock.SetEnableState(!this.equippedItem && inventory.Consumable);
+            this.AmountUpDown.SetEnableState(!this.equippedItem && inventory.Consumable);
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
@@ -186,10 +185,10 @@ namespace Concierge.Display.Windows
             this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
             this.ConsumableCheckBox.IsChecked = false;
 
-            DisplayUtility.SetControlEnableState(this.AttunedText, false);
-            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, false);
-            DisplayUtility.SetControlEnableState(this.AmountTextBlock, false);
-            DisplayUtility.SetControlEnableState(this.AmountUpDown, false);
+            this.AttunedText.SetEnableState(false);
+            this.AttunedCheckBox.SetEnableState(false);
+            this.AmountTextBlock.SetEnableState(false);
+            this.AmountUpDown.SetEnableState(false);
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
@@ -313,16 +312,16 @@ namespace Concierge.Display.Windows
 
         private void ConsumableCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SetControlEnableState(this.AmountUpDown, true);
-            DisplayUtility.SetControlEnableState(this.AmountTextBlock, true);
+            this.AmountUpDown.SetEnableState(true);
+            this.AmountTextBlock.SetEnableState(true);
         }
 
         private void ConsumableCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             this.AmountUpDown.Value = 1;
 
-            DisplayUtility.SetControlEnableState(this.AmountUpDown, false);
-            DisplayUtility.SetControlEnableState(this.AmountTextBlock, false);
+            this.AmountUpDown.SetEnableState(false);
+            this.AmountTextBlock.SetEnableState(false);
         }
 
         private void LockButton_Checked(object sender, RoutedEventArgs e)

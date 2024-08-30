@@ -18,7 +18,6 @@ namespace Concierge.Display.Pages
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Data;
     using Concierge.Display;
     using Concierge.Display.Components;
@@ -70,7 +69,7 @@ namespace Concierge.Display.Pages
                 this.selectedDocument = value;
                 this.NotesTextBox.IsEnabled = value is not null;
 
-                DisplayUtility.SetControlEnableState(this.ToolbarStackPanel, value is not null);
+                this.ToolbarStackPanel.SetEnableState(value is not null);
             }
         }
 

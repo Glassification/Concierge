@@ -46,7 +46,7 @@
         <components:ConciergeDataGrid
             Grid.Row="1"
             x:Name="SpellDetailsDataGrid"
-            Margin="10,10,10,10"
+            Margin="10,10,5,10"
             HeadersVisibility="None"
             Style="{DynamicResource ReadonlyWindowDataGridStyle}">
             <DataGrid.Columns>

@@ -11,7 +11,6 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
@@ -73,9 +72,9 @@ namespace Concierge.Display.Windows
             this.disposition = Program.CcsFile.Character.Disposition;
             this.isNormalEdit = false;
 
-            DisplayUtility.SetControlEnableState(this.Class1Level, false);
-            DisplayUtility.SetControlEnableState(this.Class2Level, false);
-            DisplayUtility.SetControlEnableState(this.Class3Level, false);
+            this.Class1Level.SetEnableState(false);
+            this.Class2Level.SetEnableState(false);
+            this.Class3Level.SetEnableState(false);
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -106,13 +105,13 @@ namespace Concierge.Display.Windows
         private static void DisableAndBlank(ConciergeComboBox comboBox)
         {
             comboBox.Text = string.Empty;
-            DisplayUtility.SetControlEnableState(comboBox, false);
+            comboBox.SetEnableState(false);
         }
 
         private static void DisableAndBlank(IntegerUpDownControl integerUpDown)
         {
             integerUpDown.Value = 0;
-            DisplayUtility.SetControlEnableState(integerUpDown, false);
+            integerUpDown.SetEnableState(false);
         }
 
         private static void SetIntegerUpDownMax(IntegerUpDownControl control, int other1, int other2)
@@ -191,9 +190,9 @@ namespace Concierge.Display.Windows
                 var temp = this.Class1Subclass.Text;
                 this.Class1Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox(name);
                 this.Class1Subclass.Text = temp;
-                DisplayUtility.SetControlEnableState(this.Class1Subclass, true);
-                DisplayUtility.SetControlEnableState(this.Class2Level, this.isNormalEdit);
-                DisplayUtility.SetControlEnableState(this.Class2Class, true);
+                this.Class1Subclass.SetEnableState(true);
+                this.Class2Level.SetEnableState(this.isNormalEdit);
+                this.Class2Class.SetEnableState(true);
             }
         }
 
@@ -211,9 +210,9 @@ namespace Concierge.Display.Windows
                 var temp = this.Class2Subclass.Text;
                 this.Class2Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox(name);
                 this.Class2Subclass.Text = temp;
-                DisplayUtility.SetControlEnableState(this.Class2Subclass, true);
-                DisplayUtility.SetControlEnableState(this.Class3Level, this.isNormalEdit);
-                DisplayUtility.SetControlEnableState(this.Class3Class, true);
+                this.Class2Subclass.SetEnableState(true);
+                this.Class3Level.SetEnableState(this.isNormalEdit);
+                this.Class3Class.SetEnableState(true);
             }
         }
 
@@ -228,7 +227,7 @@ namespace Concierge.Display.Windows
                 var temp = this.Class3Subclass.Text;
                 this.Class3Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox(name);
                 this.Class3Subclass.Text = temp;
-                DisplayUtility.SetControlEnableState(this.Class3Subclass, true);
+                this.Class3Subclass.SetEnableState(true);
             }
         }
 
@@ -243,7 +242,7 @@ namespace Concierge.Display.Windows
                 var temp = this.SubRaceComboBox.Text;
                 this.SubRaceComboBox.ItemsSource = ComboBoxGenerator.SubRacesComboBox(name);
                 this.SubRaceComboBox.Text = temp;
-                DisplayUtility.SetControlEnableState(this.SubRaceComboBox, true);
+                this.SubRaceComboBox.SetEnableState(true);
             }
         }
 

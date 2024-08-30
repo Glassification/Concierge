@@ -12,7 +12,6 @@ namespace Concierge.Persistence.ReadWriters
     using Concierge.Common;
     using Concierge.Common.Exceptions;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Logging;
     using Newtonsoft.Json;
 
@@ -92,7 +91,7 @@ namespace Concierge.Persistence.ReadWriters
                 var items = filePath.Split("\r\n");
                 foreach (var item in items)
                 {
-                    defaultList.Add(ObjectUtility.ConvertToType<T>(item));
+                    defaultList.Add(item.ConvertToType<T>());
                 }
 
                 this.logger.Info($"{typeof(T).Name} list file loaded successfully.");

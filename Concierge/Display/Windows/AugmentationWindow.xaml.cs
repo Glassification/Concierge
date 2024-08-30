@@ -12,7 +12,6 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Equipable;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Data;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
@@ -196,9 +195,9 @@ namespace Concierge.Display.Windows
 
         private void SetQuantityState(bool state)
         {
-            DisplayUtility.SetControlEnableState(this.UsedUpDown, state);
-            DisplayUtility.SetControlEnableState(this.QuantityUpDown, state);
-            DisplayUtility.SetControlEnableState(this.SlashLabel, state);
+            this.UsedUpDown.SetEnableState(state);
+            this.QuantityUpDown.SetEnableState(state);
+            this.SlashLabel.SetEnableState(state);
         }
 
         private Augment Create()

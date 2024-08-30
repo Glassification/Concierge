@@ -114,6 +114,20 @@ namespace Concierge.Common.Extensions
         }
 
         /// <summary>
+        /// Converts the provided value to the specified target type.
+        /// </summary>
+        /// <typeparam name="T">The target type to which the value should be converted.</typeparam>
+        /// <param name="value">The value to be converted.</param>
+        /// <returns>The converted value of the specified target type.</returns>
+        public static T ConvertToType<T>(this object value)
+        {
+            var targetType = typeof(T);
+            var conversionType = Nullable.GetUnderlyingType(targetType) ?? targetType;
+
+            return (T)Convert.ChangeType(value, conversionType);
+        }
+
+        /// <summary>
         /// Checks if a property has the <paramref name="SearchIgnore"/> attribute.
         /// </summary>
         /// <param name="propertyInfo">The object representing the property to check.</param>

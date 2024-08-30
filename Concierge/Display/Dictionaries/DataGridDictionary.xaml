@@ -126,7 +126,7 @@
                 <Setter Property="Foreground" Value="White"/>
             </Trigger>
             <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                <Setter Property="Background" Value="#0F1220"/>
+                <Setter Property="Background" Value="#121626"/>
                 <Setter Property="Foreground" Value="White"/>
             </Trigger>
         </Style.Triggers>

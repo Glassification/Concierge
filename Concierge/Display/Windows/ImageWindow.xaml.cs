@@ -12,7 +12,6 @@ namespace Concierge.Display.Windows
     using Concierge.Character;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
@@ -129,10 +128,10 @@ namespace Concierge.Display.Windows
 
         private void SetEnabledState(bool isEnabled)
         {
-            DisplayUtility.SetControlEnableState(this.FillTypeComboBox, isEnabled);
-            DisplayUtility.SetControlEnableState(this.OpenImageButton, isEnabled);
-            DisplayUtility.SetControlEnableState(this.ImageNameTextBox, isEnabled);
-            DisplayUtility.SetControlEnableState(this.ImageNameTextBackground, isEnabled);
+            this.FillTypeComboBox.SetEnableState(isEnabled);
+            this.OpenImageButton.SetEnableState(isEnabled);
+            this.ImageNameTextBox.SetEnableState(isEnabled);
+            this.ImageNameTextBackground.SetEnableState(isEnabled);
 
             var renderImage = isEnabled && !this.base64.IsNullOrWhiteSpace();
             this.HorizontalPreview.Source = renderImage ? this.imageEncoding.Decode(this.base64) : null;

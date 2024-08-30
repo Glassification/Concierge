@@ -9,7 +9,7 @@ namespace Concierge.Display.Components
 
     using Concierge.Character.Journals;
     using Concierge.Common;
-    using Concierge.Common.Utilities;
+    using Concierge.Common.Extensions;
 
     public sealed class ConciergeTreeView : TreeView
     {
@@ -87,7 +87,7 @@ namespace Concierge.Display.Components
             var hasSelection = this.SelectedItem is not null;
             foreach (var button in buttons)
             {
-                DisplayUtility.SetControlEnableState(button, hasSelection);
+                button.SetEnableState(hasSelection);
             }
 
             return hasSelection;

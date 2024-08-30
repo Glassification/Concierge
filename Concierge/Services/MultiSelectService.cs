@@ -7,7 +7,7 @@ namespace Concierge.Services
     using System.Windows.Controls;
 
     using Concierge.Character.Equipable;
-    using Concierge.Common.Utilities;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
 
     /// <summary>
@@ -64,7 +64,7 @@ namespace Concierge.Services
             this.SetAllButtonsState(state);
             if (selectedItem is not null)
             {
-                DisplayUtility.SetControlEnableState(this.recoverButton, selectedItem.Recoverable && selectedItem.Total < selectedItem.Quantity);
+                this.recoverButton.SetEnableState(selectedItem.Recoverable && selectedItem.Total < selectedItem.Quantity);
             }
         }
 
@@ -74,11 +74,11 @@ namespace Concierge.Services
         /// <param name="state">The state to set.</param>
         public void SetAllButtonsState(bool state)
         {
-            DisplayUtility.SetControlEnableState(this.upButton, state);
-            DisplayUtility.SetControlEnableState(this.downButton, state);
-            DisplayUtility.SetControlEnableState(this.recoverButton, state);
-            DisplayUtility.SetControlEnableState(this.editButton, state);
-            DisplayUtility.SetControlEnableState(this.deleteButton, state);
+            this.upButton.SetEnableState(state);
+            this.downButton.SetEnableState(state);
+            this.recoverButton.SetEnableState(state);
+            this.editButton.SetEnableState(state);
+            this.deleteButton.SetEnableState(state);
         }
 
         /// <summary>

@@ -13,7 +13,6 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Data;
     using Concierge.Data.Units;
     using Concierge.Display.Components;
@@ -235,8 +234,8 @@ namespace Concierge.Display.Windows
                 this.FullAcCheckBox.IsChecked = false;
             }
 
-            DisplayUtility.SetControlEnableState(this.FullAcCheckBox, enabled);
-            DisplayUtility.SetControlEnableState(this.FullAcLabel, enabled);
+            this.FullAcCheckBox.SetEnableState(enabled);
+            this.FullAcLabel.SetEnableState(enabled);
         }
 
         private void LockButton_Checked(object sender, RoutedEventArgs e)

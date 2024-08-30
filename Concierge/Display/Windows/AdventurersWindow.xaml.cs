@@ -13,7 +13,6 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Journals;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Services;
@@ -65,7 +64,7 @@ namespace Concierge.Display.Windows
                 this.AdventurersDataGrid.Items.Add(adventurer);
             }
 
-            DisplayUtility.SetControlEnableState(this.CreateEntriesButton, this.AdventurersDataGrid.Items.Count > 0);
+            this.CreateEntriesButton.SetEnableState(this.AdventurersDataGrid.Items.Count > 0);
         }
 
         public void SetAdventurersDataGridControlState()

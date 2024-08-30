@@ -559,8 +559,8 @@ namespace Concierge.Display
 
         private void SetUndoRedoState()
         {
-            DisplayUtility.SetControlEnableState(this.MenuButton.UndoMenuItem, Program.UndoRedoService.CanUndo);
-            DisplayUtility.SetControlEnableState(this.MenuButton.RedoMenuItem, Program.UndoRedoService.CanRedo);
+            this.MenuButton.UndoMenuItem.SetEnableState(Program.UndoRedoService.CanUndo);
+            this.MenuButton.RedoMenuItem.SetEnableState(Program.UndoRedoService.CanRedo);
         }
 
         private void Save(bool saveAs)
