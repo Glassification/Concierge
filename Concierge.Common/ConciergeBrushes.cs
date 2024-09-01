@@ -64,6 +64,9 @@ namespace Concierge.Common
             DarkPink = new SolidColorBrush(ConciergeColors.DarkPink);
             DarkPink.Freeze();
 
+            LightBlue = new SolidColorBrush(ConciergeColors.LightBlue);
+            LightBlue.Freeze();
+
             Copper = new SolidColorBrush(ConciergeColors.Copper);
             Copper.Freeze();
 
@@ -170,6 +173,11 @@ namespace Concierge.Common
         /// Gets the Concierge-defined brush that has an ARGB value of #FFB9487B.
         /// </summary>
         public static SolidColorBrush DarkPink { get; }
+
+        /// <summary>
+        /// Gets the Concierge-defined brush that has an ARGB value of #FFA9C7FF.
+        /// </summary>
+        public static SolidColorBrush LightBlue { get; }
 
         /// <summary>
         /// Gets the Concierge-defined brush that has an ARGB value of #FFB87333.

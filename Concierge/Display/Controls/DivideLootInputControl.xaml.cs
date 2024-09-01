@@ -16,6 +16,8 @@ namespace Concierge.Display.Controls
     /// </summary>
     public partial class DivideLootInputControl : UserControl
     {
+        public const int MaxValue = 99999;
+
         public static readonly DependencyProperty LabelTextColorProperty =
             DependencyProperty.Register(
                 "LabelTextColor",
@@ -89,7 +91,12 @@ namespace Concierge.Display.Controls
 
         public int InputValue => int.Parse(this.CoinAmount.Text);
 
-        public void ResetInputValue()
+        public void SetInputValue(int amount)
+        {
+            this.CoinAmount.Text = $"{Math.Min(this.InputValue + amount, MaxValue)}";
+        }
+
+        public void ClearInputValue()
         {
             this.CoinAmount.Text = "0";
         }
@@ -107,7 +114,7 @@ namespace Concierge.Display.Controls
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            this.CoinAmount.Text = "0";
+            this.ClearInputValue();
         }
 
         private void ConciergeTextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

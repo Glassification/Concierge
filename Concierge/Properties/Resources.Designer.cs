@@ -513,6 +513,15 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A longsword will still do slashing damage. However, the source is magical so it overcomes resistence..
+        /// </summary>
+        internal static string AttacksWindow_MagicCheckBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_MagicCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Here, you can use my plus 1 mace..
         /// </summary>
         internal static string AttacksWindow_MiscDamageTextBox {

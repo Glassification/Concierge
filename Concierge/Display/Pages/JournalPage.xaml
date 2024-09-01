@@ -243,19 +243,14 @@
                     </Grid>
                 </Border>
 
-                <RichTextBox 
+                <components:ConciergeRichTextBox 
                     Grid.Row="1"
                     x:Name="NotesTextBox"
                     Background="#1E2636"
-                    Margin="3"
                     BorderBrush="{x:Null}"
                     SpellCheck.IsEnabled="True"
-                    GotFocus="NotesTextBox_GotFocus"
-                    LostFocus="NotesTextBox_LostFocus"
-                    MouseEnter="NotesTextBox_MouseEnter"
-                    MouseLeave="NotesTextBox_MouseLeave"
                     SelectionChanged="NotesTextBox_SelectionChanged">
-                </RichTextBox>
+                </components:ConciergeRichTextBox>
             </Grid>
         </Border>
     </Grid>

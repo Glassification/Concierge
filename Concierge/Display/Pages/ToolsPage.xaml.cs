@@ -4,12 +4,10 @@
 
 namespace Concierge.Display.Pages
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
 
@@ -68,8 +66,16 @@ namespace Concierge.Display.Pages
 
         public override void Draw(bool isNewCharacterSheet = false)
         {
-            this.DrawDiceHistory();
-            this.DrawDivideLoot();
+            if (isNewCharacterSheet)
+            {
+                this.ClearDiceHistory();
+                this.ClearDivideLoot();
+            }
+            else
+            {
+                this.DrawDiceHistory();
+                this.DrawDivideLoot();
+            }
         }
 
         public override void Edit(object itemToEdit)
@@ -184,12 +190,12 @@ namespace Concierge.Display.Pages
 
         private void SetDefaultDivideValues()
         {
-            this.PlayersInput.ResetInputValue();
-            this.CopperInput.ResetInputValue();
-            this.SilverInput.ResetInputValue();
-            this.ElectrumInput.ResetInputValue();
-            this.GoldInput.ResetInputValue();
-            this.PlatinumInput.ResetInputValue();
+            this.PlayersInput.ClearInputValue();
+            this.CopperInput.ClearInputValue();
+            this.SilverInput.ClearInputValue();
+            this.ElectrumInput.ClearInputValue();
+            this.GoldInput.ClearInputValue();
+            this.PlatinumInput.ClearInputValue();
         }
 
         private void ParseCustomInput()
@@ -200,22 +206,15 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            try
-            {
-                var result = new CustomDiceRoll(input);
+            var result = new CustomDiceRoll(input);
 
-                this.rollHistory.Add(result);
-                this.diceHistory.Add(input);
-                this.DrawDiceHistory();
-                this.CustomInputTextBox.Text = string.Empty;
-                this.CustomResult.Text = result.Total.ToString();
+            this.rollHistory.Add(result);
+            this.diceHistory.Add(input);
+            this.DrawDiceHistory();
+            this.CustomInputTextBox.Text = string.Empty;
+            this.CustomResult.Text = result.Total.ToString();
 
-                this.historyReadWriter.Append(this.diceHistoryFile, input);
-            }
-            catch (Exception ex)
-            {
-                Program.ErrorService.LogError(ex);
-            }
+            this.historyReadWriter.Append(this.diceHistoryFile, input);
         }
 
         private void ScrollCustomInputHistory(HistoryDirection direction)
@@ -246,38 +245,43 @@ namespace Concierge.Display.Pages
             this.CoinComboBox.Text = CoinType.Gold.ToString();
         }
 
-        private TextBlock GetCoinSpinner(string coin)
-        {
-            if (coin.EqualsIgnoreCase("players"))
-            {
-                return this.PlayersInput.CoinAmount;
-            }
-            else if (coin.EqualsIgnoreCase("copper"))
-            {
-                return this.CopperInput.CoinAmount;
-            }
-            else if (coin.EqualsIgnoreCase("silver"))
-            {
-                return this.SilverInput.CoinAmount;
-            }
-            else if (coin.EqualsIgnoreCase("electrum"))
-            {
-                return this.ElectrumInput.CoinAmount;
-            }
-            else if (coin.EqualsIgnoreCase("platinum"))
-            {
-                return this.PlatinumInput.CoinAmount;
-            }
-
-            return this.GoldInput.CoinAmount;
-        }
-
-        private void ResetHistoryButton_Click(object sender, RoutedEventArgs e)
+        private void ClearDiceHistory()
         {
             this.SetDefaultDiceValues();
             this.rollHistory.Clear();
             this.DrawDiceHistory();
             this.CustomInputTextBox.Text = string.Empty;
+        }
+
+        private DivideLootInputControl GetCoinSpinner(string coin)
+        {
+            if (coin.EqualsIgnoreCase("players"))
+            {
+                return this.PlayersInput;
+            }
+            else if (coin.EqualsIgnoreCase("copper"))
+            {
+                return this.CopperInput;
+            }
+            else if (coin.EqualsIgnoreCase("silver"))
+            {
+                return this.SilverInput;
+            }
+            else if (coin.EqualsIgnoreCase("electrum"))
+            {
+                return this.ElectrumInput;
+            }
+            else if (coin.EqualsIgnoreCase("platinum"))
+            {
+                return this.PlatinumInput;
+            }
+
+            return this.GoldInput;
+        }
+
+        private void ResetHistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.ClearDiceHistory();
         }
 
         private void Page_KeyDown(object sender, KeyEventArgs e)
@@ -342,8 +346,8 @@ namespace Concierge.Display.Pages
         {
             if (sender is ConciergeDesignButton button && button.Tag is int amount)
             {
-                var textBlock = this.GetCoinSpinner(this.CoinComboBox.Text);
-                textBlock.Text = $"{int.Parse(textBlock.Text) + amount}";
+                var lootInput = this.GetCoinSpinner(this.CoinComboBox.Text);
+                lootInput.SetInputValue(amount);
             }
         }
 

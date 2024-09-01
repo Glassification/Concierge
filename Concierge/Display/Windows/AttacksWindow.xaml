@@ -202,7 +202,7 @@
                 </Grid>
 
                 <!--Damage Type-->
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -223,26 +223,20 @@
                     </Grid>
                 </Grid>
 
-                <!--Attuned-->
-                <Grid Grid.Row="6">
+                <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
                     </Grid.ColumnDefinitions>
+                    <components:ConciergeLabel 
+                        Grid.Column="0"
+                        Text="Magical Damage:"/>
 
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Attuned:"
-                            x:Name="AttunedText"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1" Margin="20,0,0,0">
-                        <components:ConciergeCheckBox 
-                            x:Name="AttunedCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"/>
-                    </Grid>
+                    <components:ConciergeCheckBox 
+                        Grid.Column="1"
+                        Margin="20,15,0,0"
+                        x:Name="MagicCheckBox"
+                        Style="{StaticResource CheckBoxStyle}"/>
                 </Grid>
             </Grid>
 
@@ -353,21 +347,32 @@
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel 
-                            Text="Proficiency:"/>
-                    </Grid>
+                    <components:ConciergeLabel 
+                        Grid.Column="0"
+                        Text="Proficiency:"/>
 
-                    <!--Value-->
-                    <Grid Grid.Column="1" Margin="20,0,0,0">
-                        <components:ConciergeCheckBox 
-                            x:Name="ProficencyOverrideCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"/>
-                    </Grid>
+                    <components:ConciergeCheckBox 
+                        Grid.Column="1"
+                        Margin="0,15,0,0"
+                        x:Name="ProficencyOverrideCheckBox"
+                        Style="{StaticResource CheckBoxStyle}"/>
+
+                    <components:ConciergeLabel
+                        Grid.Column="2"
+                        Text="Attuned:"
+                        x:Name="AttunedText"/>
+
+                    <components:ConciergeCheckBox 
+                        Grid.Column="3"
+                        Margin="0,15,0,0"
+                        x:Name="AttunedCheckBox"
+                        Style="{StaticResource CheckBoxStyle}"/>
                 </Grid>
 
                 <!--Notes-->

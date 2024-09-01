@@ -2225,6 +2225,7 @@
           "IgnoreWeight": true,
           "IsCustom": false,
           "IsEquipped": true,
+          "IsMagical": false,
           "Misc": "",
           "Name": "Dagger",
           "Note": "Finesse, light, thrown",
@@ -2251,6 +2252,7 @@
           "IgnoreWeight": false,
           "IsCustom": false,
           "IsEquipped": true,
+          "IsMagical": true,
           "Misc": "+1",
           "Name": "Jump Blade",
           "Note": "Finesse, Gain the Jump spell.",
@@ -2277,6 +2279,7 @@
           "IgnoreWeight": false,
           "IsCustom": false,
           "IsEquipped": false,
+          "IsMagical": false,
           "Misc": "",
           "Name": "Silver Dagger",
           "Note": "Finesse, light, thrown",
@@ -2303,6 +2306,7 @@
           "IgnoreWeight": false,
           "IsCustom": false,
           "IsEquipped": true,
+          "IsMagical": true,
           "Misc": "1d4 Force",
           "Name": "Bow of the Spelldrinker",
           "Note": "Ammunition, two-handed. Wen you see a creature casting a spell within 60' while holding this bow, can cast Spelldrinker. Cannot be used again until a short or long rest.",
@@ -2329,9 +2333,10 @@
           "IgnoreWeight": true,
           "IsCustom": false,
           "IsEquipped": false,
+          "IsMagical": true,
           "Misc": "2",
           "Name": "Oathbow",
-          "Note": "When making a ranged attack, you can say, \"Swift death to you who have wronged me.\" The target becomes your sworn enemy until it dies or until dawn seven days later. Can have only one sworn enemy at a time, choose new one after first dies. Have adv on attack rolls. In addition, the target gains no benefit from cover, other than total cover, and you suffer no disadvantage due to long range. hile your sworn enemy lives, you have disadvantage on attack rolls with all other weapons.",
+          "Note": "When making a ranged attack, you can say, \"Swift death to you who have wronged me.\" The target becomes your sworn enemy until it dies or until dawn seven days later. Can have only one sworn enemy at a time, choose new one after first dies. Have adv on attack rolls. In addition, the target gains no benefit from cover, other than total cover, and you suffer no disadvantage due to long range. While your sworn enemy lives, you have disadvantage on attack rolls with all other weapons.",
           "ProficiencyOverride": false,
           "Range": "150 / 600",
           "Type": 19,
@@ -2355,6 +2360,7 @@
           "IgnoreWeight": true,
           "IsCustom": false,
           "IsEquipped": false,
+          "IsMagical": true,
           "Misc": "+2",
           "Name": "Retorter",
           "Note": "Sword of Answering. While you hold the sword, you can use your reaction to make one melee attack with it against any creature in your reach that deals damage to you. You have advantage on the attack roll, and any damage dealt with this special attack ignores any damage immunity or resistance the target has.",
@@ -3052,13 +3058,13 @@
       "Platinum": 500
     }
   },
-  "Hash": "63374DD4215470810894554FD78A8C76522274C94D4B21A7C4E278078D8218A0",
+  "Hash": "8C6018B5E1707077BE0F55A1F00C754FE62C1803946E743A690189314FCE3C9E",
   "OriginalCreationDate": "Tuesday, 20 February 2024 03:26:38 PM",
-  "LastSaveDate": "2024-08-30T14:47:39.0338575-05:00",
+  "LastSaveDate": "2024-09-01T09:21:54.2767626-05:00",
   "Version": {
     "Major": 5,
-    "Minor": 9,
-    "Patch": 5
+    "Minor": 10,
+    "Patch": 0
   },
   "IsEmpty": false
 }

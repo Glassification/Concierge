@@ -32,6 +32,7 @@ namespace Concierge.Common
             Deer = Color.FromArgb(255, 185, 135, 72);
             BlueMagenta = Color.FromArgb(255, 135, 72, 185);
             DarkPink = Color.FromArgb(255, 185, 72, 123);
+            LightBlue = Color.FromArgb(255, 169, 199, 255);
             Copper = Color.FromArgb(255, 184, 115, 51);
             Silver = Colors.Silver;
             Electrum = Color.FromArgb(255, 80, 200, 120);
@@ -135,6 +136,11 @@ namespace Concierge.Common
         /// Gets the Concierge-defined color that has an ARGB value of #FFB9487B.
         /// </summary>
         public static Color DarkPink { get; }
+
+        /// <summary>
+        /// Gets the Concierge-defined color that has an ARGB value of #FFA9C7FF.
+        /// </summary>
+        public static Color LightBlue { get; }
 
         /// <summary>
         /// Gets the Concierge-defined color that has an ARGB value of #FFB87333.

@@ -58,6 +58,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.ProficencyOverrideCheckBox);
             this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
             this.SetMouseOverEvents(this.AttunedCheckBox);
+            this.SetMouseOverEvents(this.MagicCheckBox);
         }
 
         public override string HeaderText => $"{(this.editing ? "Edit" : "Add")} Attack";
@@ -155,6 +156,7 @@ namespace Concierge.Display.Windows
             this.AttunedCheckBox.UpdatingValue();
             this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
+            this.MagicCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = weapon.Name;
             this.TypeComboBox.Text = weapon.Type.PascalCase();
@@ -171,6 +173,7 @@ namespace Concierge.Display.Windows
             this.ValueUpDown.Value = weapon.Value;
             this.CoinTypeComboBox.Text = weapon.CoinType.ToString();
             this.AttunedCheckBox.IsChecked = weapon.Attuned;
+            this.MagicCheckBox.IsChecked = weapon.IsMagical;
 
             this.AttunedText.SetEnableState(this.equippedItem);
             this.AttunedCheckBox.SetEnableState(this.equippedItem);
@@ -178,6 +181,7 @@ namespace Concierge.Display.Windows
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
+            this.MagicCheckBox.UpdatedValue();
             Program.NotDrawing();
         }
 
@@ -187,6 +191,7 @@ namespace Concierge.Display.Windows
             this.AttunedCheckBox.UpdatingValue();
             this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
+            this.MagicCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = name;
             this.AttunedCheckBox.IsChecked = false;
@@ -203,10 +208,15 @@ namespace Concierge.Display.Windows
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.ValueUpDown.Value = 0;
             this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
+            this.MagicCheckBox.IsChecked = false;
+
+            this.AttunedText.SetEnableState(this.equippedItem);
+            this.AttunedCheckBox.SetEnableState(this.equippedItem);
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
+            this.MagicCheckBox.UpdatedValue();
             Program.NotDrawing();
         }
 
@@ -228,6 +238,7 @@ namespace Concierge.Display.Windows
             weapon.Note = this.NotesTextBox.Text;
             weapon.Value = this.ValueUpDown.Value;
             weapon.CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>();
+            weapon.IsMagical = this.MagicCheckBox.IsChecked ?? false;
 
             if (!weapon.IsCustom)
             {
@@ -253,6 +264,7 @@ namespace Concierge.Display.Windows
                 Value = this.ValueUpDown.Value,
                 Attuned = this.AttunedCheckBox.IsChecked ?? false,
                 CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>(),
+                IsMagical = this.MagicCheckBox.IsChecked ?? false,
             };
         }
 

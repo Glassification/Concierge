@@ -6,12 +6,9 @@ namespace Concierge.Display.Pages
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
-    using System.Text;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Documents;
-    using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Character.Journals;
@@ -32,8 +29,6 @@ namespace Concierge.Display.Pages
     /// </summary>
     public partial class JournalPage : ConciergePage
     {
-        private const int MaxUndoQueue = 25;
-
         private Document? selectedDocument;
         private bool isLoading;
         private bool isLocked;
@@ -46,14 +41,13 @@ namespace Concierge.Display.Pages
             this.SelectedDocument = null;
             this.FontFamilyList.ItemsSource = ComboBoxGenerator.FontFamilyComboBox();
             this.FontSizeList.ItemsSource = ComboBoxGenerator.FontSizeComboBox();
-            this.NotesTextBox.UndoLimit = MaxUndoQueue;
             this.ConciergePages = ConciergePages.Journal;
 
             this.BoldButton.Initialize(ConciergeBrushes.Deer);
             this.ItalicButton.Initialize(ConciergeBrushes.Deer);
             this.UnderlineButton.Initialize(ConciergeBrushes.Deer);
 
-            this.SetDefaultFontStyle();
+            this.NotesTextBox.SetDefaultFontStyle();
             this.ClearTextBox();
         }
 
@@ -97,7 +91,7 @@ namespace Concierge.Display.Pages
         {
             if (this.SelectedDocument is not null)
             {
-                this.SelectedDocument.Rtf = this.SaveCurrentDocument();
+                this.SelectedDocument.Rtf = this.NotesTextBox.SaveCurrentDocument();
                 Program.Modify();
             }
         }
@@ -142,8 +136,7 @@ namespace Concierge.Display.Pages
 
         public void ClearHighlightSelection()
         {
-            this.NotesTextBox.SelectAll();
-            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, ConciergeColors.ControlForeBlue);
+            this.NotesTextBox.ClearHighlightSelection();
         }
 
         private void DrawTreeView()
@@ -186,61 +179,11 @@ namespace Concierge.Display.Pages
             this.SetNotesTreeViewControlState();
         }
 
-        private void SetDefaultFontStyle()
-        {
-            this.NotesTextBox.FontSize = FontService.DefaultSize;
-            this.NotesTextBox.FontFamily = FontService.DefaultFont;
-            this.NotesTextBox.Foreground = Brushes.White;
-        }
-
-        private void LoadCurrentDocument(string text)
-        {
-            var dataFormat = DataFormats.Rtf;
-            if (!text.IsRtf())
-            {
-                text = string.Empty;
-                dataFormat = DataFormats.Text;
-                this.SetDefaultFontStyle();
-            }
-
-            var stream = new MemoryStream(Encoding.Default.GetBytes(text));
-            this.NotesTextBox.Document.Blocks.Clear();
-            this.NotesTextBox.Selection.Load(stream, dataFormat);
-        }
-
-        private string SaveCurrentDocument()
-        {
-            var range = new TextRange(this.NotesTextBox.Document.ContentStart, this.NotesTextBox.Document.ContentEnd);
-            try
-            {
-                using var rtfMemoryStream = new MemoryStream();
-                using var rtfStreamWriter = new StreamWriter(rtfMemoryStream);
-                range.Save(rtfMemoryStream, DataFormats.Rtf);
-
-                rtfMemoryStream.Flush();
-                rtfMemoryStream.Position = 0;
-                var sr = new StreamReader(rtfMemoryStream);
-
-                return sr.ReadToEnd();
-            }
-            catch (Exception ex)
-            {
-                Program.ErrorService.LogError(ex);
-                return string.Empty;
-            }
-        }
-
-        private void ResetUndoQueue()
-        {
-            this.NotesTextBox.UndoLimit = 0;
-            this.NotesTextBox.UndoLimit = MaxUndoQueue;
-        }
-
         private void ClearWorkspace()
         {
             this.SaveTextBox();
             this.ClearTextBox();
-            this.ResetUndoQueue();
+            this.NotesTextBox.ResetUndoQueue();
 
             if (this.NotesTreeView?.SelectedItem is TreeViewItem item)
             {
@@ -261,7 +204,7 @@ namespace Concierge.Display.Pages
                 var index = chapterItem.Items.IndexOf(document);
                 if (func(index, useZero ? 0 : chapterItem.Items.Count - 2))
                 {
-                    this.SelectedDocument.Rtf = this.SaveCurrentDocument();
+                    this.SelectedDocument.Rtf = this.NotesTextBox.SaveCurrentDocument();
                     this.SwapTreeViewItem(chapterItem.Chapter.Documents, index, index + increment);
 
                     var newIndex = (this.NotesTreeView.Items[chapterIndex] as ChapterTreeViewItem)?.Items[index + increment];
@@ -398,8 +341,8 @@ namespace Concierge.Display.Pages
                 this.NotesTextBox.IsUndoEnabled = false;
                 this.NotesTextBox.IsUndoEnabled = true;
                 this.SelectedDocument = treeViewItem.Document;
-                this.LoadCurrentDocument(this.SelectedDocument.Rtf);
-                this.ResetUndoQueue();
+                this.NotesTextBox.LoadCurrentDocument(this.SelectedDocument.Rtf);
+                this.NotesTextBox.ResetUndoQueue();
                 SoundService.PlayNavigation();
             }
             else if (this.NotesTreeView?.SelectedItem is ChapterTreeViewItem)
@@ -413,7 +356,7 @@ namespace Concierge.Display.Pages
                 this.NotesTextBox.IsUndoEnabled = true;
                 this.SelectedDocument = null;
                 this.ClearTextBox();
-                this.ResetUndoQueue();
+                this.NotesTextBox.ResetUndoQueue();
                 SoundService.PlayNavigation();
             }
 
@@ -571,26 +514,6 @@ namespace Concierge.Display.Pages
 
             this.ClearWorkspace();
             this.Draw();
-        }
-
-        private void NotesTextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Program.Typing();
-        }
-
-        private void NotesTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Program.NotTyping();
-        }
-
-        private void NotesTextBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Mouse.OverrideCursor = Cursors.IBeam;
-        }
-
-        private void NotesTextBox_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Mouse.OverrideCursor = Cursors.Arrow;
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)

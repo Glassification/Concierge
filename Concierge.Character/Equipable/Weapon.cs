@@ -92,6 +92,11 @@ namespace Concierge.Character.Equipable
         public bool IsEquipped { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the weapon does magical damage.
+        /// </summary>
+        public bool IsMagical { get; set; }
+
+        /// <summary>
         /// Gets or sets additional information about the weapon.
         /// </summary>
         public string Misc { get; set; }
@@ -163,6 +168,14 @@ namespace Concierge.Character.Equipable
 
         [JsonIgnore]
         [SearchIgnore]
+        public PackIconKind DamageIcon => this.IsMagical ? PackIconKind.ShieldSword : PackIconKind.ShieldSwordOutline;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public string DamageToolTip => this.IsMagical ? "Source Is Magical" : "Source Is Not Magical";
+
+        [JsonIgnore]
+        [SearchIgnore]
         public Brush IconColor => this.GetCategory().Brush;
 
         [JsonIgnore]
@@ -212,6 +225,7 @@ namespace Concierge.Character.Equipable
                 EquipmentSlot = this.EquipmentSlot,
                 IsCustom = this.IsCustom,
                 Created = this.Created,
+                IsMagical = this.IsMagical,
             };
         }
 

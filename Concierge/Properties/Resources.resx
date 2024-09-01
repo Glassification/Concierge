@@ -265,6 +265,9 @@
   <data name="AttacksWindow_IgnoreWeightCheckBox" xml:space="preserve">
     <value>This is generally used to 'place' the weapon in a bag of holding.</value>
   </data>
+  <data name="AttacksWindow_MagicCheckBox" xml:space="preserve">
+    <value>A longsword will still do slashing damage. However, the source is magical so it overcomes resistence.</value>
+  </data>
   <data name="AttacksWindow_MiscDamageTextBox" xml:space="preserve">
     <value>Here, you can use my plus 1 mace.</value>
   </data>

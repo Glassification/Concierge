@@ -477,11 +477,31 @@
                                 Binding="{Binding Misc}"
                                 Width="0.1*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                            <DataGridTextColumn
-                                Header="Type"
-                                Binding="{Binding DamageType}"
+                            <DataGridTemplateColumn 
                                 Width="0.1*"
-                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                                Header="Type">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon
+                                                Kind="{Binding DamageIcon}"
+                                                ToolTip="{Binding DamageToolTip}"
+                                                Foreground="#A9C7FF"
+                                                Margin="0,12,0,0"
+                                                Height="18"
+                                                Width="18"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Top"/>
+                                            <TextBlock
+                                                Text="{Binding DamageType}"
+                                                FontSize="15"
+                                                Margin="10,10,0,0"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Top"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn
                                 Header="Range"
                                 Binding="{Binding Range}"
