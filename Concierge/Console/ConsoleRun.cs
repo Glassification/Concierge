@@ -33,7 +33,7 @@ namespace Concierge.Console
         /// <param name="runner">The runner to be added if it can handle the command.</param>
         public void AddIfExists(Runner runner)
         {
-            if (runner.Contains(this.command.Name))
+            if (runner.Contains(this.command))
             {
                 this.runners.Add(runner);
             }

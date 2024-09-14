@@ -73,8 +73,7 @@ namespace Concierge.Console.Scripts
 
         private int Modify(string wealthType, int amount)
         {
-            wealthType = wealthType.ToLower();
-            switch (wealthType)
+            switch (wealthType.ToLower())
             {
                 case "copper":
                     this.wealth.Copper += amount;

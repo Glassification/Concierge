@@ -113,7 +113,7 @@ namespace Concierge.Services
             var fileName = GenerateSaveName(ccsFile);
             var path = Path.Combine(this.backupFolder, $"{fileName}{this.GetIndex(ccsFile)}.ccs");
 
-            this.fileAccessService.Save(ccsFile, path);
+            this.fileAccessService.SaveCcs(ccsFile, path);
         }
     }
 }

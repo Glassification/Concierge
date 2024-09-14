@@ -39,17 +39,19 @@ namespace Concierge.Display.Controls
                 typeof(SpellSlotsControl), // No idea why it only works this way
                 new UIPropertyMetadata(Brushes.Transparent));
 
+        public static readonly DependencyProperty ButtonStyleProperty =
+            DependencyProperty.Register(
+                "ButtonStyle",
+                typeof(Style),
+                typeof(DivideLootInputControl),
+                new UIPropertyMetadata());
+
         private static readonly RoutedEvent SelectionEvent =
             EventManager.RegisterRoutedEvent(
                 "Selection",
                 RoutingStrategy.Bubble,
                 typeof(RoutedEventHandler),
                 typeof(DivideLootInputControl));
-
-        private readonly ResourceDictionary resourceDictionary = new ()
-        {
-            Source = new Uri("Display/Dictionaries/DisplaySpinnerDictionary.xaml", UriKind.RelativeOrAbsolute),
-        };
 
         public DivideLootInputControl()
         {
@@ -72,6 +74,12 @@ namespace Concierge.Display.Controls
         {
             get { return (string)this.GetValue(LabelTextProperty); }
             set { this.SetValue(LabelTextProperty, value); }
+        }
+
+        public Style ButtonStyle
+        {
+            get { return (Style)this.GetValue(ButtonStyleProperty); }
+            set { this.SetValue(ButtonStyleProperty, value); }
         }
 
         public Brush FillBrush
@@ -104,10 +112,7 @@ namespace Concierge.Display.Controls
         public void Initialize(DivideLootSelection style)
         {
             var foreground = style == DivideLootSelection.Players ? Brushes.White : Brushes.Black;
-            var styleString = style.ToString();
-            var styleText = styleString.Contains("ControlButtonStyle") ? styleString : $"{styleString}ControlButtonStyle";
 
-            this.ClearButton.Style = this.resourceDictionary[styleText] as Style;
             this.CoinAmount.Foreground = foreground;
             this.ClearButton.Foreground = foreground;
         }

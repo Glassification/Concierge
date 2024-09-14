@@ -41,7 +41,7 @@ namespace Concierge.Display.Windows.Utility
 
             this.HeaderLabel.Text = this.HeaderText;
             this.ModifierUpDown.Value = 0;
-            this.AbilityBonusTextBox.Text = attribute.Bonus.ToString();
+            this.AbilityBonusTextBox.Text = (attribute.Proficiency ? (attribute.Bonus + Program.CcsFile.Character.ProficiencyBonus) : attribute.Bonus).ToString();
             this.RollResultLabel.Text = $"Roll {name.GetDeterminer(true)} {name} {action}...";
             this.AbilityLabel.Text = "Saving Throw Bonus:";
             this.AbilityModifierLabel.Text = "Ability Save Modifier:";

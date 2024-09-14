@@ -228,6 +228,56 @@ namespace Concierge.Character
         }
 
         /// <summary>
+        /// Fully restores the player's and companion's attributes after a long rest.
+        /// </summary>
+        /// <remarks>
+        /// A long rest is typically a full rest period (like 8 hours), which restores the character to full strength.
+        /// This method restores health, hit dice, resets death saves, and refills spell slots.
+        /// </remarks>
+        public void LongRest()
+        {
+            this.Vitality.Health.ResetHealth();
+            this.Vitality.HitDice.RegainHitDice();
+            this.Vitality.ResetDeathSaves();
+            this.SpellCasting.SpellSlots.Reset();
+            this.SpellCasting.ClearConcentration();
+            this.Companion.Health.ResetHealth();
+            this.Companion.HitDice.RegainHitDice();
+        }
+
+        /// <summary>
+        /// Allows the player and companion to regain health and recover class-specific resources during a short rest.
+        /// </summary>
+        /// <remarks>
+        /// During a short rest, the player and companion can roll hit dice to recover health. Some class-specific features
+        /// (like Warlock spell slots) may also recover.
+        /// </remarks>
+        public void ShortRest()
+        {
+            this.Companion.RollShortRestHitDice(this.Companion.HitDice.GetFirstAvailable());
+            if (this.Disposition.Class1.IsValid)
+            {
+                this.Vitality.RollShortRestHitDice(HitDice.GetHitDice(this.Disposition.Class1.Name), this.Attributes.Constitution);
+            }
+
+            if (this.Disposition.Class2.IsValid)
+            {
+                this.Vitality.RollShortRestHitDice(HitDice.GetHitDice(this.Disposition.Class2.Name), this.Attributes.Constitution);
+            }
+
+            if (this.Disposition.Class3.IsValid)
+            {
+                this.Vitality.RollShortRestHitDice(HitDice.GetHitDice(this.Disposition.Class3.Name), this.Attributes.Constitution);
+            }
+
+            var warlockLevel = this.GetWarlockLevel();
+            if (warlockLevel > 0)
+            {
+                this.SpellCasting.SpellSlots.ShortRest(warlockLevel);
+            }
+        }
+
+        /// <summary>
         /// Retrieves the Warlock level of the character based on their class disposition.
         /// </summary>
         /// <returns>

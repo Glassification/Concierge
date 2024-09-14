@@ -54,6 +54,7 @@ namespace Concierge.Display.Controls
         {
             if (!AppSettingsManager.StartUp.ExpertMode)
             {
+                this.ImportCharacterMenuItem.Visibility = Visibility.Collapsed;
                 this.ConsoleMenuItem.Visibility = Visibility.Collapsed;
                 this.ExportAppDataMenuItem.Visibility = Visibility.Collapsed;
                 this.ImportAppDataMenuItem.Visibility = Visibility.Collapsed;

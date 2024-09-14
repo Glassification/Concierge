@@ -299,21 +299,13 @@ namespace Concierge.Display
             Program.Logger.Info($"Long rest.");
 
             var character = Program.CcsFile.Character;
-
             var oldVitality = character.Vitality.DeepCopy();
             var oldSpellSlots = character.SpellCasting.SpellSlots.DeepCopy();
             var oldCompanionHealth = character.Companion.Health.DeepCopy();
             var oldCompanionHitDice = character.Companion.HitDice.DeepCopy();
             var oldConcentratedSpell = character.SpellCasting.ConcentratedSpell;
 
-            character.Vitality.Health.ResetHealth();
-            character.Vitality.HitDice.RegainHitDice();
-            character.Vitality.ResetDeathSaves();
-            character.SpellCasting.SpellSlots.Reset();
-            character.SpellCasting.ClearConcentration();
-
-            character.Companion.Health.ResetHealth();
-            character.Companion.HitDice.RegainHitDice();
+            character.LongRest();
 
             Program.UndoRedoService.AddCommand(
                 new RestCommand(
@@ -338,34 +330,13 @@ namespace Concierge.Display
             Program.Logger.Info($"Short rest.");
 
             var character = Program.CcsFile.Character;
-
             var oldVitality = character.Vitality.DeepCopy();
             var oldSpellSlots = character.SpellCasting.SpellSlots.DeepCopy();
             var oldCompanionHealth = character.Companion.Health.DeepCopy();
             var oldCompanionHitDice = character.Companion.HitDice.DeepCopy();
             var oldConcentratedSpell = character.SpellCasting.ConcentratedSpell;
 
-            character.Companion.RollShortRestHitDice(character.Companion.HitDice.GetFirstAvailable(), character.Companion.Attributes.Constitution);
-            if (character.Disposition.Class1.IsValid)
-            {
-                character.Vitality.RollShortRestHitDice(HitDice.GetHitDice(character.Disposition.Class1.Name), character.Attributes.Constitution);
-            }
-
-            if (character.Disposition.Class2.IsValid)
-            {
-                character.Vitality.RollShortRestHitDice(HitDice.GetHitDice(character.Disposition.Class2.Name), character.Attributes.Constitution);
-            }
-
-            if (character.Disposition.Class3.IsValid)
-            {
-                character.Vitality.RollShortRestHitDice(HitDice.GetHitDice(character.Disposition.Class3.Name), character.Attributes.Constitution);
-            }
-
-            var warlockLevel = character.GetWarlockLevel();
-            if (warlockLevel > 0)
-            {
-                character.SpellCasting.SpellSlots.ShortRest(warlockLevel);
-            }
+            character.ShortRest();
 
             Program.UndoRedoService.AddCommand(
                 new RestCommand(
@@ -570,14 +541,14 @@ namespace Concierge.Display
 
             if (saveAs)
             {
-                if (this.fileAccessService.SaveAs(Program.CcsFile))
+                if (this.fileAccessService.SaveAsCcs(Program.CcsFile))
                 {
                     this.DisplayStatusText($"Save As '{Program.CcsFile.AbsolutePath}'");
                 }
             }
             else
             {
-                this.fileAccessService.Save(Program.CcsFile);
+                this.fileAccessService.SaveCcs(Program.CcsFile);
                 this.DisplayStatusText($"Save '{Program.CcsFile.AbsolutePath}'");
             }
         }

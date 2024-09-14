@@ -9,7 +9,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Character.Aspects;
+    using Concierge.Character.Companions;
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common;
@@ -44,15 +44,9 @@ namespace Concierge.Display.Controls
                 typeof(RoutedEventHandler),
                 typeof(HitDiceControl));
 
-        private Constitution constitution;
-        private Vitality vitality;
-
         public HitDiceControl()
         {
             this.InitializeComponent();
-
-            this.constitution = new Constitution();
-            this.vitality = new Vitality();
         }
 
         public event RoutedEventHandler EditClicked
@@ -71,12 +65,6 @@ namespace Concierge.Display.Controls
         {
             get { return (ConciergePages)this.GetValue(ConciergePageProperty); }
             set { this.SetValue(ConciergePageProperty, value); }
-        }
-
-        public void SetSource(Constitution constitution, Vitality vitality)
-        {
-            this.constitution = constitution;
-            this.vitality = vitality;
         }
 
         public void DrawHitDice(HitDice hitDice)
@@ -121,22 +109,17 @@ namespace Concierge.Display.Controls
             };
         }
 
-        private void Header_MouseDown(object sender, MouseButtonEventArgs e)
+        private void UpdatePlayerHitDice(string name)
         {
-            if (sender is not Border border || this.ShouldNotHighlight(border.Name.Replace("Border", "Grid")))
+            var vitality = Program.CcsFile.Character.Vitality;
+            var constitution = Program.CcsFile.Character.Attributes.Constitution;
+            if (vitality.Health.IsFull)
             {
                 return;
             }
 
-            SoundService.PlayUpdateValue();
-            if (this.vitality.Health.IsFull)
-            {
-                return;
-            }
-
-            var oldItem = this.vitality.DeepCopy();
-
-            var (dice, used, total) = this.vitality.HitDice.Increment(border.Name);
+            var oldItem = vitality.DeepCopy();
+            var (dice, used, total) = vitality.HitDice.Increment(name);
             if (dice == Dice.None)
             {
                 return;
@@ -147,12 +130,57 @@ namespace Concierge.Display.Controls
                 Mouse.OverrideCursor = Cursors.Arrow;
             }
 
-            var roll = this.vitality.RollHitDice(dice, this.constitution);
-
+            var roll = vitality.RollHitDice(dice, constitution);
             Program.MainWindow?.DisplayStatusText($"Rolled Hit Die: {roll}");
-            Program.UndoRedoService.AddCommand(new EditCommand<Vitality>(this.vitality, oldItem, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Vitality>(vitality, oldItem, this.ConciergePage));
 
             this.RaiseEvent(new RoutedEventArgs(ValueChangedEvent));
+        }
+
+        private void UpdateCompanionHitDice(string name)
+        {
+            var companion = Program.CcsFile.Character.Companion;
+            if (companion.Health.IsFull)
+            {
+                return;
+            }
+
+            var oldItem = companion.DeepCopy();
+            var (dice, used, total) = companion.HitDice.Increment(name);
+            if (dice == Dice.None)
+            {
+                return;
+            }
+
+            if (used == total)
+            {
+                Mouse.OverrideCursor = Cursors.Arrow;
+            }
+
+            var roll = companion.RollHitDice(dice);
+            Program.MainWindow?.DisplayStatusText($"Rolled Hit Die: {roll}");
+            Program.UndoRedoService.AddCommand(new EditCommand<Companion>(companion, oldItem, this.ConciergePage));
+
+            this.RaiseEvent(new RoutedEventArgs(ValueChangedEvent));
+        }
+
+        private void Header_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is not Border border || this.ShouldNotHighlight(border.Name.Replace("Border", "Grid")))
+            {
+                return;
+            }
+
+            SoundService.PlayUpdateValue();
+            switch (this.ConciergePage)
+            {
+                case ConciergePages.Overview:
+                    this.UpdatePlayerHitDice(border.Name);
+                    break;
+                case ConciergePages.Companion:
+                    this.UpdateCompanionHitDice(border.Name);
+                    break;
+            }
         }
 
         private void Header_MouseEnter(object sender, MouseEventArgs e)

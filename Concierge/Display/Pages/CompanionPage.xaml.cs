@@ -9,6 +9,7 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
 
+    using Concierge.Character.Aspects;
     using Concierge.Character.Companions;
     using Concierge.Commands;
     using Concierge.Common;

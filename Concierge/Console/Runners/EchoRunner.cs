@@ -29,9 +29,9 @@ namespace Concierge.Console.Runners
             return string.Empty;
         }
 
-        public override bool Contains(string name)
+        public override bool Contains(ConsoleCommand command)
         {
-            return name.ContainsIgnoreCase("Echo");
+            return command.Name.ContainsIgnoreCase("Echo");
         }
     }
 }

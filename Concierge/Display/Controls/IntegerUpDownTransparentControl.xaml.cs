@@ -52,6 +52,13 @@ namespace Concierge.Display.Controls
                 typeof(IntegerUpDownTransparentControl),
                 new UIPropertyMetadata(1));
 
+        public static readonly DependencyProperty ButtonStyleProperty =
+            DependencyProperty.Register(
+                "ButtonStyle",
+                typeof(Style),
+                typeof(IntegerUpDownTransparentControl),
+                new UIPropertyMetadata());
+
         private static readonly RoutedEvent ValueChangedEvent =
             EventManager.RegisterRoutedEvent(
                 "ValueChanged",
@@ -100,6 +107,12 @@ namespace Concierge.Display.Controls
         {
             get { return (int)this.GetValue(ValueFontSizeProperty); }
             set { this.SetValue(ValueFontSizeProperty, value); }
+        }
+
+        public Style ButtonStyle
+        {
+            get { return (Style)this.GetValue(ButtonStyleProperty); }
+            set { this.SetValue(ButtonStyleProperty, value); }
         }
 
         public int Delta => this.Value > this.LastValue ? 1 : this.Value < this.LastValue ? -1 : 0;

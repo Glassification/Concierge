@@ -10,6 +10,7 @@ namespace Concierge.Console.Runners
     using Concierge.Character.Equipable;
     using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
+    using Concierge.Common;
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
     using Concierge.Data;
@@ -43,6 +44,7 @@ namespace Concierge.Console.Runners
             "StatusEffect",
             "Tool",
             "Character",
+            "GameState",
         ];
 
         private static readonly string[] actions =
@@ -92,16 +94,10 @@ namespace Concierge.Console.Runners
                 "race" => new ReadWriterScript<ReadOnlyCollection<DetailedItem>>(Defaults.Races).Evaluate(command),
                 "statuseffect" => new ReadWriterScript<ReadOnlyCollection<StatusEffect>>(Defaults.StatusEffects).Evaluate(command),
                 "tool" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Tools).Evaluate(command),
-                "character" => RunForCharacterSheet(command),
+                "character" => new ReadWriterScript<CcsFile>(Program.CcsFile).Evaluate(command),
+                "gamestate" => new ReadWriterScript<int>(Constants.Void).Evaluate(command),
                 _ => new ConsoleResult($"Error: '{command}' does not contain a valid command.", ResultType.Error),
             };
-        }
-
-        private static ConsoleResult RunForCharacterSheet(ConsoleCommand command)
-        {
-            var result = new ReadWriterScript<CcsFile>(Program.CcsFile).Evaluate(command);
-
-            return result;
         }
     }
 }

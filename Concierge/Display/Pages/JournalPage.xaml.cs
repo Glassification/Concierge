@@ -406,6 +406,8 @@ namespace Concierge.Display.Pages
             {
                 documentItem.Document.IsExpanded = true;
             }
+
+            Program.Modify();
         }
 
         private void TreeViewItem_Collapsed(object sender, RoutedEventArgs e)
@@ -418,6 +420,8 @@ namespace Concierge.Display.Pages
             {
                 documentItem.Document.IsExpanded = false;
             }
+
+            Program.Modify();
         }
 
         private void ColorPicker_ColorChanged(object sender, RoutedEventArgs e)

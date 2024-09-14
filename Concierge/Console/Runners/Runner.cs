@@ -50,7 +50,7 @@ namespace Concierge.Console.Runners
         {
             var builder = new StringBuilder();
 
-            builder.Append($"{(this.IsFirstList ? string.Empty : Indent)}|--");
+            builder.Append($"{(this.IsFirstList ? Indent : Indent)}|--");
             foreach (var action in this.Actions)
             {
                 builder.Append($"{action}, ");
@@ -72,11 +72,13 @@ namespace Concierge.Console.Runners
         /// <summary>
         /// Determines whether this script service contains the specified command name.
         /// </summary>
-        /// <param name="name">The name of the command.</param>
+        /// <param name="command">The command executed.</param>
         /// <returns><c>true</c> if this script service contains the specified command name; otherwise, <c>false</c>.</returns>
-        public virtual bool Contains(string name)
+        public virtual bool Contains(ConsoleCommand command)
         {
-            return this.Names.Contains(name, StringComparer.InvariantCultureIgnoreCase);
+            return
+                this.Names.Contains(command.Name, StringComparer.InvariantCultureIgnoreCase) &&
+                this.Actions.Contains(command.Action, StringComparer.InvariantCultureIgnoreCase);
         }
     }
 }

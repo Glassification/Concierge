@@ -69,6 +69,7 @@ namespace Concierge.Character.Vitals
         public void ResetHealth()
         {
             this.BaseHealth = this.MaxHealth;
+            this.TemporaryHealth = 0;
         }
 
         /// <summary>

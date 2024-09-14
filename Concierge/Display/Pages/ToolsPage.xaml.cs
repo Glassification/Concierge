@@ -9,7 +9,6 @@ namespace Concierge.Display.Pages
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Common;
@@ -47,14 +46,6 @@ namespace Concierge.Display.Pages
 
             this.SetDefaultDiceValues();
             this.SetDefaultDivideValues();
-
-            this.D4DiceRollDisplay.Initialize("Light", Brushes.White);
-            this.D6DiceRollDisplay.Initialize("Dark", Brushes.White);
-            this.D8DiceRollDisplay.Initialize("Light", Brushes.White);
-            this.D10DiceRollDisplay.Initialize("Dark", Brushes.White);
-            this.D100DiceRollDisplay.Initialize("Light", Brushes.White);
-            this.D12DiceRollDisplay.Initialize("Dark", Brushes.White);
-            this.D20DiceRollDisplay.Initialize("Light", Brushes.White);
 
             this.PlayersInput.Initialize(DivideLootSelection.Players);
             this.CopperInput.Initialize(DivideLootSelection.Copper);

@@ -24,13 +24,6 @@ namespace Concierge.Display.Controls
                 typeof(DiceRollControl),
                 new UIPropertyMetadata("d69"));
 
-        public static readonly DependencyProperty CustomSidesVisibilityProperty =
-            DependencyProperty.Register(
-                "CustomSidesVisibility",
-                typeof(Visibility),
-                typeof(DiceRollControl),
-                new UIPropertyMetadata(Visibility.Collapsed));
-
         public static readonly DependencyProperty DiceSidesProperty =
             DependencyProperty.Register(
                 "DiceSides",
@@ -59,17 +52,19 @@ namespace Concierge.Display.Controls
                 typeof(LabelControl),
                 new UIPropertyMetadata(Brushes.Transparent));
 
+        public static readonly DependencyProperty ButtonStyleProperty =
+            DependencyProperty.Register(
+                "ButtonStyle",
+                typeof(Style),
+                typeof(DiceRollControl),
+                new UIPropertyMetadata());
+
         public static readonly RoutedEvent DiceRolledEvent =
             EventManager.RegisterRoutedEvent(
                 "DiceRolled",
                 RoutingStrategy.Bubble,
                 typeof(RoutedEventHandler),
                 typeof(DiceRollControl));
-
-        private readonly ResourceDictionary resourceDictionary = new ()
-        {
-            Source = new Uri("Display/Dictionaries/DisplaySpinnerDictionary.xaml", UriKind.RelativeOrAbsolute),
-        };
 
         public DiceRollControl()
         {
@@ -101,16 +96,16 @@ namespace Concierge.Display.Controls
             set { this.SetValue(DiceSidesProperty, value); }
         }
 
-        public Visibility CustomSidesVisibility
-        {
-            get { return (Visibility)this.GetValue(CustomSidesVisibilityProperty); }
-            set { this.SetValue(CustomSidesVisibilityProperty, value); }
-        }
-
         public PackIconKind DiceSymbol
         {
             get { return (PackIconKind)this.GetValue(DiceSymbolProperty); }
             set { this.SetValue(DiceSymbolProperty, value); }
+        }
+
+        public Style ButtonStyle
+        {
+            get { return (Style)this.GetValue(ButtonStyleProperty); }
+            set { this.SetValue(ButtonStyleProperty, value); }
         }
 
         public Brush FillBrush
@@ -131,7 +126,6 @@ namespace Concierge.Display.Controls
         public void ResetDiceValue()
         {
             this.DiceNumberUpDown.Value = 1;
-            this.DxDieUpDown.Value = 1;
             this.DiceModifierUpDown.Value = 0;
             this.DiceResult.Text = "0";
         }
@@ -140,25 +134,9 @@ namespace Concierge.Display.Controls
         {
             var diceNumber = this.DiceNumberUpDown.Value;
             var modified = this.DiceModifierUpDown.Value;
-            var diceSides = this.CustomSidesVisibility == Visibility.Visible ? this.DxDieUpDown.Value : this.DiceSides;
+            var rolledDice = DiceRoll.RollDice(diceNumber, this.DiceSides);
 
-            var rolledDice = DiceRoll.RollDice(diceNumber, diceSides);
-            return new DiceRoll(diceSides, rolledDice, modified);
-        }
-
-        public void Initialize(string style, Brush foreground)
-        {
-            var styleText = style.Contains("ControlButtonStyle") ? style : $"{style}ControlButtonStyle";
-
-            this.DiceNumberUpDown.Decrease.Style = this.resourceDictionary[styleText] as Style;
-            this.DiceNumberUpDown.Increase.Style = this.resourceDictionary[styleText] as Style;
-            this.DiceNumberUpDown.Decrease.Foreground = foreground;
-            this.DiceNumberUpDown.Increase.Foreground = foreground;
-
-            this.DiceModifierUpDown.Decrease.Style = this.resourceDictionary[styleText] as Style;
-            this.DiceModifierUpDown.Increase.Style = this.resourceDictionary[styleText] as Style;
-            this.DiceModifierUpDown.Decrease.Foreground = foreground;
-            this.DiceModifierUpDown.Increase.Foreground = foreground;
+            return new DiceRoll(this.DiceSides, rolledDice, modified);
         }
 
         private void ButtonRoll_Click(object sender, RoutedEventArgs e)

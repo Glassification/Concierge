@@ -71,6 +71,7 @@
                     Grid.Column="1"
                     IsEnabled="False">
                     <components:ConciergeTextBox
+                        Margin="0"
                         x:Name="AbilityBonusTextBox"
                         FontSize="25"
                         HorizontalContentAlignment="Center"/>

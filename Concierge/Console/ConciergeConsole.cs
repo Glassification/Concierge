@@ -142,16 +142,19 @@ namespace Concierge.Console
             consoleRun.AddIfExists(new CcsCompressionRunner());
             consoleRun.AddIfExists(new HelpRunner());
             consoleRun.AddIfExists(new EchoRunner());
-            consoleRun.Validate();
 
             if (command.Name.EqualsIgnoreCase("Clear"))
             {
                 this.ClearConsoleOutput();
             }
-            else if (command.Name.EqualsIgnoreCase("Ex3it"))
+            else if (command.Name.EqualsIgnoreCase("Exit"))
             {
                 this.writeOutput = false;
                 this.Exited?.Invoke(command, new EventArgs());
+            }
+            else
+            {
+                consoleRun.Validate();
             }
 
             return consoleRun;

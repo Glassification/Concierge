@@ -24,18 +24,15 @@ namespace Concierge.Services
     /// </summary>
     public sealed class CustomItemService
     {
-        private readonly CustomItemReadWriter readwriter;
+        private readonly CustomItemReadWriter readwriter = new CustomItemReadWriter(Program.ErrorService);
         private readonly string filePath = Path.Combine(ConciergeFiles.CustomItemsPath, ConciergeFiles.CustomItemsName);
-        private readonly List<IUnique> customItems;
+        private readonly List<IUnique> customItems = [];
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomItemService"/> class.
         /// </summary>
         public CustomItemService()
         {
-            this.readwriter = new CustomItemReadWriter(Program.ErrorService);
-            this.customItems = [];
-
             this.Initialize();
         }
 

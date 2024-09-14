@@ -151,7 +151,8 @@
                             DiceSides="4"
                             DiceSymbol="DiceD4"
                             DiceToolTip="Roll a d4"
-                            DiceRolled="DiceRollDisplay_DiceRolled"/>
+                            DiceRolled="DiceRollDisplay_DiceRolled"
+                            ButtonStyle="{StaticResource LightControlButtonStyle}" />
 
                         <controls:DiceRollControl
                             Grid.Row="2"
@@ -161,7 +162,8 @@
                             DiceSides="6"
                             DiceSymbol="DiceD6"
                             DiceToolTip="Roll a d6"
-                            DiceRolled="DiceRollDisplay_DiceRolled"/>
+                            DiceRolled="DiceRollDisplay_DiceRolled"
+                            ButtonStyle="{StaticResource DarkControlButtonStyle}"/>
 
                         <controls:DiceRollControl
                             Grid.Row="3"
@@ -171,7 +173,8 @@
                             DiceSides="8"
                             DiceSymbol="DiceD8"
                             DiceToolTip="Roll a d8"
-                            DiceRolled="DiceRollDisplay_DiceRolled"/>
+                            DiceRolled="DiceRollDisplay_DiceRolled"
+                            ButtonStyle="{StaticResource LightControlButtonStyle}"/>
 
                         <controls:DiceRollControl
                             Grid.Row="4"
@@ -181,7 +184,8 @@
                             DiceSides="10"
                             DiceSymbol="DiceD10"
                             DiceToolTip="Roll a d10"
-                            DiceRolled="DiceRollDisplay_DiceRolled"/>
+                            DiceRolled="DiceRollDisplay_DiceRolled"
+                            ButtonStyle="{StaticResource DarkControlButtonStyle}"/>
 
                         <controls:DiceRollControl
                             Grid.Row="5"
@@ -191,7 +195,8 @@
                             DiceSides="100"
                             DiceSymbol="DiceMultiple"
                             DiceToolTip="Roll a d100"
-                            DiceRolled="DiceRollDisplay_DiceRolled"/>
+                            DiceRolled="DiceRollDisplay_DiceRolled"
+                            ButtonStyle="{StaticResource LightControlButtonStyle}"/>
 
                         <controls:DiceRollControl
                             Grid.Row="6"
@@ -201,7 +206,8 @@
                             DiceSides="12"
                             DiceSymbol="DiceD12"
                             DiceToolTip="Roll a d12"
-                            DiceRolled="DiceRollDisplay_DiceRolled"/>
+                            DiceRolled="DiceRollDisplay_DiceRolled"
+                            ButtonStyle="{StaticResource DarkControlButtonStyle}"/>
 
                         <controls:DiceRollControl
                             Grid.Row="7"
@@ -211,7 +217,8 @@
                             DiceSides="20"
                             DiceSymbol="DiceD20"
                             DiceToolTip="Roll a d20"
-                            DiceRolled="DiceRollDisplay_DiceRolled"/>
+                            DiceRolled="DiceRollDisplay_DiceRolled"
+                            ButtonStyle="{StaticResource LightControlButtonStyle}"/>
 
                         <Border
                             Grid.Row="8"
@@ -521,6 +528,7 @@
                             FillBrush="#33415C"
                             LabelTextColor="White"
                             LabelText="Players"
+                            ButtonStyle="{StaticResource PlayersControlButtonStyle}" 
                             Selection="Input_Selection"/>
 
                         <controls:DivideLootInputControl
@@ -529,6 +537,7 @@
                             FillBrush="#b87333"
                             LabelTextColor="Black"
                             LabelText="Copper"
+                            ButtonStyle="{StaticResource CopperControlButtonStyle}" 
                             Selection="Input_Selection"/>
 
                         <controls:DivideLootInputControl
@@ -537,6 +546,7 @@
                             FillBrush="Silver"
                             LabelTextColor="Black"
                             LabelText="Silver"
+                            ButtonStyle="{StaticResource SilverControlButtonStyle}" 
                             Selection="Input_Selection"/>
 
                         <controls:DivideLootInputControl
@@ -545,6 +555,7 @@
                             FillBrush="#50c878"
                             LabelTextColor="Black"
                             LabelText="Electrum"
+                            ButtonStyle="{StaticResource ElectrumControlButtonStyle}" 
                             Selection="Input_Selection"/>
 
                         <controls:DivideLootInputControl
@@ -553,6 +564,7 @@
                             FillBrush="#CFB53B"
                             LabelTextColor="Black"
                             LabelText="Gold"
+                            ButtonStyle="{StaticResource GoldControlButtonStyle}" 
                             Selection="Input_Selection"/>
 
                         <controls:DivideLootInputControl
@@ -561,6 +573,7 @@
                             FillBrush="#e5e4e2"
                             LabelTextColor="Black"
                             LabelText="Platinum"
+                            ButtonStyle="{StaticResource PlatinumControlButtonStyle}" 
                             Selection="Input_Selection"/>
                     </Grid>
 
@@ -568,7 +581,6 @@
                         Grid.Column="1"
                         Margin="8,0,8,0"
                         x:Name="DivideLootDataGrid"
-                        MaxHeight="{Binding Path=AbilitiesHeight}"
                         Style="{DynamicResource ToolsDataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn

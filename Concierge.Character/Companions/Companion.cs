@@ -2,13 +2,12 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Character
+namespace Concierge.Character.Companions
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    using Concierge.Character.Companions;
     using Concierge.Character.Vitals;
     using Concierge.Common;
     using Concierge.Common.Enums;
@@ -69,11 +68,11 @@ namespace Concierge.Character
         /// Rolls hit dice for the companion and increases its base health.
         /// </summary>
         /// <param name="hitDie">The type of hit dice to roll.</param>
-        /// <param name="constitution">The constitution modifier of the companion.</param>
         /// <returns>The result of the hit dice roll.</returns>
-        public DiceRoll RollHitDice(Dice hitDie, int constitution)
+        public DiceRoll RollHitDice(Dice hitDie)
         {
             var roll = DiceRoll.RollDice(1, (int)hitDie);
+            var constitution = ConciergeMath.Bonus(this.Attributes.Constitution);
             this.Health.BaseHealth += roll.FirstOrDefault(0) + constitution;
 
             return new DiceRoll((int)hitDie, roll, constitution);
@@ -83,13 +82,12 @@ namespace Concierge.Character
         /// Rolls hit dice for the companion during a short rest to heal.
         /// </summary>
         /// <param name="hitDie">The type of hit dice to roll.</param>
-        /// <param name="constitution">The constitution modifier of the companion.</param>
-        public void RollShortRestHitDice(Dice hitDie, int constitution)
+        public void RollShortRestHitDice(Dice hitDie)
         {
             var threshold = this.Health.MaxHealth - (int)Math.Ceiling(this.Health.MaxHealth * HealingRatio);
             while (this.Health.BaseHealth < threshold && this.HitDice.Increment(hitDie.ToString()).dice != Dice.None)
             {
-                this.RollHitDice(hitDie, constitution);
+                this.RollHitDice(hitDie);
             }
         }
 

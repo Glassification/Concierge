@@ -55,7 +55,7 @@ namespace Concierge.Services
         {
             Program.Logger.Info($"Autosaving...");
 
-            this.fileAccessService.Save(Program.CcsFile);
+            this.fileAccessService.SaveCcs(Program.CcsFile);
         }
     }
 }

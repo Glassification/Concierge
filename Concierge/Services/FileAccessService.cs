@@ -134,7 +134,7 @@ namespace Concierge.Services
         /// Saves a Concierge Character Sheet (CCS) file.
         /// </summary>
         /// <param name="ccsFile">The CCS file to save.</param>
-        public void Save(CcsFile ccsFile)
+        public void SaveCcs(CcsFile ccsFile)
         {
             ccsFile.Version = Program.AssemblyVersion;
             ccsFile.LastSaveDate = DateTime.Now;
@@ -156,7 +156,7 @@ namespace Concierge.Services
         /// </summary>
         /// <param name="ccsFile">The CCS file to save.</param>
         /// <param name="path">The path where the file will be saved.</param>
-        public void Save(CcsFile ccsFile, string path)
+        public void SaveCcs(CcsFile ccsFile, string path)
         {
             ccsFile.Version = Program.AssemblyVersion;
             ccsFile.LastSaveDate = DateTime.Now;
@@ -170,7 +170,7 @@ namespace Concierge.Services
         /// </summary>
         /// <param name="ccsFile">The CCS file to save.</param>
         /// <returns>True if the file is saved successfully; otherwise, false.</returns>
-        public bool SaveAs(CcsFile ccsFile)
+        public bool SaveAsCcs(CcsFile ccsFile)
         {
             if (ShouldUseDefaultSave())
             {

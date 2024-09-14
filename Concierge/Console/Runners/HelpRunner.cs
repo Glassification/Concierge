@@ -34,9 +34,9 @@ Use List.Commands() to see all valid commands.";
             return string.Empty;
         }
 
-        public override bool Contains(string name)
+        public override bool Contains(ConsoleCommand command)
         {
-            return name.ContainsIgnoreCase("Help");
+            return command.Name.ContainsIgnoreCase("Help");
         }
     }
 }

@@ -37,11 +37,13 @@
                 Click="Increase_Click"
                 VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch"
+                Foreground="White"
                 Height="auto"
                 Width="auto"
                 Grid.Row="0"
                 MouseEnter="Button_MouseEnter"
-                MouseLeave="Control_MouseLeave">
+                MouseLeave="Control_MouseLeave"
+                Style="{Binding Path=ButtonStyle,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}">
                 <materialDesign:PackIcon
                     Height="25"
                     Width="25"
@@ -54,12 +56,14 @@
                 ToolTip="Decrease"
                 VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch"
+                Foreground="White"
                 Height="auto"
                 Width="auto"
                 Grid.Row="1"
                 Click="Decrease_Click"
                 MouseEnter="Button_MouseEnter"
-                MouseLeave="Control_MouseLeave">
+                MouseLeave="Control_MouseLeave"
+                Style="{Binding Path=ButtonStyle,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}">
                 <materialDesign:PackIcon
                     Height="25"
                     Width="25"

@@ -31,27 +31,20 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Die-->
-                <Grid Grid.Column="0">
-                    <components:ConciergeTextBlock
-                        x:Name="DiceText"
-                        Text="{Binding Path=DiceName,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"
-                        Foreground="White"
-                        FontSize="25"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
-                    <controls:IntegerUpDownTransparentControl 
-                        x:Name="DxDieUpDown"
-                        Visibility="{Binding Path=CustomSidesVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"
-                        Foreground="White"
-                        Minimum="0"
-                        ValueFontSize="30"
-                        Height="auto"
-                        Margin="10,0,10,0"/>
-                </Grid>
+                <components:ConciergeTextBlock
+                    x:Name="DiceText"
+                    Grid.Column="0"
+                    Text="{Binding Path=DiceName,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"
+                    Foreground="White"
+                    FontSize="25"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+                
                 <!--Number-->
                 <controls:IntegerUpDownTransparentControl 
                     Grid.Column="1"
                     x:Name="DiceNumberUpDown"
+                    ButtonStyle="{Binding Path=ButtonStyle,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"
                     Foreground="White"
                     Minimum="0"
                     ValueFontSize="30"
@@ -61,6 +54,7 @@
                 <controls:IntegerUpDownTransparentControl 
                     Grid.Column="2"
                     x:Name="DiceModifierUpDown"
+                    ButtonStyle="{Binding Path=ButtonStyle,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"
                     Foreground="White"
                     ValueFontSize="30"
                     Minimum="-1000"

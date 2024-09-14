@@ -22,6 +22,11 @@ namespace Concierge.Console.Scripts
 
         public ConsoleResult Evaluate(ConsoleCommand command)
         {
+            if (command.Name.EqualsIgnoreCase("Gamestate"))
+            {
+                return this.State(command);
+            }
+
             if (command.Action.EqualsIgnoreCase("Read"))
             {
                 return this.Read(command);
@@ -94,6 +99,29 @@ namespace Concierge.Console.Scripts
             {
                 Program.MainWindow?.NewCharacterSheet();
                 return new ConsoleResult($"New {command.Name} sheet.", ResultType.Success);
+            }
+            catch (Exception ex)
+            {
+                return new ConsoleResult(ex.Message, ResultType.Error);
+            }
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "The way she goes.")]
+        private ConsoleResult State(ConsoleCommand command)
+        {
+            if (command.Argument.IsNullOrWhiteSpace())
+            {
+                return new ConsoleResult($"No folder specified to write {command.Name} to.", ResultType.Error);
+            }
+
+            try
+            {
+                var character = JsonConvert.SerializeObject(Program.CcsFile.Character, Formatting.Indented);
+                var state = Program.GetBaseState();
+                File.WriteAllText(Path.Combine(command.Argument, "character.json"), character);
+                File.WriteAllText(Path.Combine(command.Argument, "basestate.json"), state);
+
+                return new ConsoleResult($"Wrote {command.Name} to {command.Argument}.", ResultType.Success);
             }
             catch (Exception ex)
             {

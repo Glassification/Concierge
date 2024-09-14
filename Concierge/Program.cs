@@ -15,6 +15,7 @@ namespace Concierge
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Represents the main program logic and settings for the application.
@@ -207,6 +208,14 @@ namespace Concierge
         public static void NotDrawing()
         {
             IsDrawing = false;
+        }
+
+        /// <summary>
+        /// Serializes the character base state to a formatted string.
+        /// </summary>
+        public static string GetBaseState()
+        {
+            return JsonConvert.SerializeObject(baseState, Formatting.Indented);
         }
     }
 }

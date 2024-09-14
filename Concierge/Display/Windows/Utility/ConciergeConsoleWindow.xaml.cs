@@ -42,14 +42,6 @@ namespace Concierge.Display.Utility
             return null;
         }
 
-        private void LimitBackspace(KeyEventArgs e)
-        {
-            if (this.InputBlock.CaretIndex <= Constants.ConsolePrompt.Length)
-            {
-                e.Handled = true;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeResult.Exit;
@@ -93,7 +85,7 @@ namespace Concierge.Display.Utility
                     this.InputBlock.CaretIndex = this.InputBlock.Text.Length;
                     break;
                 case Key.Back:
-                    this.LimitBackspace(e);
+                    e.Handled = this.InputBlock.CaretIndex <= Constants.ConsolePrompt.Length;
                     break;
             }
 
