@@ -169,7 +169,7 @@ namespace Concierge.Character.Details
         /// <returns>The result of using the ability as a used item.</returns>
         public UsedItem Use(UseItem useItem)
         {
-            var cleanedInput = DiceParser.Clean(this.Action, Enum.GetNames(typeof(DamageTypes)));
+            var cleanedInput = DiceParser.Clean(this.Action, Enum.GetNames<DamageTypes>());
             if (!DiceParser.IsValidInput(cleanedInput))
             {
                 cleanedInput = "0";

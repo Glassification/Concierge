@@ -46,7 +46,7 @@ namespace Concierge.Common.Extensions
                 Color color1 = (Color)(p.GetValue(null) ?? Colors.Transparent);
                 return Color.AreClose(color1, color);
             });
-            return properties is not null ? properties.Name.PascalCase() : color.ToHexWithoutAlpha();
+            return properties is not null ? properties.Name.ToPascalCase() : color.ToHexWithoutAlpha();
         }
 
         /// <summary>

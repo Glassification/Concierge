@@ -167,7 +167,7 @@ namespace Concierge.Character.Magic
         /// <returns>An object representing the result of using the spell.</returns>
         public UsedItem Use(UseItem useItem)
         {
-            var cleanedInput = DiceParser.Clean(this.Damage, Enum.GetNames(typeof(DamageTypes)));
+            var cleanedInput = DiceParser.Clean(this.Damage, Enum.GetNames<DamageTypes>());
             if (!DiceParser.IsValidInput(cleanedInput))
             {
                 cleanedInput = "0";

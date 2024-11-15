@@ -80,7 +80,7 @@ namespace Concierge.Display.Controls
             this.ItemIcon.Kind = icon;
             this.ItemIcon.Foreground = iconColor;
 
-            this.ItemName.Text = name.ToString().Strip(" ").PascalCase();
+            this.ItemName.Text = name.ToString().Strip(" ").ToPascalCase();
             this.ItemName.Foreground = Brushes.White;
         }
 
@@ -90,7 +90,7 @@ namespace Concierge.Display.Controls
             this.ItemIcon.Kind = icon;
             this.ItemIcon.Foreground = iconColor;
 
-            this.ItemName.Text = name.ToString().Strip(" ").PascalCase();
+            this.ItemName.Text = name.ToString().Strip(" ").ToPascalCase();
             this.ItemName.Foreground = Brushes.White;
 
             this.MainBorder.BorderBrush = background;
@@ -104,7 +104,7 @@ namespace Concierge.Display.Controls
             this.ItemIcon.Kind = icon;
             this.ItemIcon.Foreground = iconColor;
 
-            this.ItemName.Text = name.ToString().Strip(" ").PascalCase();
+            this.ItemName.Text = name.ToString().Strip(" ").ToPascalCase();
             this.ItemName.Foreground = Brushes.White;
             this.Tag = tag;
         }

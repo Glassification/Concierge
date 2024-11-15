@@ -1,14 +1,32 @@
-﻿// <copyright file="IntegerExtensions.cs" company="Thomas Beckett">
+﻿// <copyright file="NumberExtensions.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Common.Extensions
 {
+    using System;
+
     /// <summary>
     /// Provides extension methods for integer values.
     /// </summary>
-    public static class IntegerExtensions
+    public static class NumberExtensions
     {
+        private const long Kilobyte = 1024L;
+
+        /// <summary>
+        /// Converts the given integer value representing megabytes into its equivalent in bytes.
+        /// </summary>
+        /// <param name="value">The integer value representing megabytes.</param>
+        /// <returns>A long value representing the equivalent number of bytes.</returns>
+        public static long Megabytes(this int value) => Convert.ToInt64(value * Kilobyte * Kilobyte);
+
+        /// <summary>
+        /// Converts the given integer value representing gigabytes into its equivalent in bytes.
+        /// </summary>
+        /// <param name="value">The integer value representing gigabytes.</param>
+        /// <returns>A long value representing the equivalent number of bytes.</returns>
+        public static long Gigabytes(this int value) => Convert.ToInt64(value * Kilobyte * Kilobyte * Kilobyte);
+
         /// <summary>
         /// Gets the ordinal postfix for an integer value.
         /// </summary>

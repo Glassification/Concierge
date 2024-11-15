@@ -373,7 +373,7 @@ namespace Concierge.Display.Pages
 
             var augmentation = this.GetActiveAugments();
             var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-            var result = weapon.Use(new UseItem(0, augmentation.ToArray()));
+            var result = weapon.Use(new UseItem(0, [.. augmentation]));
 
             var windowResult = WindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
 

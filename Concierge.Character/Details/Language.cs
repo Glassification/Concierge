@@ -108,7 +108,7 @@ namespace Concierge.Character.Details
 
         private static bool IsValid(string value)
         {
-            return !value.IsNullOrWhiteSpace() && !value.Equals("-") && !value.Equals("--");
+            return value.IsNotNullOrWhiteSpace() && !value.Equals("-") && !value.Equals("--");
         }
     }
 }

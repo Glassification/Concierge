@@ -109,7 +109,7 @@ namespace Concierge.Character.Companions
 
         [JsonIgnore]
         [SearchIgnore]
-        public string CustomType => nameof(CompanionWeapon).PascalCase();
+        public string CustomType => nameof(CompanionWeapon).ToPascalCase();
 
         [JsonIgnore]
         [SearchIgnore]

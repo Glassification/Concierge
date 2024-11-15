@@ -56,7 +56,7 @@ namespace Concierge.DevTools.Generators
                 var names = File.ReadAllLines(@$"C:\Users\TomBe\source\repos\{fileName}");
                 var gender = fileName.Contains("Male") ? Gender.Male : fileName.Contains("Female") ? Gender.Female : Gender.Other;
                 var nameType = fileName.Contains("Last") ? NameType.Last : NameType.First;
-                var tokens = fileName.PascalCase().Split(' ');
+                var tokens = fileName.ToPascalCase().Split(' ');
                 var race = tokens[0];
                 if (race.Contains('-'))
                 {

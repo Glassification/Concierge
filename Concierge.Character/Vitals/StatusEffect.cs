@@ -51,7 +51,7 @@ namespace Concierge.Character.Vitals
 
         [JsonIgnore]
         [SearchIgnore]
-        public string CustomType => nameof(StatusEffect).PascalCase();
+        public string CustomType => nameof(StatusEffect).ToPascalCase();
 
         [JsonIgnore]
         [SearchIgnore]

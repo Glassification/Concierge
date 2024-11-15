@@ -8,6 +8,7 @@ namespace Concierge.Character.Companions
 
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Attributes;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
@@ -69,6 +70,7 @@ namespace Concierge.Character.Companions
         public PartyType Type { get; set; }
 
         [JsonIgnore]
+        [SearchIgnore]
         public Brush IconColor
         {
             get
@@ -84,6 +86,7 @@ namespace Concierge.Character.Companions
         }
 
         [JsonIgnore]
+        [SearchIgnore]
         public PackIconKind Icon
         {
             get

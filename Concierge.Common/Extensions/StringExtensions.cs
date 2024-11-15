@@ -31,19 +31,18 @@ namespace Concierge.Common.Extensions
         public static bool IsNullOrWhiteSpace(this string? str) => string.IsNullOrWhiteSpace(str);
 
         /// <summary>
+        /// Determines whether the specified string is not null, empty, and does not consists only of white-space characters.
+        /// </summary>
+        /// <param name="str">The string to test.</param>
+        /// <returns>false if the string is null, empty, or consists only of white-space characters; otherwise, true.</returns>
+        public static bool IsNotNullOrWhiteSpace(this string? str) => !string.IsNullOrWhiteSpace(str);
+
+        /// <summary>
         /// Determines whether the specified string is null or empty.
         /// </summary>
         /// <param name="str">The string to test.</param>
         /// <returns>true if the string is null or empty; otherwise, false.</returns>
         public static bool IsNullOrEmpty(this string? str) => string.IsNullOrEmpty(str);
-
-        /// <summary>
-        /// Removes the specified text from the string.
-        /// </summary>
-        /// <param name="str">The string to strip.</param>
-        /// <param name="textToStrip">The text to remove.</param>
-        /// <returns>The modified string.</returns>
-        public static string Strip(this string str, string textToStrip) => str.Replace(textToStrip, string.Empty);
 
         /// <summary>
         /// Pluralizes a string based on the count provided.
@@ -94,7 +93,7 @@ namespace Concierge.Common.Extensions
         /// </remarks>
         /// <param name="str">The input string to convert.</param>
         /// <returns>A string in PascalCase format.</returns>
-        public static string PascalCase(this string str)
+        public static string ToPascalCase(this string str)
         {
             if (str.IsNullOrWhiteSpace())
             {
@@ -149,12 +148,7 @@ namespace Concierge.Common.Extensions
         /// <returns>The modified string.</returns>
         public static string Strip(this string str, params string[] textToStrip)
         {
-            foreach (var text in textToStrip)
-            {
-                str = str.Replace(text, string.Empty);
-            }
-
-            return str;
+            return Strip(str, StringComparison.InvariantCulture, textToStrip);
         }
 
         /// <summary>
@@ -165,9 +159,17 @@ namespace Concierge.Common.Extensions
         /// <returns>The modified string.</returns>
         public static string Strip(this string str, StringComparison stringComparison, params string[] textToStrip)
         {
+            if (str.IsNullOrWhiteSpace() || textToStrip.IsEmpty())
+            {
+                return str;
+            }
+
             foreach (var text in textToStrip)
             {
-                str = str.Replace(text, string.Empty, stringComparison);
+                if (!text.IsNullOrWhiteSpace())
+                {
+                    str = str.Replace(text, string.Empty, stringComparison);
+                }
             }
 
             return str;
@@ -455,7 +457,7 @@ namespace Concierge.Common.Extensions
                 throw new ArgumentException("T must be an enumerated type");
             }
 
-            return (T)Enum.Parse(typeof(T), str.Strip(" "));
+            return Enum.Parse<T>(str.Strip(" "));
         }
 
         /// <summary>

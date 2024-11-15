@@ -28,7 +28,7 @@ namespace Concierge.Tools
         /// <param name="bonus">The bonus associated with the item.</param>
         public UseItem(int bonus, params IUsable[] items)
         {
-            this.Items = items.ToList();
+            this.Items = [.. items];
             this.Bonus = bonus;
         }
 

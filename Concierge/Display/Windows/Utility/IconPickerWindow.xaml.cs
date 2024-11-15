@@ -37,7 +37,7 @@ namespace Concierge.Display.Windows.Utility
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.maxIcons = Enum.GetValues(typeof(PackIconKind))
+            this.maxIcons = Enum.GetValues<PackIconKind>()
                 .Cast<PackIconKind>()
                 .DistinctBy(x => x.ToString())
                 .Count();
@@ -70,7 +70,7 @@ namespace Concierge.Display.Windows.Utility
 
         private WrapPanel BuildIconList(string filter)
         {
-            var icons = Enum.GetValues(typeof(PackIconKind))
+            var icons = Enum.GetValues<PackIconKind>()
                 .Cast<PackIconKind>()
                 .Where(x => filter.IsNullOrWhiteSpace() || x.ToString().ContainsIgnoreCase(filter))
                 .DistinctBy(x => x.ToString());

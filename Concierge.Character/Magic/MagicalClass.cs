@@ -62,7 +62,7 @@ namespace Concierge.Character.Magic
 
         [JsonIgnore]
         [SearchIgnore]
-        public string CustomType => nameof(MagicalClass).PascalCase();
+        public string CustomType => nameof(MagicalClass).ToPascalCase();
 
         [JsonIgnore]
         [SearchIgnore]

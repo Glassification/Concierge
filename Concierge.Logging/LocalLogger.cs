@@ -45,7 +45,7 @@ namespace Concierge.Logging
             this.LogLocation = logPath;
             this.LogFileName = FormatLogFileName(logName);
 
-            this.MaxLogFileSize = 5000000;
+            this.MaxLogFileSize = 5.Megabytes();
             this.MaxLogFiles = 5;
             this.MaxLogArchives = 5;
             this.MaxLogRetentionDays = 90;
@@ -57,7 +57,7 @@ namespace Concierge.Logging
         /// <summary>
         /// Gets or sets the maximum log file size in bytes.
         /// </summary>
-        public int MaxLogFileSize { get; set; }
+        public long MaxLogFileSize { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum number of log files to keep.

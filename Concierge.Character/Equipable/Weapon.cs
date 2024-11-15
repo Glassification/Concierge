@@ -257,7 +257,7 @@ namespace Concierge.Character.Equipable
             var augment = Augment.Build(useItem);
 
             var damageInput = $"{this.Damage} {this.Misc} {augment.damage}";
-            var cleanedInput = DiceParser.Clean(damageInput, Enum.GetNames(typeof(DamageTypes)));
+            var cleanedInput = DiceParser.Clean(damageInput, Enum.GetNames<DamageTypes>());
             if (!DiceParser.IsValidInput(cleanedInput))
             {
                 cleanedInput = "0";

@@ -96,7 +96,7 @@ namespace Concierge.Common.Extensions
                 throw new ArgumentException("e must be an enumerated type");
             }
 
-            return en.ToString().PascalCase();
+            return en.ToString().ToPascalCase();
         }
     }
 }
